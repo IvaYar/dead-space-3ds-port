@@ -1,0 +1,22 @@
+{
+  "isolated_sensor_tests_passed": 12,
+  "native_hid_azahar_passed": true,
+  "samples_observed": 40,
+  "hardware_tested": false,
+  "game_adapter_enabled": false,
+  "native_rx_backend_unchanged": true,
+  "engine_checkpoint": "158 ARM tests and 7 Azahar cases; unchanged, see engine-progress.json",
+  "limitations": [
+    "identity axes and nominal 512 counts/g are test configuration, not hardware calibration",
+    "delivery rate limiter does not configure HID hardware sample rate",
+    "cached samples may repeat",
+    "SetUpdateFrequency(I)V Java argument mapping not yet verified",
+    "JNI delegate not registered; engine stop unchanged"
+  ],
+  "witnesses_sha256": {
+    "analysis/sensor-tests.json": "76f81908bbc45116b59d7bf4fa5ec6fc0102150a10b861583ed29dd1e7b6716f",
+    "analysis/sensor-native-result.json": "bbddccba6f71e73f693015c2d4735f5769563223f1231b1220f2bdd5a4e05f2b",
+    "analysis/azahar-smoke/sensor-native.log": "862857f71a6a28d6a2896915c39f41a3d8fa05a7c29b37abe6d24b8f9a3ba1b2",
+    "3ds/build-sensor/build-manifest.json": "08ff77071428066d0941387969611d8e2d61cf29e00254c640e3e7350b99d055"
+  }
+}

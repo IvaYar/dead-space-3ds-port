@@ -24,6 +24,8 @@
 !/porting/3ds/source/*.s
 !/porting/3ds/build-emulator/
 !/porting/3ds/build-emulator/build-manifest.json
+!/porting/3ds/build-sensor/
+!/porting/3ds/build-sensor/build-manifest.json
 !/porting/3ds/build-stage8/
 !/porting/3ds/build-stage8/stage8.rsf
 !/porting/3ds/build-stage8/icon.png
@@ -41,6 +43,7 @@
 !/porting/analysis/azahar-smoke/*-result.json
 !/porting/analysis/azahar-smoke/result-*.json
 !/porting/analysis/azahar-smoke/engine-*.log
+!/porting/analysis/azahar-smoke/sensor-native.log
 !/porting/analysis/azahar-smoke/stage*-*.log
 !/porting/analysis/engine-baseline/
 !/porting/analysis/engine-baseline/*.json
