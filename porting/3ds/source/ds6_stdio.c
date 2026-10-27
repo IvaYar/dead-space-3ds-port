@@ -9,6 +9,7 @@ enum { READ=4,WRITE=8,EOF_FLAG=32,ERROR_FLAG=64,COUNT=3+DS_IO_FILES };
 static DS6File files[COUNT];
 static FILE *native[COUNT];
 static int used[COUNT],orientation[COUNT];
+void ds_fs_trace(const char *,const char *,int) __attribute__((weak));
 static int fail(int error) { *ds_io_errno()=error; return -1; }
 static int index_for(DS6File *file) {
     for(int i=0;i<COUNT;++i) if(file==&files[i] && used[i]) {
@@ -45,16 +46,25 @@ int ds6_map_path(const char *path,char out[DS_IO_PATH_BYTES],int writable) {
     if(!path) return fail(14);
     if(!strncmp(path,"appdata:/",9)) {
         char logical[DS_IO_PATH_BYTES],mapped[DS_IO_PATH_BYTES];
-        size_t length=strlen(path+9);
+        const char *relative=path+9;if(*relative=='/')++relative;
+        if(*relative=='/')return fail(22);
+        size_t length=strlen(relative);if(length && relative[length-1]=='/')--length;
+        if(!length){strcpy(out,"sdmc:/3ds/deadspace/test-output/");return 0;}
         if(length+11>=sizeof(logical)) return fail(36);
-        strcpy(logical,"published/"); strcat(logical,path+9);
+        strcpy(logical,"published/");memcpy(logical+10,relative,length);logical[10+length]=0;
         int result=ds_io_map_path(logical,mapped,sizeof(mapped));
         if(result) return fail(result);
         strcpy(out,"sdmc:/3ds/deadspace/test-output/"); strcat(out,mapped+sizeof(DS_IO_ROOT)-1);
         return 0;
     }
     if(writable) return fail(30);
+    if(!strcmp(path,"/sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate")){strcpy(out,"sdmc:/3ds/deadspace/assets/Downloaded.indicate");return 0;}
+    if(!strcmp(path,"/sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published") || !strcmp(path,"/sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/")){strcpy(out,DS_IO_ROOT);return 0;}
+    if(!strcmp(path,"/sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/") || !strcmp(path,"/sdcard/Android/data/com.ea.deadspace/files/ea/deadspace")){strcpy(out,"sdmc:/3ds/deadspace/assets/");return 0;}
     if(!strcmp(path,"appbundle:/published/") || !strcmp(path,DS_IO_ROOT) || !strcmp(path,"published/")) { strcpy(out,DS_IO_ROOT); return 0; }
+    char logical[DS_IO_PATH_BYTES];size_t n=strlen(path);
+    if(n>=sizeof(logical))return fail(36);
+    if(n && path[n-1]=='/'){memcpy(logical,path,n-1);logical[n-1]=0;path=logical;}
     int result=ds_io_map_path(path,out,DS_IO_PATH_BYTES);
     return result?fail(result):0;
 }
@@ -174,10 +184,25 @@ int ds6_stat_pack(void *out,const void *native_stat) {
     memcpy(out,packed,sizeof(packed)); return 0;
 }
 int DS_IO_SOFT ds6_stat(const char *path,void *out) {
+    if(ds_fs_trace)ds_fs_trace("stat begin",path?path:"<null>",0);
     if(!out) return fail(14);
-    char mapped[DS_IO_PATH_BYTES]; if(ds6_map_path(path,mapped,0)) return -1;
-    struct stat s={0}; int result=stat(mapped,&s); ds6_result_error(result);
+    char mapped[DS_IO_PATH_BYTES];
+    if(path && !strcmp(path,"/"))strcpy(mapped,"sdmc:/3ds/deadspace/");
+    else if(ds6_map_path(path,mapped,0)) return -1;
+    if(ds_fs_trace)ds_fs_trace("stat mapped",mapped,0);
+    struct stat s={0}; int result=stat(mapped,&s);
+    if(ds_fs_trace)ds_fs_trace("stat native",mapped,result);
+    ds6_result_error(result);
+    if(ds_fs_trace)ds_fs_trace("stat end",mapped,result);
     return result?-1:ds6_stat_pack(out,&s);
+}
+int DS_IO_SOFT ds6_mkdir(const char *path,uint32_t mode){
+    if(ds_fs_trace)ds_fs_trace("mkdir begin",path?path:"<null>",0);
+    char mapped[DS_IO_PATH_BYTES];if(ds6_map_path(path,mapped,1))return -1;
+    if(mode&~07777u)return fail(22);
+    int result=mkdir(mapped,mode&0777u);ds6_result_error(result);
+    if(ds_fs_trace)ds_fs_trace("mkdir end",mapped,result);
+    return result;
 }
 int DS_IO_SOFT ds6_fstat(int fd,void *out) {
     if(!out) return fail(14);

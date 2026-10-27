@@ -7,10 +7,16 @@ typedef void *(*DS7Start)(void *) DS_IO_SOFT;
 typedef void (*DS7Destroy)(void *) DS_IO_SOFT;
 typedef struct { int32_t error; void *record; } DS7TLS;
 typedef struct { uint32_t active_threads,finished_threads,mutexes,conditions,semaphores,keys; } DS7Stats;
+typedef struct {uint32_t token,entry,wait_kind,wait_object;} DS7DebugThread;
+/* Diagnostic observations only; no synchronization decisions may use them. */
+void ds7_debug_threads(DS7DebugThread out[17]);
 /* Native backend owns the one state gate and provides atomic condition waits. */
 void ds7_platform_init(void);
 void ds7_gate_lock(void);
 void ds7_gate_unlock(void);
+void ds7_platform_yield(void);
+typedef void (*DS7Observe)(uint32_t event,uint32_t thread,uint32_t detail);
+void ds7_observer(DS7Observe);
 int ds7_cv_wait(int32_t *cv,int64_t timeout);
 int ds7_clock_now(DS6Time *out);
 void ds7_cv_wake(int32_t *cv,int all);

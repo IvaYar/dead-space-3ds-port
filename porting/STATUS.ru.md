@@ -1,6 +1,10 @@
 # Dead Space Mobile → New Nintendo 3DS: состояние работы
 
-Дата: 27 октября 2026 года. Целевая платформа уточнена пользователем: семейство New Nintendo 3DS.
+Дата: 28 октября 2026 года. Целевая платформа уточнена пользователем: семейство New Nintendo 3DS.
+
+**Самый новый результат:** логотип EA выведен оригинальным движком на LCD Azahar, завершён кадр8. CPU renderer:15 draws/30 triangles/629370 fragments/251370 texture samples, RGB565400×240/CRC f25373dd. Прошли331 core ARM-тест +14 isolated sensor-тестов и9 engine-сценариев. Native memory124MiB, arenas20+80MiB, GL99/FS4 opt-in; strict preflight154/234/4. Шесть donor workers и шесть оригинальных acceleration callbacks реально выполнены. Есть retained JNI loan/frame, поэтому меню/gameplay ещё не подтверждены. Детали — [FIRST-FRAME.ru.md](FIRST-FRAME.ru.md). Пользователь разрешил текущую синхронизацию GitHub; дальнейшие обновления — по запросу. Ниже сохранена история предыдущих шагов.
+
+**Последний локальный результат:** opt-in JNI-мост датчика прошёл прежнюю остановку; Unicorn и Azahar дошли до `glGetIntegerv(GL_VIEWPORT)`. Графического кадра нет. Прошли 166 core-тестов, 14 sensor-тестов и восемь engine-сценариев плюс отдельная HID-проверка. Подробности — [SENSOR-JNI.ru.md](SENSOR-JNI.ru.md). Следующий блок — GLES; GitHub обновлять только по запросу пользователя.
 
 **Новое:** изолированный HID-мост акселерометра прошёл 12 ARM-тестов и отдельный Azahar CXI с 40 показаниями и штатным выключением. Он ещё не связан с JNI игры; прежняя остановка запуска сохранена. См. [SENSOR-BACKEND.ru.md](SENSOR-BACKEND.ru.md).
 

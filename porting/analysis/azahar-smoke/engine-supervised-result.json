@@ -1,0 +1,10 @@
+{
+  "observed_stop": true,
+  "checkpoint_validated": false,
+  "first_game_frame_rendered": true,
+  "termination": "disposable emulator process supervised externally; no in-process module unload",
+  "elapsed_seconds": 9.688,
+  "hardware_tested": false,
+  "cxi_sha256": "25ffcb7afc159d3a6af9754afb5a7345bd8c678d9fb6c993060fad83444721cd",
+  "log_sha256": "2ee9698a579bc8be5a4d1580513d48ae3164966cd29fc92142f083d9e876f426"
+}

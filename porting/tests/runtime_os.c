@@ -24,6 +24,8 @@ int _isatty_r(struct _reent *r,int fd) { (void)fd; return fail(r); }
 int _unlink_r(struct _reent *r,const char *p) { (void)p; return fail(r); }
 int _rename_r(struct _reent *r,const char *a,const char *b) { (void)a;(void)b; return fail(r); }
 int _rmdir_r(struct _reent *r,const char *p) { (void)p; return fail(r); }
+int __attribute__((noinline)) _mkdir_r(struct _reent *r,const char *p,int mode) { (void)p;(void)mode;return fail(r); }
+int mkdir(const char *p,mode_t mode) { return _mkdir_r(__getreent(),p,(int)mode); }
 int _getpid_r(struct _reent *r) { return fail(r); }
 int _kill_r(struct _reent *r,int pid,int signal) { (void)pid;(void)signal; return fail(r); }
 int _gettimeofday_r(struct _reent *r,struct timeval *p,void *z) { (void)p;(void)z; return fail(r); }

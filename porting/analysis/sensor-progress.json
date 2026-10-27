@@ -1,22 +1,21 @@
 {
-  "isolated_sensor_tests_passed": 12,
+  "isolated_sensor_tests_passed": 14,
   "native_hid_azahar_passed": true,
   "samples_observed": 40,
   "hardware_tested": false,
   "game_adapter_enabled": false,
   "native_rx_backend_unchanged": true,
-  "engine_checkpoint": "158 ARM tests and 7 Azahar cases; unchanged, see engine-progress.json",
+  "engine_checkpoint": "331 core ARM tests and 9 Azahar cases; completed EA logo frame presented in Azahar; six original acceleration callbacks returned; see first-frame-result.json and engine-progress.json",
   "limitations": [
     "identity axes and nominal 512 counts/g are test configuration, not hardware calibration",
     "delivery rate limiter does not configure HID hardware sample rate",
     "cached samples may repeat",
-    "SetUpdateFrequency(I)V Java argument mapping not yet verified",
-    "JNI delegate not registered; engine stop unchanged"
+    "JNI bridge is opt-in in engine audit; six original callbacks observed in the frame capture case, physical calibration remains unverified"
   ],
   "witnesses_sha256": {
-    "analysis/sensor-tests.json": "76f81908bbc45116b59d7bf4fa5ec6fc0102150a10b861583ed29dd1e7b6716f",
-    "analysis/sensor-native-result.json": "bbddccba6f71e73f693015c2d4735f5769563223f1231b1220f2bdd5a4e05f2b",
+    "analysis/sensor-tests.json": "3534028c3d3abb3a9bcfb18df6d9eca65aced0e99caa9e3cb2c754553294f375",
+    "analysis/sensor-native-result.json": "5f18ffaecc48e7d6fdcb6d3ac4a73630f7372d80cb6a47c78cc43b98b4d23187",
     "analysis/azahar-smoke/sensor-native.log": "862857f71a6a28d6a2896915c39f41a3d8fa05a7c29b37abe6d24b8f9a3ba1b2",
-    "3ds/build-sensor/build-manifest.json": "08ff77071428066d0941387969611d8e2d61cf29e00254c640e3e7350b99d055"
+    "3ds/build-sensor/build-manifest.json": "ef4015fb3f223a1c119e49c644a8cd5226d768f180d6e6d39ae193efc3995d52"
   }
 }

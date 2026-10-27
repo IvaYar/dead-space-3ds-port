@@ -11,6 +11,7 @@ int sensor_test_init(const DS12Calibration *c){DS12SensorOps ops={enable,read_sa
 void sensor_test_reset(void){memset(&sensor,0,sizeof(sensor));enabled_error=0;read_status=1;enable_calls=read_calls=0;memset(output,0,sizeof(output));}
 int sensor_test_enable(int value){return ds12_sensor_enable(&sensor,value);}
 int sensor_test_rate(unsigned hz){return ds12_sensor_rate(&sensor,hz);}
+int sensor_test_android_delay(int delay){return ds12_sensor_android_delay(&sensor,delay);}
 void sensor_test_backend(int error,int status){enabled_error=error;read_status=status;}
 void sensor_test_raw(int x,int y,int z){raw[0]=(int16_t)x;raw[1]=(int16_t)y;raw[2]=(int16_t)z;}
 int sensor_test_poll(uint32_t lo,uint32_t hi){return ds12_sensor_poll(&sensor,((uint64_t)hi<<32)|lo,output);}

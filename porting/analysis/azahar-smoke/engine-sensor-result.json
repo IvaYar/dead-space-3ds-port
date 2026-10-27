@@ -1,0 +1,15 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "sensor",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "first_game_frame_rendered": false,
+  "exploratory": false,
+  "checkpoint_validated": true,
+  "frames": 391,
+  "elapsed_seconds": 2.0,
+  "cxi_sha256": "b21f4d01a9e44592b3104cfad2eda7869dc4357c96c6b518da6e52897de78c1d",
+  "log_sha256": "57640135dab516d834372f6d6fcb0c38ba94800a0e1da31bb9e6308e0451c72b",
+  "log": "analysis\\azahar-smoke\\engine-sensor.log"
+}

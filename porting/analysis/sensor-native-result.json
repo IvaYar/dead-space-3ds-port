@@ -3,7 +3,7 @@
   "passed": true,
   "hardware_tested": false,
   "game_adapter_enabled": false,
-  "cxi_sha256": "3db3e20dd1107a605a406a4a9c9165de9a0efe8d33bcb5f4383c0fdf43adf5f4",
+  "cxi_sha256": "54799420650488f2881a9191b11bd2b888065a9e5ae7c2c36bb0e1dc51d54f2b",
   "log_sha256": "862857f71a6a28d6a2896915c39f41a3d8fa05a7c29b37abe6d24b8f9a3ba1b2",
-  "elapsed_seconds": 0.188
+  "elapsed_seconds": 0.172
 }

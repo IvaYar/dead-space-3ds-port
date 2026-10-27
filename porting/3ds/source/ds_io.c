@@ -17,6 +17,7 @@ static int prefix(const char *path, const char *text) {
 int ds_io_map_path(const char *path, char *out, uint32_t capacity) {
     if (!path || !out) return DS_EFAULT;
     const char *prefixes[] = {"appbundle:/published/", "published/",
+        "/sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/",
         "/sdcard/Android/data/com.ea.deadspace/files/published/", DS_IO_ROOT};
     uint32_t start = 0;
     for (uint32_t i = 0; i < sizeof(prefixes) / sizeof(prefixes[0]); ++i) {

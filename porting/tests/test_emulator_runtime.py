@@ -33,7 +33,7 @@ class MemoryTests(unittest.TestCase):
         self.assertEqual(self.call('ds9_sbrk',-0x10000),ARENA+0x10000)
     def test_init_rejects_overlap_unaligned_zero_and_wrapping_ranges(self):
         for args in ((ARENA+1,0x10000,MAP,0x10000),(ARENA,0,MAP,4096),(ARENA,0x10000,ARENA+4096,4096),
-                     (ARENA,0x10000,0xfffff000,8192),(ARENA,4096,MAP,64*1024*1024)):
+                     (ARENA,0x10000,0xfffff000,8192),(ARENA,4096,MAP,128*1024*1024)):
             self.assertEqual(self.call('ds9_memory_init',*args),22)
     def test_init_refuses_live_break_or_mapping(self):
         self.call('ds9_sbrk',1);self.assertEqual(self.call('ds9_memory_init',ARENA,0x10000,MAP,0x10000),16)

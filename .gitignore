@@ -32,6 +32,11 @@
 !/porting/3ds/build-stage8/stage8.bnr
 !/porting/analysis/
 !/porting/analysis/*.json
+!/porting/analysis/first-frame/
+!/porting/analysis/first-frame/first-game-frame.json
+!/porting/analysis/first-frame/first-game-frame.raw
+!/porting/analysis/first-frame/first-game-frame.png
+!/porting/analysis/first-frame/azahar-screen.png
 !/porting/analysis/stage2-*.c
 !/porting/analysis/stage2-*.s
 !/porting/analysis/hardware/

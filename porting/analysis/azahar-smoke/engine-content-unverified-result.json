@@ -4,9 +4,12 @@
   "expected_status_found": true,
   "hardware_tested": false,
   "gameplay": false,
-  "frames": 586,
-  "elapsed_seconds": 2.391,
-  "cxi_sha256": "a9400f5fd9fca00968bdeb04c25abd973c9c5bf2ff16b0c9d33fec5aac4cd967",
-  "log_sha256": "e8555e42438d2adff313bc6c369b49408cdcc3579962b64257d292b9548fdb03",
+  "first_game_frame_rendered": false,
+  "exploratory": false,
+  "checkpoint_validated": true,
+  "frames": 616,
+  "elapsed_seconds": 2.484,
+  "cxi_sha256": "b21f4d01a9e44592b3104cfad2eda7869dc4357c96c6b518da6e52897de78c1d",
+  "log_sha256": "d22be41833eb6d0c7a9e454778a3d50c25ed0336ef70c1e3c95f06544805d25c",
   "log": "analysis\\azahar-smoke\\engine-content-unverified.log"
 }

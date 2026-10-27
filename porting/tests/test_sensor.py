@@ -55,6 +55,17 @@ class SensorTests(unittest.TestCase):
     def test_raw_int16_extremes_remain_finite(self):
         self.call('sensor_test_raw',-32768,32767,0);self.call('sensor_test_enable',1);self.poll(0)
         self.assertAlmostEqual(self.output()[0],-64*9.80665,places=3)
+    def test_android_named_delays_use_gingerbread_microseconds(self):
+        self.call('sensor_test_enable',1)
+        for delay,interval in ((1,20000),(2,60000),(3,200000),(2500000,2500000)):
+            self.assertEqual(self.call('sensor_test_android_delay',delay),0);self.assertEqual(self.poll(0),1)
+            self.assertEqual(self.poll(interval-1),0);self.assertEqual(self.poll(interval),1)
+            self.call('sensor_test_enable',0);self.call('sensor_test_enable',1)
+    def test_android_fastest_and_negative_delay(self):
+        self.call('sensor_test_enable',1);self.assertEqual(self.call('sensor_test_android_delay',0),0)
+        self.assertEqual(self.poll(0),1);self.assertEqual(self.poll(0),1)
+        self.assertEqual(self.call('sensor_test_android_delay',-1),0xffffffff)
+        self.assertEqual(self.poll(1),1)
     def test_softfp_callback_receives_handles_and_three_floats(self):
         blob=(BUILD/'fixture-sensor.so').read_bytes();base=0x40000000;self.arm.uc.mem_map(base,65536)
         for p in segments(blob):

@@ -1,11 +1,24 @@
 DEAD SPACE ENGINE AUDIT - EMULATOR ONLY
 READY - press A
 Backend: Azahar; native RX not tested
+Application memory: bytes=130023424; donor arenas=20+80MiB
+FS stat begin: appdata://var/settings.sb result=0
+FS stat mapped: sdmc:/3ds/deadspace/test-output/var/settings.sb result=0
+FS stat native: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+Pre-thread missing stat: -1 errno=2
+Jump probe ARM: OK cases=8 core/VFP=OK
+Jump probe Thumb: OK cases=8 core/VFP=OK
+Jump probe counters: saves=18 restores=18 refusals=0
+String probe: 0 checks=43 units=7 bytes=17
+String cleanup: files=0 heap=0
 JNI I/O probe: 0 checks=201 bytes=3568 CRC32=4a8d9499
 JNI I/O cleanup: files=0 heap=0
+Asset probe: 0 checks=378 names=176 CRC32-xor=3a761eb9
+Asset cleanup: files=0 heap=0
 Platform probe: 0 checks=168 properties=29
 Platform cleanup: files=0 heap=0
-Production preflight: bound=152 missing=236 weak=4
+Production preflight: bound=154 missing=234 weak=4
 Production guard: REFUSED; image unchanged
 Audit clock: emulator monotonic, excluded from supported count
 Running 209 donor constructors...

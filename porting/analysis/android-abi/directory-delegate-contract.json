@@ -1,0 +1,41 @@
+{
+  "dex_sha256": "c7827f417525afd57c9182b3b509c13ec4f9fdf84136c13280e8eec349c05aa5",
+  "methods": [
+    {
+      "class": "Lcom/ea/blast/GetAppDataDirectoryDelegate;",
+      "name": "GetAppDataDirectory",
+      "signature": "()Ljava/lang/String;",
+      "access_flags": 1,
+      "native": false,
+      "code_offset": 91968,
+      "instruction_bytes": 22,
+      "code_sha256": "61bb3d51d241e19fa2f8a8dcf425d9f0940ed1f87d1c0d26d2f2f79729305cba"
+    },
+    {
+      "class": "Lcom/ea/blast/GetAppDataDirectoryDelegate;",
+      "name": "GetExternalStorageDirectory",
+      "signature": "()Ljava/lang/String;",
+      "access_flags": 1,
+      "native": false,
+      "code_offset": 92008,
+      "instruction_bytes": 52,
+      "code_sha256": "aad7117c984c6e71ade8315996ec698c341ef84ad2cf4cbbb80e1dec35368587"
+    },
+    {
+      "class": "Lcom/ea/deadspace/BootstrapActivity;",
+      "name": "externalRoot",
+      "signature": "(Landroid/content/Context;)Ljava/io/File;",
+      "access_flags": 9,
+      "native": false,
+      "code_offset": 101824,
+      "instruction_bytes": 32,
+      "code_sha256": "9e8516b36b3f555ef4ed0439afe076ba74332c6d4dd469b0e9f4bf006d77bee0"
+    }
+  ],
+  "internal": "MainActivity.getFilesDir().getAbsolutePath()",
+  "external": "mounted storage -> BootstrapActivity.externalRoot(context).getAbsolutePath(); helper calls Context.getExternalFilesDir(null)",
+  "adapter_internal": "appdata:/",
+  "adapter_external": "/sdcard/Android/data/com.ea.deadspace/files",
+  "observed_game_suffix": "ea/deadspace/published/fonts/Ascender_Uni.ttf",
+  "scope": "static DEX proof; external SD path is a compatibility alias into the verified read-only published tree"
+}

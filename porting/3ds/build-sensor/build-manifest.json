@@ -7,28 +7,28 @@
     "ds_cache.s": "1ef11401b18567eb183ff76cec9c59fc05ddec1dd988af6446a14fdf748ef6c3"
   },
   "sources_sha256": {
-    "3ds\\source\\ds12_sensor.c": "f74ad03e8b3b09b3c2fffecda79bb33d92a2f12748edd7acd1ff2700f8ab622a",
-    "tests\\sensor_model.c": "25f7b416165eb9633f49c612df31b2b56b4d523c8bbcd6eebb4f560a9e361b34",
+    "3ds\\source\\ds12_sensor.c": "e513f4ce7123d64b272baf1fcaf2f47cdc1fed1e4b2d2090374d05a91fcca306",
+    "tests\\sensor_model.c": "49199c613a94705b2e893e0933529a17735e6f49c6a04ed7f0ef9f61212d1c55",
     "3ds\\source\\ds12_sensor_3ds.c": "2ceca7db9690d6e507a911215efbdf20eb15e5a2207d976337c0cd9e37a3be6c",
     "3ds\\source\\ds_exec.c": "09b92e8a9d1f63928c9fc5d1b55e301721e06d54370ffc3604b202d5d73f5746",
     "3ds\\source\\ds_cache.s": "1ef11401b18567eb183ff76cec9c59fc05ddec1dd988af6446a14fdf748ef6c3",
     "tests\\sensor_azahar.c": "b75e55e351fff22135cb9f09178100305e135664bc3fec4f6b316d6b1b372329",
     "tests\\fixture_sensor.c": "19dee0597d012b35ea8e2ee2f17c4b1cae4e5c6921b8c28cad53c895ddb76dc3",
-    "3ds\\include\\ds12_sensor.h": "512402a02a9be80a3e91745ac03a4c90ec072066ddfde92451ed4456c34452e0",
+    "3ds\\include\\ds12_sensor.h": "a2e564f03e95fdca8806ebbe3dba469b0fb1f721fed3186516b9a686a902a965",
     "3ds\\include\\ds_jni.h": "ea93040d60e148b3c6dbda6cda632cee57c234e01e4b40e2c666ccc13d2db3ae",
     "3ds\\include\\ds_exec.h": "ee60d59d6c783c26ef1c4ee77e5765e052a4b1cf8540fe5aa0d71ff5970cd78b",
     "tools\\build_stage1.py": "af28f18bef99f0a7c0151410dd65f6cd1345b77d344e7c4c15792b37c7b0eaf9",
     "tools\\build_sensor.py": "bca47fb0c23c521b5af36b0194c089b2245931a0a836990033d949361eb607f2",
-    "tests\\test_sensor.py": "e63e25ee11832dd6c4c2953c8cd34e3b6543f2af1976d17b42be27561c0c49ee",
+    "tests\\test_sensor.py": "ff790b58d9e1755ea707e3defd7c625ac6c80fb709df88a86213037beb071f5a",
     "tests\\smoke_sensor_azahar.py": "163936bc864d41fe628c50260b1209cf781dd19943b37827ae6aea0d769f183b",
     "3ds\\build-stage8\\stage8.rsf": "9cbaedd106eb1ddf5ddc7b8e5247e51a19ffa6814be5fbd96020751281cf6cf8",
     "3ds\\build-stage8\\stage8.bnr": "053564a37d517e850c579c53519b0cea93c3a44fc518b9a91c001e643736f747",
     "3ds\\build-emulator\\audit.smdh": "04d8ee3c8c395bab402bcb5275dbf64d594ad24d37d5c1425561c03866cad32d"
   },
   "outputs_sha256": {
-    "sensor-test.elf": "67efeba121468a564dc355d2e83547f57200ffd2c310cb1d08bbadcc0a611aa8",
+    "sensor-test.elf": "ff103afd09d2c492d84892fd9489de2a5a39def4939254d72a43745037673cdf",
     "fixture-sensor.so": "0004967ef9ca3be8472002062471b71a34b50b014b639f5c84eaf1b285371bd9",
-    "sensor-audit.elf": "021fff1020f20922002cc0eec5b3c3e60386b8e5671a1a2f59d8001f3c2eca16",
-    "sensor-audit.cxi": "3db3e20dd1107a605a406a4a9c9165de9a0efe8d33bcb5f4383c0fdf43adf5f4"
+    "sensor-audit.elf": "172cdd40c77ca1fdc7864513590c9f707826ea0eb96bac5066e60a3cc36cdb5f",
+    "sensor-audit.cxi": "54799420650488f2881a9191b11bd2b888065a9e5ae7c2c36bb0e1dc51d54f2b"
   }
 }

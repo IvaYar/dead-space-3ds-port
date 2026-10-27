@@ -2,7 +2,7 @@
   "tests_run": 16,
   "errors": 0,
   "failures": 0,
-  "elapsed_seconds": 0.187,
-  "core_sha256": "d1dab7361829f0bb57973ece25207eb1c81cc7335ce708d13a55385a2217ad23",
+  "elapsed_seconds": 0.171,
+  "core_sha256": "c79447a05e998e2411e88155df83d3258a6963f389d2780528d6e9812db2428b",
   "hardware_tested": false
 }

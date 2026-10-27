@@ -53,6 +53,7 @@ int DS_IO_SOFT ds6_fputs(const char *text,DS6File *file);
 int DS_IO_SOFT ds6_fprintf(DS6File *file,const char *format,...);
 int DS_IO_SOFT ds6_fwide(DS6File *file,int mode);
 int DS_IO_SOFT ds6_stat(const char *path,void *out);
+int DS_IO_SOFT ds6_mkdir(const char *path,uint32_t mode);
 int DS_IO_SOFT ds6_fstat(int fd,void *out);
 int DS_IO_SOFT ds6_remove(const char *path);
 int DS_IO_SOFT ds6_rename(const char *old_path,const char *new_path);

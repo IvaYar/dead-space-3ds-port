@@ -1,0 +1,10 @@
+{
+  "tests_run": 22,
+  "errors": 0,
+  "failures": 0,
+  "hardware_tested": false,
+  "game_rendered": false,
+  "core_sha256": "c79447a05e998e2411e88155df83d3258a6963f389d2780528d6e9812db2428b",
+  "fixture_sha256": "6739f709522bcf36354fe02bfaf26a1c57dcdaf68908cd87187d92f2a544fc01",
+  "elapsed_seconds": 0.234
+}

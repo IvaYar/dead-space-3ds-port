@@ -7,6 +7,7 @@ static _Thread_local DS7TLS local;
 void ds7_platform_init(void) { LightLock_Init(&state_gate); RecursiveLock_Init(&memory_gate); }
 void ds7_gate_lock(void) { LightLock_Lock(&state_gate); }
 void ds7_gate_unlock(void) { LightLock_Unlock(&state_gate); }
+void ds7_platform_yield(void) { svcSleepThread(0); }
 void ds7_heap_lock(void) { RecursiveLock_Lock(&memory_gate); }
 void ds7_heap_unlock(void) { RecursiveLock_Unlock(&memory_gate); }
 DS7TLS *ds7_tls(void) { return &local; }
@@ -20,7 +21,11 @@ typedef struct { Thread thread; Handle handle; } NativeThread;
 void *ds7_spawn(void (*entry)(void *),void *arg,uint32_t stack) {
     NativeThread *native=malloc(sizeof(*native));
     if(!native) return NULL;
-    native->thread=threadCreate(entry,arg,stack,0x30,0,false);
+    /* Android default pthread priority inherits the caller's scheduling class.
+     * A fixed lower native priority can starve a worker during donor polling. */
+    s32 priority;
+    if(R_FAILED(svcGetThreadPriority(&priority,CUR_THREAD_HANDLE))){free(native);return NULL;}
+    native->thread=threadCreate(entry,arg,stack,priority,0,false);
     if(!native->thread) { free(native); return NULL; }
     /* Caller holds the state gate. A child cannot finish its TLS teardown until
      * that gate is released, so libctru still exposes its original handle here. */

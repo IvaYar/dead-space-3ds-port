@@ -1,0 +1,17 @@
+{
+  "dex_sha256": "c7827f417525afd57c9182b3b509c13ec4f9fdf84136c13280e8eec349c05aa5",
+  "setter_code_sha256": "9ff0dd1b91646abf852e62fec0079b756df7ae487c9f9bb95b67a01604ba90ac",
+  "argument": "SensorManager delay code, or microseconds; not Hz",
+  "named_delay_us": {
+    "0": 0,
+    "1": 20000,
+    "2": 60000,
+    "3": 200000
+  },
+  "default_constructor_delay": 3,
+  "enabled_rate_change": "unregister and register again",
+  "aosp_source": "https://android.googlesource.com/platform/frameworks/base/+/android-2.3.3_r1/core/java/android/hardware/SensorManager.java?format=TEXT",
+  "aosp_sha256": "c4c1b00ef275513ba8bcd66dea883147edd9d3ed83e2e94055f9326ba4ac1951",
+  "sensor_manager_register_listener_returns_boolean": true,
+  "java_listener_result_is_ignored_by_this_apk": true
+}

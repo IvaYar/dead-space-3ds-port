@@ -11,7 +11,7 @@ typedef struct {
     void *user;
 } DS12SensorOps;
 typedef struct {
-    uint32_t magic,enabled,hz,has_sample,has_clock;
+    uint32_t magic,enabled,hz,interval_us,has_sample,has_clock;
     uint64_t last_sample_us,last_poll_us;
     DS12Calibration calibration;
     DS12SensorOps ops;
@@ -20,6 +20,9 @@ typedef void (*DS12Acceleration)(DSJniHandle *,void *,float,float,float) DS_JNI_
 int ds12_sensor_init(DS12Sensor *,const DS12Calibration *,const DS12SensorOps *);
 int ds12_sensor_enable(DS12Sensor *,int enabled);
 int ds12_sensor_rate(DS12Sensor *,uint32_t hz);
+/* Android 2.3.3: 0=fastest, 1=20000us, 2=60000us, 3=200000us,
+ * other nonnegative values are requested microseconds, not Hz. */
+int ds12_sensor_android_delay(DS12Sensor *,int32_t delay);
 int ds12_sensor_poll(DS12Sensor *,uint64_t now_us,float out[3]);
 int ds12_sensor_dispatch(DS12Sensor *,uint64_t now_us,DSJniHandle *,void *,DS12Acceleration);
 /* On disable failure retains ownership; caller must retry before discarding. */

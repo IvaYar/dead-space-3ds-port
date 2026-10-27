@@ -1,7 +1,7 @@
 #include "ds7.h"
 #include <string.h>
 enum { THREADS=16, MUTEXES=64, CONDITIONS=32, SEMAPHORES=32, KEYS=32 };
-typedef struct { uint32_t token; int used,done,detached,joining; void *native,*result,*argument; DS7Start entry; DS7Attr attr; void *values[KEYS]; uint32_t generations[KEYS]; } Worker;
+typedef struct { uint32_t token; int used,done,detached,joining; void *native,*result,*argument; DS7Start entry; DS7Attr attr; void *values[KEYS]; uint32_t generations[KEYS]; volatile uint32_t wait_kind,wait_object; } Worker;
 typedef struct { uint32_t *object,owner,depth; int kind,waiters; int32_t cv; } Mutex;
 typedef struct { uint32_t *object; int waiters; int32_t cv; } Condition;
 typedef struct { uint32_t *object,value; int waiters; int32_t cv; } Semaphore;
@@ -14,10 +14,16 @@ static Key keys[KEYS];
 static uint32_t serial;
 static int stopping;
 static int initialized;
+static DS7Observe observer;
+void ds7_observer(DS7Observe fn){observer=fn;}
 static int unlock_result(int result) { ds7_gate_unlock(); return result; }
 static int32_t *thread_errno(void) { return &ds7_tls()->error; }
 static Worker *current(void) { return ds7_tls()->record; }
 static uint32_t identity(void) { Worker *w=current(); return w?w->token:0; }
+static void waiting(uint32_t kind,const void *object){Worker *w=current();if(w){w->wait_object=(uint32_t)object;w->wait_kind=kind;}}
+void ds7_debug_threads(DS7DebugThread out[17]){
+    for(unsigned i=0;i<17;++i){Worker *w=&workers[i];out[i]=(DS7DebugThread){w->used?w->token:0,(uint32_t)w->entry,w->wait_kind,w->wait_object};}
+}
 static Worker *find_worker(uint32_t id) {
     uint32_t slot=id&255;
     if(slot>THREADS || !workers[slot].used || workers[slot].token!=id) return NULL;
@@ -107,7 +113,7 @@ static int mutex_lock_common(uint32_t *object,int try_only) {
     ds7_gate_lock(); Mutex *m=get_mutex(object,1);
     return unlock_result(m?lock_mutex(m,try_only):22);
 }
-static int DS_IO_SOFT mutex_lock(uint32_t *object) { return mutex_lock_common(object,0); }
+static int DS_IO_SOFT mutex_lock(uint32_t *object) { waiting(1,object);int r=mutex_lock_common(object,0);waiting(0,NULL);return r; }
 static int DS_IO_SOFT mutex_trylock(uint32_t *object) { return mutex_lock_common(object,1); }
 static int release_mutex(Mutex *m) {
     if(!m->depth || m->owner!=identity()) return 1;
@@ -168,7 +174,7 @@ static int condition_wait(uint32_t *object,uint32_t *mutex,const DS6Time *absolu
     int restored=lock_mutex(m,0); --c->waiters; --m->waiters;
     return unlock_result(restored?restored:result);
 }
-static int DS_IO_SOFT cond_wait(uint32_t *c,uint32_t *m) { return condition_wait(c,m,NULL); }
+static int DS_IO_SOFT cond_wait(uint32_t *c,uint32_t *m) { waiting(2,c);int r=condition_wait(c,m,NULL);waiting(0,NULL);return r; }
 static int DS_IO_SOFT cond_timedwait(uint32_t *c,uint32_t *m,const DS6Time *t) { return t?condition_wait(c,m,t):22; }
 static Semaphore *get_semaphore(uint32_t *object) {
     if(!object || (*object&0xffffff00u)!=0xd7300000u) return NULL;
@@ -218,7 +224,7 @@ static int semaphore_wait(uint32_t *object,int try_only,const DS6Time *absolute)
     if(!result) --s->value;
     ds7_gate_unlock(); return sem_result(result);
 }
-static int DS_IO_SOFT sem_wait(uint32_t *s) { return semaphore_wait(s,0,NULL); }
+static int DS_IO_SOFT sem_wait(uint32_t *s) { waiting(3,s);int r=semaphore_wait(s,0,NULL);waiting(0,NULL);return r; }
 static int DS_IO_SOFT sem_trywait(uint32_t *s) { return semaphore_wait(s,1,NULL); }
 static int DS_IO_SOFT sem_timedwait(uint32_t *s,const DS6Time *t) { return t?semaphore_wait(s,0,t):sem_result(22); }
 static int DS_IO_SOFT key_create(uint32_t *id,DS7Destroy destructor) {
@@ -265,7 +271,13 @@ static void finish(void *value) {
     }
     ds7_gate_lock(); w->result=value; w->done=1; ds7_gate_unlock(); ds7_native_exit();
 }
-static void worker_begin(void *pointer) { Worker *w=pointer; ds7_tls()->record=w; ds7_tls()->error=0; finish(w->entry(w->argument)); }
+static void worker_begin(void *pointer) {
+    Worker *w=pointer;ds7_tls()->record=w;ds7_tls()->error=0;
+    if(observer)observer(3,w->token,(uint32_t)w->entry);
+    void *result=w->entry(w->argument);
+    if(observer)observer(4,w->token,(uint32_t)result);
+    finish(result);
+}
 static int reap_detached(void) {
     int count=0;
     for(int i=1;i<=THREADS;++i) {
@@ -280,6 +292,7 @@ static int DS_IO_SOFT thread_create(uint32_t *id,const DS7Attr *requested,DS7Sta
     if(!id || !entry) return 22;
     DS7Attr attr; if(requested) attr=*requested; else attr_init(&attr);
     if(!valid_attr(&attr)) return 22;
+    if(observer)observer(1,identity(),(uint32_t)entry);
     ds7_gate_lock();
     if(stopping) return unlock_result(11);
     reap_detached();
@@ -288,7 +301,9 @@ static int DS_IO_SOFT thread_create(uint32_t *id,const DS7Attr *requested,DS7Sta
         w->entry=entry; w->argument=argument; w->attr=attr; w->detached=(int)(attr.flags&1);
         w->native=ds7_spawn(worker_begin,w,attr.size);
         if(!w->native) { w->used=0; return unlock_result(11); }
-        *id=w->token; return unlock_result(0);
+        uint32_t token=w->token;*id=token;ds7_gate_unlock();
+        if(observer)observer(2,token,(uint32_t)entry);
+        ds7_platform_yield();return 0;
     }
     return unlock_result(11);
 }
@@ -341,7 +356,7 @@ int ds7_init(void) {
     ds7_platform_init();
     memset(workers,0,sizeof(workers)); memset(mutexes,0,sizeof(mutexes)); memset(conditions,0,sizeof(conditions));
     memset(semaphores,0,sizeof(semaphores)); memset(keys,0,sizeof(keys));
-    stopping=0;
+    stopping=0;observer=NULL;
     workers[0].used=1; workers[0].token=((++serial)<<8); attr_init(&workers[0].attr);
     initialized=1;
     ds7_tls()->record=&workers[0]; ds7_tls()->error=0;

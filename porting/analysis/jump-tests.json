@@ -1,0 +1,12 @@
+{
+  "tests_run": 13,
+  "errors": 0,
+  "failures": 0,
+  "hardware_tested": false,
+  "core_sha256": "c79447a05e998e2411e88155df83d3258a6963f389d2780528d6e9812db2428b",
+  "fixtures_sha256": {
+    "fixture-jump.so": "dc94aa34a17b5a7d25b6c946b7ff54bef69845277744d47cc2b0f377d9e004da",
+    "fixture-jump-thumb.so": "7d5c4f2259503f6713681a4cfa50d1a86a560d2e89b7a65495275fe908115a1b"
+  },
+  "elapsed_seconds": 0.094
+}

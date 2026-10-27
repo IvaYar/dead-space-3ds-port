@@ -1,0 +1,45 @@
+{
+  "aosp_tag": "android-2.3.3_r1",
+  "word_bytes": 4,
+  "jmp_buf_words": 64,
+  "jmp_buf_bytes": 256,
+  "layout_words": {
+    "magic": 0,
+    "signal_mask": 1,
+    "vfp_d8_d15": 2,
+    "fpscr": 18,
+    "core_r4_r14": 19,
+    "reserved": 30
+  },
+  "magic": {
+    "setjmp": "4278f501",
+    "_setjmp": "4278f500"
+  },
+  "minimum_adapter_alignment": 4,
+  "adapter_reserved_words": {
+    "owner_tls": 30,
+    "tag": 31
+  },
+  "signal_profile": "empty mask only; no POSIX signal delivery",
+  "selected_donor_caller_offset": "00397168",
+  "observed_donor_buffer_alignment": 4,
+  "native_newlib_buffer_reinterpretation": false,
+  "sources": {
+    "arch-arm/include/machine/setjmp.h": {
+      "url": "https://raw.githubusercontent.com/aosp-mirror/platform_bionic/android-2.3.3_r1/libc/arch-arm/include/machine/setjmp.h",
+      "sha256": "64dbc36cbb3ba3d3de87430ddc0012af9f1a6f6ad20c09f7fd53b77a412eb5a9"
+    },
+    "include/setjmp.h": {
+      "url": "https://raw.githubusercontent.com/aosp-mirror/platform_bionic/android-2.3.3_r1/libc/include/setjmp.h",
+      "sha256": "ea9a7cc40588c9aa9a173a68b1347e7f84aca63ea5260b792aa47683213186d9"
+    },
+    "arch-arm/bionic/setjmp.S": {
+      "url": "https://raw.githubusercontent.com/aosp-mirror/platform_bionic/android-2.3.3_r1/libc/arch-arm/bionic/setjmp.S",
+      "sha256": "cfe791b9a877eec87fc929852ea6b06bf147dd18e4e371dced01085b844813a6"
+    },
+    "arch-arm/bionic/_setjmp.S": {
+      "url": "https://raw.githubusercontent.com/aosp-mirror/platform_bionic/android-2.3.3_r1/libc/arch-arm/bionic/_setjmp.S",
+      "sha256": "d94eeb5dbc1b781d66119f5e947db3707328a64fcd179a837eae0efbc165b747"
+    }
+  }
+}

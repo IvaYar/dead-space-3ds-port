@@ -1,13 +1,16 @@
 /* Single-thread unit boundary. Contention and actual threads are tested in Azahar. */
 #include "ds7.h"
 #include <stdlib.h>
-static DS7TLS local[2];
+static DS7TLS local[17];
 static int selected;
 static int depth,heap_depth;
 static unsigned waited;
-void ds7_platform_init(void) { depth=heap_depth=selected=0; waited=0; for(int i=0;i<2;++i) { local[i].record=NULL; local[i].error=0; } }
+void ds7_platform_init(void) { depth=heap_depth=selected=0; waited=0; for(int i=0;i<17;++i) { local[i].record=NULL; local[i].error=0; } }
 void ds7_gate_lock(void) { if(depth) abort(); ++depth; }
 void ds7_gate_unlock(void) { if(depth!=1) abort(); --depth; }
+int ds7_test_gate_depth(void) { return depth; }
+int *ds7_test_tls_selector_address(void) { return &selected; }
+void ds7_platform_yield(void) { }
 void ds7_heap_lock(void) { ++heap_depth; }
 void ds7_heap_unlock(void) { if(heap_depth<=0) abort(); --heap_depth; }
 DS7TLS *ds7_tls(void) { return &local[selected]; }

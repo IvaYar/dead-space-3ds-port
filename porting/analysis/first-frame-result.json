@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "emulator": "Azahar libretro 2126.2",
+  "hardware_tested": false,
+  "gameplay": false,
+  "menu_confirmed": false,
+  "first_game_frame_rendered": true,
+  "presented_to_emulated_lcd": true,
+  "lcd_vertical_offset_pixels": 1,
+  "frame": {
+    "width": 400,
+    "height": 240,
+    "layout": 2,
+    "bytes": 192000,
+    "crc32": "f25373dd",
+    "frame": 8,
+    "caller_offset": "00000000",
+    "draws": 15,
+    "triangles": 30,
+    "fragments": 629370,
+    "samples": 251370
+  },
+  "renderer": "bounded unlit CPU triangles; no PICA200 acceleration",
+  "original_draw_caller_offset": "003244e0",
+  "donor_workers_started": 6,
+  "native_acceleration_callbacks_returned": 6,
+  "opt_in_gl_bindings": 99,
+  "opt_in_filesystem_bindings": 4,
+  "application_memory_bytes": 130023424,
+  "arena_capacity_bytes": {
+    "break": 20971520,
+    "anonymous_mappings": 83886080
+  },
+  "arena_stats": {
+    "break_bytes": 16781312,
+    "break_peak": 16781312,
+    "mapped_pages": 8908,
+    "map_peak_pages": 16927,
+    "refusals": 0
+  },
+  "texture_stores_at_capture": {
+    "names": 4,
+    "bytes": 1572868,
+    "uploads": 5,
+    "patches": 0
+  },
+  "jump_contexts": {
+    "saves": 601,
+    "restores": 0,
+    "refusals": 0
+  },
+  "jni_checkpoint": {
+    "pending": 1,
+    "failures": 4,
+    "refs": 21,
+    "frame_depth": 1,
+    "string_loans": 1
+  },
+  "known_jni_warning": "one pinned string prevents a local frame pop; later frames return, but the loan/frame remain retained",
+  "core_sha256": "c79447a05e998e2411e88155df83d3258a6963f389d2780528d6e9812db2428b",
+  "cxi_sha256": "b21f4d01a9e44592b3104cfad2eda7869dc4357c96c6b518da6e52897de78c1d",
+  "witnesses_sha256": {
+    "analysis/first-frame-tests.json": "9bd4432b9ca4cdcf18e03e0e7c605a302f3e6f41a2713268739112f1f953dd39",
+    "analysis/azahar-smoke/engine-graphics.log": "f7ea8690ae28cd8fabd66c1b510b70ea9409c250b076bd0deeea178ec16b213a",
+    "analysis/azahar-smoke/engine-graphics-result.json": "25886f70d5181d2b96b9ad9e4c57f1592686a388aeaa70135198f8e43233859a",
+    "analysis/first-frame/first-game-frame.raw": "12877adb7b80a76236043e7746dc683dbfdd883c3f5e4ba6c4825d7297fd92b0",
+    "analysis/first-frame/first-game-frame.json": "2c9d3522428260870ae75b239dc04c3485665d3d2aff5becbbcb1a0c96c850d5",
+    "analysis/first-frame/first-game-frame.png": "92541ad0298094593fd20c1dcd7eb533733996dd0944fd1332bdb2e06f5d15f0",
+    "analysis/first-frame/azahar-screen.png": "19eeade44bb25d56a7a6400d0866d1c7536afad9d9dc37ebadb68235b95960ec"
+  }
+}

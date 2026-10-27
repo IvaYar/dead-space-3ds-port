@@ -1,7 +1,7 @@
 {
   "workflow": "emulator first; no per-stage SD swaps",
   "stage8_hardware_passed": true,
-  "computer_tests_passed": 158,
+  "computer_tests_passed": 331,
   "azahar_cases_passed": {
     "ready": true,
     "missing": true,
@@ -9,7 +9,9 @@
     "present": true,
     "asset-missing": true,
     "asset-wrong": true,
-    "content-unverified": true
+    "content-unverified": true,
+    "sensor": true,
+    "graphics": true
   },
   "constructors_completed": 209,
   "jni_onload": "00010004",
@@ -20,9 +22,80 @@
     "NativeOnSurfaceChanged"
   ],
   "first_frame_attempted": true,
-  "first_game_frame_rendered": false,
+  "first_game_frame_rendered": true,
   "eaio_native_startup_returned": true,
-  "draw_callbacks_returned": 1,
+  "draw_callbacks_returned": 8,
+  "first_frame": {
+    "passed": true,
+    "emulator": "Azahar libretro 2126.2",
+    "hardware_tested": false,
+    "gameplay": false,
+    "menu_confirmed": false,
+    "first_game_frame_rendered": true,
+    "presented_to_emulated_lcd": true,
+    "lcd_vertical_offset_pixels": 1,
+    "frame": {
+      "width": 400,
+      "height": 240,
+      "layout": 2,
+      "bytes": 192000,
+      "crc32": "f25373dd",
+      "frame": 8,
+      "caller_offset": "00000000",
+      "draws": 15,
+      "triangles": 30,
+      "fragments": 629370,
+      "samples": 251370
+    },
+    "renderer": "bounded unlit CPU triangles; no PICA200 acceleration",
+    "original_draw_caller_offset": "003244e0",
+    "donor_workers_started": 6,
+    "native_acceleration_callbacks_returned": 6,
+    "opt_in_gl_bindings": 99,
+    "opt_in_filesystem_bindings": 4,
+    "application_memory_bytes": 130023424,
+    "arena_capacity_bytes": {
+      "break": 20971520,
+      "anonymous_mappings": 83886080
+    },
+    "arena_stats": {
+      "break_bytes": 16781312,
+      "break_peak": 16781312,
+      "mapped_pages": 8908,
+      "map_peak_pages": 16927,
+      "refusals": 0
+    },
+    "texture_stores_at_capture": {
+      "names": 4,
+      "bytes": 1572868,
+      "uploads": 5,
+      "patches": 0
+    },
+    "jump_contexts": {
+      "saves": 601,
+      "restores": 0,
+      "refusals": 0
+    },
+    "jni_checkpoint": {
+      "pending": 1,
+      "failures": 4,
+      "refs": 21,
+      "frame_depth": 1,
+      "string_loans": 1
+    },
+    "known_jni_warning": "one pinned string prevents a local frame pop; later frames return, but the loan/frame remain retained",
+    "core_sha256": "c79447a05e998e2411e88155df83d3258a6963f389d2780528d6e9812db2428b",
+    "cxi_sha256": "b21f4d01a9e44592b3104cfad2eda7869dc4357c96c6b518da6e52897de78c1d",
+    "witnesses_sha256": {
+      "analysis/first-frame-tests.json": "9bd4432b9ca4cdcf18e03e0e7c605a302f3e6f41a2713268739112f1f953dd39",
+      "analysis/azahar-smoke/engine-graphics.log": "f7ea8690ae28cd8fabd66c1b510b70ea9409c250b076bd0deeea178ec16b213a",
+      "analysis/azahar-smoke/engine-graphics-result.json": "25886f70d5181d2b96b9ad9e4c57f1592686a388aeaa70135198f8e43233859a",
+      "analysis/first-frame/first-game-frame.raw": "12877adb7b80a76236043e7746dc683dbfdd883c3f5e4ba6c4825d7297fd92b0",
+      "analysis/first-frame/first-game-frame.json": "2c9d3522428260870ae75b239dc04c3485665d3d2aff5becbbcb1a0c96c850d5",
+      "analysis/first-frame/first-game-frame.png": "92541ad0298094593fd20c1dcd7eb533733996dd0944fd1332bdb2e06f5d15f0",
+      "analysis/first-frame/azahar-screen.png": "19eeade44bb25d56a7a6400d0866d1c7536afad9d9dc37ebadb68235b95960ec"
+    }
+  },
   "platform_probe": {
     "checks": 168,
     "properties": 29,
@@ -49,15 +122,183 @@
     "heap_blocks_after_cleanup": 0
   },
   "stop": {
+    "phase": "NativeOnDrawFrame[8] returned",
+    "kind": "first_frame_capture",
+    "mode": "Azahar New3DS 124MiB, 20+80MiB donor arenas",
+    "reason": "completed donor frame captured and presented; menu/gameplay remain unverified"
+  },
+  "cpu_graphics_guard_stop": {
+    "kind": "arena_refusal_guard",
+    "name": "mmap",
+    "phase": "NativeOnDrawFrame[2]",
+    "pc": "05e0bc00",
+    "lr": "00109794",
+    "args": [
+      "00141954",
+      "00c88000",
+      "0000000c",
+      "00356eac"
+    ],
+    "bytes_requested": 13139968,
+    "android_errno": 12,
+    "policy": "diagnostic stop at first arena refusal; donor recovery not attempted"
+  },
+  "asset_bridge": {
+    "tests_passed": 26,
+    "native_probe_checks": 378,
+    "native_probe_names": 176,
+    "native_names_crc32_xor": "3a761eb9",
+    "native_cleanup_files": 0,
+    "native_cleanup_heap": 0,
+    "profile": "virtual published root; excludes APK bootstrap assets",
+    "limits": {
+      "arrays": 8,
+      "elements_per_array": 2048,
+      "extra_strings": 2048,
+      "local_global_refs": 128,
+      "mutf8_bytes": 255
+    },
+    "game_stats": {
+      "lists": 1,
+      "names": 12,
+      "gets": 12,
+      "sets": 0,
+      "extra_strings": 0,
+      "arrays": 0
+    },
+    "apk_root_assets_mirrored": false,
+    "font": {
+      "bytes": 15904488,
+      "sha256": "dbca62a9b2ec00b6251c7fd5db72e1e87e4488cf9c3eac975c0a7db5e70d948c"
+    }
+  },
+  "graphics_arena_bytes_in_use": 53268480,
+  "graphics_arena_reserved_bytes": 104857600,
+  "string_bridge": {
+    "tests_passed": 22,
+    "native_probe_checks": 43,
+    "native_probe_utf16_units": 7,
+    "native_probe_mutf8_bytes": 17,
+    "native_cleanup_files": 0,
+    "native_cleanup_heap": 0,
+    "guarded_cpu_game_stats": {
+      "new16": 1,
+      "newUTF": 33,
+      "get16": 12,
+      "getUTF": 30,
+      "regions": 0,
+      "errors": 0
+    },
+    "pool_size": 8,
+    "maximum_mutf8_bytes_per_string": 255,
+    "utf16_and_mutf8_lengths_are_distinct": true,
+    "stage3_bootstrap_unchanged": true
+  },
+  "jump_bridge": {
+    "tests_passed": 13,
+    "native_probe_cases": 16,
+    "native_probe_saves": 18,
+    "native_probe_restores": 18,
+    "guarded_cpu_game": {
+      "saves": 20,
+      "restores": 0,
+      "refusals": 0
+    },
+    "native_game_at_capture": {
+      "saves": 601,
+      "restores": 0,
+      "refusals": 0
+    },
+    "jmp_buf_bytes": 256,
+    "vfp_registers": "d8-d15",
+    "minimum_alignment": 4,
+    "cross_thread_refused": true,
+    "signal_profile": "empty mask only; no POSIX signal delivery",
+    "native_newlib_reinterpretation": false
+  },
+  "sensor_only_stop": {
+    "phase": "NativeOnDrawFrame[2]",
+    "api": "glGetIntegerv",
+    "parameter": "GL_VIEWPORT (0x0ba2)",
+    "caller_offset": "003235b0"
+  },
+  "graphics_context": {
+    "state_tests_passed": 17,
+    "array_tests_passed": 17,
+    "texture_tests_passed": 22,
+    "pipeline_tests_passed": 18,
+    "filesystem_matrix_draw_tests_passed": 30,
+    "opt_in_bindings": 99,
+    "surface": [
+      400,
+      240
+    ],
+    "native_format": "RGB565",
+    "native_probe_pixels": 97200,
+    "native_buffer_probe": {
+      "upload_bytes": 24,
+      "patch_bytes": 12,
+      "readback_bytes": 12,
+      "active_after_cleanup": 0
+    },
+    "native_texture_probe": {
+      "upload_bytes": 16,
+      "patch_bytes": 4,
+      "readback_bytes": 4,
+      "active_after_cleanup": 0
+    },
+    "native_pipeline_probe": {
+      "cull_checks": 2,
+      "alpha_checks": 2,
+      "blend_components": 4,
+      "typed_queries": 1
+    },
+    "game_texture_stores_at_native_capture": {
+      "names": 4,
+      "bytes": 1572868,
+      "uploads": 5,
+      "patches": 0
+    },
+    "first_game_texture_guarded_cpu": {
+      "name": 1,
+      "level": 0,
+      "width": 512,
+      "height": 512,
+      "format": "1908",
+      "bytes": 1048576,
+      "stored_crc32": "a738ea1c",
+      "cpu_source_matches_store": true
+    },
+    "error_at_stop": "00000000",
+    "game_queries_completed": 14,
+    "game_clears": 0,
+    "triangle_renderer_implemented": true,
+    "texture_storage_implemented": true,
+    "texture_sampling_implemented": true,
+    "renderer_scope": "unlit CPU triangles, no depth/stencil attachments, nonmip matching min/mag filters only"
+  },
+  "guarded_baseline_stop": {
     "phase": "NativeOnDrawFrame[2]",
     "api": "accelerometer backend missing",
     "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
     "method": "SetEnabled(Z)V"
   },
+  "sensor_bridge": {
+    "jni_tests_passed": 8,
+    "android_delay_at_capture": 1,
+    "interval_us_at_capture": 20000,
+    "native_shutdown_active": 0,
+    "native_original_acceleration_callbacks_observed": 6,
+    "native_backend": "libctru HID",
+    "cpu_backend": "injected model",
+    "calibration": "emulator-only nominal scale/identity axes; hardware unverified"
+  },
   "import_bindings": {
-    "portable": 152,
-    "strong_missing": 236,
+    "portable": 154,
+    "strong_missing": 234,
     "weak_null": 4,
+    "opt_in_filesystem": 4,
+    "opt_in_gl": 99,
     "instrumentation_does_not_count_as_implementation": true
   },
   "donor_arena_bytes_in_use": 33562624,
@@ -70,22 +311,48 @@
     "clock models are emulator-only",
     "mmap supports private anonymous RW only",
     "selected JNI subset; no Java interpreter",
-    "AssetManager openFd/list not implemented",
-    "accelerometer/HID adapter missing",
+    "AssetManager openFd not implemented; list uses bounded virtual published root, not original APK assets",
+    "physical sensor axes/calibration unverified",
     "display DPI is configured, not measured",
     "Android API/version identify compatibility profile, not native OS",
-    "no GLES renderer",
+    "unlit CPU rasterizer; no PICA200 acceleration, lighting, fog, custom FBOs or texture combiners",
+    "compressed textures and automatic mipmap generation not implemented",
+    "jump bridge has no POSIX signal delivery and rejects nonempty saved masks",
+    "jump buffer frame lifetime and arbitrary pointer validity remain caller responsibilities",
+    "JNI strings are bounded; one retained pinned string prevents a local frame pop at startup",
+    "object arrays support String component only; assets read-only, private appdata directories writable",
+    "CPU guard profile still uses 20+20MiB and deliberately stops before worker execution",
+    "APK bootstrap assets and fd-based appdata writes remain incomplete",
+    "menu, gameplay and audio unverified",
     "full-module native RX untested"
   ],
   "witnesses_sha256": {
-    "analysis/engine-first-entry-experiment.json": "e64b8f9e557db78b715451378d58225259070f879571bb69fc8392126d0e2db9",
-    "analysis/azahar-smoke/engine-present.log": "3a526f2210c2cee93ce16026b99b47033b55de40d7dd074dd2bcca0abd4de6b4",
-    "analysis/emulator-runtime-tests.json": "1c4b79eb2f90170c90851cebb8a24697ba26bef98e3f99314606048aedec1e2e",
-    "analysis/jni10-tests.json": "601473d0269bed77de81598c400bcf3e96b045b6032e8205f9dc45ccb7aa0482",
-    "analysis/platform-jni-tests.json": "1629d55216680a5cc3fe89aa3e0710f2df5fc5746b2d6581de72f1836fa36e9a",
+    "analysis/engine-first-entry-experiment.json": "7b7644832e008d29bb02fa2662c5657473d16835f96936fda9e2883004d952bd",
+    "analysis/azahar-smoke/engine-present.log": "3944ae7dee7c13fe9d1aee8f28109f7702e15d73d34cc84653f4820707baef90",
+    "analysis/emulator-runtime-tests.json": "949a83c578f8f92a2e51616954fb216ba0a548acd0991fa14787c1874e0b96a2",
+    "analysis/jni10-tests.json": "58a9f632b9c6774159973179c959ee399a07d0318fdf80ab35b33d85635c9689",
+    "analysis/platform-jni-tests.json": "a9ac7ac6865917089afdf78ab32e7ea6a2a737003ddc60487e28e259ee647f3c",
     "analysis/emulator-assets.json": "745fb36675c5cee4bab4426b108fbf8b0228e575791ed6a9969d1baf293b82e5",
     "analysis/android-abi/candidate-sd-package.json": "fedbd0196dcef0b3c9159330750a13967b7b0750b4b763660b29c22331c03495",
     "analysis/hardware/stage8-v0.8.0-user.log": "0bc0aa920f0eab7fdb4756ff03ce5035d16ed818ed0cccfc42c802fb07662ec8",
-    "3ds/build-emulator/build-manifest.json": "2a3b13c8df8ac22ad425154d8cf0c5cd55bd43f925bbbc6152ce01d6071c97cf"
+    "3ds/build-emulator/build-manifest.json": "51f030f3243a5b99629ced6f508e509874356116beb3ba5b170ca225ae964998",
+    "analysis/sensor-jni-tests.json": "42eedf745487572946bdaba7d06d32d61bb0d49aef347d0c5253f2b670cfec48",
+    "analysis/engine-sensor-entry.json": "08a387915ad674e25362c4c55999baf3b8adc7066ed5fb5943ecd4cce58f395a",
+    "analysis/azahar-smoke/engine-sensor.log": "57640135dab516d834372f6d6fcb0c38ba94800a0e1da31bb9e6308e0451c72b",
+    "analysis/android-abi/sensor-delay-contract.json": "3c9e12f45cea9c5296ee42878ba6b8f7c4365d53ecf89169d1ad65b9e8bd1b8e",
+    "analysis/gles-tests.json": "763dbf20295ed5210eb7dafa48d4548aa62e5dc570716d292979204769c37cd0",
+    "analysis/arrays-tests.json": "668b40210015d0d6e187a727a957c7b3fd73afd6e99df2f12f1ca3d057b1e45d",
+    "analysis/textures-tests.json": "4632bd02dfeca4d5b3b234cf2c38ed8fbf0d2f4028c22dee8d486b4bdde5cbc3",
+    "analysis/pipeline-tests.json": "5ea02f94e172a5ea044efe0341c10d5fd2a039f03e0cf3c71001a113136fea7f",
+    "analysis/jump-tests.json": "0dc9c2ba80aefb4ada0e0385b15f77d443175dd03117a3a17169056a3e04a411",
+    "analysis/strings-tests.json": "91fbdba285d1ec430c6c8c49d089be1af0f69b967441c89fb7549c35a9f22ce2",
+    "analysis/android-abi/jump-abi-contract.json": "9da18be52182ccab2116b77b595bc59f6fa147c1c39ebbf4b2411944b0436ea3",
+    "analysis/engine-graphics-entry.json": "7875fa46b1b62b5b75d7c4f2566d9ce62b24d63277760726d4a1cec67d9605c0",
+    "analysis/azahar-smoke/engine-graphics.log": "f7ea8690ae28cd8fabd66c1b510b70ea9409c250b076bd0deeea178ec16b213a",
+    "analysis/assets-tests.json": "fc3ec73f134752c258711c97c5e8940fc1e8e43300ca7307282d6660ce2e10f3",
+    "analysis/asset-directory-contract.json": "5672e31b6236a72533898a82eff82d5611b74b0a5a5634e1e1e07bdefa70d228",
+    "analysis/android-abi/directory-delegate-contract.json": "0527f0ef316063117ca5d247aae2b450aab925766c99bf9c2c577408023d8f71",
+    "analysis/first-frame-tests.json": "9bd4432b9ca4cdcf18e03e0e7c605a302f3e6f41a2713268739112f1f953dd39",
+    "analysis/first-frame-result.json": "bae31d51a5af933bac35547e96b2ef1fa5a79f9df7499f9a1fee8e1b24cbb05a"
   }
 }

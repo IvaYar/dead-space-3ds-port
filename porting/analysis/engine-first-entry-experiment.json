@@ -5,7 +5,7 @@
   "donor_sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb",
   "gameplay": false,
   "unknown_import_policy": "stop before execution; no success stubs",
-  "core_sha256": "d1dab7361829f0bb57973ece25207eb1c81cc7335ce708d13a55385a2217ad23",
+  "core_sha256": "c79447a05e998e2411e88155df83d3258a6963f389d2780528d6e9812db2428b",
   "phases": [
     {
       "name": "donor constructors",
@@ -36,20 +36,23 @@
       "return_r0": "0600a000"
     }
   ],
+  "runtime_allocation_limit": 4194304,
   "verified_asset_cache_available": true,
   "arena_capacity_bytes": {
     "break": 20971520,
     "anonymous_mappings": 20971520
   },
   "production_preflight": {
-    "resolved": 152,
-    "missing": 236,
+    "resolved": 154,
+    "missing": 234,
     "weak_zero": 4,
     "image_unchanged": true
   },
+  "filesystem_opt_in_bindings": 4,
   "emulator_services": {
     "clock": "host process CPU microseconds; excluded from production supported count",
-    "native_clock": "host realtime/monotonic; Android conversion runs in ARM code"
+    "native_clock": "host realtime/monotonic; Android conversion runs in ARM code",
+    "native_stat": "host read-only asset metadata packed using linked newlib layout; Bionic conversion in ARM"
   },
   "audit_stack_canary_storage": "0x5e0f000",
   "stop_trap_imports": [
@@ -159,7 +162,6 @@
     "write",
     "glStencilMask",
     "glGetIntegerv",
-    "longjmp",
     "glHint",
     "glMaterialf",
     "glGetBufferPointervOES",
@@ -207,10 +209,7 @@
     "glIsEnabled",
     "glFrustumx",
     "glFlush",
-    "mkdir",
     "glLightModelf",
-    "readdir_r",
-    "closedir",
     "glClipPlanef",
     "glDepthRangef",
     "glClearColor",
@@ -226,13 +225,11 @@
     "glIsBuffer",
     "glScalef",
     "socket",
-    "opendir",
     "glLineWidthx",
     "glMaterialxv",
     "glTranslatef",
     "glEGLImageTargetTexture2DOES",
     "glPushMatrix",
-    "setjmp",
     "glGetTexEnviv",
     "glPolygonOffset",
     "glLoadMatrixf",
@@ -304,9 +301,9 @@
       "api": "sbrk",
       "args": [
         "01001000",
-        "12000000",
         "00000000",
-        "00345b64"
+        "00000000",
+        "00356eac"
       ],
       "return": "12000000"
     },
@@ -1611,17 +1608,35 @@
   ],
   "frames_returned": 1,
   "frame_attempt": 2,
+  "file_operations": [
+    {
+      "api": "open",
+      "path": "published/EAMCore.ini"
+    },
+    {
+      "api": "open",
+      "path": "published/eamcore.ini"
+    },
+    {
+      "api": "stat",
+      "path": "appdata://published/var"
+    },
+    {
+      "api": "stat",
+      "path": "appdata://published/var"
+    }
+  ],
   "stop": {
     "kind": "unimplemented_java_adapter",
     "name": "accelerometer backend missing",
     "phase": "NativeOnDrawFrame[2]",
     "pc": "05e0c000",
-    "lr": "0010bccc",
+    "lr": "0010de3c",
     "args": [
-      "00134b50",
-      "00134cd8",
-      "00135004",
-      "00134f14"
+      "00142040",
+      "001421d4",
+      "0014252c",
+      "00142458"
     ],
     "request": {
       "operation": "accelerometer backend missing",
@@ -1633,16 +1648,17 @@
     }
   },
   "heap_stats": [
-    5,
-    1,
+    36,
+    32,
     0,
-    0,
-    5,
-    65563,
-    65563,
+    30,
+    6,
+    65583,
+    65583,
     0,
     0
   ],
+  "paused_gate_depth": 0,
   "donor_arena_stats": [
     16781312,
     16781312,
@@ -1688,18 +1704,25 @@
     "__atomic_inc": 68,
     "pthread_self": 61,
     "__atomic_dec": 63,
-    "calloc": 1,
-    "malloc": 5,
+    "calloc": 32,
+    "malloc": 36,
     "gettimeofday": 2,
     "memmove": 895,
     "memcmp": 1095,
+    "free": 30,
     "open": 2,
     "emulator:file backend 0": 2,
     "ceil": 6,
     "strdup": 4,
     "strstr": 2,
     "stat": 2,
+    "emulator:native_stat": 2,
     "__errno": 2
+  },
+  "jump_stats": {
+    "saves": 0,
+    "restores": 0,
+    "refusals": 0
   },
   "elapsed_seconds": 1.094
 }
