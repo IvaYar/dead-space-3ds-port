@@ -1,0 +1,233 @@
+{
+  "stage": 7,
+  "version": "0.7.0",
+  "title_id": "000400000FDE5600",
+  "gameplay": false,
+  "hardware_tested": false,
+  "start_requires_A": true,
+  "probe_scope": "Original softfp multithread/sync/TLS probes; no donor code executed",
+  "backend_sha256": {
+    "ds_exec.c": "09b92e8a9d1f63928c9fc5d1b55e301721e06d54370ffc3604b202d5d73f5746",
+    "ds_cache.s": "1ef11401b18567eb183ff76cec9c59fc05ddec1dd988af6446a14fdf748ef6c3"
+  },
+  "donor_sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb",
+  "fixture_sha256": "f8068310abd4a8a5c12bc89e3a7f8f5158173383e5e0ee30387f154c5f4f0390",
+  "supported_imports": 145,
+  "fixture_imports": 47,
+  "registry_entries": 148,
+  "thread_limits": {
+    "workers": 16,
+    "keys": 32,
+    "mutexes": 64,
+    "conditions": 32,
+    "semaphores": 32
+  },
+  "fixture_exec_pages": [
+    0,
+    4096
+  ],
+  "diagnostic_allocation_limit": 1048576,
+  "validation": {
+    "arm_regression_tests": 70,
+    "arm_thread_api_tests": 14,
+    "azahar_cases": 11,
+    "includes_retained_image_timeout": true,
+    "includes_repeated_run_in_one_process": true,
+    "cia_hashes_verified": true,
+    "stage7_hardware_tested": false,
+    "game_functions_called": false,
+    "constructors_called": false,
+    "donor_preflight_expected_refusal": true,
+    "backend_matches_stage6_passed_build": true
+  },
+  "files": {
+    "deadspace-loader-stage7.cia": {
+      "bytes": 240576,
+      "sha256": "1478760eb88414d54df7ed96188f042a6435ecc1ca5c3228ba3c5e6d23fb5302"
+    },
+    "README.ru.md": {
+      "bytes": 10869,
+      "sha256": "4b00cf8b417acbd2e53ecb4771979d8036a7f9c401c5b4ca7371ea94bd053478"
+    },
+    "SD_CARD/3ds/deadspace/assets/published/data/achievements.sb": {
+      "bytes": 3568,
+      "sha256": "c449a489c56780392fde284aa868b189d943b51056433066c757d87596fe6f07"
+    },
+    "SD_CARD/3ds/deadspace/libEAMGameDeadSpace_orig.so": {
+      "bytes": 4499468,
+      "sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb"
+    },
+    "SD_CARD/3ds/deadspace7/deadspace7.3dsx": {
+      "bytes": 300120,
+      "sha256": "a2c611e817149ed2a615fdcf6a922a35f46cd48fecd903d81461b382903404d5"
+    },
+    "SD_CARD/3ds/deadspace7/deadspace7.smdh": {
+      "bytes": 14016,
+      "sha256": "8e04fbc84dd726578a99c5019de774cb05994d5905a99beb862d9daf393563db"
+    },
+    "SD_CARD/CIA/deadspace-loader-stage7.cia": {
+      "bytes": 240576,
+      "sha256": "1478760eb88414d54df7ed96188f042a6435ecc1ca5c3228ba3c5e6d23fb5302"
+    },
+    "validation/android-abi-sources.json": {
+      "bytes": 1222,
+      "sha256": "ea1f898f6e9d95a1c815e85adb6b5623f53f1194a6078a88c9b59aee4b46f2b2"
+    },
+    "validation/result-stage7-3dsx-missing.json": {
+      "bytes": 355,
+      "sha256": "fd6733055c403837b0d5cbca87d5a58537b1540f73cfc41cb5fc7f51c4c9d91b"
+    },
+    "validation/result-stage7-3dsx-present.json": {
+      "bytes": 355,
+      "sha256": "9dc747593d433b7d517b770227fe593ddab6432e859759fcab984fe2aa28a126"
+    },
+    "validation/result-stage7-3dsx-ready.json": {
+      "bytes": 353,
+      "sha256": "0ac2f0b30adce5b51b4722587858e1907a246b45df98e1bffd8bc40f2e1fc491"
+    },
+    "validation/result-stage7-3dsx-repeat.json": {
+      "bytes": 355,
+      "sha256": "8245bd1b03dbd3306be0b3d4a3d4b7eb653c58d11cb1c8b830a9246c57f3ca02"
+    },
+    "validation/result-stage7-3dsx-wrong.json": {
+      "bytes": 354,
+      "sha256": "d8ad2ed72ed89016054fe2f28d89ca508b96354e9dc8437e5c64bce0d7ec89a9"
+    },
+    "validation/result-stage7-cxi-missing.json": {
+      "bytes": 354,
+      "sha256": "233f71f4b21689be8040adab2fc5aa07754683786197594629be0341513c6965"
+    },
+    "validation/result-stage7-cxi-present.json": {
+      "bytes": 354,
+      "sha256": "ef8f285b4e3ef0602c27d12f4db56d68cc050fb595441db22c273d79378855d1"
+    },
+    "validation/result-stage7-cxi-ready.json": {
+      "bytes": 352,
+      "sha256": "5ce9d3a7c74daad5275f88fefa6cabe051b5953802cce648646ac03fbd2600ff"
+    },
+    "validation/result-stage7-cxi-repeat.json": {
+      "bytes": 354,
+      "sha256": "1fe6f0c5483ffaa4e9925bf2c518894c7eab6f1500c877e047405bb1b2c7d25b"
+    },
+    "validation/result-stage7-cxi-stalled.json": {
+      "bytes": 355,
+      "sha256": "96b0461ecab518ac638e6de0e03121faddffacbad808f8e64b3f6f99c611bc69"
+    },
+    "validation/result-stage7-cxi-wrong.json": {
+      "bytes": 353,
+      "sha256": "41d5e32b4e0910ba846290ceaae4b1dcfca5d3baf404674db30bed844df9720e"
+    },
+    "validation/stage6-v0.6.0-result.json": {
+      "bytes": 789,
+      "sha256": "a4f0e3def5fade7118f49e29b20d54b5aec8a8a0001a4cfafd5f6499534965b8"
+    },
+    "validation/stage6-v0.6.0-user.log": {
+      "bytes": 1603,
+      "sha256": "840a57686c268e6c23b0070f5cd67ae7fcd17704e56db4f1e685abba12f156a5"
+    },
+    "validation/stage7-3dsx-missing-screen.png": {
+      "bytes": 5055,
+      "sha256": "f332808c4e686c2ec2d9ab15034c690de0b44b832ddd793e71a5fc3cabf8b786"
+    },
+    "validation/stage7-3dsx-missing.log": {
+      "bytes": 320,
+      "sha256": "ca713f1020f4326d2685dee5d06cc49f9256c09ffe672aec1fc6e85947a204ee"
+    },
+    "validation/stage7-3dsx-present-screen.png": {
+      "bytes": 8578,
+      "sha256": "8e06c63b7a6c770d95a96c6ca7e497fb6427b86c37acb89a8a2e69334856b373"
+    },
+    "validation/stage7-3dsx-present.log": {
+      "bytes": 1091,
+      "sha256": "e8e6325ab6ab0812d91df53803c75b28f5ace22882b912d7ddd8ef73e1e6499e"
+    },
+    "validation/stage7-3dsx-ready-screen.png": {
+      "bytes": 3358,
+      "sha256": "1419ab8329fbd44ca53f82da64fc81a26a66d0f27557cd196d112f418a6f81f1"
+    },
+    "validation/stage7-3dsx-ready.log": {
+      "bytes": 124,
+      "sha256": "ce40ebcc11d97c5c5a4db923c468d7bf54cb402d168c142923afa59841dba1dd"
+    },
+    "validation/stage7-3dsx-repeat-screen.png": {
+      "bytes": 8583,
+      "sha256": "8ea928cb5ecfbe5a70d989a205766647cb0fdfee02f5f3eb35133414062febf2"
+    },
+    "validation/stage7-3dsx-repeat.log": {
+      "bytes": 1091,
+      "sha256": "b352f18881bd5488e54bed4d45db5609990f189b33f32484f8755842e7ce8490"
+    },
+    "validation/stage7-3dsx-wrong-screen.png": {
+      "bytes": 4993,
+      "sha256": "7eb76f5746b526445ed64e5c1ff0f869d749febb5919ca38ab5c87545e7e0b60"
+    },
+    "validation/stage7-3dsx-wrong.log": {
+      "bytes": 312,
+      "sha256": "213ae40ddec28051a03b2d96b5ad20a4377c9297f8466bfdff88cf0a3c38bdfa"
+    },
+    "validation/stage7-cxi-missing-screen.png": {
+      "bytes": 5055,
+      "sha256": "f332808c4e686c2ec2d9ab15034c690de0b44b832ddd793e71a5fc3cabf8b786"
+    },
+    "validation/stage7-cxi-missing.log": {
+      "bytes": 320,
+      "sha256": "ca713f1020f4326d2685dee5d06cc49f9256c09ffe672aec1fc6e85947a204ee"
+    },
+    "validation/stage7-cxi-present-screen.png": {
+      "bytes": 8578,
+      "sha256": "8e06c63b7a6c770d95a96c6ca7e497fb6427b86c37acb89a8a2e69334856b373"
+    },
+    "validation/stage7-cxi-present.log": {
+      "bytes": 1091,
+      "sha256": "e8e6325ab6ab0812d91df53803c75b28f5ace22882b912d7ddd8ef73e1e6499e"
+    },
+    "validation/stage7-cxi-ready-screen.png": {
+      "bytes": 3358,
+      "sha256": "1419ab8329fbd44ca53f82da64fc81a26a66d0f27557cd196d112f418a6f81f1"
+    },
+    "validation/stage7-cxi-ready.log": {
+      "bytes": 124,
+      "sha256": "ce40ebcc11d97c5c5a4db923c468d7bf54cb402d168c142923afa59841dba1dd"
+    },
+    "validation/stage7-cxi-repeat-screen.png": {
+      "bytes": 8583,
+      "sha256": "8ea928cb5ecfbe5a70d989a205766647cb0fdfee02f5f3eb35133414062febf2"
+    },
+    "validation/stage7-cxi-repeat.log": {
+      "bytes": 1091,
+      "sha256": "b352f18881bd5488e54bed4d45db5609990f189b33f32484f8755842e7ce8490"
+    },
+    "validation/stage7-cxi-stalled-screen.png": {
+      "bytes": 8355,
+      "sha256": "08082a2bb96df2a6c90b210104b892f122a523bc5fc8e707af4e1585bbd13a6c"
+    },
+    "validation/stage7-cxi-stalled.log": {
+      "bytes": 1066,
+      "sha256": "8e16d2026c3ad83b9af3f8dd32c9ee7bdb0fc8e68fcb9765968a4959e6d5f061"
+    },
+    "validation/stage7-cxi-wrong-screen.png": {
+      "bytes": 4993,
+      "sha256": "7eb76f5746b526445ed64e5c1ff0f869d749febb5919ca38ab5c87545e7e0b60"
+    },
+    "validation/stage7-cxi-wrong.log": {
+      "bytes": 312,
+      "sha256": "213ae40ddec28051a03b2d96b5ad20a4377c9297f8466bfdff88cf0a3c38bdfa"
+    },
+    "validation/stage7-import-audit.json": {
+      "bytes": 8357,
+      "sha256": "913aabe43d55890003399970c56a9c5a7adc7736db5665ec01903912d60bcba2"
+    },
+    "validation/stage7-package-check.json": {
+      "bytes": 1093,
+      "sha256": "4c18ec22ca86eb4bd35cad3b9d6b13ee1c404e58183606867598620998b0c77f"
+    },
+    "validation/stage7-regression.json": {
+      "bytes": 267,
+      "sha256": "9dc92e02f0de8d6faf535572ab249c2d5c675ded563f6ceb71904654642772ff"
+    },
+    "validation/stage7-thread-tests.json": {
+      "bytes": 251,
+      "sha256": "37d2c76c0015f8ec1cfd3fbcab4776765a40dab34f82a58d6ef5696de5b16469"
+    }
+  }
+}

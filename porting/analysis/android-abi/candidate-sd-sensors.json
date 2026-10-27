@@ -1,0 +1,265 @@
+{
+  "source": "analysis\\android-abi\\candidate-sd-classes.dex",
+  "dex_sha256": "c7827f417525afd57c9182b3b509c13ec4f9fdf84136c13280e8eec349c05aa5",
+  "scope": "static declarations only; Java code not executed; no native sensor implementation claimed",
+  "classes": [
+    {
+      "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+      "fields": [
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "sCurrent",
+          "type": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "access_flags": 9
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "mEnabled",
+          "type": "Z",
+          "access_flags": 0
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "mSensor",
+          "type": "Landroid/hardware/Sensor;",
+          "access_flags": 0
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "mSensorDelay",
+          "type": "I",
+          "access_flags": 0
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "mSensorManager",
+          "type": "Landroid/hardware/SensorManager;",
+          "access_flags": 0
+        }
+      ],
+      "methods": [
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "<init>",
+          "signature": "()V",
+          "access_flags": 65536,
+          "native": false,
+          "code_offset": 85720,
+          "instruction_bytes": 66,
+          "code_sha256": "14ff2dfe850e93c7a0d33f45e04bfb4e74f74b51d612fad7b24ee5ef91780a27"
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "NativeOnAcceleration",
+          "signature": "(FFF)V",
+          "access_flags": 257,
+          "native": true
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "SetEnabled",
+          "signature": "(Z)V",
+          "access_flags": 0,
+          "native": false,
+          "code_offset": 85804,
+          "instruction_bytes": 40,
+          "code_sha256": "0b92e381dd552a0410d71cf563571fd9b88d4b05c59a7c691c612f8c7a9df69e"
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "SetUpdateFrequency",
+          "signature": "(I)V",
+          "access_flags": 0,
+          "native": false,
+          "code_offset": 85860,
+          "instruction_bytes": 30,
+          "code_sha256": "9ff0dd1b91646abf852e62fec0079b756df7ae487c9f9bb95b67a01604ba90ac"
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "onAccuracyChanged",
+          "signature": "(Landroid/hardware/Sensor;I)V",
+          "access_flags": 1,
+          "native": false,
+          "code_offset": 85908,
+          "instruction_bytes": 2,
+          "code_sha256": "7a2a7c0a81d1bd595dff09b918f8ecb5b5e8493654a4f83496956ed8eb017674"
+        },
+        {
+          "class": "Lcom/ea/blast/AccelerometerAndroidDelegate;",
+          "name": "onSensorChanged",
+          "signature": "(Landroid/hardware/SensorEvent;)V",
+          "access_flags": 1,
+          "native": false,
+          "code_offset": 85928,
+          "instruction_bytes": 58,
+          "code_sha256": "a30ceb9fb50d480401158a91408afad0886fd1302e105dfe7c55583716b9ba09"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+      "fields": [
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "kOrientationBottomSideUp",
+          "type": "I",
+          "access_flags": 26
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "kOrientationFrontSideUp",
+          "type": "I",
+          "access_flags": 26
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "kOrientationLeftSideUp",
+          "type": "I",
+          "access_flags": 26
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "kOrientationRightSideUp",
+          "type": "I",
+          "access_flags": 26
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "kOrientationTopSideUp",
+          "type": "I",
+          "access_flags": 26
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "kOrientationUnknown",
+          "type": "I",
+          "access_flags": 26
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "kThreshold",
+          "type": "I",
+          "access_flags": 26
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "mOrientation",
+          "type": "I",
+          "access_flags": 2
+        }
+      ],
+      "methods": [
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "<clinit>",
+          "signature": "()V",
+          "access_flags": 65544,
+          "native": false,
+          "code_offset": 89260,
+          "instruction_bytes": 74,
+          "code_sha256": "3199ef93564032ccf6f7615833f5b2a7124dff0ea8ffe8a2d45aaf3e9490cac8"
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "<init>",
+          "signature": "()V",
+          "access_flags": 65536,
+          "native": false,
+          "code_offset": 89352,
+          "instruction_bytes": 20,
+          "code_sha256": "8bb890aeead2b248dfd903f464933d545874d7695b99ed01b8b7922e904b584c"
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "NativeGetDeviceOrientationBottomSideUp",
+          "signature": "()I",
+          "access_flags": 265,
+          "native": true
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "NativeGetDeviceOrientationFrontSideUp",
+          "signature": "()I",
+          "access_flags": 265,
+          "native": true
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "NativeGetDeviceOrientationLeftSideUp",
+          "signature": "()I",
+          "access_flags": 265,
+          "native": true
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "NativeGetDeviceOrientationRightSideUp",
+          "signature": "()I",
+          "access_flags": 265,
+          "native": true
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "NativeGetDeviceOrientationTopSideUp",
+          "signature": "()I",
+          "access_flags": 265,
+          "native": true
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "NativeGetDeviceOrientationUnknown",
+          "signature": "()I",
+          "access_flags": 265,
+          "native": true
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "NativeOnDeviceOrientationChange",
+          "signature": "(I)V",
+          "access_flags": 265,
+          "native": true
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "UpdateOrientation",
+          "signature": "(I)V",
+          "access_flags": 2,
+          "native": false,
+          "code_offset": 89388,
+          "instruction_bytes": 20,
+          "code_sha256": "f4724e8ae2185c1852bee62a4d731ddfb37e58e1aea54038988b8f2ad74073b4"
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "OnLifeCycleFocusGained",
+          "signature": "()V",
+          "access_flags": 0,
+          "native": false,
+          "code_offset": 89424,
+          "instruction_bytes": 10,
+          "code_sha256": "a981a358fdcd4dabab7f06342e30805534fd7a398aa05fabfaa5f2671f74e7bd"
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "SetEnabled",
+          "signature": "(Z)V",
+          "access_flags": 0,
+          "native": false,
+          "code_offset": 89452,
+          "instruction_bytes": 20,
+          "code_sha256": "39405688fda3719060b83846b8ba5152e3ae2a9873f16603095cf07969c39af0"
+        },
+        {
+          "class": "Lcom/ea/blast/DeviceOrientationHandlerAndroidDelegate;",
+          "name": "onOrientationChanged",
+          "signature": "(I)V",
+          "access_flags": 1,
+          "native": false,
+          "code_offset": 89488,
+          "instruction_bytes": 134,
+          "code_sha256": "1d567ea50cb8da100bf0e023cb834c6d4712360d58fb3cb24366f2ee9e7b17ff"
+        }
+      ]
+    }
+  ]
+}

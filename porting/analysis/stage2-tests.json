@@ -1,0 +1,16 @@
+{
+  "tests_run": 4,
+  "errors": 0,
+  "failures": 0,
+  "hardware_tested": false,
+  "native_page_permissions_tested": false,
+  "elapsed_seconds": 0.61,
+  "fixture_integer": 58,
+  "fixture_weak_null": 7,
+  "donor_getters": {
+    "Java_com_ea_blast_ModuleCatalog_NativeGetModuleTypeIdInvalid": -1,
+    "Java_com_ea_blast_DisplayAndroidDelegate_NativeGetOrientationNormal": 1,
+    "Java_com_ea_blast_DeviceOrientationHandlerAndroidDelegate_NativeGetDeviceOrientationUnknown": 0
+  },
+  "game_entry_point_called": false
+}

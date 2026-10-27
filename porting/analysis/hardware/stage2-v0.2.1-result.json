@@ -1,0 +1,19 @@
+{
+  "version": "0.2.1",
+  "result": "Kernel exception during instruction-cache maintenance",
+  "source": "User photograph and follow-up text",
+  "processor": "ARM11 core 2",
+  "exception": "data abort",
+  "fault_status": "Instr. cache maintenance op.",
+  "pc": "fff032bc",
+  "far": "0800d000",
+  "r0": "0800d000",
+  "r1": "0800e000",
+  "access_type_display": "Write (not diagnostic of write-permission failure for this cache fault)",
+  "console_boots_normally_after_shutdown": true,
+  "fresh_log_received": false,
+  "crash_dump_received": false,
+  "withdrawn_for_further_user_testing": true,
+  "hypothesis": "Range instruction-cache maintenance used an application VA on a different core; MMU translation fault",
+  "hypothesis_proven": false
+}

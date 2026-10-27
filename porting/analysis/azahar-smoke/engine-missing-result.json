@@ -1,0 +1,12 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "missing",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "frames": 76,
+  "elapsed_seconds": 0.219,
+  "cxi_sha256": "a9400f5fd9fca00968bdeb04c25abd973c9c5bf2ff16b0c9d33fec5aac4cd967",
+  "log_sha256": "91c6f2102d44c01fbd9a8dda7435fc62e7858017416b1dce295ceb2f351b7ea1",
+  "log": "analysis\\azahar-smoke\\engine-missing.log"
+}

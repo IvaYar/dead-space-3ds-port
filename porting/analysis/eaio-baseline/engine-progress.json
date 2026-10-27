@@ -1,0 +1,65 @@
+{
+  "workflow": "emulator first; no per-stage SD swaps",
+  "stage8_hardware_passed": true,
+  "computer_tests_passed": 142,
+  "azahar_cases_passed": {
+    "ready": true,
+    "missing": true,
+    "wrong": true,
+    "present": true,
+    "asset-missing": true,
+    "asset-wrong": true
+  },
+  "constructors_completed": 209,
+  "jni_onload": "00010004",
+  "stored_vm_matches": true,
+  "lifecycle_returns": [
+    "NativeOnCreate",
+    "NativeOnSurfaceCreated",
+    "NativeOnSurfaceChanged"
+  ],
+  "first_frame_attempted": true,
+  "first_game_frame_rendered": false,
+  "eaio_native_startup_returned": true,
+  "jni_file_probe": {
+    "checks": 201,
+    "bytes": 3568,
+    "crc32": "4a8d9499",
+    "active_files_after_cleanup": 0,
+    "heap_blocks_after_cleanup": 0
+  },
+  "stop": {
+    "phase": "NativeOnDrawFrame",
+    "api": "JNI FindClass",
+    "class": "com/ea/blast/SystemAndroidDelegate"
+  },
+  "import_bindings": {
+    "portable": 152,
+    "strong_missing": 236,
+    "weak_null": 4,
+    "instrumentation_does_not_count_as_implementation": true
+  },
+  "donor_arena_bytes_in_use": 33562624,
+  "total_process_memory_measured": false,
+  "new_runtime_hardware_tested": false,
+  "new_hardware_install_requested": false,
+  "new_cia_produced": false,
+  "native_rx_backend_unchanged": true,
+  "limitations": [
+    "clock models are emulator-only",
+    "mmap supports private anonymous RW only",
+    "selected JNI subset; no Java interpreter",
+    "AssetManager openFd/list not implemented",
+    "SystemAndroidDelegate missing",
+    "no GLES renderer",
+    "full-module native RX untested"
+  ],
+  "witnesses_sha256": {
+    "analysis/engine-first-entry-experiment.json": "2f00b872f49eac90ef1ece698c013b2fd23974b8691ca3eb55cbbd04d453dcc3",
+    "analysis/azahar-smoke/engine-present.log": "8080ee7cb21a8d431c1e12511dd6b64a364e9fb5f5c36fc1077046144190f79c",
+    "analysis/emulator-runtime-tests.json": "3a00adbc5a9290b7c4ed4f1d3fc071eb126dd6d13071676dd348fe9bd2b5a564",
+    "analysis/jni10-tests.json": "bd804a414569707abbe6a111f83f264f0cdf119212856cd3fa22b2789cea1f09",
+    "analysis/hardware/stage8-v0.8.0-user.log": "0bc0aa920f0eab7fdb4756ff03ce5035d16ed818ed0cccfc42c802fb07662ec8",
+    "3ds/build-emulator/build-manifest.json": "15c1500755c839319c2278801d7d58b61cd1c11974e61df6f6e8a466d6c5c359"
+  }
+}

@@ -1,0 +1,14 @@
+Dead Space 3DS - stage 1
+ELF loader diagnostics v0.1.0
+Game execution: NOT IMPLEMENTED
+
+New 3DS: yes
+libctru build: 2.7.0-1
+Configured heap: 32376 KiB
+Checking SD donor...
+
+Missing library (errno 2).
+Copy SD card files from the release
+folder; see README.ru.md.
+
+Log: stage1-log.txt saved

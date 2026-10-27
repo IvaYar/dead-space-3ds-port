@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "device": "New Nintendo 3DS family",
+  "launch_method": "CIA via HOME Menu after installation with FBI",
+  "luma_version": "13.3.3",
+  "luma_version_raw": "0d030300",
+  "backend": "Luma3DS native RX",
+  "result": "STAGE 2 STOPPED",
+  "error_hex": "fffffc15",
+  "error_decimal_signed": -1003,
+  "error_definition": "DS_EXEC_BAD_PERMISSION",
+  "test_module_code_executed": false,
+  "game_getters_executed": false,
+  "evidence": "User supplied log and photograph; log also available as workspace stage2-log.txt",
+  "log_path": "stage2-v0.2.0-user.log",
+  "fix_version_awaiting_hardware_test": "0.2.1"
+}

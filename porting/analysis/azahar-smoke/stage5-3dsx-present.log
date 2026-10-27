@@ -1,0 +1,32 @@
+Dead Space 3DS - stage 5 v0.5.0
+Memory, strings and math diagnostics
+Gameplay is not implemented.
+
+Run: 1
+New 3DS: yes
+Donor imports: bound=53 missing=335 weak-null=4
+Incomplete donor binding: REFUSED, image unchanged
+Runtime probe bindings: OK (49/49)
+Backend: emulator (RX not tested)
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=1 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=1 page=0800f000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800f000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800f000 I-cache=entire (0x94)
+Calling original softfp runtime probes...
+Memory/string probe: 0 (expected 0)
+Allocation overflow errno: 12/12 (expected 12/12)
+Constructor marker: 42 (expected 42)
+Heap: live=0 bytes=0 peak=4142
+Heap refusals=2 invalid-free=0
+Float/double math: 35 checks, failure=0
+Math errno: domain=33 range=34 (expected 33/34)
+No game functions or constructors called.
+Cleanup: leaked-blocks=0 active-files=0
+
+STAGE 5 PASSED
+Log: stage5-v0.5.0-log.txt saved

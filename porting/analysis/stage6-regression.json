@@ -1,0 +1,13 @@
+{
+  "tested_core": "stage6",
+  "tests_run": 51,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 2.031,
+  "hardware_tested": false,
+  "suites": [
+    "ELF loader",
+    "stage4 I/O",
+    "stage5 memory/string/math"
+  ]
+}

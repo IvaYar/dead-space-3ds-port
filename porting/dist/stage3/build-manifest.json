@@ -1,0 +1,166 @@
+{
+  "stage": 3,
+  "version": "0.3.0",
+  "title_id": "000400000FDE5200",
+  "gameplay": false,
+  "hardware_tested": false,
+  "start_requires_A": true,
+  "game_probe_scope": "Verified JNI_OnLoad and two string wrappers; no constructors or engine entry point",
+  "backend_basis": "Stage 2 v0.2.2 passed on the user's console; unchanged ds_exec.c and ds_cache.s",
+  "backend_sha256": {
+    "ds_exec.c": "09b92e8a9d1f63928c9fc5d1b55e301721e06d54370ffc3604b202d5d73f5746",
+    "ds_cache.s": "1ef11401b18567eb183ff76cec9c59fc05ddec1dd988af6446a14fdf748ef6c3"
+  },
+  "donor_sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb",
+  "validation": {
+    "arm_regression_tests": 14,
+    "arm_jni_tests": 14,
+    "azahar_cases": 8,
+    "cia_hashes_verified": true,
+    "stage3_hardware_tested": false,
+    "game_engine_started": false,
+    "constructors_called": false
+  },
+  "files": {
+    "deadspace-loader-stage3.cia": {
+      "bytes": 147392,
+      "sha256": "8b2a77f157704eb290dbf9d36fa4b8b0430c91625606d6385f15542c1e6bdc19"
+    },
+    "README.ru.md": {
+      "bytes": 7440,
+      "sha256": "d3e7a5ae0008fded80b270ce0b854a41557612b7e06d0917f484ff0c97ac9121"
+    },
+    "SD_CARD/3ds/deadspace/libEAMGameDeadSpace_orig.so": {
+      "bytes": 4499468,
+      "sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb"
+    },
+    "SD_CARD/3ds/deadspace3/deadspace3.3dsx": {
+      "bytes": 156740,
+      "sha256": "a51462729da2d158d40f7816384e8a769b6770315583d7413d3f7d0e8ff137fa"
+    },
+    "SD_CARD/3ds/deadspace3/deadspace3.smdh": {
+      "bytes": 14016,
+      "sha256": "3b98e809afbcd1be769443c71f1e0be99a3832263898c461dbdcef7caa08c113"
+    },
+    "SD_CARD/CIA/deadspace-loader-stage3.cia": {
+      "bytes": 147392,
+      "sha256": "8b2a77f157704eb290dbf9d36fa4b8b0430c91625606d6385f15542c1e6bdc19"
+    },
+    "validation/result-stage3-3dsx-missing.json": {
+      "bytes": 355,
+      "sha256": "e481d83211696ba8337195b2f3d68198e729d8c296bd73a74a6b821da84e2653"
+    },
+    "validation/result-stage3-3dsx-present.json": {
+      "bytes": 356,
+      "sha256": "c86b042dcd1b625e9e169fc0bd0e201e1fb6f0e250e2744e9493ac9731f24cad"
+    },
+    "validation/result-stage3-3dsx-ready.json": {
+      "bytes": 352,
+      "sha256": "feed4e22342ae3a1e2df32e47338a491436d799560baefdd3b8b2e4efe681448"
+    },
+    "validation/result-stage3-3dsx-wrong.json": {
+      "bytes": 354,
+      "sha256": "c8f4e0144600df43b9788d323d6b83ce7313638b14cc638a87e59fba6e8cc44b"
+    },
+    "validation/result-stage3-cxi-missing.json": {
+      "bytes": 354,
+      "sha256": "d7846a6d0177de8cede24224b62a081634d7ce4bae12bbe4e132655292325e32"
+    },
+    "validation/result-stage3-cxi-present.json": {
+      "bytes": 354,
+      "sha256": "475534ac4536b18c3b4a058bf791b82962cb1a1ece86323b4e663f8a96f724a5"
+    },
+    "validation/result-stage3-cxi-ready.json": {
+      "bytes": 352,
+      "sha256": "cf7a6abf8c9f331f237230fa738d829e3dd5fc46f45c96588b04935465e73f36"
+    },
+    "validation/result-stage3-cxi-wrong.json": {
+      "bytes": 353,
+      "sha256": "776ec585874c1ea3d408f2aa0b27a7e7f11233bd15c37487c91deef969e40c57"
+    },
+    "validation/stage2-v0.2.2-result.json": {
+      "bytes": 604,
+      "sha256": "ad872f113a15cdc66e484f4c3c18cbdca34a38819f4be5aee4b4695293f74e1e"
+    },
+    "validation/stage2-v0.2.2-user.log": {
+      "bytes": 2340,
+      "sha256": "c2dd1cb7d4e8198ffafab21b6349e24909e7729d6bc37944e86037c71358ddf8"
+    },
+    "validation/stage3-3dsx-missing-screen.png": {
+      "bytes": 3766,
+      "sha256": "14ea01474dfd87ac8708d0eebb0f99810ca9e7e2b22b197ccc2f33b4ad705026"
+    },
+    "validation/stage3-3dsx-missing.log": {
+      "bytes": 189,
+      "sha256": "9bfba89aaba5ac084a3d4677d2491ad3251d28f45cf5ec61accaaca44a632f25"
+    },
+    "validation/stage3-3dsx-present-screen.png": {
+      "bytes": 6578,
+      "sha256": "b0f21f1c0ffa48bd06d6e6766d4dc9c5abfb3280171011f2c5d7b88dc6b6acd0"
+    },
+    "validation/stage3-3dsx-present.log": {
+      "bytes": 1018,
+      "sha256": "5a3b25dcc3756b31ae4dcbeac984f74efdfe784a9faa07dd27d5608d7a279547"
+    },
+    "validation/stage3-3dsx-ready-screen.png": {
+      "bytes": 3099,
+      "sha256": "cbcfd05f77dfdc83c5f3ed5f54d355d6d5899284e33aec6c3a4b613e8dc7c049"
+    },
+    "validation/stage3-3dsx-ready.log": {
+      "bytes": 123,
+      "sha256": "94217cf57948370342b22375539fafd4ab62cdc99ee305083a3f87d0615990e6"
+    },
+    "validation/stage3-3dsx-wrong-screen.png": {
+      "bytes": 3394,
+      "sha256": "d3b824f3a5a0b33b615de8c11e6922aa16809b8db6e4b6858181993e2e1ad0ef"
+    },
+    "validation/stage3-3dsx-wrong.log": {
+      "bytes": 148,
+      "sha256": "67ac4d9e5349a4c22c157b5ea1bb203c969c908b00ed578fdda0259ef774c9a0"
+    },
+    "validation/stage3-cxi-missing-screen.png": {
+      "bytes": 3766,
+      "sha256": "14ea01474dfd87ac8708d0eebb0f99810ca9e7e2b22b197ccc2f33b4ad705026"
+    },
+    "validation/stage3-cxi-missing.log": {
+      "bytes": 189,
+      "sha256": "9bfba89aaba5ac084a3d4677d2491ad3251d28f45cf5ec61accaaca44a632f25"
+    },
+    "validation/stage3-cxi-present-screen.png": {
+      "bytes": 6578,
+      "sha256": "b0f21f1c0ffa48bd06d6e6766d4dc9c5abfb3280171011f2c5d7b88dc6b6acd0"
+    },
+    "validation/stage3-cxi-present.log": {
+      "bytes": 1018,
+      "sha256": "5a3b25dcc3756b31ae4dcbeac984f74efdfe784a9faa07dd27d5608d7a279547"
+    },
+    "validation/stage3-cxi-ready-screen.png": {
+      "bytes": 3099,
+      "sha256": "cbcfd05f77dfdc83c5f3ed5f54d355d6d5899284e33aec6c3a4b613e8dc7c049"
+    },
+    "validation/stage3-cxi-ready.log": {
+      "bytes": 123,
+      "sha256": "94217cf57948370342b22375539fafd4ab62cdc99ee305083a3f87d0615990e6"
+    },
+    "validation/stage3-cxi-wrong-screen.png": {
+      "bytes": 3705,
+      "sha256": "1558a303fcd530f97680cd9df9b70cfaa8c6a32c5f4ce8cf2f74468b9bd34b67"
+    },
+    "validation/stage3-cxi-wrong.log": {
+      "bytes": 181,
+      "sha256": "3795833ba1b40972cd5b0a0f00850ba664274724223bfc97ea3d08a7f88f3a91"
+    },
+    "validation/stage3-jni-tests.json": {
+      "bytes": 312,
+      "sha256": "de4eca45c3bd0307b8b7f380d0be7837080b9e281c8dd21af8d7e0b4730b517f"
+    },
+    "validation/stage3-package-check.json": {
+      "bytes": 1093,
+      "sha256": "8c5d1a79ab0fb51f5a111f3ea223ac0d088b7ec6ef471092548b0c5a336067ac"
+    },
+    "validation/stage3-regression.json": {
+      "bytes": 1109,
+      "sha256": "3a1a73b6571ffaca98832707788cca9e8a7f9ecb48a21dcf0863653944cb3006"
+    }
+  }
+}

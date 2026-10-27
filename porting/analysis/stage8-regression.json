@@ -1,0 +1,15 @@
+{
+  "tested_core": "stage8",
+  "tests_run": 84,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 3.281,
+  "hardware_tested": false,
+  "suites": [
+    "ELF",
+    "I/O",
+    "runtime",
+    "Bionic",
+    "thread ABI"
+  ]
+}

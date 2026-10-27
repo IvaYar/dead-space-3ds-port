@@ -1,0 +1,6 @@
+DEAD SPACE ENGINE AUDIT - EMULATOR ONLY
+READY - press A
+Backend: Azahar; native RX not tested
+JNI I/O probe: 42 checks=11 bytes=0 CRC32=00000000
+JNI I/O cleanup: files=0 heap=0
+JNI I/O PROBE STOPPED

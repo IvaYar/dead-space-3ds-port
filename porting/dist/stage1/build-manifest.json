@@ -1,0 +1,124 @@
+{
+  "stage": 1,
+  "game_runtime": false,
+  "hardware_tested": false,
+  "title_id": "000400000FDE5000",
+  "donor_sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb",
+  "files": {
+    "deadspace-loader-stage1.cia": {
+      "bytes": 137152,
+      "sha256": "751df5eb60ae7dac1968dcc6507b80555026869f5b3e1dc4a85e2bbd0a81a1aa"
+    },
+    "README.ru.md": {
+      "bytes": 8933,
+      "sha256": "f52c9772aba6f765adb120a8702b22185ada4bf75d43c937bc061756448d3340"
+    },
+    "SD_CARD/3ds/deadspace/deadspace.3dsx": {
+      "bytes": 137908,
+      "sha256": "43611e9f813ffc8ab2890f27ce466d35e557c0e706f95be0686b3169425851f3"
+    },
+    "SD_CARD/3ds/deadspace/deadspace.smdh": {
+      "bytes": 14016,
+      "sha256": "08612fa4cf65070c99ec1cf0b1127abe31118e62d0fd17b6ffc8f42ec0560edd"
+    },
+    "SD_CARD/3ds/deadspace/libEAMGameDeadSpace_orig.so": {
+      "bytes": 4499468,
+      "sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb"
+    },
+    "SD_CARD/cias/deadspace-loader-stage1.cia": {
+      "bytes": 137152,
+      "sha256": "751df5eb60ae7dac1968dcc6507b80555026869f5b3e1dc4a85e2bbd0a81a1aa"
+    },
+    "validation/result-3dsx-missing.json": {
+      "bytes": 333,
+      "sha256": "3ad54c3f70fb67371898246f6626111928882909b711df09ce48680f4471ac51"
+    },
+    "validation/result-3dsx-present.json": {
+      "bytes": 334,
+      "sha256": "34557b0d7ab3e410f72727646ab6c57e4ffec84a14309f2fbd52d4020dff7a9a"
+    },
+    "validation/result-3dsx-wrong.json": {
+      "bytes": 332,
+      "sha256": "810c93ca2b3a010687379a016ee9318b750db78a7b029cb2666a8eeebfcdd1b0"
+    },
+    "validation/result-cxi-missing.json": {
+      "bytes": 332,
+      "sha256": "3a5c68b6a466c5702359d0a498e909bbe9060b2f58c466ef5523a89cfdc85b4b"
+    },
+    "validation/result-cxi-present.json": {
+      "bytes": 333,
+      "sha256": "9e01db8d92fa24d5c942e18dfe30c8da409aa9b056c24cf21115d0e7d4f88c11"
+    },
+    "validation/result-cxi-wrong.json": {
+      "bytes": 329,
+      "sha256": "e1fa1f29b830db3766976ac7eb7025bb16227b2346d9b9ed4f0fa9a0fe85e114"
+    },
+    "validation/stage1-3dsx-missing-screen.png": {
+      "bytes": 4968,
+      "sha256": "f8ef586af7749d818c1dd785fe8584d0b94caee6c49cf53e9f6a04546e9eec13"
+    },
+    "validation/stage1-3dsx-missing.log": {
+      "bytes": 289,
+      "sha256": "3626bdf04efdc67fc62bf6bf211381edc6f54e35fe6c7c51b5af161be3ea1096"
+    },
+    "validation/stage1-3dsx-present-screen.png": {
+      "bytes": 7660,
+      "sha256": "a5eea4469ebcee08a53985f94928b13953cf0db74c12fdaf0702f70182b39d7e"
+    },
+    "validation/stage1-3dsx-present.log": {
+      "bytes": 5800,
+      "sha256": "cbd386cb53673833d6c010eeb7ca8364ea47d8b031b1043c52cda10e2757f70a"
+    },
+    "validation/stage1-3dsx-wrong-screen.png": {
+      "bytes": 6540,
+      "sha256": "6bd48672bdb034387bfbd3d61ae195ce83fe491aa2bf614bb470c56a48ba834b"
+    },
+    "validation/stage1-3dsx-wrong.log": {
+      "bytes": 470,
+      "sha256": "79fe07006fc70f59b01e287fe2cc77faae149ee19b27f424c0cf5e8dfded78f0"
+    },
+    "validation/stage1-cxi-missing-screen.png": {
+      "bytes": 4956,
+      "sha256": "4bdf264ea9600165c67eaaab24880c6ca7b12f09b0afb329dd9da3ec89923f24"
+    },
+    "validation/stage1-cxi-missing.log": {
+      "bytes": 289,
+      "sha256": "8beb70cb406da3a2ccbb55c343864786c57e1ff9fe5d591ed32ad966713849c0"
+    },
+    "validation/stage1-cxi-present-screen.png": {
+      "bytes": 7649,
+      "sha256": "7344bfa829cacf9045f886fa1db1ea4a5466500f18a857c9989e27e82596c4f6"
+    },
+    "validation/stage1-cxi-present.log": {
+      "bytes": 5800,
+      "sha256": "4fff4c21fc86b64d5b9fb9fb6709d09548b015edca851d64f6e2462979b8f43d"
+    },
+    "validation/stage1-cxi-screen.png": {
+      "bytes": 7630,
+      "sha256": "876b675ed4c7c6e31ecc570b9b8a330d3a178c391df6d5454a4e5c2283dae5a3"
+    },
+    "validation/stage1-cxi-wrong-screen.png": {
+      "bytes": 6527,
+      "sha256": "433a65905d94882696a0517e590ae32dcd3f69ce29d8d2b62d8edc4c44c7726e"
+    },
+    "validation/stage1-cxi-wrong.log": {
+      "bytes": 470,
+      "sha256": "6c80fe16d43c9229a73e68e18913d5c92b941226ce655b0e3a3e90417ad3051e"
+    },
+    "validation/stage1-package-check.json": {
+      "bytes": 980,
+      "sha256": "868f716c7a79ac836c50054eb8369daf87ded50d3a95111c084fd45b99ec025f"
+    },
+    "validation/stage1-tests.json": {
+      "bytes": 1117,
+      "sha256": "60d8b95bce83786719b38d0b09d7c1636433431ad8b72435a4d67b222f78be2e"
+    }
+  },
+  "validation": {
+    "arm_core_tests": 14,
+    "azahar_cases": 6,
+    "cia_hashes_verified": true,
+    "game_code_executed": false,
+    "hardware_tested": false
+  }
+}

@@ -1,0 +1,12 @@
+Dead Space 3DS - stage 2 v0.2.0
+Execution and ABI diagnostics
+Gameplay is not implemented.
+
+New 3DS: yes
+Backend: Luma3DS native RX
+Luma version raw: 0d030300
+Fixture bindings: OK, weak-null 1
+Fixture RX/cache error: fffffc15
+
+STAGE 2 STOPPED; see log.
+Log: stage2-log.txt saved

@@ -1,0 +1,13 @@
+Dead Space 3DS - stage 7 v0.7.0
+Android threads, sync and TLS diagnostics
+Gameplay is not implemented.
+
+Run: 1
+New 3DS: yes
+Missing library on SD card.
+Thread shutdown: live=0
+Runtime heap before cleanup: live=0 bytes=0
+Cleanup: leaked-blocks=0 active-files=0
+
+STAGE 7 STOPPED; see log.
+Log: stage7-v0.7.0-log.txt saved

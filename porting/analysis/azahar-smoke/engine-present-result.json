@@ -1,0 +1,12 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "present",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "frames": 346,
+  "elapsed_seconds": 1.813,
+  "cxi_sha256": "a9400f5fd9fca00968bdeb04c25abd973c9c5bf2ff16b0c9d33fec5aac4cd967",
+  "log_sha256": "3a526f2210c2cee93ce16026b99b47033b55de40d7dd074dd2bcca0abd4de6b4",
+  "log": "analysis\\azahar-smoke\\engine-present.log"
+}

@@ -1,0 +1,91 @@
+{
+  "workflow": "emulator first; no per-stage SD swaps",
+  "stage8_hardware_passed": true,
+  "computer_tests_passed": 158,
+  "azahar_cases_passed": {
+    "ready": true,
+    "missing": true,
+    "wrong": true,
+    "present": true,
+    "asset-missing": true,
+    "asset-wrong": true,
+    "content-unverified": true
+  },
+  "constructors_completed": 209,
+  "jni_onload": "00010004",
+  "stored_vm_matches": true,
+  "lifecycle_returns": [
+    "NativeOnCreate",
+    "NativeOnSurfaceCreated",
+    "NativeOnSurfaceChanged"
+  ],
+  "first_frame_attempted": true,
+  "first_game_frame_rendered": false,
+  "eaio_native_startup_returned": true,
+  "draw_callbacks_returned": 1,
+  "platform_probe": {
+    "checks": 168,
+    "properties": 29,
+    "active_files_after_cleanup": 0,
+    "heap_blocks_after_cleanup": 0
+  },
+  "assets": {
+    "files": 1728,
+    "bytes": 414822611,
+    "copied_and_sha256_verified": true,
+    "readiness_receipt_checked": true,
+    "rehash_each_frame": false
+  },
+  "jni_frames": {
+    "waiting_callbacks": 120,
+    "live_refs_at_end": 4,
+    "reference_capacity_exhausted": false
+  },
+  "jni_file_probe": {
+    "checks": 201,
+    "bytes": 3568,
+    "crc32": "4a8d9499",
+    "active_files_after_cleanup": 0,
+    "heap_blocks_after_cleanup": 0
+  },
+  "stop": {
+    "phase": "NativeOnDrawFrame[2]",
+    "api": "accelerometer backend missing",
+    "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
+    "method": "SetEnabled(Z)V"
+  },
+  "import_bindings": {
+    "portable": 152,
+    "strong_missing": 236,
+    "weak_null": 4,
+    "instrumentation_does_not_count_as_implementation": true
+  },
+  "donor_arena_bytes_in_use": 33562624,
+  "total_process_memory_measured": false,
+  "new_runtime_hardware_tested": false,
+  "new_hardware_install_requested": false,
+  "new_cia_produced": false,
+  "native_rx_backend_unchanged": true,
+  "limitations": [
+    "clock models are emulator-only",
+    "mmap supports private anonymous RW only",
+    "selected JNI subset; no Java interpreter",
+    "AssetManager openFd/list not implemented",
+    "accelerometer/HID adapter missing",
+    "display DPI is configured, not measured",
+    "Android API/version identify compatibility profile, not native OS",
+    "no GLES renderer",
+    "full-module native RX untested"
+  ],
+  "witnesses_sha256": {
+    "analysis/engine-first-entry-experiment.json": "e64b8f9e557db78b715451378d58225259070f879571bb69fc8392126d0e2db9",
+    "analysis/azahar-smoke/engine-present.log": "3a526f2210c2cee93ce16026b99b47033b55de40d7dd074dd2bcca0abd4de6b4",
+    "analysis/emulator-runtime-tests.json": "1c4b79eb2f90170c90851cebb8a24697ba26bef98e3f99314606048aedec1e2e",
+    "analysis/jni10-tests.json": "601473d0269bed77de81598c400bcf3e96b045b6032e8205f9dc45ccb7aa0482",
+    "analysis/platform-jni-tests.json": "1629d55216680a5cc3fe89aa3e0710f2df5fc5746b2d6581de72f1836fa36e9a",
+    "analysis/emulator-assets.json": "745fb36675c5cee4bab4426b108fbf8b0228e575791ed6a9969d1baf293b82e5",
+    "analysis/android-abi/candidate-sd-package.json": "fedbd0196dcef0b3c9159330750a13967b7b0750b4b763660b29c22331c03495",
+    "analysis/hardware/stage8-v0.8.0-user.log": "0bc0aa920f0eab7fdb4756ff03ce5035d16ed818ed0cccfc42c802fb07662ec8",
+    "3ds/build-emulator/build-manifest.json": "2a3b13c8df8ac22ad425154d8cf0c5cd55bd43f925bbbc6152ce01d6071c97cf"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "tested_core": "emulator runtime",
+  "tests_run": 122,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 4.156,
+  "hardware_tested": false,
+  "core_sha256": "d1dab7361829f0bb57973ece25207eb1c81cc7335ce708d13a55385a2217ad23"
+}

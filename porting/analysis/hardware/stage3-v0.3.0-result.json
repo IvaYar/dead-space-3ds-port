@@ -1,0 +1,19 @@
+{
+  "version": "0.3.0",
+  "hardware_tested": true,
+  "result": "STAGE 3 PASSED",
+  "device": "New Nintendo 3DS family",
+  "launch_method": "CIA via HOME Menu",
+  "backend": "Luma3DS native RX",
+  "jni_onload_version": "00010004",
+  "stored_vm_pointer_matches": true,
+  "string_roundtrip": "MATCH",
+  "get_callbacks": 1,
+  "release_callbacks": 1,
+  "jni_errors": 0,
+  "string_released": true,
+  "constructors_called": false,
+  "game_engine_started": false,
+  "evidence": "User supplied full log; workspace file copied without changes",
+  "log_sha256": "5fe04e36c5362bca048aaa27238d77bb95cad98d59bd725586f8fb8556de1639"
+}

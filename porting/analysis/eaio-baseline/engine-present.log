@@ -1,0 +1,43 @@
+DEAD SPACE ENGINE AUDIT - EMULATOR ONLY
+READY - press A
+Backend: Azahar; native RX not tested
+JNI I/O probe: 0 checks=201 bytes=3568 CRC32=4a8d9499
+JNI I/O cleanup: files=0 heap=0
+Production preflight: bound=152 missing=236 weak=4
+Production guard: REFUSED; image unchanged
+Audit clock: emulator monotonic, excluded from supported count
+Running 209 donor constructors...
+Donor constructors completed: 209
+JNI_OnLoad: 00010004; stored VM: MATCH
+Calling NativeOnCreate...
+NativeOnCreate returned
+Calling NativeOnSurfaceCreated...
+NativeOnSurfaceCreated returned
+Calling NativeOnSurfaceChanged...
+NativeOnSurfaceChanged returned
+Calling NativeOnDrawFrame...
+JNI FindClass: com/ea/EAIO/EAIO. 
+JNI GetStaticMethodID: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: com/ea/blast/MainActivity. 
+JNI GetStaticMethodID: com/ea/blast/MainActivity.GetInstance ()Lcom/ea/blast/MainActivity;
+JNI CallMethod: com/ea/blast/MainActivity.GetInstance ()Lcom/ea/blast/MainActivity;
+JNI GetMethodID: com/ea/blast/MainActivity.getAssets ()Landroid/content/res/AssetManager;
+JNI CallMethod: com/ea/blast/MainActivity.getAssets ()Landroid/content/res/AssetManager;
+JNI CallMethod: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: java/io/InputStream. 
+JNI GetMethodID: java/io/InputStream.read ([BII)I
+JNI GetMethodID: java/io/InputStream.close ()V
+JNI GetMethodID: java/io/InputStream.skip (J)J
+JNI GetMethodID: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+JNI GetMethodID: android/content/res/AssetManager.openFd (Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+JNI GetMethodID: android/content/res/AssetManager.list (Ljava/lang/String;)[Ljava/lang/String;
+JNI FindClass: android/content/res/AssetFileDescriptor. 
+JNI GetMethodID: android/content/res/AssetFileDescriptor.getLength ()J
+JNI NativeEAIOStartup returned: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: com/ea/blast/SystemAndroidDelegate.  MISSING
+JNI runtime: startup=1 refs=10 failures=1
+Donor arenas: break=16781312 peak=16781312 mapped-pages=4097 refusals=0
+STOP Java adapter
+Phase: NativeOnDrawFrame
+ENGINE EXPERIMENT STOPPED
+No game frame rendered.

@@ -1,0 +1,33 @@
+Dead Space 3DS - stage 6 v0.6.0
+Bionic structures and libc diagnostics
+Gameplay is not implemented.
+
+Run: 1
+New 3DS: yes
+Donor imports: bound=108 missing=280 weak-null=4
+Incomplete donor binding: REFUSED, image unchanged
+Bionic probe bindings: OK (57/57)
+Backend: emulator (RX not tested)
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=1 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=1 page=0800f000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800f000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800f000 I-cache=entire (0x94)
+Calling original softfp Bionic probes...
+ANDROID: stage6 log write
+ANDROID: stage6 log 1.25
+ANDROID: stage6 vlog 42
+Formatting/numeric/env/atomic: 0, checks=31
+Android log callbacks: 3 (expected 3)
+Constructor marker: 42 (expected 42)
+Bionic FILE/stat + SD roundtrip: 3
+Asset bytes=0 CRC32=00000000
+Runtime heap before cleanup: live=0 bytes=0
+Cleanup: leaked-blocks=0 active-files=0
+
+STAGE 6 STOPPED; see log.
+Log: stage6-v0.6.0-log.txt saved

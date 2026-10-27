@@ -1,0 +1,20 @@
+{
+  "purpose": "ARM guard size/bit and static construction; atexit registration, DSO filtering and finalization order",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/ARM-software/abi-aa/main/cppabi32/cppabi32.rst",
+      "local": "cppabi32.rst",
+      "sha256": "6ffdd29dfb139ad01aae908734b58a495a4a430b7c79617c504b2c2d2b6daff6",
+      "bytes": 77686,
+      "retrieved": "2026-10-27"
+    },
+    {
+      "url": "https://itanium-cxx-abi.github.io/cxx-abi/abi.html",
+      "local": "itanium-cxx-abi.html",
+      "sha256": "f342de5630d98f208f165cb3231554f4850d1b7af3397c219aa642a340b684bf",
+      "bytes": 290567,
+      "retrieved": "2026-10-27"
+    }
+  ],
+  "implementation": "Original implementation; no upstream implementation code copied"
+}

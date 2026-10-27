@@ -1,0 +1,12 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "asset-missing",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "frames": 196,
+  "elapsed_seconds": 0.703,
+  "cxi_sha256": "a9400f5fd9fca00968bdeb04c25abd973c9c5bf2ff16b0c9d33fec5aac4cd967",
+  "log_sha256": "4c8ffe2c17505914f41f7438c24439a21ac3429f7213dd376db1cc58cb931a78",
+  "log": "analysis\\azahar-smoke\\engine-asset-missing.log"
+}

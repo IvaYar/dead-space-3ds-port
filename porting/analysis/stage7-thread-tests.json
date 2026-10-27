@@ -1,0 +1,9 @@
+{
+  "tests_run": 14,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 0.625,
+  "hardware_tested": false,
+  "backend": "Single-thread boundary model; actual contention/threads tested separately in Azahar",
+  "game_engine_started": false
+}

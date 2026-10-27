@@ -1,0 +1,52 @@
+Dead Space 3DS - stage 2 v0.2.2
+Execution and ABI diagnostics
+Gameplay is not implemented.
+
+New 3DS: yes
+Backend: emulator (RX not tested)
+Fixture bindings: OK, weak-null 1
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+RX page 0800d000, step 6
+flush=00000000 protect=fffffc14 query=fffffc14
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+RX page 0800d000, step 6
+flush=00000000 protect=fffffc14 query=fffffc14
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+RX page 0800d000, step 6
+flush=00000000 protect=fffffc14 query=fffffc14
+Calling original test module...
+Integer bridge: 58 (expected 58)
+Float softfp bridge: 4.25 (expected 4.25)
+Weak import: 7 (expected 7)
+Donor mapped; 3 getter bodies verified.
+CHECKPOINT step=1 page=0868e000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0868e000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0868e000 I-cache=entire (0x94)
+RX page 0868e000, step 6
+flush=00000000 protect=fffffc14 query=fffffc14
+Calling Invalid module ID...
+Returned -1 (expected -1).
+CHECKPOINT step=1 page=087cb000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=087cb000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=087cb000 I-cache=entire (0x94)
+RX page 087cb000, step 6
+flush=00000000 protect=fffffc14 query=fffffc14
+Calling Normal orientation...
+Returned 1 (expected 1).
+CHECKPOINT step=1 page=087cb000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=087cb000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=087cb000 I-cache=entire (0x94)
+RX page 087cb000, step 6
+flush=00000000 protect=fffffc14 query=fffffc14
+Calling Unknown orientation...
+Returned 0 (expected 0).
+No engine entry point or constructors called.
+
+STAGE 2 PASSED
+Log: stage2-v0.2.2-log.txt saved

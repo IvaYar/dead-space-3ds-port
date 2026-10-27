@@ -1,0 +1,13 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "renderer": "Software",
+  "game_runtime": false,
+  "hardware_tested": false,
+  "stage": 5,
+  "format": "3dsx",
+  "case": "missing",
+  "expected_status_found": true,
+  "log": "analysis\\azahar-smoke\\azahar\\sdmc\\3ds\\deadspace\\stage5-v0.5.0-log.txt",
+  "frames": 91,
+  "elapsed_seconds": 0.234
+}

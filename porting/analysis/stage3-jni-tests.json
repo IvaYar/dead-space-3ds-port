@@ -1,0 +1,12 @@
+{
+  "tests_run": 14,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 3.672,
+  "hardware_tested": false,
+  "game_constructors_called": false,
+  "game_engine_started": false,
+  "game_string_roundtrip": "MATCH",
+  "game_jni_onload_version": "00010004",
+  "only_expected_vm_storage_changed": true
+}

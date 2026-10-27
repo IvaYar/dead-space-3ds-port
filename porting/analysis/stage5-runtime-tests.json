@@ -1,0 +1,25 @@
+{
+  "tests_run": 18,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 0.641,
+  "hardware_tested": false,
+  "actual_newlib_allocator_and_libm": true,
+  "test_only_heap_size": 2097152,
+  "test_only_single_thread_lock_stubs": true,
+  "game_engine_started": false,
+  "softfp_math_checks": 35,
+  "math_errno": [
+    33,
+    34
+  ],
+  "donor_preflight": {
+    "resolved": 53,
+    "missing": 335,
+    "weak_zero": 4,
+    "patched_sites": 0,
+    "image_unchanged": true
+  },
+  "memory_string_probe": "MATCH",
+  "constructor_marker": 42
+}

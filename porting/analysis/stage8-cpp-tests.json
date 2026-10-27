@@ -1,0 +1,9 @@
+{
+  "tested_core": "stage8",
+  "tests_run": 24,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 0.766,
+  "hardware_tested": false,
+  "native_concurrency_tested_separately_in_Azahar": true
+}

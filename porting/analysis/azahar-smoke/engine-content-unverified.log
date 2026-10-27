@@ -1,0 +1,1101 @@
+DEAD SPACE ENGINE AUDIT - EMULATOR ONLY
+READY - press A
+Backend: Azahar; native RX not tested
+JNI I/O probe: 0 checks=201 bytes=3568 CRC32=4a8d9499
+JNI I/O cleanup: files=0 heap=0
+Platform probe: 0 checks=168 properties=29
+Platform cleanup: files=0 heap=0
+Production preflight: bound=152 missing=236 weak=4
+Production guard: REFUSED; image unchanged
+Audit clock: emulator monotonic, excluded from supported count
+Running 209 donor constructors...
+Donor constructors completed: 209
+JNI_OnLoad: 00010004; stored VM: MATCH
+Calling NativeOnCreate...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnCreate returned
+Calling NativeOnSurfaceCreated...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnSurfaceCreated returned
+Calling NativeOnSurfaceChanged...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnSurfaceChanged returned
+Frame 1 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/ea/EAIO/EAIO. 
+JNI GetStaticMethodID: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: com/ea/blast/MainActivity. 
+JNI GetStaticMethodID: com/ea/blast/MainActivity.GetInstance ()Lcom/ea/blast/MainActivity;
+JNI CallMethod: com/ea/blast/MainActivity.GetInstance ()Lcom/ea/blast/MainActivity;
+JNI GetMethodID: com/ea/blast/MainActivity.getAssets ()Landroid/content/res/AssetManager;
+JNI CallMethod: com/ea/blast/MainActivity.getAssets ()Landroid/content/res/AssetManager;
+JNI CallMethod: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: java/io/InputStream. 
+JNI GetMethodID: java/io/InputStream.read ([BII)I
+JNI GetMethodID: java/io/InputStream.close ()V
+JNI GetMethodID: java/io/InputStream.skip (J)J
+JNI GetMethodID: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+JNI GetMethodID: android/content/res/AssetManager.openFd (Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+JNI GetMethodID: android/content/res/AssetManager.list (Ljava/lang/String;)[Ljava/lang/String;
+JNI FindClass: android/content/res/AssetFileDescriptor. 
+JNI GetMethodID: android/content/res/AssetFileDescriptor.getLength ()J
+JNI NativeEAIOStartup returned: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: com/ea/blast/SystemAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/SystemAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetCameraCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetCameraCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetCameraCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetChipset ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetChipset ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetChipset ARM11/PICA200
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetCompassCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetCompassCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetCompassCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetManufacturer ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetManufacturer ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetManufacturer Nintendo
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceModel ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceModel ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceModel New Nintendo 3DS
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceName new3ds
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDisplayCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDisplayCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDisplayCount 1
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable false
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetApiLevel ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetApiLevel ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetApiLevel 10
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName Nintendo 3DS
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName Android
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion 2.3.3
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture armeabi
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLanguage ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLanguage ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLanguage en
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLocale ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLocale ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLocale en_US
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTotalRAM ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTotalRAM ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTotalRAM 67108864
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetVibratorCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetVibratorCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetVibratorCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount 0
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+JNI AssetManager.open IOException: android/content/res/AssetManager.EAMCore.ini  EXCEPTION
+JNI PopLocalFrame: . 
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+JNI AssetManager.open IOException: android/content/res/AssetManager.eamcore.ini  EXCEPTION
+JNI PopLocalFrame: . 
+JNI FindClass: com/ea/blast/PowerManagerAndroid. 
+JNI GetMethodID: com/ea/blast/PowerManagerAndroid.<init> ()V
+JNI NewObject: com/ea/blast/PowerManagerAndroid.<init> ()V
+JNI GetMethodID: com/ea/blast/PowerManagerAndroid.ApplyKeepAwake (Z)V
+JNI PopLocalFrame: . 
+Frame 1 returned
+Frame 2 begin
+JNI PushLocalFrame: . 
+JNI CallMethod: com/ea/blast/PowerManagerAndroid.ApplyKeepAwake (Z)V
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 2 returned
+Frame 3 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 3 returned
+Frame 4 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 4 returned
+Frame 5 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 5 returned
+Frame 6 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 6 returned
+Frame 7 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 7 returned
+Frame 8 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 8 returned
+Frame 9 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 9 returned
+Frame 10 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 10 returned
+Frame 11 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 11 returned
+Frame 12 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 12 returned
+Frame 13 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 13 returned
+Frame 14 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 14 returned
+Frame 15 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 15 returned
+Frame 16 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 16 returned
+Frame 17 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 17 returned
+Frame 18 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 18 returned
+Frame 19 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 19 returned
+Frame 20 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 20 returned
+Frame 21 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 21 returned
+Frame 22 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 22 returned
+Frame 23 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 23 returned
+Frame 24 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 24 returned
+Frame 25 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 25 returned
+Frame 26 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 26 returned
+Frame 27 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 27 returned
+Frame 28 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 28 returned
+Frame 29 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 29 returned
+Frame 30 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 30 returned
+Frame 31 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 31 returned
+Frame 32 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 32 returned
+Frame 33 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 33 returned
+Frame 34 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 34 returned
+Frame 35 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 35 returned
+Frame 36 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 36 returned
+Frame 37 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 37 returned
+Frame 38 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 38 returned
+Frame 39 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 39 returned
+Frame 40 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 40 returned
+Frame 41 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 41 returned
+Frame 42 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 42 returned
+Frame 43 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 43 returned
+Frame 44 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 44 returned
+Frame 45 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 45 returned
+Frame 46 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 46 returned
+Frame 47 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 47 returned
+Frame 48 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 48 returned
+Frame 49 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 49 returned
+Frame 50 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 50 returned
+Frame 51 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 51 returned
+Frame 52 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 52 returned
+Frame 53 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 53 returned
+Frame 54 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 54 returned
+Frame 55 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 55 returned
+Frame 56 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 56 returned
+Frame 57 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 57 returned
+Frame 58 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 58 returned
+Frame 59 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 59 returned
+Frame 60 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 60 returned
+Frame 61 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 61 returned
+Frame 62 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 62 returned
+Frame 63 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 63 returned
+Frame 64 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 64 returned
+Frame 65 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 65 returned
+Frame 66 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 66 returned
+Frame 67 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 67 returned
+Frame 68 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 68 returned
+Frame 69 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 69 returned
+Frame 70 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 70 returned
+Frame 71 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 71 returned
+Frame 72 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 72 returned
+Frame 73 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 73 returned
+Frame 74 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 74 returned
+Frame 75 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 75 returned
+Frame 76 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 76 returned
+Frame 77 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 77 returned
+Frame 78 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 78 returned
+Frame 79 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 79 returned
+Frame 80 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 80 returned
+Frame 81 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 81 returned
+Frame 82 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 82 returned
+Frame 83 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 83 returned
+Frame 84 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 84 returned
+Frame 85 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 85 returned
+Frame 86 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 86 returned
+Frame 87 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 87 returned
+Frame 88 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 88 returned
+Frame 89 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 89 returned
+Frame 90 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 90 returned
+Frame 91 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 91 returned
+Frame 92 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 92 returned
+Frame 93 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 93 returned
+Frame 94 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 94 returned
+Frame 95 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 95 returned
+Frame 96 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 96 returned
+Frame 97 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 97 returned
+Frame 98 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 98 returned
+Frame 99 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 99 returned
+Frame 100 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 100 returned
+Frame 101 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 101 returned
+Frame 102 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 102 returned
+Frame 103 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 103 returned
+Frame 104 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 104 returned
+Frame 105 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 105 returned
+Frame 106 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 106 returned
+Frame 107 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 107 returned
+Frame 108 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 108 returned
+Frame 109 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 109 returned
+Frame 110 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 110 returned
+Frame 111 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 111 returned
+Frame 112 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 112 returned
+Frame 113 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 113 returned
+Frame 114 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 114 returned
+Frame 115 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 115 returned
+Frame 116 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 116 returned
+Frame 117 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 117 returned
+Frame 118 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 118 returned
+Frame 119 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 119 returned
+Frame 120 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI PopLocalFrame: . 
+Frame 120 returned
+Frame budget refs=4 failures=2
+FRAME BUDGET STOPPED; no renderer implemented

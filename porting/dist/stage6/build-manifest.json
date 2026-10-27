@@ -1,0 +1,261 @@
+{
+  "stage": 6,
+  "version": "0.6.0",
+  "title_id": "000400000FDE5500",
+  "gameplay": false,
+  "hardware_tested": false,
+  "start_requires_A": true,
+  "probe_scope": "Original softfp Bionic stdio, varargs, numeric, time and atomic probes; donor preflight only",
+  "backend_sha256": {
+    "ds_exec.c": "09b92e8a9d1f63928c9fc5d1b55e301721e06d54370ffc3604b202d5d73f5746",
+    "ds_cache.s": "1ef11401b18567eb183ff76cec9c59fc05ddec1dd988af6446a14fdf748ef6c3"
+  },
+  "donor_sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb",
+  "fixture_sha256": "bf39bb3a3f0d6ec497b7a4db7e69c773a3410ea942c3751a9931341019e39909",
+  "supported_imports": 108,
+  "fixture_imports": 57,
+  "fixture_exec_pages": [
+    0,
+    4096,
+    8192
+  ],
+  "diagnostic_allocation_limit": 1048576,
+  "validation": {
+    "arm_regression_tests": 51,
+    "arm_libc_tests": 19,
+    "azahar_cases": 14,
+    "includes_repeated_run_in_one_process": true,
+    "cia_hashes_verified": true,
+    "stage6_hardware_tested": false,
+    "game_functions_called": false,
+    "constructors_called": false,
+    "donor_preflight_expected_refusal": true,
+    "backend_matches_stage5_passed_build": true
+  },
+  "files": {
+    "deadspace-loader-stage6.cia": {
+      "bytes": 237504,
+      "sha256": "2d81aedca31de691a88c87c0dd24b042be691892cbde43b0bcd3efd6071bd354"
+    },
+    "README.ru.md": {
+      "bytes": 10935,
+      "sha256": "580bfe791485ca8a280770797d0a848a55283c4471bc86e4f2072018aa805703"
+    },
+    "SD_CARD/3ds/deadspace/assets/published/data/achievements.sb": {
+      "bytes": 3568,
+      "sha256": "c449a489c56780392fde284aa868b189d943b51056433066c757d87596fe6f07"
+    },
+    "SD_CARD/3ds/deadspace/libEAMGameDeadSpace_orig.so": {
+      "bytes": 4499468,
+      "sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb"
+    },
+    "SD_CARD/3ds/deadspace6/deadspace6.3dsx": {
+      "bytes": 292016,
+      "sha256": "5d964b66f6f9dac007cad226510935a747ad91b22bba85f20746f53042194ea8"
+    },
+    "SD_CARD/3ds/deadspace6/deadspace6.smdh": {
+      "bytes": 14016,
+      "sha256": "94f7d5d5a1201c592f1c32cce44255c1e95cc496a8e111bbc5e87670fc132c73"
+    },
+    "SD_CARD/CIA/deadspace-loader-stage6.cia": {
+      "bytes": 237504,
+      "sha256": "2d81aedca31de691a88c87c0dd24b042be691892cbde43b0bcd3efd6071bd354"
+    },
+    "validation/android-abi-sources.json": {
+      "bytes": 2881,
+      "sha256": "a64e00f985e4d6f717bb9b3d2f0d4fc6b7ec2a29321e00e1a30b5e3eaffedf0a"
+    },
+    "validation/result-stage6-3dsx-asset-missing.json": {
+      "bytes": 361,
+      "sha256": "0408417a35c5484f6cf1c138fbd924bf2e3e37a7f1597f9090e5fd229b5e36a0"
+    },
+    "validation/result-stage6-3dsx-asset-wrong.json": {
+      "bytes": 360,
+      "sha256": "427cc541573e2bb0215364a61c261174947f853215958b7bfc8539d4493aca62"
+    },
+    "validation/result-stage6-3dsx-missing.json": {
+      "bytes": 355,
+      "sha256": "d494ec83dd9ea601d3ef50d584a487fe0996e703f613d9f1ab74f63989a2ab2c"
+    },
+    "validation/result-stage6-3dsx-present.json": {
+      "bytes": 356,
+      "sha256": "48399d8ee1536dfe54f1f8aa8ebc1420a5425c6002a68d8353444f83e79a67c6"
+    },
+    "validation/result-stage6-3dsx-ready.json": {
+      "bytes": 353,
+      "sha256": "559315589512551d2be5de550f8791096619ead876ed40a7b1abc8c1c843b274"
+    },
+    "validation/result-stage6-3dsx-repeat.json": {
+      "bytes": 355,
+      "sha256": "35c91df73846863151d40f99bcb950856065e61a9cd8245a814b0f3211be1505"
+    },
+    "validation/result-stage6-3dsx-wrong.json": {
+      "bytes": 354,
+      "sha256": "50c10b257030e4dcc796577ecaacb9d6aa28f0512fd4106da32128f3f94b9de5"
+    },
+    "validation/result-stage6-cxi-asset-missing.json": {
+      "bytes": 361,
+      "sha256": "53f2e0f6b77647d7d4c9c27a8462afb8384ab680cbf49860965f31d1453e375c"
+    },
+    "validation/result-stage6-cxi-asset-wrong.json": {
+      "bytes": 359,
+      "sha256": "f3bcd85a4a2f81120fdc048305e30c3a4ac820876c304c328b481aab077edf99"
+    },
+    "validation/result-stage6-cxi-missing.json": {
+      "bytes": 354,
+      "sha256": "7feb283490cda8941a85210ced83eb3307a68cb0db444cadae06a71bd2ab4548"
+    },
+    "validation/result-stage6-cxi-present.json": {
+      "bytes": 355,
+      "sha256": "a719fed410a0fbd0b901c0e325d0d858b3e4f1d1e534233e83bfe27ee3c466fc"
+    },
+    "validation/result-stage6-cxi-ready.json": {
+      "bytes": 352,
+      "sha256": "4243263a0614cea74fa80f0fbd34a85664453fd5a0a802308b38de20dae6aa5e"
+    },
+    "validation/result-stage6-cxi-repeat.json": {
+      "bytes": 354,
+      "sha256": "3dac94c913adaeb00754dfeb619fd48ddc79cb2fe0b0889ab2753eaddf8b0f59"
+    },
+    "validation/result-stage6-cxi-wrong.json": {
+      "bytes": 352,
+      "sha256": "8de667bb109d60284d74ce45d57a0e08b43926a1a5f5ec7176fa95f8f4e5e675"
+    },
+    "validation/stage5-v0.5.0-result.json": {
+      "bytes": 892,
+      "sha256": "1874d2483337db445fabac60128026e77fb5baa403304122068b434c433e6bb6"
+    },
+    "validation/stage5-v0.5.0-user.log": {
+      "bytes": 1536,
+      "sha256": "0026f2829590d40f1974f18bb3852846f79ec2ca75320f5f5580b3d3dc65888e"
+    },
+    "validation/stage6-3dsx-asset-missing-screen.png": {
+      "bytes": 8548,
+      "sha256": "2b7d79d50f132db11c18c99a04a957441795283a2fef2bd9968f0696c6bd9b8d"
+    },
+    "validation/stage6-3dsx-asset-missing.log": {
+      "bytes": 1218,
+      "sha256": "affe23472a9daf3623eb1b4302522b7b4b8c65320b85c3e30a4bdd16dbe214b5"
+    },
+    "validation/stage6-3dsx-asset-wrong-screen.png": {
+      "bytes": 8603,
+      "sha256": "3a96bb739649775cc37457ca9aa7704bb67b30db992109d0f5c510fa493d2cd1"
+    },
+    "validation/stage6-3dsx-asset-wrong.log": {
+      "bytes": 1222,
+      "sha256": "125ff3169098f2b10ac85fd0d2455e73af4e488a222076335638f375b4238d94"
+    },
+    "validation/stage6-3dsx-missing-screen.png": {
+      "bytes": 4789,
+      "sha256": "e05df8ce3829dc8b60ef9944b9c4ea41659f1b3ae30c5423818bbe277392cad6"
+    },
+    "validation/stage6-3dsx-missing.log": {
+      "bytes": 293,
+      "sha256": "fd3bfbe99012c1767a4bf76204701186a1542fd44cc27dbe075e087e4554d88e"
+    },
+    "validation/stage6-3dsx-present-screen.png": {
+      "bytes": 9082,
+      "sha256": "2aa2be14d807f4a135ed055ef37cf820e2db141bd5a4a5c2521fb04c41a6c0cf"
+    },
+    "validation/stage6-3dsx-present.log": {
+      "bytes": 1286,
+      "sha256": "14f62b760fac40b6360074543e860882588eae1223fa0f2a5c2be06263f679db"
+    },
+    "validation/stage6-3dsx-ready-screen.png": {
+      "bytes": 3344,
+      "sha256": "e14f3d357c6981a0256ad9cf22a5410426e2b1f62d0c1f7b076356d10ba71466"
+    },
+    "validation/stage6-3dsx-ready.log": {
+      "bytes": 124,
+      "sha256": "7c5daf748fecb266acd51b2857bdd5c174d52a7c201bdc741e6bae7453e942d1"
+    },
+    "validation/stage6-3dsx-repeat-screen.png": {
+      "bytes": 9088,
+      "sha256": "8edf0e7ee49c34630f0a97d724c6dec41e02f0904f6b0120f3eed16a571910a2"
+    },
+    "validation/stage6-3dsx-repeat.log": {
+      "bytes": 1286,
+      "sha256": "495d4e5565731d45fbc24d0255e0940e2ff7d6d37e4aeb73c23356fb8b06aca6"
+    },
+    "validation/stage6-3dsx-wrong-screen.png": {
+      "bytes": 4735,
+      "sha256": "da3791b89a5aa4a3f762e3609bb1bceda074658f08b60717e995e36e4465d1bd"
+    },
+    "validation/stage6-3dsx-wrong.log": {
+      "bytes": 285,
+      "sha256": "c0047c60faa1166996e80259e7e429cd20c8bafd8c704220a4a2a113991fed7d"
+    },
+    "validation/stage6-cxi-asset-missing-screen.png": {
+      "bytes": 8548,
+      "sha256": "2b7d79d50f132db11c18c99a04a957441795283a2fef2bd9968f0696c6bd9b8d"
+    },
+    "validation/stage6-cxi-asset-missing.log": {
+      "bytes": 1218,
+      "sha256": "affe23472a9daf3623eb1b4302522b7b4b8c65320b85c3e30a4bdd16dbe214b5"
+    },
+    "validation/stage6-cxi-asset-wrong-screen.png": {
+      "bytes": 8603,
+      "sha256": "3a96bb739649775cc37457ca9aa7704bb67b30db992109d0f5c510fa493d2cd1"
+    },
+    "validation/stage6-cxi-asset-wrong.log": {
+      "bytes": 1222,
+      "sha256": "125ff3169098f2b10ac85fd0d2455e73af4e488a222076335638f375b4238d94"
+    },
+    "validation/stage6-cxi-missing-screen.png": {
+      "bytes": 4789,
+      "sha256": "e05df8ce3829dc8b60ef9944b9c4ea41659f1b3ae30c5423818bbe277392cad6"
+    },
+    "validation/stage6-cxi-missing.log": {
+      "bytes": 293,
+      "sha256": "fd3bfbe99012c1767a4bf76204701186a1542fd44cc27dbe075e087e4554d88e"
+    },
+    "validation/stage6-cxi-present-screen.png": {
+      "bytes": 9082,
+      "sha256": "2aa2be14d807f4a135ed055ef37cf820e2db141bd5a4a5c2521fb04c41a6c0cf"
+    },
+    "validation/stage6-cxi-present.log": {
+      "bytes": 1286,
+      "sha256": "14f62b760fac40b6360074543e860882588eae1223fa0f2a5c2be06263f679db"
+    },
+    "validation/stage6-cxi-ready-screen.png": {
+      "bytes": 3344,
+      "sha256": "e14f3d357c6981a0256ad9cf22a5410426e2b1f62d0c1f7b076356d10ba71466"
+    },
+    "validation/stage6-cxi-ready.log": {
+      "bytes": 124,
+      "sha256": "7c5daf748fecb266acd51b2857bdd5c174d52a7c201bdc741e6bae7453e942d1"
+    },
+    "validation/stage6-cxi-repeat-screen.png": {
+      "bytes": 9088,
+      "sha256": "8edf0e7ee49c34630f0a97d724c6dec41e02f0904f6b0120f3eed16a571910a2"
+    },
+    "validation/stage6-cxi-repeat.log": {
+      "bytes": 1286,
+      "sha256": "495d4e5565731d45fbc24d0255e0940e2ff7d6d37e4aeb73c23356fb8b06aca6"
+    },
+    "validation/stage6-cxi-wrong-screen.png": {
+      "bytes": 4735,
+      "sha256": "da3791b89a5aa4a3f762e3609bb1bceda074658f08b60717e995e36e4465d1bd"
+    },
+    "validation/stage6-cxi-wrong.log": {
+      "bytes": 285,
+      "sha256": "c0047c60faa1166996e80259e7e429cd20c8bafd8c704220a4a2a113991fed7d"
+    },
+    "validation/stage6-import-audit.json": {
+      "bytes": 8357,
+      "sha256": "275e1a28881ceef684d73d447aedb1b6ffcfb1e1c8e5772af2fd63bb92de9b9d"
+    },
+    "validation/stage6-libc-tests.json": {
+      "bytes": 266,
+      "sha256": "65b13e040b698e7443c1f2f01e9999a51050e94fc513f578e526468318235cae"
+    },
+    "validation/stage6-package-check.json": {
+      "bytes": 1093,
+      "sha256": "257252f6c0464f79f1b6316de79f72a49347dc6070d07ba3c53729838eba3546"
+    },
+    "validation/stage6-regression.json": {
+      "bytes": 237,
+      "sha256": "e06e175317f32164dcbd0ab9a1ed2825619cd819973a932c36b4afe80c6c7d73"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+Dead Space 3DS - stage 3 v0.3.0
+JNI bootstrap diagnostics
+Gameplay is not implemented.
+
+New 3DS: yes
+JNI code + writable VM slot: OK
+JavaVM.GetEnv: 0, env matches: yes
+Backend: Luma3DS native RX
+CHECKPOINT step=1 page=0868e000 I-cache=entire (0x94)
+CHECKPOINT step=2 page=0868e000 I-cache=entire (0x94)
+CHECKPOINT step=3 page=0868e000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0868e000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0868e000 I-cache=entire (0x94)
+CHECKPOINT step=1 page=0848f000 I-cache=entire (0x94)
+CHECKPOINT step=2 page=0848f000 I-cache=entire (0x94)
+CHECKPOINT step=3 page=0848f000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0848f000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0848f000 I-cache=entire (0x94)
+Calling verified JNI_OnLoad...
+JNI_OnLoad: 00010004 (expected 00010004)
+Game stored JavaVM pointer: MATCH
+Calling game JNI string wrappers...
+Game -> JNI callback -> game: MATCH
+Callbacks: get=1 release=1 errors=0
+String released: yes
+No constructors or engine entry point called.
+
+STAGE 3 PASSED
+Log: stage3-v0.3.0-log.txt saved

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "libc_include_pthread.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/pthread.h",
+    "sha256": "f8973b2ffe1bf13f38ca73d9c480f9759b709246e0e54468a09c3b22c789d228",
+    "bytes": 11609
+  },
+  {
+    "file": "libc_include_semaphore.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/semaphore.h",
+    "sha256": "aabb8c4079a84240d1cf82ff574a59feb51ba3e9ae8026fdd6240531f0026bef",
+    "bytes": 2126
+  },
+  {
+    "file": "libc_bionic_pthread.c",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/bionic/pthread.c",
+    "sha256": "2f6c5a5e549430e0e185bec2db7270ad2830b0f8e718d4f4e7cd50ac4ce19a6a",
+    "bytes": 57931
+  },
+  {
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/bionic/pthread_cond.c",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "libc_bionic_semaphore.c",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/bionic/semaphore.c",
+    "sha256": "051bd8615415095b34983fe092009099e2854a21b8a19806c5faa63ae8f95296",
+    "bytes": 10346
+  }
+]

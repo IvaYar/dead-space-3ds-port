@@ -1,0 +1,12 @@
+{
+  "tests_run": 19,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 0.609,
+  "hardware_tested": false,
+  "os_calls_allowed": false,
+  "game_engine_started": false,
+  "bionic_stat_size": 104,
+  "bionic_file_size": 84,
+  "softfp_basics_checks": 31
+}

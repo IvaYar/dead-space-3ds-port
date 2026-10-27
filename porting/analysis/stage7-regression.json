@@ -1,0 +1,14 @@
+{
+  "tested_core": "stage7",
+  "tests_run": 70,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 2.75,
+  "hardware_tested": false,
+  "suites": [
+    "ELF loader",
+    "stage4 I/O",
+    "stage5 memory/string/math",
+    "stage6 Bionic adapters"
+  ]
+}

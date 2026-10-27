@@ -1,0 +1,36 @@
+{
+  "version": "0.5.0",
+  "hardware_tested": true,
+  "result": "STAGE 5 PASSED",
+  "device": "New Nintendo 3DS family",
+  "backend": "Luma3DS native RX",
+  "launch_method": "CIA via HOME Menu",
+  "runtime_imports_bound": 49,
+  "memory_string_probe": 0,
+  "math_checks": 35,
+  "math_failures": 0,
+  "math_errno": [
+    33,
+    34
+  ],
+  "allocation_overflow_errno": [
+    12,
+    12
+  ],
+  "live_blocks": 0,
+  "live_bytes": 0,
+  "peak_requested_bytes": 4142,
+  "allocation_refusals": 2,
+  "invalid_frees": 0,
+  "active_files_after_cleanup": 0,
+  "constructors_called": false,
+  "game_functions_called": false,
+  "donor_imports": {
+    "resolved": 53,
+    "missing": 335,
+    "weak_zero": 4,
+    "image_unchanged": true
+  },
+  "evidence": "Full user log copied unchanged",
+  "log_sha256": "0026f2829590d40f1974f18bb3852846f79ec2ca75320f5f5580b3d3dc65888e"
+}

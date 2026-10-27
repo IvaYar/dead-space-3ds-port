@@ -1,0 +1,53 @@
+{
+  "workflow": "emulator first; no per-stage SD swaps",
+  "stage8_hardware_passed": true,
+  "computer_tests_passed": 122,
+  "azahar_cases_passed": {
+    "ready": true,
+    "missing": true,
+    "wrong": true,
+    "present": true
+  },
+  "constructors_completed": 209,
+  "jni_onload": "00010004",
+  "stored_vm_matches": true,
+  "lifecycle_returns": [
+    "NativeOnCreate",
+    "NativeOnSurfaceCreated",
+    "NativeOnSurfaceChanged"
+  ],
+  "first_frame_attempted": true,
+  "first_game_frame_rendered": false,
+  "stop": {
+    "phase": "NativeOnDrawFrame",
+    "api": "JNI FindClass",
+    "class": "com/ea/EAIO/EAIO",
+    "caller_offset": "00236808"
+  },
+  "import_bindings": {
+    "portable": 152,
+    "strong_missing": 236,
+    "weak_null": 4,
+    "instrumentation_does_not_count_as_implementation": true
+  },
+  "donor_arena_bytes_in_use": 33562624,
+  "total_process_memory_measured": false,
+  "new_runtime_hardware_tested": false,
+  "new_hardware_install_requested": false,
+  "new_cia_produced": false,
+  "native_rx_backend_unchanged": true,
+  "limitations": [
+    "clock models are emulator-only",
+    "mmap supports private anonymous RW only",
+    "JNI/EAIO missing",
+    "no GLES renderer",
+    "full-module native RX untested"
+  ],
+  "witnesses_sha256": {
+    "analysis/engine-first-entry-experiment.json": "44286da9b20fe58622fa101bb9d9b77b7589ac2cf852692bfeae7e6a0ed5e040",
+    "analysis/azahar-smoke/engine-present.log": "596830f30b94e56590e5affaef878b9845ab531319071e1b4b26cd894671df9e",
+    "analysis/emulator-runtime-tests.json": "b9d2d2e119b6d31f8edc76ab7f6179bd1c149344f6a02316ee090924666944f1",
+    "analysis/hardware/stage8-v0.8.0-user.log": "0bc0aa920f0eab7fdb4756ff03ce5035d16ed818ed0cccfc42c802fb07662ec8",
+    "3ds/build-emulator/build-manifest.json": "726ca8bbf6257c9ed3fd7e9bb515855ecf2e75e7349b96ccca2891fe38019bb9"
+  }
+}

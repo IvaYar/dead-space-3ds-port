@@ -1,0 +1,11 @@
+Dead Space 3DS - stage 5 v0.5.0
+Memory, strings and math diagnostics
+Gameplay is not implemented.
+
+Run: 1
+New 3DS: yes
+Donor CRC mismatch.
+Cleanup: leaked-blocks=0 active-files=0
+
+STAGE 5 STOPPED; see log.
+Log: stage5-v0.5.0-log.txt saved

@@ -1,0 +1,11 @@
+{
+  "stage": 1,
+  "status": "User reported STAGE 1 PASSED on their New Nintendo 3DS family console",
+  "launch_method": "CIA installed with FBI, launched from HOME Menu",
+  "log_received": false,
+  "circle_pad_result_received": false,
+  "c_stick_result_received": false,
+  "stage2_hardware_result_received": true,
+  "stage2_result": "v0.2.2 STAGE 2 PASSED; full log received, native RX and softfp bridge confirmed",
+  "source": "User messages in this conversation"
+}

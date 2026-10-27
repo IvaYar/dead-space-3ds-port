@@ -1,0 +1,34 @@
+Dead Space 3DS - stage 8 v0.8.0
+C++ constructors, guards and destructors
+Gameplay is not implemented.
+
+Run: 1
+New 3DS: yes
+Donor imports: bound=149 missing=239 weak-null=4
+Incomplete donor binding: REFUSED, image unchanged
+C++ probe bindings: OK (18/18)
+Constructor plan: OK, entries=2
+Backend: emulator (RX not tested)
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=1 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800e000 I-cache=entire (0x94)
+Before constructors: objects=0 order=0
+Running verified test-module constructors...
+After constructors: objects=2 order=912 (expected 2/912)
+Repeated constructor run: REFUSED
+Calling original softfp C++ probe...
+C++ probe: 1, checks=912
+Static objects: 0 order=0 (expected 3/9123)
+Filtered/reentrant destructor calls: 0 (expected 6)
+Guards: release=0 abort=0 waits=0 active=0
+Threads: active=1 finished=0
+Pools: mutex=0 cond=0 sem=0 keys=0
+No game functions or game constructors called.
+Thread shutdown: live=1
+Active workers: module retained; exit before retry.
+
+STAGE 8 STOPPED; see log.
+Log: stage8-v0.8.0-log.txt saved

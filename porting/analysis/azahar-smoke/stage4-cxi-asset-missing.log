@@ -1,0 +1,30 @@
+Dead Space 3DS - stage 4 v0.4.0
+Android file I/O bridge diagnostics
+Gameplay is not implemented.
+
+New 3DS: yes
+Donor imports: bound=5 missing=383 weak-null=4
+Incomplete donor binding: REFUSED, image unchanged
+I/O probe bindings: OK (5/5)
+Backend: emulator (RX not tested)
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+Calling original Android-ABI I/O test module...
+Asset: data/achievements.sb
+Probe result: 1 (expected 0)
+Missing test asset; copy SD_CARD contents.
+Asset bytes: 0 (expected 3568)
+Asset CRC32: 00000000 (expected 4a8d9499)
+Seek/EOF: FAILED
+Android errno: badfd=2 missing=0 readonly=0
+Constructor marker: 42 (expected 42)
+Bridge handles before cleanup: 0
+No game functions or constructors called.
+Bridge cleanup: OK, active=0
+
+STAGE 4 STOPPED; see log.
+Log: stage4-v0.4.0-log.txt saved

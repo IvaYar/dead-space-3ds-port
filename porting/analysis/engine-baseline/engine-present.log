@@ -1,0 +1,23 @@
+DEAD SPACE ENGINE AUDIT - EMULATOR ONLY
+READY - press A
+Backend: Azahar; native RX not tested
+Production preflight: bound=152 missing=236 weak=4
+Production guard: REFUSED; image unchanged
+Audit clock: emulator monotonic, excluded from supported count
+Running 209 donor constructors...
+Donor constructors completed: 209
+JNI_OnLoad: 00010004; stored VM: MATCH
+Calling NativeOnCreate...
+NativeOnCreate returned
+Calling NativeOnSurfaceCreated...
+NativeOnSurfaceCreated returned
+Calling NativeOnSurfaceChanged...
+NativeOnSurfaceChanged returned
+Calling NativeOnDrawFrame...
+STOP unsupported: JNI FindClass (slot 6)
+Phase: NativeOnDrawFrame
+Caller offset: 00236808
+Requested class: com/ea/EAIO/EAIO
+Donor arenas: break=16781312 peak=16781312 mapped-pages=4097 refusals=0
+ENGINE EXPERIMENT STOPPED
+No game frame rendered.

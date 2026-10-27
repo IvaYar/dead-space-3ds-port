@@ -1,0 +1,11 @@
+{
+  "tests_run": 14,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 0.047,
+  "method": "Compiled ARM native backend + real libctru wrappers; simulated kernel SVC boundary",
+  "before_fix_reproduced_error": "fffffc15",
+  "hardware_tested": false,
+  "cache_range_fault_model": "Remote-core VA unmapped; v0.2.1 range path faults in the model; v0.2.2 entire-cache path has no MVA operand",
+  "mmu_or_cache_hardware_tested": false
+}

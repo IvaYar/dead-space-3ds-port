@@ -1,0 +1,12 @@
+Dead Space 3DS - stage 6 v0.6.0
+Bionic structures and libc diagnostics
+Gameplay is not implemented.
+
+Run: 1
+New 3DS: yes
+Missing library on SD card.
+Runtime heap before cleanup: live=0 bytes=0
+Cleanup: leaked-blocks=0 active-files=0
+
+STAGE 6 STOPPED; see log.
+Log: stage6-v0.6.0-log.txt saved

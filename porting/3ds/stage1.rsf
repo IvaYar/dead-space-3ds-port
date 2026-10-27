@@ -1,0 +1,120 @@
+BasicInfo:
+  Title: "DS-LOADER-TEST"
+  CompanyCode: "00"
+  ProductCode: "CTR-H-DSLT"
+  ContentType: Application
+  Logo: Homebrew
+
+TitleInfo:
+  Category: Application
+  UniqueId: 0xFDE50
+
+Option:
+  UseOnSD: true
+  FreeProductCode: true
+  EnableCrypt: false
+  EnableCompress: true
+
+AccessControlInfo:
+  CoreVersion: 2
+  DescVersion: 2
+  ReleaseKernelMajor: "02"
+  ReleaseKernelMinor: "33"
+  MemoryType: Application
+  SystemMode: 64MB
+  SystemModeExt: Legacy
+  IdealProcessor: 0
+  AffinityMask: 1
+  Priority: 16
+  MaxCpu: 0x9E
+  HandleTableSize: 0x200
+  DisableDebug: false
+  EnableForceDebug: false
+  CanWriteSharedPage: false
+  CanUsePrivilegedPriority: false
+  CanUseNonAlphabetAndNumber: false
+  PermitMainFunctionArgument: false
+  CanShareDeviceMemory: false
+  RunnableOnSleep: false
+  SpecialMemoryArrange: false
+  FileSystemAccess:
+    - DirectSdmc
+    - DirectSdmcWrite
+  IORegisterMapping:
+    - 1ff50000-1ff57fff
+    - 1ff70000-1ff77fff
+  MemoryMapping:
+    - 1f000000-1f5fffff:r
+  SystemCallAccess:
+    ControlMemory: 1
+    QueryMemory: 2
+    ExitProcess: 3
+    GetProcessIdealProcessor: 6
+    CreateThread: 8
+    ExitThread: 9
+    SleepThread: 10
+    GetThreadPriority: 11
+    SetThreadPriority: 12
+    GetThreadIdealProcessor: 15
+    GetCurrentProcessorNumber: 17
+    CreateMutex: 19
+    ReleaseMutex: 20
+    CreateSemaphore: 21
+    ReleaseSemaphore: 22
+    CreateEvent: 23
+    SignalEvent: 24
+    ClearEvent: 25
+    CreateTimer: 26
+    SetTimer: 27
+    CancelTimer: 28
+    ClearTimer: 29
+    CreateMemoryBlock: 30
+    MapMemoryBlock: 31
+    UnmapMemoryBlock: 32
+    CreateAddressArbiter: 33
+    ArbitrateAddress: 34
+    CloseHandle: 35
+    WaitSynchronization1: 36
+    WaitSynchronizationN: 37
+    DuplicateHandle: 39
+    GetSystemTick: 40
+    GetHandleInfo: 41
+    GetSystemInfo: 42
+    GetProcessInfo: 43
+    GetThreadInfo: 44
+    ConnectToPort: 45
+    SendSyncRequest1: 46
+    SendSyncRequest2: 47
+    SendSyncRequest3: 48
+    SendSyncRequest4: 49
+    SendSyncRequest: 50
+    GetProcessId: 53
+    GetProcessIdOfThread: 54
+    GetThreadId: 55
+    GetResourceLimit: 56
+    GetResourceLimitLimitValues: 57
+    GetResourceLimitCurrentValues: 58
+    GetThreadContext: 59
+    Break: 60
+    OutputDebugString: 61
+  ServiceAccessControl:
+    - APT:U
+    - fs:USER
+    - gsp::Gpu
+    - gsp::Lcd
+    - hid:USER
+    - ir:rst
+    - cfg:u
+    - ptm:u
+
+SystemControlInfo:
+  SaveDataSize: 0KB
+  RemasterVersion: 1
+  StackSize: 0x40000
+  Dependency:
+    am: 0x0004013000001502L
+    cfg: 0x0004013000001702L
+    gsp: 0x0004013000001c02L
+    hid: 0x0004013000001d02L
+    ir: 0x0004013000003302L
+    ptm: 0x0004013000002202L

@@ -1,0 +1,2 @@
+# Preserve exact bytes: backend and diagnostic evidence have pinned SHA-256.
+* -text

@@ -1,0 +1,19 @@
+Dead Space 3DS - stage 1
+ELF loader diagnostics v0.1.0
+Game execution: NOT IMPLEMENTED
+
+New 3DS: yes
+libctru build: 2.7.0-1
+Configured heap: 32376 KiB
+Checking SD donor...
+File: 4499468 bytes, CRC32 e8de66a3
+Selected 1.1.33 SD donor: MISMATCH
+ELF validation: OK (0)
+Segments: 2, image: 4680 KiB
+Imports: 392, JNI exports: 68
+RELATIVE: 22677, ABS32: 890
+GLOB_DAT: 52, JMP_SLOT: 294
+Unsupported relocations: 0
+Mapping skipped: unexpected donor.
+
+Log: stage1-log.txt saved

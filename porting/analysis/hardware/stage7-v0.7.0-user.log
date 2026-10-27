@@ -1,0 +1,35 @@
+Dead Space 3DS - stage 7 v0.7.0
+Android threads, sync and TLS diagnostics
+Gameplay is not implemented.
+
+Run: 1
+New 3DS: yes
+Donor imports: bound=145 missing=243 weak-null=4
+Incomplete donor binding: REFUSED, image unchanged
+Thread probe bindings: OK (47/47)
+Backend: Luma3DS native RX
+CHECKPOINT step=1 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=2 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=3 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800d000 I-cache=entire (0x94)
+CHECKPOINT step=1 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=2 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=3 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=5 page=0800e000 I-cache=entire (0x94)
+CHECKPOINT step=6 page=0800e000 I-cache=entire (0x94)
+Calling original softfp thread probe...
+Thread probe: 0, checks=41
+Mutex counter: 1000 (expected 1000)
+TLS destructor calls: 4 (expected 4)
+Worker error flags: 0 (expected 0)
+Constructor marker: 42 (expected 42)
+Threads: active=0 finished=0
+Pools: mutex=0 cond=0 sem=0 keys=0
+No game functions or constructors called.
+Thread shutdown: live=0
+Runtime heap before cleanup: live=0 bytes=0
+Cleanup: leaked-blocks=0 active-files=0
+
+STAGE 7 PASSED
+Log: stage7-v0.7.0-log.txt saved

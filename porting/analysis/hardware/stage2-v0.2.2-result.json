@@ -1,0 +1,21 @@
+{
+  "version": "0.2.2",
+  "hardware_tested": true,
+  "result": "STAGE 2 PASSED",
+  "device": "New Nintendo 3DS family",
+  "luma_version": "13.3.3",
+  "launch_method": "CIA via HOME Menu",
+  "rx_protection_confirmed": true,
+  "integer_bridge": 58,
+  "softfp_float_bridge": 4.25,
+  "weak_import": 7,
+  "original_getter_returns": [
+    -1,
+    1,
+    0
+  ],
+  "game_engine_started": false,
+  "constructors_called": false,
+  "evidence": "User supplied full log; workspace file copied without changes",
+  "log_sha256": "c2dd1cb7d4e8198ffafab21b6349e24909e7729d6bc37944e86037c71358ddf8"
+}

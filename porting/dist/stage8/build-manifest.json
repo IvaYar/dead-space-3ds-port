@@ -1,0 +1,252 @@
+{
+  "stage": 8,
+  "version": "0.8.0",
+  "title_id": "000400000FDE5700",
+  "gameplay": false,
+  "hardware_tested": false,
+  "start_requires_A": true,
+  "probe_scope": "Original softfp C++ constructors, concurrent static initialization and destructor lifecycle; no donor code executed",
+  "backend_sha256": {
+    "ds_exec.c": "09b92e8a9d1f63928c9fc5d1b55e301721e06d54370ffc3604b202d5d73f5746",
+    "ds_cache.s": "1ef11401b18567eb183ff76cec9c59fc05ddec1dd988af6446a14fdf748ef6c3"
+  },
+  "donor_sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb",
+  "fixture_sha256": "69c56cb294713b28d1a3d3efc2ff26b41249c9f857f3a8304d462049df96a13e",
+  "supported_imports": 149,
+  "fixture_imports": 18,
+  "registry_entries": 156,
+  "cpp_limits": {
+    "active_guards": 64,
+    "destructor_entries": 256,
+    "constructor_plan_entries": 256
+  },
+  "thread_limits": {
+    "workers": 16,
+    "keys": 32,
+    "mutexes": 64,
+    "conditions": 32,
+    "semaphores": 32
+  },
+  "fixture_exec_pages": [
+    0,
+    4096
+  ],
+  "diagnostic_allocation_limit": 1048576,
+  "validation": {
+    "arm_regression_tests": 84,
+    "arm_cpp_lifecycle_tests": 24,
+    "azahar_cases": 12,
+    "includes_retained_image_timeout": true,
+    "includes_bad_constructor_refusal": true,
+    "includes_repeated_run_in_one_process": true,
+    "cia_hashes_verified": true,
+    "stage8_hardware_tested": false,
+    "game_functions_called": false,
+    "game_constructors_called": false,
+    "test_module_constructors_called": true,
+    "donor_preflight_expected_refusal": true,
+    "backend_matches_stage7_passed_build": true
+  },
+  "files": {
+    "deadspace-loader-stage8.cia": {
+      "bytes": 243136,
+      "sha256": "b4fb5aff346b1d500aa73c4fa5d6e1cdbbcabe73df0a22e0dc6415d11b28b85a"
+    },
+    "README.ru.md": {
+      "bytes": 10658,
+      "sha256": "12ca7347dd402c331a2f000fcf39ae2c7559abad8dd18ade035d4400d6025ec3"
+    },
+    "SD_CARD/3ds/deadspace/assets/published/data/achievements.sb": {
+      "bytes": 3568,
+      "sha256": "c449a489c56780392fde284aa868b189d943b51056433066c757d87596fe6f07"
+    },
+    "SD_CARD/3ds/deadspace/libEAMGameDeadSpace_orig.so": {
+      "bytes": 4499468,
+      "sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb"
+    },
+    "SD_CARD/3ds/deadspace8/deadspace8.3dsx": {
+      "bytes": 303152,
+      "sha256": "235cb8edc0f92fa0ace582018dc97f74141a89cb2652e0b8f4ff16d71c534cd2"
+    },
+    "SD_CARD/3ds/deadspace8/deadspace8.smdh": {
+      "bytes": 14016,
+      "sha256": "e52e416d91ef60242e3ec0eaa8b62048fb798e01e3e24ec1cf8b001d43bc9a44"
+    },
+    "SD_CARD/CIA/deadspace-loader-stage8.cia": {
+      "bytes": 243136,
+      "sha256": "b4fb5aff346b1d500aa73c4fa5d6e1cdbbcabe73df0a22e0dc6415d11b28b85a"
+    },
+    "validation/android-abi-sources.json": {
+      "bytes": 784,
+      "sha256": "71acb246dd68414d28362f9f90ae094933b923a8ccb4d53d575d4830b6f0da8a"
+    },
+    "validation/result-stage8-3dsx-missing.json": {
+      "bytes": 355,
+      "sha256": "ae96b04f1880efa3894b7cd345f769046c52eaa822888e925f0d7420cebda773"
+    },
+    "validation/result-stage8-3dsx-present.json": {
+      "bytes": 356,
+      "sha256": "545d66c33e4f4f3e436caa29338c8c3eb7768bc5acdd1a5f825345a7c789cab9"
+    },
+    "validation/result-stage8-3dsx-ready.json": {
+      "bytes": 353,
+      "sha256": "cd824e684ed23ed7153d24b5cede5ef8ec6cddd58b8d2608358ff9b77f70a6cc"
+    },
+    "validation/result-stage8-3dsx-repeat.json": {
+      "bytes": 355,
+      "sha256": "9507952bb444cc90dba570ccf4b3fc55aa08efb51e641a100c201a8f35280050"
+    },
+    "validation/result-stage8-3dsx-wrong.json": {
+      "bytes": 354,
+      "sha256": "fb7c1e812490c2a32f57f6451e2f2288eb4a0120fcac1095d42f2e1bad6a4811"
+    },
+    "validation/result-stage8-cxi-bad-ctor.json": {
+      "bytes": 356,
+      "sha256": "0cfa2129501aad29ef1eab4ce2759c8b5e9996ae64efd90654c121ee75c3323c"
+    },
+    "validation/result-stage8-cxi-missing.json": {
+      "bytes": 354,
+      "sha256": "eda4d8f8395f456122af83e883c153574b7051c10cad106ee1b43ba135b38863"
+    },
+    "validation/result-stage8-cxi-present.json": {
+      "bytes": 355,
+      "sha256": "8fc6170342964330047d05018cd6aca9464bec731b20aa66db3e0228be5406c0"
+    },
+    "validation/result-stage8-cxi-ready.json": {
+      "bytes": 352,
+      "sha256": "db24fb1b80881fea400c1446db1be4a5b125cbd49d399191756739042d62d50f"
+    },
+    "validation/result-stage8-cxi-repeat.json": {
+      "bytes": 354,
+      "sha256": "f25501b4d4ef1978947035ebb07b8f28d8549229d66df47966ffb7adb502c8c7"
+    },
+    "validation/result-stage8-cxi-stalled.json": {
+      "bytes": 355,
+      "sha256": "7831ff57a548cabf15b65fc741fd0ff4bc788d285133c4f718b88ad59b2ea70c"
+    },
+    "validation/result-stage8-cxi-wrong.json": {
+      "bytes": 353,
+      "sha256": "311684dfe5ca8d8f932e38ef9a1c77ba9ede8e176ca305adf69cfc31209e8d22"
+    },
+    "validation/stage7-v0.7.0-result.json": {
+      "bytes": 833,
+      "sha256": "c897cf28c05920a6ab86292a007015fcda7f93d75d1686977394a46fa7b5dca4"
+    },
+    "validation/stage7-v0.7.0-user.log": {
+      "bytes": 1300,
+      "sha256": "41cc7b9457a8616ded02fe924cee600a94e0b4a924f9caffa92faaac6cbb1e74"
+    },
+    "validation/stage8-3dsx-missing-screen.png": {
+      "bytes": 5765,
+      "sha256": "7154c1cee559aaf798599a4a04df175d438719442d373d9e72b38fd9e3c959a1"
+    },
+    "validation/stage8-3dsx-missing.log": {
+      "bytes": 418,
+      "sha256": "4b01c3f5425d039f8ed118193c4141d7005b36b6c197352ebcacffe478bb65a5"
+    },
+    "validation/stage8-3dsx-present-screen.png": {
+      "bytes": 10297,
+      "sha256": "ef6ba8ac6208953e4d27a969db2e01bffeab5f44414981b9bd721e82975a4718"
+    },
+    "validation/stage8-3dsx-present.log": {
+      "bytes": 1439,
+      "sha256": "bfeb9a5fb194ba53042a54bc71000d64a88f3e082800ad01218de84c3a91da27"
+    },
+    "validation/stage8-3dsx-ready-screen.png": {
+      "bytes": 3379,
+      "sha256": "b594fc861df7c808b923763740b6dee42a26a4cb0e10e26c585c17afa5ea8dcb"
+    },
+    "validation/stage8-3dsx-ready.log": {
+      "bytes": 124,
+      "sha256": "6aa21b9d2269303b2b0a3f0a16f3c5a4f15bdf264f52feaea6b6ec6ecd588b59"
+    },
+    "validation/stage8-3dsx-repeat-screen.png": {
+      "bytes": 10297,
+      "sha256": "ef6ba8ac6208953e4d27a969db2e01bffeab5f44414981b9bd721e82975a4718"
+    },
+    "validation/stage8-3dsx-repeat.log": {
+      "bytes": 1439,
+      "sha256": "fa84e77ad392ba1135b9aa9dec83253feb3920d8928cf55fd2bff69024ecba8b"
+    },
+    "validation/stage8-3dsx-wrong-screen.png": {
+      "bytes": 5714,
+      "sha256": "86e1ad5a4720b5e2758fc293b1d31c7a49a135f297aca5b0ff75bf9a656aa326"
+    },
+    "validation/stage8-3dsx-wrong.log": {
+      "bytes": 410,
+      "sha256": "891818d57fb242e352d360b456aa3a9eeff35326b1490cd5a3ee0b4bdb085be7"
+    },
+    "validation/stage8-cpp-tests.json": {
+      "bytes": 204,
+      "sha256": "730f5418a558bf4694dd7042bf2516060c88042be2da4b60443313eeb8b16eec"
+    },
+    "validation/stage8-cxi-bad-ctor-screen.png": {
+      "bytes": 6938,
+      "sha256": "8b5f9c0d9a95459138572a8d3da8a9f738a6e77fe33d9e1ed5ec146a638ad891"
+    },
+    "validation/stage8-cxi-bad-ctor.log": {
+      "bytes": 558,
+      "sha256": "b2b6f90e70e7635d9cb58a6451eb1a84d27d53dd261270f8911d144375f9179f"
+    },
+    "validation/stage8-cxi-missing-screen.png": {
+      "bytes": 5776,
+      "sha256": "0b8fbe2e2b81d213fb063d1a7d8c86e52e460e18803bce6e5553a5bcf18da983"
+    },
+    "validation/stage8-cxi-missing.log": {
+      "bytes": 418,
+      "sha256": "4b01c3f5425d039f8ed118193c4141d7005b36b6c197352ebcacffe478bb65a5"
+    },
+    "validation/stage8-cxi-present-screen.png": {
+      "bytes": 10297,
+      "sha256": "ef6ba8ac6208953e4d27a969db2e01bffeab5f44414981b9bd721e82975a4718"
+    },
+    "validation/stage8-cxi-present.log": {
+      "bytes": 1439,
+      "sha256": "bfeb9a5fb194ba53042a54bc71000d64a88f3e082800ad01218de84c3a91da27"
+    },
+    "validation/stage8-cxi-ready-screen.png": {
+      "bytes": 3379,
+      "sha256": "b594fc861df7c808b923763740b6dee42a26a4cb0e10e26c585c17afa5ea8dcb"
+    },
+    "validation/stage8-cxi-ready.log": {
+      "bytes": 124,
+      "sha256": "6aa21b9d2269303b2b0a3f0a16f3c5a4f15bdf264f52feaea6b6ec6ecd588b59"
+    },
+    "validation/stage8-cxi-repeat-screen.png": {
+      "bytes": 10297,
+      "sha256": "ef6ba8ac6208953e4d27a969db2e01bffeab5f44414981b9bd721e82975a4718"
+    },
+    "validation/stage8-cxi-repeat.log": {
+      "bytes": 1439,
+      "sha256": "fa84e77ad392ba1135b9aa9dec83253feb3920d8928cf55fd2bff69024ecba8b"
+    },
+    "validation/stage8-cxi-stalled-screen.png": {
+      "bytes": 9274,
+      "sha256": "5318fe0c116082478a5ca8de44d36975fc79f7231ba1e5285dbe051fe1ef7beb"
+    },
+    "validation/stage8-cxi-stalled.log": {
+      "bytes": 1267,
+      "sha256": "64b4c12b682da0d8e61f46e82044a9aea10c07acc92b1371a239cf7e89dadfb4"
+    },
+    "validation/stage8-cxi-wrong-screen.png": {
+      "bytes": 5714,
+      "sha256": "86e1ad5a4720b5e2758fc293b1d31c7a49a135f297aca5b0ff75bf9a656aa326"
+    },
+    "validation/stage8-cxi-wrong.log": {
+      "bytes": 410,
+      "sha256": "891818d57fb242e352d360b456aa3a9eeff35326b1490cd5a3ee0b4bdb085be7"
+    },
+    "validation/stage8-import-audit.json": {
+      "bytes": 8406,
+      "sha256": "5f4d135227327d6f084ce105b1e3d6ed23c64f7ddff61b931eff35a2d6c4d9a5"
+    },
+    "validation/stage8-package-check.json": {
+      "bytes": 1093,
+      "sha256": "01f15cd2e1a06cc6013b433592943723c53283946c32722dc78215eb35560b6b"
+    },
+    "validation/stage8-regression.json": {
+      "bytes": 239,
+      "sha256": "346add21d4414911a9b290a186cef3e9fe02f221720d301e5850226b64b7886c"
+    }
+  }
+}

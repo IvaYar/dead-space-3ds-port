@@ -1,0 +1,15 @@
+Dead Space 3DS - stage 8 v0.8.0
+C++ constructors, guards and destructors
+Gameplay is not implemented.
+
+Run: 1
+New 3DS: yes
+Donor CRC mismatch.
+Thread shutdown: live=0
+Finalizing test module before unloading code...
+C++ registry: pending=0 active-guards=0 failures=0
+Runtime heap before cleanup: live=0 bytes=0
+Cleanup: leaked-blocks=0 active-files=0
+
+STAGE 8 STOPPED; see log.
+Log: stage8-v0.8.0-log.txt saved

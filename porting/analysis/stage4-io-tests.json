@@ -1,0 +1,25 @@
+{
+  "tests_run": 19,
+  "errors": 0,
+  "failures": 0,
+  "elapsed_seconds": 0.719,
+  "hardware_tested": false,
+  "host_files_modeled": true,
+  "game_engine_started": false,
+  "donor_preflight": {
+    "imports": 392,
+    "resolved": 5,
+    "missing": 383,
+    "weak_zero": 4,
+    "patched_sites": 0,
+    "image_unchanged": true
+  },
+  "asset_bytes": 3568,
+  "asset_crc32": "4a8d9499",
+  "android_errno_checks": [
+    9,
+    2,
+    30
+  ],
+  "constructor_marker": 42
+}

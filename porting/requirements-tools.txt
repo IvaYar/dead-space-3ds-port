@@ -1,0 +1,2 @@
+zstandard==0.25.0
+unicorn==2.1.4

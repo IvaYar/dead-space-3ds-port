@@ -1,0 +1,19 @@
+{
+  "version": "0.8.0",
+  "hardware_tested": true,
+  "result": "STAGE 8 PASSED",
+  "device": "New Nintendo 3DS family",
+  "backend": "Luma3DS native RX",
+  "evidence": "Full user log copied unchanged",
+  "log_sha256": "0bc0aa920f0eab7fdb4756ff03ce5035d16ed818ed0cccfc42c802fb07662ec8",
+  "cpp_checks": 34,
+  "guard_waits": 1,
+  "static_objects": 3,
+  "construction_order": 9123,
+  "destruction_order": 321,
+  "gameplay": false,
+  "game_constructors_called": false,
+  "live_threads": 0,
+  "live_blocks": 0,
+  "active_files": 0
+}

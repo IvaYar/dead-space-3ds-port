@@ -1,0 +1,68 @@
+[
+  {
+    "file": "libc_include_stdio.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/stdio.h",
+    "sha256": "dd3cafe4546dc4a12d6a50f02fa6468ed088cf865a549d315c159765f3d42e40",
+    "bytes": 14541
+  },
+  {
+    "file": "libc_include_ctype.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/ctype.h",
+    "sha256": "ddc77f29ae83366dc9880708c008cd5fe4218627b10403a6b290cb11ffa4139f",
+    "bytes": 5301
+  },
+  {
+    "file": "libc_include_sys_stat.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/sys/stat.h",
+    "sha256": "054bbede53c9a8d952cd7dcd0566503fb21a3a792ede537d4019976b6e58b335",
+    "bytes": 3822
+  },
+  {
+    "file": "libc_kernel_arch-arm_asm_stat.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/kernel/arch-arm/asm/stat.h",
+    "sha256": "22cd141599e4538d72164a157484a47a70f46fe70402cce917a4f0e739b2113c",
+    "bytes": 2247
+  },
+  {
+    "file": "libc_stdio_stdio.c",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/stdio/stdio.c",
+    "sha256": "92a05e338adeea3b2b338ce09daa80cab40db0ff60fb7f06d260d031229b7d5a",
+    "bytes": 2780
+  },
+  {
+    "file": "libc_stdlib_ctype_.c",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/stdlib/ctype_.c",
+    "sha256": "2a761caa5503207a82013ebeeeabfcd3b74ebf28f0c0f14a69a5f4cb65eaa049",
+    "bytes": 4829
+  },
+  {
+    "file": "libc_include_time.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/time.h",
+    "sha256": "beeb61307896f326365bbb1ed14dad98f2b6b1cdc19d0ef7b4b68db8efd63dc7",
+    "bytes": 4766
+  },
+  {
+    "file": "libc_include_sys_time.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/sys/time.h",
+    "sha256": "0b4dc051455d54ad1a7fcc90b80428358ab17deb23c05a5ef9773d117a31ba03",
+    "bytes": 3124
+  },
+  {
+    "file": "libc_include_sys_sysconf.h",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/sys/sysconf.h",
+    "sha256": "e2a5d11f869b7c4e36857768d286e077f983d5379ab2e9fae2e36b5866ec1bd4",
+    "bytes": 5274
+  },
+  {
+    "file": "libc_stdlib_tolower_.c",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/stdlib/tolower_.c",
+    "sha256": "e5eb40c8c10fb8699e14299470150f1bad38f67171d18571550e7d97d10af702",
+    "bytes": 1979
+  },
+  {
+    "file": "libc_stdlib_toupper_.c",
+    "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/stdlib/toupper_.c",
+    "sha256": "ee1c490495a77ae8565c7fd17fb33d45e21a9102c4d633ea50f456851c76895f",
+    "bytes": 1981
+  }
+]

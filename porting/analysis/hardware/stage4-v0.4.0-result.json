@@ -1,0 +1,29 @@
+{
+  "version": "0.4.0",
+  "hardware_tested": true,
+  "result": "STAGE 4 PASSED",
+  "device": "New Nintendo 3DS family",
+  "backend": "Luma3DS native RX",
+  "launch_method": "CIA via HOME Menu",
+  "asset_bytes": 3568,
+  "asset_crc32": "4a8d9499",
+  "seek_and_eof": "MATCH",
+  "android_errno_checks": [
+    9,
+    2,
+    30
+  ],
+  "constructor_marker": 42,
+  "active_handles_after_probe": 0,
+  "cleanup": "OK",
+  "donor_bindings": {
+    "resolved": 5,
+    "missing": 383,
+    "weak_zero": 4,
+    "image_unchanged": true
+  },
+  "game_functions_called": false,
+  "constructors_called": false,
+  "evidence": "User supplied full log; workspace file copied without changes",
+  "log_sha256": "8386425a295cca1a85b5007cccb1b74af982d1c46ad026926c91d88a3c937913"
+}

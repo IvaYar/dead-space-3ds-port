@@ -1,0 +1,13 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "renderer": "Software",
+  "game_runtime": false,
+  "hardware_tested": false,
+  "stage": 8,
+  "format": "cxi",
+  "case": "ready",
+  "expected_status_found": true,
+  "log": "analysis\\azahar-smoke\\azahar\\sdmc\\3ds\\deadspace\\stage8-v0.8.0-log.txt",
+  "frames": 31,
+  "elapsed_seconds": 0.156
+}

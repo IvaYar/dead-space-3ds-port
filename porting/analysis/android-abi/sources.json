@@ -1,0 +1,30 @@
+{
+  "upstream": "AOSP bionic android-4.0.4_r2",
+  "files": [
+    {
+      "file": "libc_include_sys_types.h",
+      "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/include/sys/types.h",
+      "sha256": "0c1d6e4975b4d0c2305eeaf90426b90be67e95bc8fd17604097aa2e0fbb0cb4b"
+    },
+    {
+      "file": "libc_kernel_arch-arm_asm_fcntl.h",
+      "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/kernel/arch-arm/asm/fcntl.h",
+      "sha256": "51628a6fd51f86cdeec3d140962b6a8024801a2f09087b10f895cd113efaf71c"
+    },
+    {
+      "file": "libc_kernel_arch-arm_asm_posix_types.h",
+      "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/kernel/arch-arm/asm/posix_types.h",
+      "sha256": "f96e5519b0240827c414e5c51d31bd0bb337e86f63d0552a3cf22e96a3bfb798"
+    },
+    {
+      "file": "libc_kernel_common_asm-generic_errno-base.h",
+      "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/kernel/common/asm-generic/errno-base.h",
+      "sha256": "78eccdec8b2d0aebedae38b346801a5e7c70938bb4b6333cd9f45b0b25c40789"
+    },
+    {
+      "file": "libc_kernel_common_asm-generic_fcntl.h",
+      "source": "https://android.googlesource.com/platform/bionic/+/android-4.0.4_r2/libc/kernel/common/asm-generic/fcntl.h",
+      "sha256": "f6129a52ce1b47e41f8c8738abb48ebb2e230d1ced38b1ae0e36933533fa6140"
+    }
+  ]
+}

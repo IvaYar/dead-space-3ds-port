@@ -1,0 +1,1713 @@
+{
+  "mode": "computer-only execution audit",
+  "emulator": "Unicorn ARM11 MPCore",
+  "hardware_tested": false,
+  "donor_sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb",
+  "gameplay": false,
+  "unknown_import_policy": "stop before execution; no success stubs",
+  "core_sha256": "4bd61e5b070ef986057314e80d610d6fc817dbdf1ed2baa6c53ed0f85b408725",
+  "phases": [
+    {
+      "name": "donor constructors",
+      "return_r0": "00000000"
+    },
+    {
+      "name": "JNI_OnLoad",
+      "return_r0": "00010004"
+    },
+    {
+      "name": "NativeOnCreate",
+      "return_r0": "00000001"
+    },
+    {
+      "name": "NativeOnSurfaceCreated",
+      "return_r0": "0600a000"
+    },
+    {
+      "name": "NativeOnSurfaceChanged",
+      "return_r0": "00000000"
+    },
+    {
+      "name": "NativeOnDrawFrame[1]",
+      "return_r0": "14400f5c"
+    },
+    {
+      "name": "orientation pump[1]",
+      "return_r0": "0600a000"
+    }
+  ],
+  "verified_asset_cache_available": true,
+  "arena_capacity_bytes": {
+    "break": 20971520,
+    "anonymous_mappings": 20971520
+  },
+  "production_preflight": {
+    "resolved": 152,
+    "missing": 236,
+    "weak_zero": 4,
+    "image_unchanged": true
+  },
+  "emulator_services": {
+    "clock": "host process CPU microseconds; excluded from production supported count",
+    "native_clock": "host realtime/monotonic; Android conversion runs in ARM code"
+  },
+  "audit_stack_canary_storage": "0x5e0f000",
+  "stop_trap_imports": [
+    "glGetPointerv",
+    "glTranslatex",
+    "glCompressedTexSubImage2D",
+    "glDrawArrays",
+    "glPointSize",
+    "glLightxv",
+    "glSampleCoverage",
+    "glBindBuffer",
+    "connect",
+    "glTexParameteriv",
+    "exit",
+    "glPointSizePointerOES",
+    "glGetRenderbufferParameterivOES",
+    "glFramebufferTexture2DOES",
+    "glFrontFace",
+    "__cxa_pure_virtual",
+    "glGetBooleanv",
+    "glDrawTexfOES",
+    "glDepthRangex",
+    "glColorMask",
+    "glAlphaFunc",
+    "abort",
+    "glLoadMatrixx",
+    "glRotatex",
+    "glLightf",
+    "glClear",
+    "glDisable",
+    "glViewport",
+    "freeaddrinfo",
+    "glDrawTexsvOES",
+    "fork",
+    "glFogf",
+    "glGenRenderbuffersOES",
+    "glPointSizex",
+    "glGetLightfv",
+    "glTexImage2D",
+    "glIsRenderbufferOES",
+    "glPointParameterf",
+    "glGenerateMipmapOES",
+    "glPointParameterxv",
+    "glMultiTexCoord4x",
+    "glTexEnviv",
+    "glDrawTexxvOES",
+    "glTexGenxvOES",
+    "getpeername",
+    "glReadPixels",
+    "glGenBuffers",
+    "fcntl",
+    "glPixelStorei",
+    "shutdown",
+    "glGetLightxv",
+    "glDrawTexivOES",
+    "glTexGenfOES",
+    "glSampleCoveragex",
+    "glClearDepthx",
+    "glGetError",
+    "glMaterialx",
+    "poll",
+    "glActiveTexture",
+    "glGetTexGenxvOES",
+    "glMultMatrixf",
+    "glPointParameterfv",
+    "glCheckFramebufferStatusOES",
+    "glDepthMask",
+    "glTexEnvxv",
+    "send",
+    "glDisableClientState",
+    "glPolygonOffsetx",
+    "glTexParameterf",
+    "glGetTexGenivOES",
+    "glBlendEquationSeparateOES",
+    "glGetString",
+    "glEnableClientState",
+    "rmdir",
+    "glDepthFunc",
+    "glBindFramebufferOES",
+    "glTexParameterxv",
+    "__stack_chk_fail",
+    "glMatrixIndexPointerOES",
+    "glMapBufferOES",
+    "getsockopt",
+    "glTexGenfvOES",
+    "glWeightPointerOES",
+    "glFogx",
+    "recv",
+    "glBlendFunc",
+    "pthread_attr_setstack",
+    "glGetTexParameterfv",
+    "ftruncate",
+    "glCurrentPaletteMatrixOES",
+    "glNormal3f",
+    "glRenderbufferStorageOES",
+    "glColor4f",
+    "glIsTexture",
+    "listen",
+    "glClearDepthf",
+    "glTexEnvx",
+    "unlink",
+    "pthread_getattr_np",
+    "glCopyTexImage2D",
+    "glScissor",
+    "glDeleteRenderbuffersOES",
+    "glEnable",
+    "write",
+    "glStencilMask",
+    "glGetIntegerv",
+    "longjmp",
+    "glHint",
+    "glMaterialf",
+    "glGetBufferPointervOES",
+    "glDrawElements",
+    "glStencilFunc",
+    "glColorPointer",
+    "glTexParameterx",
+    "glGetTexEnvxv",
+    "glVertexPointer",
+    "glOrthox",
+    "fsync",
+    "glFogxv",
+    "glMultMatrixx",
+    "getsockname",
+    "glEGLImageTargetRenderbufferStorageOES",
+    "glTexEnvi",
+    "glGetTexParameterxv",
+    "glLoadPaletteFromModelViewMatrixOES",
+    "glOrthof",
+    "glGetMaterialxv",
+    "glGetClipPlanef",
+    "glDrawTexsOES",
+    "glGetFixedv",
+    "glStencilOp",
+    "glClipPlanex",
+    "glGetMaterialfv",
+    "glBindTexture",
+    "glBufferData",
+    "glGetTexGenfvOES",
+    "glDrawTexiOES",
+    "glBufferSubData",
+    "glNormal3x",
+    "glLoadIdentity",
+    "glCullFace",
+    "glUnmapBufferOES",
+    "glGetTexParameteriv",
+    "glDeleteTextures",
+    "getcwd",
+    "glColor4x",
+    "waitpid",
+    "glTexParameteri",
+    "glTexEnvf",
+    "glMatrixMode",
+    "glGenTextures",
+    "glIsEnabled",
+    "glFrustumx",
+    "glFlush",
+    "mkdir",
+    "glLightModelf",
+    "readdir_r",
+    "closedir",
+    "glClipPlanef",
+    "glDepthRangef",
+    "glClearColor",
+    "execv",
+    "utime",
+    "glClearColorx",
+    "glCopyTexSubImage2D",
+    "sendto",
+    "glTexParameterfv",
+    "bind",
+    "setsockopt",
+    "glColor4ub",
+    "glIsBuffer",
+    "glScalef",
+    "socket",
+    "opendir",
+    "glLineWidthx",
+    "glMaterialxv",
+    "glTranslatef",
+    "glEGLImageTargetTexture2DOES",
+    "glPushMatrix",
+    "setjmp",
+    "glGetTexEnviv",
+    "glPolygonOffset",
+    "glLoadMatrixf",
+    "chmod",
+    "glGetClipPlanex",
+    "glFramebufferRenderbufferOES",
+    "glShadeModel",
+    "glTexSubImage2D",
+    "readdir",
+    "glBindRenderbufferOES",
+    "glScalex",
+    "recvfrom",
+    "glNormalPointer",
+    "glLightx",
+    "glDeleteFramebuffersOES",
+    "getaddrinfo",
+    "glGetFloatv",
+    "glQueryMatrixxOES",
+    "glFogfv",
+    "glLightModelxv",
+    "glRotatef",
+    "glMultiTexCoord4f",
+    "glLightfv",
+    "glTexGenxOES",
+    "glBlendEquationOES",
+    "accept",
+    "glDrawTexxOES",
+    "glDeleteBuffers",
+    "glLineWidth",
+    "glGenFramebuffersOES",
+    "glIsFramebufferOES",
+    "glPointParameterx",
+    "glGetTexEnvfv",
+    "glPopMatrix",
+    "glLightModelfv",
+    "glGetBufferParameteriv",
+    "glCompressedTexImage2D",
+    "glClearStencil",
+    "glFrustumf",
+    "chdir",
+    "system",
+    "glGetFramebufferAttachmentParameterivOES",
+    "glTexGenivOES",
+    "glLightModelx",
+    "glAlphaFuncx",
+    "glDrawTexfvOES",
+    "glTexEnvfv",
+    "glMaterialfv",
+    "glTexCoordPointer",
+    "glLogicOp",
+    "glBlendFuncSeparateOES",
+    "glClientActiveTexture",
+    "glFinish",
+    "glTexGeniOES"
+  ],
+  "constructor_entries": 209,
+  "arena_operations": [
+    {
+      "api": "sbrk",
+      "args": [
+        "00000000",
+        "01000000",
+        "01000000",
+        "00001000"
+      ],
+      "return": "12000000"
+    },
+    {
+      "api": "sbrk",
+      "args": [
+        "01001000",
+        "12000000",
+        "00000000",
+        "00345b24"
+      ],
+      "return": "12000000"
+    },
+    {
+      "api": "mmap",
+      "args": [
+        "00000000",
+        "01001000",
+        "00000003",
+        "00000022",
+        "ffffffff",
+        "00000000"
+      ],
+      "return": "13400000"
+    }
+  ],
+  "constructors_completed": 209,
+  "constructors_passed": true,
+  "engine_entry_attempted": true,
+  "verified_jni_quirks": [
+    "Selected SD Query.isContentReady()Z uses CallStaticObjectMethodV; opt-in narrow adapter"
+  ],
+  "orientation_provider": "fixed display; one current-state event when enabled; no physical sensor claims",
+  "jni_bootstrap": {
+    "return": "00010004",
+    "stored_vm_matches": true
+  },
+  "entry_export": "Java_com_ea_blast_MainActivity_NativeOnCreate",
+  "discovery_only_capability_override": "CPU-only capability=1 to discover SDK contract; no native HID implementation or sensor sample claimed",
+  "java_requests": [
+    {
+      "operation": "PushLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PopLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PushLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PopLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PushLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PopLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PushLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/ea/EAIO/EAIO",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetStaticMethodID",
+      "class": "com/ea/EAIO/EAIO",
+      "name": "Startup",
+      "signature": "(Landroid/content/res/AssetManager;)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/ea/blast/MainActivity",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetStaticMethodID",
+      "class": "com/ea/blast/MainActivity",
+      "name": "GetInstance",
+      "signature": "()Lcom/ea/blast/MainActivity;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/MainActivity",
+      "name": "GetInstance",
+      "signature": "()Lcom/ea/blast/MainActivity;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/MainActivity",
+      "name": "getAssets",
+      "signature": "()Landroid/content/res/AssetManager;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/MainActivity",
+      "name": "getAssets",
+      "signature": "()Landroid/content/res/AssetManager;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/EAIO/EAIO",
+      "name": "Startup",
+      "signature": "(Landroid/content/res/AssetManager;)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "java/io/InputStream",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "java/io/InputStream",
+      "name": "read",
+      "signature": "([BII)I",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "java/io/InputStream",
+      "name": "close",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "java/io/InputStream",
+      "name": "skip",
+      "signature": "(J)J",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "android/content/res/AssetManager",
+      "name": "open",
+      "signature": "(Ljava/lang/String;)Ljava/io/InputStream;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "android/content/res/AssetManager",
+      "name": "openFd",
+      "signature": "(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "android/content/res/AssetManager",
+      "name": "list",
+      "signature": "(Ljava/lang/String;)[Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "android/content/res/AssetFileDescriptor",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "android/content/res/AssetFileDescriptor",
+      "name": "getLength",
+      "signature": "()J",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "NativeEAIOStartup returned",
+      "class": "com/ea/EAIO/EAIO",
+      "name": "Startup",
+      "signature": "(Landroid/content/res/AssetManager;)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "NewObject",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetAccelerometerCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetAccelerometerCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetAccelerometerCount",
+      "signature": "1",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "IsBatteryStateAvailable",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "IsBatteryStateAvailable",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "IsBatteryStateAvailable",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetCameraCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetCameraCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetCameraCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetChipset",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetChipset",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetChipset",
+      "signature": "ARM11/PICA200",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetCompassCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetCompassCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetCompassCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetManufacturer",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetManufacturer",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetManufacturer",
+      "signature": "Nintendo",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceModel",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceModel",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceModel",
+      "signature": "New Nintendo 3DS",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceName",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceName",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceName",
+      "signature": "new3ds",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPhoneNumber",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPhoneNumber",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPhoneNumber",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceUniqueId",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceUniqueId",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDeviceUniqueId",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDisplayCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDisplayCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetDisplayCount",
+      "signature": "1",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetGyroscopeCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetGyroscopeCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetGyroscopeCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLocationAvailable",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLocationAvailable",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLocationAvailable",
+      "signature": "false",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetMicrophoneCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetMicrophoneCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetMicrophoneCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetApiLevel",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetApiLevel",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetApiLevel",
+      "signature": "10",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformRawName",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformRawName",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformRawName",
+      "signature": "Nintendo 3DS",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformStdName",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformStdName",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformStdName",
+      "signature": "Android",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformVersion",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformVersion",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPlatformVersion",
+      "signature": "2.3.3",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPhysicalKeyboardCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPhysicalKeyboardCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetPhysicalKeyboardCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetProcessorArchitecture",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetProcessorArchitecture",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetProcessorArchitecture",
+      "signature": "armeabi",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLanguage",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLanguage",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLanguage",
+      "signature": "en",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLocale",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLocale",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetLocale",
+      "signature": "en_US",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTotalRAM",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTotalRAM",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTotalRAM",
+      "signature": "67108864",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTouchPadCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTouchPadCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTouchPadCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTouchScreenCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTouchScreenCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTouchScreenCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTrackBallCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTrackBallCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetTrackBallCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetVibratorCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetVibratorCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetVibratorCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetVirtualKeyboardCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetVirtualKeyboardCount",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PropertyValue",
+      "class": "com/ea/blast/SystemAndroidDelegate",
+      "name": "GetVirtualKeyboardCount",
+      "signature": "0",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PushLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "android/content/res/AssetManager",
+      "name": "open",
+      "signature": "(Ljava/lang/String;)Ljava/io/InputStream;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "AssetManager.open IOException",
+      "class": "android/content/res/AssetManager",
+      "name": "EAMCore.ini",
+      "signature": "",
+      "missing": false,
+      "status": 2
+    },
+    {
+      "operation": "PopLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PushLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "android/content/res/AssetManager",
+      "name": "open",
+      "signature": "(Ljava/lang/String;)Ljava/io/InputStream;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "AssetManager.open IOException",
+      "class": "android/content/res/AssetManager",
+      "name": "eamcore.ini",
+      "signature": "",
+      "missing": false,
+      "status": 2
+    },
+    {
+      "operation": "PopLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/ea/blast/PowerManagerAndroid",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/PowerManagerAndroid",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "NewObject",
+      "class": "com/ea/blast/PowerManagerAndroid",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/PowerManagerAndroid",
+      "name": "ApplyKeepAwake",
+      "signature": "(Z)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PopLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "PushLocalFrame",
+      "class": "",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/PowerManagerAndroid",
+      "name": "ApplyKeepAwake",
+      "signature": "(Z)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/eamobile/Query",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetStaticMethodID",
+      "class": "com/eamobile/Query",
+      "name": "isContentReady",
+      "signature": "()Z",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/eamobile/Query",
+      "name": "isContentReady",
+      "signature": "()Z",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "JNI compatibility",
+      "class": "com/eamobile/Query",
+      "name": "isContentReady",
+      "signature": "ObjectMethodV for boolean",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/ea/blast/GetAppDataDirectoryDelegate",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/GetAppDataDirectoryDelegate",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "NewObject",
+      "class": "com/ea/blast/GetAppDataDirectoryDelegate",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/GetAppDataDirectoryDelegate",
+      "name": "GetAppDataDirectory",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/GetAppDataDirectoryDelegate",
+      "name": "GetExternalStorageDirectory",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/GetAppDataDirectoryDelegate",
+      "name": "GetAppDataDirectory",
+      "signature": "()Ljava/lang/String;",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "NewObject",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetStdOrientation",
+      "signature": "()I",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "SetStdOrientation",
+      "signature": "(I)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetDefaultWidth",
+      "signature": "()I",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetDefaultWidth",
+      "signature": "()I",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetDefaultHeight",
+      "signature": "()I",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetDefaultHeight",
+      "signature": "()I",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetDpiX",
+      "signature": "()F",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetDpiX",
+      "signature": "()F",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetDpiY",
+      "signature": "()F",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "GetDpiY",
+      "signature": "()F",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "SetStdOrientation",
+      "signature": "(I)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
+      "name": "",
+      "signature": "",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "NewObject",
+      "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
+      "name": "<init>",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
+      "name": "OnLifeCycleFocusGained",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "GetMethodID",
+      "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
+      "name": "SetEnabled",
+      "signature": "(Z)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
+      "name": "OnLifeCycleFocusGained",
+      "signature": "()V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/DeviceOrientationHandlerAndroidDelegate",
+      "name": "SetEnabled",
+      "signature": "(Z)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "CallMethod",
+      "class": "com/ea/blast/DisplayAndroidDelegate",
+      "name": "SetStdOrientation",
+      "signature": "(I)V",
+      "missing": false,
+      "status": 0
+    },
+    {
+      "operation": "FindClass",
+      "class": "com/ea/blast/AccelerometerAndroidDelegate",
+      "name": "",
+      "signature": "",
+      "missing": true,
+      "status": 1
+    }
+  ],
+  "frames_returned": 1,
+  "frame_attempt": 2,
+  "stop": {
+    "kind": "unimplemented_java_adapter",
+    "name": "FindClass",
+    "phase": "NativeOnDrawFrame[2]",
+    "pc": "05e0c000",
+    "lr": "0010ac54",
+    "args": [
+      "00134a40",
+      "083f5ed0",
+      "001355d8",
+      "001355d8"
+    ],
+    "request": {
+      "operation": "FindClass",
+      "class": "com/ea/blast/AccelerometerAndroidDelegate",
+      "name": "",
+      "signature": "",
+      "missing": true,
+      "status": 1
+    }
+  },
+  "heap_stats": [
+    5,
+    1,
+    0,
+    0,
+    5,
+    65563,
+    65563,
+    0,
+    0
+  ],
+  "donor_arena_stats": [
+    16781312,
+    16781312,
+    4097,
+    4097,
+    2,
+    1,
+    0,
+    0
+  ],
+  "jni_stats": {
+    "pending_exception": 1,
+    "lookups": 66,
+    "calls": 44,
+    "failures": 3,
+    "live_refs": 13,
+    "peak_refs": 15,
+    "startup_calls": 1
+  },
+  "runtime_calls": {
+    "memset": 18,
+    "pthread_mutexattr_init": 4,
+    "pthread_mutexattr_setpshared": 4,
+    "pthread_mutexattr_settype": 4,
+    "pthread_mutex_init": 4,
+    "pthread_mutexattr_destroy": 4,
+    "pthread_mutex_lock": 1840,
+    "pthread_mutex_unlock": 1840,
+    "sbrk": 2,
+    "mmap": 1,
+    "__aeabi_atexit": 71,
+    "__cxa_atexit": 71,
+    "emulator:clock": 1,
+    "clock": 1,
+    "time": 1,
+    "emulator:native_clock": 3,
+    "__cxa_guard_acquire": 10,
+    "__cxa_guard_release": 10,
+    "__atomic_swap": 23,
+    "memcpy": 11,
+    "sem_init": 8,
+    "emulator:JNI observer": 160,
+    "__atomic_inc": 69,
+    "pthread_self": 62,
+    "__atomic_dec": 64,
+    "calloc": 1,
+    "malloc": 5,
+    "gettimeofday": 2,
+    "memmove": 922,
+    "memcmp": 1122,
+    "open": 2,
+    "emulator:file backend 0": 2,
+    "ceil": 6,
+    "strdup": 4,
+    "strstr": 2,
+    "stat": 2,
+    "__errno": 2
+  }
+}
