@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "Private emulator checkpoint saved only; engine capture not completed",
+  "checkpoint": {
+    "generation": "generation-b75fb91aed5140fb96d351ca64b8b962",
+    "state_bytes": 33257084,
+    "state_sha256": "ea397a16fcfac4f9ab302da7003b4afc3d91e6022728538ef92cfa5daad048a2"
+  },
+  "gameplay": false,
+  "hardware_tested": false,
+  "cxi_sha256": "ffb0be375d0bbef61f1fd58faf0f052a41326d0825995a52eb49cd7cc6a2e8d8"
+}

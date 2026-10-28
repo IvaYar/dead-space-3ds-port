@@ -30,7 +30,7 @@ GLES upload: 2x2 format=1908 required=16 limit=2097152 result=0
 GLES texture probe: OK upload=16 sub=4 readback=4 active=0
 GLES pipeline probe: OK cull=2 alpha=2 blend=4 typed=1
 Graphics budget: texture names=32 bytes=6291456
-Stack query: sp=0803d478 result=00000000 base=08000000 size=0772e000 perm=3
+Stack query: sp=0803d478 result=00000000 base=08000000 size=0772c000 perm=3
 GLES context bindings: 99; bounded CPU triangle renderer
 FS private open: appdata:/fd-probe.bin result=1024
 FS private open: appdata:/fd-probe.bin result=1024
@@ -422,7 +422,7 @@ ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
 ARENA release: munmap bytes=5840896 caller=00253ebc thread=main frame=2
 ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
 ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
-WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=3148
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=3144
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
@@ -1675,9 +1675,9 @@ Frame 120 returned
 PROGRESS FRAME SAVED: frame=120
 Native heap: used=117506168 free=561032; runtime live=2168679 peak=2168679 blocks=18 failures=0
 CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28197 last-us=28197
-CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793200972228000 last-us=1793200972228000
-CLOCK main: kind=1 caller=00246930 id=0 calls=358 first-us=1793200972328000 last-us=1793201101716000
-CLOCK main: kind=1 caller=00360c84 id=0 calls=248 first-us=1793200977538000 last-us=1793201101716000
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793205293756000 last-us=1793205293756000
+CLOCK main: kind=1 caller=00246930 id=0 calls=358 first-us=1793205293855000 last-us=1793205423310000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=248 first-us=1793205299066000 last-us=1793205423310000
 Thread pools: active=6 mutex=32 cond=0 sem=31 keys=0
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
@@ -2253,6 +2253,7 @@ Frame 173 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures/texture_slasher_alt.m3g result=1024
 Frame 174 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=465 triangles=9642 fragments=14858035 samples=5516035
@@ -2320,7 +2321,6 @@ GAME DRAW: caller-offset=003244e0 calls=484 triangles=10118 fragments=15398263 s
 GAME DRAW: caller-offset=003244e0 calls=485 triangles=10186 fragments=15399350 samples=5733350
 JNI PopLocalFrame: . 
 Frame 180 returned
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures/texture_slasher_alt.m3g result=1024
 FIRST GAME FRAME CAPTURED: frame=180 draws=485 fragments=15399350 samples=5733350
 FBO state: objects=0 renderbuffers=0 bytes=0 changes=0 bound=0
 JNI assets: lists=1 names=7 gets=7 sets=0 strings=0 arrays=0
@@ -2331,9 +2331,9 @@ GLES texture stores: names=5 bytes=2097156 uploads=7 patches=0
 Jump contexts: saves=761 restores=0 refusals=0
 Native heap: used=117506168 free=561032; runtime live=2168679 peak=2168679 blocks=18 failures=0
 CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28197 last-us=28197
-CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793200972228000 last-us=1793200972228000
-CLOCK main: kind=1 caller=00246930 id=0 calls=538 first-us=1793200972328000 last-us=1793201134959000
-CLOCK main: kind=1 caller=00360c84 id=0 calls=368 first-us=1793200977538000 last-us=1793201134959000
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793205293756000 last-us=1793205293756000
+CLOCK main: kind=1 caller=00246930 id=0 calls=538 first-us=1793205293855000 last-us=1793205456620000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=368 first-us=1793205299066000 last-us=1793205456620000
 Thread pools: active=6 mutex=32 cond=0 sem=31 keys=0
 Donor arenas: break=16781312 peak=16781312 mapped-pages=9101 map-peak=16927 refusals=0
 JNI checkpoint: pending=0 failures=2 refs=11 frame-depth=0 string-loans=1

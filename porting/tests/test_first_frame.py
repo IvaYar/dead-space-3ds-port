@@ -138,6 +138,16 @@ class DrawTests(gl.GlesTests):
         self.assertEqual(self.pixels(),want);self.assertEqual(self.stats(),(1,2,12,12))
     def test_bilinear_sampling_interpolates_texels(self):
         self.quad();self.texture(True);self.call('glDrawArrays',5,0,4);self.assertEqual(self.pixels()[(1*4+1)*3:(1*4+1)*3+3],bytes((128,64,128)))
+    def test_subsequent_draw_observes_texture_rebind_replacement_and_deletion(self):
+        self.quad();a=self.texture(pixels=bytes((255,0,0,255))*4)
+        def rendered(rgb):
+            self.call('glDrawArrays',5,0,4);self.assertEqual(self.call('glGetError'),0);self.assertEqual(self.pixels(),bytes(rgb)*12)
+        rendered((255,0,0));b=self.texture(pixels=bytes((0,255,0,255))*4);rendered((0,255,0))
+        self.call('glBindTexture',0xde1,a);rendered((255,0,0))
+        self.arm.uc.mem_write(DATA+300,bytes((0,0,255,255))*4)
+        self.call('glTexImage2D',0xde1,0,0x1908,2,2,0,0x1908,0x1401,DATA+300);rendered((0,0,255))
+        self.base.write(RESULT,a);self.call('glDeleteTextures',1,RESULT)
+        self.call('glBindTexture',0xde1,b);rendered((0,255,0))
     def test_repeat_and_clamp_of_outside_coordinates(self):
         self.quad();self.texture();self.floats(DATA+128,(-.25,-.25)*4);self.call('glTexParameteri',0xde1,0x2802,0x2901);self.call('glTexParameteri',0xde1,0x2803,0x2901)
         self.call('glDrawArrays',5,0,4);self.assertEqual(self.pixels(),b'\xff\xff\xff'*12)

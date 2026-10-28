@@ -1,0 +1,20 @@
+{
+  "emulator_only": true,
+  "game_called": false,
+  "cia_produced": false,
+  "title_id": "000400000FDE6300",
+  "citro3d_commit": "9f21cf7b380ce6f9e01a0420f19f0763e5443ca7",
+  "sources_sha256": {
+    "tests\\gpu_probe.c": "1d0309269b34222e25e4463963952237fe18c4ee9097e8b917d518def25a496b",
+    "tests\\gpu_probe.v.pica": "833393921bc04da1e292a97f048d1d71db776fc3d851d9ab2a29f3a08d312714",
+    "tools\\build_gpu_probe.py": "ae26c8aab191633295eb3e8d686e6f3a6cf6e70d686ab2f44307593b72448661",
+    "toolchain\\citro3d\\lib\\libcitro3d.a": "b0e944fdaedda863a6c3d6851e4092a65f09a656d86d6d2eb138542a27319705",
+    "toolchain\\citro3d\\build-manifest.json": "b75ec791873b1319a2d29b4250054975d511ab653dfc276f6963e222316b9e23",
+    "3ds\\build-stage8\\stage8.rsf": "9cbaedd106eb1ddf5ddc7b8e5247e51a19ffa6814be5fbd96020751281cf6cf8"
+  },
+  "outputs_sha256": {
+    "gpu-probe.elf": "4e9e0e190f1b6057eced6f52b6c275b5fb6f4f97bd2120bb319ae028f272898b",
+    "gpu-probe.cxi": "d4c823cbc64390c1a80caccf157607cd0492d0384af62c1cc0e5a1445c9bb24f",
+    "gpu_probe.shbin": "cba9b56f7523a1bbb2a7d7eec53998fa29212dce819a147f50fc8f50f937e036"
+  }
+}

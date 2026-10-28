@@ -1,10 +1,17 @@
 /* Bounded CPU triangles, with opt-in FBO, fog and texture combiners.
- * Lighting and unsupported mipmap sampling still stop explicitly. */
+ * Optional per-vertex lighting; unsupported mipmap sampling stops explicitly. */
 #include "ds13_gles.h"
 #include "ds_runtime.h"
+#include "ds34_gpu.h"
 #include <math.h>
 #include <string.h>
-typedef struct {float p[4],color[4],tex[2][4],fog_factor;} Vertex;
+typedef struct {float p[4],color[4],back_color[4],tex[2][4],fog_factor;} Vertex;
+/* Direct-mapped, per-draw scratch. Array storage and GL state are immutable
+ * during a serialized draw; no cache survives a subsequent API call. */
+typedef struct {uint32_t index;Vertex vertex;float primary[4];} VertexCache;
+#define VERTEX_CACHE 64
+void ds22_vertex_trace(DS13Context *,uint32_t,const float *,const float *,const float *,float) __attribute__((weak));
+void ds22_pixel_trace(DS13Context *,unsigned,unsigned,const float *,const float *,const float *) __attribute__((weak));
 static float clamp(float x){return x<0?0:x>1?1:x;}
 static DS22State *state(DS13Context *c){
     if(!c->draw){DS22State *s=ds_rt_calloc(1,sizeof(*s));if(!s){ds13_error(0x505);return NULL;}for(unsigned i=0;i<4;++i)s->color[i]=1;s->env_mode[0]=s->env_mode[1]=0x2100;c->draw=s;}return c->draw;
@@ -17,7 +24,8 @@ int ds22_client_range(DS13Context *c,const void *p,uint32_t n){return ds14_clien
 int ds22_real(DS13Context *c,uint32_t name,float out[16]){if(name!=0xb00)return 0;for(unsigned i=0;i<4;++i)out[i]=c->draw?c->draw->color[i]:1;return 4;}
 static void DS13_SOFT color(float r,float g,float b,float a){
     DS13Context *c=ds13_active_context();if(!c)return;if(isnan(r)||isnan(g)||isnan(b)||isnan(a)){ds13_error(0x501);return;}
-    DS22State *s=state(c);if(s){s->color[0]=clamp(r);s->color[1]=clamp(g);s->color[2]=clamp(b);s->color[3]=clamp(a);}
+    if(c->lighting_state && (!isfinite(r)||!isfinite(g)||!isfinite(b)||!isfinite(a))){ds13_error(0x501);return;}
+    DS22State *s=state(c);if(s){float color[4]={r,g,b,a};for(unsigned i=0;i<4;++i)s->color[i]=c->lighting_state?color[i]:clamp(color[i]);ds32_track(c,s->color);}
 }
 static void DS13_SOFT color_x(int32_t r,int32_t g,int32_t b,int32_t a){color(r/65536.0f,g/65536.0f,b/65536.0f,a/65536.0f);}
 static void DS13_SOFT color_b(uint8_t r,uint8_t g,uint8_t b,uint8_t a){color(r/255.0f,g/255.0f,b/255.0f,a/255.0f);}
@@ -69,28 +77,46 @@ static int index_at(DS13Context *c,const void *indices,uint32_t type,uint32_t i,
 static int attribute(DS13Context *c,unsigned slot,uint32_t index,float out[4]){
     uint8_t packed[16];DS14Array *a=&c->vertex.arrays[slot];if(ds14_read_array(&c->vertex,slot,index,packed,sizeof(packed))<0)return -1;
     for(unsigned i=0;i<a->size;++i){float v;switch(a->type){
-        case 0x1400:v=(int8_t)packed[i];break;case 0x1401:v=packed[i]/255.0f;break;
-        case 0x1402:{int16_t x;memcpy(&x,packed+i*2,2);v=x;break;}
+        case 0x1400:v=slot==1?(2.0f*(int8_t)packed[i]+1)/255:(int8_t)packed[i];break;case 0x1401:v=packed[i]/255.0f;break;
+        case 0x1402:{int16_t x;memcpy(&x,packed+i*2,2);v=slot==1?(2.0f*x+1)/65535:x;break;}
         case 0x1406:memcpy(&v,packed+i*4,4);break;
         case 0x140c:{int32_t x;memcpy(&x,packed+i*4,4);v=x/65536.0f;break;}
         default:return -1;
     }if(!isfinite(v))return -1;out[i]=v;}return 0;
 }
-static int vertex(DS13Context *c,uint32_t index,Vertex *v){
+static int vertex(DS13Context *c,uint32_t index,Vertex *v,float primary[4],int trace){
     float p[4]={0,0,0,1},eye[4];if(attribute(c,0,index,p))return -1;ds21_transform(c,0x1700,0,p,eye);ds21_transform(c,0x1701,0,eye,v->p);
     if(c->fog && !isfinite(eye[2]))return -1;
     v->fog_factor=c->fog?ds30_factor(c->fog_state,eye[2]):1;
     DS22State *s=c->draw;memcpy(v->color,s->color,16);
     if(c->vertex.arrays[2].enabled && attribute(c,2,index,v->color))return -1;
+    memcpy(primary,v->color,16);
+    if(c->pipeline.lighting){float normal[4]={c->lighting_state->normal[0],c->lighting_state->normal[1],c->lighting_state->normal[2],0};
+        if(c->vertex.arrays[1].enabled && attribute(c,1,index,normal))return -1;
+        if(ds32_vertex(c,eye,normal,v->color,v->color,v->back_color))return -1;
+    }else{ds32_track(c,v->color);memcpy(v->back_color,v->color,16);}
     for(unsigned u=0;u<2;++u){float t[4]={0,0,0,1};if(c->vertex.arrays[3+u].enabled && attribute(c,3+u,index,t))return -1;ds21_transform(c,0x1702,u,t,v->tex[u]);}
     for(unsigned i=0;i<4;++i){if(!isfinite(v->p[i]) || !isfinite(v->color[i]))return -1;v->color[i]=clamp(v->color[i]);for(unsigned u=0;u<2;++u)if(!isfinite(v->tex[u][i]))return -1;}
+    if(trace && ds22_vertex_trace)ds22_vertex_trace(c,index,eye,v->p,v->color,v->fog_factor);
     return 0;
 }
+static int cached_vertex(DS13Context *c,VertexCache *cache,uint32_t index,Vertex *out,int trace){
+    VertexCache *entry=&cache[index&(VERTEX_CACHE-1)];
+    if(entry->index!=index){
+        if(vertex(c,index,&entry->vertex,entry->primary,trace))return -1;
+        entry->index=index;
+    }else{
+        /* Even a reused vertex updates the tracked current material. The
+         * source color, not its lit/clamped result, is the tracked value. */
+        ds32_track(c,entry->primary);
+    }
+    *out=entry->vertex;return 0;
+}
 static DS15Object *texture(DS13Context *c,unsigned u){uint32_t name=c->texture.binding[u];if(!name)return &c->texture.default_object;for(unsigned i=0;i<DS15_TEXTURES;++i)if(c->texture.textures[i].used && c->texture.textures[i].name==name)return c->texture.textures[i].object;return NULL;}
-static unsigned coord(int x,unsigned size,uint32_t wrap){if(wrap==0x812f)return x<0?0:(unsigned)x>=size?size-1:(unsigned)x;int i=x%(int)size;return (unsigned)(i<0?i+(int)size:i);}
+static unsigned coord(int x,unsigned size,uint32_t wrap){if(wrap==0x812f)return x<0?0:(unsigned)x>=size?size-1:(unsigned)x;if(!(size&(size-1)))return (unsigned)x&(size-1);int i=x%(int)size;return (unsigned)(i<0?i+(int)size:i);}
 static void texel(const DS15Level *l,DS15Object *o,int x,int y,float out[4]){const uint8_t *p=l->rgba+(coord(y,l->height,o->wrap_t)*l->width+coord(x,l->width,o->wrap_s))*4;for(unsigned i=0;i<4;++i)out[i]=p[i]/255.0f;}
 static void sample(DS13Context *c,unsigned u,float x,float y,float out[4]){
-    DS15Object *o=texture(c,u);const DS15Level *l=o?&o->levels[0]:NULL;++c->draw->samples;
+    DS15Object *o=c->draw->sampler[u];const DS15Level *l=o?&o->levels[0]:NULL;++c->draw->samples;
     if(!l || !l->defined || !l->width || !l->height || !isfinite(x) || !isfinite(y)){out[0]=out[1]=out[2]=0;out[3]=1;return;}
     /* Reduce large repeated coordinates before conversion to bounded integers. */
     x=o->wrap_s==0x2901?x-floorf(x):clamp(x);y=o->wrap_t==0x2901?y-floorf(y):clamp(y);
@@ -101,7 +127,7 @@ static void sample(DS13Context *c,unsigned u,float x,float y,float out[4]){
 }
 static void shade(DS13Context *c,const float primary[4],const float tex[2][4],float out[4]){
     memcpy(out,primary,16);for(unsigned u=0;u<2;++u)if(c->texture.enabled[u]){float t[4];sample(c,u,tex[u][0]/tex[u][3],tex[u][1]/tex[u][3],t);uint32_t mode=c->draw->env_mode[u];
-        DS15Object *o=texture(c,u);uint32_t format=o?o->levels[0].format:0x1908;
+        DS15Object *o=c->draw->sampler[u];uint32_t format=o?o->levels[0].format:0x1908;
         if(mode==0x8570 && c->draw->combine){ds31_apply(&c->draw->combine->unit[u],primary,out,t,c->draw->env_color[u],out);continue;}
         for(unsigned i=0;i<4;++i){/* ALPHA preserves RGB in ES 1.1 tables 3.15/3.16. */
             if(format==0x1906 && i<3)continue;
@@ -112,14 +138,18 @@ static void shade(DS13Context *c,const float primary[4],const float tex[2][4],fl
 }
 static uint32_t pixel_offset(DS26Surface *t,unsigned x,unsigned y){return (t->layout==DS13_RGB8_ROWS || t->layout==3?y*t->width+x:x*t->height+y)*(t->layout==3?4:t->layout==DS13_RGB565_CTR?2:3);}
 static void fragment(DS13Context *c,unsigned x,unsigned y,const float src[4],float depth){
-    if(!ds16_alpha_pass(&c->pipeline,src[3]))return;
+    if(c->pipeline.alpha && !ds16_alpha_pass(&c->pipeline,src[3]))return;
     DS26Surface *t=&c->draw->target;
-    if((t->depth || t->stencil) && !ds26_fragment(c,t,x,y,depth))return;
+    if(((t->depth && c->pipeline.depth) || (t->stencil && c->pipeline.stencil)) && !ds26_fragment(c,t,x,y,depth))return;
     if(!t->pixels)return;
+    int trace_pixel=ds22_pixel_trace && x==t->width/2 && y==t->height/2;
     uint32_t offset=pixel_offset(t,x,y);uint8_t *p=t->pixels+offset;float dst[4]={0,0,0,1},out[4];
-    if(t->layout==DS13_RGB565_CTR){uint32_t v=p[0]|(uint32_t)p[1]<<8;dst[0]=((v>>11)&31)/31.0f;dst[1]=((v>>5)&63)/63.0f;dst[2]=(v&31)/31.0f;}
-    else for(unsigned i=0;i<(t->layout==3?4u:3u);++i)dst[i]=p[t->layout==DS13_RGB8_ROWS || t->layout==3?i:2-i]/255.0f;
-    ds16_blend(&c->pipeline,c->blend,src,dst,out);
+    if(trace_pixel || c->blend || !c->color_mask[0] || !c->color_mask[1] || !c->color_mask[2] || (t->layout==3 && !c->color_mask[3])){
+        if(t->layout==DS13_RGB565_CTR){uint32_t v=p[0]|(uint32_t)p[1]<<8;dst[0]=((v>>11)&31)/31.0f;dst[1]=((v>>5)&63)/63.0f;dst[2]=(v&31)/31.0f;}
+        else for(unsigned i=0;i<(t->layout==3?4u:3u);++i)dst[i]=p[t->layout==DS13_RGB8_ROWS || t->layout==3?i:2-i]/255.0f;
+    }
+    if(c->blend)ds16_blend(&c->pipeline,1,src,dst,out);else for(unsigned i=0;i<4;++i)out[i]=clamp(src[i]);
+    if(trace_pixel)ds22_pixel_trace(c,x,y,src,dst,out);
     for(unsigned i=0;i<4;++i)if(!c->color_mask[i])out[i]=dst[i];
     if(t->layout==3)ds26_quantize(t,out);
     if(t->layout==DS13_RGB565_CTR){uint32_t v=(uint32_t)lrintf(clamp(out[0])*31)<<11|(uint32_t)lrintf(clamp(out[1])*63)<<5|(uint32_t)lrintf(clamp(out[2])*31);p[0]=(uint8_t)v;p[1]=(uint8_t)(v>>8);}
@@ -131,6 +161,8 @@ static int inclusive(const float a[2],const float b[2]){return b[1]>a[1] || (b[1
 static void raster(DS13Context *c,Vertex a,Vertex b,Vertex d){
     Vertex v[3]={a,b,d};float p[3][2],inv[3];for(unsigned i=0;i<3;++i){if(v[i].p[3]<=0)return;inv[i]=1/v[i].p[3];p[i][0]=c->viewport[0]+(v[i].p[0]*inv[i]+1)*c->viewport[2]*.5f;p[i][1]=c->viewport[1]+(v[i].p[1]*inv[i]+1)*c->viewport[3]*.5f;}
     float area=edge(p[0],p[1],p[2][0],p[2][1]);if(!isfinite(area)||area==0 || ds16_culled(&c->pipeline,area))return;
+    if(c->pipeline.lighting && c->lighting_state->two_side && (c->pipeline.front_face==0x901?area<0:area>0))
+        for(unsigned i=0;i<3;++i)memcpy(v[i].color,v[i].back_color,16);
     if(area<0){Vertex tmp=v[1];v[1]=v[2];v[2]=tmp;for(unsigned j=0;j<2;++j){float f=p[1][j];p[1][j]=p[2][j];p[2][j]=f;}float f=inv[1];inv[1]=inv[2];inv[2]=f;area=-area;}
     DS26Surface *target=&c->draw->target;
     float minx=fmaxf(0,fminf((float)target->width,fminf(p[0][0],fminf(p[1][0],p[2][0])))),maxx=fmaxf(0,fminf((float)target->width,fmaxf(p[0][0],fmaxf(p[1][0],p[2][0]))));
@@ -140,6 +172,14 @@ static void raster(DS13Context *c,Vertex a,Vertex b,Vertex d){
         float dx=((z[1]-z[0])*(p[2][1]-p[0][1])-(z[2]-z[0])*(p[1][1]-p[0][1]))/area;
         float dy=((p[1][0]-p[0][0])*(z[2]-z[0])-(p[2][0]-p[0][0])*(z[1]-z[0]))/area;
         offset=fmaxf(fabsf(dx),fabsf(dy))*c->pipeline.offset_factor+c->pipeline.offset_units/65535.0f;
+    }
+    if(ds34_active && ds34_active(c) && !c->framebuffer_binding){
+        DS34Vertex packed[3];for(unsigned i=0;i<3;++i){
+            packed[i].p[0]=p[i][0]*v[i].p[3];packed[i].p[1]=p[i][1]*v[i].p[3];packed[i].p[2]=(z[i]+offset)*v[i].p[3];packed[i].p[3]=v[i].p[3];
+            memcpy(packed[i].color,v[i].color,16);memcpy(packed[i].tex,v[i].tex,32);
+        }
+        if(ds34_triangle(c,packed)>0)++c->draw->triangles;
+        return;
     }
     int x0=(int)ceilf(minx-.5f),x1=(int)floorf(maxx-.5f),y0=(int)ceilf(miny-.5f),y1=(int)floorf(maxy-.5f);
     for(int y=y0;y<=y1;++y)for(int x=x0;x<=x1;++x){if(c->scissor_test && (x<c->scissor[0] || y<c->scissor[1] || (int64_t)x>=(int64_t)c->scissor[0]+c->scissor[2] || (int64_t)y>=(int64_t)c->scissor[1]+c->scissor[3]))continue;
@@ -157,10 +197,10 @@ static void raster(DS13Context *c,Vertex a,Vertex b,Vertex d){
 static float plane(Vertex *v,unsigned p){return v->p[3]+(p&1?-v->p[p/2]:v->p[p/2]);}
 static void triangle(DS13Context *c,Vertex a,Vertex b,Vertex d){
     Vertex poly[12]={a,b,d},tmp[12];unsigned n=3;
-    if(c->pipeline.shade==0x1d00){memcpy(poly[0].color,d.color,16);memcpy(poly[1].color,d.color,16);}
+    if(c->pipeline.shade==0x1d00){memcpy(poly[0].color,d.color,16);memcpy(poly[1].color,d.color,16);memcpy(poly[0].back_color,d.back_color,16);memcpy(poly[1].back_color,d.back_color,16);}
     for(unsigned p=0;p<6 && n;++p){unsigned count=0;for(unsigned i=0;i<n;++i){Vertex *x=&poly[i],*y=&poly[(i+1)%n];float dx=plane(x,p),dy=plane(y,p);
         if(dx>=0)tmp[count++]=*x;
-        if((dx>=0)!=(dy>=0)){float t=dx/(dx-dy);Vertex *r=&tmp[count++];r->fog_factor=x->fog_factor+(y->fog_factor-x->fog_factor)*t;for(unsigned j=0;j<4;++j){r->p[j]=x->p[j]+(y->p[j]-x->p[j])*t;r->color[j]=x->color[j]+(y->color[j]-x->color[j])*t;for(unsigned u=0;u<2;++u)r->tex[u][j]=x->tex[u][j]+(y->tex[u][j]-x->tex[u][j])*t;}}
+        if((dx>=0)!=(dy>=0)){float t=dx/(dx-dy);Vertex *r=&tmp[count++];r->fog_factor=x->fog_factor+(y->fog_factor-x->fog_factor)*t;for(unsigned j=0;j<4;++j){r->p[j]=x->p[j]+(y->p[j]-x->p[j])*t;r->color[j]=x->color[j]+(y->color[j]-x->color[j])*t;r->back_color[j]=x->back_color[j]+(y->back_color[j]-x->back_color[j])*t;for(unsigned u=0;u<2;++u)r->tex[u][j]=x->tex[u][j]+(y->tex[u][j]-x->tex[u][j])*t;}}
     }n=count;memcpy(poly,tmp,n*sizeof(Vertex));}
     for(unsigned i=1;i+1<n;++i)raster(c,poly[0],poly[i],poly[i+1]);
 }
@@ -168,20 +208,25 @@ static void draw(uint32_t mode,int32_t first,int32_t count,uint32_t type,const v
     DS13Context *c=ds13_active_context();if(!c)return;
     if(first<0||count<0||count>65535){ds13_error(0x501);return;}if(mode<4||mode>6){ds13_unsupported("primitive mode unsupported",mode);return;}
     if(indexed && type!=0x1401 && type!=0x1403){ds13_error(0x500);return;}if(!count || !c->vertex.arrays[0].enabled)return;
-    if((c->fog && !c->fog_state) || c->pipeline.lighting){ds13_unsupported("lit/fog draw unsupported",c->fog?0xb60:0xb50);return;}
+    if((c->fog && !c->fog_state) || (c->pipeline.lighting && !c->lighting_state)){ds13_unsupported("lit/fog draw unsupported",c->fog?0xb60:0xb50);return;}
+    if(c->pipeline.lighting && ds32_prepare(c)){ds13_unsupported("singular lighting modelview unsupported",0x1700);return;}
     DS22State *s=state(c);if(!s)return;
+    for(unsigned u=0;u<2;++u)s->sampler[u]=c->texture.enabled[u]?texture(c,u):NULL;
     if(ds26_surface(c,&s->target))return;
-    for(unsigned u=0;u<2;++u)if(c->texture.enabled[u]){DS15Object *o=texture(c,u);
+    for(unsigned u=0;u<2;++u)if(c->texture.enabled[u]){DS15Object *o=s->sampler[u];
         if(o && o->levels[0].defined && ds15_resident(&c->texture,o,0))return;
         if(c->framebuffer_binding && s->target.pixels && o && o->levels[0].rgba==s->target.pixels){ds13_unsupported("framebuffer texture feedback unsupported",c->texture.binding[u]);return;}}
-    for(unsigned u=0;u<2;++u)if(c->texture.enabled[u]){DS15Object *o=texture(c,u);if(o && (o->min_filter>=0x2700 || o->min_filter!=o->mag_filter)){ds13_unsupported("mipmap or distinct min/mag sampling unsupported",o->min_filter);return;}}
+    for(unsigned u=0;u<2;++u)if(c->texture.enabled[u]){DS15Object *o=s->sampler[u];if(o && (o->min_filter>=0x2700 || o->min_filter!=o->mag_filter)){ds13_unsupported("mipmap or distinct min/mag sampling unsupported",o->min_filter);return;}}
     /* Validate all referenced attributes before changing any target pixel. */
-    for(int32_t i=0;i<count;++i){uint32_t index=(uint32_t)first+(uint32_t)i;Vertex v;if((indexed && index_at(c,indices,type,(uint32_t)i,&index)) || vertex(c,index,&v)){ds13_unsupported("unreadable draw arrays",i);return;}}
-    Vertex v[3];for(int32_t i=0;i<count;++i){uint32_t index=(uint32_t)first+(uint32_t)i;if(indexed)index_at(c,indices,type,(uint32_t)i,&index);Vertex next;vertex(c,index,&next);
+    VertexCache cache[VERTEX_CACHE];for(unsigned i=0;i<VERTEX_CACHE;++i)cache[i].index=UINT32_MAX;
+    for(int32_t i=0;i<count;++i){uint32_t index=(uint32_t)first+(uint32_t)i;Vertex v;if((indexed && index_at(c,indices,type,(uint32_t)i,&index)) || cached_vertex(c,cache,index,&v,i==0)){ds13_unsupported("unreadable draw arrays",i);return;}}
+    int gpu=ds34_begin_draw?ds34_begin_draw(c):0;if(gpu<0)return;
+    Vertex v[3];for(int32_t i=0;i<count;++i){uint32_t index=(uint32_t)first+(uint32_t)i;if(indexed)index_at(c,indices,type,(uint32_t)i,&index);Vertex next;cached_vertex(c,cache,index,&next,0);
         if(mode==4){v[i%3]=next;if(i%3==2)triangle(c,v[0],v[1],v[2]);}
         else if(i<2)v[i]=next;
         else{if(mode==5 && (i&1))triangle(c,v[1],v[0],next);else triangle(c,v[0],v[1],next);if(mode==5)v[0]=v[1];v[1]=next;}
-    }++s->calls;if(s->observe)s->observe(c,caller);
+    }if(gpu)ds34_end_draw(c);else if(c->framebuffer_binding)ds34_fbo_dirty(c);
+    ++s->calls;if(s->observe)s->observe(c,caller);
 }
 static void DS13_SOFT draw_arrays(uint32_t mode,int32_t first,int32_t count){draw(mode,first,count,0,NULL,0,(uint32_t)__builtin_return_address(0));}
 static void DS13_SOFT draw_elements(uint32_t mode,int32_t count,uint32_t type,const void *indices){draw(mode,0,count,type,indices,1,(uint32_t)__builtin_return_address(0));}

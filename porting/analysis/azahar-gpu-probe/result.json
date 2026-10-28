@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "PICA foundation only; original game not accelerated yet",
+  "hardware_tested": false,
+  "frames": 16,
+  "center_rgb": [
+    127,
+    64,
+    65
+  ],
+  "elapsed_seconds": 0.188,
+  "cxi_sha256": "d4c823cbc64390c1a80caccf157607cd0492d0384af62c1cc0e5a1445c9bb24f",
+  "raw_sha256": "129ab4c716c23b1faae554d8190a32ef689016fdbe63c0d11fa09d05f1bdf7f9",
+  "png_sha256": "f219023edf853ed9de7a47e384e49c653e5af3b09707376cfe1ae795a97fc2cf",
+  "emulator_sd_isolated": true
+}

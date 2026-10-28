@@ -1,0 +1,46 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "graphics",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "first_game_frame_rendered": true,
+  "exploratory": true,
+  "checkpoint_validated": false,
+  "cpu_percent": 400,
+  "resume_focus": true,
+  "touch_attached": true,
+  "tap_events": [
+    [
+      2300,
+      160,
+      134
+    ],
+    [
+      2600,
+      284,
+      225
+    ]
+  ],
+  "tap_frame": 0,
+  "private_files": true,
+  "capture_frame": 2605,
+  "apk_assets": true,
+  "donor_arena_mib": [
+    128
+  ],
+  "shared_arena": true,
+  "framebuffers": true,
+  "memory_mib": 178,
+  "font_subset": true,
+  "allocator_compat": true,
+  "fog": true,
+  "combine": true,
+  "lighting": true,
+  "default_depth": true,
+  "frames": 72991,
+  "elapsed_seconds": 528.844,
+  "cxi_sha256": "1466174a5c77c49c59d53fbe10f0309a288b71b7078d8e05e5f22dce15bc8487",
+  "log_sha256": "f0310ab20e02de677752a93a10345f74db04aef16661f3f0ed1d5900485cf2cb",
+  "log": "analysis/azahar-smoke/engine-lighting2605-depth-first.log"
+}

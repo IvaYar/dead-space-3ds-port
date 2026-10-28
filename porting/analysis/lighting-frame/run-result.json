@@ -1,0 +1,46 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "graphics",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "first_game_frame_rendered": true,
+  "exploratory": true,
+  "checkpoint_validated": false,
+  "cpu_percent": 400,
+  "resume_focus": true,
+  "touch_attached": true,
+  "tap_events": [
+    [
+      2300,
+      160,
+      134
+    ],
+    [
+      2600,
+      284,
+      225
+    ]
+  ],
+  "tap_frame": 0,
+  "private_files": true,
+  "capture_frame": 2605,
+  "apk_assets": true,
+  "donor_arena_mib": [
+    128
+  ],
+  "shared_arena": true,
+  "framebuffers": true,
+  "memory_mib": 178,
+  "font_subset": true,
+  "allocator_compat": true,
+  "fog": true,
+  "combine": true,
+  "lighting": true,
+  "default_depth": true,
+  "frames": 73036,
+  "elapsed_seconds": 521.172,
+  "cxi_sha256": "5ae2683d4870290eb3de0d1a3c8f6ba830e15c9e43b41e1feba64fdc10c88fcf",
+  "log_sha256": "280a6e54af46f78af56f152068305f851da86bb2ab16cadee96449496e50f511",
+  "log": "analysis\\azahar-smoke\\engine-graphics-explore.log"
+}

@@ -30,7 +30,7 @@ GLES upload: 2x2 format=1908 required=16 limit=2097152 result=0
 GLES texture probe: OK upload=16 sub=4 readback=4 active=0
 GLES pipeline probe: OK cull=2 alpha=2 blend=4 typed=1
 Graphics budget: texture names=32 bytes=6291456
-Stack query: sp=0803d478 result=00000000 base=08000000 size=0772e000 perm=3
+Stack query: sp=0803d478 result=00000000 base=08000000 size=0772c000 perm=3
 GLES context bindings: 99; bounded CPU triangle renderer
 FS private open: appdata:/fd-probe.bin result=1024
 FS private open: appdata:/fd-probe.bin result=1024
@@ -1675,11 +1675,11 @@ GAME DRAW: caller-offset=003244e0 calls=305 triangles=5506 fragments=10296650 sa
 JNI PopLocalFrame: . 
 Frame 120 returned
 PROGRESS FRAME SAVED: frame=120
-Native heap: used=117506168 free=561032; runtime live=2168679 peak=2168679 blocks=18 failures=0
+Native heap: used=117506712 free=560488; runtime live=2168679 peak=2168679 blocks=18 failures=0
 CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28197 last-us=28197
-CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793201290077000 last-us=1793201290077000
-CLOCK main: kind=1 caller=00246930 id=0 calls=358 first-us=1793201290176000 last-us=1793201419648000
-CLOCK main: kind=1 caller=00360c84 id=0 calls=248 first-us=1793201295387000 last-us=1793201419648000
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793205319783000 last-us=1793205319783000
+CLOCK main: kind=1 caller=00246930 id=0 calls=358 first-us=1793205319883000 last-us=1793205449371000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=248 first-us=1793205325093000 last-us=1793205449371000
 Thread pools: active=6 mutex=32 cond=0 sem=31 keys=0
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
@@ -2225,6 +2225,7 @@ Frame 170 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures/texture_slasher_alt.m3g result=1024
 Frame 171 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=456 triangles=9408 fragments=14602900 samples=5422900
@@ -2245,7 +2246,6 @@ Frame 172 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures/texture_slasher_alt.m3g result=1024
 Frame 173 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=462 triangles=9564 fragments=14772990 samples=5484990
@@ -2915,6 +2915,7 @@ Frame 235 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures_uncompressed/texture_hud_pickup_scanlines.m3g result=1024
 Frame 236 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=651 triangles=14478 fragments=20130825 samples=7440825
@@ -2925,7 +2926,6 @@ Frame 236 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures_uncompressed/texture_hud_pickup_scanlines.m3g result=1024
 Frame 237 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=654 triangles=14556 fragments=20215870 samples=7471870
@@ -2946,7 +2946,7 @@ Frame 238 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-WATCH phase=NativeOnDrawFrame frame=238 image=08490000 fs-events=3370
+WATCH phase=NativeOnDrawFrame frame=238 image=08490000 fs-events=3372
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
@@ -2977,11 +2977,11 @@ GAME DRAW: caller-offset=003244e0 calls=665 triangles=14866 fragments=20502050 s
 JNI PopLocalFrame: . 
 Frame 240 returned
 PROGRESS FRAME SAVED: frame=240
-Native heap: used=117505096 free=562104; runtime live=2168679 peak=2168679 blocks=18 failures=0
+Native heap: used=117505640 free=561560; runtime live=2168679 peak=2168679 blocks=18 failures=0
 CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28197 last-us=28197
-CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793201290077000 last-us=1793201290077000
-CLOCK main: kind=1 caller=00246930 id=0 calls=718 first-us=1793201290176000 last-us=1793201486051000
-CLOCK main: kind=1 caller=00360c84 id=0 calls=488 first-us=1793201295387000 last-us=1793201486051000
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793205319783000 last-us=1793205319783000
+CLOCK main: kind=1 caller=00246930 id=0 calls=718 first-us=1793205319883000 last-us=1793205515774000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=488 first-us=1793205325093000 last-us=1793205515774000
 Thread pools: active=6 mutex=32 cond=0 sem=31 keys=0
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
@@ -3006,6 +3006,7 @@ Frame 242 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures/texture_hud_ammo_counter.m3g result=1024
 Frame 243 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=672 triangles=15024 fragments=20726140 samples=7658140
@@ -3016,7 +3017,6 @@ Frame 243 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures/texture_hud_ammo_counter.m3g result=1024
 Frame 244 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=675 triangles=15102 fragments=20811185 samples=7689185
@@ -3147,7 +3147,8 @@ Frame 256 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-WATCH phase=NativeOnDrawFrame frame=256 image=08490000 fs-events=3425
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures_uncompressed/texture_dummy_texture.m3g result=1024
+WATCH phase=NativeOnDrawFrame frame=256 image=08490000 fs-events=3428
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
@@ -3170,7 +3171,6 @@ Frame 257 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/textures_uncompressed/texture_dummy_texture.m3g result=1024
 Frame 258 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=717 triangles=16194 fragments=22001815 samples=8123815
@@ -3201,6 +3201,7 @@ Frame 260 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/particles/blood_spatter_02.bin result=1024
 Frame 261 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=726 triangles=16428 fragments=22256950 samples=8216950
@@ -3211,7 +3212,6 @@ Frame 261 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/particles/blood_spatter_02.bin result=1024
 Frame 262 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=729 triangles=16506 fragments=22341995 samples=8247995
@@ -3242,6 +3242,7 @@ Frame 264 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_spatter_paint_02.m3g result=1024
 Frame 265 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=738 triangles=16740 fragments=22597130 samples=8341130
@@ -3252,7 +3253,6 @@ Frame 265 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_spatter_paint_02.m3g result=1024
 Frame 266 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=741 triangles=16818 fragments=22682175 samples=8372175
@@ -3602,7 +3602,6 @@ Frame 297 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_smoke_cloud_custom_01a.m3g result=1024
 Frame 298 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=837 triangles=19314 fragments=25403615 samples=9365615
@@ -3613,6 +3612,7 @@ Frame 298 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_smoke_cloud_custom_01a.m3g result=1024
 Frame 299 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=840 triangles=19392 fragments=25488660 samples=9396660
@@ -3836,7 +3836,6 @@ Frame 319 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_smoke2.m3g result=1024
 Frame 320 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=903 triangles=21030 fragments=27274605 samples=10048605
@@ -3847,6 +3846,7 @@ Frame 320 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_smoke2.m3g result=1024
 Frame 321 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=906 triangles=21108 fragments=27359650 samples=10079650
@@ -3917,7 +3917,6 @@ Frame 327 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_basic2.m3g result=1024
 Frame 328 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=927 triangles=21654 fragments=27954965 samples=10296965
@@ -3928,6 +3927,7 @@ Frame 328 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_basic2.m3g result=1024
 Frame 329 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=930 triangles=21732 fragments=28040010 samples=10328010
@@ -4011,7 +4011,6 @@ Frame 335 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_cyl_shadowcharge.m3g result=1024
 Frame 336 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=951 triangles=22278 fragments=28635325 samples=10545325
@@ -4022,6 +4021,7 @@ Frame 336 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_cyl_shadowcharge.m3g result=1024
 Frame 337 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=954 triangles=22356 fragments=28720370 samples=10576370
@@ -4052,7 +4052,6 @@ Frame 339 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_GlowDot.m3g result=1024
 Frame 340 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=963 triangles=22590 fragments=28975505 samples=10669505
@@ -4063,6 +4062,7 @@ Frame 340 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_GlowDot.m3g result=1024
 Frame 341 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=966 triangles=22668 fragments=29060550 samples=10700550
@@ -4083,7 +4083,6 @@ Frame 342 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_Burst06.m3g result=1024
 Frame 343 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=972 triangles=22824 fragments=29230640 samples=10762640
@@ -4104,6 +4103,7 @@ Frame 344 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_Burst06.m3g result=1024
 Frame 345 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=978 triangles=22980 fragments=29400730 samples=10824730
@@ -4276,11 +4276,11 @@ JNI PopLocalFrame: .
 Frame 360 returned
 FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/particles/exploder_explosion_24.bin result=1024
 PROGRESS FRAME SAVED: frame=360
-Native heap: used=117505136 free=562064; runtime live=2168679 peak=2168679 blocks=18 failures=0
+Native heap: used=117505680 free=561520; runtime live=2168679 peak=2168679 blocks=18 failures=0
 CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28197 last-us=28197
-CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793201290077000 last-us=1793201290077000
-CLOCK main: kind=1 caller=00246930 id=0 calls=1078 first-us=1793201290176000 last-us=1793201552505000
-CLOCK main: kind=1 caller=00360c84 id=0 calls=728 first-us=1793201295387000 last-us=1793201552505000
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793205319783000 last-us=1793205319783000
+CLOCK main: kind=1 caller=00246930 id=0 calls=1078 first-us=1793205319883000 last-us=1793205582261000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=728 first-us=1793205325093000 last-us=1793205582261000
 Thread pools: active=6 mutex=32 cond=0 sem=31 keys=0
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
@@ -4664,7 +4664,6 @@ Frame 393 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_Burst09.m3g result=1024
 Frame 394 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=1125 triangles=26802 fragments=33567935 samples=12345935
@@ -4675,6 +4674,7 @@ Frame 394 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/ParticleBaseTextures/texture_Burst09.m3g result=1024
 Frame 395 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=1128 triangles=26880 fragments=33652980 samples=12376980
@@ -4735,7 +4735,6 @@ Frame 400 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-Thread event: 4 id=00000706 detail=00000000
 Frame 401 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=1146 triangles=27348 fragments=34163250 samples=12563250
@@ -4746,11 +4745,9 @@ Frame 401 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Thread event: 4 id=00000706 detail=00000000
 Frame 402 begin
 JNI PushLocalFrame: . 
-Thread event: 1 id=00000100 detail=086dc914
-Thread event: 2 id=00000806 detail=086dc914
-Thread event: 3 id=00000806 detail=086dc914
 GAME DRAW: caller-offset=003244e0 calls=1149 triangles=27426 fragments=34248295 samples=12594295
 GAME DRAW: caller-offset=003244e0 calls=1150 triangles=27434 fragments=34278253 samples=12624253
 GAME DRAW: caller-offset=003244e0 calls=1151 triangles=27502 fragments=34279340 samples=12625340
@@ -4761,6 +4758,9 @@ JNI PopLocalFrame: .
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
 Frame 403 begin
 JNI PushLocalFrame: . 
+Thread event: 1 id=00000100 detail=086dc914
+Thread event: 2 id=00000806 detail=086dc914
+Thread event: 3 id=00000806 detail=086dc914
 GAME DRAW: caller-offset=003244e0 calls=1152 triangles=27504 fragments=34333340 samples=12625340
 GAME DRAW: caller-offset=003244e0 calls=1153 triangles=27512 fragments=34363298 samples=12655298
 GAME DRAW: caller-offset=003244e0 calls=1154 triangles=27580 fragments=34364385 samples=12656385
@@ -4769,7 +4769,6 @@ Frame 403 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/data/prototype_env_generic_dynamic_text.sb result=1024
 Frame 404 begin
 JNI PushLocalFrame: . 
 GAME DRAW: caller-offset=003244e0 calls=1155 triangles=27582 fragments=34418385 samples=12656385
@@ -4780,10 +4779,21 @@ Frame 404 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/data/prototype_env_generic_dynamic_text.sb result=1024
 Frame 405 begin
 JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=1158 triangles=27660 fragments=34503430 samples=12687430
+GAME DRAW: caller-offset=003244e0 calls=1159 triangles=27668 fragments=34533388 samples=12717388
+GAME DRAW: caller-offset=003244e0 calls=1160 triangles=27736 fragments=34534475 samples=12718475
+JNI PopLocalFrame: . 
+Frame 405 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 406 begin
+JNI PushLocalFrame: . 
 GLES upload: 256x256 format=1908 required=2359300 limit=6291456 result=0
-GAME DRAW: caller-offset=003244e0 calls=1158 triangles=27660 fragments=34449430 samples=12687430
+GAME DRAW: caller-offset=003244e0 calls=1161 triangles=27738 fragments=34534475 samples=12718475
 STOP unsupported: glGenFramebuffersOES
 Phase: NativeOnDrawFrame
 Caller offset: 00378aec
@@ -4792,9 +4802,9 @@ FBO state: objects=0 renderbuffers=0 bytes=0 changes=0 bound=0
 JNI assets: lists=1 names=7 gets=7 sets=0 strings=0 arrays=0
 JNI strings: new16=1 newUTF=33 get16=7 getUTF=31 regions=0 errors=0
 GLES error at stop: 00000000
-GLES counters: queries=14 clears=0 pixels=34449430 flushes=0
+GLES counters: queries=14 clears=0 pixels=34534475 flushes=0
 GLES texture stores: names=6 bytes=2359300 uploads=8 patches=0
 Jump contexts: saves=761 restores=0 refusals=0
-Sensor shutdown: result=0 active=0 events=403 delay=1
+Sensor shutdown: result=0 active=0 events=404 delay=1
 ENGINE EXPERIMENT STOPPED
 No game frame rendered.

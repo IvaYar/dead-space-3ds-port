@@ -1,0 +1,6 @@
+{
+  "geometry_visible_in_intermediate": true,
+  "final_scene_visible": false,
+  "intermediate_png_sha256": "162e3752999dad9e52d43e6581de99875443e21b83aa5c34b583efb4e8664fd5",
+  "description": "Actual intermediate lit draw: corridor/door/wall lights visible on right; most surface remains black. Completed frame2605 is black. This is not a complete gameplay frame."
+}

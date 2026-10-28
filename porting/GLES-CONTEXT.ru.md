@@ -1,6 +1,6 @@
 # Графический контекст и настоящая очистка framebuffer
 
-**Актуальное продолжение:** [SCENE-RENDERER.ru.md](SCENE-RENDERER.ru.md): настоящее меню, FBO, fog и texture combiners; следующая остановка — освещение `glLightModelfv`. Этот документ сохраняет исторический checkpoint контекста/clear.
+**Актуальное продолжение:** [LIGHTING.ru.md](LIGHTING.ru.md) и [DEFAULT-SURFACE.ru.md](DEFAULT-SURFACE.ru.md).551 ARM-тест, настоящая геометрия коридора в промежуточном кадре; завершённый2605-й кадр чёрный. Этот документ сохраняет исторический checkpoint контекста/clear.
 
 Первый запрос игры `glGetIntegerv(GL_VIEWPORT)` обслуживает действующий контекст с размерами прикреплённой поверхности. В предыдущем checkpoint Unicorn и Azahar проходили запросы активных texture selectors и останавливались на **`glIsEnabled(GL_NORMAL_ARRAY)`**, enum `0x8075`, во втором NativeOnDrawFrame. Ранее этот enum ошибочно назван COLOR_ARRAY; название исправлено. Игрового кадра и меню пока нет.
 

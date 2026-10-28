@@ -1,0 +1,17 @@
+; Basic projected vertex colors. Interface follows devkitPro simple_tri.
+.fvec projection[4]
+.constf values(0.0, 1.0, 0.0, 0.0)
+.out position_out position
+.out color_out color
+.alias position_in v0
+.alias color_in v1
+.proc main
+    mov r0.xyz, position_in
+    mov r0.w, values.y
+    dp4 position_out.x, projection[0], r0
+    dp4 position_out.y, projection[1], r0
+    dp4 position_out.z, projection[2], r0
+    dp4 position_out.w, projection[3], r0
+    mov color_out, color_in
+    end
+.end

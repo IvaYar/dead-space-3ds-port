@@ -5,7 +5,7 @@
   "donor_sha256": "dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb",
   "gameplay": false,
   "unknown_import_policy": "stop before execution; no success stubs",
-  "core_sha256": "82a21986993fbfebd6d9046bfe746d53f4c5396839a3fbd8800d15f58ba8ab97",
+  "core_sha256": "e705ea50c8859adf5835220480c8726debb241051b15fdc7981e7202403efdcd",
   "phases": [
     {
       "name": "donor constructors",
@@ -307,7 +307,7 @@
         "01001000",
         "00000000",
         "00000000",
-        "00360cbc"
+        "00362c84"
       ],
       "return": "12000000"
     },
@@ -1810,5 +1810,5 @@
     "restores": 0,
     "refusals": 0
   },
-  "elapsed_seconds": 1.203
+  "elapsed_seconds": 1.109
 }

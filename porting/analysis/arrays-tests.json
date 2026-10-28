@@ -4,7 +4,7 @@
   "failures": 0,
   "hardware_tested": false,
   "game_rendered": false,
-  "core_sha256": "82a21986993fbfebd6d9046bfe746d53f4c5396839a3fbd8800d15f58ba8ab97",
+  "core_sha256": "46532d21f007b639a500bc12526bc3202dc5e855492edae50b97cb2e79f7bece",
   "fixture_sha256": "66ea9338f4fe05ba9fb3175b5e41d59e08feada757d316df47f6382183d819f8",
-  "elapsed_seconds": 0.187
+  "elapsed_seconds": 0.172
 }

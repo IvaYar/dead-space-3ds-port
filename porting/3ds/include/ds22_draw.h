@@ -11,6 +11,8 @@ typedef struct {
     uint32_t calls,triangles,fragments,samples;DS22Observe observe;
     DS26Surface target;
     DS31Combine *combine;
+    /* Borrowed only while a serialized draw executes; refreshed every draw. */
+    DS15Object *sampler[2];
 } DS22State;
 void ds22_close(struct DS13Context *);
 int ds22_prepare(struct DS13Context *);

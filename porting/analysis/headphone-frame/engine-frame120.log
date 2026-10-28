@@ -29,7 +29,7 @@ GLES upload: 2x2 format=1908 required=16 limit=2097152 result=0
 GLES texture probe: OK upload=16 sub=4 readback=4 active=0
 GLES pipeline probe: OK cull=2 alpha=2 blend=4 typed=1
 Graphics budget: texture names=32 bytes=6291456
-Stack query: sp=0803d478 result=00000000 base=08000000 size=0772e000 perm=3
+Stack query: sp=0803d478 result=00000000 base=08000000 size=0772c000 perm=3
 GLES context bindings: 99; bounded CPU triangle renderer
 Sensor bridge attached: native HID; emulator identity axes, nominal 512 counts/g
 Running 209 donor constructors...
@@ -748,7 +748,7 @@ Frame 31 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-WATCH phase=NativeOnDrawFrame frame=31 image=08490000 fs-events=3317
+WATCH phase=NativeOnDrawFrame frame=31 image=08490000 fs-events=3310
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
@@ -1317,7 +1317,7 @@ Frame 86 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-WATCH phase=NativeOnDrawFrame frame=86 image=08490000 fs-events=3350
+WATCH phase=NativeOnDrawFrame frame=86 image=08490000 fs-events=3345
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
@@ -1520,7 +1520,7 @@ Frame 105 returned
 JNI PushLocalFrame: . 
 JNI PopLocalFrame: . 
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
-WATCH phase=NativeOnDrawFrame frame=105 image=08490000 fs-events=3360
+WATCH phase=NativeOnDrawFrame frame=105 image=08490000 fs-events=3355
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
@@ -1690,9 +1690,9 @@ GLES texture stores: names=5 bytes=2097156 uploads=7 patches=0
 Jump contexts: saves=761 restores=0 refusals=0
 Native heap: used=117506680 free=281992; runtime live=2168679 peak=2168679 blocks=18 failures=0
 CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28029 last-us=28029
-CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793200905522000 last-us=1793200905522000
-CLOCK main: kind=1 caller=00246930 id=0 calls=358 first-us=1793200905621000 last-us=1793201035595000
-CLOCK main: kind=1 caller=00360c84 id=0 calls=248 first-us=1793200910832000 last-us=1793201035595000
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793205236111000 last-us=1793205236111000
+CLOCK main: kind=1 caller=00246930 id=0 calls=358 first-us=1793205236210000 last-us=1793205366217000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=248 first-us=1793205241421000 last-us=1793205366217000
 Thread pools: active=6 mutex=33 cond=0 sem=31 keys=0
 Donor arenas: break=16781312 peak=16781312 mapped-pages=8908 map-peak=16927 refusals=0
 JNI checkpoint: pending=0 failures=3 refs=11 frame-depth=0 string-loans=1

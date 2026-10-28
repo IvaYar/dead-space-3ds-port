@@ -1,6 +1,9 @@
 /* EMULATOR ONLY. Resolving an unknown import to a terminating trap is execution
  * instrumentation, not an implementation. This file is never built into a CIA. */
 #include <3ds.h>
+#ifdef DS_PICA_BACKEND
+#include "ds34_gpu.h"
+#endif
 #include <malloc.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -43,6 +46,7 @@ u32 __ctru_linear_heap_size=4*1024*1024;
 #endif
 u32 __stacksize__=256*1024;
 static FILE *journal;
+static char journal_buffer[32768];
 static RecursiveLock journal_lock;
 static const char *phase="setup",*trap_names[768];
 static char jni_slot_names[DS_JNI_ENV_SLOTS][32];
@@ -73,7 +77,11 @@ void ds_audit_trap(void);
 static void report(const char *format,...) {
     RecursiveLock_Lock(&journal_lock);
     va_list args;if(!graphics_attached){va_start(args,format);vprintf(format,args);va_end(args);}
-    if(journal) { va_start(args,format); vfprintf(journal,format,args); va_end(args); fflush(journal); }
+    if(journal) { va_start(args,format); vfprintf(journal,format,args); va_end(args);
+        /* Preserve complete draw traces without a synchronous SD transaction
+         * per draw. Frame boundaries, JNI messages and errors still flush. */
+        if(strncmp(format,"GAME DRAW:",10))fflush(journal);
+    }
     RecursiveLock_Unlock(&journal_lock);
 }
 void ds15_upload_trace(uint32_t w,uint32_t h,uint32_t format,uint32_t required,uint32_t limit,int result){
@@ -97,6 +105,9 @@ void ds26_trace(const char *op,uint32_t a,uint32_t b,uint32_t c,uint32_t d){
     if(++calls<=128 || calls%256==0)report("FBO %s: %lu %lu %08lx %08lx frame=%lu\n",op,(unsigned long)a,(unsigned long)b,(unsigned long)c,(unsigned long)d,(unsigned long)audit_frame);
 }
 static void graphics_stats(void){
+    if(graphics.default_storage)report("Default surface: depth=%u stencil=%u bytes=%lu\n",graphics.default_storage->depth?16:0,graphics.default_storage->stencil?8:0,(unsigned long)graphics.default_storage->bytes);
+    if(graphics.lighting_state){DS32Lighting *s=graphics.lighting_state;unsigned mask=0;for(unsigned i=0;i<8;++i)mask|=(graphics.pipeline.lights[i]!=0)<<i;
+        report("Lighting state: enabled=%lu lights=%02x two-side=%lu setters=%lu vertices=%lu normal=%g,%g,%g\n",(unsigned long)graphics.pipeline.lighting,mask,(unsigned long)s->two_side,(unsigned long)s->setters,(unsigned long)s->vertices,(double)s->normal[0],(double)s->normal[1],(double)s->normal[2]);}
     if(graphics.fog_state){DS30Fog *f=graphics.fog_state;report("Fog state: enabled=%lu mode=%04lx density=%g start=%g end=%g color=%g,%g,%g,%g\n",(unsigned long)graphics.fog,(unsigned long)f->mode,(double)f->density,(double)f->start,(double)f->end,(double)f->color[0],(double)f->color[1],(double)f->color[2],(double)f->color[3]);}
     if(graphics.draw && graphics.draw->combine)for(unsigned u=0;u<2;++u){DS31Unit *s=&graphics.draw->combine->unit[u];report("Combine state: unit=%u enabled=%lu mode=%04lx rgb=%04lx alpha=%04lx scale=%g,%g\n",u,(unsigned long)graphics.texture.enabled[u],(unsigned long)graphics.draw->env_mode[u],(unsigned long)s->rgb,(unsigned long)s->alpha,(double)s->rgb_scale,(double)s->alpha_scale);}
     uint32_t fbo[4];ds26_stats(&graphics,fbo);report("FBO state: objects=%lu renderbuffers=%lu bytes=%lu changes=%lu bound=%lu\n",(unsigned long)fbo[0],(unsigned long)fbo[1],(unsigned long)fbo[2],(unsigned long)fbo[3],(unsigned long)graphics.framebuffer_binding);
@@ -123,10 +134,37 @@ static int save_surface(DS13Context *c,const char *stem,uint32_t caller){
     return fclose(f)?-1:0;
 }
 static void game_draw(DS13Context *c,uint32_t caller){
+    static uint32_t previous_fragments;static unsigned dominant,intermediate_saved;
+    uint32_t now[4];ds22_stats(c,now);uint32_t changed=now[2]-previous_fragments;previous_fragments=now[2];
+    if(audit_frame==2604 && !c->framebuffer_binding){
+        uint32_t bytes=c->width*c->height*(c->layout==DS13_RGB565_CTR?2:3),nonzero=0;
+        for(uint32_t i=0;i<bytes;++i)nonzero+=c->pixels[i]!=0;
+        report("SCENE surface: frame=%lu draw=%lu caller=%08lx nonzero=%lu changed=%lu texture=%lu,%lu enabled=%lu,%lu env=%04lx,%04lx\n",(unsigned long)audit_frame,(unsigned long)now[0],(unsigned long)(caller-image_base),(unsigned long)nonzero,(unsigned long)changed,(unsigned long)c->texture.binding[0],(unsigned long)c->texture.binding[1],(unsigned long)c->texture.enabled[0],(unsigned long)c->texture.enabled[1],(unsigned long)c->draw->env_mode[0],(unsigned long)c->draw->env_mode[1]);
+    }
+    if(audit_frame>=2604 && changed>=48000 && dominant++<12)
+        report("SCENE large draw: frame=%lu draw=%lu pixels=%lu lit=%lu fog=%lu depth=%lu stencil=%lu blend=%lu factors=%04lx,%04lx color=%g,%g,%g,%g mask=%u%u%u%u\n",(unsigned long)audit_frame,(unsigned long)now[0],(unsigned long)changed,(unsigned long)c->pipeline.lighting,(unsigned long)c->fog,(unsigned long)c->pipeline.depth,(unsigned long)c->pipeline.stencil,(unsigned long)c->blend,(unsigned long)c->pipeline.blend_src,(unsigned long)c->pipeline.blend_dst,(double)c->draw->color[0],(double)c->draw->color[1],(double)c->draw->color[2],(double)c->draw->color[3],c->color_mask[0],c->color_mask[1],c->color_mask[2],c->color_mask[3]);
+    if(audit_frame>=2604 && c->pipeline.lighting && !intermediate_saved){uint32_t bytes=c->width*c->height*(c->layout==DS13_RGB565_CTR?2:3);unsigned nonzero=0;
+        for(uint32_t i=0;i<bytes;++i)if(c->pixels[i]){nonzero=1;break;}
+        if(nonzero && !save_surface(c,"scene-intermediate",caller)){intermediate_saved=1;report("SCENE INTERMEDIATE SAVED: frame=%lu\n",(unsigned long)audit_frame);}
+    }
+    static unsigned lit_draws;
+    if(c->pipeline.lighting && c->lighting_state && ++lit_draws==1)report("LIT GAME DRAW: frame=%lu vertices=%lu\n",(unsigned long)audit_frame,(unsigned long)c->lighting_state->vertices);
+    if(c->pipeline.lighting && c->lighting_state && lit_draws==1){DS32Lighting *s=c->lighting_state;
+        report("Lit material: diffuse=%g,%g,%g,%g ambient=%g,%g,%g scene=%g,%g,%g emission=%g,%g,%g color-material=%lu\n",(double)s->diffuse[0],(double)s->diffuse[1],(double)s->diffuse[2],(double)s->diffuse[3],(double)s->ambient[0],(double)s->ambient[1],(double)s->ambient[2],(double)s->scene[0],(double)s->scene[1],(double)s->scene[2],(double)s->emission[0],(double)s->emission[1],(double)s->emission[2],(unsigned long)c->pipeline.color_material);
+        for(unsigned i=0;i<8;++i)if(c->pipeline.lights[i]){DS32Light *l=&s->light[i];report("Lit light%u: position=%g,%g,%g,%g diffuse=%g,%g,%g\n",i,(double)l->position[0],(double)l->position[1],(double)l->position[2],(double)l->position[3],(double)l->diffuse[0],(double)l->diffuse[1],(double)l->diffuse[2]);}
+    }
     static unsigned fog_draws;
     if(c->fog && c->fog_state && ++fog_draws==1)report("FOG GAME DRAW: frame=%lu mode=%04lx start=%g end=%g\n",(unsigned long)audit_frame,(unsigned long)c->fog_state->mode,(double)c->fog_state->start,(double)c->fog_state->end);
     uint32_t s[4];ds22_stats(c,s);report("GAME DRAW: caller-offset=%08lx calls=%lu triangles=%lu fragments=%lu samples=%lu\n",(unsigned long)(caller-image_base),(unsigned long)s[0],(unsigned long)s[1],(unsigned long)s[2],(unsigned long)s[3]);
     if(!partial_draw_saved && s[2] && s[3]){if(!save_surface(c,"first-game-draw",caller)){partial_draw_saved=1;report("PARTIAL GAME DRAW CAPTURED\n");}}
+}
+void ds22_vertex_trace(DS13Context *c,uint32_t index,const float *eye,const float *clip,const float *color,float fog){
+    static unsigned events;if(audit_frame!=2604 || events++>=512)return;
+    report("SCENE vertex: frame=%lu draw=%lu index=%lu eye=%g,%g,%g,%g clip=%g,%g,%g,%g rgba=%g,%g,%g,%g fog=%g lit=%lu target=%lu\n",(unsigned long)audit_frame,(unsigned long)(c->draw->calls+1),(unsigned long)index,(double)eye[0],(double)eye[1],(double)eye[2],(double)eye[3],(double)clip[0],(double)clip[1],(double)clip[2],(double)clip[3],(double)color[0],(double)color[1],(double)color[2],(double)color[3],(double)fog,(unsigned long)c->pipeline.lighting,(unsigned long)c->framebuffer_binding);
+}
+void ds22_pixel_trace(DS13Context *c,unsigned x,unsigned y,const float *src,const float *dst,const float *out){
+    static unsigned events;if(audit_frame!=2604 || events++>=512)return;
+    report("SCENE pixel: frame=%lu draw=%lu target=%lu xy=%u,%u src=%g,%g,%g,%g dst=%g,%g,%g,%g out=%g,%g,%g,%g alpha=%lu/%04lx/%g blend=%lu/%04lx/%04lx\n",(unsigned long)audit_frame,(unsigned long)(c->draw->calls+1),(unsigned long)c->framebuffer_binding,x,y,(double)src[0],(double)src[1],(double)src[2],(double)src[3],(double)dst[0],(double)dst[1],(double)dst[2],(double)dst[3],(double)out[0],(double)out[1],(double)out[2],(double)out[3],(unsigned long)c->pipeline.alpha,(unsigned long)c->pipeline.alpha_func,(double)c->pipeline.alpha_ref,(unsigned long)c->blend,(unsigned long)c->pipeline.blend_src,(unsigned long)c->pipeline.blend_dst);
 }
 void ds_fs_trace(const char *operation,const char *path,int result){
     static unsigned failures,late_opens;
@@ -312,6 +350,10 @@ static int graphics_setup(void){
     if(ds15_limits(&graphics.texture,osGetMemRegionSize(MEMREGION_APPLICATION)>=178*1024*1024?128:32,
         (osGetMemRegionSize(MEMREGION_APPLICATION)>=178*1024*1024?48:6)*1024*1024))return -1;
     ds13_observer(&graphics,graphics_unsupported,graphics_sync);graphics_attached=1;
+#ifdef DS_PICA_BACKEND
+    if(ds34_attach(&graphics)){report("PICA backend attach failed\n");return -1;}
+    report("PICA backend attached: experimental GPU fragments; CPU vertex processing\n");
+#endif
     report("Graphics budget: texture names=%lu bytes=%lu\n",(unsigned long)graphics.texture.name_limit,(unsigned long)graphics.texture.limit);return 0;
 }
 void ds_audit_stop(uint32_t index,uint32_t caller,uint32_t argument) __attribute__((noreturn));
@@ -499,6 +541,16 @@ static void run(void) {
             if(!enabled || ds31_attach(&graphics))return;
             report("Combine bridge attached: 2 units; RGB/alpha functions, sources, operands, scales + DOT3\n");
         }
+        FILE *lighting_mode=fopen("sdmc:/3ds/deadspace/lighting-test.txt","rb");
+        if(lighting_mode){int enabled=fgetc(lighting_mode)=='1';fclose(lighting_mode);
+            if(!enabled || ds32_attach(&graphics))return;
+            uint32_t n=ds32_bindings(bindings+count,768-count);if(n!=DS32_BINDINGS)return;count+=n;
+            report("Lighting bridge attached: 18 operations; 8 lights + material + transformed normals + two-sided colors\n");
+        }
+        FILE *depth_mode=fopen("sdmc:/3ds/deadspace/default-depth-test.txt","rb");
+        if(depth_mode){int enabled=fgetc(depth_mode)=='1';fclose(depth_mode);if(!enabled || ds33_attach(&graphics,16,8))return;
+            report("Default depth attached: depth16/stencil8; 288000 owned bytes; borrowed LCD color\n");
+        }
         FILE *fbo_mode=fopen("sdmc:/3ds/deadspace/framebuffer-test.txt","rb");
         if(fbo_mode){int enabled=fgetc(fbo_mode)=='1';fclose(fbo_mode);DSBinding overrides[DS26_BINDINGS];
             if(!enabled || ds26_bindings(overrides,DS26_BINDINGS)!=DS26_BINDINGS)return;
@@ -639,7 +691,13 @@ static void run(void) {
     if(ds_elf_find_export(file,&info,names[3],&draw,&size))return;
     phase="NativeOnDrawFrame";
     uint32_t capture_after=2;FILE *capture_config=fopen("sdmc:/3ds/deadspace/capture-frame.txt","rb");
-    if(capture_config){unsigned value=0;if(fscanf(capture_config,"%u",&value)==1 && value>=2 && value<=3600)capture_after=value;fclose(capture_config);}
+    if(capture_config){unsigned value=0;if(fscanf(capture_config,"%u",&value)==1 && value>=2 && value<=12000)capture_after=value;fclose(capture_config);}
+    unsigned auto_menu=0,auto_state=0,auto_frame=0,auto_confirm=0;
+    FILE *auto_config=fopen("sdmc:/3ds/deadspace/auto-menu-test.txt","rb");
+    if(auto_config){unsigned value=0;if(fscanf(auto_config,"%u",&value)==1 && value>=2 && value<=3600)auto_menu=value;fclose(auto_config);
+        if(!auto_menu || !touch_attached || tap_count || !graphics_attached){report("Invalid automatic menu configuration\n");return;}
+        report("AUTO MENU enabled: exact Normal/Easy frame CRCs; capture %u callbacks after confirmation\n",auto_menu);
+    }
     if(capture_after>120)watchdog_samples=90+capture_after*2;
     int resume_focus=0;FILE *lifecycle_mode=fopen("sdmc:/3ds/deadspace/lifecycle-bridge-test.txt","rb");
     if(lifecycle_mode){resume_focus=fgetc(lifecycle_mode)=='1';fclose(lifecycle_mode);}
@@ -653,6 +711,9 @@ static void run(void) {
         if(((PushFrame)jni.env_functions[19])(&jni.env,16))return;
         ((Lifecycle)(image+draw-info.load_min))(&jni.env,NULL,400,240);
         ((PopFrame)jni.env_functions[20])(&jni.env,NULL);
+#ifdef DS_PICA_BACKEND
+        if(graphics_attached && ds34_present(&graphics))return;
+#endif
         report("Frame %lu returned\n",(unsigned long)frame);
         if(resume_focus && frame==2){
             const char *events[]={"Java_com_ea_blast_MainActivity_NativeOnResume","Java_com_ea_blast_MainActivity_NativeOnWindowFocusChanged"};
@@ -669,19 +730,48 @@ static void run(void) {
         if(touch_attached){
             hidScanInput();touchPosition p;hidTouchRead(&p);uint32_t pressed=(hidKeysHeld()&KEY_TOUCH)!=0;
             if(tap_count){pressed=0;for(unsigned i=0;i<tap_count;++i)if(frame>=taps[i].frame){pressed=frame==taps[i].frame;p.px=(u16)taps[i].x;p.py=(u16)taps[i].y;}}
+            if(auto_menu && auto_state<4){
+                pressed=0;
+                if(auto_state==1){auto_state=2;report("AUTO MENU select released: frame=%lu\n",(unsigned long)frame);}
+                else if(auto_state==3){auto_state=4;report("AUTO MENU confirm released: frame=%lu\n",(unsigned long)frame);}
+                else if((auto_state==0 && frame%60==0) || (auto_state==2 && frame%4==0)){
+                    uint32_t crc=ds_crc32(graphics.pixels,graphics.width*graphics.height*2);
+                    if((auto_state==0 && crc==0x95a4497f) || (auto_state==2 && crc==0x416337f3)){
+                        char stem[48];snprintf(stem,sizeof(stem),"progress-frame-%lu",(unsigned long)frame);
+                        if(save_surface(&graphics,stem,image_base)){report("AUTO MENU capture failed\n");return;}
+                        report("PROGRESS FRAME SAVED: frame=%lu\n",(unsigned long)frame);
+                        pressed=1;p.px=auto_state==0?160:284;p.py=auto_state==0?134:225;
+                        report("AUTO MENU %s: frame=%lu crc=%08lx\n",auto_state==0?"select Easy":"confirm",(unsigned long)frame,(unsigned long)crc);
+                        if(auto_state==0){auto_state=1;auto_frame=frame;}else{auto_state=3;auto_confirm=frame;capture_after=frame+auto_menu;}
+                    }else if(auto_state==2 && frame>auto_frame+120){report("AUTO MENU Easy state not observed\nENGINE EXPERIMENT STOPPED\nNo game frame rendered.\n");return;}
+                }
+            }
             int delivered=ds23_touch_sample(&touch,pressed,p.px,p.py);
             if(delivered<0){report("Touch sample failed\n");return;}
             if(delivered)report("Touch event returned: frame=%lu pressed=%lu x=%u y=%u events=%lu\n",(unsigned long)frame,(unsigned long)pressed,p.px,p.py,(unsigned long)touch.events);
         }
         if(graphics_attached){
+            if(auto_menu && auto_state==4 && frame%60==0){
+                FILE *live=fopen("sdmc:/3ds/deadspace/auto-menu-test.txt","rb");unsigned value=0;
+                if(live){int valid=fscanf(live,"%u",&value)==1 && value>=2 && value<=3600;fclose(live);
+                    if(valid && value!=auto_menu){auto_menu=value;capture_after=auto_confirm+value;report("AUTO MENU duration updated: callbacks=%u target=%lu\n",value,(unsigned long)capture_after);}}
+            }
             uint32_t drawn[4];ds22_stats(&graphics,drawn);
             if(capture_after>120 && frame%120==0 && frame<capture_after){
                 char stem[48];snprintf(stem,sizeof(stem),"progress-frame-%lu",(unsigned long)frame);
                 if(!save_surface(&graphics,stem,image_base))report("PROGRESS FRAME SAVED: frame=%lu\n",(unsigned long)frame);
                 clock_report();
             }
-            if(frame>=capture_after && drawn[2] && drawn[3] && !save_surface(&graphics,"first-game-frame",image_base)){
+            int pixels_drawn=drawn[2] && drawn[3];
+#ifdef DS_PICA_BACKEND
+            uint32_t gpu[4];ds34_stats(gpu);pixels_drawn=gpu[1]!=0;
+#endif
+            if(frame>=capture_after && pixels_drawn && !save_surface(&graphics,"first-game-frame",image_base)){
+#ifndef DS_PICA_BACKEND
                 gfxFlushBuffers();gfxSwapBuffers();gspWaitForVBlank();
+#else
+                report("PICA checkpoint: draws=%lu triangles=%lu uploads=%lu VRAM=%lu\n",(unsigned long)gpu[0],(unsigned long)gpu[1],(unsigned long)gpu[2],(unsigned long)gpu[3]);
+#endif
                 report("FIRST GAME FRAME CAPTURED: frame=%lu draws=%lu fragments=%lu samples=%lu\n",(unsigned long)frame,(unsigned long)drawn[0],(unsigned long)drawn[2],(unsigned long)drawn[3]);
                 graphics_stats();jump_stats();clock_report();DS9MemoryStats arena;ds9_memory_stats(&arena);
                 report("Donor arenas: break=%lu peak=%lu mapped-pages=%lu map-peak=%lu refusals=%lu\n",(unsigned long)arena.break_bytes,(unsigned long)arena.break_peak,(unsigned long)arena.mapped_pages,(unsigned long)arena.map_peak,(unsigned long)arena.refusals);
@@ -702,8 +792,12 @@ static void run(void) {
         }
         ds11_pump_events(&bridge);
         if(sensor_attached && ds12_jni_pump(&bridge,(svcGetSystemTick()-started)*1000000/SYSCLOCK_ARM11)<0){sensor_shutdown();report("Sensor pump failed\n");return;}
+#ifdef DS_PICA_BACKEND
+        if(!graphics_attached){gfxFlushBuffers();gfxSwapBuffers();gspWaitForVBlank();}
+#else
         gfxFlushBuffers();gfxSwapBuffers();gspWaitForVBlank();
         if(graphics_attached){u16 w,h;void *pixels=gfxGetFramebuffer(GFX_TOP,GFX_LEFT,&w,&h);if(ds13_target(&graphics,pixels,(uint32_t)w*h*(graphics.layout==DS13_RGB565_CTR?2:3)))return;}
+#endif
     }
     uint32_t final_state[7];ds10_stats(&bridge,final_state);
     report("Frame budget refs=%lu failures=%lu\n",(unsigned long)final_state[4],(unsigned long)final_state[3]);
@@ -713,7 +807,8 @@ static void run(void) {
 int main(void) {
     gfxInitDefault(); consoleInit(GFX_TOP,NULL); RecursiveLock_Init(&journal_lock);
     threadOnException(audit_exception,exception_stack+sizeof(exception_stack),WRITE_DATA_TO_HANDLER_STACK);
-    journal=fopen(LOG,"w");report("DEAD SPACE ENGINE AUDIT - EMULATOR ONLY\nREADY - press A\n");
+    journal=fopen(LOG,"w");if(journal)setvbuf(journal,journal_buffer,_IOFBF,sizeof(journal_buffer));
+    report("DEAD SPACE ENGINE AUDIT - EMULATOR ONLY\nREADY - press A\n");
     while(aptMainLoop()) {
         hidScanInput();if(hidKeysDown()&KEY_START) break;
         if(hidKeysDown()&KEY_A) {run();break;}

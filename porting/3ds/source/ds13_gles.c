@@ -1,4 +1,5 @@
 #include "ds13_gles.h"
+#include "ds34_gpu.h"
 #include <limits.h>
 #include <math.h>
 #include <string.h>
@@ -24,7 +25,7 @@ int ds13_target(DS13Context *c,void *pixels,uint32_t capacity){
     if(!valid(c) || !pixels || (uint64_t)c->width*c->height*(c->layout==DS13_RGB565_CTR?2:3)>capacity)return -1;
     c->pixels=pixels;c->capacity=capacity;return 0;
 }
-void ds13_close(DS13Context *c){if(current==c)current=NULL;if(valid(c)){ds26_close(c);ds14_close(&c->vertex);ds15_close(&c->texture);ds21_close(c);ds22_close(c);ds30_close(c);}if(c)memset(c,0,sizeof(*c));}
+void ds13_close(DS13Context *c){if(current==c)current=NULL;if(valid(c)){ds26_close(c);ds14_close(&c->vertex);ds15_close(&c->texture);ds21_close(c);ds22_close(c);ds30_close(c);ds32_close(c);ds33_close(c);}if(c)memset(c,0,sizeof(*c));}
 DS13Context *ds13_active_context(void){return current;}
 void ds13_error(uint32_t value){error(current,value);}
 void ds13_unsupported(const char *op,uint32_t value){if(current)unsupported(current,op,value);}
@@ -41,15 +42,17 @@ int ds13_real_values(uint32_t name,float out[16],int *normalized){
         case 0xbc2:*out=c->pipeline.alpha_ref;return 1;
         case 0x8038:*out=c->pipeline.offset_factor;return 1;
         case 0x2a00:*out=c->pipeline.offset_units;return 1;
-        default:{int n=ds30_real(c,name,out,normalized);if(n)return n;n=ds21_real(c,name,out);if(n)return n;n=ds22_real(c,name,out);if(n)*normalized=1;return n;}
+        default:{int n=ds32_real(c,name,out,normalized);if(n)return n;n=ds30_real(c,name,out,normalized);if(n)return n;n=ds21_real(c,name,out);if(n)return n;n=ds22_real(c,name,out);if(n)*normalized=1;return n;}
     }
 }
 int ds13_integer_values(uint32_t name,int32_t out[4]){
     DS13Context *c=current;if(!c)return 0;++c->queries;
     float real[16];int normalized=0;int count=ds13_real_values(name,real,&normalized);
     if(count){for(int i=0;i<count;++i){double v=round(normalized?(double)real[i]*INT32_MAX:(double)real[i]);out[i]=v>=INT32_MAX?INT32_MAX:v<=INT32_MIN?INT32_MIN:(int32_t)v;}return count;}
+    if(ds34_integer && ds34_integer(c,name,out))return 1;
     if(ds26_integer(c,name,out))return 1;
     if(ds30_integer(c,name,out))return 1;
+    if(ds32_integer(c,name,out))return 1;
     switch(name){
         case 0xba2:memcpy(out,c->viewport,16);break;
         case 0xc10:memcpy(out,c->scissor,16);break;
@@ -92,6 +95,7 @@ static void capability(uint32_t name,int on){
     else if(name==0xb60)c->fog=(uint32_t)on;
     else if(name==0xde1)c->texture.enabled[c->active_texture-0x84c0]=(uint32_t)on;
     else if(ds16_capability(&c->pipeline,name,on)<0)unsupported(c,"GL capability unsupported",name);
+    if(name==0xb57 && on){float white[4]={1,1,1,1};ds32_track(c,c->draw?c->draw->color:white);}
 }
 static void DS13_SOFT enable(uint32_t name){capability(name,1);}
 static void DS13_SOFT disable(uint32_t name){capability(name,0);}
@@ -137,6 +141,7 @@ static void DS13_SOFT clear(uint32_t mask){
     if(mask&~(0x4000u|0x100u|0x400u)){error(c,INVALID_VALUE);return;}
     DS26Surface target;if(ds26_surface(c,&target))return;
     ++c->clears;
+    if(ds34_clear && ds34_clear(c,mask))return;
     int64_t x0=0,y0=0,x1=target.width,y1=target.height;
     if(c->scissor_test){
         x0=c->scissor[0];y0=c->scissor[1];x1=x0+(int64_t)c->scissor[2];y1=y0+(int64_t)c->scissor[3];
@@ -167,6 +172,7 @@ static void DS13_SOFT clear(uint32_t mask){
         for(unsigned channel=0;channel<3;++channel)if(c->color_mask[channel])c->pixels[offset+(c->layout==DS13_RGB8_ROWS?channel:2-channel)]=rgb[channel];
         ++c->pixels_written;
     }
+    if((mask&0x4000) && c->framebuffer_binding)ds34_fbo_dirty(c);
 }
 static void DS13_SOFT flush(void){
     if(!current)return;

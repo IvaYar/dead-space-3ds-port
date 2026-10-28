@@ -1,6 +1,6 @@
 # JNI-строки: история адаптера
 
-**Текущее состояние:** [SCENE-RENDERER.ru.md](SCENE-RENDERER.ru.md). Меню, касания, fog и texture combiners пройдены в Azahar; следующий запрос — `glLightModelfv`. Проходят511 core ARM-тестов. Английский донор1.1.33, перевод отложен. Более ранние «новейшие» записи ниже сохранены как история.
+**Текущее состояние:** [LIGHTING.ru.md](LIGHTING.ru.md). Меню, fog/combiners/lighting/default depth пройдены,551 ARM-тест. Геометрия коридора видна в промежуточном lit capture, финальная сцена пока чёрная. Донор английский1.1.33. Ниже сохранена история JNI-адаптера.
 
 **Новейшее продолжение:** [INPUT-SAVES.ru.md](INPUT-SAVES.ru.md): original touch callback, приватные descriptor saves,240 кадров и368 core-тестов. Меню пока нет; следующим требует исправления APK AssetManager namespace.
 

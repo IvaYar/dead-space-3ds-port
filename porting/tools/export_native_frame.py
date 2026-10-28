@@ -1,15 +1,19 @@
-"""Decode a checksum-verified CPU framebuffer captured from a donor draw."""
+"""Decode a checksum-verified framebuffer captured from a donor draw."""
 import argparse,json,shutil,struct,zlib,hashlib
 from pathlib import Path
 P=Path(__file__).resolve().parents[1]
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--partial',action='store_true');parser.add_argument('--progress-frame',type=int,default=0)
+    parser.add_argument('--scene-intermediate',action='store_true',help='Actual nonblack surface saved after a lit draw, before later passes')
+    parser.add_argument('--emulator-root',type=Path,default=P/'analysis/azahar-smoke')
     parser.add_argument('--output-directory',type=Path,default=P/'analysis/first-frame');args=parser.parse_args()
-    assert not (args.partial and args.progress_frame)
-    stem=f'progress-frame-{args.progress_frame}' if args.progress_frame else 'first-game-draw' if args.partial else 'first-game-frame'
-    card=P/'analysis/azahar-smoke/Azahar/sdmc/3ds/deadspace';meta=json.loads((card/(stem+'.json')).read_text());raw=(card/(stem+'.raw')).read_bytes()
+    assert sum((args.partial,bool(args.progress_frame),args.scene_intermediate))<=1
+    stem='scene-intermediate' if args.scene_intermediate else f'progress-frame-{args.progress_frame}' if args.progress_frame else 'first-game-draw' if args.partial else 'first-game-frame'
+    root=args.emulator_root.resolve();assert (P/'analysis').resolve() in root.parents
+    card=root/'Azahar/sdmc/3ds/deadspace';meta=json.loads((card/(stem+'.json')).read_text());raw=(card/(stem+'.raw')).read_bytes()
     journal=(card/'engine-azahar-log.txt').read_text(encoding='utf-8')
-    if args.progress_frame:assert f'PROGRESS FRAME SAVED: frame={args.progress_frame}\n' in journal and meta['frame']==args.progress_frame,'Current run has no matching progress capture'
+    if args.scene_intermediate:assert f'SCENE INTERMEDIATE SAVED: frame={meta["frame"]}\n' in journal and meta['frame']>=2604,'Current run has no matching scene intermediate'
+    elif args.progress_frame:assert f'PROGRESS FRAME SAVED: frame={args.progress_frame}\n' in journal and meta['frame']==args.progress_frame,'Current run has no matching progress capture'
     elif args.partial:assert 'PARTIAL GAME DRAW CAPTURED' in journal,'Current run has no partial capture'
     else:
         marker=f"FIRST GAME FRAME CAPTURED: frame={meta['frame']} draws={meta['draws']} fragments={meta['fragments']} samples={meta['samples']}"

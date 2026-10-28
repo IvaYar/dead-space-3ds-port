@@ -58,7 +58,9 @@ int ds21_integer(DS13Context *c,uint32_t name,int32_t *out){
     *out=1+(int32_t)(c->matrix?c->matrix->top[i]:0);return 1;
 }
 void ds21_transform(DS13Context *c,uint32_t mode,uint32_t unit,const float in[4],float out[4]){
-    float m[16],v[4];matrix(c,slot(c,mode,unit),m);for(unsigned i=0;i<4;++i){v[i]=0;for(unsigned j=0;j<4;++j)v[i]+=m[j*4+i]*in[j];}memcpy(out,v,16);
+    static const float identity_matrix[16]={1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1};
+    unsigned i=slot(c,mode,unit);const float *m=c->matrix?c->matrix->stack[i][c->matrix->top[i]]:identity_matrix;
+    float v[4];for(unsigned row=0;row<4;++row){v[row]=0;for(unsigned j=0;j<4;++j)v[row]+=m[j*4+row]*in[j];}memcpy(out,v,16);
 }
 #define B(name,fn) {name,(uint32_t)(uintptr_t)fn}
 uint32_t ds21_bindings(DSBinding *out,uint32_t capacity){

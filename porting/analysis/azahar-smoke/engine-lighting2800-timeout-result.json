@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "checkpoint_validated": false,
+  "reason": "600s host timeout before target 2800; last returned 2630",
+  "capture_frame": 2800,
+  "frames_returned": 2630,
+  "cpu_percent": 400,
+  "lighting": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "cxi_sha256": "1a5d43b82d5628225ca0de55ae2b98fc52b1844bce9c92ccbd37bb808bbf8b25",
+  "log_sha256": "e7d3d564a3bcba2a1b06df501bb7fc7f55aef85374eb466081b7c5b826a2ce21"
+}

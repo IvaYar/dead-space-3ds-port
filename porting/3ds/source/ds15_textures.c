@@ -1,5 +1,6 @@
 #include "ds13_gles.h"
 #include "ds_runtime.h"
+#include "ds34_gpu.h"
 #include <math.h>
 #include <string.h>
 #define BAD_ENUM 0x500u
@@ -72,6 +73,7 @@ static void level_clear(DS15State *s,DS15Level *l){
     s->bytes-=bytes;memset(l,0,sizeof(*l));
 }
 static void object_clear(DS15State *s,DS15Object *o){
+    if(ds34_texture_dirty)ds34_texture_dirty(s,o);
     for(unsigned i=0;i<DS15_LEVELS;++i)level_clear(s,&o->levels[i]);
 }
 void ds15_close(DS15State *s){
@@ -179,6 +181,7 @@ static void DS13_SOFT tex_image(uint32_t target,int32_t level,int32_t internal,i
     level_clear(s,old);
     *old=(DS15Level){.defined=1,.width=(uint32_t)w,.height=(uint32_t)h,.format=format,.rgba=data,.stamp=++s->stamp};s->bytes+=bytes;s->resident+=bytes;++s->uploads;
     upload_trace(w,h,format,s->bytes,s->limit,0);
+    if(ds34_texture_dirty)ds34_texture_dirty(s,o);
 }
 static void DS13_SOFT tex_sub_image(uint32_t target,int32_t level,int32_t x,int32_t y,int32_t w,int32_t h,uint32_t format,uint32_t type,const void *pixels){
     DS15Object *o=bound(target);if(!o || !level_valid(level))return;DS15Level *l=&o->levels[level];
@@ -188,6 +191,7 @@ static void DS13_SOFT tex_sub_image(uint32_t target,int32_t level,int32_t x,int3
     if(ds15_resident(state(),o,(uint32_t)level))return;
     if(w && h)copy_image(l->rgba,l->width,(uint32_t)x,(uint32_t)y,(uint32_t)w,(uint32_t)h,format,type,pixels,pitch,bpp);
     ++state()->patches;
+    if(ds34_texture_dirty)ds34_texture_dirty(state(),o);
 }
 int ds15_query(DS15State *s,uint32_t name,int32_t *out,uint32_t u){switch(name){
     case 0x8069:*out=(int32_t)s->binding[u];break;case 0xde1:*out=(int32_t)s->enabled[u];break;

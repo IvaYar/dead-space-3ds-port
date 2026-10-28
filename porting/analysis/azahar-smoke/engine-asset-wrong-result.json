@@ -26,9 +26,11 @@
   "allocator_compat": false,
   "fog": false,
   "combine": false,
+  "lighting": false,
+  "default_depth": false,
   "frames": 196,
-  "elapsed_seconds": 0.765,
-  "cxi_sha256": "acca1b0b154e9cf5d1c24be6871b1d620fcfb220a078cbbe9a13b32643082588",
+  "elapsed_seconds": 0.782,
+  "cxi_sha256": "1ff2fdd8c343afcbce2ee59637c62b5f6d7db9b3991cb45975a57e171d7e2bf2",
   "log_sha256": "f2930f45385cda5d1393b6707c78c75c91e6fc8ab812f8cdda6b6839b909f7ce",
   "log": "analysis\\azahar-smoke\\engine-asset-wrong.log"
 }

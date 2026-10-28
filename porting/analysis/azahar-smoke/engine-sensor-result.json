@@ -26,9 +26,11 @@
   "allocator_compat": false,
   "fog": false,
   "combine": false,
+  "lighting": false,
+  "default_depth": false,
   "frames": 406,
   "elapsed_seconds": 2.047,
-  "cxi_sha256": "acca1b0b154e9cf5d1c24be6871b1d620fcfb220a078cbbe9a13b32643082588",
+  "cxi_sha256": "1ff2fdd8c343afcbce2ee59637c62b5f6d7db9b3991cb45975a57e171d7e2bf2",
   "log_sha256": "86e42d66f2d4ec7728eec0896e5836120b8f056ad096018808b0d82644f0af92",
   "log": "analysis\\azahar-smoke\\engine-sensor.log"
 }

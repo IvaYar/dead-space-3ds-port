@@ -57,12 +57,12 @@
     "string_loans": 1
   },
   "retained_string_loan": "version text has one native borrow and no JNI references; storage retained until context cleanup; local frames close normally",
-  "core_sha256": "82a21986993fbfebd6d9046bfe746d53f4c5396839a3fbd8800d15f58ba8ab97",
-  "cxi_sha256": "acca1b0b154e9cf5d1c24be6871b1d620fcfb220a078cbbe9a13b32643082588",
+  "core_sha256": "21b086d21830aa1e94000a3a41fb67a51f7ef79c902f6763d694a4a8a0db7e24",
+  "cxi_sha256": "1ff2fdd8c343afcbce2ee59637c62b5f6d7db9b3991cb45975a57e171d7e2bf2",
   "witnesses_sha256": {
-    "analysis/first-frame-tests.json": "a959fab32ae52761f8c39f2f0b6d17f73fa9ea94c27d8db2450c591fcfb6fbc8",
-    "analysis/azahar-smoke/engine-graphics.log": "bd95aec868ab275a00516e912ef6295b574deade4f2854ab1c845d0778a652b1",
-    "analysis/azahar-smoke/engine-graphics-result.json": "2f6605e07b8202b91132bb0853b5f1c0cda63d51872afac9c7ed7f67154e0d06",
+    "analysis/first-frame-tests.json": "d9f4836db74cc492b21e0e5bc0dad464c0ac99ad6a5bf41315f4f33b1f8039ff",
+    "analysis/azahar-smoke/engine-graphics.log": "902f1ca8f31244367ec0ff5e74d065d0a4d6e1d078b7a81be1cb77e8da9348d2",
+    "analysis/azahar-smoke/engine-graphics-result.json": "9ed5e2785fe11389edd4d656048e4b2e6e84105b92e737fcb18c0bb391187fa2",
     "analysis/first-frame/first-game-frame.raw": "91dfb4931c15a88b8c90869c10d67fbd96bf6f28cacc5386346cc679f149aa3d",
     "analysis/first-frame/first-game-frame.json": "79e0edd66fdeeef5c9de4caea05bd203595e31d16a76112cb2054a3a40250510",
     "analysis/first-frame/first-game-frame.png": "90a99b0c219cea02d04218ad7e21372583555495ad06bd318bbb78bdad1a2094",

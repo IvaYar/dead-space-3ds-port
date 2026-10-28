@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "matches_current_build": false,
+  "historical": true,
+  "computer_tests_passed": null,
+  "completed_frame": 2700,
+  "visible_scene_confirmed": true,
+  "scene_description": "Original opening scene: spacecraft, ring-shaped structure, asteroids and IronMonkey Studios credit. This is a completed frame, not confirmed player-controlled gameplay.",
+  "auto_menu_verified": false,
+  "menu_frames": [],
+  "gameplay": false,
+  "audio_verified": false,
+  "hardware_tested": false,
+  "new_cia_produced": false,
+  "core_sha256": "07fcdfba0096669596d310361b2d9ca9a6eea71ef2de10a9d079e2c6351fb119",
+  "cxi_sha256": "380c52890b050a339cc980c765a79441992940744a554a6bd055c6b532be2356",
+  "gles_error": 0,
+  "arena_refusals": 0,
+  "paging_failures": 0,
+  "witnesses_sha256": {
+    "analysis/scene-trace-frame/run.log": "ac5256905f1074395871ae3f3871aa211614eed0b56fba9d8f427ce97f27cba6",
+    "analysis/scene-trace-frame/run-result.json": "08ad259a838342f1dfa324218a682fe886d90cf5a39f9f85fbd4416db3401402",
+    "analysis/scene-trace-frame/build-manifest.json": "25151a7b6aae4c0237c1561523e4a1dc02de7629bf5d8097c347460ca1abc0b6",
+    "analysis/scene-trace-frame/first-game-frame.raw": "abe2e62f15f0d2883de4f16baa206c6ff8818cfd2b9446592706db50b74ef032",
+    "analysis/scene-trace-frame/first-game-frame.json": "844f1034622973bb900fe8cd1361d4612aa2b20e8e8a6b89f6333f6084fd3c9d",
+    "analysis/scene-trace-frame/first-game-frame.png": "e62e90cfd884e65931e960fa38be78a76ddce081deb1411d04758e8ed5c73f7d",
+    "analysis/scene-trace-frame/azahar-screen.png": "c637c2d070854b4c8ca1068779b0b0d1e82db202880191bdbbaebb1a974e0956",
+    "analysis/scene-trace-frame/visual-inspection.json": "cb231c2382b8ac3b10e0cee2a0f46a81032250120ed44c881c96b5898f53538d"
+  }
+}

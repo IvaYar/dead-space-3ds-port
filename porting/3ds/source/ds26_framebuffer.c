@@ -2,6 +2,7 @@
  * deleting a name never invalidates another framebuffer's retained object. */
 #include "ds13_gles.h"
 #include "ds_runtime.h"
+#include "ds34_gpu.h"
 #include <string.h>
 #include <math.h>
 enum { FB=0x8d40,RB=0x8d41,TEX=0xde1,COLOR=0x8ce0,DEPTH=0x8d00,STENCIL=0x8d20,
@@ -51,7 +52,7 @@ static uint32_t status(DS13Context *c){
 }
 int ds26_surface(DS13Context *c,DS26Surface *out){
     memset(out,0,sizeof(*out));
-    if(!c->framebuffer_binding){*out=(DS26Surface){c->width,c->height,c->layout,0,c->pixels,NULL,NULL};return 0;}
+    if(!c->framebuffer_binding){*out=(DS26Surface){c->width,c->height,c->layout,0,c->pixels,NULL,NULL};if(c->default_storage){out->depth=c->default_storage->depth;out->stencil=c->default_storage->stencil;}return 0;}
     if(status(c)!=COMPLETE){ds13_error(0x506);return -1;}
     Framebuffer *f=frame(c,c->framebuffer_binding);out->layout=3;
     for(unsigned i=0;i<3;++i)if(f->attachments[i].type){
@@ -70,6 +71,7 @@ static void bits(uint32_t format,int32_t out[6]){
     if(format==S8)out[5]=8;
 }
 int ds26_integer(DS13Context *c,uint32_t name,int32_t *out){
+    if(ds33_integer(c,name,out))return 1;
     if(name==0x8b9a || name==0x8b9b){*out=name==0x8b9a?0x1401:0x1908;return 1;}
     if(name==0x84e8){*out=1024;return 1;}
     if(name==0x8ca7){*out=c->fbo?(int32_t)c->fbo->render_binding:0;return 1;}
@@ -172,6 +174,7 @@ static void DS13_SOFT attachment_parameter(uint32_t target,uint32_t attachment,u
 }
 void ds26_texture_deleted(DS13Context *c,DS15Object *object){Framebuffer *f=frame(c,c->framebuffer_binding);if(f)for(unsigned i=0;i<3;++i)if(f->attachments[i].texture==object)drop(c,&f->attachments[i]);}
 int ds26_attached(DS13Context *c,DS15Object *object){Framebuffer *f=frame(c,c->framebuffer_binding);if(f)for(unsigned i=0;i<3;++i)if(f->attachments[i].texture==object)return 1;return 0;}
+void ds34_fbo_dirty(DS13Context *c){Framebuffer *f=frame(c,c->framebuffer_binding);if(f && f->attachments[0].texture && ds34_texture_dirty)ds34_texture_dirty(&c->texture,f->attachments[0].texture);}
 void ds26_quantize(const DS26Surface *target,float rgba[4]){
     uint32_t format=target->format;
     if(format==0x1907)rgba[3]=1;
@@ -196,6 +199,7 @@ int ds26_fragment(DS13Context *c,DS26Surface *target,uint32_t x,uint32_t y,float
 void ds26_stats(DS13Context *c,uint32_t out[4]){memset(out,0,16);if(c->fbo){for(unsigned i=0;i<DS26_OBJECTS;++i){out[0]+=c->fbo->frames[i].used;out[1]+=c->fbo->renders[i].refs!=0;}out[2]=c->fbo->bytes;out[3]=c->fbo->changes;}}
 static void DS13_SOFT read_pixels(int32_t x,int32_t y,int32_t w,int32_t h,uint32_t format,uint32_t type,void *pixels){
     DS13Context *c=ctx();if(!c)return;
+    if(ds34_active && ds34_active(c) && !c->framebuffer_binding){ds13_unsupported("GPU default framebuffer readback unavailable",0);return;}
     if(w<0 || h<0){ds13_error(0x501);return;}
     uint32_t bytes=type==0x1401?(format==0x1908?4:format==0x1907?3:0):
         ((type==0x8363 && format==0x1907) || ((type==0x8033 || type==0x8034) && format==0x1908))?2:0;

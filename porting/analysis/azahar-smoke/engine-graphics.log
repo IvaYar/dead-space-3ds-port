@@ -29,7 +29,7 @@ GLES upload: 2x2 format=1908 required=16 limit=2097152 result=0
 GLES texture probe: OK upload=16 sub=4 readback=4 active=0
 GLES pipeline probe: OK cull=2 alpha=2 blend=4 typed=1
 Graphics budget: texture names=32 bytes=6291456
-Stack query: sp=0803d478 result=00000000 base=08000000 size=0772e000 perm=3
+Stack query: sp=0803d478 result=00000000 base=08000000 size=0772c000 perm=3
 GLES context bindings: 99; bounded CPU triangle renderer
 Sensor bridge attached: native HID; emulator identity axes, nominal 512 counts/g
 Running 209 donor constructors...
@@ -436,7 +436,7 @@ ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
 ARENA request: mmap bytes=3895296 caller=002531a4 thread=main frame=2
 ARENA release: munmap bytes=3895296 caller=00253ebc thread=main frame=2
 ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
-WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=3242
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=3240
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
@@ -533,11 +533,11 @@ GLES error at stop: 00000000
 GLES counters: queries=14 clears=0 pixels=593460 flushes=0
 GLES texture stores: names=4 bytes=1572868 uploads=5 patches=0
 Jump contexts: saves=601 restores=0 refusals=0
-Native heap: used=116982048 free=540384; runtime live=1644055 peak=1644055 blocks=16 failures=0
+Native heap: used=116984144 free=538288; runtime live=1644055 peak=1644055 blocks=16 failures=0
 CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28029 last-us=28029
-CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793200898148000 last-us=1793200898148000
-CLOCK main: kind=1 caller=00246930 id=0 calls=22 first-us=1793200898247000 last-us=1793200964859000
-CLOCK main: kind=1 caller=00360c84 id=0 calls=24 first-us=1793200903458000 last-us=1793200964859000
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793205217798000 last-us=1793205217798000
+CLOCK main: kind=1 caller=00246930 id=0 calls=22 first-us=1793205217897000 last-us=1793205284476000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=24 first-us=1793205223108000 last-us=1793205284476000
 Thread pools: active=6 mutex=33 cond=0 sem=31 keys=0
 Donor arenas: break=16781312 peak=16781312 mapped-pages=8908 map-peak=16927 refusals=0
 JNI checkpoint: pending=0 failures=3 refs=11 frame-depth=0 string-loans=1

@@ -2,13 +2,13 @@
 
 Экспериментальный порт Android ARM32-библиотеки Dead Space Mobile. **Играбельной сборки пока нет.** Исходники оригинального движка отсутствуют; проект реализует загрузчик ELF и необходимые сервисы Android/JNI для выбранного SD-донора 1.1.33.
 
-**В Azahar работает Select Difficulty, касание переключает Normal → Easy, галочка запускает следующий этап.** Добавлены настоящий туман и смешивание текстур двух units; движок прошёл прежние остановки и запросил освещение `glLightModelfv`. Проходят **511 core ARM-тестов**. Меню и переход проверяются в экспериментальном профиле178MiB/CPU400. Донор — **английская версия1.1.33**, перевод отложен. Работает ограниченный CPU renderer; ускорения PICA200 пока нет. На настоящей New3DS подтверждены только прежние этапы1–8; игровой процесс и новая CIA пока отсутствуют.
+**В Azahar видны полные кадры вступительной сцены: планета, корабль, станция и надпись DEAD SPACE.** Меню Normal/Easy и касания работают. CPU baseline прошёл552 ARM-теста; текущие GPU hooks ещё требуют полного повторного прогона. Отдельный GLES→PICA тест проходит, но GPU-интеграция самой игры пока даёт чёрные кадры. Управляемый gameplay, звук и новая игровая CIA не подтверждены; аппаратная проверка остаётся наstage8.
 
 ![Настоящее меню Azahar: выбран Easy после касания](porting/analysis/menu-frame/easy.png)
 
-Начать продолжение: **[HANDOFF.ru.md](HANDOFF.ru.md)**. Актуальное состояние: [SCENE-RENDERER.ru.md](porting/SCENE-RENDERER.ru.md), машинные сводки: [menu-result.json](porting/analysis/menu-result.json) и [engine-progress.json](porting/analysis/engine-progress.json).
+Продолжение: **[HANDOFF.md](HANDOFF.md)**. Текущие адаптеры: [LIGHTING.ru.md](porting/LIGHTING.ru.md), [DEFAULT-SURFACE.ru.md](porting/DEFAULT-SURFACE.ru.md). Машинные сводки: [lighting-result.json](porting/analysis/lighting-result.json) и [engine-progress.json](porting/analysis/engine-progress.json).
 
-Первый логотип EA описан в [FIRST-FRAME.ru.md](porting/FIRST-FRAME.ru.md). Legacy emulator profile использует124MiB памяти приложения; профиль меню —178MiB, включая128MiB donor arena. Strict preflight154/234/4 сохранён; новые адаптеры включаются явно. Local JNI frames закрываются; один version-string loan удерживает строковые данные до cleanup. После подтверждения сложности следующая остановка — `glLightModelfv`. Игровой процесс и звук ещё не подтверждены. Новая CIA не выпускалась.
+Первый логотип EA описан в [FIRST-FRAME.ru.md](porting/FIRST-FRAME.ru.md). Legacy profile124MiB сохранён; расширенный178MiB включает128MiB donor arena. Strict preflight154/234/4 и прежний аппаратный RX backend сохранены. Новые адаптеры включаются явно. Частичная геометрия и законченный чёрный кадр хранятся раздельно; завершение callback не считается доказательством работающего игрового процесса.
 
 Готовы [нижний HID-слой](porting/SENSOR-BACKEND.ru.md) и [его JNI-интеграция](porting/SENSOR-JNI.ru.md). Отдельная native-проверка Azahar получила 40 показаний. Аппаратные оси и калибровка пока не подтверждены. GitHub обновляется только по явной просьбе пользователя.
 

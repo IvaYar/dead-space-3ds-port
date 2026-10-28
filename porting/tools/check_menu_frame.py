@@ -39,17 +39,22 @@ def validate():
         assert bad not in log,bad
     assert 'GLES error at stop: 00000000' in log
     scene_adapters=native.get('fog',False) and native.get('combine',False)
+    completed_lighting=native.get('lighting',False) and native.get('default_depth',False)
     stop_api,stop_caller=('glLightModelfv','00325e84') if scene_adapters else ('glFogx','003257ec')
-    assert f'STOP unsupported: {stop_api}\n' in log and f'Caller offset: {stop_caller}\n' in log
+    if completed_lighting:
+        assert native['first_game_frame_rendered'] and native['capture_frame']==2605 and 'Frame 2605 returned\n' in log and 'Completed game frame saved.' in log
+        assert 'STOP unsupported:' not in log and 'Default surface: depth=16 stencil=8 bytes=288000' in log
+        stop_api=stop_caller=None
+    else:assert f'STOP unsupported: {stop_api}\n' in log and f'Caller offset: {stop_caller}\n' in log
     if scene_adapters:
         for text in ('Fog bridge attached: 4 operations;',
             'Combine bridge attached: 2 units;',
             'FOG GAME DRAW: frame=2604 mode=2601 start=10 end=25',
-            'Fog state: enabled=1 mode=2601 density=1 start=10 end=25 color=0,0,0,0'):
+            f'Fog state: enabled={0 if completed_lighting else 1} mode=2601 density=1 start=10 end=25 color=0,0,0,0'):
             assert text in log,text
         assert 'texture environment mode unsupported' not in log
-        for name in ('fog','combine'):
-            test=read('analysis/'+name+'-tests.json');assert test['tests_run']==21 and not test['errors'] and not test['failures']
+        for name,count in [('fog',21),('combine',21)]+([('lighting',28),('default-surface',12)] if completed_lighting else []):
+            test=read('analysis/'+name+'-tests.json');assert test['tests_run']==count and not test['errors'] and not test['failures']
             assert test['core_sha256']==build['outputs_sha256']['core-test.elf']
     returned=[int(n) for n in re.findall(r'^Frame (\d+) returned$',log,re.M)]
     assert returned==list(range(1,len(returned)+1)) and len(returned)>=2601
@@ -73,8 +78,9 @@ def validate():
         'texture_resident_bytes':resident,'texture_resident_limit_bytes':limit,'texture_backing_failures':0,
         'arena_bytes_in_use':brk+pages*4096,'arena_refusals':0,'gles_error':0,'changed_menu_pixels':changed,
         'normal_frame':normal,'easy_frame':easy,'post_confirmation_capture_complete':native['first_game_frame_rendered'],
-        'next_stop':{'api':stop_api,'caller_offset':stop_caller,'frame':2604,'phase':'NativeOnDrawFrame after confirmation'},
+        'next_stop':{'kind':'visibility_investigation' if completed_lighting else 'unimplemented_import','api':stop_api,'caller_offset':stop_caller,'frame':2605 if completed_lighting else 2604,'phase':'Completed early frame visibility' if completed_lighting else 'NativeOnDrawFrame after confirmation'},
         'native_fog_used':scene_adapters,'texture_combiner_mode_accepted':scene_adapters,'completed_3d_scene_frame':False,
+        'lighting_profile_frame_completed':completed_lighting,'visible_gameplay_confirmed':False,
         'hardware_tested':False,'gameplay':False,'new_cia_produced':False,
         'core_sha256':build['outputs_sha256']['core-test.elf'],'cxi_sha256':native['cxi_sha256'],
         'matches_current_build':native['cxi_sha256']==current['outputs_sha256']['engine-audit-178.cxi'],

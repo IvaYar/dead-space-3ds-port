@@ -5,7 +5,7 @@
   "hardware_tested": false,
   "game_adapter_enabled": false,
   "native_rx_backend_unchanged": true,
-  "engine_checkpoint": "511 core ARM tests and 9 Azahar cases; menu, fog and texture combiners verified in CPU400/178MiB emulator profile; next stop glLightModelfv; see menu-result.json",
+  "engine_checkpoint": "551 core ARM tests and 9 Azahar cases; lighting/default depth pass, corridor visible in intermediate capture but final scene remains black; see lighting-result.json",
   "limitations": [
     "identity axes and nominal 512 counts/g are test configuration, not hardware calibration",
     "delivery rate limiter does not configure HID hardware sample rate",

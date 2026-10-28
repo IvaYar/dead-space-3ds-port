@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "matches_current_build": false,
+  "historical": true,
+  "computer_tests_passed": null,
+  "completed_frame": 4628,
+  "visible_scene_confirmed": true,
+  "scene_description": "Completed opening camera scene beside the station exterior; planet and station structures visible. No player-controlled gameplay demonstrated.",
+  "auto_menu_verified": true,
+  "menu_frames": [
+    4380,
+    4388
+  ],
+  "gameplay": false,
+  "audio_verified": false,
+  "hardware_tested": false,
+  "new_cia_produced": false,
+  "core_sha256": "e705ea50c8859adf5835220480c8726debb241051b15fdc7981e7202403efdcd",
+  "cxi_sha256": "085733e9dc1d1dfa8e60f55956feb546ef129301c98d3c7e04ba26977aa1fbeb",
+  "gles_error": 0,
+  "arena_refusals": 0,
+  "paging_failures": 0,
+  "witnesses_sha256": {
+    "analysis/scene-vertex-frame/run.log": "e1b3a590c8857201f10f2834e1021738c79b9b90a35d963d734a910777f9a7d6",
+    "analysis/scene-vertex-frame/run-result.json": "754118eb1cafbac769c05cd4ef8130dd68b2458b8b13f4e5e62e0535db4221a4",
+    "analysis/scene-vertex-frame/build-manifest.json": "a0cd4f61c7c0a7b15c101b759c7e6f76129f25742f394a4709b6c88970e431aa",
+    "analysis/scene-vertex-frame/first-game-frame.raw": "9eb385f4ec804bd627528450ee8efcf4c9a603b9da8487aebdc943cc3f38b345",
+    "analysis/scene-vertex-frame/first-game-frame.json": "1e75cf3204e88ca3381fd38ca240357561559e4b31a6102fa55bda3bbef5bb3d",
+    "analysis/scene-vertex-frame/first-game-frame.png": "3eafaa0342b99ea5a2c7ba0acdf6b00094ca7e30bad84eaae5bfe5948597f2ea",
+    "analysis/scene-vertex-frame/azahar-screen.png": "a2e1eb162d31b8c5a0762f6a2d5e281a629f2461354973d21b46f3002ae3be42",
+    "analysis/scene-vertex-frame/visual-inspection.json": "100017cb0e6fdedd236c101e7fc8c86dd350e5121442810a7360d464a7ef8242"
+  }
+}

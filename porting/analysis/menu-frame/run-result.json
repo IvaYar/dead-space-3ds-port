@@ -4,7 +4,7 @@
   "expected_status_found": true,
   "hardware_tested": false,
   "gameplay": false,
-  "first_game_frame_rendered": false,
+  "first_game_frame_rendered": true,
   "exploratory": true,
   "checkpoint_validated": false,
   "cpu_percent": 400,
@@ -24,7 +24,7 @@
   ],
   "tap_frame": 0,
   "private_files": true,
-  "capture_frame": 2800,
+  "capture_frame": 2605,
   "apk_assets": true,
   "donor_arena_mib": [
     128
@@ -36,9 +36,11 @@
   "allocator_compat": true,
   "fog": true,
   "combine": true,
-  "frames": 60226,
-  "elapsed_seconds": 485.047,
-  "cxi_sha256": "c0dff8bc04907933b70dc5e30cedfd2c3955be122d74ecdeb57109d41f6302fb",
-  "log_sha256": "4cdef7a30b438d69f639f452e2036294ffc68f6c744b211d738b17efbc3caa33",
+  "lighting": true,
+  "default_depth": true,
+  "frames": 73036,
+  "elapsed_seconds": 521.172,
+  "cxi_sha256": "5ae2683d4870290eb3de0d1a3c8f6ba830e15c9e43b41e1feba64fdc10c88fcf",
+  "log_sha256": "280a6e54af46f78af56f152068305f851da86bb2ab16cadee96449496e50f511",
   "log": "analysis\\azahar-smoke\\engine-graphics-explore.log"
 }

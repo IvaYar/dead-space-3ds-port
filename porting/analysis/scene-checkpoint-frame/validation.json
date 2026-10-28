@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "matches_current_build": true,
+  "historical": true,
+  "computer_tests_passed": null,
+  "completed_frame": 2828,
+  "visible_scene_confirmed": true,
+  "scene_description": "Completed opening cinematic: station exterior and original DEAD SPACE title; no player-controlled gameplay demonstrated.",
+  "auto_menu_verified": true,
+  "menu_frames": [
+    2460,
+    2468
+  ],
+  "gameplay": false,
+  "audio_verified": false,
+  "hardware_tested": false,
+  "new_cia_produced": false,
+  "core_sha256": "46532d21f007b639a500bc12526bc3202dc5e855492edae50b97cb2e79f7bece",
+  "cxi_sha256": "ffb0be375d0bbef61f1fd58faf0f052a41326d0825995a52eb49cd7cc6a2e8d8",
+  "gles_error": 0,
+  "arena_refusals": 0,
+  "paging_failures": 0,
+  "witnesses_sha256": {
+    "analysis/scene-checkpoint-frame/run.log": "815f45689554268a0d1d564f838d48e4a23101775ff37ffdcf1ff62b2f9461ab",
+    "analysis/scene-checkpoint-frame/run-result.json": "dcc562bd0cd660b854759d6cfb9dd920f86e6debca3224c0799d3dde356a5103",
+    "analysis/scene-checkpoint-frame/build-manifest.json": "39e42f075da330d94a9dade9d3237fc5db1e2e111bc2f608c19275ccb293b801",
+    "analysis/scene-checkpoint-frame/first-game-frame.raw": "a755b562948a23ca6ba070a9ab594dbfd57db93d9500bf32f097878bb9f0c4b2",
+    "analysis/scene-checkpoint-frame/first-game-frame.json": "4f8d757cb4dffcfdcc4267ad36219a7fa68aa57586931e2f074e3933dd8a192b",
+    "analysis/scene-checkpoint-frame/first-game-frame.png": "a26cf92c8a8607f191f06fdafc85479589515e57c21b81178f74cfed3f01b3b4",
+    "analysis/scene-checkpoint-frame/azahar-screen.png": "24ff52698085ca6a29bd0138383830fdfec2dba866d54c651af30e9be70c269d",
+    "analysis/scene-checkpoint-frame/visual-inspection.json": "969e9f420e5b236668329f6c9244e05c6102bd6785fe31d168f3699023d16dbc"
+  }
+}

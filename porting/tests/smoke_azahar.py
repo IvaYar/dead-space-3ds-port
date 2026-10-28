@@ -6,6 +6,7 @@ No emulator UI is opened; the test uses software rendering and its own local SD 
 import ctypes as C
 import argparse
 import json
+import os
 from pathlib import Path
 import shutil
 import struct
@@ -14,7 +15,8 @@ import time
 import zlib
 
 PORTING = Path(__file__).resolve().parents[1]
-ROOT = PORTING / "analysis/azahar-smoke"
+ROOT = Path(os.environ.get('DEADSPACE_EMULATOR_ROOT',str(PORTING / 'analysis/azahar-smoke'))).resolve()
+if (PORTING/'analysis').resolve() not in ROOT.parents:raise ValueError('Emulator output must be inside workspace analysis')
 ROOT.mkdir(parents=True, exist_ok=True)
 OPTIONS = {
     b"citra_graphics_api": b"Software", b"citra_is_new_3ds": b"New 3DS",
@@ -26,6 +28,9 @@ PATH_BYTES = str(ROOT.resolve()).encode()
 frame = None
 shutdown = False
 button_a = False
+pointer_pressed = False
+pointer_x = 0
+pointer_y = 0
 _host_bytes=0
 (ROOT/'azahar-host.log').write_bytes(b'')
 @C.CFUNCTYPE(None,C.c_int,C.c_char_p,C.c_void_p)
@@ -101,7 +106,22 @@ def poll(): pass
 
 @C.CFUNCTYPE(C.c_int16, C.c_uint, C.c_uint, C.c_uint, C.c_uint)
 def input_state(port, device, index, identifier):
-    return 1 if button_a and port == 0 and device == 1 and identifier == 8 else 0
+    if port!=0 or index!=0:return 0
+    if device==1 and identifier==8:return int(button_a)
+    if device==2 and identifier==2:return int(pointer_pressed)
+    if device==6:return pointer_x if identifier==0 else pointer_y if identifier==1 else int(pointer_pressed) if identifier==2 else 0
+    return 0
+
+def set_touch(pressed,x=160,y=120):
+    """Real libretro pointer on the lower LCD of the fixed 400x480 layout."""
+    global pointer_pressed,pointer_x,pointer_y
+    if type(pressed) is not bool or type(x) is not int or type(y) is not int or not 0<=x<320 or not 0<=y<240:
+        raise ValueError('Touch requires bool pressed and integer coordinates within 320x240')
+    # Match Azahar2126.2 MouseTracker's +/-0x7fff canvas conversion. Aim at
+    # pixel centers so the core's integer conversion lands inside each pixel.
+    pointer_x=round((40+x+.5)/400*65534-32767)
+    pointer_y=round((240+y+.5)/480*65534-32767)
+    pointer_pressed=pressed
 
 
 def save_frame(path):

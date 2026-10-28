@@ -7,6 +7,7 @@ from check_headphone_frame import validate as headphone_validate
 from check_input_save import validate as input_save_validate
 from check_apk_assets import validate as apk_validate
 from check_menu_frame import validate as menu_validate
+from check_lighting_progress import validate as lighting_validate
 from pathlib import Path
 PORTING=Path(__file__).resolve().parents[1]
 def read(path):return json.loads((PORTING/path).read_text(encoding='utf-8'))
@@ -36,7 +37,8 @@ def main():
         ('analysis/shared-memory-tests.json',12),('analysis/emulator-threads-tests.json',4),
         ('analysis/framebuffer-tests.json',24),('analysis/texture-pages-tests.json',10),
         ('analysis/font-profile-tests.json',8),('analysis/allocator-compat-tests.json',7),
-        ('analysis/fog-tests.json',21),('analysis/combine-tests.json',21)):
+        ('analysis/fog-tests.json',21),('analysis/combine-tests.json',21),
+        ('analysis/lighting-tests.json',28),('analysis/default-surface-tests.json',12)):
         extra=read(path);assert extra['tests_run']==n and not extra['errors'] and not extra['failures']
         assert extra['core_sha256']==tests['core_sha256']
     directories=read('analysis/asset-directory-contract.json');assert directories==asset_contract()
@@ -149,6 +151,7 @@ def main():
     input_save=input_save_validate()
     apk_assets=apk_validate()
     menu=menu_validate()
+    lighting=lighting_validate()
     graphics_log=(PORTING/'analysis/azahar-smoke/engine-graphics.log').read_text(encoding='utf-8')
     for marker in ('GLES surface probe: OK 400x240; black clear + green scissor; pixels=97200 format=2',
                    'Asset probe: 0 checks=378 names=176 CRC32-xor=3a761eb9','Asset cleanup: files=0 heap=0',
@@ -161,18 +164,19 @@ def main():
     brk,peak,pages,refusals=map(int,arena.groups())
     assert (brk,peak,pages,refusals)==(16781312,16781312,4097,0)
     assert trace['donor_arena_stats'][:3]==[brk,peak,pages] and trace['donor_arena_stats'][7]==0
-    report={'workflow':'emulator first; no per-stage SD swaps','stage8_hardware_passed':True,'computer_tests_passed':511,
+    report={'workflow':'emulator first; no per-stage SD swaps','stage8_hardware_passed':True,'computer_tests_passed':551,
         'azahar_cases_passed':cases,'constructors_completed':209,'jni_onload':'00010004','stored_vm_matches':True,
         'lifecycle_returns':['NativeOnCreate','NativeOnSurfaceCreated','NativeOnSurfaceChanged'],'first_frame_attempted':True,
         'first_game_frame_rendered':True,'eaio_native_startup_returned':True,'draw_callbacks_returned':menu['frames_returned'],
         'menu_screen':menu,'donor_language':'English 1.1.33; Russian APK not used; translation deferred',
+        'lighting_and_default_surface':lighting,'visible_gameplay_confirmed':False,
         'first_frame':frame,'headphone_screen':headphones,'input_and_private_saves':input_save,'apk_assets_and_shared_memory':apk_assets,
         'platform_probe':{'checks':168,'properties':29,'active_files_after_cleanup':0,'heap_blocks_after_cleanup':0},
         'assets':{'files':1728,'bytes':414822611,'copied_and_sha256_verified':True,'readiness_receipt_checked':True,'rehash_each_frame':False},
         'jni_frames':{'waiting_callbacks':120,'live_refs_at_end':4,'reference_capacity_exhausted':False},
         'jni_file_probe':{'checks':201,'bytes':3568,'crc32':'4a8d9499','active_files_after_cleanup':0,'heap_blocks_after_cleanup':0},
-        'stop':dict(menu['next_stop'],kind='unimplemented_import',mode='Azahar New3DS 178MiB, shared128MiB donor arena; CPU400 exploratory',
-            reason='Normal/Easy menu, fog and texture combiners verified; next scene requests lighting configuration'),
+        'stop':dict(menu['next_stop'],mode='Azahar New3DS 178MiB, shared128MiB donor arena; CPU400 exploratory',
+            reason='Lighting and default depth/stencil pass; investigate final surface visibility and later passes'),
         'legacy_apk_profile_stop':apk_assets['next_stop'],
         'cpu_graphics_guard_stop':graphics_stop,
         'asset_bridge':{'tests_passed':28,'native_probe_checks':378,'native_probe_names':176,'native_names_crc32_xor':'3a761eb9',
@@ -195,9 +199,10 @@ def main():
             'first_game_texture_guarded_cpu':dict(graphics_trace['first_texture'],cpu_source_matches_store=True),
             'error_at_stop':graphics_trace['graphics_error'],
             'game_queries_completed':14,'game_clears':0,'triangle_renderer_implemented':True,'texture_storage_implemented':True,'texture_sampling_implemented':True,
-            'renderer_scope':'unlit CPU triangles; opt-in FBO depth/stencil, fog, two-unit texture combiners, RGBA/RBO targets and readback; nonmip matching min/mag filters only',
+            'renderer_scope':'CPU triangles; opt-in eight-light vertex lighting, default/FBO depth/stencil, fog, two-unit texture combiners, RGBA/RBO targets and readback; nonmip matching min/mag filters only',
             'framebuffer_tests_passed':24,'texture_paging_tests_passed':10,'font_profile_tests_passed':8,'allocator_compat_tests_passed':7,
             'fog_tests_passed':21,'combiner_tests_passed':21,'opt_in_fog_bindings':4,
+            'lighting_tests_passed':28,'default_surface_tests_passed':12,'opt_in_lighting_bindings':18,
             'menu_profile_texture_resident_limit_bytes':6*1024*1024,'menu_profile_logical_texture_limit_bytes':96*1024*1024},
         'guarded_baseline_stop':{'phase':stop['phase'],'api':stop['name'],'class':stop['request']['class'],'method':'SetEnabled(Z)V'},
         'sensor_bridge':{'jni_tests_passed':8,'android_delay_at_capture':1,'interval_us_at_capture':20000,'native_shutdown_active':0,'native_original_acceleration_callbacks_observed':6,
@@ -207,7 +212,7 @@ def main():
         'new_hardware_install_requested':False,'new_cia_produced':False,'native_rx_backend_unchanged':True,
         'limitations':['clock models are emulator-only','mmap supports private anonymous RW only','selected JNI subset; no Java interpreter',
             'AssetManager APK profile is opt-in; openFd supports extracted ZIP_STORED assets, offset 0; fcntl supports F_DUPFD only','physical sensor axes/calibration unverified','display DPI is configured, not measured',
-            'Android API/version identify compatibility profile, not native OS','unlit CPU rasterizer; no PICA200 acceleration or lighting; fog/combiners are opt-in',
+            'Android API/version identify compatibility profile, not native OS','CPU rasterizer; no PICA200 acceleration; lighting/fog/combiners/default depth are opt-in',
             'compressed textures and automatic mipmap generation not implemented','jump bridge has no POSIX signal delivery and rejects nonempty saved masks',
             'jump buffer frame lifetime and arbitrary pointer validity remain caller responsibilities',
             'JNI strings are bounded; one orphan version-string loan remains until context cleanup; local frames close','object arrays support String component only; assets read-only, private appdata directories writable',
@@ -224,7 +229,8 @@ def main():
             'analysis/android-abi/apk-asset-namespace-contract.json','analysis/apk-assets-result.json',
             'analysis/apk-assets-tests.json','analysis/jni-monitors-tests.json','analysis/shared-memory-tests.json','analysis/emulator-threads-tests.json',
             'analysis/framebuffer-tests.json','analysis/texture-pages-tests.json','analysis/font-profile-tests.json','analysis/allocator-compat-tests.json',
-            'analysis/font-subset-contract.json','analysis/menu-result.json','analysis/fog-tests.json','analysis/combine-tests.json')}}
+            'analysis/font-subset-contract.json','analysis/menu-result.json','analysis/fog-tests.json','analysis/combine-tests.json',
+            'analysis/lighting-tests.json','analysis/default-surface-tests.json','analysis/lighting-result.json')}}
     target=PORTING/'analysis/engine-progress.json';target.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

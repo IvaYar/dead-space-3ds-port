@@ -31,9 +31,11 @@
   "allocator_compat": false,
   "fog": false,
   "combine": false,
-  "frames": 17596,
-  "elapsed_seconds": 51.079,
-  "cxi_sha256": "acca1b0b154e9cf5d1c24be6871b1d620fcfb220a078cbbe9a13b32643082588",
-  "log_sha256": "115c56adc8d47ddf43f49bc560d664eb2e4093e5f50a16a92da07d25ab8deee8",
+  "lighting": false,
+  "default_depth": false,
+  "frames": 17626,
+  "elapsed_seconds": 51.797,
+  "cxi_sha256": "1ff2fdd8c343afcbce2ee59637c62b5f6d7db9b3991cb45975a57e171d7e2bf2",
+  "log_sha256": "3435244df8cdbe33abccfe26871e4655026a2e41fe31a94f1de4e2a6d623bd58",
   "log": "analysis/azahar-smoke/engine-apk600-shared100.log"
 }

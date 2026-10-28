@@ -1,0 +1,10 @@
+{
+  "core_sha256": "e705ea50c8859adf5835220480c8726debb241051b15fdc7981e7202403efdcd",
+  "scope": "Unicorn ARM instruction count, 8 identical 4x3 nearest textured quads; not hardware FPS",
+  "texture_name": 71,
+  "draws": 8,
+  "fragments": 96,
+  "instructions": 319384,
+  "pixels_sha256": "1ac449e0d890943e1aff2e23f6594e02b222f0dcc2cce024a4a57c20280ffe08",
+  "hardware_tested": false
+}
