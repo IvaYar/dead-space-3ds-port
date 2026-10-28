@@ -1,0 +1,100 @@
+{
+  "date_local": "2026-10-28",
+  "fix_verify_cycles": 2,
+  "scratch_reuse_confirmed": true,
+  "texture_regression": {
+    "size_bytes": 262144,
+    "pattern": "four horizontal bands, white/blue/green/red from top",
+    "before_failure": "case 3, x=200,y=30: red (255,0,0), expected white (255,255,255)",
+    "before_cxi": "97f80fb377b5b9e1f46a2453b6294bfe805ded2a202ceb9c1e2f1e2d273beacf",
+    "after_pass": true
+  },
+  "new3ds_address_regression": {
+    "profile": "178MiB, 40MiB heap, 132MiB linear heap, 128MiB arena allocated before GPU",
+    "before_failure": "case 0 center is clear color (16,32,49), expected green (0,255,0); triangles absent",
+    "before_cxi": "41349593854756561e529bd2e9e5f4fcb0afc4a11ddaba543517b580f76d9478",
+    "fix": "Set C3D_BufInfo.base_paddr to physical stream base so attribute offsets fit 28 bits",
+    "after_pass": true
+  },
+  "fixtures": {
+    "azahar-gpu-gles": {
+      "passed": true,
+      "gpu_draws": 19,
+      "gpu_triangles": 2766,
+      "gpu_uploads": 4,
+      "gpu_bytes": 262144,
+      "cpu_fragments": 0,
+      "cpu_samples": 0,
+      "engine_memory": false,
+      "scope": "GLES adapter GPU fragments; original game not called",
+      "hardware_tested": false,
+      "emulator_sd_isolated": true,
+      "cxi_sha256": "fdf1cc907dfcd8defe3f35233883ab3b00ec643e092096f9812c9239c4817568",
+      "png_sha256": [
+        "66072f89440fc624c466760e5d248226afb89a0ae8ecf29f9c375c1d500f0110",
+        "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
+        "aefc77b9ff970f5b84505dfb4b7a2cdf560d15cd3fa38fc2e032ec12fcbec734",
+        "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+        "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+        "819edd88f5fc59c64977f5dcd2dab93876beb9b5ef577528047de30a3686fe2a",
+        "4054ba2c17136dcd85eb97df731f72c3b745b06c154ba1c4ed1a138b9b5f1dde"
+      ],
+      "elapsed_seconds": 0.531
+    },
+    "azahar-gpu-gles-memory": {
+      "passed": true,
+      "gpu_draws": 19,
+      "gpu_triangles": 2766,
+      "gpu_uploads": 4,
+      "gpu_bytes": 262144,
+      "cpu_fragments": 0,
+      "cpu_samples": 0,
+      "engine_memory": true,
+      "scope": "GLES adapter GPU fragments; original game not called",
+      "hardware_tested": false,
+      "emulator_sd_isolated": true,
+      "cxi_sha256": "dd0d5472160c72d086271dd2882146b2eab3c4cde0d0d9402afc2204ec8a5861",
+      "png_sha256": [
+        "66072f89440fc624c466760e5d248226afb89a0ae8ecf29f9c375c1d500f0110",
+        "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
+        "aefc77b9ff970f5b84505dfb4b7a2cdf560d15cd3fa38fc2e032ec12fcbec734",
+        "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+        "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+        "819edd88f5fc59c64977f5dcd2dab93876beb9b5ef577528047de30a3686fe2a",
+        "4054ba2c17136dcd85eb97df731f72c3b745b06c154ba1c4ed1a138b9b5f1dde"
+      ],
+      "elapsed_seconds": 0.5
+    }
+  },
+  "engine": {
+    "cxi_sha256": "b0e3f85c35ffe3af8586316e33e0536401bc0cd750389fdd0389cb80f109643f",
+    "frame": 180,
+    "draws": 387,
+    "triangles": 3006,
+    "uploads": 4,
+    "vram_bytes": 1048576,
+    "gl_error": 0,
+    "cpu_fragments": 0,
+    "cpu_samples": 0,
+    "visual_inspection": {
+      "real_gpu_game_frame_visible": true,
+      "visible_content": "Original headphones screen: Isaac, headphone icon, English recommendation text",
+      "all_pixels_zero": false,
+      "nonblack_pixels": 12323,
+      "unique_rgb565_values": 824,
+      "frame": 180,
+      "crc32": "ea733050",
+      "png_sha256": "3410c1d5776fa32c658747f30a373292d781d078e412248d589a0866d80808a5",
+      "hardware_tested": false,
+      "gpu_integration_complete": false,
+      "visual_equivalence_validated": false,
+      "remaining_visual_issue": "Small text has missing/shifted scanlines compared with historical CPU headphones capture at frame 120. Timing differs; this is not an exact same-frame comparison.",
+      "next_experiment": "Thin horizontal line/checker/atlas fixture at fractional UVs with NEAREST and LINEAR; compare GPU samples to DS22 before trusting GPU auto-menu."
+    }
+  },
+  "known_native_issue": "Citro3D 1.7.1 C3D_TexBind(1,NULL) reads address 0x0000000c via C3D_TexGetType. Present in both fixture and engine emulator logs. Azahar tolerates it; real hardware safety is unvalidated. Needs a supported safe disabled-sampler path before hardware use.",
+  "cpu_baseline_cxi_sha256": "ffb0be375d0bbef61f1fd58faf0f052a41326d0825995a52eb49cd7cc6a2e8d8",
+  "full_552_suites_rerun": false,
+  "reason_no_full_suites": "Only optional DS34 backend and isolated GPU fixtures/build tooling changed; CPU source, binary, assets and checkpoints untouched.",
+  "next_step": "Thin horizontal line/checker/atlas fixture at fractional UVs with NEAREST and LINEAR; compare GPU samples to DS22 before trusting GPU auto-menu."
+}

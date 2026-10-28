@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "expected_failure": true,
+  "test": "256 KiB upload using old 64 KiB scratch",
+  "pixel": [
+    200,
+    30
+  ],
+  "expected_rgb": [
+    255,
+    255,
+    255
+  ],
+  "actual_rgb": [
+    255,
+    0,
+    0
+  ]
+}

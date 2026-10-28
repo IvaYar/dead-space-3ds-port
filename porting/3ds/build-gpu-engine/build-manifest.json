@@ -54,7 +54,7 @@
     "3ds\\source\\ds24_files_3ds.c": "d17e6c831251c0220eecd3fd75738755b0ff12be3b81b21ea788955e121f2851",
     "3ds\\source\\ds25_assets_3ds.c": "b8d3d1a5f3eea95919ef6c689fbe791a366c6b6517b19dc3f2bd3bbbf6137ea2",
     "3ds\\source\\ds27_pages_3ds.c": "50d47ed1530a0a74e47754b5dbbd70410e98c95e964bc42aa83e485ceecac422",
-    "3ds\\source\\ds34_gpu_3ds.c": "ff1ab4f4187f0ca6c9cac974f8da070631dca9438426f5adb69096c10d1c5d0b",
+    "3ds\\source\\ds34_gpu_3ds.c": "893c9d547e0dc9fd18e39af483906bd01811208b8240bba734b51d16fb6aaac5",
     "tests\\engine_trap.s": "35b212d7d9668952fa48fa661b8d3195a7229c7194da22b15d2500fb52123d44",
     "tests\\engine_azahar.c": "4175da1f9a3e4e687ace88a1af7ed374ffa04edb0288d0b9cb82edf420453626",
     "tests\\jni10_callbacks.c": "8bcf022c901d4da3e31198041c7a4145cce557b4e79e80d1244d6e9495bd3a97",
@@ -108,8 +108,8 @@
     "toolchain\\citro3d\\lib\\libcitro3d.a": "b0e944fdaedda863a6c3d6851e4092a65f09a656d86d6d2eb138542a27319705"
   },
   "outputs_sha256": {
-    "engine-gpu.elf": "7179e9ddf9b4034458c2d893da3feadc3319e55a3faca7c446964af4291e0e16",
-    "engine-gpu.cxi": "812247b906735d94f11f0e92a7d0dcab923d7a890f666db496c46c8e82b38aeb",
+    "engine-gpu.elf": "11eacd4299c5ec4de5e2646b0703a50b2d72cf62c64bbb36d9390f3e89cc21fa",
+    "engine-gpu.cxi": "b0e3f85c35ffe3af8586316e33e0536401bc0cd750389fdd0389cb80f109643f",
     "ds34.shbin": "c13d80d90646a66cf4cc98bce98bdca44ba09d559aeed0ad8ea3a06481ccfc21"
   }
 }

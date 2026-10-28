@@ -1,5 +1,6 @@
 {
   "emulator_only": true,
+  "engine_memory": false,
   "game_called": false,
   "cia_produced": false,
   "title_id": "000400000FDE6500",
@@ -19,8 +20,8 @@
     "3ds\\source\\ds31_combine.c": "509d42672f823d1c0ee7c898d9f555d98cfaefdfa156e92f724c15cc35df74bf",
     "3ds\\source\\ds32_lighting.c": "b9c5ddaab188e140ab23eebf9067a9bcef5fa6dc22169abc5d27c112529db8f1",
     "3ds\\source\\ds33_surface.c": "c9dc126f122a8d3db476799aa7e840443462e032fb9d94f9b0c55a63fe917ba9",
-    "3ds\\source\\ds34_gpu_3ds.c": "ff1ab4f4187f0ca6c9cac974f8da070631dca9438426f5adb69096c10d1c5d0b",
-    "tests\\gpu_gles_probe.c": "db5ace0f8923e58d23334eae8ee26327c6af1ea19383afc5c9ba2f926ee43c35",
+    "3ds\\source\\ds34_gpu_3ds.c": "893c9d547e0dc9fd18e39af483906bd01811208b8240bba734b51d16fb6aaac5",
+    "tests\\gpu_gles_probe.c": "c00b4de93686ff88c27d09fc919cdaeaa48a1ff34a4afb19c3843b32ed53a029",
     "3ds\\include\\ds10_jni.h": "f3f711e59799565af56cd201df81bc80e32dd578b7565ac1ad6e8268e483aa7c",
     "3ds\\include\\ds11_platform.h": "16d9462c10ec361a615bca46480e21349b2166a07d7e9ed31f396b5ce6a454b2",
     "3ds\\include\\ds12_sensor.h": "a2e564f03e95fdca8806ebbe3dba469b0fb1f721fed3186516b9a686a902a965",
@@ -58,13 +59,13 @@
     "3ds\\include\\ds_jni.h": "ea93040d60e148b3c6dbda6cda632cee57c234e01e4b40e2c666ccc13d2db3ae",
     "3ds\\include\\ds_runtime.h": "61a8b16d27a37f417d65427f246bd28be9c0251e857172c0c37a777b00640ead",
     "3ds\\source\\ds34_gpu.v.pica": "274ffd441730c29de7b885a3b1182582456285bdcab2025024adbb19957cede7",
-    "tools\\build_gpu_gles.py": "f2f972e5fd55773df56ef910fdbc353737169ac399b776f1fc7ec468050a2e30",
+    "tools\\build_gpu_gles.py": "fe63b45a17cf37ee7e4e89648e4e32264bb57c3c1edc8bf8acab6d5ee94e5f72",
     "toolchain\\citro3d\\lib\\libcitro3d.a": "b0e944fdaedda863a6c3d6851e4092a65f09a656d86d6d2eb138542a27319705",
     "toolchain\\citro3d\\build-manifest.json": "b75ec791873b1319a2d29b4250054975d511ab653dfc276f6963e222316b9e23"
   },
   "outputs_sha256": {
-    "gpu-gles.elf": "1d685e0b608e2d2daaf340eb1228894c9b0cf8a9cafcb3aab34a96cb7e7057a6",
-    "gpu-gles.cxi": "1e99e03ad64bcabc57f34ffc9ef12a29ede20b2e959f06849866e7a55bb69f5d",
+    "gpu-gles.elf": "62e57c9cf3cee8498d415aa7635aa4a17fb75424e46615551ff744359b3595b5",
+    "gpu-gles.cxi": "fdf1cc907dfcd8defe3f35233883ab3b00ec643e092096f9812c9239c4817568",
     "ds34.shbin": "c13d80d90646a66cf4cc98bce98bdca44ba09d559aeed0ad8ea3a06481ccfc21"
   }
 }

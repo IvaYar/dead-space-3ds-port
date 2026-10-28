@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "expected_failure": true,
+  "test": "178 MiB profile, arena128 before GPU, default BufInfo base",
+  "pixel": [
+    200,
+    120
+  ],
+  "expected_rgb": [
+    0,
+    255,
+    0
+  ],
+  "actual_rgb": [
+    16,
+    32,
+    49
+  ]
+}

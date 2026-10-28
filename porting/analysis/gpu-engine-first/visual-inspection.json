@@ -1,6 +1,15 @@
 {
-  "visible_scene": false,
-  "all_pixels_zero": true,
+  "real_gpu_game_frame_visible": true,
+  "visible_content": "Original headphones screen: Isaac, headphone icon, English recommendation text",
+  "all_pixels_zero": false,
+  "nonblack_pixels": 12323,
+  "unique_rgb565_values": 824,
+  "frame": 180,
+  "crc32": "ea733050",
+  "png_sha256": "3410c1d5776fa32c658747f30a373292d781d078e412248d589a0866d80808a5",
+  "hardware_tested": false,
   "gpu_integration_complete": false,
-  "png_sha256": "6615a17a4b47b1dc682dbd481a3125bcdd0878d7de6b9593417e86fa8ef71bf9"
+  "visual_equivalence_validated": false,
+  "remaining_visual_issue": "Small text has missing/shifted scanlines compared with historical CPU headphones capture at frame 120. Timing differs; this is not an exact same-frame comparison.",
+  "next_experiment": "Thin horizontal line/checker/atlas fixture at fractional UVs with NEAREST and LINEAR; compare GPU samples to DS22 before trusting GPU auto-menu."
 }

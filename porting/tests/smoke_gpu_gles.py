@@ -1,8 +1,9 @@
 """Check actual GPU pixels produced through the game's GLES binding layer."""
-import os,ctypes as C,json,time,zlib,struct,hashlib
+import os,ctypes as C,json,time,zlib,struct,hashlib,sys
 from pathlib import Path
 P=Path(__file__).resolve().parents[1]
-os.environ['DEADSPACE_EMULATOR_ROOT']=str(P/'analysis/azahar-gpu-gles')
+ENGINE_MEMORY='--engine-memory' in sys.argv[1:]
+os.environ['DEADSPACE_EMULATOR_ROOT']=str(P/('analysis/azahar-gpu-gles-memory' if ENGINE_MEMORY else 'analysis/azahar-gpu-gles'))
 import smoke_azahar as f
 def png(rgb):
     def chunk(k,v):return struct.pack('>I',len(v))+k+v+struct.pack('>I',zlib.crc32(k+v))
@@ -17,7 +18,7 @@ def main():
     for name,callback in (('environment',f.environment),('video_refresh',f.video),('audio_sample',f.audio),('audio_sample_batch',f.audio_batch),('input_poll',f.poll),('input_state',f.input_state)):
         setter=getattr(core,'retro_set_'+name);setter.argtypes=[type(callback)];setter(callback)
     core.retro_load_game.argtypes=[C.POINTER(f.GameInfo)];core.retro_load_game.restype=C.c_bool
-    core.retro_init();app=P/'3ds/build-gpu-gles/gpu-gles.cxi';info=f.GameInfo(str(app.resolve()).encode(),None,0,None)
+    core.retro_init();app=P/('3ds/build-gpu-gles-memory/gpu-gles.cxi' if ENGINE_MEMORY else '3ds/build-gpu-gles/gpu-gles.cxi');info=f.GameInfo(str(app.resolve()).encode(),None,0,None)
     assert core.retro_load_game(C.byref(info));start=time.monotonic()
     for frame in range(3600):
         core.retro_run()
@@ -28,7 +29,7 @@ def main():
     assert not error.exists(),error.read_text() if error.exists() else ''
     assert meta.exists(),'No GLES GPU result; inspect isolated screen and emulator log'
     m=json.loads(meta.read_text());images=[];pixels=[]
-    for case in range(3):
+    for case in range(7):
         raw=(card/f'gpu-gles-{case}.raw').read_bytes();assert len(raw)==192000
         rgb=bytearray()
         for y in range(239,-1,-1):
@@ -43,9 +44,15 @@ def main():
     near(0,200,120,(0,255,0));near(0,50,120,(16,32,48));near(0,200,20,(16,32,48))
     near(1,80,40,(0,0,255));near(1,320,40,(255,255,255));near(1,80,200,(255,0,0));near(1,320,200,(0,255,0))
     near(2,200,120,(128,0,127))
-    assert m['passed'] and m['gpu_draws']==9 and m['gpu_triangles']==18 and m['gpu_uploads']==2
+    near(3,200,30,(255,255,255));near(3,200,90,(0,0,255))
+    near(3,200,150,(0,255,0));near(3,200,210,(255,0,0))
+    near(4,200,30,(255,255,255));near(4,200,90,(0,0,255))
+    near(4,200,150,(0,255,0));near(4,200,210,(255,0,0))
+    near(5,100,120,(0,255,0));near(5,300,120,(0,255,0))
+    near(6,100,120,(0,0,255));near(6,300,120,(255,0,0))
+    assert m['passed'] and m['gpu_draws']==19 and m['gpu_triangles']==2766 and m['gpu_uploads']==4
     assert m['cpu_fragments']==m['cpu_samples']==0
-    report={**m,'scope':'GLES adapter GPU fragments; original game not called','hardware_tested':False,'emulator_sd_isolated':True,
+    report={**m,'engine_memory':ENGINE_MEMORY,'scope':'GLES adapter GPU fragments; original game not called','hardware_tested':False,'emulator_sd_isolated':True,
         'cxi_sha256':hashlib.sha256(app.read_bytes()).hexdigest(),'png_sha256':images,'elapsed_seconds':round(time.monotonic()-start,3)}
     (f.ROOT/'result.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()
