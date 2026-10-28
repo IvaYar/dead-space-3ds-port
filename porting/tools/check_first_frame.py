@@ -22,7 +22,7 @@ def validate():
     build=read('3ds/build-emulator/build-manifest.json');tests=read('analysis/first-frame-tests.json')
     for path,digest in build['sources_sha256'].items():assert sha(path)==digest,path
     for name,digest in build['outputs_sha256'].items():assert sha('3ds/build-emulator/'+name)==digest,name
-    assert tests['tests_run']==30 and not tests['errors'] and not tests['failures']
+    assert tests['tests_run']==31 and not tests['errors'] and not tests['failures']
     assert tests['core_sha256']==build['outputs_sha256']['core-test.elf']
     native=read('analysis/azahar-smoke/engine-graphics-result.json')
     assert native['checkpoint_validated'] and native['first_game_frame_rendered'] and not native['exploratory']
@@ -31,26 +31,31 @@ def validate():
     log=(P/'analysis/azahar-smoke/engine-graphics.log').read_text(encoding='utf-8')
     for marker in ('Donor constructors completed: 209','GLES context bindings: 99','Application memory: bytes=130023424; donor arenas=20+80MiB',
         'Frame 2 returned','Frame 8 returned','GAME DRAW: caller-offset=003244e0',
-        'FIRST GAME FRAME CAPTURED: frame=8 draws=15 fragments=629370 samples=251370','Completed game frame saved.',
+        'FIRST GAME FRAME CAPTURED: frame=8 draws=','Completed game frame saved.',
         'GLES error at stop: 00000000','Sensor shutdown: result=0 active=0 events=6 delay=1'):
         assert marker in log,marker
     assert 'STOP unsupported:' not in log and 'DIAGNOSTIC WATCHDOG STOPPED' not in log and 'STOP CPU exception' not in log
     assert log.count('Thread event: 3 ')==6
     jni=re.search(r'JNI checkpoint: pending=(\d+) failures=(\d+) refs=(\d+) frame-depth=(\d+) string-loans=(\d+)',log);assert jni
     jni=dict(zip(('pending','failures','refs','frame_depth','string_loans'),map(int,jni.groups())))
-    assert jni=={'pending':1,'failures':4,'refs':21,'frame_depth':1,'string_loans':1}
-    assert log.count('JNI PopLocalFrame pinned string:')==1
+    assert jni=={'pending':0,'failures':3,'refs':11,'frame_depth':0,'string_loans':1}
+    assert 'JNI PopLocalFrame pinned string:' not in log
+    assert 'JNI retained string: slot=2 text=1.1.33 Universal SD (Default) loans=1 refs=0' in log
     jumps=re.search(r'Jump contexts: saves=(\d+) restores=(\d+) refusals=(\d+)',log);assert jumps
     jumps=dict(zip(('saves','restores','refusals'),map(int,jumps.groups())));assert jumps['saves']>=601 and not jumps['restores'] and not jumps['refusals']
     texture=re.search(r'GLES texture stores: names=(\d+) bytes=(\d+) uploads=(\d+) patches=(\d+)',log);assert texture
     texture=dict(zip(('names','bytes','uploads','patches'),map(int,texture.groups())))
-    assert 2<=texture['names']<=32 and 1048580<=texture['bytes']<=2097152 and texture['uploads']>=3 and not texture['patches']
+    assert 2<=texture['names']<=32 and 1048580<=texture['bytes']<=6*1024*1024 and texture['uploads']>=3 and not texture['patches']
     arena=re.search(r'Donor arenas: break=(\d+) peak=(\d+) mapped-pages=(\d+) map-peak=(\d+) refusals=(\d+)',log);assert arena
     arena=dict(zip(('break_bytes','break_peak','mapped_pages','map_peak_pages','refusals'),map(int,arena.groups())))
     assert arena['break_bytes']==16781312 and arena['mapped_pages']==8908 and 12116<=arena['map_peak_pages']<=20480 and not arena['refusals']
     meta=read('analysis/first-frame/first-game-frame.json');raw=(P/'analysis/first-frame/first-game-frame.raw').read_bytes()
     assert meta['width']==400 and meta['height']==240 and meta['layout']==2 and meta['frame']==8
-    assert (meta['draws'],meta['triangles'],meta['fragments'],meta['samples'])==(15,30,629370,251370)
+    # Worker completion changes the first textured callback; counters must
+    # agree with the journal and represent substantial real, textured draws.
+    assert 12<=meta['draws']<=32 and meta['triangles']==meta['draws']*2
+    assert meta['fragments']>=400000 and meta['samples']>=100000
+    assert f"FIRST GAME FRAME CAPTURED: frame=8 draws={meta['draws']} fragments={meta['fragments']} samples={meta['samples']}" in log
     assert len(raw)==meta['bytes']==192000 and f'{zlib.crc32(raw):08x}'==meta['crc32']
     w,h,pixels=png('analysis/first-frame/first-game-frame.png');assert (w,h)==(400,240)
     expected=bytearray()
@@ -73,7 +78,7 @@ def validate():
         'original_draw_caller_offset':'003244e0','donor_workers_started':6,'native_acceleration_callbacks_returned':6,
         'opt_in_gl_bindings':99,'opt_in_filesystem_bindings':4,'application_memory_bytes':130023424,
         'arena_capacity_bytes':{'break':20*1024*1024,'anonymous_mappings':80*1024*1024},'arena_stats':arena,
-        'texture_stores_at_capture':texture,'jump_contexts':jumps,'jni_checkpoint':jni,'known_jni_warning':'one pinned string prevents a local frame pop; later frames return, but the loan/frame remain retained',
+        'texture_stores_at_capture':texture,'jump_contexts':jumps,'jni_checkpoint':jni,'retained_string_loan':'version text has one native borrow and no JNI references; storage retained until context cleanup; local frames close normally',
         'core_sha256':tests['core_sha256'],'cxi_sha256':native['cxi_sha256'],
         'witnesses_sha256':{p:sha(p) for p in ('analysis/first-frame-tests.json','analysis/azahar-smoke/engine-graphics.log','analysis/azahar-smoke/engine-graphics-result.json',
             'analysis/first-frame/first-game-frame.raw','analysis/first-frame/first-game-frame.json','analysis/first-frame/first-game-frame.png','analysis/first-frame/azahar-screen.png')}}

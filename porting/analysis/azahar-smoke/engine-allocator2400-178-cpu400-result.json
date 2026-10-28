@@ -1,0 +1,32 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "graphics",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "first_game_frame_rendered": true,
+  "exploratory": true,
+  "checkpoint_validated": false,
+  "cpu_percent": 400,
+  "resume_focus": true,
+  "touch_attached": true,
+  "tap_frame": 0,
+  "private_files": true,
+  "capture_frame": 2400,
+  "apk_assets": true,
+  "donor_arena_mib": [
+    128
+  ],
+  "shared_arena": true,
+  "framebuffers": true,
+  "memory_mib": 178,
+  "font_subset": true,
+  "allocator_compat": true,
+  "frames": 51856,
+  "elapsed_seconds": 352.141,
+  "cxi_sha256": "88c8cc4b6ba256a55022da39e67b006fc11659a7ee668b8a6a05a5b12fb91e0c",
+  "log_sha256": "605b01bae6b2e7aeb7cf48298344f719b932c3ac7b6d426d0ad5a2dced85c72b",
+  "log": "analysis/azahar-smoke/engine-allocator2400-178-cpu400.log",
+  "graphics_checkpoint_valid": false,
+  "limitation": "GL_OUT_OF_MEMORY at 48MiB logical texture limit; menu image is diagnostic"
+}

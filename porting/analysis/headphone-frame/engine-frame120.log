@@ -1,0 +1,1702 @@
+DEAD SPACE ENGINE AUDIT - EMULATOR ONLY
+READY - press A
+Backend: Azahar; native RX not tested
+Application memory: bytes=130023424; donor arenas=20+80MiB
+FS stat begin: appdata://var/settings.sb result=0
+FS stat mapped: sdmc:/3ds/deadspace/test-output/var/settings.sb result=0
+FS stat native: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+Pre-thread missing stat: -1 errno=2
+Jump probe ARM: OK cases=8 core/VFP=OK
+Jump probe Thumb: OK cases=8 core/VFP=OK
+Jump probe counters: saves=18 restores=18 refusals=0
+String probe: 0 checks=43 units=7 bytes=17
+String cleanup: files=0 heap=0
+FS open fd: published/data/achievements.sb result=1024
+FS open fd: published/data/achievements.sb result=1024
+JNI I/O probe: 0 checks=201 bytes=3568 CRC32=4a8d9499
+JNI I/O cleanup: files=0 heap=0
+Asset probe: 0 checks=378 names=176 CRC32-xor=3a761eb9
+Asset cleanup: files=0 heap=0
+Platform probe: 0 checks=168 properties=29
+Platform cleanup: files=0 heap=0
+Production preflight: bound=154 missing=234 weak=4
+Production guard: REFUSED; image unchanged
+Audit clock: emulator monotonic, excluded from supported count
+GLES surface probe: OK 400x240; black clear + green scissor; pixels=97200 format=2
+GLES buffer probe: OK upload=24 sub=12 readback=12 active=0
+GLES upload: 2x2 format=1908 required=16 limit=2097152 result=0
+GLES texture probe: OK upload=16 sub=4 readback=4 active=0
+GLES pipeline probe: OK cull=2 alpha=2 blend=4 typed=1
+Graphics budget: texture names=32 bytes=6291456
+Stack query: sp=0803d478 result=00000000 base=08000000 size=0772e000 perm=3
+GLES context bindings: 99; bounded CPU triangle renderer
+Sensor bridge attached: native HID; emulator identity axes, nominal 512 counts/g
+Running 209 donor constructors...
+ARENA request: sbrk bytes=16781312 caller=0025343c thread=main frame=0
+ARENA result: sbrk pointer=08923000
+ARENA request: mmap bytes=16781312 caller=002531a4 thread=main frame=0
+Donor constructors completed: 209
+JNI_OnLoad: 00010004; stored VM: MATCH
+Calling NativeOnCreate...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnCreate returned
+Calling NativeOnSurfaceCreated...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnSurfaceCreated returned
+Calling NativeOnSurfaceChanged...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnSurfaceChanged returned
+Frame 1 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/ea/EAIO/EAIO. 
+JNI GetStaticMethodID: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: com/ea/blast/MainActivity. 
+JNI GetStaticMethodID: com/ea/blast/MainActivity.GetInstance ()Lcom/ea/blast/MainActivity;
+JNI CallMethod: com/ea/blast/MainActivity.GetInstance ()Lcom/ea/blast/MainActivity;
+JNI GetMethodID: com/ea/blast/MainActivity.getAssets ()Landroid/content/res/AssetManager;
+JNI CallMethod: com/ea/blast/MainActivity.getAssets ()Landroid/content/res/AssetManager;
+JNI CallMethod: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: java/io/InputStream. 
+JNI GetMethodID: java/io/InputStream.read ([BII)I
+JNI GetMethodID: java/io/InputStream.close ()V
+JNI GetMethodID: java/io/InputStream.skip (J)J
+JNI GetMethodID: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+JNI GetMethodID: android/content/res/AssetManager.openFd (Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+JNI GetMethodID: android/content/res/AssetManager.list (Ljava/lang/String;)[Ljava/lang/String;
+JNI FindClass: android/content/res/AssetFileDescriptor. 
+JNI GetMethodID: android/content/res/AssetFileDescriptor.getLength ()J
+JNI NativeEAIOStartup returned: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: com/ea/blast/SystemAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/SystemAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount 1
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetCameraCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetCameraCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetCameraCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetChipset ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetChipset ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetChipset ARM11/PICA200
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetCompassCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetCompassCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetCompassCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetManufacturer ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetManufacturer ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetManufacturer Nintendo
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceModel ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceModel ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceModel New Nintendo 3DS
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceName new3ds
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDisplayCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDisplayCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDisplayCount 1
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable false
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetApiLevel ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetApiLevel ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetApiLevel 10
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName Nintendo 3DS
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName Android
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion 2.3.3
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture armeabi
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLanguage ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLanguage ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLanguage en
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLocale ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLocale ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLocale en_US
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTotalRAM ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTotalRAM ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTotalRAM 67108864
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetVibratorCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetVibratorCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetVibratorCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount 0
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+FS open failure: published/EAMCore.ini result=-2
+JNI AssetManager.open IOException: android/content/res/AssetManager.EAMCore.ini  EXCEPTION
+JNI PopLocalFrame: . 
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+FS open failure: published/eamcore.ini result=-2
+JNI AssetManager.open IOException: android/content/res/AssetManager.eamcore.ini  EXCEPTION
+JNI PopLocalFrame: . 
+JNI FindClass: com/ea/blast/PowerManagerAndroid. 
+JNI GetMethodID: com/ea/blast/PowerManagerAndroid.<init> ()V
+JNI NewObject: com/ea/blast/PowerManagerAndroid.<init> ()V
+JNI GetMethodID: com/ea/blast/PowerManagerAndroid.ApplyKeepAwake (Z)V
+JNI PopLocalFrame: . 
+Frame 1 returned
+Frame 2 begin
+JNI PushLocalFrame: . 
+JNI CallMethod: com/ea/blast/PowerManagerAndroid.ApplyKeepAwake (Z)V
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI FindClass: com/ea/blast/GetAppDataDirectoryDelegate. 
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.<init> ()V
+JNI NewObject: com/ea/blast/GetAppDataDirectoryDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.GetAppDataDirectory ()Ljava/lang/String;
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.GetExternalStorageDirectory ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/GetAppDataDirectoryDelegate.GetAppDataDirectory ()Ljava/lang/String;
+FS stat begin: appdata://published/var result=0
+FS stat mapped: sdmc:/3ds/deadspace/test-output/published/var result=0
+FS stat native: sdmc:/3ds/deadspace/test-output/published/var result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/published/var result=-1
+FS stat begin: appdata://published/var result=0
+FS stat mapped: sdmc:/3ds/deadspace/test-output/published/var result=0
+FS stat native: sdmc:/3ds/deadspace/test-output/published/var result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/published/var result=-1
+JNI FindClass: com/ea/blast/DisplayAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/DisplayAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetStdOrientation ()I
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetDefaultWidth ()I
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.GetDefaultWidth ()I
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetDefaultHeight ()I
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.GetDefaultHeight ()I
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetDpiX ()F
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.GetDpiX ()F
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetDpiY ()F
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.GetDpiY ()F
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+JNI FindClass: com/ea/blast/DeviceOrientationHandlerAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.OnLifeCycleFocusGained ()V
+JNI GetMethodID: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.SetEnabled (Z)V
+JNI CallMethod: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.OnLifeCycleFocusGained ()V
+JNI CallMethod: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.SetEnabled (Z)V
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+JNI FindClass: com/ea/blast/AccelerometerAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/AccelerometerAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/AccelerometerAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI GetMethodID: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency (I)V
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency (I)V
+JNI SensorDelay: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency 3
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 0
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
+GLES upload: 512x512 format=1908 required=1048576 limit=6291456 result=0
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+FS open failure: published/data.zip result=-2
+JNI AssetManager.open IOException: android/content/res/AssetManager.data.zip  EXCEPTION
+JNI PopLocalFrame: . 
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.list (Ljava/lang/String;)[Ljava/lang/String;
+JNI AssetManager.list requested: android/content/res/AssetManager. 
+JNI AssetManager.list returned: android/content/res/AssetManager. 12
+JNI PopLocalFrame: . 
+JNI FindClass: com/ea/blast/GetAppDataDirectoryDelegate. 
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.<init> ()V
+JNI NewObject: com/ea/blast/GetAppDataDirectoryDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.GetAppDataDirectory ()Ljava/lang/String;
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.GetExternalStorageDirectory ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/GetAppDataDirectoryDelegate.GetExternalStorageDirectory ()Ljava/lang/String;
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts/Ascender_Uni.ttf result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/fonts/Ascender_Uni.ttf result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/Ascender_Uni.ttf result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/Ascender_Uni.ttf result=0
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts/Ascender_Uni.ttf result=1024
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+Thread event: 1 id=00000100 detail=087f0d9c
+Thread event: 2 id=00000201 detail=087f0d9c
+Thread event: 3 id=00000201 detail=087f0d9c
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/ result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/data result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/data result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/data result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/fonts result=0
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=568
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=1760
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.getVersion ()Ljava/lang/String;
+JNI CallMethod: com/eamobile/Query.getVersion ()Ljava/lang/String;
+FS stat native: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+FS open failure: appdata:/var/settings.sb result=-22
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS stat native: sdmc:/3ds/deadspace/test-output/var/AchievementsSave.sb result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/var/AchievementsSave.sb result=-1
+FS open failure: appdata:/var/AchievementsSave.sb result=-22
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2345
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+ARENA request: mmap bytes=5840896 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=5840896 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2367
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2395
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+Thread event: 1 id=00000100 detail=086dc7f8
+Thread event: 2 id=00000302 detail=086dc7f8
+Thread event: 3 id=00000302 detail=086dc7f8
+Thread event: 1 id=00000100 detail=086dc7f8
+Thread event: 2 id=00000403 detail=086dc7f8
+Thread event: 3 id=00000403 detail=086dc7f8
+Thread event: 1 id=00000100 detail=086dc914
+Thread event: 2 id=00000504 detail=086dc914
+Thread event: 3 id=00000504 detail=086dc914
+Thread event: 1 id=00000100 detail=086dc914
+Thread event: 2 id=00000605 detail=086dc914
+Thread event: 3 id=00000605 detail=086dc914
+Thread event: 1 id=00000100 detail=086dc914
+Thread event: 2 id=00000706 detail=086dc914
+Thread event: 3 id=00000706 detail=086dc914
+FS open failure: appdata://var/00_LevelSave.sb result=-30
+ARENA request: mmap bytes=3895296 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=3895296 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=3895296 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=3895296 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=3240
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff1590 state=1
+WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff15e0 state=1
+WATCH thread=00000504 entry-offset=0024c914 wait=3 object=09fef748
+WATCH EA callback=0029bf3c argument=09fef4f0 state=1
+WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=09fef4f0 state=1
+WATCH thread=00000706 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00320624 argument=09fc9358 state=1
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+GLES upload: 512x512 format=1908 required=1048576 limit=6291456 result=0
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency (I)V
+JNI SensorDelay: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency 1
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
+GLES upload: 1x1 format=1907 required=1048580 limit=6291456 result=0
+GAME DRAW: caller-offset=003244e0 calls=1 triangles=2 fragments=54000 samples=0
+GLES upload: 512x128 format=1908 required=1310724 limit=6291456 result=0
+GAME DRAW: caller-offset=003244e0 calls=2 triangles=4 fragments=54000 samples=0
+JNI PopLocalFrame: . 
+Frame 2 returned
+JNI OrientationEvent: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.NativeOnDeviceOrientationChange fixed display
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 3 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=3 triangles=6 fragments=108000 samples=0
+GLES upload: 256x256 format=1908 required=1572868 limit=6291456 result=0
+GAME DRAW: caller-offset=003244e0 calls=4 triangles=8 fragments=143910 samples=35910
+PARTIAL GAME DRAW CAPTURED
+JNI PopLocalFrame: . 
+Frame 3 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 4 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=5 triangles=10 fragments=197910 samples=35910
+GAME DRAW: caller-offset=003244e0 calls=6 triangles=12 fragments=233820 samples=71820
+JNI PopLocalFrame: . 
+Frame 4 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 5 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=7 triangles=14 fragments=287820 samples=71820
+GAME DRAW: caller-offset=003244e0 calls=8 triangles=16 fragments=323730 samples=107730
+JNI PopLocalFrame: . 
+Frame 5 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 6 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=9 triangles=18 fragments=377730 samples=107730
+GAME DRAW: caller-offset=003244e0 calls=10 triangles=20 fragments=413640 samples=143640
+JNI PopLocalFrame: . 
+Frame 6 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 7 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=11 triangles=22 fragments=467640 samples=143640
+GAME DRAW: caller-offset=003244e0 calls=12 triangles=24 fragments=503550 samples=179550
+JNI PopLocalFrame: . 
+Frame 7 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 8 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=13 triangles=26 fragments=557550 samples=179550
+GAME DRAW: caller-offset=003244e0 calls=14 triangles=28 fragments=593460 samples=215460
+JNI PopLocalFrame: . 
+Frame 8 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 9 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=15 triangles=30 fragments=647460 samples=215460
+GAME DRAW: caller-offset=003244e0 calls=16 triangles=32 fragments=683370 samples=251370
+JNI PopLocalFrame: . 
+Frame 9 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 10 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=17 triangles=34 fragments=737370 samples=251370
+GAME DRAW: caller-offset=003244e0 calls=18 triangles=36 fragments=773280 samples=287280
+JNI PopLocalFrame: . 
+Frame 10 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 11 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=19 triangles=38 fragments=827280 samples=287280
+GAME DRAW: caller-offset=003244e0 calls=20 triangles=40 fragments=863190 samples=323190
+JNI PopLocalFrame: . 
+Frame 11 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 12 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=21 triangles=42 fragments=917190 samples=323190
+GAME DRAW: caller-offset=003244e0 calls=22 triangles=44 fragments=953100 samples=359100
+JNI PopLocalFrame: . 
+Frame 12 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 13 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=23 triangles=46 fragments=1007100 samples=359100
+GAME DRAW: caller-offset=003244e0 calls=24 triangles=48 fragments=1043010 samples=395010
+JNI PopLocalFrame: . 
+Frame 13 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+WATCH phase=NativeOnDrawFrame frame=13 image=08490000 fs-events=3310
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff1590 state=1
+WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff15e0 state=1
+WATCH thread=00000504 entry-offset=0024c914 wait=3 object=09fef748
+WATCH EA callback=0029bf3c argument=09fef4f0 state=1
+WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=09fef4f0 state=1
+WATCH thread=00000706 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00320624 argument=09fc9358 state=1
+Frame 14 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=25 triangles=50 fragments=1097010 samples=395010
+GAME DRAW: caller-offset=003244e0 calls=26 triangles=52 fragments=1132920 samples=430920
+JNI PopLocalFrame: . 
+Frame 14 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 15 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=27 triangles=54 fragments=1186920 samples=430920
+GAME DRAW: caller-offset=003244e0 calls=28 triangles=56 fragments=1222830 samples=466830
+JNI PopLocalFrame: . 
+Frame 15 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 16 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=29 triangles=58 fragments=1276830 samples=466830
+GAME DRAW: caller-offset=003244e0 calls=30 triangles=60 fragments=1312740 samples=502740
+JNI PopLocalFrame: . 
+Frame 16 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 17 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=31 triangles=62 fragments=1366740 samples=502740
+GAME DRAW: caller-offset=003244e0 calls=32 triangles=64 fragments=1402650 samples=538650
+JNI PopLocalFrame: . 
+Frame 17 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 18 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=33 triangles=66 fragments=1456650 samples=538650
+GAME DRAW: caller-offset=003244e0 calls=34 triangles=68 fragments=1492560 samples=574560
+JNI PopLocalFrame: . 
+Frame 18 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 19 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=35 triangles=70 fragments=1546560 samples=574560
+GAME DRAW: caller-offset=003244e0 calls=36 triangles=72 fragments=1582470 samples=610470
+JNI PopLocalFrame: . 
+Frame 19 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 20 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=37 triangles=74 fragments=1636470 samples=610470
+GAME DRAW: caller-offset=003244e0 calls=38 triangles=76 fragments=1672380 samples=646380
+JNI PopLocalFrame: . 
+Frame 20 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 21 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=39 triangles=78 fragments=1726380 samples=646380
+GAME DRAW: caller-offset=003244e0 calls=40 triangles=80 fragments=1762290 samples=682290
+JNI PopLocalFrame: . 
+Frame 21 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 22 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=41 triangles=82 fragments=1816290 samples=682290
+GAME DRAW: caller-offset=003244e0 calls=42 triangles=84 fragments=1852200 samples=718200
+JNI PopLocalFrame: . 
+Frame 22 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 23 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=43 triangles=86 fragments=1906200 samples=718200
+GAME DRAW: caller-offset=003244e0 calls=44 triangles=88 fragments=1942110 samples=754110
+JNI PopLocalFrame: . 
+Frame 23 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 24 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=45 triangles=90 fragments=1996110 samples=754110
+GAME DRAW: caller-offset=003244e0 calls=46 triangles=92 fragments=2032020 samples=790020
+JNI PopLocalFrame: . 
+Frame 24 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 25 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=47 triangles=94 fragments=2086020 samples=790020
+GAME DRAW: caller-offset=003244e0 calls=48 triangles=96 fragments=2121930 samples=825930
+JNI PopLocalFrame: . 
+Frame 25 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 26 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=49 triangles=98 fragments=2175930 samples=825930
+GAME DRAW: caller-offset=003244e0 calls=50 triangles=100 fragments=2211840 samples=861840
+JNI PopLocalFrame: . 
+Frame 26 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 27 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=51 triangles=102 fragments=2265840 samples=861840
+GAME DRAW: caller-offset=003244e0 calls=52 triangles=104 fragments=2301750 samples=897750
+JNI PopLocalFrame: . 
+Frame 27 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 28 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=53 triangles=106 fragments=2355750 samples=897750
+GAME DRAW: caller-offset=003244e0 calls=54 triangles=108 fragments=2391660 samples=933660
+JNI PopLocalFrame: . 
+Frame 28 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 29 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=55 triangles=110 fragments=2445660 samples=933660
+GAME DRAW: caller-offset=003244e0 calls=56 triangles=112 fragments=2481570 samples=969570
+JNI PopLocalFrame: . 
+Frame 29 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 30 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=57 triangles=114 fragments=2535570 samples=969570
+GAME DRAW: caller-offset=003244e0 calls=58 triangles=116 fragments=2571480 samples=1005480
+JNI PopLocalFrame: . 
+Frame 30 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 31 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=59 triangles=118 fragments=2625480 samples=1005480
+GAME DRAW: caller-offset=003244e0 calls=60 triangles=120 fragments=2661390 samples=1041390
+JNI PopLocalFrame: . 
+Frame 31 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+WATCH phase=NativeOnDrawFrame frame=31 image=08490000 fs-events=3317
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff1590 state=1
+WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff15e0 state=1
+WATCH thread=00000504 entry-offset=0024c914 wait=3 object=09fef748
+WATCH EA callback=0029bf3c argument=09fef4f0 state=1
+WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=09fef4f0 state=1
+WATCH thread=00000706 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00320624 argument=09fc9358 state=1
+Frame 32 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=61 triangles=122 fragments=2715390 samples=1041390
+GAME DRAW: caller-offset=003244e0 calls=62 triangles=124 fragments=2751300 samples=1077300
+JNI PopLocalFrame: . 
+Frame 32 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 33 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=63 triangles=126 fragments=2805300 samples=1077300
+GAME DRAW: caller-offset=003244e0 calls=64 triangles=128 fragments=2841210 samples=1113210
+JNI PopLocalFrame: . 
+Frame 33 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 34 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=65 triangles=130 fragments=2895210 samples=1113210
+GAME DRAW: caller-offset=003244e0 calls=66 triangles=132 fragments=2931120 samples=1149120
+JNI PopLocalFrame: . 
+Frame 34 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 35 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=67 triangles=134 fragments=2985120 samples=1149120
+GAME DRAW: caller-offset=003244e0 calls=68 triangles=136 fragments=3021030 samples=1185030
+JNI PopLocalFrame: . 
+Frame 35 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 36 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=69 triangles=138 fragments=3075030 samples=1185030
+GAME DRAW: caller-offset=003244e0 calls=70 triangles=140 fragments=3110940 samples=1220940
+JNI PopLocalFrame: . 
+Frame 36 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 37 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=71 triangles=142 fragments=3164940 samples=1220940
+GAME DRAW: caller-offset=003244e0 calls=72 triangles=144 fragments=3200850 samples=1256850
+JNI PopLocalFrame: . 
+Frame 37 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 38 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=73 triangles=146 fragments=3254850 samples=1256850
+GAME DRAW: caller-offset=003244e0 calls=74 triangles=148 fragments=3290760 samples=1292760
+JNI PopLocalFrame: . 
+Frame 38 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 39 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=75 triangles=150 fragments=3344760 samples=1292760
+GAME DRAW: caller-offset=003244e0 calls=76 triangles=152 fragments=3380670 samples=1328670
+JNI PopLocalFrame: . 
+Frame 39 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 40 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=77 triangles=154 fragments=3434670 samples=1328670
+GAME DRAW: caller-offset=003244e0 calls=78 triangles=156 fragments=3470580 samples=1364580
+JNI PopLocalFrame: . 
+Frame 40 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 41 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=79 triangles=158 fragments=3524580 samples=1364580
+GAME DRAW: caller-offset=003244e0 calls=80 triangles=160 fragments=3560490 samples=1400490
+JNI PopLocalFrame: . 
+Frame 41 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 42 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=81 triangles=162 fragments=3614490 samples=1400490
+GAME DRAW: caller-offset=003244e0 calls=82 triangles=164 fragments=3650400 samples=1436400
+JNI PopLocalFrame: . 
+Frame 42 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 43 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=83 triangles=166 fragments=3704400 samples=1436400
+GAME DRAW: caller-offset=003244e0 calls=84 triangles=168 fragments=3740310 samples=1472310
+JNI PopLocalFrame: . 
+Frame 43 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 44 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=85 triangles=170 fragments=3794310 samples=1472310
+GAME DRAW: caller-offset=003244e0 calls=86 triangles=172 fragments=3830220 samples=1508220
+JNI PopLocalFrame: . 
+Frame 44 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 45 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=87 triangles=174 fragments=3884220 samples=1508220
+GAME DRAW: caller-offset=003244e0 calls=88 triangles=176 fragments=3920130 samples=1544130
+JNI PopLocalFrame: . 
+Frame 45 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 46 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=89 triangles=178 fragments=3974130 samples=1544130
+GAME DRAW: caller-offset=003244e0 calls=90 triangles=180 fragments=4010040 samples=1580040
+JNI PopLocalFrame: . 
+Frame 46 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 47 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=91 triangles=182 fragments=4064040 samples=1580040
+GAME DRAW: caller-offset=003244e0 calls=92 triangles=184 fragments=4099950 samples=1615950
+JNI PopLocalFrame: . 
+Frame 47 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 48 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=93 triangles=186 fragments=4153950 samples=1615950
+GAME DRAW: caller-offset=003244e0 calls=94 triangles=188 fragments=4189860 samples=1651860
+JNI PopLocalFrame: . 
+Frame 48 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 49 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=95 triangles=190 fragments=4243860 samples=1651860
+GAME DRAW: caller-offset=003244e0 calls=96 triangles=192 fragments=4279770 samples=1687770
+JNI PopLocalFrame: . 
+Frame 49 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+WATCH phase=NativeOnDrawFrame frame=49 image=08490000 fs-events=3320
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff1590 state=1
+WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff15e0 state=1
+WATCH thread=00000504 entry-offset=0024c914 wait=3 object=09fef748
+WATCH EA callback=0029bf3c argument=09fef4f0 state=1
+WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=09fef4f0 state=1
+WATCH thread=00000706 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00320624 argument=09fc9358 state=1
+Frame 50 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=97 triangles=194 fragments=4333770 samples=1687770
+GAME DRAW: caller-offset=003244e0 calls=98 triangles=196 fragments=4369680 samples=1723680
+JNI PopLocalFrame: . 
+Frame 50 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 51 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=99 triangles=198 fragments=4423680 samples=1723680
+GAME DRAW: caller-offset=003244e0 calls=100 triangles=200 fragments=4459590 samples=1759590
+JNI PopLocalFrame: . 
+Frame 51 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 52 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=101 triangles=202 fragments=4513590 samples=1759590
+JNI PopLocalFrame: . 
+Frame 52 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 53 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=102 triangles=204 fragments=4567590 samples=1759590
+GLES upload: 512x256 format=1908 required=1835012 limit=6291456 result=0
+GAME DRAW: caller-offset=003244e0 calls=103 triangles=212 fragments=4597548 samples=1789548
+GLES upload: 256x256 format=1906 required=2097156 limit=6291456 result=0
+GAME DRAW: caller-offset=003244e0 calls=104 triangles=280 fragments=4598635 samples=1790635
+JNI PopLocalFrame: . 
+Frame 53 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 54 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=105 triangles=282 fragments=4652635 samples=1790635
+GAME DRAW: caller-offset=003244e0 calls=106 triangles=290 fragments=4682593 samples=1820593
+GAME DRAW: caller-offset=003244e0 calls=107 triangles=358 fragments=4683680 samples=1821680
+JNI PopLocalFrame: . 
+Frame 54 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 55 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=108 triangles=360 fragments=4737680 samples=1821680
+GAME DRAW: caller-offset=003244e0 calls=109 triangles=368 fragments=4767638 samples=1851638
+GAME DRAW: caller-offset=003244e0 calls=110 triangles=436 fragments=4768725 samples=1852725
+JNI PopLocalFrame: . 
+Frame 55 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 56 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=111 triangles=438 fragments=4822725 samples=1852725
+GAME DRAW: caller-offset=003244e0 calls=112 triangles=446 fragments=4852683 samples=1882683
+GAME DRAW: caller-offset=003244e0 calls=113 triangles=514 fragments=4853770 samples=1883770
+JNI PopLocalFrame: . 
+Frame 56 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 57 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=114 triangles=516 fragments=4907770 samples=1883770
+GAME DRAW: caller-offset=003244e0 calls=115 triangles=524 fragments=4937728 samples=1913728
+GAME DRAW: caller-offset=003244e0 calls=116 triangles=592 fragments=4938815 samples=1914815
+JNI PopLocalFrame: . 
+Frame 57 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 58 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=117 triangles=594 fragments=4992815 samples=1914815
+GAME DRAW: caller-offset=003244e0 calls=118 triangles=602 fragments=5022773 samples=1944773
+GAME DRAW: caller-offset=003244e0 calls=119 triangles=670 fragments=5023860 samples=1945860
+JNI PopLocalFrame: . 
+Frame 58 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 59 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=120 triangles=672 fragments=5077860 samples=1945860
+GAME DRAW: caller-offset=003244e0 calls=121 triangles=680 fragments=5107818 samples=1975818
+GAME DRAW: caller-offset=003244e0 calls=122 triangles=748 fragments=5108905 samples=1976905
+JNI PopLocalFrame: . 
+Frame 59 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 60 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=123 triangles=750 fragments=5162905 samples=1976905
+GAME DRAW: caller-offset=003244e0 calls=124 triangles=758 fragments=5192863 samples=2006863
+GAME DRAW: caller-offset=003244e0 calls=125 triangles=826 fragments=5193950 samples=2007950
+JNI PopLocalFrame: . 
+Frame 60 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 61 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=126 triangles=828 fragments=5247950 samples=2007950
+GAME DRAW: caller-offset=003244e0 calls=127 triangles=836 fragments=5277908 samples=2037908
+GAME DRAW: caller-offset=003244e0 calls=128 triangles=904 fragments=5278995 samples=2038995
+JNI PopLocalFrame: . 
+Frame 61 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 62 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=129 triangles=906 fragments=5332995 samples=2038995
+GAME DRAW: caller-offset=003244e0 calls=130 triangles=914 fragments=5362953 samples=2068953
+GAME DRAW: caller-offset=003244e0 calls=131 triangles=982 fragments=5364040 samples=2070040
+JNI PopLocalFrame: . 
+Frame 62 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 63 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=132 triangles=984 fragments=5418040 samples=2070040
+GAME DRAW: caller-offset=003244e0 calls=133 triangles=992 fragments=5447998 samples=2099998
+GAME DRAW: caller-offset=003244e0 calls=134 triangles=1060 fragments=5449085 samples=2101085
+JNI PopLocalFrame: . 
+Frame 63 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 64 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=135 triangles=1062 fragments=5503085 samples=2101085
+GAME DRAW: caller-offset=003244e0 calls=136 triangles=1070 fragments=5533043 samples=2131043
+GAME DRAW: caller-offset=003244e0 calls=137 triangles=1138 fragments=5534130 samples=2132130
+JNI PopLocalFrame: . 
+Frame 64 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 65 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=138 triangles=1140 fragments=5588130 samples=2132130
+GAME DRAW: caller-offset=003244e0 calls=139 triangles=1148 fragments=5618088 samples=2162088
+GAME DRAW: caller-offset=003244e0 calls=140 triangles=1216 fragments=5619175 samples=2163175
+JNI PopLocalFrame: . 
+Frame 65 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 66 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=141 triangles=1218 fragments=5673175 samples=2163175
+GAME DRAW: caller-offset=003244e0 calls=142 triangles=1226 fragments=5703133 samples=2193133
+GAME DRAW: caller-offset=003244e0 calls=143 triangles=1294 fragments=5704220 samples=2194220
+JNI PopLocalFrame: . 
+Frame 66 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 67 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=144 triangles=1296 fragments=5758220 samples=2194220
+GAME DRAW: caller-offset=003244e0 calls=145 triangles=1304 fragments=5788178 samples=2224178
+GAME DRAW: caller-offset=003244e0 calls=146 triangles=1372 fragments=5789265 samples=2225265
+JNI PopLocalFrame: . 
+Frame 67 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+WATCH phase=NativeOnDrawFrame frame=67 image=08490000 fs-events=3340
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff1590 state=1
+WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff15e0 state=1
+WATCH thread=00000504 entry-offset=0024c914 wait=3 object=09fef748
+WATCH EA callback=0029bf3c argument=09fef4f0 state=1
+WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=09fef4f0 state=1
+WATCH thread=00000706 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00320624 argument=09fc9358 state=1
+Frame 68 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=147 triangles=1374 fragments=5843265 samples=2225265
+GAME DRAW: caller-offset=003244e0 calls=148 triangles=1382 fragments=5873223 samples=2255223
+GAME DRAW: caller-offset=003244e0 calls=149 triangles=1450 fragments=5874310 samples=2256310
+JNI PopLocalFrame: . 
+Frame 68 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 69 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=150 triangles=1452 fragments=5928310 samples=2256310
+GAME DRAW: caller-offset=003244e0 calls=151 triangles=1460 fragments=5958268 samples=2286268
+GAME DRAW: caller-offset=003244e0 calls=152 triangles=1528 fragments=5959355 samples=2287355
+JNI PopLocalFrame: . 
+Frame 69 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 70 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=153 triangles=1530 fragments=6013355 samples=2287355
+GAME DRAW: caller-offset=003244e0 calls=154 triangles=1538 fragments=6043313 samples=2317313
+GAME DRAW: caller-offset=003244e0 calls=155 triangles=1606 fragments=6044400 samples=2318400
+JNI PopLocalFrame: . 
+Frame 70 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 71 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=156 triangles=1608 fragments=6098400 samples=2318400
+GAME DRAW: caller-offset=003244e0 calls=157 triangles=1616 fragments=6128358 samples=2348358
+GAME DRAW: caller-offset=003244e0 calls=158 triangles=1684 fragments=6129445 samples=2349445
+JNI PopLocalFrame: . 
+Frame 71 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 72 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=159 triangles=1686 fragments=6183445 samples=2349445
+GAME DRAW: caller-offset=003244e0 calls=160 triangles=1694 fragments=6213403 samples=2379403
+GAME DRAW: caller-offset=003244e0 calls=161 triangles=1762 fragments=6214490 samples=2380490
+JNI PopLocalFrame: . 
+Frame 72 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 73 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=162 triangles=1764 fragments=6268490 samples=2380490
+GAME DRAW: caller-offset=003244e0 calls=163 triangles=1772 fragments=6298448 samples=2410448
+GAME DRAW: caller-offset=003244e0 calls=164 triangles=1840 fragments=6299535 samples=2411535
+JNI PopLocalFrame: . 
+Frame 73 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 74 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=165 triangles=1842 fragments=6353535 samples=2411535
+GAME DRAW: caller-offset=003244e0 calls=166 triangles=1850 fragments=6383493 samples=2441493
+GAME DRAW: caller-offset=003244e0 calls=167 triangles=1918 fragments=6384580 samples=2442580
+JNI PopLocalFrame: . 
+Frame 74 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 75 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=168 triangles=1920 fragments=6438580 samples=2442580
+GAME DRAW: caller-offset=003244e0 calls=169 triangles=1928 fragments=6468538 samples=2472538
+GAME DRAW: caller-offset=003244e0 calls=170 triangles=1996 fragments=6469625 samples=2473625
+JNI PopLocalFrame: . 
+Frame 75 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 76 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=171 triangles=1998 fragments=6523625 samples=2473625
+GAME DRAW: caller-offset=003244e0 calls=172 triangles=2006 fragments=6553583 samples=2503583
+GAME DRAW: caller-offset=003244e0 calls=173 triangles=2074 fragments=6554670 samples=2504670
+JNI PopLocalFrame: . 
+Frame 76 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 77 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=174 triangles=2076 fragments=6608670 samples=2504670
+GAME DRAW: caller-offset=003244e0 calls=175 triangles=2084 fragments=6638628 samples=2534628
+GAME DRAW: caller-offset=003244e0 calls=176 triangles=2152 fragments=6639715 samples=2535715
+JNI PopLocalFrame: . 
+Frame 77 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 78 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=177 triangles=2154 fragments=6693715 samples=2535715
+GAME DRAW: caller-offset=003244e0 calls=178 triangles=2162 fragments=6723673 samples=2565673
+GAME DRAW: caller-offset=003244e0 calls=179 triangles=2230 fragments=6724760 samples=2566760
+JNI PopLocalFrame: . 
+Frame 78 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 79 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=180 triangles=2232 fragments=6778760 samples=2566760
+GAME DRAW: caller-offset=003244e0 calls=181 triangles=2240 fragments=6808718 samples=2596718
+GAME DRAW: caller-offset=003244e0 calls=182 triangles=2308 fragments=6809805 samples=2597805
+JNI PopLocalFrame: . 
+Frame 79 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 80 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=183 triangles=2310 fragments=6863805 samples=2597805
+GAME DRAW: caller-offset=003244e0 calls=184 triangles=2318 fragments=6893763 samples=2627763
+GAME DRAW: caller-offset=003244e0 calls=185 triangles=2386 fragments=6894850 samples=2628850
+JNI PopLocalFrame: . 
+Frame 80 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 81 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=186 triangles=2388 fragments=6948850 samples=2628850
+GAME DRAW: caller-offset=003244e0 calls=187 triangles=2396 fragments=6978808 samples=2658808
+GAME DRAW: caller-offset=003244e0 calls=188 triangles=2464 fragments=6979895 samples=2659895
+JNI PopLocalFrame: . 
+Frame 81 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 82 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=189 triangles=2466 fragments=7033895 samples=2659895
+GAME DRAW: caller-offset=003244e0 calls=190 triangles=2474 fragments=7063853 samples=2689853
+GAME DRAW: caller-offset=003244e0 calls=191 triangles=2542 fragments=7064940 samples=2690940
+JNI PopLocalFrame: . 
+Frame 82 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 83 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=192 triangles=2544 fragments=7118940 samples=2690940
+GAME DRAW: caller-offset=003244e0 calls=193 triangles=2552 fragments=7148898 samples=2720898
+GAME DRAW: caller-offset=003244e0 calls=194 triangles=2620 fragments=7149985 samples=2721985
+JNI PopLocalFrame: . 
+Frame 83 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 84 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=195 triangles=2622 fragments=7203985 samples=2721985
+GAME DRAW: caller-offset=003244e0 calls=196 triangles=2630 fragments=7233943 samples=2751943
+GAME DRAW: caller-offset=003244e0 calls=197 triangles=2698 fragments=7235030 samples=2753030
+JNI PopLocalFrame: . 
+Frame 84 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 85 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=198 triangles=2700 fragments=7289030 samples=2753030
+GAME DRAW: caller-offset=003244e0 calls=199 triangles=2708 fragments=7318988 samples=2782988
+GAME DRAW: caller-offset=003244e0 calls=200 triangles=2776 fragments=7320075 samples=2784075
+JNI PopLocalFrame: . 
+Frame 85 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 86 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=201 triangles=2778 fragments=7374075 samples=2784075
+GAME DRAW: caller-offset=003244e0 calls=202 triangles=2786 fragments=7404033 samples=2814033
+GAME DRAW: caller-offset=003244e0 calls=203 triangles=2854 fragments=7405120 samples=2815120
+JNI PopLocalFrame: . 
+Frame 86 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+WATCH phase=NativeOnDrawFrame frame=86 image=08490000 fs-events=3350
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff1590 state=1
+WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff15e0 state=1
+WATCH thread=00000504 entry-offset=0024c914 wait=3 object=09fef748
+WATCH EA callback=0029bf3c argument=09fef4f0 state=1
+WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=09fef4f0 state=1
+WATCH thread=00000706 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00320624 argument=09fc9358 state=1
+Frame 87 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=204 triangles=2856 fragments=7459120 samples=2815120
+GAME DRAW: caller-offset=003244e0 calls=205 triangles=2864 fragments=7489078 samples=2845078
+GAME DRAW: caller-offset=003244e0 calls=206 triangles=2932 fragments=7490165 samples=2846165
+JNI PopLocalFrame: . 
+Frame 87 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 88 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=207 triangles=2934 fragments=7544165 samples=2846165
+GAME DRAW: caller-offset=003244e0 calls=208 triangles=2942 fragments=7574123 samples=2876123
+GAME DRAW: caller-offset=003244e0 calls=209 triangles=3010 fragments=7575210 samples=2877210
+JNI PopLocalFrame: . 
+Frame 88 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 89 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=210 triangles=3012 fragments=7629210 samples=2877210
+GAME DRAW: caller-offset=003244e0 calls=211 triangles=3020 fragments=7659168 samples=2907168
+GAME DRAW: caller-offset=003244e0 calls=212 triangles=3088 fragments=7660255 samples=2908255
+JNI PopLocalFrame: . 
+Frame 89 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 90 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=213 triangles=3090 fragments=7714255 samples=2908255
+GAME DRAW: caller-offset=003244e0 calls=214 triangles=3098 fragments=7744213 samples=2938213
+GAME DRAW: caller-offset=003244e0 calls=215 triangles=3166 fragments=7745300 samples=2939300
+JNI PopLocalFrame: . 
+Frame 90 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 91 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=216 triangles=3168 fragments=7799300 samples=2939300
+GAME DRAW: caller-offset=003244e0 calls=217 triangles=3176 fragments=7829258 samples=2969258
+GAME DRAW: caller-offset=003244e0 calls=218 triangles=3244 fragments=7830345 samples=2970345
+JNI PopLocalFrame: . 
+Frame 91 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 92 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=219 triangles=3246 fragments=7884345 samples=2970345
+GAME DRAW: caller-offset=003244e0 calls=220 triangles=3254 fragments=7914303 samples=3000303
+GAME DRAW: caller-offset=003244e0 calls=221 triangles=3322 fragments=7915390 samples=3001390
+JNI PopLocalFrame: . 
+Frame 92 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 93 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=222 triangles=3324 fragments=7969390 samples=3001390
+GAME DRAW: caller-offset=003244e0 calls=223 triangles=3332 fragments=7999348 samples=3031348
+GAME DRAW: caller-offset=003244e0 calls=224 triangles=3400 fragments=8000435 samples=3032435
+JNI PopLocalFrame: . 
+Frame 93 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 94 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=225 triangles=3402 fragments=8054435 samples=3032435
+GAME DRAW: caller-offset=003244e0 calls=226 triangles=3410 fragments=8084393 samples=3062393
+GAME DRAW: caller-offset=003244e0 calls=227 triangles=3478 fragments=8085480 samples=3063480
+JNI PopLocalFrame: . 
+Frame 94 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 95 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=228 triangles=3480 fragments=8139480 samples=3063480
+GAME DRAW: caller-offset=003244e0 calls=229 triangles=3488 fragments=8169438 samples=3093438
+GAME DRAW: caller-offset=003244e0 calls=230 triangles=3556 fragments=8170525 samples=3094525
+JNI PopLocalFrame: . 
+Frame 95 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 96 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=231 triangles=3558 fragments=8224525 samples=3094525
+GAME DRAW: caller-offset=003244e0 calls=232 triangles=3566 fragments=8254483 samples=3124483
+GAME DRAW: caller-offset=003244e0 calls=233 triangles=3634 fragments=8255570 samples=3125570
+JNI PopLocalFrame: . 
+Frame 96 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 97 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=234 triangles=3636 fragments=8309570 samples=3125570
+GAME DRAW: caller-offset=003244e0 calls=235 triangles=3644 fragments=8339528 samples=3155528
+GAME DRAW: caller-offset=003244e0 calls=236 triangles=3712 fragments=8340615 samples=3156615
+JNI PopLocalFrame: . 
+Frame 97 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 98 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=237 triangles=3714 fragments=8394615 samples=3156615
+GAME DRAW: caller-offset=003244e0 calls=238 triangles=3722 fragments=8424573 samples=3186573
+GAME DRAW: caller-offset=003244e0 calls=239 triangles=3790 fragments=8425660 samples=3187660
+JNI PopLocalFrame: . 
+Frame 98 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 99 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=240 triangles=3792 fragments=8479660 samples=3187660
+GAME DRAW: caller-offset=003244e0 calls=241 triangles=3800 fragments=8509618 samples=3217618
+GAME DRAW: caller-offset=003244e0 calls=242 triangles=3868 fragments=8510705 samples=3218705
+JNI PopLocalFrame: . 
+Frame 99 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 100 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=243 triangles=3870 fragments=8564705 samples=3218705
+GAME DRAW: caller-offset=003244e0 calls=244 triangles=3878 fragments=8594663 samples=3248663
+GAME DRAW: caller-offset=003244e0 calls=245 triangles=3946 fragments=8595750 samples=3249750
+JNI PopLocalFrame: . 
+Frame 100 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 101 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=246 triangles=3948 fragments=8649750 samples=3249750
+GAME DRAW: caller-offset=003244e0 calls=247 triangles=3956 fragments=8679708 samples=3279708
+GAME DRAW: caller-offset=003244e0 calls=248 triangles=4024 fragments=8680795 samples=3280795
+JNI PopLocalFrame: . 
+Frame 101 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 102 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=249 triangles=4026 fragments=8734795 samples=3280795
+GAME DRAW: caller-offset=003244e0 calls=250 triangles=4034 fragments=8764753 samples=3310753
+GAME DRAW: caller-offset=003244e0 calls=251 triangles=4102 fragments=8765840 samples=3311840
+JNI PopLocalFrame: . 
+Frame 102 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 103 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=252 triangles=4104 fragments=8819840 samples=3311840
+GAME DRAW: caller-offset=003244e0 calls=253 triangles=4112 fragments=8849798 samples=3341798
+GAME DRAW: caller-offset=003244e0 calls=254 triangles=4180 fragments=8850885 samples=3342885
+JNI PopLocalFrame: . 
+Frame 103 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 104 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=255 triangles=4182 fragments=8904885 samples=3342885
+GAME DRAW: caller-offset=003244e0 calls=256 triangles=4190 fragments=8934843 samples=3372843
+GAME DRAW: caller-offset=003244e0 calls=257 triangles=4258 fragments=8935930 samples=3373930
+JNI PopLocalFrame: . 
+Frame 104 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 105 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=258 triangles=4260 fragments=8989930 samples=3373930
+GAME DRAW: caller-offset=003244e0 calls=259 triangles=4268 fragments=9019888 samples=3403888
+GAME DRAW: caller-offset=003244e0 calls=260 triangles=4336 fragments=9020975 samples=3404975
+JNI PopLocalFrame: . 
+Frame 105 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+WATCH phase=NativeOnDrawFrame frame=105 image=08490000 fs-events=3360
+WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff1590 state=1
+WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff15e0 state=1
+WATCH thread=00000504 entry-offset=0024c914 wait=3 object=09fef748
+WATCH EA callback=0029bf3c argument=09fef4f0 state=1
+WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=09fef4f0 state=1
+WATCH thread=00000706 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00320624 argument=09fc9358 state=1
+Frame 106 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=261 triangles=4338 fragments=9074975 samples=3404975
+GAME DRAW: caller-offset=003244e0 calls=262 triangles=4346 fragments=9104933 samples=3434933
+GAME DRAW: caller-offset=003244e0 calls=263 triangles=4414 fragments=9106020 samples=3436020
+JNI PopLocalFrame: . 
+Frame 106 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 107 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=264 triangles=4416 fragments=9160020 samples=3436020
+GAME DRAW: caller-offset=003244e0 calls=265 triangles=4424 fragments=9189978 samples=3465978
+GAME DRAW: caller-offset=003244e0 calls=266 triangles=4492 fragments=9191065 samples=3467065
+JNI PopLocalFrame: . 
+Frame 107 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 108 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=267 triangles=4494 fragments=9245065 samples=3467065
+GAME DRAW: caller-offset=003244e0 calls=268 triangles=4502 fragments=9275023 samples=3497023
+GAME DRAW: caller-offset=003244e0 calls=269 triangles=4570 fragments=9276110 samples=3498110
+JNI PopLocalFrame: . 
+Frame 108 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 109 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=270 triangles=4572 fragments=9330110 samples=3498110
+GAME DRAW: caller-offset=003244e0 calls=271 triangles=4580 fragments=9360068 samples=3528068
+GAME DRAW: caller-offset=003244e0 calls=272 triangles=4648 fragments=9361155 samples=3529155
+JNI PopLocalFrame: . 
+Frame 109 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 110 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=273 triangles=4650 fragments=9415155 samples=3529155
+GAME DRAW: caller-offset=003244e0 calls=274 triangles=4658 fragments=9445113 samples=3559113
+GAME DRAW: caller-offset=003244e0 calls=275 triangles=4726 fragments=9446200 samples=3560200
+JNI PopLocalFrame: . 
+Frame 110 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 111 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=276 triangles=4728 fragments=9500200 samples=3560200
+GAME DRAW: caller-offset=003244e0 calls=277 triangles=4736 fragments=9530158 samples=3590158
+GAME DRAW: caller-offset=003244e0 calls=278 triangles=4804 fragments=9531245 samples=3591245
+JNI PopLocalFrame: . 
+Frame 111 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 112 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=279 triangles=4806 fragments=9585245 samples=3591245
+GAME DRAW: caller-offset=003244e0 calls=280 triangles=4814 fragments=9615203 samples=3621203
+GAME DRAW: caller-offset=003244e0 calls=281 triangles=4882 fragments=9616290 samples=3622290
+JNI PopLocalFrame: . 
+Frame 112 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 113 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=282 triangles=4884 fragments=9670290 samples=3622290
+GAME DRAW: caller-offset=003244e0 calls=283 triangles=4892 fragments=9700248 samples=3652248
+GAME DRAW: caller-offset=003244e0 calls=284 triangles=4960 fragments=9701335 samples=3653335
+JNI PopLocalFrame: . 
+Frame 113 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 114 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=285 triangles=4962 fragments=9755335 samples=3653335
+GAME DRAW: caller-offset=003244e0 calls=286 triangles=4970 fragments=9785293 samples=3683293
+GAME DRAW: caller-offset=003244e0 calls=287 triangles=5038 fragments=9786380 samples=3684380
+JNI PopLocalFrame: . 
+Frame 114 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 115 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=288 triangles=5040 fragments=9840380 samples=3684380
+GAME DRAW: caller-offset=003244e0 calls=289 triangles=5048 fragments=9870338 samples=3714338
+GAME DRAW: caller-offset=003244e0 calls=290 triangles=5116 fragments=9871425 samples=3715425
+JNI PopLocalFrame: . 
+Frame 115 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 116 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=291 triangles=5118 fragments=9925425 samples=3715425
+GAME DRAW: caller-offset=003244e0 calls=292 triangles=5126 fragments=9955383 samples=3745383
+GAME DRAW: caller-offset=003244e0 calls=293 triangles=5194 fragments=9956470 samples=3746470
+JNI PopLocalFrame: . 
+Frame 116 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 117 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=294 triangles=5196 fragments=10010470 samples=3746470
+GAME DRAW: caller-offset=003244e0 calls=295 triangles=5204 fragments=10040428 samples=3776428
+GAME DRAW: caller-offset=003244e0 calls=296 triangles=5272 fragments=10041515 samples=3777515
+JNI PopLocalFrame: . 
+Frame 117 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 118 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=297 triangles=5274 fragments=10095515 samples=3777515
+GAME DRAW: caller-offset=003244e0 calls=298 triangles=5282 fragments=10125473 samples=3807473
+GAME DRAW: caller-offset=003244e0 calls=299 triangles=5350 fragments=10126560 samples=3808560
+JNI PopLocalFrame: . 
+Frame 118 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 119 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=300 triangles=5352 fragments=10180560 samples=3808560
+GAME DRAW: caller-offset=003244e0 calls=301 triangles=5360 fragments=10210518 samples=3838518
+GAME DRAW: caller-offset=003244e0 calls=302 triangles=5428 fragments=10211605 samples=3839605
+JNI PopLocalFrame: . 
+Frame 119 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 120 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=303 triangles=5430 fragments=10265605 samples=3839605
+GAME DRAW: caller-offset=003244e0 calls=304 triangles=5438 fragments=10295563 samples=3869563
+GAME DRAW: caller-offset=003244e0 calls=305 triangles=5506 fragments=10296650 samples=3870650
+JNI PopLocalFrame: . 
+Frame 120 returned
+FIRST GAME FRAME CAPTURED: frame=120 draws=305 fragments=10296650 samples=3870650
+FBO state: objects=0 renderbuffers=0 bytes=0 changes=0 bound=0
+JNI assets: lists=1 names=12 gets=12 sets=0 strings=0 arrays=0
+JNI strings: new16=1 newUTF=34 get16=12 getUTF=31 regions=0 errors=0
+GLES error at stop: 00000000
+GLES counters: queries=14 clears=0 pixels=10296650 flushes=0
+GLES texture stores: names=5 bytes=2097156 uploads=7 patches=0
+Jump contexts: saves=761 restores=0 refusals=0
+Native heap: used=117506680 free=281992; runtime live=2168679 peak=2168679 blocks=18 failures=0
+CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28029 last-us=28029
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793200905522000 last-us=1793200905522000
+CLOCK main: kind=1 caller=00246930 id=0 calls=358 first-us=1793200905621000 last-us=1793201035595000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=248 first-us=1793200910832000 last-us=1793201035595000
+Thread pools: active=6 mutex=33 cond=0 sem=31 keys=0
+Donor arenas: break=16781312 peak=16781312 mapped-pages=8908 map-peak=16927 refusals=0
+JNI checkpoint: pending=0 failures=3 refs=11 frame-depth=0 string-loans=1
+JNI retained string: slot=2 text=1.1.33 Universal SD (Default) loans=1 refs=0
+Sensor shutdown: result=0 active=0 events=118 delay=1
+ENGINE EXPERIMENT STOPPED
+Completed game frame saved.

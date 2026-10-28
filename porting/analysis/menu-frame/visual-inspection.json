@@ -1,0 +1,9 @@
+{
+  "screen": "Select Difficulty",
+  "selection_changed_from": "Normal",
+  "selection_changed_to": "Easy",
+  "normal_png_sha256": "4779f27240d22e75a23935f1ca87e62c72ecc2c471e4626a735545e608a06fd5",
+  "easy_png_sha256": "0b3f8641d01bc3173452e418e05ba428b283a316671d49fcd400a3722c9e1b80",
+  "method": "Inspected both actual donor CPU-framebuffer PNGs; blue selection bar moves from Normal to Easy after JNI DOWN/UP at frames 2300/2301.",
+  "hardware_tested": false
+}

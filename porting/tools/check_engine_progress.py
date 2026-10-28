@@ -3,6 +3,10 @@ import hashlib,json,re
 from verify_asset_directories import contract as asset_contract
 from verify_directory_delegate import contract as directory_contract
 from check_first_frame import validate as first_frame_validate
+from check_headphone_frame import validate as headphone_validate
+from check_input_save import validate as input_save_validate
+from check_apk_assets import validate as apk_validate
+from check_menu_frame import validate as menu_validate
 from pathlib import Path
 PORTING=Path(__file__).resolve().parents[1]
 def read(path):return json.loads((PORTING/path).read_text(encoding='utf-8'))
@@ -25,8 +29,16 @@ def main():
     texture_tests=read('analysis/textures-tests.json');assert texture_tests['tests_run']==22 and not texture_tests['errors'] and not texture_tests['failures']
     pipeline_tests=read('analysis/pipeline-tests.json');assert pipeline_tests['tests_run']==18 and not pipeline_tests['errors'] and not pipeline_tests['failures']
     jump_tests=read('analysis/jump-tests.json');assert jump_tests['tests_run']==13 and not jump_tests['errors'] and not jump_tests['failures']
-    string_tests=read('analysis/strings-tests.json');assert string_tests['tests_run']==22 and not string_tests['errors'] and not string_tests['failures']
-    asset_tests=read('analysis/assets-tests.json');assert asset_tests['tests_run']==26 and not asset_tests['errors'] and not asset_tests['failures']
+    string_tests=read('analysis/strings-tests.json');assert string_tests['tests_run']==24 and not string_tests['errors'] and not string_tests['failures']
+    asset_tests=read('analysis/assets-tests.json');assert asset_tests['tests_run']==28 and not asset_tests['errors'] and not asset_tests['failures']
+    for path,n in (('analysis/touch-tests.json',14),('analysis/private-files-tests.json',19),
+        ('analysis/apk-assets-tests.json',23),('analysis/jni-monitors-tests.json',12),
+        ('analysis/shared-memory-tests.json',12),('analysis/emulator-threads-tests.json',4),
+        ('analysis/framebuffer-tests.json',24),('analysis/texture-pages-tests.json',10),
+        ('analysis/font-profile-tests.json',8),('analysis/allocator-compat-tests.json',7),
+        ('analysis/fog-tests.json',21),('analysis/combine-tests.json',21)):
+        extra=read(path);assert extra['tests_run']==n and not extra['errors'] and not extra['failures']
+        assert extra['core_sha256']==tests['core_sha256']
     directories=read('analysis/asset-directory-contract.json');assert directories==asset_contract()
     assert read('analysis/android-abi/directory-delegate-contract.json')==directory_contract()
     trace=read('analysis/engine-first-entry-experiment.json')
@@ -133,6 +145,10 @@ def main():
         assert marker in sensor_log,marker
     assert 'accelerometer backend missing' not in sensor_log
     frame=first_frame_validate()
+    headphones=headphone_validate()
+    input_save=input_save_validate()
+    apk_assets=apk_validate()
+    menu=menu_validate()
     graphics_log=(PORTING/'analysis/azahar-smoke/engine-graphics.log').read_text(encoding='utf-8')
     for marker in ('GLES surface probe: OK 400x240; black clear + green scissor; pixels=97200 format=2',
                    'Asset probe: 0 checks=378 names=176 CRC32-xor=3a761eb9','Asset cleanup: files=0 heap=0',
@@ -145,31 +161,33 @@ def main():
     brk,peak,pages,refusals=map(int,arena.groups())
     assert (brk,peak,pages,refusals)==(16781312,16781312,4097,0)
     assert trace['donor_arena_stats'][:3]==[brk,peak,pages] and trace['donor_arena_stats'][7]==0
-    report={'workflow':'emulator first; no per-stage SD swaps','stage8_hardware_passed':True,'computer_tests_passed':331,
+    report={'workflow':'emulator first; no per-stage SD swaps','stage8_hardware_passed':True,'computer_tests_passed':511,
         'azahar_cases_passed':cases,'constructors_completed':209,'jni_onload':'00010004','stored_vm_matches':True,
         'lifecycle_returns':['NativeOnCreate','NativeOnSurfaceCreated','NativeOnSurfaceChanged'],'first_frame_attempted':True,
-        'first_game_frame_rendered':True,'eaio_native_startup_returned':True,'draw_callbacks_returned':8,
-        'first_frame':frame,
+        'first_game_frame_rendered':True,'eaio_native_startup_returned':True,'draw_callbacks_returned':menu['frames_returned'],
+        'menu_screen':menu,'donor_language':'English 1.1.33; Russian APK not used; translation deferred',
+        'first_frame':frame,'headphone_screen':headphones,'input_and_private_saves':input_save,'apk_assets_and_shared_memory':apk_assets,
         'platform_probe':{'checks':168,'properties':29,'active_files_after_cleanup':0,'heap_blocks_after_cleanup':0},
         'assets':{'files':1728,'bytes':414822611,'copied_and_sha256_verified':True,'readiness_receipt_checked':True,'rehash_each_frame':False},
         'jni_frames':{'waiting_callbacks':120,'live_refs_at_end':4,'reference_capacity_exhausted':False},
         'jni_file_probe':{'checks':201,'bytes':3568,'crc32':'4a8d9499','active_files_after_cleanup':0,'heap_blocks_after_cleanup':0},
-        'stop':{'phase':'NativeOnDrawFrame[8] returned','kind':'first_frame_capture','mode':'Azahar New3DS 124MiB, 20+80MiB donor arenas',
-            'reason':'completed donor frame captured and presented; menu/gameplay remain unverified'},
+        'stop':dict(menu['next_stop'],kind='unimplemented_import',mode='Azahar New3DS 178MiB, shared128MiB donor arena; CPU400 exploratory',
+            reason='Normal/Easy menu, fog and texture combiners verified; next scene requests lighting configuration'),
+        'legacy_apk_profile_stop':apk_assets['next_stop'],
         'cpu_graphics_guard_stop':graphics_stop,
-        'asset_bridge':{'tests_passed':26,'native_probe_checks':378,'native_probe_names':176,'native_names_crc32_xor':'3a761eb9',
+        'asset_bridge':{'tests_passed':28,'native_probe_checks':378,'native_probe_names':176,'native_names_crc32_xor':'3a761eb9',
             'native_cleanup_files':0,'native_cleanup_heap':0,'profile':directories['profile'],'limits':directories['limits'],
             'game_stats':graphics_trace['asset_stats'],'apk_root_assets_mirrored':False,'font':directories['font']},
         'graphics_arena_bytes_in_use':frame['arena_stats']['break_bytes']+frame['arena_stats']['mapped_pages']*4096,
         'graphics_arena_reserved_bytes':100*1024*1024,
-        'string_bridge':{'tests_passed':22,'native_probe_checks':43,'native_probe_utf16_units':7,'native_probe_mutf8_bytes':17,
+        'string_bridge':{'tests_passed':24,'native_probe_checks':43,'native_probe_utf16_units':7,'native_probe_mutf8_bytes':17,
             'native_cleanup_files':0,'native_cleanup_heap':0,'guarded_cpu_game_stats':graphics_trace['string_stats'],
             'pool_size':8,'maximum_mutf8_bytes_per_string':255,'utf16_and_mutf8_lengths_are_distinct':True,'stage3_bootstrap_unchanged':True},
         'jump_bridge':{'tests_passed':13,'native_probe_cases':16,'native_probe_saves':18,'native_probe_restores':18,
             'guarded_cpu_game':graphics_trace['jump_stats'],'native_game_at_capture':frame['jump_contexts'],'jmp_buf_bytes':256,'vfp_registers':'d8-d15','minimum_alignment':4,
             'cross_thread_refused':True,'signal_profile':jump_abi['signal_profile'],'native_newlib_reinterpretation':False},
         'sensor_only_stop':{'phase':gl_stop['phase'],'api':gl_stop['name'],'parameter':'GL_VIEWPORT (0x0ba2)','caller_offset':'003235b0'},
-        'graphics_context':{'state_tests_passed':17,'array_tests_passed':17,'texture_tests_passed':22,'pipeline_tests_passed':18,'filesystem_matrix_draw_tests_passed':30,'opt_in_bindings':99,'surface':[400,240],'native_format':'RGB565','native_probe_pixels':97200,
+        'graphics_context':{'state_tests_passed':17,'array_tests_passed':17,'texture_tests_passed':22,'pipeline_tests_passed':18,'filesystem_matrix_draw_tests_passed':31,'opt_in_bindings':99,'surface':[400,240],'native_format':'RGB565','native_probe_pixels':97200,
             'native_buffer_probe':{'upload_bytes':24,'patch_bytes':12,'readback_bytes':12,'active_after_cleanup':0},
             'native_texture_probe':{'upload_bytes':16,'patch_bytes':4,'readback_bytes':4,'active_after_cleanup':0},
             'native_pipeline_probe':{'cull_checks':2,'alpha_checks':2,'blend_components':4,'typed_queries':1},
@@ -177,7 +195,10 @@ def main():
             'first_game_texture_guarded_cpu':dict(graphics_trace['first_texture'],cpu_source_matches_store=True),
             'error_at_stop':graphics_trace['graphics_error'],
             'game_queries_completed':14,'game_clears':0,'triangle_renderer_implemented':True,'texture_storage_implemented':True,'texture_sampling_implemented':True,
-            'renderer_scope':'unlit CPU triangles, no depth/stencil attachments, nonmip matching min/mag filters only'},
+            'renderer_scope':'unlit CPU triangles; opt-in FBO depth/stencil, fog, two-unit texture combiners, RGBA/RBO targets and readback; nonmip matching min/mag filters only',
+            'framebuffer_tests_passed':24,'texture_paging_tests_passed':10,'font_profile_tests_passed':8,'allocator_compat_tests_passed':7,
+            'fog_tests_passed':21,'combiner_tests_passed':21,'opt_in_fog_bindings':4,
+            'menu_profile_texture_resident_limit_bytes':6*1024*1024,'menu_profile_logical_texture_limit_bytes':96*1024*1024},
         'guarded_baseline_stop':{'phase':stop['phase'],'api':stop['name'],'class':stop['request']['class'],'method':'SetEnabled(Z)V'},
         'sensor_bridge':{'jni_tests_passed':8,'android_delay_at_capture':1,'interval_us_at_capture':20000,'native_shutdown_active':0,'native_original_acceleration_callbacks_observed':6,
             'native_backend':'libctru HID','cpu_backend':'injected model','calibration':'emulator-only nominal scale/identity axes; hardware unverified'},
@@ -185,19 +206,25 @@ def main():
         'donor_arena_bytes_in_use':brk+pages*4096,'total_process_memory_measured':False,'new_runtime_hardware_tested':False,
         'new_hardware_install_requested':False,'new_cia_produced':False,'native_rx_backend_unchanged':True,
         'limitations':['clock models are emulator-only','mmap supports private anonymous RW only','selected JNI subset; no Java interpreter',
-            'AssetManager openFd not implemented; list uses bounded virtual published root, not original APK assets','physical sensor axes/calibration unverified','display DPI is configured, not measured',
-            'Android API/version identify compatibility profile, not native OS','unlit CPU rasterizer; no PICA200 acceleration, lighting, fog, custom FBOs or texture combiners',
+            'AssetManager APK profile is opt-in; openFd supports extracted ZIP_STORED assets, offset 0; fcntl supports F_DUPFD only','physical sensor axes/calibration unverified','display DPI is configured, not measured',
+            'Android API/version identify compatibility profile, not native OS','unlit CPU rasterizer; no PICA200 acceleration or lighting; fog/combiners are opt-in',
             'compressed textures and automatic mipmap generation not implemented','jump bridge has no POSIX signal delivery and rejects nonempty saved masks',
             'jump buffer frame lifetime and arbitrary pointer validity remain caller responsibilities',
-            'JNI strings are bounded; one retained pinned string prevents a local frame pop at startup','object arrays support String component only; assets read-only, private appdata directories writable',
-            'CPU guard profile still uses 20+20MiB and deliberately stops before worker execution','APK bootstrap assets and fd-based appdata writes remain incomplete','menu, gameplay and audio unverified','full-module native RX untested'],
+            'JNI strings are bounded; one orphan version-string loan remains until context cleanup; local frames close','object arrays support String component only; assets read-only, private appdata directories writable',
+            'CPU guard profile still uses 20+20MiB and deliberately stops before worker execution','FBO bridge is opt-in; framebuffer texture feedback refused; FD writes are opt-in in a private namespace',
+            'file adapter requires serialized callers; native donor workers and long-run host emulator stability need further work','menu verified in CPU400/178MiB emulator profile; gameplay and audio unverified','full-module hardware native RX untested'],
         'witnesses_sha256':{p:sha(p) for p in ('analysis/engine-first-entry-experiment.json','analysis/azahar-smoke/engine-present.log',
             'analysis/emulator-runtime-tests.json','analysis/jni10-tests.json','analysis/platform-jni-tests.json','analysis/emulator-assets.json',
             'analysis/android-abi/candidate-sd-package.json','analysis/hardware/stage8-v0.8.0-user.log','3ds/build-emulator/build-manifest.json',
             'analysis/sensor-jni-tests.json','analysis/engine-sensor-entry.json','analysis/azahar-smoke/engine-sensor.log','analysis/android-abi/sensor-delay-contract.json',
             'analysis/gles-tests.json','analysis/arrays-tests.json','analysis/textures-tests.json','analysis/pipeline-tests.json','analysis/jump-tests.json','analysis/strings-tests.json','analysis/android-abi/jump-abi-contract.json','analysis/engine-graphics-entry.json','analysis/azahar-smoke/engine-graphics.log',
             'analysis/assets-tests.json','analysis/asset-directory-contract.json','analysis/android-abi/directory-delegate-contract.json',
-            'analysis/first-frame-tests.json','analysis/first-frame-result.json')}}
+            'analysis/first-frame-tests.json','analysis/first-frame-result.json','analysis/headphone-frame-result.json',
+            'analysis/touch-tests.json','analysis/private-files-tests.json','analysis/input-save-result.json','analysis/android-abi/private-file-contract.json',
+            'analysis/android-abi/apk-asset-namespace-contract.json','analysis/apk-assets-result.json',
+            'analysis/apk-assets-tests.json','analysis/jni-monitors-tests.json','analysis/shared-memory-tests.json','analysis/emulator-threads-tests.json',
+            'analysis/framebuffer-tests.json','analysis/texture-pages-tests.json','analysis/font-profile-tests.json','analysis/allocator-compat-tests.json',
+            'analysis/font-subset-contract.json','analysis/menu-result.json','analysis/fog-tests.json','analysis/combine-tests.json')}}
     target=PORTING/'analysis/engine-progress.json';target.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

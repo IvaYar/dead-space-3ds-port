@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "frames_returned": 240,
+  "cpu_percent": 100,
+  "touch_tests_passed": 14,
+  "private_file_tests_passed": 19,
+  "native_pointer_events_returned": 2,
+  "native_private_file_probe_passed": true,
+  "save_receipt": {
+    "var/00_CheckpointSave.sb": {
+      "bytes": 3296,
+      "sha256": "3ea23f32a2ffdbfb714757d25e3c9d8213aba9a28d7b497c726e96b61163bd03"
+    },
+    "var/00_LevelSave.sb": {
+      "bytes": 972,
+      "sha256": "e5f18fab08eca2ee6ce80b7e66f2612266beb2ed85eb40ff67db4406f4e370a0"
+    },
+    "var/AchievementsSave.sb": {
+      "bytes": 1536,
+      "sha256": "20f1e59e80bc4c6239458be5a925869ce528fd99b384ab042d2c793c6c46f0be"
+    },
+    "var/settings.sb": {
+      "bytes": 468,
+      "sha256": "04d21ea307bccd32ad8b648a13e6eb602d641aa1893c3ccf29c33bd842a5f69d"
+    }
+  },
+  "gles_error": 0,
+  "local_frames_closed": true,
+  "frame": {
+    "width": 400,
+    "height": 240,
+    "layout": 2,
+    "bytes": 192000,
+    "crc32": "71a807c1",
+    "frame": 240,
+    "caller_offset": "00000000",
+    "draws": 665,
+    "triangles": 14866,
+    "fragments": 20502050,
+    "samples": 7596050
+  },
+  "lcd_vertical_offset_pixels": 1,
+  "menu_confirmed": false,
+  "gameplay": false,
+  "hardware_tested": false,
+  "new_cia_produced": false,
+  "core_sha256": "82a21986993fbfebd6d9046bfe746d53f4c5396839a3fbd8800d15f58ba8ab97",
+  "cxi_sha256": "acca1b0b154e9cf5d1c24be6871b1d620fcfb220a078cbbe9a13b32643082588",
+  "witnesses_sha256": {
+    "analysis/input-save-frame/run.log": "e4ed665f06ed81c4a78f08c3be9981eec5545aa0287e3b59e8ec2fb3d9aea661",
+    "analysis/input-save-frame/run-result.json": "89dcff38016d15ac18a678dfc70849b8f297d7d87cedf69af20d0f11f9c33d75",
+    "analysis/input-save-frame/save-receipt.json": "9236286c1e092785bc30ba9d26b6e5d8750cd04e6381e609d20c09fe2c71b240",
+    "analysis/input-save-frame/first-game-frame.raw": "2d3cfe1c3c731c8681af4d81e98cd761ae0b33c93db8e403d7013f7094bca2b1",
+    "analysis/input-save-frame/first-game-frame.json": "bf3441b753cf3989267040afb225deba17bc8c9a2721b2d554ad7e21f982f3a8",
+    "analysis/input-save-frame/first-game-frame.png": "b1dedb0f396b19b13981bb9142fc335c1cbe249313e47848eb1808ebc3b29755",
+    "analysis/input-save-frame/azahar-screen.png": "ea00a868895db9517d69d9eb1acae78c976c401046e6e7404d4a905b9615505f"
+  }
+}

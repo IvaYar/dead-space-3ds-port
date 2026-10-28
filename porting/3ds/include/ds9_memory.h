@@ -3,9 +3,14 @@
 #include "ds7.h"
 typedef struct { uint32_t break_bytes,break_peak,mapped_pages,map_peak,sbrk_calls,mmap_calls,munmap_calls,refusals; } DS9MemoryStats;
 #define DS9_MAX_MAP_BYTES (80u*1024u*1024u)
+#define DS9_MAX_SHARED_BYTES (128u*1024u*1024u)
 /* Caller owns two disjoint, writable arenas until all donor users have stopped.
  * No native newlib heap pointers are exposed to the donor's sbrk allocator. */
 int ds9_memory_init(void *brk_arena,uint32_t brk_size,void *map_arena,uint32_t map_size);
+/* Opt-in shared pool: contiguous brk grows from the bottom, private mmap pages
+ * allocate from the top. Both account against the same owned physical bytes.
+ * Live mappings never move; brk growth refuses if it would overlap one. */
+int ds9_memory_init_shared(void *arena,uint32_t bytes);
 void ds9_memory_stats(DS9MemoryStats *out);
 /* Optional diagnostic callback, invoked after unlocking on refusal. Production
  * callers still receive MAP_FAILED/-1 when the callback returns. */

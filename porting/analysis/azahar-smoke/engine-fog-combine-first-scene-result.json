@@ -1,0 +1,44 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "graphics",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "first_game_frame_rendered": false,
+  "exploratory": true,
+  "checkpoint_validated": false,
+  "cpu_percent": 400,
+  "resume_focus": true,
+  "touch_attached": true,
+  "tap_events": [
+    [
+      2300,
+      160,
+      134
+    ],
+    [
+      2600,
+      284,
+      225
+    ]
+  ],
+  "tap_frame": 0,
+  "private_files": true,
+  "capture_frame": 2800,
+  "apk_assets": true,
+  "donor_arena_mib": [
+    128
+  ],
+  "shared_arena": true,
+  "framebuffers": true,
+  "memory_mib": 178,
+  "font_subset": true,
+  "allocator_compat": true,
+  "fog": true,
+  "combine": true,
+  "frames": 60226,
+  "elapsed_seconds": 485.047,
+  "cxi_sha256": "c0dff8bc04907933b70dc5e30cedfd2c3955be122d74ecdeb57109d41f6302fb",
+  "log_sha256": "4cdef7a30b438d69f639f452e2036294ffc68f6c744b211d738b17efbc3caa33",
+  "log": "analysis/azahar-smoke/engine-fog-combine-first-scene.log"
+}

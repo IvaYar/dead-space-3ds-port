@@ -24,7 +24,7 @@ int ds13_target(DS13Context *c,void *pixels,uint32_t capacity){
     if(!valid(c) || !pixels || (uint64_t)c->width*c->height*(c->layout==DS13_RGB565_CTR?2:3)>capacity)return -1;
     c->pixels=pixels;c->capacity=capacity;return 0;
 }
-void ds13_close(DS13Context *c){if(current==c)current=NULL;if(valid(c)){ds14_close(&c->vertex);ds15_close(&c->texture);ds21_close(c);ds22_close(c);}if(c)memset(c,0,sizeof(*c));}
+void ds13_close(DS13Context *c){if(current==c)current=NULL;if(valid(c)){ds26_close(c);ds14_close(&c->vertex);ds15_close(&c->texture);ds21_close(c);ds22_close(c);ds30_close(c);}if(c)memset(c,0,sizeof(*c));}
 DS13Context *ds13_active_context(void){return current;}
 void ds13_error(uint32_t value){error(current,value);}
 void ds13_unsupported(const char *op,uint32_t value){if(current)unsupported(current,op,value);}
@@ -41,13 +41,15 @@ int ds13_real_values(uint32_t name,float out[16],int *normalized){
         case 0xbc2:*out=c->pipeline.alpha_ref;return 1;
         case 0x8038:*out=c->pipeline.offset_factor;return 1;
         case 0x2a00:*out=c->pipeline.offset_units;return 1;
-        default:{int n=ds21_real(c,name,out);if(n)return n;n=ds22_real(c,name,out);if(n)*normalized=1;return n;}
+        default:{int n=ds30_real(c,name,out,normalized);if(n)return n;n=ds21_real(c,name,out);if(n)return n;n=ds22_real(c,name,out);if(n)*normalized=1;return n;}
     }
 }
 int ds13_integer_values(uint32_t name,int32_t out[4]){
     DS13Context *c=current;if(!c)return 0;++c->queries;
     float real[16];int normalized=0;int count=ds13_real_values(name,real,&normalized);
     if(count){for(int i=0;i<count;++i){double v=round(normalized?(double)real[i]*INT32_MAX:(double)real[i]);out[i]=v>=INT32_MAX?INT32_MAX:v<=INT32_MIN?INT32_MIN:(int32_t)v;}return count;}
+    if(ds26_integer(c,name,out))return 1;
+    if(ds30_integer(c,name,out))return 1;
     switch(name){
         case 0xba2:memcpy(out,c->viewport,16);break;
         case 0xc10:memcpy(out,c->scissor,16);break;
@@ -61,6 +63,7 @@ int ds13_integer_values(uint32_t name,int32_t out[4]){
         case 0x8ca6:*out=(int32_t)c->framebuffer_binding;break; /* Actual borrowed default surface. */
         case 0xbe2:*out=(int32_t)c->blend;break;
         case 0xb60:*out=(int32_t)c->fog;break;
+        case 0xb97:{int32_t bits=0;ds26_integer(c,0xd57,&bits);*out=bits?(int32_t)c->pipeline.stencil_ref:0;break;}
         case 0xd52:case 0xd54:*out=c->layout==DS13_RGB565_CTR?5:8;break;
         case 0xd53:*out=c->layout==DS13_RGB565_CTR?6:8;break;
         case 0xd55:case 0xd56:case 0xd57:*out=0;break; /* No alpha/depth/stencil attachments. */
@@ -132,18 +135,27 @@ static void DS13_SOFT clear_stencil(int32_t value){if(current)current->clear_ste
 static void DS13_SOFT clear(uint32_t mask){
     DS13Context *c=current;if(!c)return;
     if(mask&~(0x4000u|0x100u|0x400u)){error(c,INVALID_VALUE);return;}
-    ++c->clears;if(!(mask&0x4000))return;
-    if(!c->color_mask[0] && !c->color_mask[1] && !c->color_mask[2])return;
-    int64_t x0=0,y0=0,x1=c->width,y1=c->height;
+    DS26Surface target;if(ds26_surface(c,&target))return;
+    ++c->clears;
+    int64_t x0=0,y0=0,x1=target.width,y1=target.height;
     if(c->scissor_test){
         x0=c->scissor[0];y0=c->scissor[1];x1=x0+(int64_t)c->scissor[2];y1=y0+(int64_t)c->scissor[3];
         if(x0<0)x0=0;
         if(y0<0)y0=0;
-        if(x1>c->width)x1=c->width;
-        if(y1>c->height)y1=c->height;
+        if(x1>target.width)x1=target.width;
+        if(y1>target.height)y1=target.height;
     }
     uint8_t rgb[3];for(unsigned i=0;i<3;++i)rgb[i]=(uint8_t)(c->clear_color[i]*255.0f+0.5f);
     for(int64_t y=y0;y<y1;++y)for(int64_t x=x0;x<x1;++x){
+        uint32_t index=(uint32_t)(y*target.width+x);
+        if((mask&0x100) && target.depth && c->pipeline.depth_mask)target.depth[index]=(uint16_t)(c->clear_depth*65535+.5f);
+        if((mask&0x400) && target.stencil)target.stencil[index]=(uint8_t)((target.stencil[index]&~c->pipeline.stencil_write_mask)|((uint32_t)c->clear_stencil&c->pipeline.stencil_write_mask));
+        if(!(mask&0x4000) || !target.pixels || (!c->color_mask[0] && !c->color_mask[1] && !c->color_mask[2] && (target.layout!=3 || !c->color_mask[3])))continue;
+        if(target.layout==3){
+            float rgba[4];memcpy(rgba,c->clear_color,16);ds26_quantize(&target,rgba);
+            for(unsigned i=0;i<4;++i)if(c->color_mask[i])target.pixels[index*4+i]=(uint8_t)(rgba[i]*255+.5f);
+            ++c->pixels_written;continue;
+        }
         if(c->layout==DS13_RGB565_CTR){
             uint32_t offset=(uint32_t)(x*c->height+y)*2;
             uint32_t old=c->pixels[offset]|(uint32_t)c->pixels[offset+1]<<8;

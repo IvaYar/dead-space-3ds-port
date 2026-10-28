@@ -5,6 +5,7 @@
  * contract, not the operating system actually running on the console. */
 typedef struct { uint32_t app_memory_bytes,width,height,capabilities,keep_awake,orientation,focused; float dpi_x,dpi_y; } DS11Platform;
 #define DS11_CAP_ACCELEROMETER 1u
+#define DS11_CAP_TOUCHSCREEN 2u
 int ds11_native_keep_awake(int enabled);
 int ds11_native_content_ready(void);
 const char *ds11_package_version(void);

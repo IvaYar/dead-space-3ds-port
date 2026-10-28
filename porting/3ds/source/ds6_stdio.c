@@ -9,8 +9,19 @@ enum { READ=4,WRITE=8,EOF_FLAG=32,ERROR_FLAG=64,COUNT=3+DS_IO_FILES };
 static DS6File files[COUNT];
 static FILE *native[COUNT];
 static int used[COUNT],orientation[COUNT];
+static char appdata_root[96]="sdmc:/3ds/deadspace/test-output/";
 void ds_fs_trace(const char *,const char *,int) __attribute__((weak));
 static int fail(int error) { *ds_io_errno()=error; return -1; }
+int ds6_appdata_namespace(const char *name){
+    if(!name)return fail(22);
+    size_t n=strlen(name);if(n>32)return fail(36);
+    for(size_t i=0;i<n;++i)if(!((name[i]>='a' && name[i]<='z') || (name[i]>='A' && name[i]<='Z') ||
+        (name[i]>='0' && name[i]<='9') || name[i]=='_' || name[i]=='-'))return fail(22);
+    for(unsigned i=3;i<COUNT;++i)if(used[i])return fail(16);
+    if(ds_io_free_slots()!=DS_IO_FILES)return fail(16);
+    strcpy(appdata_root,"sdmc:/3ds/deadspace/test-output/");
+    if(n){strcat(appdata_root,name);strcat(appdata_root,"/");}return 0;
+}
 static int index_for(DS6File *file) {
     for(int i=0;i<COUNT;++i) if(file==&files[i] && used[i]) {
         if(i>=3 && ds_io_native_handle(file->fd)!=native[i]) return -1;
@@ -38,6 +49,7 @@ static void setup(int i,int flags,int fd) {
     files[i].write=(uint32_t)cookie_write; files[i].seek=(uint32_t)cookie_seek;
 }
 void ds6_stdio_init(void) {
+    strcpy(appdata_root,"sdmc:/3ds/deadspace/test-output/");
     native[0]=stdin; native[1]=stdout; native[2]=stderr;
     for(int i=0;i<3;++i) setup(i,i?WRITE:READ,i);
     orientation[1]=orientation[2]=-1;
@@ -49,12 +61,14 @@ int ds6_map_path(const char *path,char out[DS_IO_PATH_BYTES],int writable) {
         const char *relative=path+9;if(*relative=='/')++relative;
         if(*relative=='/')return fail(22);
         size_t length=strlen(relative);if(length && relative[length-1]=='/')--length;
-        if(!length){strcpy(out,"sdmc:/3ds/deadspace/test-output/");return 0;}
+        if(!length){strcpy(out,appdata_root);return 0;}
         if(length+11>=sizeof(logical)) return fail(36);
         strcpy(logical,"published/");memcpy(logical+10,relative,length);logical[10+length]=0;
         int result=ds_io_map_path(logical,mapped,sizeof(mapped));
         if(result) return fail(result);
-        strcpy(out,"sdmc:/3ds/deadspace/test-output/"); strcat(out,mapped+sizeof(DS_IO_ROOT)-1);
+        size_t tail=strlen(mapped+sizeof(DS_IO_ROOT)-1);
+        if(strlen(appdata_root)+tail>=DS_IO_PATH_BYTES)return fail(36);
+        strcpy(out,appdata_root); strcat(out,mapped+sizeof(DS_IO_ROOT)-1);
         return 0;
     }
     if(writable) return fail(30);
@@ -66,6 +80,7 @@ int ds6_map_path(const char *path,char out[DS_IO_PATH_BYTES],int writable) {
     if(n>=sizeof(logical))return fail(36);
     if(n && path[n-1]=='/'){memcpy(logical,path,n-1);logical[n-1]=0;path=logical;}
     int result=ds_io_map_path(path,out,DS_IO_PATH_BYTES);
+    if(!result)result=ds_io_resolve_read_path(out);
     return result?fail(result):0;
 }
 DS6File *DS_IO_SOFT ds6_fopen(const char *path,const char *mode) {
@@ -79,10 +94,10 @@ DS6File *DS_IO_SOFT ds6_fopen(const char *path,const char *mode) {
     char mapped[DS_IO_PATH_BYTES]; if(ds6_map_path(path,mapped,writable)) return NULL;
     for(int i=3;i<COUNT;++i) if(!used[i]) {
         FILE *handle=fopen(mapped,mode);
-        if(!handle) { ds6_result_error(-1); return NULL; }
+        if(!handle) { ds6_result_error(-1);if(ds_fs_trace)ds_fs_trace("fopen failure",path,-*ds_io_errno());return NULL; }
         int fd=ds_io_adopt_handle(handle);
         if(fd<0) { fclose(handle); return NULL; }
-        native[i]=handle; setup(i,flags,fd); return &files[i];
+        native[i]=handle; setup(i,flags,fd);if(ds_fs_trace)ds_fs_trace("fopen fd",path,fd);return &files[i];
     }
     fail(24); return NULL;
 }

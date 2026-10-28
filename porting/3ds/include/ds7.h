@@ -7,7 +7,7 @@ typedef void *(*DS7Start)(void *) DS_IO_SOFT;
 typedef void (*DS7Destroy)(void *) DS_IO_SOFT;
 typedef struct { int32_t error; void *record; } DS7TLS;
 typedef struct { uint32_t active_threads,finished_threads,mutexes,conditions,semaphores,keys; } DS7Stats;
-typedef struct {uint32_t token,entry,wait_kind,wait_object;} DS7DebugThread;
+typedef struct {uint32_t token,entry,wait_kind,wait_object,argument;} DS7DebugThread;
 /* Diagnostic observations only; no synchronization decisions may use them. */
 void ds7_debug_threads(DS7DebugThread out[17]);
 /* Native backend owns the one state gate and provides atomic condition waits. */
@@ -29,6 +29,11 @@ void ds7_native_free(void *thread);
 void ds7_native_exit(void) __attribute__((noreturn));
 void ds7_bad_main_exit(void) __attribute__((noreturn));
 int ds7_init(void);
+/* JNI monitors use the same ownership and blocking machinery as pthreads.
+ * Initialize the caller-owned word to 0x4000 (recursive), destroy after users stop. */
+int ds7_monitor_enter(uint32_t *);
+int ds7_monitor_exit(uint32_t *);
+int ds7_monitor_destroy(uint32_t *);
 /* Returns live threads after bounded joins. Never unload module if nonzero. */
 uint32_t ds7_shutdown(int64_t timeout_ns);
 void ds7_stats(DS7Stats *out);

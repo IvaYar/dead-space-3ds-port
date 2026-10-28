@@ -1,6 +1,10 @@
 #include "ds7.h"
 #include <string.h>
-enum { THREADS=16, MUTEXES=64, CONDITIONS=32, SEMAPHORES=32, KEYS=32 };
+#ifndef DS7_SEMAPHORE_COUNT
+#define DS7_SEMAPHORE_COUNT 32
+#endif
+_Static_assert(DS7_SEMAPHORE_COUNT>0 && DS7_SEMAPHORE_COUNT<=255,"semaphore token slot");
+enum { THREADS=16, MUTEXES=64, CONDITIONS=32, SEMAPHORES=DS7_SEMAPHORE_COUNT, KEYS=32 };
 typedef struct { uint32_t token; int used,done,detached,joining; void *native,*result,*argument; DS7Start entry; DS7Attr attr; void *values[KEYS]; uint32_t generations[KEYS]; volatile uint32_t wait_kind,wait_object; } Worker;
 typedef struct { uint32_t *object,owner,depth; int kind,waiters; int32_t cv; } Mutex;
 typedef struct { uint32_t *object; int waiters; int32_t cv; } Condition;
@@ -22,7 +26,7 @@ static Worker *current(void) { return ds7_tls()->record; }
 static uint32_t identity(void) { Worker *w=current(); return w?w->token:0; }
 static void waiting(uint32_t kind,const void *object){Worker *w=current();if(w){w->wait_object=(uint32_t)object;w->wait_kind=kind;}}
 void ds7_debug_threads(DS7DebugThread out[17]){
-    for(unsigned i=0;i<17;++i){Worker *w=&workers[i];out[i]=(DS7DebugThread){w->used?w->token:0,(uint32_t)w->entry,w->wait_kind,w->wait_object};}
+    for(unsigned i=0;i<17;++i){Worker *w=&workers[i];out[i]=(DS7DebugThread){w->used?w->token:0,(uint32_t)w->entry,w->wait_kind,w->wait_object,(uint32_t)w->argument};}
 }
 static Worker *find_worker(uint32_t id) {
     uint32_t slot=id&255;
@@ -123,6 +127,9 @@ static int release_mutex(Mutex *m) {
 static int DS_IO_SOFT mutex_unlock(uint32_t *object) {
     ds7_gate_lock(); Mutex *m=get_mutex(object,0); return unlock_result(m?release_mutex(m):22);
 }
+int ds7_monitor_enter(uint32_t *object){return mutex_lock(object);}
+int ds7_monitor_exit(uint32_t *object){return mutex_unlock(object);}
+int ds7_monitor_destroy(uint32_t *object){return object && *object==0x4000?0:mutex_destroy(object);}
 static Condition *get_condition(uint32_t *object,int lazy) {
     if(!object) return NULL;
     uint32_t tag=*object;
@@ -191,7 +198,9 @@ static int DS_IO_SOFT sem_init(uint32_t *object,int shared,unsigned value) {
         Semaphore *s=&semaphores[i]; memset(s,0,sizeof(*s)); s->object=object; s->value=value;
         *object=0xd7300000u+(uint32_t)i+1; ds7_gate_unlock(); return 0;
     }
-    ds7_gate_unlock(); return sem_result(28);
+    ds7_gate_unlock();
+    if(observer)observer(5,identity(),3); /* bounded semaphore pool exhausted */
+    return sem_result(28);
 }
 static int DS_IO_SOFT sem_destroy(uint32_t *object) {
     ds7_gate_lock(); Semaphore *s=get_semaphore(object);

@@ -61,16 +61,30 @@ class StringTests(jni.Jni10Tests):
     def test_independent_utf_and_utf16_pin_release_families(self):
         s=self.wide((65,));p=self.env(165,s,0);u=self.env(169,s,0)
         self.env(170,s,p);self.assertTrue(self.exception());self.clear();self.env(166,s,u);self.assertTrue(self.exception());self.clear()
-        self.delete(s);self.assertTrue(self.exception());self.clear();self.env(170,s,u);self.env(166,s,p);self.delete(s);self.assertEqual(self.live_heap(),(0,0))
+        self.env(170,s,u);self.env(166,s,p);self.delete(s);self.assertEqual(self.live_heap(),(0,0))
     def test_global_alias_keeps_both_representations_alive(self):
         s=self.wide((0,0x416));g=self.env(21,s);self.delete(s);self.assertEqual(self.units(g),(0,0x416));self.delete(g,True);self.assertEqual(self.live_heap(),(0,0))
     def test_nested_local_frames_escape_and_cleanup_string_payloads(self):
         self.env(19,4);a=self.wide((65,0));self.env(19,4);b=self.wide((0x416,));self.assertEqual(self.env(20,b),b)
         self.assertEqual(self.units(b),(0x416,));self.env(20,0);self.assertEqual(self.live_heap(),(0,0))
         self.assertEqual(self.env(164,a),0);self.assertTrue(self.exception())
-    def test_frame_pop_refuses_until_utf16_pin_released(self):
-        self.env(19,4);s=self.wide((65,));p=self.env(165,s,0);self.env(20,0);self.assertTrue(self.exception());self.clear()
-        self.env(166,s,p);self.env(20,0);self.assertEqual(self.live_heap(),(0,0))
+    def test_frame_pop_reclaims_handles_but_preserves_borrowed_utf16_storage(self):
+        self.env(19,4);s=self.wide((65,));p=self.env(165,s,0);self.env(20,0);self.assertFalse(self.exception())
+        self.assertEqual(bytes(self.arm.uc.mem_read(p,2)),b'A\0');self.assertGreater(self.live_heap()[0],0)
+        self.assertEqual(self.env(164,s),0);self.assertTrue(self.exception());self.clear()
+        self.arm.call('ds10_cleanup',jni.CTX);self.assertEqual(self.live_heap(),(0,0))
+    def test_pop_with_global_alias_allows_release_through_surviving_reference(self):
+        self.env(19,4);s=self.wide((65,0,0x416));g=self.env(21,s);p=self.env(169,s,0)
+        self.env(20,0);self.assertFalse(self.exception());self.assertEqual(bytes(self.arm.uc.mem_read(p,6)),b'A\xc0\x80\xd0\x96\0')
+        self.env(170,g,p);self.assertFalse(self.exception());self.delete(g,True);self.assertEqual(self.live_heap(),(0,0))
+    def test_all_borrow_families_survive_last_reference_deletion_and_pool_pressure(self):
+        s=self.wide((0x416,));p=self.env(165,s,0);u=self.env(169,s,0);q=self.env(224,s,0)
+        self.delete(s);self.assertFalse(self.exception())
+        refs=[self.wide((n,)) for n in range(7)];self.assertNotIn(0,refs)
+        self.assertEqual(bytes(self.arm.uc.mem_read(p,2)),b'\x16\x04');self.assertEqual(p,q)
+        self.assertEqual(bytes(self.arm.uc.mem_read(u,3)),b'\xd0\x96\0')
+        self.assertEqual(self.wide((99,)),0);self.assertTrue(self.exception());self.clear()
+        self.arm.call('ds10_cleanup',jni.CTX);self.assertEqual(self.live_heap(),(0,0))
     def test_regions_use_code_units_and_do_not_write_terminators(self):
         u=(65,0,0x416,0xd83d,0xde80);s=self.wide(u);self.arm.uc.mem_write(REGION,b'Z'*32)
         self.env(220,s,1,3,REGION);self.assertEqual(bytes(self.arm.uc.mem_read(REGION,8)),struct.pack('<3H',*u[1:4])+b'ZZ')

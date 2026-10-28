@@ -1,0 +1,9 @@
+{
+  "passed": false,
+  "checkpoint_validated": false,
+  "host_wall_timeout": true,
+  "memory_mib": 178,
+  "wall_limit_seconds": 25,
+  "cxi_sha256": "9162dfc38652f2470dd45fe2c0b7c2078eca2880a88a8143f299665f5e258a86",
+  "hardware_tested": false
+}

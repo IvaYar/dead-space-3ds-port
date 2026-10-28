@@ -12,6 +12,7 @@ Jump probe Thumb: OK cases=8 core/VFP=OK
 Jump probe counters: saves=18 restores=18 refusals=0
 String probe: 0 checks=43 units=7 bytes=17
 String cleanup: files=0 heap=0
+FS open fd: published/data/achievements.sb result=1024
 JNI I/O probe: 56 checks=193 bytes=3568 CRC32=3d8aa40f
 JNI I/O cleanup: files=0 heap=0
 JNI I/O PROBE STOPPED

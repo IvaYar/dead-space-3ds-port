@@ -32,6 +32,9 @@ int ds6_native_sleep(const DS6Time *request);
 int ds6_host_error(int error);
 void ds6_result_error(int result);
 int ds6_map_path(const char *path,char out[DS_IO_PATH_BYTES],int writable);
+/* Select one bounded private test-output subdirectory before opening files.
+ * Empty name restores the default. Caller owns directory creation. */
+int ds6_appdata_namespace(const char *name);
 int ds6_stat_pack(void *out,const void *native_stat);
 int DS_IO_SOFT ds6_snprintf(char *out,size_t size,const char *format,...);
 int DS_IO_SOFT ds6_sprintf(char *out,const char *format,...);

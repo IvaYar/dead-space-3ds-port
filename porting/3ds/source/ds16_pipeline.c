@@ -59,7 +59,7 @@ static void DS13_SOFT blend_func(uint32_t src,uint32_t dst){
 static void DS13_SOFT shade_model(uint32_t mode){DS16State *s=state();if(!s)return;if(mode!=0x1d00 && mode!=0x1d01){ds13_error(BAD_ENUM);return;}s->shade=mode;}
 static void DS13_SOFT polygon_offset(float f,float u){DS16State *s=state();if(!s)return;if(!isfinite(f)||!isfinite(u)){ds13_error(BAD_VALUE);return;}s->offset_factor=f;s->offset_units=u;}
 static void DS13_SOFT polygon_offset_x(int32_t f,int32_t u){polygon_offset(f/65536.0f,u/65536.0f);}
-static void DS13_SOFT stencil_func(uint32_t f,int32_t ref,uint32_t mask){DS16State *s=state();if(!s)return;if(!comparison(f)){ds13_error(BAD_ENUM);return;}(void)ref;s->stencil_func=f;s->stencil_ref=0; /* Current surface has zero stencil bits. */ s->stencil_value_mask=mask;}
+static void DS13_SOFT stencil_func(uint32_t f,int32_t ref,uint32_t mask){DS16State *s=state();if(!s)return;if(!comparison(f)){ds13_error(BAD_ENUM);return;}s->stencil_func=f;s->stencil_ref=ref<0?0:ref>255?255:(uint32_t)ref;s->stencil_value_mask=mask;}
 static void DS13_SOFT stencil_mask(uint32_t mask){DS16State *s=state();if(s)s->stencil_write_mask=mask;}
 static int stencil_action(uint32_t op){return op==0 || op==0x1e00 || op==0x1e01 || op==0x1e02 || op==0x1e03 || op==0x150a;}
 static void DS13_SOFT stencil_op(uint32_t fail,uint32_t zfail,uint32_t zpass){DS16State *s=state();if(!s)return;if(!stencil_action(fail)||!stencil_action(zfail)||!stencil_action(zpass)){ds13_error(BAD_ENUM);return;}s->stencil_fail=fail;s->stencil_zfail=zfail;s->stencil_zpass=zpass;}
@@ -74,7 +74,7 @@ int ds16_query(DS16State *s,uint32_t name,int32_t *out){
 }
 int ds16_enum(uint32_t name){switch(name){
     case 0xb45:case 0xb46:case 0xb74:case 0xbc1:case 0xbe1:case 0xbe0:case 0xb54:case 0xb92:case 0xb94:case 0xb95:case 0xb96:
-    case 0x84e0:case 0x84e1:case 0xba0:case 0x807b:case 0x807e:case 0x8082:case 0x8089:return 1;default:return 0;
+    case 0xb65:case 0x84e0:case 0x84e1:case 0xba0:case 0x807b:case 0x807e:case 0x8082:case 0x8089:return 1;default:return 0;
 }}
 static int unsigned_query(uint32_t name){return name==0xb93 || name==0xb98 || name==0x8069 || name==0x8894 || name==0x8895 || (name>=0x8896 && name<=0x889a) || name==0x8ca6;}
 static void get_values(uint32_t name,void *out,unsigned kind){

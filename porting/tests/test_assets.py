@@ -82,10 +82,20 @@ class AssetTests(strings.StringTests):
         self.env(19,8);a=self.listing();g=self.env(21,a);self.env(20,0);self.assertEqual(self.names(g),[b'a',b'middle',b'z'])
         self.env(19,8);s=self.env(173,g,0);s=self.env(20,s);self.delete(g,True);self.assertEqual(self.encoded(s),b'a');self.delete(s)
         self.assertEqual(self.live_heap(),(0,0))
-    def test_pinned_extra_string_refuses_delete_and_frame_pop(self):
+    def test_pinned_extra_string_survives_array_and_local_reference_deletion(self):
         a=self.listing();self.env(19,4);s=self.env(173,a,0);p=self.env(224,s,0);self.delete(a)
-        self.delete(s);self.assertTrue(self.exception());self.clear();self.env(20,0);self.assertTrue(self.exception());self.clear()
-        self.env(225,s,p);self.env(20,0);self.assertEqual(self.live_heap(),(0,0))
+        self.delete(s);self.assertFalse(self.exception());self.env(20,0);self.assertFalse(self.exception())
+        self.assertEqual(bytes(self.arm.uc.mem_read(p,2)),b'a\0');self.assertEqual(self.stats()[4:],(1,0))
+        self.arm.call('ds10_cleanup',jni.CTX);self.assertEqual(self.live_heap(),(0,0))
+    def test_pinned_array_element_replacement_keeps_payload_until_alias_release(self):
+        a=self.listing();s=self.env(173,a,0);g=self.env(21,s);p=self.env(169,s,0);self.delete(s)
+        self.env(174,a,0,0);self.delete(a);self.assertEqual(bytes(self.arm.uc.mem_read(p,2)),b'a\0')
+        self.env(170,g,p);self.delete(g,True);self.assertFalse(self.exception());self.assertEqual(self.live_heap(),(0,0))
+    def test_pop_extra_string_and_array_together_keeps_only_borrowed_payload(self):
+        self.env(19,8);a=self.listing();s=self.env(173,a,0);p=self.env(169,s,0)
+        self.env(20,0);self.assertFalse(self.exception());self.assertEqual(self.stats()[4:],(1,0))
+        self.assertEqual(bytes(self.arm.uc.mem_read(p,2)),b'a\0')
+        self.arm.call('ds10_cleanup',jni.CTX);self.assertEqual(self.live_heap(),(0,0))
     def test_cleanup_reclaims_live_array_and_pinned_external_string(self):
         a=self.listing();s=self.env(173,a,0);self.env(169,s,0);self.arm.call('ds10_cleanup',jni.CTX);self.assertEqual(self.live_heap(),(0,0))
     def test_backend_missing_refuses_instead_of_reporting_empty_success(self):

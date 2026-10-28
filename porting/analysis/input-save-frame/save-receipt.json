@@ -1,0 +1,18 @@
+{
+  "var/00_CheckpointSave.sb": {
+    "bytes": 3296,
+    "sha256": "3ea23f32a2ffdbfb714757d25e3c9d8213aba9a28d7b497c726e96b61163bd03"
+  },
+  "var/00_LevelSave.sb": {
+    "bytes": 972,
+    "sha256": "e5f18fab08eca2ee6ce80b7e66f2612266beb2ed85eb40ff67db4406f4e370a0"
+  },
+  "var/AchievementsSave.sb": {
+    "bytes": 1536,
+    "sha256": "20f1e59e80bc4c6239458be5a925869ce528fd99b384ab042d2c793c6c46f0be"
+  },
+  "var/settings.sb": {
+    "bytes": 468,
+    "sha256": "04d21ea307bccd32ad8b648a13e6eb602d641aa1893c3ccf29c33bd842a5f69d"
+  }
+}

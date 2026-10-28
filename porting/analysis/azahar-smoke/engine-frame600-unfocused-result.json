@@ -1,0 +1,11 @@
+{
+  "purpose": "exploratory run without resume/focus events; not a validated emulator case",
+  "frames_returned": 600,
+  "same_crc_as_headphone_frame120": true,
+  "frame_crc32": "71a807c1",
+  "host_error": "WinError 541541187 (0x20474343) after completed native stop; process terminated externally",
+  "checkpoint_validated": false,
+  "hardware_tested": false,
+  "log_sha256": "3d8f1d593364d94cb3c5f27adaeb88c8e5b3d4f6c11aea592460fd8666fd7bed",
+  "cxi_sha256": "acbb959c3257a1eea5b21f7d251efaf71168fa0b4805fe7e96046dbeb374b2d1"
+}

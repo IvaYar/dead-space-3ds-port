@@ -20,7 +20,7 @@ def main():
     assert all(not x['hardware_tested'] and not x['game_adapter_enabled'] for x in (build,cpu,native))
     report={'isolated_sensor_tests_passed':14,'native_hid_azahar_passed':True,'samples_observed':int(sample[1]),
         'hardware_tested':False,'game_adapter_enabled':False,'native_rx_backend_unchanged':True,
-        'engine_checkpoint':'331 core ARM tests and 9 Azahar cases; completed EA logo frame presented in Azahar; six original acceleration callbacks returned; see first-frame-result.json and engine-progress.json',
+        'engine_checkpoint':'511 core ARM tests and 9 Azahar cases; menu, fog and texture combiners verified in CPU400/178MiB emulator profile; next stop glLightModelfv; see menu-result.json',
         'limitations':['identity axes and nominal 512 counts/g are test configuration, not hardware calibration',
             'delivery rate limiter does not configure HID hardware sample rate','cached samples may repeat',
             'JNI bridge is opt-in in engine audit; six original callbacks observed in the frame capture case, physical calibration remains unverified'],

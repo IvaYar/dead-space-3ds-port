@@ -5,6 +5,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
+#include <sys/stat.h>
 #include <string.h>
 #include "ds_exec.h"
 #include "ds8.h"
@@ -16,6 +18,13 @@
 #include "ds13_gles.h"
 #include "ds17_jump.h"
 #include "ds20_dirs.h"
+#include "ds23_touch.h"
+#include "ds24_files.h"
+#include "ds25_assets.h"
+#include "ds27_pages.h"
+#include "ds28_font.h"
+#include "ds29_allocator.h"
+#include "font_subset_config.h"
 #include "donor_config.h"
 #include "jni10_fixture.h"
 #include "platform_fixture.h"
@@ -24,7 +33,14 @@
 #include "assets_fixture.h"
 #define LOG "sdmc:/3ds/deadspace/engine-azahar-log.txt"
 /* Preserve enough normal heap for two donor arenas and its loaded image. */
+#ifdef DS_NEW3DS_178
+/* Normal heap VAs stop at 0x10000000; the large donor arena belongs in the
+ * New3DS linear mapping. This ELF requires kernel descriptor >=2.44. */
+u32 __ctru_heap_size=40*1024*1024;
+u32 __ctru_linear_heap_size=132*1024*1024;
+#else
 u32 __ctru_linear_heap_size=4*1024*1024;
+#endif
 u32 __stacksize__=256*1024;
 static FILE *journal;
 static RecursiveLock journal_lock;
@@ -37,12 +53,20 @@ static DS12Hid sensor_hid;
 static int sensor_attached;
 static DS13Context graphics;
 static int graphics_attached;
+static DS23Touch touch;
+static int touch_attached;
+typedef struct {uint32_t frame,x,y;} AuditTap;
+static AuditTap taps[16];static uint32_t tap_count;
 #define jni bridge.base
 static DSIO io;
 static DSInitPlan plan;
 static uint64_t started;
 static volatile uint32_t audit_frame;
 static volatile uint32_t fs_events;
+static uint32_t watchdog_samples=15;
+static void *main_thread_record;
+typedef struct {uint32_t caller,kind,count;int id;uint64_t first,last;} ClockSeen;
+static ClockSeen clocks[32];
 static int partial_draw_saved;
 static uint8_t exception_stack[16384] __attribute__((aligned(8)));
 void ds_audit_trap(void);
@@ -51,6 +75,9 @@ static void report(const char *format,...) {
     va_list args;if(!graphics_attached){va_start(args,format);vprintf(format,args);va_end(args);}
     if(journal) { va_start(args,format); vfprintf(journal,format,args); va_end(args); fflush(journal); }
     RecursiveLock_Unlock(&journal_lock);
+}
+void ds15_upload_trace(uint32_t w,uint32_t h,uint32_t format,uint32_t required,uint32_t limit,int result){
+    report("GLES upload: %lux%lu format=%04lx required=%lu limit=%lu result=%d\n",(unsigned long)w,(unsigned long)h,(unsigned long)format,(unsigned long)required,(unsigned long)limit,result);
 }
 static void sensor_shutdown(void){
     if(!sensor_attached)return;
@@ -64,16 +91,29 @@ static void audit_exception(ERRF_ExceptionInfo *info,CpuRegisters *regs){
     report("sp=%08lx cpsr=%08lx\nENGINE EXPERIMENT STOPPED\nNo game frame rendered.\n",(unsigned long)regs->sp,(unsigned long)regs->cpsr);
     if(journal){fclose(journal);journal=NULL;}svcExitProcess();
 }
+void ds26_trace(const char *op,uint32_t a,uint32_t b,uint32_t c,uint32_t d){
+    static unsigned calls,last_target;
+    if(!strcmp(op,"bind")){unsigned previous=last_target;last_target=a;if(!a && !previous)return;}
+    if(++calls<=128 || calls%256==0)report("FBO %s: %lu %lu %08lx %08lx frame=%lu\n",op,(unsigned long)a,(unsigned long)b,(unsigned long)c,(unsigned long)d,(unsigned long)audit_frame);
+}
 static void graphics_stats(void){
+    if(graphics.fog_state){DS30Fog *f=graphics.fog_state;report("Fog state: enabled=%lu mode=%04lx density=%g start=%g end=%g color=%g,%g,%g,%g\n",(unsigned long)graphics.fog,(unsigned long)f->mode,(double)f->density,(double)f->start,(double)f->end,(double)f->color[0],(double)f->color[1],(double)f->color[2],(double)f->color[3]);}
+    if(graphics.draw && graphics.draw->combine)for(unsigned u=0;u<2;++u){DS31Unit *s=&graphics.draw->combine->unit[u];report("Combine state: unit=%u enabled=%lu mode=%04lx rgb=%04lx alpha=%04lx scale=%g,%g\n",u,(unsigned long)graphics.texture.enabled[u],(unsigned long)graphics.draw->env_mode[u],(unsigned long)s->rgb,(unsigned long)s->alpha,(double)s->rgb_scale,(double)s->alpha_scale);}
+    uint32_t fbo[4];ds26_stats(&graphics,fbo);report("FBO state: objects=%lu renderbuffers=%lu bytes=%lu changes=%lu bound=%lu\n",(unsigned long)fbo[0],(unsigned long)fbo[1],(unsigned long)fbo[2],(unsigned long)fbo[3],(unsigned long)graphics.framebuffer_binding);
     if(graphics_attached){uint32_t s[6];ds19_jni_stats(&bridge,s);report("JNI assets: lists=%lu names=%lu gets=%lu sets=%lu strings=%lu arrays=%lu\n",(unsigned long)s[0],(unsigned long)s[1],(unsigned long)s[2],(unsigned long)s[3],(unsigned long)s[4],(unsigned long)s[5]);}
     if(graphics_attached)report("JNI strings: new16=%lu newUTF=%lu get16=%lu getUTF=%lu regions=%lu errors=%lu\n",(unsigned long)bridge.string_stats[0],(unsigned long)bridge.string_stats[1],(unsigned long)bridge.string_stats[2],(unsigned long)bridge.string_stats[3],(unsigned long)bridge.string_stats[4],(unsigned long)bridge.string_stats[5]);
     if(graphics_attached)report("GLES error at stop: %08lx\n",(unsigned long)graphics.error);
     if(graphics_attached){uint32_t s[4];ds13_stats(&graphics,s);report("GLES counters: queries=%lu clears=%lu pixels=%lu flushes=%lu\n",(unsigned long)s[0],(unsigned long)s[1],(unsigned long)s[2],(unsigned long)s[3]);}
     if(graphics_attached){uint32_t s[4];ds15_stats(&graphics.texture,s);report("GLES texture stores: names=%lu bytes=%lu uploads=%lu patches=%lu\n",(unsigned long)s[0],(unsigned long)s[1],(unsigned long)s[2],(unsigned long)s[3]);}
-    if(graphics_attached){const DS15Level *l=ds15_level(&graphics.texture,1,0);if(l)report("GLES first texture: %lux%lu format=%04lx bytes=%lu CRC32=%08lx\n",(unsigned long)l->width,(unsigned long)l->height,(unsigned long)l->format,(unsigned long)(l->width*l->height*4),(unsigned long)ds_crc32(l->rgba,l->width*l->height*4));}
+    if(graphics_attached && !graphics.texture.backing_ops){const DS15Level *l=ds15_level(&graphics.texture,1,0);if(l)report("GLES first texture: %lux%lu format=%04lx bytes=%lu CRC32=%08lx\n",(unsigned long)l->width,(unsigned long)l->height,(unsigned long)l->format,(unsigned long)(l->width*l->height*4),(unsigned long)ds_crc32(l->rgba,l->width*l->height*4));}
+    if(graphics.texture.backing_ops)report("Texture pages: resident=%lu limit=%lu saves=%lu loads=%lu failures=%lu\n",(unsigned long)graphics.texture.resident,(unsigned long)graphics.texture.resident_limit,(unsigned long)graphics.texture.page_saves,(unsigned long)graphics.texture.page_loads,(unsigned long)graphics.texture.page_failures);
 }
 static void jump_stats(void){DS17Stats s;ds17_stats(&s);report("Jump contexts: saves=%lu restores=%lu refusals=%lu\n",(unsigned long)s.saves,(unsigned long)s.restores,(unsigned long)s.refusals);}
-static void thread_event(uint32_t event,uint32_t thread,uint32_t detail){report("Thread event: %lu id=%08lx detail=%08lx\n",(unsigned long)event,(unsigned long)thread,(unsigned long)detail);}
+static void thread_event(uint32_t event,uint32_t thread,uint32_t detail){
+    static unsigned pool_refusals;
+    if(event==5 && pool_refusals++>=8)return;
+    report("Thread event: %lu id=%08lx detail=%08lx\n",(unsigned long)event,(unsigned long)thread,(unsigned long)detail);
+}
 static int save_surface(DS13Context *c,const char *stem,uint32_t caller){
     char path[128];snprintf(path,sizeof(path),"sdmc:/3ds/deadspace/%s.raw",stem);FILE *f=fopen(path,"wb");if(!f)return -1;
     uint32_t bytes=c->width*c->height*(c->layout==DS13_RGB565_CTR?2:3);int ok=fwrite(c->pixels,1,bytes,f)==bytes;if(fclose(f))ok=0;if(!ok)return -1;
@@ -83,16 +123,86 @@ static int save_surface(DS13Context *c,const char *stem,uint32_t caller){
     return fclose(f)?-1:0;
 }
 static void game_draw(DS13Context *c,uint32_t caller){
+    static unsigned fog_draws;
+    if(c->fog && c->fog_state && ++fog_draws==1)report("FOG GAME DRAW: frame=%lu mode=%04lx start=%g end=%g\n",(unsigned long)audit_frame,(unsigned long)c->fog_state->mode,(double)c->fog_state->start,(double)c->fog_state->end);
     uint32_t s[4];ds22_stats(c,s);report("GAME DRAW: caller-offset=%08lx calls=%lu triangles=%lu fragments=%lu samples=%lu\n",(unsigned long)(caller-image_base),(unsigned long)s[0],(unsigned long)s[1],(unsigned long)s[2],(unsigned long)s[3]);
     if(!partial_draw_saved && s[2] && s[3]){if(!save_surface(c,"first-game-draw",caller)){partial_draw_saved=1;report("PARTIAL GAME DRAW CAPTURED\n");}}
 }
-void ds_fs_trace(const char *operation,const char *path,int result){if(fs_events++<100)report("FS %s: %s result=%d\n",operation,path,result);}
+void ds_fs_trace(const char *operation,const char *path,int result){
+    static unsigned failures,late_opens;
+    if(fs_events++<100 || (result<0 && failures++<48) || (audit_frame>=120 && strstr(operation,"open") && late_opens++<32))
+        report("FS %s: %s result=%d\n",operation,path,result);
+}
+static void clock_seen(uint32_t kind,uint32_t caller,int id,const DS6Time *value,int result){
+    if(ds7_tls()->record!=main_thread_record)return;
+    if(result){report("CLOCK failure: kind=%lu caller=%08lx id=%d result=%d\n",(unsigned long)kind,(unsigned long)(caller-image_base),id,result);return;}
+    if(!value)return;
+    for(unsigned i=0;i<32;++i)if(!clocks[i].count || (clocks[i].caller==caller && clocks[i].kind==kind && clocks[i].id==id)){
+        ClockSeen *s=&clocks[i];uint64_t us=(uint64_t)(uint32_t)value->sec*1000000u+(uint32_t)value->nsec/(kind==1?1:1000);
+        if(!s->count)*s=(ClockSeen){caller,kind,0,id,us,us};
+        ++s->count;s->last=us;return;
+    }
+}
+static void clock_report(void){
+    struct mallinfo heap=mallinfo();DSRuntimeStats runtime;ds_runtime_stats(&runtime);
+    report("Native heap: used=%lu free=%lu; runtime live=%lu peak=%lu blocks=%lu failures=%lu\n",(unsigned long)heap.uordblks,(unsigned long)heap.fordblks,(unsigned long)runtime.live_bytes,(unsigned long)runtime.peak_bytes,(unsigned long)runtime.live_blocks,(unsigned long)runtime.failures);
+    for(unsigned i=0;i<32;++i)if(clocks[i].count){ClockSeen *s=&clocks[i];
+        report("CLOCK main: kind=%lu caller=%08lx id=%d calls=%lu first-us=%llu last-us=%llu\n",(unsigned long)s->kind,(unsigned long)(s->caller-image_base),s->id,(unsigned long)s->count,(unsigned long long)s->first,(unsigned long long)s->last);
+    }
+    DS7Stats threads;ds7_stats(&threads);
+    report("Thread pools: active=%lu mutex=%lu cond=%lu sem=%lu keys=%lu\n",(unsigned long)threads.active_threads,(unsigned long)threads.mutexes,(unsigned long)threads.conditions,(unsigned long)threads.semaphores,(unsigned long)threads.keys);
+}
+static int DS_IO_SOFT audit_gettimeofday(DS6Time *out,void *zone){int result=ds6_gettimeofday(out,zone);clock_seen(1,(uint32_t)__builtin_return_address(0),0,out,result);return result;}
+static int DS_IO_SOFT audit_clock_gettime(int id,DS6Time *out){int result=ds6_clock_gettime(id,out);clock_seen(2,(uint32_t)__builtin_return_address(0),id,out,result);return result;}
+static const uint32_t *audit_words(uint32_t pointer,uint32_t count);
+static void allocation_stack(void){
+    uint32_t sp;__asm__ volatile("mov %0, sp":"=r"(sp));const uint32_t *words=audit_words(sp,128);if(!words)return;
+    unsigned emitted=0;
+    for(unsigned i=0;i<128 && emitted<12;++i){uint32_t address=words[i]&~1u;
+        if(address<image_base+4 || address-image_base>=image_length || (address&3))continue;
+        uint32_t instruction=*(const uint32_t *)(address-4);
+        if((instruction&0x0f000000)==0x0b000000 || (instruction&0x0ffffff0)==0x012fff30 || (instruction&0x0c10f000)==0x0410f000){
+            report("ARENA stack: word=%u return=%08lx\n",i,(unsigned long)(address-image_base));++emitted;
+        }
+    }
+}
+static void *DS_IO_SOFT audit_sbrk(int32_t bytes){
+    if(bytes>=1048576)report("ARENA request: sbrk bytes=%ld caller=%08lx thread=%s frame=%lu\n",(long)bytes,(unsigned long)((uint32_t)__builtin_return_address(0)-image_base),ds7_tls()->record==main_thread_record?"main":"worker",(unsigned long)audit_frame);
+    if(bytes>=16777216 && audit_frame>100)allocation_stack();
+    void *result=ds29_sbrk(bytes,(uint32_t)__builtin_return_address(0));
+    if(bytes>=1048576)report("ARENA result: sbrk pointer=%08lx\n",(unsigned long)result);
+    return result;
+}
+static void *DS_IO_SOFT audit_mmap(void *hint,uint32_t bytes,int protection,int flags,int fd,int32_t offset){
+    if(bytes>=1048576)report("ARENA request: mmap bytes=%lu caller=%08lx thread=%s frame=%lu\n",(unsigned long)bytes,(unsigned long)((uint32_t)__builtin_return_address(0)-image_base),ds7_tls()->record==main_thread_record?"main":"worker",(unsigned long)audit_frame);
+    if(bytes>=16777216 && audit_frame>100)allocation_stack();
+    return ds9_mmap(hint,bytes,protection,flags,fd,offset);
+}
+static int DS_IO_SOFT audit_munmap(void *pointer,uint32_t bytes){
+    if(bytes>=1048576)report("ARENA release: munmap bytes=%lu caller=%08lx thread=%s frame=%lu\n",(unsigned long)bytes,(unsigned long)((uint32_t)__builtin_return_address(0)-image_base),ds7_tls()->record==main_thread_record?"main":"worker",(unsigned long)audit_frame);
+    return ds9_munmap(pointer,bytes);
+}
+static const uint32_t *audit_words(uint32_t pointer,uint32_t count){
+    if(pointer&3)return NULL;
+    for(unsigned i=0;i<DS14_RANGES;++i){DS14Range *r=&graphics.vertex.ranges[i];if(r->base && pointer>=r->base && (uint64_t)pointer+count*4<=(uint64_t)r->base+r->size)return (const uint32_t *)pointer;}
+    return NULL;
+}
 static void audit_watchdog(void *unused){
     (void)unused;
-    for(unsigned sample=0;sample<15;++sample){
+    for(unsigned sample=0;sample<watchdog_samples;++sample){
         svcSleepThread(10000000000LL);DS7DebugThread views[17];ds7_debug_threads(views);
         report("WATCH phase=%s frame=%lu image=%08lx fs-events=%lu\n",phase,(unsigned long)audit_frame,(unsigned long)image_base,(unsigned long)fs_events);
-        for(unsigned i=0;i<17;++i)if(views[i].token)report("WATCH thread=%08lx entry-offset=%08lx wait=%lu object=%08lx\n",(unsigned long)views[i].token,(unsigned long)(views[i].entry-image_base),(unsigned long)views[i].wait_kind,(unsigned long)views[i].wait_object);
+        for(unsigned i=0;i<17;++i)if(views[i].token){
+            uint32_t offset=views[i].entry-image_base;
+            report("WATCH thread=%08lx entry-offset=%08lx wait=%lu object=%08lx\n",(unsigned long)views[i].token,(unsigned long)offset,(unsigned long)views[i].wait_kind,(unsigned long)views[i].wait_object);
+            if(offset==0x24c7f8 || offset==0x24c914){const uint32_t *args=audit_words(views[i].argument,6);
+                if(args){uint32_t target=args[5],object=args[offset==0x24c7f8?3:4];
+                    if(!target && offset==0x24c914)target=args[3];
+                    if(!target && offset==0x24c7f8){const uint32_t *o=audit_words(object,1),*v=o?audit_words(*o,3):NULL;if(v)target=v[2];}
+                    report("WATCH EA callback=%08lx argument=%08lx state=%lu\n",(unsigned long)(target-image_base),(unsigned long)object,(unsigned long)args[1]);
+                }
+            }
+        }
     }
     report("DIAGNOSTIC WATCHDOG STOPPED\nENGINE EXPERIMENT STOPPED\nNo game frame rendered.\n");
     if(journal){fclose(journal);journal=NULL;}svcExitProcess();
@@ -113,6 +223,20 @@ static void graphics_unsupported(const char *op,uint32_t value){
     if(journal){fclose(journal);journal=NULL;}svcExitProcess();
 }
 static int graphics_sync(void *pixels,uint32_t bytes){return R_FAILED(GSPGPU_FlushDataCache(pixels,bytes))?-1:0;}
+static int private_file_probe(void){
+    const char *path="appdata:/fd-probe.bin";const char payload[]="DS24 persistent file";char readback[sizeof(payload)]={0};
+    int fd=ds24_open(path,DS24_RDWR|DS24_CREAT|DS24_TRUNC,0600);
+    if(fd<0 || ds24_write(fd,payload,sizeof(payload))!=sizeof(payload) || ds_io_seek(fd,0,0) ||
+       ds24_read(fd,readback,sizeof(readback))!=sizeof(readback) || memcmp(readback,payload,sizeof(payload)) || ds_io_close(fd))return -1;
+    fd=ds24_open(path,0);if(fd<0)return -1;
+    uint8_t packed[104];if(ds6_fstat(fd,packed) || ds24_read(fd,readback,sizeof(readback))!=sizeof(readback) ||
+       memcmp(readback,payload,sizeof(payload)) || ds24_write(fd,payload,1)!=-1 || *ds_io_errno()!=9 || ds_io_close(fd))return -1;
+    if(ds24_open(path,DS24_WRONLY|DS24_CREAT|DS24_EXCL,0600)!=-1 || *ds_io_errno()!=17)return -1;
+    fd=ds24_open(path,DS24_WRONLY|DS24_APPEND);if(fd<0 || ds_io_seek(fd,0,0) || ds24_write(fd,"!",1)!=1 || ds_io_close(fd))return -1;
+    fd=ds24_open(path,0);if(fd<0 || ds_io_seek(fd,0,2)!=(int32_t)sizeof(payload)+1 || ds_io_close(fd))return -1;
+    if(ds24_open("published/data/achievements.sb",DS24_WRONLY)!=-1 || *ds_io_errno()!=30 || ds6_remove(path))return -1;
+    report("Private fd probe: OK read/write/reopen/append/exclusive/fstat; asset writes refused\n");return 0;
+}
 static int graphics_setup(void){
     GSPGPU_FramebufferFormat format=gfxGetScreenFormat(GFX_TOP);
     if(format!=GSP_BGR8_OES && format!=GSP_RGB565_OES)return -1;
@@ -184,7 +308,11 @@ static int graphics_setup(void){
      * donor execution. No game rendering counters include this initialization. */
     for(unsigned i=0;i<2;++i){u16 w,h;void *target=gfxGetFramebuffer(GFX_TOP,GFX_LEFT,&w,&h);memset(target,0,(uint32_t)w*h*bytes);GSPGPU_FlushDataCache(target,(uint32_t)w*h*bytes);gfxSwapBuffers();}
     u16 w,h;void *target=gfxGetFramebuffer(GFX_TOP,GFX_LEFT,&w,&h);if(ds13_target(&graphics,target,(uint32_t)w*h*bytes))return -1;
-    ds13_observer(&graphics,graphics_unsupported,graphics_sync);graphics_attached=1;return 0;
+    /* Emulator-only budget; default adapter limits and OOM tests stay bounded. */
+    if(ds15_limits(&graphics.texture,osGetMemRegionSize(MEMREGION_APPLICATION)>=178*1024*1024?128:32,
+        (osGetMemRegionSize(MEMREGION_APPLICATION)>=178*1024*1024?48:6)*1024*1024))return -1;
+    ds13_observer(&graphics,graphics_unsupported,graphics_sync);graphics_attached=1;
+    report("Graphics budget: texture names=%lu bytes=%lu\n",(unsigned long)graphics.texture.name_limit,(unsigned long)graphics.texture.limit);return 0;
 }
 void ds_audit_stop(uint32_t index,uint32_t caller,uint32_t argument) __attribute__((noreturn));
 void ds_audit_stop(uint32_t index,uint32_t caller,uint32_t argument) {
@@ -215,7 +343,8 @@ static void java_request(const char *op,const char *cls,const char *name,const c
 }
 static int32_t DS_IO_SOFT audit_clock(void) {
     /* Monotonic emulator elapsed time, not a native process CPU clock. */
-    return (int32_t)((svcGetSystemTick()-started)*1000000/SYSCLOCK_ARM11);
+    uint64_t us=(svcGetSystemTick()-started)*1000000/SYSCLOCK_ARM11;DS6Time value={(int32_t)(us/1000000),(int32_t)((us%1000000)*1000)};
+    clock_seen(3,(uint32_t)__builtin_return_address(0),1,&value,0);return (int32_t)us;
 }
 static uint32_t trap_for(const char *name) {
     if(trap_count>=768) ds_audit_stop(768,0,0);
@@ -289,15 +418,24 @@ static void run(void) {
     DSInfo info;
     if(ds_elf_inspect(file,(uint32_t)length,&info)) { report("Inspect failed\n"); return; }
     uint8_t *image=memalign(4096,info.image_size);
-    report("Application memory: bytes=%lu; donor arenas=20+80MiB\n",(unsigned long)osGetMemRegionSize(MEMREGION_APPLICATION));
+    unsigned brk_mib=20;FILE *arena_mode=fopen("sdmc:/3ds/deadspace/arena-split-test.txt","rb");
+    if(arena_mode){unsigned value=0;if(fscanf(arena_mode,"%u",&value)==1 && (value==33 || value==100))brk_mib=value;fclose(arena_mode);}
+    unsigned arena_mib=brk_mib==100 && osGetMemRegionSize(MEMREGION_APPLICATION)>=178*1024*1024?128:100;
+    if(brk_mib==100)brk_mib=arena_mib;
+    uint32_t brk_bytes=brk_mib*1024*1024,map_bytes=(arena_mib-brk_mib)*1024*1024;
+    report("Application memory: bytes=%lu; donor arenas=%u+%uMiB\n",(unsigned long)osGetMemRegionSize(MEMREGION_APPLICATION),brk_mib,arena_mib-brk_mib);
     if(osGetMemRegionSize(MEMREGION_APPLICATION)<124*1024*1024){report("REFUSED: New3DS 124MiB memory profile required\n");return;}
-    void *brk_arena=memalign(4096,20*1024*1024),*map_arena=memalign(4096,80*1024*1024);
+    void *brk_arena=brk_mib==128?linearMemAlign(brk_bytes,4096):memalign(4096,brk_bytes);
+    void *map_arena=map_bytes?memalign(4096,map_bytes):brk_arena;
     trampoline=memalign(4096,3*4096);
     if(!image || !brk_arena || !map_arena || !trampoline) { report("Arena allocation failed\n"); return; }
     image_base=(uint32_t)image;image_length=info.image_size;
     if(ds_elf_prepare(file,(uint32_t)length,image,info.image_size,image_base,&info)) return;
-    ds_io_init(&io,ds_io_sd_ops()); ds_runtime_init(4*1024*1024); ds6_init(log_android);
-    if(ds7_init() || ds8_init() || ds9_memory_init(brk_arena,20*1024*1024,map_arena,80*1024*1024)) return;
+    ds_io_init(&io,ds_io_sd_ops()); ds_runtime_init((osGetMemRegionSize(MEMREGION_APPLICATION)>=178*1024*1024?64:8)*1024*1024); ds6_init(log_android);
+    if(ds7_init() || ds8_init())return;
+    if(!map_bytes){if(ds9_memory_init_shared(brk_arena,brk_bytes))return;report("Donor shared arena: %uMiB; bottom brk + top-down mmap\n",arena_mib);}
+    else if(ds9_memory_init(brk_arena,brk_bytes,map_arena,map_bytes))return;
+    main_thread_record=ds7_tls()->record;
     uint8_t missing_stat[104];int missing_result=ds6_stat("appdata://var/settings.sb",missing_stat);
     report("Pre-thread missing stat: %d errno=%ld\n",missing_result,(long)*ds_io_errno());
     ds9_memory_observer(arena_refused);
@@ -316,16 +454,29 @@ static void run(void) {
     count+=ds7_bindings(bindings+count,768-count); count+=ds8_bindings(bindings+count,768-count);
     count+=ds9_memory_bindings(bindings+count,768-count);
     count+=ds17_bindings(bindings+count,768-count);
+    ds29_allocator_reset();
+    FILE *allocator_mode=fopen("sdmc:/3ds/deadspace/allocator-compat-test.txt","rb");
+    if(allocator_mode){char marker[3];size_t n=fread(marker,1,3,allocator_mode);fclose(allocator_mode);
+        if(n!=2 || memcmp(marker,"1\n",2) || ds29_allocator_init(image,info.image_size)){report("Allocator compatibility verification failed\n");return;}
+        report("EA allocator compatibility: verified growth-call new-break result; other sbrk callers unchanged\n");
+    }
     DSResolve result; uint32_t before=ds_crc32(image,info.image_size);
     int code=ds_elf_resolve(file,&info,image,bindings,count,&result);
     report("Production preflight: bound=%lu missing=%lu weak=%lu\n",(unsigned long)result.resolved,(unsigned long)result.missing,(unsigned long)result.weak_zero);
     if(code!=DS_UNRESOLVED_IMPORTS || result.resolved!=154 || result.missing!=234 || before!=ds_crc32(image,info.image_size)) return;
     report("Production guard: REFUSED; image unchanged\nAudit clock: emulator monotonic, excluded from supported count\n");
+    for(uint32_t i=0;i<count;++i){
+        if(!strcmp(bindings[i].name,"gettimeofday"))bindings[i].address=(uint32_t)audit_gettimeofday;
+        if(!strcmp(bindings[i].name,"clock_gettime"))bindings[i].address=(uint32_t)audit_clock_gettime;
+        if(!strcmp(bindings[i].name,"sbrk"))bindings[i].address=(uint32_t)audit_sbrk;
+        if(!strcmp(bindings[i].name,"mmap"))bindings[i].address=(uint32_t)audit_mmap;
+        if(!strcmp(bindings[i].name,"munmap"))bindings[i].address=(uint32_t)audit_munmap;
+    }
     FILE *gl_mode=fopen("sdmc:/3ds/deadspace/graphics-bridge-test.txt","rb");
     if(gl_mode){
         char marker[3];size_t n=fread(marker,1,3,gl_mode);fclose(gl_mode);
         if(n!=2 || memcmp(marker,"1\n",2) || graphics_setup()){report("GLES context setup failed\n");return;}
-        if(ds22_client_range(&graphics,image,info.image_size) || ds22_client_range(&graphics,brk_arena,20*1024*1024) || ds22_client_range(&graphics,map_arena,80*1024*1024)){report("Client range registration failed\n");return;}
+        if(ds22_client_range(&graphics,image,info.image_size) || ds22_client_range(&graphics,brk_arena,brk_bytes) || (map_bytes && ds22_client_range(&graphics,map_arena,map_bytes))){report("Client range registration failed\n");return;}
         void *sp;__asm__ volatile("mov %0, sp":"=r"(sp));MemInfo mi={0};PageInfo pi;
         Result queried=svcQueryMemory(&mi,&pi,(uint32_t)sp);
         report("Stack query: sp=%08lx result=%08lx base=%08lx size=%08lx perm=%lu\n",(unsigned long)sp,(unsigned long)queried,(unsigned long)mi.base_addr,(unsigned long)mi.size,(unsigned long)mi.perm);
@@ -337,8 +488,49 @@ static void run(void) {
         ds22_observer(&graphics,game_draw);
         uint32_t added=ds13_bindings(bindings+count,768-count);count+=added;
         report("GLES context bindings: %lu; bounded CPU triangle renderer\n",(unsigned long)added);
+        FILE *fog_mode=fopen("sdmc:/3ds/deadspace/fog-test.txt","rb");
+        if(fog_mode){int enabled=fgetc(fog_mode)=='1';fclose(fog_mode);
+            if(!enabled || ds30_attach(&graphics))return;
+            uint32_t fog_bindings=ds30_bindings(bindings+count,768-count);if(fog_bindings!=DS30_BINDINGS)return;count+=fog_bindings;
+            report("Fog bridge attached: 4 operations; LINEAR/EXP/EXP2; eye-z vertex factors + RGB after texturing\n");
+        }
+        FILE *combine_mode=fopen("sdmc:/3ds/deadspace/combine-test.txt","rb");
+        if(combine_mode){int enabled=fgetc(combine_mode)=='1';fclose(combine_mode);
+            if(!enabled || ds31_attach(&graphics))return;
+            report("Combine bridge attached: 2 units; RGB/alpha functions, sources, operands, scales + DOT3\n");
+        }
+        FILE *fbo_mode=fopen("sdmc:/3ds/deadspace/framebuffer-test.txt","rb");
+        if(fbo_mode){int enabled=fgetc(fbo_mode)=='1';fclose(fbo_mode);DSBinding overrides[DS26_BINDINGS];
+            if(!enabled || ds26_bindings(overrides,DS26_BINDINGS)!=DS26_BINDINGS)return;
+            if(ds15_limits(&graphics.texture,128,96*1024*1024) || ds15_backing(&graphics.texture,ds27_sd_backing(),6*1024*1024))return;
+            for(unsigned i=0;i<DS26_BINDINGS;++i){uint32_t j=0;for(;j<count;++j)if(!strcmp(bindings[j].name,overrides[i].name)){bindings[j]=overrides[i];break;}
+                if(j==count)bindings[count++]=overrides[i];}
+            report("FBO bridge attached: 15 operations; texture/RBO targets + depth16/stencil8 + readback\n");
+            report("Texture paging attached: 128 names; 96MiB logical; 6MiB resident; exact RGBA8 + CRC\n");
+        }
     }
     bindings[count++]=(DSBinding){"clock",(uint32_t)audit_clock};
+    FILE *font_mode=fopen("sdmc:/3ds/deadspace/font-subset-test.txt","rb");
+    if(font_mode){int enabled=fgetc(font_mode)=='1';fclose(font_mode);FILE *f=fopen(DS28_FONT_PATH,"rb");
+        uint8_t *data=malloc(DS28_FONT_SIZE);int valid=enabled && f && data && fread(data,1,DS28_FONT_SIZE,f)==DS28_FONT_SIZE &&
+            fgetc(f)==EOF && ds_crc32(data,DS28_FONT_SIZE)==DS28_FONT_CRC;
+        if(f)fclose(f);
+        free(data);
+        if(!valid || ds_io_read_override(ds28_font_path)){report("Font subset verification failed\nENGINE EXPERIMENT STOPPED\nNo game frame rendered.\n");return;}
+        report("Font subset attached: bytes=%lu CRC32=%08lx; original font untouched\n",(unsigned long)DS28_FONT_SIZE,(unsigned long)DS28_FONT_CRC);
+    }
+    FILE *private_mode=fopen("sdmc:/3ds/deadspace/private-files-test.txt","rb");
+    if(private_mode){int enabled=fgetc(private_mode)=='1';fclose(private_mode);
+        if(!enabled || (mkdir("sdmc:/3ds/deadspace/test-output",0700) && errno!=EEXIST) ||
+           (mkdir("sdmc:/3ds/deadspace/test-output/save-bridge",0700) && errno!=EEXIST) ||
+           ds6_appdata_namespace("save-bridge") || ds24_init(ds24_native_ops()) || private_file_probe()){
+            report("Private file setup failed: errno=%ld\nENGINE EXPERIMENT STOPPED\nNo game frame rendered.\n",(long)*ds_io_errno());return;
+        }
+        DSBinding overrides[5];ds24_bindings(overrides,5);
+        for(unsigned i=0;i<5;++i){uint32_t j=0;for(;j<count;++j)if(!strcmp(bindings[j].name,overrides[i].name)){bindings[j]=overrides[i];break;}
+            if(j==count)bindings[count++]=overrides[i];}
+        report("Private file bridge: appdata mounted at test-output/save-bridge; 5 bindings\n");
+    }
     if(ds20_init(ds20_native_ops()))return;
     count+=ds20_bindings(bindings+count,768-count);
     bindings[count++]=(DSBinding){"__stack_chk_guard",(uint32_t)&canary};
@@ -355,7 +547,40 @@ static void run(void) {
     uint32_t startup_address,startup_size;
     if(ds_elf_find_export(file,&info,"Java_com_ea_EAIO_EAIO_Startup",&startup_address,&startup_size))return;
     if(ds10_init(&bridge,java_request,(DS10Startup)(image+startup_address-info.load_min)))return;
+    FILE *touch_mode=fopen("sdmc:/3ds/deadspace/touch-bridge-test.txt","rb");
+    if(touch_mode){
+        char line[80],extra;unsigned lines=0,invalid=0;
+        while(fgets(line,sizeof(line),touch_mode)){
+            unsigned value=0,x=160,y=120;int fields=sscanf(line,"%u %u %u %c",&value,&x,&y,&extra);++lines;
+            if((fields!=1 && fields!=3) || value>3598 || (value && value<2) || x>=320 || y>=240 ||
+               tap_count>=16 || (!value && lines!=1) || (value && tap_count && value<=taps[tap_count-1].frame+1)){invalid=1;break;}
+            if(value)taps[tap_count++]=(AuditTap){value,x,y};
+        }
+        fclose(touch_mode);
+        uint32_t pointer,pointer_size;
+        if(!lines || invalid ||
+           ds_elf_find_export(file,&info,"Java_com_ea_blast_TouchSurfaceAndroid_NativeOnPointerEvent",&pointer,&pointer_size) ||
+           ds23_touch_init(&touch,&bridge,320,240,(DS23Pointer)(image+pointer-info.load_min))){report("Touch attach failed\n");return;}
+        touch_attached=1;
+        report("Touch bridge attached: source=320x240 surface=400x240 module=1000 scripted-tap=%lu\n",(unsigned long)(tap_count?taps[0].frame:0));
+        if(tap_count>1)report("Scripted tap sequence: %lu events\n",(unsigned long)tap_count);
+    }
     ds19_assets_backend(&bridge,ds19_native_list,NULL);
+    FILE *apk_mode=fopen("sdmc:/3ds/deadspace/apk-assets-test.txt","rb");
+    if(apk_mode){int enabled=fgetc(apk_mode)=='1';fclose(apk_mode);
+        FILE *verified=fopen("sdmc:/3ds/deadspace/apk-assets-verified.txt","rb");char receipt[128]={0};
+        size_t n=verified?fread(receipt,1,sizeof(receipt),verified):0;if(verified)fclose(verified);
+        const char expected[]="DS_APK_ASSETS_V1 0d3c870ae38687e1ac7e8dbf0ca8568862437491529e8ef45b818f4c38958845 20\n";
+        if(!enabled || n!=sizeof(expected)-1 || memcmp(receipt,expected,n)){
+            report("APK assets unverified\nENGINE EXPERIMENT STOPPED\nNo game frame rendered.\n");return;
+        }
+        int fd=ds25_native_open((void *)DS25_ROOT,"EAMCore.ini",2);uint8_t core[4096];
+        int bytes=fd<0?-1:ds_io_read(fd,core,sizeof(core));if(fd>=0)ds_io_close(fd);
+        if(bytes!=3119 || ds_crc32(core,3119)!=0x33c9beb3){report("APK core asset probe failed\nENGINE EXPERIMENT STOPPED\nNo game frame rendered.\n");return;}
+        ds19_assets_backend_full(&bridge,ds19_native_list,ds25_native_open,ds19_apk_path,(void *)DS25_ROOT);
+        for(uint32_t i=0;i<count;++i)if(!strcmp(bindings[i].name,"fcntl"))bindings[i].address=(uint32_t)ds_io_fcntl;
+        report("APK AssetManager attached: 20 genuine files; EAMCore.ini bytes=3119 CRC32=33c9beb3\n");
+    }
     ds10_query_compat(&bridge,1);
     uint32_t orientation_address,orientation_size,top;
     if(ds_elf_find_export(file,&info,"Java_com_ea_blast_DeviceOrientationHandlerAndroidDelegate_NativeOnDeviceOrientationChange",&orientation_address,&orientation_size) ||
@@ -414,29 +639,65 @@ static void run(void) {
     if(ds_elf_find_export(file,&info,names[3],&draw,&size))return;
     phase="NativeOnDrawFrame";
     uint32_t capture_after=2;FILE *capture_config=fopen("sdmc:/3ds/deadspace/capture-frame.txt","rb");
-    if(capture_config){unsigned value=0;if(fscanf(capture_config,"%u",&value)==1 && value>=2 && value<=16)capture_after=value;fclose(capture_config);}
+    if(capture_config){unsigned value=0;if(fscanf(capture_config,"%u",&value)==1 && value>=2 && value<=3600)capture_after=value;fclose(capture_config);}
+    if(capture_after>120)watchdog_samples=90+capture_after*2;
+    int resume_focus=0;FILE *lifecycle_mode=fopen("sdmc:/3ds/deadspace/lifecycle-bridge-test.txt","rb");
+    if(lifecycle_mode){resume_focus=fgetc(lifecycle_mode)=='1';fclose(lifecycle_mode);}
     if(graphics_attached){
         s32 priority;if(R_FAILED(svcGetThreadPriority(&priority,CUR_THREAD_HANDLE)) || !threadCreate(audit_watchdog,NULL,16384,priority,0,true)){report("Watchdog creation failed\n");return;}
         svcSleepThread(0);
     }
-    for(uint32_t frame=1;frame<=120;++frame){
+    for(uint32_t frame=1;frame<=(graphics_attached?capture_after:120);++frame){
         audit_frame=frame;
         report("Frame %lu begin\n",(unsigned long)frame);
         if(((PushFrame)jni.env_functions[19])(&jni.env,16))return;
         ((Lifecycle)(image+draw-info.load_min))(&jni.env,NULL,400,240);
         ((PopFrame)jni.env_functions[20])(&jni.env,NULL);
         report("Frame %lu returned\n",(unsigned long)frame);
+        if(resume_focus && frame==2){
+            const char *events[]={"Java_com_ea_blast_MainActivity_NativeOnResume","Java_com_ea_blast_MainActivity_NativeOnWindowFocusChanged"};
+            const char *event_labels[]={"NativeOnResume","NativeOnWindowFocusChanged"};
+            for(unsigned i=0;i<2;++i){
+                uint32_t address,event_size;if(ds_elf_find_export(file,&info,events[i],&address,&event_size))return;
+                phase=event_labels[i];report("Calling %s after engine initialization...\n",phase);
+                if(((PushFrame)jni.env_functions[19])(&jni.env,16))return;
+                ((Lifecycle)(image+address-info.load_min))(&jni.env,NULL,1,0);
+                ((PopFrame)jni.env_functions[20])(&jni.env,NULL);report("%s returned\n",phase);
+            }
+            phase="NativeOnDrawFrame";
+        }
+        if(touch_attached){
+            hidScanInput();touchPosition p;hidTouchRead(&p);uint32_t pressed=(hidKeysHeld()&KEY_TOUCH)!=0;
+            if(tap_count){pressed=0;for(unsigned i=0;i<tap_count;++i)if(frame>=taps[i].frame){pressed=frame==taps[i].frame;p.px=(u16)taps[i].x;p.py=(u16)taps[i].y;}}
+            int delivered=ds23_touch_sample(&touch,pressed,p.px,p.py);
+            if(delivered<0){report("Touch sample failed\n");return;}
+            if(delivered)report("Touch event returned: frame=%lu pressed=%lu x=%u y=%u events=%lu\n",(unsigned long)frame,(unsigned long)pressed,p.px,p.py,(unsigned long)touch.events);
+        }
         if(graphics_attached){
             uint32_t drawn[4];ds22_stats(&graphics,drawn);
+            if(capture_after>120 && frame%120==0 && frame<capture_after){
+                char stem[48];snprintf(stem,sizeof(stem),"progress-frame-%lu",(unsigned long)frame);
+                if(!save_surface(&graphics,stem,image_base))report("PROGRESS FRAME SAVED: frame=%lu\n",(unsigned long)frame);
+                clock_report();
+            }
             if(frame>=capture_after && drawn[2] && drawn[3] && !save_surface(&graphics,"first-game-frame",image_base)){
                 gfxFlushBuffers();gfxSwapBuffers();gspWaitForVBlank();
                 report("FIRST GAME FRAME CAPTURED: frame=%lu draws=%lu fragments=%lu samples=%lu\n",(unsigned long)frame,(unsigned long)drawn[0],(unsigned long)drawn[2],(unsigned long)drawn[3]);
-                graphics_stats();jump_stats();DS9MemoryStats arena;ds9_memory_stats(&arena);
+                graphics_stats();jump_stats();clock_report();DS9MemoryStats arena;ds9_memory_stats(&arena);
                 report("Donor arenas: break=%lu peak=%lu mapped-pages=%lu map-peak=%lu refusals=%lu\n",(unsigned long)arena.break_bytes,(unsigned long)arena.break_peak,(unsigned long)arena.mapped_pages,(unsigned long)arena.map_peak,(unsigned long)arena.refusals);
                 uint32_t j[7];ds10_stats(&bridge,j);uint32_t loans=0;
                 for(unsigned i=0;i<DS_JNI_STRING_COUNT;++i)loans+=bridge.base.strings[i].pins;
                 report("JNI checkpoint: pending=%lu failures=%lu refs=%lu frame-depth=%lu string-loans=%lu\n",(unsigned long)j[0],(unsigned long)j[3],(unsigned long)j[4],(unsigned long)bridge.frame_depth,(unsigned long)loans);
-                sensor_shutdown();report("ENGINE EXPERIMENT STOPPED\nCompleted game frame saved.\n");if(journal){fclose(journal);journal=NULL;}svcExitProcess();
+                for(unsigned i=0;i<DS_JNI_STRING_COUNT;++i)if(bridge.base.strings[i].pins){
+                    unsigned refs=0;for(unsigned k=0;k<128;++k)if(bridge.refs[k].token && bridge.refs[k].kind==4 && bridge.refs[k].identity==i)++refs;
+                    report("JNI retained string: slot=%u text=%s loans=%lu refs=%u\n",i,bridge.base.strings[i].bytes,(unsigned long)bridge.base.strings[i].pins,refs);
+                }
+                if(touch_attached){uint32_t events=touch.events;int result=ds23_touch_close(&touch);touch_attached=0;report("Touch shutdown: result=%d events=%lu\n",result,(unsigned long)events);}
+                sensor_shutdown();report("ENGINE EXPERIMENT STOPPED\nCompleted game frame saved.\n");if(journal){fclose(journal);journal=NULL;}
+                /* Keep borrowed donor code/arenas alive while the frontend
+                 * observes the LCD and shuts the emulator down. Exiting the
+                 * process under its workers can throw inside Azahar. */
+                for(;;)svcSleepThread(1000000000LL);
             }
         }
         ds11_pump_events(&bridge);

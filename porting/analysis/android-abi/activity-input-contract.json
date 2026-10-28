@@ -1,0 +1,72 @@
+{
+  "dex_sha256": "c7827f417525afd57c9182b3b509c13ec4f9fdf84136c13280e8eec349c05aa5",
+  "methods": [
+    {
+      "class": "Lcom/ea/blast/MainActivity;",
+      "name": "NativeOnResume",
+      "signature": "()V",
+      "access_flags": 257,
+      "native": true
+    },
+    {
+      "class": "Lcom/ea/blast/MainActivity;",
+      "name": "NativeOnWindowFocusChanged",
+      "signature": "(Z)V",
+      "access_flags": 257,
+      "native": true
+    },
+    {
+      "class": "Lcom/ea/blast/MainActivity;",
+      "name": "onResume",
+      "signature": "()V",
+      "access_flags": 4,
+      "native": false,
+      "code_offset": 94524,
+      "instruction_bytes": 34,
+      "code_sha256": "4a4d92c8284d6499987b8e694bd2b59e2f3b11cfb22432c11aa45e403d9790bf"
+    },
+    {
+      "class": "Lcom/ea/blast/MainActivity;",
+      "name": "onWindowFocusChanged",
+      "signature": "(Z)V",
+      "access_flags": 1,
+      "native": false,
+      "code_offset": 94676,
+      "instruction_bytes": 24,
+      "code_sha256": "5823aa2cbca0e3ce9bdf2112e120a0cd123b6541dcce426b33149f7a8f3ea1f9"
+    },
+    {
+      "class": "Lcom/ea/blast/TouchSurfaceAndroid;",
+      "name": "NativeOnPointerEvent",
+      "signature": "(IIIFF)V",
+      "access_flags": 268,
+      "native": true
+    },
+    {
+      "class": "Lcom/ea/blast/TouchSurfaceAndroid;",
+      "name": "SendRawPointerEvent",
+      "signature": "(Landroid/view/MotionEvent;III)V",
+      "access_flags": 2,
+      "native": false,
+      "code_offset": 97676,
+      "instruction_bytes": 32,
+      "code_sha256": "521d229542ffba33f5828fbe37d64f2b2f1ed68b18c1a7cbcfb6f0161827e490"
+    }
+  ],
+  "native_pointer_signature": "(IIIFF)V",
+  "pointer_arguments": [
+    "raw event ID",
+    "module ID",
+    "pointer ID",
+    "surface x pixels",
+    "surface y pixels"
+  ],
+  "touchscreen_module_id": 1000,
+  "raw_ids": {
+    "cancel": 12,
+    "down": 393228,
+    "move": 262156,
+    "up": 524300
+  },
+  "scope": "Static DEX declarations and inspected ARM getters; runtime input not yet claimed"
+}

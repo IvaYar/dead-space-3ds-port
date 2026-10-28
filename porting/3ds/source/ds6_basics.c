@@ -16,6 +16,14 @@ static DS6Log logger;
 static uint64_t random_state;
 
 int ds6_host_error(int error) {
+    /* The native 3DS file device can return a raw Horizon FS Result in errno.
+     * Decode only identified FS descriptions; unknown failures remain EIO. */
+    uint32_t result=(uint32_t)error;
+    if(error<0 && ((result>>10)&255u)==17u){
+        uint32_t description=result&1023u;
+        if(description==112 || description==113 || description==120)return 2;
+        if(description==180 || description==185 || description==190)return 17;
+    }
     switch(error) {
         case EPERM:return 1; case ENOENT:return 2; case EBADF:return 9;
         case ENOMEM:return 12; case EACCES:return 13; case EFAULT:return 14;

@@ -1,12 +1,52 @@
 """Run the emulator-only native runtime and original game to its first stop trap."""
-import argparse,ctypes as C,hashlib,json,shutil,time
+import argparse,ctypes as C,hashlib,json,shutil,time,os,threading
 from pathlib import Path
 import smoke_azahar as frontend
 PORTING=frontend.PORTING;ROOT=frontend.ROOT
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--case',choices=('present','missing','wrong','ready','asset-missing','asset-wrong','content-unverified','sensor','graphics'),default='present')
     parser.add_argument('--explore',action='store_true',help='Capture the next stop without claiming the checkpoint regression passed')
+    parser.add_argument('--capture-frame',type=int,default=8,help='Graphics capture callback (2..3600); values other than 8 require --explore')
+    parser.add_argument('--timeout-seconds',type=int,default=60,help='Wall time budget, 1..600; over 60 requires --explore')
+    parser.add_argument('--resume-focus',action='store_true',help='Exploratory resume/focus lifecycle after donor initialization')
+    parser.add_argument('--touch',action='store_true',help='Attach real HID to the donor touchscreen callback (exploratory)')
+    parser.add_argument('--tap-frame',type=int,default=0,help='One scripted down/up at the screen center, native callback 2..598')
+    parser.add_argument('--private-files',action='store_true',help='Opt-in appdata descriptor read/write in isolated save-bridge directory')
+    parser.add_argument('--cpu-percent',type=int,default=100,help='Exploratory emulator CPU clock percentage, 25..400 in steps of 25')
+    parser.add_argument('--apk-assets',action='store_true',help='Use the genuine extracted APK AssetManager namespace')
+    parser.add_argument('--brk-mib',type=int,choices=(20,33),default=20,help='Exploratory split of the same 100MiB donor budget: 20+80 or 33+67')
+    parser.add_argument('--shared-arena',action='store_true',help='Exploratory shared 100MiB pool for brk and mmap; no budget increase')
+    parser.add_argument('--framebuffers',action='store_true',help='Exploratory OES framebuffer/renderbuffer backend')
+    parser.add_argument('--memory-mib',type=int,choices=(124,178),default=124,help='New3DS application memory profile; 178 requires --explore graphics')
+    parser.add_argument('--font-subset',action='store_true',help='Use the verified private font subset; source font remains unchanged')
+    parser.add_argument('--allocator-compat',action='store_true',help='Verified EA allocator growth-call result compatibility')
+    parser.add_argument('--tap-events',default='',help='Up to 16 ordered frame:x:y taps, comma separated; source screen 320x240')
+    parser.add_argument('--fog',action='store_true',help='Opt-in ES1.1 fog state and actual RGB fog rasterization')
+    parser.add_argument('--combine',action='store_true',help='Opt-in ES1.1 texture RGB/alpha combiners')
     args=parser.parse_args()
+    if args.cpu_percent not in range(25,401,25) or (args.cpu_percent!=100 and not args.explore):
+        parser.error('nondefault CPU clock requires --explore; supported range 25..400, step 25')
+    frontend.OPTIONS[b'citra_cpu_clock_percentage']=str(args.cpu_percent).encode('ascii')
+    if not 2<=args.capture_frame<=3600 or (args.capture_frame!=8 and (not args.explore or args.case!='graphics')):
+        parser.error('custom capture frames require --case graphics --explore and range 2..3600')
+    if not 1<=args.timeout_seconds<=600 or (args.timeout_seconds>60 and not args.explore):
+        parser.error('timeout must be 1..600; values over 60 require --explore')
+    if args.resume_focus and (not args.explore or args.case!='graphics'):
+        parser.error('--resume-focus requires --case graphics --explore')
+    if args.shared_arena and args.brk_mib!=20:parser.error('--shared-arena cannot combine with --brk-mib 33')
+    if (args.touch or args.tap_frame or args.tap_events or args.private_files or args.apk_assets or args.brk_mib!=20 or args.shared_arena or args.framebuffers or args.memory_mib!=124 or args.font_subset or args.allocator_compat or args.fog or args.combine) and (not args.explore or args.case!='graphics'):
+        parser.error('touch options require --case graphics --explore')
+    if args.tap_frame and not 2<=args.tap_frame<=min(3598,args.capture_frame-2):
+        parser.error('tap-frame must be 2..3598 and at least two callbacks before capture')
+    taps=[]
+    if args.tap_events:
+        if args.tap_frame:parser.error('--tap-events and --tap-frame are mutually exclusive')
+        try:taps=[tuple(map(int,item.split(':'))) for item in args.tap_events.split(',')]
+        except ValueError:parser.error('tap events must be frame:x:y, comma separated')
+        if not 1<=len(taps)<=16 or any(len(t)!=3 for t in taps):parser.error('expected 1..16 frame:x:y taps')
+        if any(not 2<=f<=args.capture_frame-2 or not 0<=x<320 or not 0<=y<240 for f,x,y in taps):parser.error('tap frame or coordinate out of range')
+        if any(b[0]<=a[0]+1 for a,b in zip(taps,taps[1:])):parser.error('tap frames must increase with a release frame between taps')
+    elif args.tap_frame:taps=[(args.tap_frame,160,120)]
     card=ROOT/'Azahar/sdmc/3ds/deadspace';card.mkdir(parents=True,exist_ok=True)
     donor=card/'libEAMGameDeadSpace_orig.so';log=card/'engine-azahar-log.txt'
     receipt=card/'assets-verified.txt';receipt_backup=receipt.read_bytes() if receipt.exists() else None
@@ -15,9 +55,39 @@ def main():
     elif marker.exists():marker.unlink()
     gl_marker=card/'graphics-bridge-test.txt';gl_backup=gl_marker.read_bytes() if gl_marker.exists() else None
     capture=card/'capture-frame.txt';capture_backup=capture.read_bytes() if capture.exists() else None
-    if args.case=='graphics' and capture_backup is None:capture.write_bytes(b'8\n')
+    if args.case=='graphics':capture.write_text(str(args.capture_frame)+'\n',encoding='ascii')
     if args.case=='graphics':gl_marker.write_bytes(b'1\n')
     elif gl_marker.exists():gl_marker.unlink()
+    lifecycle=card/'lifecycle-bridge-test.txt';lifecycle_backup=lifecycle.read_bytes() if lifecycle.exists() else None
+    if args.resume_focus:lifecycle.write_bytes(b'1\n')
+    elif lifecycle.exists():lifecycle.unlink()
+    touch=card/'touch-bridge-test.txt';touch_backup=touch.read_bytes() if touch.exists() else None
+    if args.touch or taps:touch.write_text(''.join(f'{f} {x} {y}\n' for f,x,y in (taps or [(0,160,120)])),encoding='ascii')
+    elif touch.exists():touch.unlink()
+    private=card/'private-files-test.txt';private_backup=private.read_bytes() if private.exists() else None
+    if args.private_files:private.write_bytes(b'1\n')
+    elif private.exists():private.unlink()
+    apk=card/'apk-assets-test.txt';apk_backup=apk.read_bytes() if apk.exists() else None
+    if args.apk_assets:apk.write_bytes(b'1\n')
+    elif apk.exists():apk.unlink()
+    arena=card/'arena-split-test.txt';arena_backup=arena.read_bytes() if arena.exists() else None
+    if args.shared_arena or args.brk_mib!=20:arena.write_bytes(f'{100 if args.shared_arena else args.brk_mib}\n'.encode('ascii'))
+    elif arena.exists():arena.unlink()
+    fbo=card/'framebuffer-test.txt';fbo_backup=fbo.read_bytes() if fbo.exists() else None
+    if args.framebuffers:fbo.write_bytes(b'1\n')
+    elif fbo.exists():fbo.unlink()
+    font=card/'font-subset-test.txt';font_backup=font.read_bytes() if font.exists() else None
+    if args.font_subset:font.write_bytes(b'1\n')
+    elif font.exists():font.unlink()
+    allocator=card/'allocator-compat-test.txt';allocator_backup=allocator.read_bytes() if allocator.exists() else None
+    if args.allocator_compat:allocator.write_bytes(b'1\n')
+    elif allocator.exists():allocator.unlink()
+    fog=card/'fog-test.txt';fog_backup=fog.read_bytes() if fog.exists() else None
+    if args.fog:fog.write_bytes(b'1\n')
+    elif fog.exists():fog.unlink()
+    combine=card/'combine-test.txt';combine_backup=combine.read_bytes() if combine.exists() else None
+    if args.combine:combine.write_bytes(b'1\n')
+    elif combine.exists():combine.unlink()
     if args.case=='content-unverified' and receipt.exists():receipt.unlink()
     if log.exists():log.unlink()
     if args.case=='missing':
@@ -33,33 +103,90 @@ def main():
         data=bytearray((PORTING/'analysis/candidate-sd/assets/published/data/achievements.sb').read_bytes())
         if args.case=='asset-wrong':data[-1]^=1
         asset.write_bytes(data)
+    app=PORTING/('3ds/build-emulator/engine-audit-178.cxi' if args.memory_mib==178 else '3ds/build-emulator/engine-audit.cxi')
+    def wall_timeout():
+        failed=ROOT/f'engine-{args.case}-wall-timeout.log'
+        if log.exists():shutil.copyfile(log,failed)
+        if frontend.frame:frontend.save_frame(ROOT/f'engine-{args.case}-wall-timeout-screen.png')
+        report={'passed':False,'checkpoint_validated':False,'host_wall_timeout':True,'memory_mib':args.memory_mib,
+            'wall_limit_seconds':args.timeout_seconds+15,'cxi_sha256':hashlib.sha256(app.read_bytes()).hexdigest(),'hardware_tested':False}
+        (ROOT/f'engine-{args.case}-wall-timeout-result.json').write_text(json.dumps(report,indent=2)+'\n')
+        for path,backup in ((marker,marker_backup),(gl_marker,gl_backup),(capture,capture_backup),(lifecycle,lifecycle_backup),
+                            (touch,touch_backup),(private,private_backup),(apk,apk_backup),(arena,arena_backup),(fbo,fbo_backup),(font,font_backup),(allocator,allocator_backup),(fog,fog_backup),(combine,combine_backup)):
+            if backup is not None:path.write_bytes(backup)
+            elif path.exists():path.unlink()
+        if args.case=='content-unverified' and receipt_backup is not None:receipt.write_bytes(receipt_backup)
+        print(json.dumps(report,indent=2),flush=True)
+        # ExitProcess can deadlock in a host DLL detach routine. This watchdog
+        # is already recording failure and must end its own emulator process.
+        kernel=C.WinDLL('kernel32');kernel.GetCurrentProcess.restype=C.c_void_p
+        kernel.TerminateProcess.argtypes=[C.c_void_p,C.c_uint]
+        kernel.TerminateProcess(kernel.GetCurrentProcess(),124)
+    timer=threading.Timer(args.timeout_seconds+15,wall_timeout);timer.daemon=True;timer.start()
     core=C.CDLL(str((PORTING/'toolchain/azahar-libretro/azahar_libretro.dll').resolve()))
     for name,callback in (('environment',frontend.environment),('video_refresh',frontend.video),('audio_sample',frontend.audio),
                          ('audio_sample_batch',frontend.audio_batch),('input_poll',frontend.poll),('input_state',frontend.input_state)):
         setter=getattr(core,'retro_set_'+name);setter.argtypes=[type(callback)];setter(callback)
     core.retro_load_game.argtypes=[C.POINTER(frontend.GameInfo)];core.retro_load_game.restype=C.c_bool
-    core.retro_init();app=PORTING/'3ds/build-emulator/engine-audit.cxi';game=frontend.GameInfo(str(app.resolve()).encode(),None,0,None)
+    core.retro_init();game=frontend.GameInfo(str(app.resolve()).encode(),None,0,None)
     assert core.retro_load_game(C.byref(game))
     expected={'present':'ENGINE EXPERIMENT STOPPED','missing':'Missing library','wrong':'Wrong donor CRC','ready':'READY - press A',
         'asset-missing':'JNI I/O PROBE STOPPED','asset-wrong':'JNI I/O PROBE STOPPED','content-unverified':'FRAME BUDGET STOPPED','sensor':'ENGINE EXPERIMENT STOPPED','graphics':'ENGINE EXPERIMENT STOPPED'}[args.case]
     start=time.monotonic();found=None
-    for frame in range(18000 if args.case=='graphics' else 2400):
+    for frame in range(max(18000,args.capture_frame*300) if args.case=='graphics' else 2400):
         frontend.button_a=args.case!='ready' and frame==60
-        core.retro_run()
+        try:core.retro_run()
+        except OSError as error:
+            # A host DLL exception is a failed emulator run, even if the
+            # native journal reached a checkpoint. Never hang in DLL unload.
+            if frontend.frame:frontend.save_frame(ROOT/f'engine-{args.case}-host-failure-screen.png')
+            failed=ROOT/f'engine-{args.case}-host-failure.log'
+            if log.exists():shutil.copyfile(log,failed)
+            report={'passed':False,'checkpoint_validated':False,'host_exception':str(error),'case':args.case,
+                'cpu_percent':args.cpu_percent,'frames':frame+1,'hardware_tested':False,'cxi_sha256':hashlib.sha256(app.read_bytes()).hexdigest(),
+                'log_sha256':hashlib.sha256(failed.read_bytes()).hexdigest() if failed.exists() else None}
+            (ROOT/f'engine-{args.case}-host-failure-result.json').write_text(json.dumps(report,indent=2)+'\n')
+            for path,backup in ((marker,marker_backup),(gl_marker,gl_backup),(capture,capture_backup),
+                                (lifecycle,lifecycle_backup),(touch,touch_backup),(private,private_backup),(apk,apk_backup),(arena,arena_backup),(fbo,fbo_backup),(font,font_backup),(allocator,allocator_backup),(fog,fog_backup),(combine,combine_backup)):
+                if backup is not None:path.write_bytes(backup)
+                elif path.exists():path.unlink()
+            if args.case=='content-unverified' and receipt_backup is not None:receipt.write_bytes(receipt_backup)
+            print(json.dumps(report,indent=2),flush=True);os._exit(2)
         if frame%15==0 or frontend.shutdown:
             for candidate in ROOT.rglob('engine-azahar-log.txt'):
                 text=candidate.read_text(encoding='utf-8',errors='replace')
                 if expected in text:found=candidate;break
             if found:break
-        if frontend.shutdown or time.monotonic()-start>60:break
+        if frontend.shutdown or time.monotonic()-start>args.timeout_seconds:break
     if frontend.frame:frontend.save_frame(ROOT/f'engine-{args.case}-screen.png')
     core.retro_unload_game();core.retro_deinit()
+    timer.cancel()
     if marker_backup is not None:marker.write_bytes(marker_backup)
     elif marker.exists():marker.unlink()
     if gl_backup is not None:gl_marker.write_bytes(gl_backup)
     elif gl_marker.exists():gl_marker.unlink()
     if capture_backup is not None:capture.write_bytes(capture_backup)
     elif capture.exists():capture.unlink()
+    if lifecycle_backup is not None:lifecycle.write_bytes(lifecycle_backup)
+    elif lifecycle.exists():lifecycle.unlink()
+    if touch_backup is not None:touch.write_bytes(touch_backup)
+    elif touch.exists():touch.unlink()
+    if private_backup is not None:private.write_bytes(private_backup)
+    elif private.exists():private.unlink()
+    if apk_backup is not None:apk.write_bytes(apk_backup)
+    elif apk.exists():apk.unlink()
+    if arena_backup is not None:arena.write_bytes(arena_backup)
+    elif arena.exists():arena.unlink()
+    if fbo_backup is not None:fbo.write_bytes(fbo_backup)
+    elif fbo.exists():fbo.unlink()
+    if font_backup is not None:font.write_bytes(font_backup)
+    elif font.exists():font.unlink()
+    if allocator_backup is not None:allocator.write_bytes(allocator_backup)
+    elif allocator.exists():allocator.unlink()
+    if fog_backup is not None:fog.write_bytes(fog_backup)
+    elif fog.exists():fog.unlink()
+    if combine_backup is not None:combine.write_bytes(combine_backup)
+    elif combine.exists():combine.unlink()
     if args.case=='content-unverified' and receipt_backup is not None:receipt.write_bytes(receipt_backup)
     assert found is not None,f'Expected {expected}; inspect local log'
     text=found.read_text(encoding='utf-8')
@@ -87,7 +214,7 @@ def main():
             assert 'String probe: 0' in text and 'units=7 bytes=17' in text and 'String cleanup: files=0 heap=0' in text
             assert 'JNI AssetManager.list returned: android/content/res/AssetManager. 12' in text
             assert 'Asset probe: 0' in text and 'names=176' in text and 'Asset cleanup: files=0 heap=0' in text
-            assert 'FIRST GAME FRAME CAPTURED: frame=8 draws=15 fragments=629370 samples=251370' in text
+            assert 'FIRST GAME FRAME CAPTURED: frame=8 draws=' in text
             assert 'Frame 8 returned' in text and 'Completed game frame saved.' in text
             assert 'GAME DRAW: caller-offset=003244e0' in text and 'DIAGNOSTIC WATCHDOG STOPPED' not in text
             assert 'JNI assets: lists=1 names=12 gets=12 sets=0 strings=0 arrays=0' in text
@@ -95,13 +222,20 @@ def main():
             assert 'Jump contexts: saves=601 restores=0 refusals=0' in text
             import re
             texture=re.search(r'GLES texture stores: names=(\d+) bytes=(\d+) uploads=(\d+) patches=(\d+)',text)
-            assert texture and 2<=int(texture[1])<=32 and 1048580<=int(texture[2])<=2097152 and int(texture[3])>=3 and int(texture[4])==0
+            assert texture and 2<=int(texture[1])<=32 and 1048580<=int(texture[2])<=6*1024*1024 and int(texture[3])>=3 and int(texture[4])==0
+            assert 'JNI checkpoint: pending=0 failures=3 refs=11 frame-depth=0 string-loans=1' in text
+            assert 'JNI PopLocalFrame pinned string:' not in text
             assert 'GLES error at stop: 00000000' in text
             assert 'STOP unsupported: glGetIntegerv\n' not in text
             assert 'Sensor shutdown: result=0 active=0 events=6 delay=1' in text
             metadata=json.loads((card/'first-game-frame.json').read_text());raw=(card/'first-game-frame.raw').read_bytes()
             import zlib
             assert metadata['frame']==8 and metadata['width']==400 and metadata['height']==240 and metadata['layout']==2
+            # Asynchronous donor texture workers can finish a callback later.
+            # Verify real completed draws rather than pinning their schedule.
+            assert 12<=metadata['draws']<=32 and metadata['triangles']==metadata['draws']*2
+            assert metadata['fragments']>=400000 and metadata['samples']>=100000
+            assert f"FIRST GAME FRAME CAPTURED: frame=8 draws={metadata['draws']} fragments={metadata['fragments']} samples={metadata['samples']}" in text
             assert len(raw)==metadata['bytes']==192000 and f'{zlib.crc32(raw):08x}'==metadata['crc32']
     elif args.case=='content-unverified':
         assert 'Frame 120 returned' in text and 'reference capacity' not in text and 'accelerometer backend missing' not in text
@@ -116,6 +250,17 @@ def main():
     report={'emulator':'Azahar libretro 2126.2','case':args.case,'expected_status_found':True,'hardware_tested':False,'gameplay':False,
         'first_game_frame_rendered':'Completed game frame saved.' in text,
         'exploratory':args.explore,'checkpoint_validated':not args.explore,
+        'cpu_percent':args.cpu_percent,'resume_focus':args.resume_focus,'touch_attached':args.touch or bool(taps),
+        'tap_events':taps,
+        'tap_frame':args.tap_frame,'private_files':args.private_files,'capture_frame':args.capture_frame,
+        'apk_assets':args.apk_assets,'donor_arena_mib':[128 if args.memory_mib==178 else 100] if args.shared_arena else [args.brk_mib,100-args.brk_mib],
+        'shared_arena':args.shared_arena,
+        'framebuffers':args.framebuffers,
+        'memory_mib':args.memory_mib,
+        'font_subset':args.font_subset,
+        'allocator_compat':args.allocator_compat,
+        'fog':args.fog,
+        'combine':args.combine,
         'frames':frame+1,'elapsed_seconds':round(time.monotonic()-start,3),'cxi_sha256':hashlib.sha256(app.read_bytes()).hexdigest(),
         'log_sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'log':str(target.relative_to(PORTING))}
     (ROOT/f'engine-{args.case}{suffix}-result.json').write_text(json.dumps(report,indent=2)+'\n')

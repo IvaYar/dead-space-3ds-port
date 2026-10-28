@@ -44,12 +44,12 @@ class PlatformTests(jni.Jni10Tests):
         for _ in range(40):
             self.env(19,4);s=self.make_string('short lived');self.assertTrue(s);self.env(20,0)
         self.assertFalse(self.exception());self.assertEqual(self.stats()[4],0)
-    def test_pop_pinned_array_and_string_waits_for_release(self):
+    def test_pop_copied_array_waits_but_borrowed_string_outlives_its_frame(self):
         self.env(19,8);a=self.env(176,4);copy=self.env(184,a,0)
         self.assertEqual(self.env(20,0),0);self.assertTrue(self.exception());self.clear()
-        self.env(192,a,copy,2);s=self.make_string('pin');chars=self.env(169,s,0)
-        self.env(20,0);self.assertTrue(self.exception());self.clear();self.env(170,s,chars)
-        self.env(20,0);self.assertFalse(self.exception());self.assertEqual(self.stats()[4],0)
+        self.env(192,a,copy,2);s=self.make_string('pin');g=self.env(21,s);chars=self.env(169,s,0)
+        self.env(20,0);self.assertFalse(self.exception());self.assertEqual(self.stats()[4],1)
+        self.env(170,g,chars);self.delete(g,True);self.assertEqual(self.stats()[4],0)
     def test_native_entry_reference_frames_remain_bounded(self):
         for _ in range(150):
             self.env(19,16);self.find('com/eamobile/Query');self.make_string('native argument');self.env(20,0)

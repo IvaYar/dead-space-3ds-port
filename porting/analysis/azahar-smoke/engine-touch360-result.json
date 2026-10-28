@@ -1,0 +1,15 @@
+{
+  "emulator": "Azahar libretro 2126.2",
+  "case": "graphics",
+  "expected_status_found": true,
+  "hardware_tested": false,
+  "gameplay": false,
+  "first_game_frame_rendered": true,
+  "exploratory": true,
+  "checkpoint_validated": false,
+  "frames": 15406,
+  "elapsed_seconds": 42.531,
+  "cxi_sha256": "e16a762572f9dbf5777a3a09ce6d84d3034ba654a1ee34c16769d6b460ed3bea",
+  "log_sha256": "333a641b52de6c151237b4f15071a3dfadc1390ad5617d91e1c6e3311f40102d",
+  "log": "analysis\\azahar-smoke\\engine-graphics-explore.log"
+}

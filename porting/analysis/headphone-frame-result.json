@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "runner_exploratory": true,
+  "verified_by": "check_headphone_frame.py",
+  "screen": "character and headphones; advice text visually inspected",
+  "frames_returned": 120,
+  "gles_error": 0,
+  "pending_jni_exception": false,
+  "local_frame_depth": 0,
+  "retained_version_string_loans": 1,
+  "native_acceleration_callbacks_returned": 118,
+  "donor_workers_started": 6,
+  "frame": {
+    "width": 400,
+    "height": 240,
+    "layout": 2,
+    "bytes": 192000,
+    "crc32": "71a807c1",
+    "frame": 120,
+    "caller_offset": "00000000",
+    "draws": 305,
+    "triangles": 5506,
+    "fragments": 10296650,
+    "samples": 3870650
+  },
+  "lcd_vertical_offset_pixels": 1,
+  "texture_budget_bytes": 6291456,
+  "runtime_heap_budget_bytes": 8388608,
+  "hardware_tested": false,
+  "menu_confirmed": false,
+  "gameplay": false,
+  "audio_confirmed": false,
+  "core_sha256": "82a21986993fbfebd6d9046bfe746d53f4c5396839a3fbd8800d15f58ba8ab97",
+  "cxi_sha256": "acca1b0b154e9cf5d1c24be6871b1d620fcfb220a078cbbe9a13b32643082588",
+  "witnesses_sha256": {
+    "analysis/headphone-frame/engine-frame120.log": "84b7cd9f930862de619d9f9aa7af84971bf1ce6b85f1f18778f934162bd143b7",
+    "analysis/headphone-frame/engine-frame120-result.json": "67a63dbb0fa4957defe82f839b2c584e9c2563794acd541ddae39fd9b07551e6",
+    "analysis/headphone-frame/first-game-frame.json": "4e06146cae08b9855622dac0ee6a4b09108361ea1de461b9560fab82cf859707",
+    "analysis/headphone-frame/first-game-frame.raw": "2d3cfe1c3c731c8681af4d81e98cd761ae0b33c93db8e403d7013f7094bca2b1",
+    "analysis/headphone-frame/first-game-frame.png": "b1dedb0f396b19b13981bb9142fc335c1cbe249313e47848eb1808ebc3b29755",
+    "analysis/headphone-frame/azahar-screen.png": "ea00a868895db9517d69d9eb1acae78c976c401046e6e7404d4a905b9615505f"
+  }
+}

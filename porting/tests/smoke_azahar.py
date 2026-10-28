@@ -26,6 +26,16 @@ PATH_BYTES = str(ROOT.resolve()).encode()
 frame = None
 shutdown = False
 button_a = False
+_host_bytes=0
+(ROOT/'azahar-host.log').write_bytes(b'')
+@C.CFUNCTYPE(None,C.c_int,C.c_char_p,C.c_void_p)
+def host_log(level,fmt,arg):
+    global _host_bytes
+    if not fmt:return
+    message=C.string_at(arg) if fmt in (b'%s',b'%s\n') and arg else fmt
+    if _host_bytes>=524288 or (level<2 and b'ControlMemory' not in message and b'HeapAllocate' not in message):return
+    line=str(level).encode()+b' '+message[:2048]+b'\n';_host_bytes+=len(line)
+    with (ROOT/'azahar-host.log').open('ab') as f:f.write(line)
 
 
 class Variable(C.Structure):
@@ -40,6 +50,9 @@ class GameInfo(C.Structure):
 def environment(command, data):
     global shutdown
     command &= ~0x10000
+    if command == 27:
+        C.cast(data,C.POINTER(C.c_void_p))[0]=C.cast(host_log,C.c_void_p).value
+        return True
     if command in (9, 31):
         C.cast(data, C.POINTER(C.c_char_p))[0] = PATH_BYTES
         return True

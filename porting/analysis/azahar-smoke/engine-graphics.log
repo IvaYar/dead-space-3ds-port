@@ -12,6 +12,8 @@ Jump probe Thumb: OK cases=8 core/VFP=OK
 Jump probe counters: saves=18 restores=18 refusals=0
 String probe: 0 checks=43 units=7 bytes=17
 String cleanup: files=0 heap=0
+FS open fd: published/data/achievements.sb result=1024
+FS open fd: published/data/achievements.sb result=1024
 JNI I/O probe: 0 checks=201 bytes=3568 CRC32=4a8d9499
 JNI I/O cleanup: files=0 heap=0
 Asset probe: 0 checks=378 names=176 CRC32-xor=3a761eb9
@@ -23,12 +25,17 @@ Production guard: REFUSED; image unchanged
 Audit clock: emulator monotonic, excluded from supported count
 GLES surface probe: OK 400x240; black clear + green scissor; pixels=97200 format=2
 GLES buffer probe: OK upload=24 sub=12 readback=12 active=0
+GLES upload: 2x2 format=1908 required=16 limit=2097152 result=0
 GLES texture probe: OK upload=16 sub=4 readback=4 active=0
 GLES pipeline probe: OK cull=2 alpha=2 blend=4 typed=1
-Stack query: sp=0803e138 result=00000000 base=08000000 size=0773d000 perm=3
+Graphics budget: texture names=32 bytes=6291456
+Stack query: sp=0803d478 result=00000000 base=08000000 size=0772e000 perm=3
 GLES context bindings: 99; bounded CPU triangle renderer
 Sensor bridge attached: native HID; emulator identity axes, nominal 512 counts/g
 Running 209 donor constructors...
+ARENA request: sbrk bytes=16781312 caller=0025343c thread=main frame=0
+ARENA result: sbrk pointer=08923000
+ARENA request: mmap bytes=16781312 caller=002531a4 thread=main frame=0
 Donor constructors completed: 209
 JNI_OnLoad: 00010004; stored VM: MATCH
 Calling NativeOnCreate...
@@ -152,10 +159,12 @@ JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount ()Lja
 JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount 0
 JNI PushLocalFrame: . 
 JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+FS open failure: published/EAMCore.ini result=-2
 JNI AssetManager.open IOException: android/content/res/AssetManager.EAMCore.ini  EXCEPTION
 JNI PopLocalFrame: . 
 JNI PushLocalFrame: . 
 JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+FS open failure: published/eamcore.ini result=-2
 JNI AssetManager.open IOException: android/content/res/AssetManager.eamcore.ini  EXCEPTION
 JNI PopLocalFrame: . 
 JNI FindClass: com/ea/blast/PowerManagerAndroid. 
@@ -218,8 +227,10 @@ JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
 JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 0
 JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
 JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
+GLES upload: 512x512 format=1908 required=1048576 limit=6291456 result=0
 JNI PushLocalFrame: . 
 JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+FS open failure: published/data.zip result=-2
 JNI AssetManager.open IOException: android/content/res/AssetManager.data.zip  EXCEPTION
 JNI PopLocalFrame: . 
 JNI PushLocalFrame: . 
@@ -237,6 +248,10 @@ FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/publishe
 FS stat mapped: sdmc:/3ds/deadspace/assets/published/fonts/Ascender_Uni.ttf result=0
 FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/Ascender_Uni.ttf result=0
 FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/Ascender_Uni.ttf result=0
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts/Ascender_Uni.ttf result=1024
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
 Thread event: 1 id=00000100 detail=087f0d9c
 Thread event: 2 id=00000201 detail=087f0d9c
 Thread event: 3 id=00000201 detail=087f0d9c
@@ -318,30 +333,82 @@ FS stat native: sdmc:/3ds/deadspace/assets/published/fonts result=0
 FS stat end: sdmc:/3ds/deadspace/assets/published/fonts result=0
 FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts result=0
 FS stat mapped: sdmc:/3ds/deadspace/assets/published/fonts result=0
-FS stat native: sdmc:/3ds/deadspace/assets/published/fonts result=0
-FS stat end: sdmc:/3ds/deadspace/assets/published/fonts result=0
-FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/layoutdata result=0
-FS stat mapped: sdmc:/3ds/deadspace/assets/published/layoutdata result=0
-FS stat native: sdmc:/3ds/deadspace/assets/published/layoutdata result=0
-FS stat end: sdmc:/3ds/deadspace/assets/published/layoutdata result=0
-WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=562
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=568
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
-WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=1754
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=1760
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 JNI FindClass: com/eamobile/Query. 
 JNI GetStaticMethodID: com/eamobile/Query.getVersion ()Ljava/lang/String;
 JNI CallMethod: com/eamobile/Query.getVersion ()Ljava/lang/String;
-WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2310
+FS stat native: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+FS open failure: appdata:/var/settings.sb result=-22
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS open failure: appdata://var/settings.sb result=-30
+FS open failure: appdata://var/AchievementsSave.sb result=-30
+FS stat native: sdmc:/3ds/deadspace/test-output/var/AchievementsSave.sb result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/var/AchievementsSave.sb result=-1
+FS open failure: appdata:/var/AchievementsSave.sb result=-22
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2345
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
-WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2328
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+ARENA request: mmap bytes=5840896 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=5840896 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2367
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
-WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2352
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=2395
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
 Thread event: 1 id=00000100 detail=086dc7f8
 Thread event: 2 id=00000302 detail=086dc7f8
 Thread event: 3 id=00000302 detail=086dc7f8
@@ -357,26 +424,49 @@ Thread event: 3 id=00000605 detail=086dc914
 Thread event: 1 id=00000100 detail=086dc914
 Thread event: 2 id=00000706 detail=086dc914
 Thread event: 3 id=00000706 detail=086dc914
-WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=3190
+FS open failure: appdata://var/00_LevelSave.sb result=-30
+ARENA request: mmap bytes=3895296 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=3895296 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=3895296 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=3895296 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=8761344 caller=002531a4 thread=main frame=2
+WATCH phase=NativeOnDrawFrame frame=2 image=08490000 fs-events=3242
 WATCH thread=00000100 entry-offset=f7b70000 wait=0 object=00000000
 WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
 WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff1590 state=1
 WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=09ff15e0 state=1
 WATCH thread=00000504 entry-offset=0024c914 wait=3 object=09fef748
+WATCH EA callback=0029bf3c argument=09fef4f0 state=1
 WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=09fef4f0 state=1
 WATCH thread=00000706 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00320624 argument=09fc9358 state=1
+ARENA request: mmap bytes=13139968 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=8761344 caller=00253ebc thread=main frame=2
+ARENA request: mmap bytes=19705856 caller=002531a4 thread=main frame=2
+ARENA release: munmap bytes=13139968 caller=00253ebc thread=main frame=2
+ARENA release: munmap bytes=19705856 caller=00253ebc thread=main frame=2
 JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+GLES upload: 512x512 format=1908 required=1048576 limit=6291456 result=0
 JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
 JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
 JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency (I)V
 JNI SensorDelay: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency 1
 JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
 JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
+GLES upload: 1x1 format=1907 required=1048580 limit=6291456 result=0
 GAME DRAW: caller-offset=003244e0 calls=1 triangles=2 fragments=54000 samples=0
-GAME DRAW: caller-offset=003244e0 calls=2 triangles=4 fragments=89910 samples=35910
-PARTIAL GAME DRAW CAPTURED
-GAME DRAW: caller-offset=003244e0 calls=3 triangles=6 fragments=89910 samples=35910
-JNI PopLocalFrame pinned string: .  EXCEPTION
+GLES upload: 512x128 format=1908 required=1310724 limit=6291456 result=0
+GAME DRAW: caller-offset=003244e0 calls=2 triangles=4 fragments=54000 samples=0
+JNI PopLocalFrame: . 
 Frame 2 returned
 JNI OrientationEvent: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.NativeOnDeviceOrientationChange fixed display
 JNI PushLocalFrame: . 
@@ -384,8 +474,10 @@ JNI PopLocalFrame: .
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
 Frame 3 begin
 JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=3 triangles=6 fragments=108000 samples=0
+GLES upload: 256x256 format=1908 required=1572868 limit=6291456 result=0
 GAME DRAW: caller-offset=003244e0 calls=4 triangles=8 fragments=143910 samples=35910
-GAME DRAW: caller-offset=003244e0 calls=5 triangles=10 fragments=179820 samples=71820
+PARTIAL GAME DRAW CAPTURED
 JNI PopLocalFrame: . 
 Frame 3 returned
 JNI PushLocalFrame: . 
@@ -393,8 +485,8 @@ JNI PopLocalFrame: .
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
 Frame 4 begin
 JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=5 triangles=10 fragments=197910 samples=35910
 GAME DRAW: caller-offset=003244e0 calls=6 triangles=12 fragments=233820 samples=71820
-GAME DRAW: caller-offset=003244e0 calls=7 triangles=14 fragments=269730 samples=107730
 JNI PopLocalFrame: . 
 Frame 4 returned
 JNI PushLocalFrame: . 
@@ -402,8 +494,8 @@ JNI PopLocalFrame: .
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
 Frame 5 begin
 JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=7 triangles=14 fragments=287820 samples=71820
 GAME DRAW: caller-offset=003244e0 calls=8 triangles=16 fragments=323730 samples=107730
-GAME DRAW: caller-offset=003244e0 calls=9 triangles=18 fragments=359640 samples=143640
 JNI PopLocalFrame: . 
 Frame 5 returned
 JNI PushLocalFrame: . 
@@ -411,8 +503,8 @@ JNI PopLocalFrame: .
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
 Frame 6 begin
 JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=9 triangles=18 fragments=377730 samples=107730
 GAME DRAW: caller-offset=003244e0 calls=10 triangles=20 fragments=413640 samples=143640
-GAME DRAW: caller-offset=003244e0 calls=11 triangles=22 fragments=449550 samples=179550
 JNI PopLocalFrame: . 
 Frame 6 returned
 JNI PushLocalFrame: . 
@@ -420,8 +512,8 @@ JNI PopLocalFrame: .
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
 Frame 7 begin
 JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=11 triangles=22 fragments=467640 samples=143640
 GAME DRAW: caller-offset=003244e0 calls=12 triangles=24 fragments=503550 samples=179550
-GAME DRAW: caller-offset=003244e0 calls=13 triangles=26 fragments=539460 samples=215460
 JNI PopLocalFrame: . 
 Frame 7 returned
 JNI PushLocalFrame: . 
@@ -429,19 +521,27 @@ JNI PopLocalFrame: .
 JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
 Frame 8 begin
 JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=13 triangles=26 fragments=557550 samples=179550
 GAME DRAW: caller-offset=003244e0 calls=14 triangles=28 fragments=593460 samples=215460
-GAME DRAW: caller-offset=003244e0 calls=15 triangles=30 fragments=629370 samples=251370
 JNI PopLocalFrame: . 
 Frame 8 returned
-FIRST GAME FRAME CAPTURED: frame=8 draws=15 fragments=629370 samples=251370
+FIRST GAME FRAME CAPTURED: frame=8 draws=14 fragments=593460 samples=215460
+FBO state: objects=0 renderbuffers=0 bytes=0 changes=0 bound=0
 JNI assets: lists=1 names=12 gets=12 sets=0 strings=0 arrays=0
 JNI strings: new16=1 newUTF=34 get16=12 getUTF=31 regions=0 errors=0
 GLES error at stop: 00000000
-GLES counters: queries=14 clears=0 pixels=629370 flushes=0
+GLES counters: queries=14 clears=0 pixels=593460 flushes=0
 GLES texture stores: names=4 bytes=1572868 uploads=5 patches=0
 Jump contexts: saves=601 restores=0 refusals=0
+Native heap: used=116982048 free=540384; runtime live=1644055 peak=1644055 blocks=16 failures=0
+CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=28029 last-us=28029
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793200898148000 last-us=1793200898148000
+CLOCK main: kind=1 caller=00246930 id=0 calls=22 first-us=1793200898247000 last-us=1793200964859000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=24 first-us=1793200903458000 last-us=1793200964859000
+Thread pools: active=6 mutex=33 cond=0 sem=31 keys=0
 Donor arenas: break=16781312 peak=16781312 mapped-pages=8908 map-peak=16927 refusals=0
-JNI checkpoint: pending=1 failures=4 refs=21 frame-depth=1 string-loans=1
+JNI checkpoint: pending=0 failures=3 refs=11 frame-depth=0 string-loans=1
+JNI retained string: slot=2 text=1.1.33 Universal SD (Default) loans=1 refs=0
 Sensor shutdown: result=0 active=0 events=6 delay=1
 ENGINE EXPERIMENT STOPPED
 Completed game frame saved.

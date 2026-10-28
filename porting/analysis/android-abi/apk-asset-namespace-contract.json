@@ -1,0 +1,145 @@
+{
+  "source_archive": "DeadSpace-1.1.33-Universal.zip",
+  "apk_member": "DeadSpace-1.1.33-Universal-SD.apk",
+  "apk_sha256": "0d3c870ae38687e1ac7e8dbf0ca8568862437491529e8ef45b818f4c38958845",
+  "asset_files": 20,
+  "asset_root_children": [
+    "EAMCore.ini",
+    "EAMToolManager.ini",
+    "alw.properties",
+    "bundle-index.txt",
+    "bundled-game.zip",
+    "downloadcontent",
+    "dpad-tilt-third-party-notices.txt"
+  ],
+  "manifest": [
+    {
+      "path": "EAMCore.ini",
+      "bytes": 3119,
+      "zip_crc32": "33c9beb3",
+      "zip_method": 8
+    },
+    {
+      "path": "EAMToolManager.ini",
+      "bytes": 70,
+      "zip_crc32": "ec2afaa0",
+      "zip_method": 8
+    },
+    {
+      "path": "alw.properties",
+      "bytes": 259,
+      "zip_crc32": "5e82bddb",
+      "zip_method": 8
+    },
+    {
+      "path": "bundle-index.txt",
+      "bytes": 94924,
+      "zip_crc32": "e096feee",
+      "zip_method": 8
+    },
+    {
+      "path": "bundled-game.zip",
+      "bytes": 163873470,
+      "zip_crc32": "bf646ac7",
+      "zip_method": 0
+    },
+    {
+      "path": "downloadcontent/config.properties",
+      "bytes": 150,
+      "zip_crc32": "1f33d957",
+      "zip_method": 0
+    },
+    {
+      "path": "downloadcontent/de.txt",
+      "bytes": 1754,
+      "zip_crc32": "08756134",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/en.txt",
+      "bytes": 1334,
+      "zip_crc32": "597b5626",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/es.txt",
+      "bytes": 1599,
+      "zip_crc32": "09c3b083",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/es_co.txt",
+      "bytes": 1687,
+      "zip_crc32": "60d094ea",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/fr.txt",
+      "bytes": 1993,
+      "zip_crc32": "c3824535",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/it.txt",
+      "bytes": 1654,
+      "zip_crc32": "897d0c3d",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/ja.txt",
+      "bytes": 1752,
+      "zip_crc32": "0ca7562e",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/ko.txt",
+      "bytes": 1740,
+      "zip_crc32": "c1784355",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/pl.txt",
+      "bytes": 1572,
+      "zip_crc32": "14835335",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/pt_BR.txt",
+      "bytes": 1595,
+      "zip_crc32": "73005a1e",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/ru.txt",
+      "bytes": 3214,
+      "zip_crc32": "cbfb4086",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/zh_CN.txt",
+      "bytes": 1132,
+      "zip_crc32": "c53437ea",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/zh_TW.txt",
+      "bytes": 1144,
+      "zip_crc32": "34ca0db5",
+      "zip_method": 8
+    },
+    {
+      "path": "dpad-tilt-third-party-notices.txt",
+      "bytes": 1249,
+      "zip_crc32": "7d25468b",
+      "zip_method": 8
+    }
+  ],
+  "EAMCore_ini": {
+    "bytes": 3119,
+    "sha256": "d5b49184291c9a56928481380e19e8ead7f2df7b031201ffad52d8f374e05335"
+  },
+  "data_zip_exists": false,
+  "bundle_index_total_bytes": 414822611,
+  "current_adapter_root": "external published cache; not the genuine APK AssetManager namespace",
+  "causes_headphone_screen_stall": "not yet established"
+}

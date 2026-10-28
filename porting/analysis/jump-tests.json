@@ -3,10 +3,10 @@
   "errors": 0,
   "failures": 0,
   "hardware_tested": false,
-  "core_sha256": "c79447a05e998e2411e88155df83d3258a6963f389d2780528d6e9812db2428b",
+  "core_sha256": "82a21986993fbfebd6d9046bfe746d53f4c5396839a3fbd8800d15f58ba8ab97",
   "fixtures_sha256": {
-    "fixture-jump.so": "dc94aa34a17b5a7d25b6c946b7ff54bef69845277744d47cc2b0f377d9e004da",
-    "fixture-jump-thumb.so": "7d5c4f2259503f6713681a4cfa50d1a86a560d2e89b7a65495275fe908115a1b"
+    "fixture-jump.so": "8c1f8ea08cbf6a1cf6e55d76b7ddab0e679a73bdb40f643f3ee56a64b99dd9d7",
+    "fixture-jump-thumb.so": "9bccbecf1e3227ba03a8cc57b956b2a35993c9cae82c82e3ec392a0db45c8795"
   },
-  "elapsed_seconds": 0.094
+  "elapsed_seconds": 0.125
 }

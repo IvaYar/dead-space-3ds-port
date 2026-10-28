@@ -12,6 +12,8 @@ Jump probe Thumb: OK cases=8 core/VFP=OK
 Jump probe counters: saves=18 restores=18 refusals=0
 String probe: 0 checks=43 units=7 bytes=17
 String cleanup: files=0 heap=0
+FS open fd: published/data/achievements.sb result=1024
+FS open fd: published/data/achievements.sb result=1024
 JNI I/O probe: 0 checks=201 bytes=3568 CRC32=4a8d9499
 JNI I/O cleanup: files=0 heap=0
 Asset probe: 0 checks=378 names=176 CRC32-xor=3a761eb9
@@ -22,6 +24,9 @@ Production preflight: bound=154 missing=234 weak=4
 Production guard: REFUSED; image unchanged
 Audit clock: emulator monotonic, excluded from supported count
 Running 209 donor constructors...
+ARENA request: sbrk bytes=16781312 caller=0025343c thread=main frame=0
+ARENA result: sbrk pointer=08923000
+ARENA request: mmap bytes=16781312 caller=002531a4 thread=main frame=0
 Donor constructors completed: 209
 JNI_OnLoad: 00010004; stored VM: MATCH
 Calling NativeOnCreate...
@@ -145,10 +150,12 @@ JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount ()Lja
 JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount 0
 JNI PushLocalFrame: . 
 JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+FS open failure: published/EAMCore.ini result=-2
 JNI AssetManager.open IOException: android/content/res/AssetManager.EAMCore.ini  EXCEPTION
 JNI PopLocalFrame: . 
 JNI PushLocalFrame: . 
 JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+FS open failure: published/eamcore.ini result=-2
 JNI AssetManager.open IOException: android/content/res/AssetManager.eamcore.ini  EXCEPTION
 JNI PopLocalFrame: . 
 JNI FindClass: com/ea/blast/PowerManagerAndroid. 
@@ -202,6 +209,7 @@ JNI CallMethod: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.SetEnabled 
 JNI accelerometer backend missing: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.SetEnabled (Z)V MISSING
 JNI runtime: startup=1 refs=13 failures=3
 Donor arenas: break=16781312 peak=16781312 mapped-pages=4097 refusals=0
+FBO state: objects=0 renderbuffers=0 bytes=0 changes=0 bound=0
 Jump contexts: saves=0 restores=0 refusals=0
 STOP Java adapter
 Phase: NativeOnDrawFrame

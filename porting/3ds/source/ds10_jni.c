@@ -1,12 +1,13 @@
 #include "ds10_jni.h"
 #include "ds_runtime.h"
+#include "ds7.h"
 #include <stdarg.h>
 #include <string.h>
 #include <stdio.h>
-enum { EAIO,ACTIVITY,MANAGER,STREAM,ASSET_FD,FILE_FD,SYSTEM,POWER,DISPLAY,QUERY,DIRECTORIES,DEVICE_ORIENTATION,ACCELEROMETER,STRING,STRING_ARRAY,CLASS_COUNT };
+enum { EAIO,ACTIVITY,MANAGER,STREAM,ASSET_FD,FILE_FD,SYSTEM,POWER,DISPLAY,QUERY,DIRECTORIES,DEVICE_ORIENTATION,ACCELEROMETER,STRING,STRING_ARRAY,TOUCH_SURFACE,CLASS_COUNT };
 static const char *classes[]={"com/ea/EAIO/EAIO","com/ea/blast/MainActivity","android/content/res/AssetManager", 
-    "java/io/InputStream","android/content/res/AssetFileDescriptor","java/io/FileDescriptor","com/ea/blast/SystemAndroidDelegate","com/ea/blast/PowerManagerAndroid","com/ea/blast/DisplayAndroidDelegate","com/eamobile/Query","com/ea/blast/GetAppDataDirectoryDelegate","com/ea/blast/DeviceOrientationHandlerAndroidDelegate","com/ea/blast/AccelerometerAndroidDelegate","java/lang/String","[Ljava/lang/String;"};
-enum { GET_INSTANCE=1,GET_ASSETS,STARTUP,OPEN,READ,SKIP,CLOSE,CONSTRUCT,PROPERTY,KEEP_AWAKE,PACKAGE_VERSION,CONTENT_READY,DIRECTORY,WIDTH,HEIGHT,DPI_X,DPI_Y,ORIENTATION,SET_ORIENTATION,FOCUS,ORIENTATION_ENABLE,UNIMPLEMENTED,ACCEL_ENABLE,ACCEL_DELAY,LIST };
+    "java/io/InputStream","android/content/res/AssetFileDescriptor","java/io/FileDescriptor","com/ea/blast/SystemAndroidDelegate","com/ea/blast/PowerManagerAndroid","com/ea/blast/DisplayAndroidDelegate","com/eamobile/Query","com/ea/blast/GetAppDataDirectoryDelegate","com/ea/blast/DeviceOrientationHandlerAndroidDelegate","com/ea/blast/AccelerometerAndroidDelegate","java/lang/String","[Ljava/lang/String;","com/ea/blast/TouchSurfaceAndroid"};
+enum { GET_INSTANCE=1,GET_ASSETS,STARTUP,OPEN,READ,SKIP,CLOSE,CONSTRUCT,PROPERTY,KEEP_AWAKE,PACKAGE_VERSION,CONTENT_READY,DIRECTORY,WIDTH,HEIGHT,DPI_X,DPI_Y,ORIENTATION,SET_ORIENTATION,FOCUS,ORIENTATION_ENABLE,UNIMPLEMENTED,ACCEL_ENABLE,ACCEL_DELAY,LIST,TOUCH_MULTI,OPEN_FD,FD_LENGTH,FD_CLOSE,FD_OBJECT,FD_OFFSET,FD_INTEGER };
 typedef struct { uint32_t owner,is_static,operation; const char *name,*signature; } Method;
 static const Method methods[]={
     {EAIO,1,STARTUP,"Startup","(Landroid/content/res/AssetManager;)V"},
@@ -14,16 +15,16 @@ static const Method methods[]={
     {ACTIVITY,0,GET_ASSETS,"getAssets","()Landroid/content/res/AssetManager;"},
     {MANAGER,0,OPEN,"open","(Ljava/lang/String;I)Ljava/io/InputStream;"},
     {MANAGER,0,OPEN,"open","(Ljava/lang/String;)Ljava/io/InputStream;"},
-    {MANAGER,0,UNIMPLEMENTED,"openFd","(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;"},
+    {MANAGER,0,OPEN_FD,"openFd","(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;"},
     {MANAGER,0,LIST,"list","(Ljava/lang/String;)[Ljava/lang/String;"},
     {STREAM,0,READ,"read","([BII)I"},
     {STREAM,0,SKIP,"skip","(J)J"},
     {STREAM,0,CLOSE,"close","()V"},
-    {ASSET_FD,0,UNIMPLEMENTED,"getLength","()J"},
-    {ASSET_FD,0,UNIMPLEMENTED,"close","()V"},
-    {ASSET_FD,0,UNIMPLEMENTED,"getFileDescriptor","()Ljava/io/FileDescriptor;"},
-    {ASSET_FD,0,UNIMPLEMENTED,"getStartOffset","()J"},
-    {FILE_FD,0,UNIMPLEMENTED,"getInt$","()I"},
+    {ASSET_FD,0,FD_LENGTH,"getLength","()J"},
+    {ASSET_FD,0,FD_CLOSE,"close","()V"},
+    {ASSET_FD,0,FD_OBJECT,"getFileDescriptor","()Ljava/io/FileDescriptor;"},
+    {ASSET_FD,0,FD_OFFSET,"getStartOffset","()J"},
+    {FILE_FD,0,FD_INTEGER,"getInt$","()I"},
     {SYSTEM,0,CONSTRUCT,"<init>","()V"},
     {POWER,0,CONSTRUCT,"<init>","()V"},
     {POWER,0,KEEP_AWAKE,"ApplyKeepAwake","(Z)V"},
@@ -46,6 +47,7 @@ static const Method methods[]={
     {ACCELEROMETER,0,CONSTRUCT,"<init>","()V"},
     {ACCELEROMETER,0,ACCEL_ENABLE,"SetEnabled","(Z)V"},
     {ACCELEROMETER,0,ACCEL_DELAY,"SetUpdateFrequency","(I)V"},
+    {TOUCH_SURFACE,1,TOUCH_MULTI,"IsTouchScreenMultiTouch","()Z"},
 #define SYSTEM_PROPERTY(name) {SYSTEM,0,PROPERTY,#name,"()Ljava/lang/String;"},
     DS11_PROPERTIES(SYSTEM_PROPERTY)
 #undef SYSTEM_PROPERTY
@@ -61,8 +63,44 @@ static DS10Ref *reference(DS10Context *c,void *handle) {
     for(unsigned i=0;i<128;++i) if(c->refs[i].token==(uint32_t)handle) return &c->refs[i];
     return NULL;
 }
+/* Dictionary reservations include waiters and recursive enters. Entries remain
+ * stable while their Java payload is live, so aliases share one native mutex. */
+static DS10Monitor *monitor_for(DS10Context *c,uint32_t kind,uint32_t identity){
+    for(unsigned i=0;i<16;++i)if(c->monitors[i].kind==kind && c->monitors[i].identity==identity)return &c->monitors[i];
+    return NULL;
+}
+static int32_t DS_JNI_SOFT monitor_enter(DSJniHandle *env,void *handle){
+    DS10Context *c=owner(env);DS10Ref *r=reference(c,handle);DS10Monitor *m=NULL;
+    if(!r){notify(c,"MonitorEnter invalid reference",NULL,NULL,NULL,2);return -1;}
+    ds7_gate_lock();m=monitor_for(c,r->kind,r->identity);
+    if(!m)for(unsigned i=0;i<16;++i)if(!c->monitors[i].kind){
+        m=&c->monitors[i];*m=(DS10Monitor){r->kind,r->identity,0x4000,0};break;
+    }
+    if(m && m->users!=UINT32_MAX)++m->users;else m=NULL;
+    ds7_gate_unlock();
+    if(!m){notify(c,"MonitorEnter capacity",NULL,NULL,NULL,2);return -1;}
+    int error=ds7_monitor_enter(&m->mutex);
+    if(error){ds7_gate_lock();--m->users;ds7_gate_unlock();notify(c,"MonitorEnter native lock",NULL,NULL,NULL,2);return -1;}
+    return 0;
+}
+static int32_t DS_JNI_SOFT monitor_exit(DSJniHandle *env,void *handle){
+    DS10Context *c=owner(env);DS10Ref *r=reference(c,handle);
+    if(!r){notify(c,"MonitorExit invalid reference",NULL,NULL,NULL,2);return -1;}
+    ds7_gate_lock();DS10Monitor *m=monitor_for(c,r->kind,r->identity);ds7_gate_unlock();
+    if(!m || ds7_monitor_exit(&m->mutex)){notify(c,"MonitorExit ownership",NULL,NULL,NULL,2);return -1;}
+    ds7_gate_lock();--m->users;ds7_gate_unlock();return 0;
+}
 static void *new_ref(DS10Context *c,uint32_t kind,uint32_t identity,int global);
 static void release_payload(DS10Context *,uint32_t,uint32_t);
+static DS10AssetFile *asset_file(DS10Context *c,const DS10Ref *r){
+    if(r && r->kind==2 && ((r->identity&255)==ASSET_FD || (r->identity&255)==FILE_FD))
+        for(unsigned i=0;i<8;++i)if(c->asset_files[i].token && c->asset_files[i].token==(r->identity>>8))return &c->asset_files[i];
+    return NULL;
+}
+static int close_asset_file(DS10AssetFile *f){
+    int result=0;if(f->fd>=0 && ds_io_generation(f->fd)==f->generation)result=ds_io_close(f->fd);
+    f->fd=-1;return result;
+}
 static DS19String *extra_string(DS10Context *c,uint32_t identity){for(DS19String *p=c->extra_strings;p;p=p->next)if((uint32_t)p==identity)return p;return NULL;}
 static DSJniString *ref_string(DS10Context *c,const DS10Ref *r){
     if(r && r->kind==4 && r->identity<DS_JNI_STRING_COUNT && c->base.strings[r->identity].used)return &c->base.strings[r->identity];
@@ -112,16 +150,34 @@ static void *DS_JNI_SOFT new_utf(DSJniHandle *env,const char *bytes) {
 }
 static void release_payload(DS10Context *c,uint32_t kind,uint32_t identity) {
     for(unsigned i=0;i<128;++i) if(c->refs[i].token && c->refs[i].kind==kind && c->refs[i].identity==identity)return;
+    DS10Monitor *monitor=monitor_for(c,kind,identity);
+    if(monitor){
+        if(monitor->users)return; /* Entered monitor keeps its payload alive. */
+        if(ds7_monitor_destroy(&monitor->mutex)){notify(c,"monitor release failed",NULL,NULL,NULL,2);return;}
+        memset(monitor,0,sizeof(*monitor));
+    }
     if(kind==3 && identity<8 && c->arrays[identity].used) {
         ds_rt_free(c->arrays[identity].bytes);memset(&c->arrays[identity],0,sizeof(c->arrays[identity]));
     }
-    if(kind==4 && identity<DS_JNI_STRING_COUNT && !c->string_holds[identity])free_text(c,identity);
+    /* Raw string views survive local-reference deletion / PopLocalFrame.
+     * JNI promises their storage until the matching Release, independently
+     * of handle lifetime. A caller retaining no usable alias leaves a bounded
+     * orphan loan, reclaimed only when all native users stop at cleanup. */
+    if(kind==4 && identity<DS_JNI_STRING_COUNT && !c->string_holds[identity] && !c->base.strings[identity].pins)free_text(c,identity);
     if(kind==5 && identity<DS19_ARRAYS)free_objects(c,identity);
     if(kind==6){DS19String **link=&c->extra_strings;while(*link && (uint32_t)*link!=identity)link=&(*link)->next;
-        if(*link && !(*link)->holds){DS19String *p=*link;*link=p->next;ds_rt_free(p->text.units);ds_rt_free(p);--c->extra_count;}}
+        if(*link && !(*link)->holds && !(*link)->string.pins){DS19String *p=*link;*link=p->next;ds_rt_free(p->text.units);ds_rt_free(p);--c->extra_count;}}
     if(kind==2 && (identity&255)==STREAM)for(unsigned i=0;i<8;++i)if(c->streams[i].token==(identity>>8)) {
         if(c->streams[i].fd>=0)ds_io_close(c->streams[i].fd);
         c->streams[i].token=0;c->streams[i].fd=-1;
+    }
+    if(kind==2 && ((identity&255)==ASSET_FD || (identity&255)==FILE_FD)){
+        for(unsigned i=0;i<128;++i){DS10Ref *r=&c->refs[i];
+            if(r->token && r->kind==2 && (r->identity>>8)==(identity>>8) &&
+               ((r->identity&255)==ASSET_FD || (r->identity&255)==FILE_FD))return;
+        }
+        DS10Ref dead={0,kind,identity,0};DS10AssetFile *f=asset_file(c,&dead);
+        if(f){close_asset_file(f);memset(f,0,sizeof(*f));}
     }
 }
 static void *new_ref(DS10Context *c,uint32_t kind,uint32_t identity,int global) {
@@ -154,7 +210,6 @@ static void delete_ref(DSJniHandle *env,void *handle,int global) {
     if(r->kind==3)for(unsigned i=0;i<16;++i)if(c->pins[i].copy && c->pins[i].array==r->identity) {
         notify(c,"DeleteRef pinned array",NULL,NULL,NULL,2);return;
     }
-    DSJniString *string=ref_string(c,r);if(string && string->pins){notify(c,"DeleteRef pinned string",NULL,NULL,NULL,2);return;}
     uint32_t kind=r->kind,identity=r->identity;r->token=0;--c->live_refs;release_payload(c,kind,identity);
 }
 static void DS_JNI_SOFT delete_global(DSJniHandle *env,void *handle){delete_ref(env,handle,1);}
@@ -191,7 +246,6 @@ static void *DS_JNI_SOFT pop_frame(DSJniHandle *env,void *result) {
         DS10Ref *r=&c->refs[i];
         if(!r->token || r->global || (r->token&0x0fffffffu)<=mark || r==escape)continue;
         if(r->kind==3)for(unsigned j=0;j<16;++j)if(c->pins[j].copy && c->pins[j].array==r->identity){notify(c,"PopLocalFrame pinned array",NULL,NULL,NULL,2);return NULL;}
-        DSJniString *string=ref_string(c,r);if(string && string->pins){notify(c,"PopLocalFrame pinned string",NULL,NULL,NULL,2);return NULL;}
     }
     for(unsigned i=0;i<128;++i) {
         DS10Ref *r=&c->refs[i];
@@ -260,6 +314,7 @@ static void DS_JNI_SOFT utf_release(DSJniHandle *env,void *handle,const char *ch
     DS18Text *t=text_for(c,string);
     if(!t->utf_pins || chars!=string->bytes){string_error(c,"ReleaseStringUTFChars pin");return;}
     --t->utf_pins;--string->pins;++c->base.releases;
+    DS10Ref *r=reference(c,handle);release_payload(c,r->kind,r->identity);
 }
 static int DS_JNI_SOFT wide_length(DSJniHandle *env,void *handle){DS10Context *c=owner(env);DSJniString *s=raw_string(c,handle);return s?(int)text_for(c,s)->length:0;}
 static const uint16_t *get_wide(DSJniHandle *env,void *handle,uint8_t *copy,int critical){
@@ -271,6 +326,7 @@ static const uint16_t *get_wide(DSJniHandle *env,void *handle,uint8_t *copy,int 
 static void release_wide(DSJniHandle *env,void *handle,const uint16_t *chars,int critical){
     DS10Context *c=owner(env);DSJniString *s=raw_string(c,handle);if(!s)return;DS18Text *t=text_for(c,s);uint32_t *pins=critical?&t->critical_pins:&t->wide_pins;
     if(!*pins || !chars || chars!=t->units){string_error(c,"ReleaseStringChars pin");return;}--*pins;--s->pins;
+    DS10Ref *r=reference(c,handle);release_payload(c,r->kind,r->identity);
 }
 static const uint16_t *DS_JNI_SOFT wide_chars(DSJniHandle *e,void *s,uint8_t *copy){return get_wide(e,s,copy,0);}
 static const uint16_t *DS_JNI_SOFT critical_chars(DSJniHandle *e,void *s,uint8_t *copy){return get_wide(e,s,copy,1);}
@@ -328,7 +384,7 @@ static DS19String *filename_string(DS10Context *c,const char *name){
 }
 static void *list_assets(DSJniHandle *env,const DS10Value *args){
     DS10Context *c=owner(env);const char *name=args?java_string(c,args[0].l):NULL;char relative[256];
-    if(!name || ds19_path(name,relative)){notify(c,"AssetManager.list path",classes[MANAGER],NULL,NULL,2);return NULL;}
+    if(!name || (c->asset_path?c->asset_path:ds19_path)(name,relative)){notify(c,"AssetManager.list path",classes[MANAGER],NULL,NULL,2);return NULL;}
     notify(c,"AssetManager.list requested",classes[MANAGER],name,NULL,0);
     if(!c->asset_list){notify(c,"AssetManager.list backend missing",classes[MANAGER],"list",NULL,1);return NULL;}
     ++c->asset_stats[0];DS19Name *names=NULL;uint32_t count=0;
@@ -398,9 +454,10 @@ static void *open_asset(DS10Context *c,const DS10Value *args,int with_mode) {
     const char *name=args?java_string(c,args[0].l):NULL;
     if(!name || (with_mode && (args[1].i<0 || args[1].i>3))){notify(c,"AssetManager.open argument",NULL,NULL,NULL,2);return NULL;}
     char path[DS_IO_PATH_BYTES],relative[256];
-    if(ds19_path(name,relative) || !relative[0]){notify(c,"AssetManager.open path",NULL,NULL,NULL,2);return NULL;}
-    strcpy(path,"published/");strcat(path,relative);
-    int fd=ds_io_open(path,0);
+    if((c->asset_path?c->asset_path:ds19_path)(name,relative) || !relative[0]){notify(c,"AssetManager.open path",NULL,NULL,NULL,2);return NULL;}
+    int fd;
+    if(c->asset_open)fd=c->asset_open(c->asset_user,relative,with_mode?args[1].i:2);
+    else{strcpy(path,"published/");strcat(path,relative);fd=ds_io_open(path,0);}
     if(fd<0){notify(c,"AssetManager.open IOException",MANAGER<CLASS_COUNT?classes[MANAGER]:NULL,name,NULL,2);return NULL;}
     for(unsigned i=0;i<8;++i)if(!c->streams[i].token && c->stream_serial<0x00ffffffu) {
         uint32_t token=++c->stream_serial;c->streams[i]=(DS10Stream){token,fd};
@@ -408,6 +465,25 @@ static void *open_asset(DS10Context *c,const DS10Value *args,int with_mode) {
         if(!ref){ds_io_close(fd);c->streams[i].token=0;}return ref;
     }
     ds_io_close(fd);notify(c,"InputStream capacity",NULL,NULL,NULL,2);return NULL;
+}
+static void *open_asset_fd(DS10Context *c,const DS10Value *args){
+    if(!c->asset_open){notify(c,"AssetManager.openFd backend missing",classes[MANAGER],"openFd",NULL,1);return NULL;}
+    const char *name=args?java_string(c,args[0].l):NULL;char relative[256];
+    if(!name || (c->asset_path?c->asset_path:ds19_path)(name,relative) || !relative[0]){
+        notify(c,"AssetManager.openFd path",classes[MANAGER],name,NULL,2);return NULL;
+    }
+    notify(c,"AssetManager.openFd requested",classes[MANAGER],name,NULL,0);
+    unsigned slot=0;while(slot<8 && c->asset_files[slot].token)++slot;
+    if(slot==8 || c->asset_file_serial==0x00ffffffu){notify(c,"AssetFileDescriptor capacity",NULL,NULL,NULL,2);return NULL;}
+    int32_t fd=c->asset_open(c->asset_user,relative,4);
+    if(fd<0){notify(c,"AssetManager.openFd IOException",classes[MANAGER],name,NULL,2);return NULL;}
+    int32_t length=ds_io_seek(fd,0,2);
+    if(length<0 || ds_io_seek(fd,0,0)<0){ds_io_close(fd);notify(c,"AssetFileDescriptor seek",NULL,NULL,NULL,2);return NULL;}
+    uint32_t token=++c->asset_file_serial;
+    DS10AssetFile *f=&c->asset_files[slot];*f=(DS10AssetFile){token,ds_io_generation(fd),fd,length};
+    void *ref=new_ref(c,2,(token<<8)|ASSET_FD,0);
+    if(!ref){close_asset_file(f);memset(f,0,sizeof(*f));}
+    return ref;
 }
 static DS10Value invoke(DSJniHandle *env,void *receiver,void *id,int is_static,char result_type,const DS10Value *args) {
     DS10Value result={0};
@@ -424,6 +500,22 @@ static DS10Value invoke(DSJniHandle *env,void *receiver,void *id,int is_static,c
     notify(c,"CallMethod",classes[m->owner],m->name,m->signature,0);
     if(query_compat)notify(c,"JNI compatibility",classes[m->owner],m->name,"ObjectMethodV for boolean",0);
     switch(m->operation) {
+        case OPEN_FD:result.l=open_asset_fd(c,args);return result;
+        case FD_LENGTH:case FD_CLOSE:case FD_OBJECT:case FD_OFFSET:case FD_INTEGER:{
+            DS10AssetFile *f=asset_file(c,r);if(!f)break;
+            if(m->operation==FD_LENGTH)result.j=f->length;
+            else if(m->operation==FD_OFFSET)result.j=0;
+            else if(m->operation==FD_OBJECT)result.l=new_ref(c,2,(f->token<<8)|FILE_FD,0);
+            else if(m->operation==FD_INTEGER)result.i=f->fd>=0 && ds_io_generation(f->fd)==f->generation?f->fd:-1;
+            else if(close_asset_file(f))notify(c,"AssetFileDescriptor.close IOException",NULL,NULL,NULL,2);
+            return result;
+        }
+        case TOUCH_MULTI:
+            if(!(c->platform.capabilities&DS11_CAP_TOUCHSCREEN)){
+                notify(c,"touch backend missing",classes[m->owner],m->name,m->signature,1);return result;
+            }
+            /* The attached New3DS resistive touchscreen has one pointer. */
+            result.i=0;return result;
         case LIST:result.l=list_assets(env,args);return result;
         case ACCEL_ENABLE:
         case ACCEL_DELAY: {
@@ -520,7 +612,7 @@ static DS10Value invoke(DSJniHandle *env,void *receiver,void *id,int is_static,c
 static void arguments(void *id,va_list args,DS10Value out[3]) {
     memset(out,0,sizeof(DS10Value)*3);const Method *m=valid_method(id);if(!m)return;
     if(m->operation==STARTUP || m->operation==OPEN || m->operation==READ)out[0].l=va_arg(args,void *);
-    if(m->operation==LIST)out[0].l=va_arg(args,void *);
+    if(m->operation==LIST || m->operation==OPEN_FD)out[0].l=va_arg(args,void *);
     if(m->operation==OPEN && strstr(m->signature,";I)"))out[1].i=va_arg(args,int);
     if(m->operation==READ){out[1].i=va_arg(args,int);out[2].i=va_arg(args,int);}
     if(m->operation==SKIP)out[0].j=va_arg(args,int64_t);
@@ -571,10 +663,12 @@ static uint8_t DS_JNI_SOFT exception_check(DSJniHandle *e){return owner(e)->pend
 static void DS_JNI_SOFT exception_clear(DSJniHandle *e){owner(e)->pending_exception=0;}
 int ds10_init(DS10Context *c,DS10Observe observe,DS10Startup startup) {
     if(c->magic==0x44533130 && (c->live_refs || c->frame_depth || c->platform.keep_awake || c->orientation_enabled || c->accelerometer))return 16;
+    if(c->magic==0x44533130)for(unsigned i=0;i<16;++i)if(c->monitors[i].kind)return 16;
     memset(c,0,sizeof(*c));ds_jni_init(&c->base);c->observe=observe;c->startup=startup;
     c->magic=0x44533130;
     ds11_platform_default(&c->platform);
     uintptr_t *t=c->base.env_functions;
+    t[217]=(uintptr_t)monitor_enter;t[218]=(uintptr_t)monitor_exit;
     t[163]=(uintptr_t)new_wide;t[164]=(uintptr_t)wide_length;t[165]=(uintptr_t)wide_chars;t[166]=(uintptr_t)wide_release;
     t[220]=(uintptr_t)wide_region;t[221]=(uintptr_t)utf_region;t[224]=(uintptr_t)critical_chars;t[225]=(uintptr_t)critical_release;
     t[168]=(uintptr_t)utf_length;t[169]=(uintptr_t)utf_chars;t[170]=(uintptr_t)utf_release;
@@ -596,10 +690,15 @@ int ds10_init(DS10Context *c,DS10Observe observe,DS10Startup startup) {
     t[200]=(uintptr_t)get_region;t[208]=(uintptr_t)set_region;return 0;
 }
 uint32_t ds10_cleanup(DS10Context *c) {
+    for(unsigned i=0;i<16;++i)if(c->monitors[i].users){notify(c,"monitor cleanup busy",NULL,NULL,NULL,2);return UINT32_MAX;}
     if(c->accelerometer && ds12_sensor_enable(c->accelerometer,0)){
         notify(c,"accelerometer cleanup failed",classes[ACCELEROMETER],NULL,NULL,2);return UINT32_MAX;
     }
     uint32_t count=c->live_refs;
+    for(unsigned i=0;i<16;++i)if(c->monitors[i].kind){
+        if(ds7_monitor_destroy(&c->monitors[i].mutex)){notify(c,"monitor cleanup failed",NULL,NULL,NULL,2);return UINT32_MAX;}
+        memset(&c->monitors[i],0,sizeof(c->monitors[i]));
+    }
     if(c->platform.keep_awake)ds11_native_keep_awake(0);
     for(unsigned i=0;i<16;++i)if(c->pins[i].copy){ds_rt_free(c->pins[i].copy);++count;}
     for(unsigned i=0;i<8;++i){
@@ -607,6 +706,7 @@ uint32_t ds10_cleanup(DS10Context *c) {
         if(c->text[i].units){free_text(c,i);++count;}
         if(c->arrays[i].used){ds_rt_free(c->arrays[i].bytes);++count;}
         if(c->streams[i].token){if(c->streams[i].fd>=0)ds_io_close(c->streams[i].fd);++count;}
+        if(c->asset_files[i].token){close_asset_file(&c->asset_files[i]);++count;}
     }
     while(c->extra_strings){DS19String *p=c->extra_strings;c->extra_strings=p->next;ds_rt_free(p->text.units);ds_rt_free(p);++count;}
     memset(c,0,sizeof(*c));return count;
@@ -641,5 +741,8 @@ void ds10_stats(DS10Context *c,uint32_t out[7]) {
     out[4]=c->live_refs;out[5]=c->peak_refs;out[6]=c->startup_calls;
 }
 void ds18_jni_stats(DS10Context *c,uint32_t out[6]){memcpy(out,c->string_stats,sizeof(c->string_stats));}
-void ds19_assets_backend(DS10Context *c,DS19List list,void *user){c->asset_list=list;c->asset_user=user;}
+void ds19_assets_backend_full(DS10Context *c,DS19List list,DS19Open open,DS19Path path,void *user){
+    c->asset_list=list;c->asset_open=open;c->asset_path=path;c->asset_user=user;
+}
+void ds19_assets_backend(DS10Context *c,DS19List list,void *user){ds19_assets_backend_full(c,list,NULL,NULL,user);}
 void ds19_jni_stats(DS10Context *c,uint32_t out[6]){memcpy(out,c->asset_stats,16);out[4]=c->extra_count;out[5]=0;for(unsigned i=0;i<DS19_ARRAYS;++i)out[5]+=c->objects[i].used;}

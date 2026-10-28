@@ -9,7 +9,7 @@ from pathlib import Path
 PORTING=Path(__file__).resolve().parents[1]
 ROOT=PORTING/'analysis/azahar-smoke';LOG=ROOT/'Azahar/sdmc/3ds/deadspace/engine-azahar-log.txt'
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--frame',type=int,default=2);args=parser.parse_args();assert 2<=args.frame<=16
+    parser=argparse.ArgumentParser();parser.add_argument('--frame',type=int,default=2);args=parser.parse_args();assert 2<=args.frame<=600
     config=LOG.parent/'capture-frame.txt';backup=config.read_bytes() if config.exists() else None;config.write_text(str(args.frame)+'\n',encoding='ascii')
     if LOG.exists():LOG.unlink()
     for stem in ('first-game-draw','first-game-frame'):
@@ -18,7 +18,7 @@ def main():
             if path.exists():path.unlink()
     output=PORTING/'analysis/native-supervised-console.txt';started=time.monotonic();text='';observed=False
     with output.open('wb') as sink:
-        p=subprocess.Popen([sys.executable,str(PORTING/'tests/smoke_engine_azahar.py'),'--case','graphics','--explore'],stdout=sink,stderr=subprocess.STDOUT)
+        p=subprocess.Popen([sys.executable,str(PORTING/'tests/smoke_engine_azahar.py'),'--case','graphics','--explore','--capture-frame',str(args.frame)],stdout=sink,stderr=subprocess.STDOUT)
         try:
             while time.monotonic()-started<45:
                 if LOG.exists():text=LOG.read_text(encoding='utf-8',errors='replace')

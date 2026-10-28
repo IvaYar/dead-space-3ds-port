@@ -144,6 +144,14 @@ class DrawTests(gl.GlesTests):
     def test_replace_alpha_texture_preserves_primary_rgb(self):
         self.quad();self.texture(format=0x1906,pixels=b'\x80'*4);self.rgba(1,0,0,.25);self.call('glTexEnvi',0x2300,0x2200,0x1e01)
         self.call('glDrawArrays',5,0,4);self.assertEqual(self.pixels(),b'\xff\0\0'*12)
+    def test_alpha_only_glyph_texture_keeps_rgb_and_modulates_coverage(self):
+        self.quad();self.texture(format=0x1906,pixels=b'\x80'*4);self.rgba(1,.5,0,1)
+        self.call('glEnable',0xbe2);self.call('glBlendFunc',0x302,0x303)
+        for mode in (0x2100,0x104,0xbe2,0x1e01):
+            with self.subTest(mode=mode):
+                self.arm.uc.mem_write(gl.PIX,b'\0'*36)
+                self.call('glTexEnvi',0x2300,0x2200,mode);self.call('glDrawArrays',5,0,4)
+                self.assertEqual(self.pixels(),bytes((128,64,0))*12)
     def test_texture_environment_color_fixed_and_integer_queries(self):
         self.arm.uc.mem_write(DATA,struct.pack('<4i',65536,32768,0,65536));self.call('glTexEnvxv',0x2300,0x2201,DATA)
         self.call('glGetTexEnvfv',0x2300,0x2201,RESULT);self.assertEqual(struct.unpack('<4f',self.arm.uc.mem_read(RESULT,16)),(1,.5,0,1))

@@ -1,8 +1,8 @@
 {
-  "tests_run": 30,
+  "tests_run": 31,
   "errors": 0,
   "failures": 0,
   "hardware_tested": false,
-  "core_sha256": "c79447a05e998e2411e88155df83d3258a6963f389d2780528d6e9812db2428b",
-  "elapsed_seconds": 6.859
+  "core_sha256": "82a21986993fbfebd6d9046bfe746d53f4c5396839a3fbd8800d15f58ba8ab97",
+  "elapsed_seconds": 7.141
 }

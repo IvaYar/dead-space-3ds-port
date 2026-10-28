@@ -6,6 +6,8 @@
 #include "ds16_pipeline.h"
 #include "ds21_matrices.h"
 #include "ds22_draw.h"
+#include "ds26_framebuffer.h"
+#include "ds30_fog.h"
 #define DS13_BINDINGS (19+DS14_BINDINGS+DS15_BINDINGS+DS16_BINDINGS+1+DS21_BINDINGS+DS22_BINDINGS)
 #define DS13_SOFT __attribute__((pcs("aapcs")))
 /* Diagnostic GLES state, clear and bounded unlit CPU triangle rendering.
@@ -22,6 +24,8 @@ typedef struct DS13Context {
     DS16State pipeline;
     DS21State *matrix;
     DS22State *draw;
+    DS26State *fbo;
+    DS30Fog *fog_state;
     uint8_t *pixels;
     int32_t viewport[4],scissor[4];
     float clear_color[4],clear_depth;

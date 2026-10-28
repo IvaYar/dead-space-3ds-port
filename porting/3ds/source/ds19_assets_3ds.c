@@ -1,13 +1,15 @@
 #include "ds19_assets.h"
 #include "ds_io.h"
+#include "ds6.h"
 #include <dirent.h>
 #include <errno.h>
 #include <string.h>
 int32_t ds19_native_list(void *user,const char *relative,DS19Name *out,uint32_t capacity){
-    (void)user;char path[DS_IO_PATH_BYTES];size_t n=strlen(relative);
-    if(sizeof(DS_IO_ROOT)+n>sizeof(path))return -1;
-    strcpy(path,DS_IO_ROOT);strcat(path,relative);DIR *dir=opendir(path);
-    if(!dir)return errno==ENOENT || errno==ENOTDIR?0:-1;
+    const char *root=user?(const char *)user:DS_IO_ROOT;
+    char path[DS_IO_PATH_BYTES];size_t n=strlen(relative),prefix=strlen(root);
+    if(prefix+n>=sizeof(path))return -1;
+    strcpy(path,root);strcat(path,relative);DIR *dir=opendir(path);
+    if(!dir){int error=ds6_host_error(errno);return error==2 || error==20?0:-1;}
     uint32_t count=0;int32_t result=0;struct dirent *entry;
     errno=0;
     while((entry=readdir(dir))){

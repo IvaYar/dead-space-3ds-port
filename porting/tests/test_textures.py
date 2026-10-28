@@ -75,7 +75,8 @@ class TextureTests(gl.GlesTests):
         self.assertEqual(self.call('glGetError'),0x505);self.assertEqual(self.query(0x8069,1),(0,));self.assertEqual(self.call('glIsTexture',a),0)
         self.assertEqual(self.arm.call('ds_runtime_init',1048576),0);self.bind(a);self.assertEqual(self.call('glIsTexture',a),1)
     def test_reallocation_allocator_oom_preserves_old_texels_and_counters(self):
-        self.assertEqual(self.arm.call('ds_runtime_init',300),0);a=self.bind();self.image()
+        limit=self.arm.call('ds15_test_object_size')+48
+        self.assertEqual(self.arm.call('ds_runtime_init',limit),0);a=self.bind();self.image()
         self.image(4,4,None);self.assertEqual(self.call('glGetError'),0x505)
         self.assertEqual(self.texel(a,1,1),(0,bytes(range(12,16))));self.assertEqual(self.stats(),(1,16,1,0))
     def test_pool_exhaustion_is_atomic_then_delete_recovers(self):

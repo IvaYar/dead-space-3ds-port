@@ -1,6 +1,10 @@
-# UTF-16 JNI пройден: следующий запрос — список ресурсов
+# JNI-строки: история адаптера
 
-**Актуальное продолжение:** [FIRST-FRAME.ru.md](FIRST-FRAME.ru.md). Первый логотип EA уже выведен в Azahar; остаётся один retained JNI loan/frame. Ниже сохранён checkpoint DS18, а каталоги описаны в [JNI-ASSETS.ru.md](JNI-ASSETS.ru.md).
+**Текущее состояние:** [SCENE-RENDERER.ru.md](SCENE-RENDERER.ru.md). Меню, касания, fog и texture combiners пройдены в Azahar; следующий запрос — `glLightModelfv`. Проходят511 core ARM-тестов. Английский донор1.1.33, перевод отложен. Более ранние «новейшие» записи ниже сохранены как история.
+
+**Новейшее продолжение:** [INPUT-SAVES.ru.md](INPUT-SAVES.ru.md): original touch callback, приватные descriptor saves,240 кадров и368 core-тестов. Меню пока нет; следующим требует исправления APK AssetManager namespace.
+
+**Актуальное продолжение:** [HEADPHONE-SCREEN.ru.md](HEADPHONE-SCREEN.ru.md). В Azahar завершены120 кадров, экран с персонажем/наушниками и текстом. Local frames закрываются: заимствованный version-string payload живёт независимо от удалённой JNI reference до cleanup. Прежний запрет pinned PopLocalFrame ниже описывает историческую реализацию DS18, а не текущий контракт. Проходят24 string-теста и336 core-тестов. Каталоги — [JNI-ASSETS.ru.md](JNI-ASSETS.ru.md).
 
 Движок в **Unicorn и Azahar прошёл JNI NewString /slot163**. Новая остановка — **`android/content/res/AssetManager.list("")`**, сигнатура `(Ljava/lang/String;)[Ljava/lang/String;`, второй `NativeOnDrawFrame`. Запрос пустого пути подтверждён диагностикой аргумента; `list` ещё не реализован.
 

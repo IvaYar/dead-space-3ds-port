@@ -9,6 +9,7 @@ int ds11_property(const DS11Platform *p,const char *method,char *out,uint32_t ca
     if(!p || !method || !out || !capacity)return -1;
     const char *value=NULL;char number[16];
     if(!strcmp(method,"GetAccelerometerCount"))value=p->capabilities&DS11_CAP_ACCELEROMETER?"1":"0";
+    else if(!strcmp(method,"GetTouchScreenCount"))value=p->capabilities&DS11_CAP_TOUCHSCREEN?"1":"0";
     else if(!strcmp(method,"GetChipset"))value="ARM11/PICA200";
     else if(!strcmp(method,"GetManufacturer"))value="Nintendo";
     else if(!strcmp(method,"GetDeviceModel"))value="New Nintendo 3DS";

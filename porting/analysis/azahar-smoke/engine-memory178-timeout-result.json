@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "memory_mib": 178,
+  "reason": "No native SD journal; host process exceeded wall budget during startup",
+  "hardware_tested": false
+}

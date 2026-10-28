@@ -1,0 +1,41 @@
+{
+  "supported_android_arm_flags": {
+    "O_RDONLY": 0,
+    "O_WRONLY": 1,
+    "O_RDWR": 2,
+    "O_CREAT": 64,
+    "O_EXCL": 128,
+    "O_TRUNC": 512,
+    "O_APPEND": 1024,
+    "O_LARGEFILE": 131072
+  },
+  "bionic_revision": "android-2.3.3_r1",
+  "sources": {
+    "fcntl-arm-gingerbread.h": {
+      "url": "https://raw.githubusercontent.com/aosp-mirror/platform_bionic/android-2.3.3_r1/libc/kernel/arch-arm/asm/fcntl.h",
+      "sha256": "51628a6fd51f86cdeec3d140962b6a8024801a2f09087b10f895cd113efaf71c"
+    },
+    "fcntl-generic-gingerbread.h": {
+      "url": "https://raw.githubusercontent.com/aosp-mirror/platform_bionic/android-2.3.3_r1/libc/kernel/common/asm-generic/fcntl.h",
+      "sha256": "f6129a52ce1b47e41f8c8738abb48ebb2e230d1ced38b1ae0e36933533fa6140"
+    }
+  },
+  "mount_policy": "writes confined to appdata test-output namespace; bundled assets remain read-only",
+  "native_flags": "translated to newlib constants, never passed through as Android integers",
+  "horizon_fs_errno": {
+    "module": 17,
+    "not_found_descriptions": [
+      112,
+      113,
+      120
+    ],
+    "exists_descriptions": [
+      180,
+      185,
+      190
+    ],
+    "unknown_errors": "EIO",
+    "observed_exists_result_hex": "c82044be",
+    "reference": "https://github.com/azahar-emu/azahar/blob/master/src/core/file_sys/errors.h"
+  }
+}

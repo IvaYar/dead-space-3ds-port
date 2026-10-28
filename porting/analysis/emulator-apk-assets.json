@@ -1,0 +1,138 @@
+{
+  "apk_sha256": "0d3c870ae38687e1ac7e8dbf0ca8568862437491529e8ef45b818f4c38958845",
+  "files": 20,
+  "bytes": 163995411,
+  "receipt": "DS_APK_ASSETS_V1 0d3c870ae38687e1ac7e8dbf0ca8568862437491529e8ef45b818f4c38958845 20",
+  "root_children": [
+    "EAMCore.ini",
+    "EAMToolManager.ini",
+    "alw.properties",
+    "bundle-index.txt",
+    "bundled-game.zip",
+    "downloadcontent",
+    "dpad-tilt-third-party-notices.txt"
+  ],
+  "manifest": [
+    {
+      "path": "EAMCore.ini",
+      "bytes": 3119,
+      "sha256": "d5b49184291c9a56928481380e19e8ead7f2df7b031201ffad52d8f374e05335",
+      "zip_method": 8
+    },
+    {
+      "path": "EAMToolManager.ini",
+      "bytes": 70,
+      "sha256": "f9205cfe6b98071afadd7eebaa6fc64bc18247376fe97d5cbf08b903666fc93d",
+      "zip_method": 8
+    },
+    {
+      "path": "alw.properties",
+      "bytes": 259,
+      "sha256": "f52ad321063450eac25530e092382519b40419a24538ad2817e4d4ec717838e3",
+      "zip_method": 8
+    },
+    {
+      "path": "bundle-index.txt",
+      "bytes": 94924,
+      "sha256": "9de0b7a07331907e4b2781b30af3e05c1b4e91eb6ed09f990b2c162ef9da1ff3",
+      "zip_method": 8
+    },
+    {
+      "path": "bundled-game.zip",
+      "bytes": 163873470,
+      "sha256": "b730f7471da529c84b09d53389e47db27e9d6b1bca72b26b90e195583722875e",
+      "zip_method": 0
+    },
+    {
+      "path": "downloadcontent/config.properties",
+      "bytes": 150,
+      "sha256": "2d48a54b2b1cc26e237deafbb480b1f9a1fea02aa16e04742debbee3424b90f3",
+      "zip_method": 0
+    },
+    {
+      "path": "downloadcontent/de.txt",
+      "bytes": 1754,
+      "sha256": "b3ad2a6287c77cea19e1beb461a40b648b65856bff758ecd4d7253613da1e0f8",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/en.txt",
+      "bytes": 1334,
+      "sha256": "7b0c977fa2e1fddf81b775a3ce4e0bb2013cb05549f2fd4c402d102fb1176cf8",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/es.txt",
+      "bytes": 1599,
+      "sha256": "d7efa8e3fdc5f0875c6ca934ecc22fb64b1dd7ef283053165e974b87b0422640",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/es_co.txt",
+      "bytes": 1687,
+      "sha256": "41d6a21d25c94594dd4f34e79061df1ac4034ec2860cfd351ca5696e0e83e421",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/fr.txt",
+      "bytes": 1993,
+      "sha256": "606ce7f6fa0497659bcf266254ec65257a08d42cf865825663c8d2001b82708e",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/it.txt",
+      "bytes": 1654,
+      "sha256": "c0ae703f4187d060d7ecf8f68ba3b66d81f76e420ee0a43022dc6ce8b74dd60b",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/ja.txt",
+      "bytes": 1752,
+      "sha256": "6363187705c25ee1a18f6f1097f49fc8d6a717084c3b8bdbf719bdb84351967e",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/ko.txt",
+      "bytes": 1740,
+      "sha256": "c75bd4da8eb0d60c82676dae3135e50f8f34c306fea177d36bad300d300a31d4",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/pl.txt",
+      "bytes": 1572,
+      "sha256": "a339b4f50019d8491f12db3538daf30e9f08fce8a3df5a7902e35df562bcfc57",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/pt_BR.txt",
+      "bytes": 1595,
+      "sha256": "2b91546caf193ea5b68380d96ce36bb22b6b39f2ca898997bde9a54b78ce0a4c",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/ru.txt",
+      "bytes": 3214,
+      "sha256": "b48e49a9beed78a15cf220d064c9cbfce7aaed05ce1276ee8ff119f946508ed5",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/zh_CN.txt",
+      "bytes": 1132,
+      "sha256": "479ffabe59c087068f3da816252a73ad5216318c3ff03b5ac7734a478984b637",
+      "zip_method": 8
+    },
+    {
+      "path": "downloadcontent/zh_TW.txt",
+      "bytes": 1144,
+      "sha256": "6b250911ec4813ac4bef575d7d3a842204896e94ebb6d5a432de4ec795910a05",
+      "zip_method": 8
+    },
+    {
+      "path": "dpad-tilt-third-party-notices.txt",
+      "bytes": 1249,
+      "sha256": "a79d794b1cd9ca095b14fbe4cfc7291dae6e08df02e03bff2c0f4c421a15b077",
+      "zip_method": 8
+    }
+  ],
+  "game_files_published": false
+}

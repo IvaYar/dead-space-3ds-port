@@ -1,0 +1,13 @@
+{
+  "purpose": "Observed original donor string loan before the lifetime correction; historical diagnostic, not the current checkpoint",
+  "cxi_sha256": "506e1eea24b08602d84c92e51ff28dfa22311ea2c376752b7d998c343626c1d7",
+  "log_sha256": "396c90584c60197271b385950af51ed3916744cd3de6770e195250ae77709f3d",
+  "observations": [
+    "JNI PopLocalFrame pinned string: .  EXCEPTION",
+    "JNI pinned payload: slot=2 text=1.1.33 Universal SD (Default) pins=1 holds=0 frame-mark=0000013a",
+    "JNI pinned alias: token=a0000164 global=0 survives=0",
+    "JNI checkpoint: pending=1 failures=4 refs=21 frame-depth=1 string-loans=1"
+  ],
+  "contract": "Raw string storage remains valid until matching Release, independently of local reference lifetime",
+  "source": "https://developer.android.com/ndk/guides/jni-tips"
+}

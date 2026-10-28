@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 static int component(const char *s,uint32_t n){return n && !(n==1 && s[0]=='.') && !(n==2 && s[0]=='.' && s[1]=='.');}
-int ds19_path(const char *input,char out[256]){
+static int asset_path(const char *input,char out[256],int aliases){
     if(!input || !out)return -1;
     uint32_t n=0;while(n<256 && input[n])++n;if(n==256)return -1;
     uint16_t units[255];int count=ds18_decode(input,n,units,255);if(count<0)return -1;
@@ -18,18 +18,24 @@ int ds19_path(const char *input,char out[256]){
         else{path[pos++]=(char)(0xf0|(v>>18));path[pos++]=(char)(0x80|((v>>12)&63));path[pos++]=(char)(0x80|((v>>6)&63));path[pos++]=(char)(0x80|(v&63));}
     }path[pos]=0;
     const char *p=path;
-    if(!strncmp(p,"appbundle:/published/",21))p+=21;
-    else if(!strcmp(p,"appbundle:/published"))p+=20;
-    else if(!strncmp(p,"published/",10))p+=10;
-    else if(!strcmp(p,"published"))p+=9;
+    if(aliases){
+        if(!strncmp(p,"appbundle:/published/",21))p+=21;
+        else if(!strcmp(p,"appbundle:/published"))p+=20;
+        else if(!strncmp(p,"published/",10))p+=10;
+        else if(!strcmp(p,"published"))p+=9;
+    }
     if(*p=='/')return -1;
-    uint32_t length=(uint32_t)strlen(p);if(length && p[length-1]=='/')--length;
+    uint32_t length=(uint32_t)strlen(p),checked=length;
+    if(checked && p[checked-1]=='/')--checked;
+    if(aliases)length=checked;
     uint32_t start=0;
-    for(uint32_t i=0;i<length;++i){unsigned char c=(unsigned char)p[i];if(c==':' || c=='\\' || c<32 || c==127)return -1;
+    for(uint32_t i=0;i<checked;++i){unsigned char c=(unsigned char)p[i];if(c==':' || c=='\\' || c<32 || c==127)return -1;
         if(c=='/'){if(!component(p+start,i-start))return -1;start=i+1;}}
-    if(length && !component(p+start,length-start))return -1;
+    if(checked && !component(p+start,checked-start))return -1;
     memcpy(out,p,length);out[length]=0;return 0;
 }
+int ds19_path(const char *input,char out[256]){return asset_path(input,out,1);}
+int ds19_apk_path(const char *input,char out[256]){return asset_path(input,out,0);}
 int ds19_name_units(const char *input,uint16_t out[255]){
     uint32_t length=0;while(length<256 && input[length])++length;if(!length || length==256 || !component(input,length))return -1;
     uint32_t n=0;for(uint32_t i=0;i<length;){uint32_t a=(uint8_t)input[i++],v,continuations,min;

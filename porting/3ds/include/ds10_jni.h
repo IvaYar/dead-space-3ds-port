@@ -14,6 +14,8 @@ typedef struct { uint32_t token,kind,identity,global; } DS10Ref;
 typedef struct { uint8_t *bytes; uint32_t size,used; } DS10Array;
 typedef struct { void *copy; uint32_t array; } DS10Pin;
 typedef struct { uint32_t token; int32_t fd; } DS10Stream;
+typedef struct {uint32_t token,generation;int32_t fd;int64_t length;} DS10AssetFile;
+typedef struct {uint32_t kind,identity,mutex,users;} DS10Monitor;
 typedef struct { uint32_t mark; } DS11Frame;
 typedef struct {
     DSJniContext base;
@@ -21,6 +23,9 @@ typedef struct {
     DS10Array arrays[8];
     DS10Pin pins[16];
     DS10Stream streams[8];
+    DS10AssetFile asset_files[8];
+    DS10Monitor monitors[16];
+    uint32_t asset_file_serial;
     DS10Observe observe;
     DS10Startup startup;
     uint32_t pending_exception,lookups,calls,failures,live_refs,peak_refs,startup_calls;
@@ -36,6 +41,8 @@ typedef struct {
     DS19String *extra_strings;
     uint32_t extra_count;
     DS19List asset_list;
+    DS19Open asset_open;
+    DS19Path asset_path;
     void *asset_user;
     uint32_t asset_stats[4]; /* list calls, names returned, element gets, sets */
     uint32_t query_object_bool_compat;
@@ -53,12 +60,16 @@ typedef struct {
 /* Context must initially be zeroed; reinit refuses outstanding objects. */
 int ds10_init(DS10Context *context,DS10Observe observe,DS10Startup startup);
 /* Caller must first stop all JNI users. Returns resources reclaimed, or
- * UINT32_MAX if sensor disable fails (context retained so caller can retry). */
+ * UINT32_MAX if monitors remain entered or sensor disable fails (context
+ * retained so caller can retry). Never force-unlocks another native thread. */
 uint32_t ds10_cleanup(DS10Context *context);
 uint32_t ds10_context_size(void);
 void ds10_stats(DS10Context *context,uint32_t out[7]);
 void ds18_jni_stats(DS10Context *,uint32_t out[6]);
 void ds19_assets_backend(DS10Context *,DS19List,void *);
+/* Set all three operations together, before native users start. NULL open/path
+ * retains the legacy published-cache profile; full APK profiles supply both. */
+void ds19_assets_backend_full(DS10Context *,DS19List,DS19Open,DS19Path,void *);
 void ds19_jni_stats(DS10Context *,uint32_t out[6]);
 void ds10_query_compat(DS10Context *context,int enabled);
 void ds11_orientation_backend(DS10Context *context,DS11Orientation callback,int orientation);
