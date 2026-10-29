@@ -1,0 +1,7 @@
+{
+  "3ds/build-emulator/engine-audit-178.cxi": "ffb0be375d0bbef61f1fd58faf0f052a41326d0825995a52eb49cd7cc6a2e8d8",
+  "3ds/build-gpu-engine/engine-gpu.cxi": "07a9262285e1254447067af40ae947fa18e7ae69be1daaf2ca503717b40350fa",
+  "analysis/gpu-safety/first-game-frame.raw": "3080a3471c7c805a93804088227a57d563cf8f2b52266b0bf0fb141a1b7a4850",
+  "analysis/gpu-safety/first-game-frame.png": "3410c1d5776fa32c658747f30a373292d781d078e412248d589a0866d80808a5",
+  "analysis/gpu-engine-first/first-game-frame.raw": "3080a3471c7c805a93804088227a57d563cf8f2b52266b0bf0fb141a1b7a4850"
+}

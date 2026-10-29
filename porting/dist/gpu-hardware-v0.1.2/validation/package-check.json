@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "version": "0.1.2",
+  "title_id": "000400000FDE6800",
+  "cia_sha256": "a155ed7bb1e1ab301b1e6f2c212985ce66797b9d44a8e4761bc7ab7ee899e72e",
+  "hash_checks": [
+    "\\- Hash: (GOOD) 411FD53FFAA48A38D7E9DD77FCA7084FADCCDE33B11ACEEBBE9DEA8A29003C8B",
+    "Exheader hash: (GOOD)   551C0AE9A509E31EEFCA67B160B4A452B64776C53CABEA77A8F467D6DDD08CD3",
+    "ExeFS hash: (GOOD)      4DA52D576A2A2B4675E054C663FDDB124E559A84DCF17A5D9EA031397C4ACCA6",
+    "Section hash: (GOOD)    B10ED2A08794544226DA6AB47F2CF395F701C9A9A4EC9E4D8ADEA6D15807E971",
+    "Section hash: (GOOD)    33A970C7B0850E2B8B74B4BD5DF604182F3EAD3AE20D2455FAF4C4A2DC2BC415",
+    "Section hash: (GOOD)    91547C48932189131C9A50013C7FE7F10DC629D51B9283C793CECB95236A63C4",
+    "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+  ],
+  "homebrew_test_signatures": true,
+  "rx_and_donor_execution_symbols_absent": true,
+  "cpu_vram_mapping": "read-only",
+  "inactive_transfer_verified": true,
+  "v0.1.0_pixel_sha_unchanged": true,
+  "fault_injection_absent_from_release": true,
+  "timeout_fault_scenarios_passed": [
+    "vblank0",
+    "vblank1",
+    "queue-after-submit"
+  ],
+  "hardware_tested": false,
+  "diagnostic_only": true,
+  "hardware_hang_fixed": false
+}

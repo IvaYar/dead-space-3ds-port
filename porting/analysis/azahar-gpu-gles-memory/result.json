@@ -1,16 +1,17 @@
 {
   "passed": true,
-  "gpu_draws": 19,
-  "gpu_triangles": 2766,
-  "gpu_uploads": 4,
+  "gpu_draws": 22,
+  "gpu_triangles": 2772,
+  "gpu_uploads": 5,
   "gpu_bytes": 262144,
   "cpu_fragments": 0,
   "cpu_samples": 0,
+  "unmapped_accesses": 0,
   "engine_memory": true,
   "scope": "GLES adapter GPU fragments; original game not called",
   "hardware_tested": false,
   "emulator_sd_isolated": true,
-  "cxi_sha256": "dd0d5472160c72d086271dd2882146b2eab3c4cde0d0d9402afc2204ec8a5861",
+  "cxi_sha256": "e6422e886bc0e79f29ccd0cb6b9f922b91c49587439942530b2ec2d3be97dd0e",
   "png_sha256": [
     "66072f89440fc624c466760e5d248226afb89a0ae8ecf29f9c375c1d500f0110",
     "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
@@ -18,7 +19,9 @@
     "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
     "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
     "819edd88f5fc59c64977f5dcd2dab93876beb9b5ef577528047de30a3686fe2a",
-    "4054ba2c17136dcd85eb97df731f72c3b745b06c154ba1c4ed1a138b9b5f1dde"
+    "4054ba2c17136dcd85eb97df731f72c3b745b06c154ba1c4ed1a138b9b5f1dde",
+    "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
+    "e44426538c3baf7506390ee18364d9926031ae115eaeb337be317c289f032451"
   ],
-  "elapsed_seconds": 0.5
+  "elapsed_seconds": 0.625
 }

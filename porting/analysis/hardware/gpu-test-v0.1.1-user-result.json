@@ -1,0 +1,24 @@
+{
+  "version": "0.1.1",
+  "cia_sha256": "acb4875201c713ba90fcd1ce8df6275ff6e6588ba2d2d64c6f0658b44f359534",
+  "hardware_tested": true,
+  "passed": false,
+  "status": "hardware hard hang after successful attach, before CASE 0 PASS",
+  "evidence": "User reports full console hang after A requiring held POWER. Received native SD log ends with ATTACH OK; user reports result.json absent.",
+  "last_completed_case": null,
+  "hardware_log_received": true,
+  "crash_dump_received": false,
+  "cause_confirmed": false,
+  "hypothesis": "A blocking wait during first-frame setup/presentation is a candidate, not established. Existing log cannot distinguish vertex setup, initial clear/FrameBegin, draw, FrameEnd/FrameSync/next FrameBegin, cache invalidation/audit, pixel reads, or capture I/O.",
+  "next_step": "Add flushed phase markers around first-frame clear/draw, individual C3D waits, cache invalidation/audit, and capture. Prefer bounded diagnostic waits where SDK permits; do not change rendering/UV/filtering or repeat unchanged v0.1.1. No new CIA built from this evidence alone.",
+  "hardware_log": "gpu-test-v0.1.1-user.log",
+  "hardware_log_sha256": "52b434c95dcb43b8adb79956d1f8ffdfeb762490a7ebf20842f13e89cad5aeca",
+  "last_log_line": "ATTACH OK: white texture transfer verified",
+  "attach_completed": true,
+  "inactive_texture_transfer_verified": true,
+  "result_json_received": false,
+  "result_json_absent_reported": true,
+  "checks_this_update": [
+    "Read received native log and traced exact existing first-case/Citro3D control flow; no runtime tests repeated"
+  ]
+}

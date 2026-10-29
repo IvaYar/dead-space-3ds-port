@@ -1,5 +1,5 @@
 """Check actual GPU pixels produced through the game's GLES binding layer."""
-import os,ctypes as C,json,time,zlib,struct,hashlib,sys
+import os,ctypes as C,json,time,zlib,struct,hashlib,sys,re
 from pathlib import Path
 P=Path(__file__).resolve().parents[1]
 ENGINE_MEMORY='--engine-memory' in sys.argv[1:]
@@ -28,8 +28,10 @@ def main():
     core.retro_unload_game();core.retro_deinit()
     assert not error.exists(),error.read_text() if error.exists() else ''
     assert meta.exists(),'No GLES GPU result; inspect isolated screen and emulator log'
+    memory_errors=re.findall(r'.*unmapped (?:Read|Write)\w*.*',(f.ROOT/'azahar-host.log').read_text(errors='replace'))
+    assert not memory_errors,memory_errors[:8]
     m=json.loads(meta.read_text());images=[];pixels=[]
-    for case in range(7):
+    for case in range(9):
         raw=(card/f'gpu-gles-{case}.raw').read_bytes();assert len(raw)==192000
         rgb=bytearray()
         for y in range(239,-1,-1):
@@ -50,9 +52,12 @@ def main():
     near(4,200,150,(0,255,0));near(4,200,210,(255,0,0))
     near(5,100,120,(0,255,0));near(5,300,120,(0,255,0))
     near(6,100,120,(0,0,255));near(6,300,120,(255,0,0))
-    assert m['passed'] and m['gpu_draws']==19 and m['gpu_triangles']==2766 and m['gpu_uploads']==4
+    near(7,80,40,(0,0,255));near(7,320,40,(255,255,255))
+    near(7,80,200,(255,0,0));near(7,320,200,(0,255,0))
+    near(8,100,120,(255,0,0));near(8,300,120,(255,0,0))
+    assert m['passed'] and m['gpu_draws']==22 and m['gpu_triangles']==2772 and m['gpu_uploads']==5
     assert m['cpu_fragments']==m['cpu_samples']==0
-    report={**m,'engine_memory':ENGINE_MEMORY,'scope':'GLES adapter GPU fragments; original game not called','hardware_tested':False,'emulator_sd_isolated':True,
+    report={**m,'unmapped_accesses':len(memory_errors),'engine_memory':ENGINE_MEMORY,'scope':'GLES adapter GPU fragments; original game not called','hardware_tested':False,'emulator_sd_isolated':True,
         'cxi_sha256':hashlib.sha256(app.read_bytes()).hexdigest(),'png_sha256':images,'elapsed_seconds':round(time.monotonic()-start,3)}
     (f.ROOT/'result.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()

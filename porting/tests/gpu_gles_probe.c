@@ -28,6 +28,7 @@ typedef void (*Pointer)(int32_t,uint32_t,int32_t,const void*) DS13_SOFT;
 typedef void (*Draw)(uint32_t,int32_t,int32_t) DS13_SOFT;
 typedef void (*Two)(uint32_t,uint32_t) DS13_SOFT;
 typedef void (*Names)(int32_t,uint32_t*) DS13_SOFT;
+typedef void (*Delete)(int32_t,const uint32_t*) DS13_SOFT;
 typedef void (*Parameter)(uint32_t,uint32_t,int32_t) DS13_SOFT;
 typedef void (*Image)(uint32_t,int32_t,int32_t,int32_t,int32_t,int32_t,uint32_t,uint32_t,const void*) DS13_SOFT;
 typedef void (*Box)(int32_t,int32_t,int32_t,int32_t) DS13_SOFT;
@@ -99,6 +100,22 @@ int main(void){
     ((Box)fn("glScissor"))(200,0,200,240);((One)fn("glEnable"))(0xc11);
     ((Color)fn("glColor4f"))(1,0,0,1);((Draw)fn("glDrawArrays"))(5,0,4);
     if(((Error)fn("glGetError"))() || ds34_present(&ctx) || capture(6))goto wait;
+    /* Exercise a live unit 1, then delete it with its draw still queued and
+     * render with that GLES stage disabled. No NULL descriptors are legal. */
+    ((One)fn("glDisable"))(0xc11);
+    ((One)fn("glActiveTexture"))(0x84c1);((One)fn("glClientActiveTexture"))(0x84c1);
+    uint32_t second=0;((Names)fn("glGenTextures"))(1,&second);((Two)fn("glBindTexture"))(0xde1,second);
+    ((Parameter)fn("glTexParameteri"))(0xde1,0x2801,0x2600);((Parameter)fn("glTexParameteri"))(0xde1,0x2800,0x2600);
+    ((Parameter)fn("glTexParameteri"))(0xde1,0x2802,0x812f);((Parameter)fn("glTexParameteri"))(0xde1,0x2803,0x812f);
+    ((Image)fn("glTexImage2D"))(0xde1,0,0x1908,2,2,0,0x1908,0x1401,rgba);
+    ((Pointer)fn("glTexCoordPointer"))(2,0x1406,0,uv);((One)fn("glEnableClientState"))(0x8078);
+    ((One)fn("glEnable"))(0xde1);((Color)fn("glColor4f"))(1,1,1,1);
+    ((Draw)fn("glDrawArrays"))(5,0,4);
+    if(((Error)fn("glGetError"))() || ds34_present(&ctx) || capture(7))goto wait;
+    ((Draw)fn("glDrawArrays"))(5,0,4);((One)fn("glDisable"))(0xde1);
+    ((Delete)fn("glDeleteTextures"))(1,&second);
+    ((Color)fn("glColor4f"))(1,0,0,1);((Draw)fn("glDrawArrays"))(5,0,4);
+    if(((Error)fn("glGetError"))() || ds34_present(&ctx) || capture(8))goto wait;
     uint32_t gpu[4],cpu[4];ds34_stats(gpu);ds22_stats(&ctx,cpu);FILE *f=fopen("sdmc:/3ds/deadspace/gpu-gles-result.json","w");
     if(f){fprintf(f,"{\"passed\":true,\"gpu_draws\":%lu,\"gpu_triangles\":%lu,\"gpu_uploads\":%lu,\"gpu_bytes\":%lu,\"cpu_fragments\":%lu,\"cpu_samples\":%lu}\n",(unsigned long)gpu[0],(unsigned long)gpu[1],(unsigned long)gpu[2],(unsigned long)gpu[3],(unsigned long)cpu[2],(unsigned long)cpu[3]);fclose(f);}
     printf("GPU GLES PROBE COMPLETED\n");

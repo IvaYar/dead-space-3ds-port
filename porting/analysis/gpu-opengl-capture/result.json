@@ -1,0 +1,855 @@
+{
+  "date_local": "2026-10-29",
+  "diagnostic_cycles": 2,
+  "control_frame_fixed": false,
+  "text_comparison_valid": false,
+  "stop_reason": "Two authorized cycles completed; control still fails. Further runtime experiments deferred.",
+  "cycles": [
+    {
+      "cycle": 1,
+      "render_target": "RGB8",
+      "cxi_sha256": "6b8d08c6d6c470f9fc55246b347d451261f4773fb553f5914398e7db0eff21ac",
+      "cases": [
+        {
+          "case": 0,
+          "filter": "NEAREST",
+          "pattern": "magnified lines/checker",
+          "pixels_over_tolerance": 16797,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              25,
+              0
+            ],
+            [
+              26,
+              0
+            ],
+            [
+              27,
+              0
+            ],
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 1,
+          "filter": "LINEAR",
+          "pattern": "magnified lines/checker",
+          "pixels_over_tolerance": 28061,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              20,
+              0
+            ],
+            [
+              21,
+              0
+            ],
+            [
+              22,
+              0
+            ],
+            [
+              23,
+              0
+            ],
+            [
+              24,
+              0
+            ],
+            [
+              25,
+              0
+            ],
+            [
+              26,
+              0
+            ],
+            [
+              27,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 2,
+          "filter": "NEAREST",
+          "pattern": "fractional UV",
+          "pixels_over_tolerance": 960,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              42,
+              28
+            ],
+            [
+              44,
+              28
+            ],
+            [
+              46,
+              28
+            ],
+            [
+              48,
+              28
+            ],
+            [
+              50,
+              28
+            ],
+            [
+              43,
+              29
+            ],
+            [
+              45,
+              29
+            ],
+            [
+              47,
+              29
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 3,
+          "filter": "LINEAR",
+          "pattern": "fractional UV",
+          "pixels_over_tolerance": 2110,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ],
+            [
+              33,
+              0
+            ],
+            [
+              34,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 4,
+          "filter": "NEAREST",
+          "pattern": "exact texel boundary",
+          "pixels_over_tolerance": 988,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              43,
+              28
+            ],
+            [
+              45,
+              28
+            ],
+            [
+              47,
+              28
+            ],
+            [
+              49,
+              28
+            ],
+            [
+              43,
+              29
+            ],
+            [
+              45,
+              29
+            ],
+            [
+              47,
+              29
+            ],
+            [
+              49,
+              29
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 5,
+          "filter": "LINEAR",
+          "pattern": "exact texel boundary",
+          "pixels_over_tolerance": 2110,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ],
+            [
+              33,
+              0
+            ],
+            [
+              34,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 6,
+          "filter": "NEAREST",
+          "pattern": "fractional alpha atlas",
+          "pixels_over_tolerance": 911,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              43,
+              29
+            ],
+            [
+              44,
+              29
+            ],
+            [
+              47,
+              29
+            ],
+            [
+              48,
+              29
+            ],
+            [
+              43,
+              30
+            ],
+            [
+              44,
+              30
+            ],
+            [
+              47,
+              30
+            ],
+            [
+              48,
+              30
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 7,
+          "filter": "LINEAR",
+          "pattern": "fractional alpha atlas",
+          "pixels_over_tolerance": 2078,
+          "max_channel_error": 222,
+          "first_mismatches": [
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ],
+            [
+              33,
+              0
+            ],
+            [
+              34,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 8,
+          "filter": "untextured",
+          "pattern": "asymmetric RGB control",
+          "pixels_over_tolerance": 11600,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ],
+            [
+              33,
+              0
+            ],
+            [
+              34,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ],
+          "passed": false
+        }
+      ],
+      "color_histogram": {
+        "cpu": {
+          "black": 88000,
+          "red": 2000,
+          "green": 2000,
+          "blue": 2000,
+          "white": 2000,
+          "raw_sha256": "b02e2ac096df8cb1a2ebc56c7238f2031fea722fb7ecad26ba8f00a8879c7b53"
+        },
+        "gpu": {
+          "black": 87600,
+          "red": 2120,
+          "green": 2080,
+          "blue": 2120,
+          "white": 2080,
+          "raw_sha256": "6193ebb9f37238fd4b22de7013347e28a1bf5a5499a73298ccecc6ed470645b1"
+        }
+      },
+      "host_capture_state_samples": 64,
+      "recorded_gl_errors": 0,
+      "invalid_accesses": 0
+    },
+    {
+      "cycle": 2,
+      "render_target": "RGBA8",
+      "cxi_sha256": "bd7b6fc60438c9bfdf8c388b2ba6937e7892f8c1877b0a1e5e400b02c16a0ddb",
+      "cases": [
+        {
+          "case": 0,
+          "filter": "NEAREST",
+          "pattern": "magnified lines/checker",
+          "pixels_over_tolerance": 16797,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              25,
+              0
+            ],
+            [
+              26,
+              0
+            ],
+            [
+              27,
+              0
+            ],
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 1,
+          "filter": "LINEAR",
+          "pattern": "magnified lines/checker",
+          "pixels_over_tolerance": 28061,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              20,
+              0
+            ],
+            [
+              21,
+              0
+            ],
+            [
+              22,
+              0
+            ],
+            [
+              23,
+              0
+            ],
+            [
+              24,
+              0
+            ],
+            [
+              25,
+              0
+            ],
+            [
+              26,
+              0
+            ],
+            [
+              27,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 2,
+          "filter": "NEAREST",
+          "pattern": "fractional UV",
+          "pixels_over_tolerance": 960,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              42,
+              28
+            ],
+            [
+              44,
+              28
+            ],
+            [
+              46,
+              28
+            ],
+            [
+              48,
+              28
+            ],
+            [
+              50,
+              28
+            ],
+            [
+              43,
+              29
+            ],
+            [
+              45,
+              29
+            ],
+            [
+              47,
+              29
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 3,
+          "filter": "LINEAR",
+          "pattern": "fractional UV",
+          "pixels_over_tolerance": 2110,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ],
+            [
+              33,
+              0
+            ],
+            [
+              34,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 4,
+          "filter": "NEAREST",
+          "pattern": "exact texel boundary",
+          "pixels_over_tolerance": 988,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              43,
+              28
+            ],
+            [
+              45,
+              28
+            ],
+            [
+              47,
+              28
+            ],
+            [
+              49,
+              28
+            ],
+            [
+              43,
+              29
+            ],
+            [
+              45,
+              29
+            ],
+            [
+              47,
+              29
+            ],
+            [
+              49,
+              29
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 5,
+          "filter": "LINEAR",
+          "pattern": "exact texel boundary",
+          "pixels_over_tolerance": 2110,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ],
+            [
+              33,
+              0
+            ],
+            [
+              34,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 6,
+          "filter": "NEAREST",
+          "pattern": "fractional alpha atlas",
+          "pixels_over_tolerance": 911,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              43,
+              29
+            ],
+            [
+              44,
+              29
+            ],
+            [
+              47,
+              29
+            ],
+            [
+              48,
+              29
+            ],
+            [
+              43,
+              30
+            ],
+            [
+              44,
+              30
+            ],
+            [
+              47,
+              30
+            ],
+            [
+              48,
+              30
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 7,
+          "filter": "LINEAR",
+          "pattern": "fractional alpha atlas",
+          "pixels_over_tolerance": 2078,
+          "max_channel_error": 222,
+          "first_mismatches": [
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ],
+            [
+              33,
+              0
+            ],
+            [
+              34,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ],
+          "passed": false
+        },
+        {
+          "case": 8,
+          "filter": "untextured",
+          "pattern": "asymmetric RGB control",
+          "pixels_over_tolerance": 11600,
+          "max_channel_error": 255,
+          "first_mismatches": [
+            [
+              28,
+              0
+            ],
+            [
+              29,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              31,
+              0
+            ],
+            [
+              32,
+              0
+            ],
+            [
+              33,
+              0
+            ],
+            [
+              34,
+              0
+            ],
+            [
+              35,
+              0
+            ]
+          ],
+          "passed": false
+        }
+      ],
+      "color_histogram": {
+        "cpu": {
+          "black": 88000,
+          "red": 2000,
+          "green": 2000,
+          "blue": 2000,
+          "white": 2000,
+          "raw_sha256": "b02e2ac096df8cb1a2ebc56c7238f2031fea722fb7ecad26ba8f00a8879c7b53"
+        },
+        "gpu": {
+          "black": 87600,
+          "red": 2120,
+          "green": 2080,
+          "blue": 2120,
+          "white": 2080,
+          "raw_sha256": "6193ebb9f37238fd4b22de7013347e28a1bf5a5499a73298ccecc6ed470645b1"
+        }
+      },
+      "host_capture_state_samples": 64,
+      "recorded_gl_errors": 0,
+      "invalid_accesses": 0
+    }
+  ],
+  "format_ab_test_identical_cases": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "established": [
+    "CPU asymmetric control contains 8000 colored pixels, GPU capture 8400; pure rotation/flip/channel permutation cannot explain the difference.",
+    "Palette RGB565 red/green/blue/white values are preserved; guest capture is already spatially corrupted.",
+    "All 9 GPU captures are byte-identical between RGB8 and RGBA8 render targets; RGB8 target alone is not the cause.",
+    "Explicit BGRA8 host pack/PBO/read-FBO restoration produced no GL errors in 64 recorded samples. Host snapshots remain black and are not accepted as reference."
+  ],
+  "uv_or_filter_changed": false,
+  "game_default_target_changed": false,
+  "rgba_diagnostic_only": true,
+  "working_artifacts_preserved": {
+    "3ds/build-emulator/engine-audit-178.cxi": "ffb0be375d0bbef61f1fd58faf0f052a41326d0825995a52eb49cd7cc6a2e8d8",
+    "3ds/build-gpu-engine/engine-gpu.cxi": "07a9262285e1254447067af40ae947fa18e7ae69be1daaf2ca503717b40350fa",
+    "analysis/gpu-safety/first-game-frame.raw": "3080a3471c7c805a93804088227a57d563cf8f2b52266b0bf0fb141a1b7a4850",
+    "analysis/gpu-safety/first-game-frame.png": "3410c1d5776fa32c658747f30a373292d781d078e412248d589a0866d80808a5",
+    "analysis/gpu-engine-first/first-game-frame.raw": "3080a3471c7c805a93804088227a57d563cf8f2b52266b0bf0fb141a1b7a4850"
+  },
+  "full_552_tests_run": false,
+  "sequential_frames_tested": false,
+  "hardware_tested": false,
+  "pushed": false,
+  "unconfirmed_next_hypothesis": "Investigate accelerated cache/download and guest file/ReadBlock boundaries: color runs start with a 64-pixel displacement and change phase near 2048-pixel blocks. Instrument exact source/destination addresses, row pitch and CPU read ranges; alternatively validate a dedicated frontend FBO. Neither cause is established.",
+  "source_note": "GSP InvalidateDataCache is stubbed in Azahar2126.2; do not assume this call forces a GPU readback.",
+  "source_url": "https://github.com/azahar-emu/azahar/blob/2126.2/src/core/hle/service/gsp/gsp_gpu.cpp#L312"
+}

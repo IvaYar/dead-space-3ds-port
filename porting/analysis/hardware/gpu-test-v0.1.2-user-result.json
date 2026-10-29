@@ -1,0 +1,76 @@
+{
+  "version": "0.1.2",
+  "hardware_tested": true,
+  "passed": false,
+  "expected_cia_sha256": "a155ed7bb1e1ab301b1e6f2c212985ce66797b9d44a8e4761bc7ab7ee899e72e",
+  "installed_binary_hash_measured": false,
+  "status": "native GX queue timeout after first FrameEnd; user needed held POWER to recover",
+  "hardware_log": "gpu-test-v0.1.2-user.log",
+  "hardware_log_sha256": "67daaa7145d2783f8bcd07a8ef43c0f9c28d2aa79b2baf8074ccc3535716dcd9",
+  "native_result_file": "gpu-test-v0.1.2-native-result.json",
+  "native_result_sha256": "b948898499e187b6c4aa3481451f68aad84b07b033139649ea7526e057c19656",
+  "native_result": {
+    "version": "0.1.2",
+    "passed": false,
+    "environment": "native",
+    "game_called": false,
+    "cases": 8,
+    "cases_completed": 0,
+    "wait_timeout": true,
+    "timeout_phase": "GX QUEUE WAIT TIMEOUT",
+    "presents": 0,
+    "gpu_draws": 1,
+    "gpu_triangles": 2,
+    "uploads": 0,
+    "cpu_fragments": 0,
+    "cpu_samples": 0,
+    "gl_error": 1280,
+    "peak_vertices": 0,
+    "drains": 0,
+    "upload_checks": 0,
+    "upload_mismatches": 0,
+    "vertex_mismatches": 0,
+    "texture_mismatches": 0
+  },
+  "reported_recovery": "User answered that holding POWER was required after GPU TEST FAILED",
+  "normal_exit_verified": false,
+  "exit_markers_present": false,
+  "observations": {
+    "attach_and_white_transfer_verified": true,
+    "initial_frame_begin_succeeded": true,
+    "draw_calls_queued": 1,
+    "triangles_queued": 2,
+    "frame_end_returned": true,
+    "timeout_start_ms": 13810,
+    "timeout_end_ms": 15822,
+    "timeout_elapsed_ms": 2012,
+    "vblank_at_wait_start": [
+      26,
+      26
+    ],
+    "vblank_at_timeout": [
+      147,
+      147
+    ],
+    "framebuffer_readback_reached": false,
+    "result_write_returned": true,
+    "cases_completed": 0,
+    "completed_presents": 0
+  },
+  "cause_confirmed": false,
+  "confirmed_failure_stage": "GX queue completion wait after FrameEnd; both VBlank counters continue advancing",
+  "remaining_alternatives": [
+    "Pending PICA command list",
+    "Pending memory fill or display transfer",
+    "GX completion/event bookkeeping failure"
+  ],
+  "not_proven": [
+    "Which GX command failed or stopped completion",
+    "Actual first-frame pixels",
+    "Safety or success of normal native shutdown",
+    "Where the post-result loss of responsiveness occurred"
+  ],
+  "gl_error_interpretation": "1280 (0x500) is latched by DS13 unsupported() when DS34 reports GPU frame unavailable after the timeout; this does not establish an original invalid GLES enum as root cause",
+  "next_step": "Observe GX queue entries, submitted/completed indices and command types around first FrameEnd and timeout, preserving SDK callbacks/order. A fixture-only linker --wrap=gxCmdQueueRun can capture the public queue pointer without a private Citro3D ABI or replacing GSP callbacks. Localize command-list vs fill vs transfer/event completion before changing GPU state. Do not rerun unchanged v0.1.2.",
+  "changes_this_update": "Saved exact hardware log/result and updated HANDOFF; no source changes, builds or emulator reruns"
+}

@@ -1,0 +1,14 @@
+DS34 native GPU fixture v0.1.1 environment=emulator
+ATTACH BEGIN: GPU white texture transfer
+ATTACH OK: white texture transfer verified
+CASE 0 PASS presents=1
+CASE 1 PASS presents=2
+CASE 2 PASS presents=3
+CASE 3 PASS presents=4
+CASE 4 PASS presents=5
+CASE 5 PASS presents=6
+CASE 6 PASS presents=22
+CASE 7 PASS presents=23
+GPU TEST PASSED
+EXIT BEGIN
+EXIT GPU DRAINED

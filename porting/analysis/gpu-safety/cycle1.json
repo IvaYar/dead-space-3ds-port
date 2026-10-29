@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "inactive_storage": "linear",
+  "issue": "Azahar host exits with code 1 after capture 0, in both memory profiles; no unmapped access logged. Not accepted as a safe solution."
+}

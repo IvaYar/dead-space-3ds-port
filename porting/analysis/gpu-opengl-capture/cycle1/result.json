@@ -1,0 +1,1556 @@
+{
+  "completed": true,
+  "gpu_draws": 12,
+  "gpu_cpu_fragments": 0,
+  "cpu_fragments": 65344,
+  "graphics_api": "OpenGL",
+  "passed": false,
+  "cases": [
+    {
+      "case": 0,
+      "filter": "NEAREST",
+      "pattern": "magnified lines/checker",
+      "pixels_over_tolerance": 16797,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          25,
+          0
+        ],
+        [
+          26,
+          0
+        ],
+        [
+          27,
+          0
+        ],
+        [
+          28,
+          0
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          32,
+          0
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 1,
+      "filter": "LINEAR",
+      "pattern": "magnified lines/checker",
+      "pixels_over_tolerance": 28061,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          20,
+          0
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          23,
+          0
+        ],
+        [
+          24,
+          0
+        ],
+        [
+          25,
+          0
+        ],
+        [
+          26,
+          0
+        ],
+        [
+          27,
+          0
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 2,
+      "filter": "NEAREST",
+      "pattern": "fractional UV",
+      "pixels_over_tolerance": 960,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          42,
+          28
+        ],
+        [
+          44,
+          28
+        ],
+        [
+          46,
+          28
+        ],
+        [
+          48,
+          28
+        ],
+        [
+          50,
+          28
+        ],
+        [
+          43,
+          29
+        ],
+        [
+          45,
+          29
+        ],
+        [
+          47,
+          29
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 3,
+      "filter": "LINEAR",
+      "pattern": "fractional UV",
+      "pixels_over_tolerance": 2110,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          28,
+          0
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          32,
+          0
+        ],
+        [
+          33,
+          0
+        ],
+        [
+          34,
+          0
+        ],
+        [
+          35,
+          0
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 4,
+      "filter": "NEAREST",
+      "pattern": "exact texel boundary",
+      "pixels_over_tolerance": 988,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          43,
+          28
+        ],
+        [
+          45,
+          28
+        ],
+        [
+          47,
+          28
+        ],
+        [
+          49,
+          28
+        ],
+        [
+          43,
+          29
+        ],
+        [
+          45,
+          29
+        ],
+        [
+          47,
+          29
+        ],
+        [
+          49,
+          29
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 5,
+      "filter": "LINEAR",
+      "pattern": "exact texel boundary",
+      "pixels_over_tolerance": 2110,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          28,
+          0
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          32,
+          0
+        ],
+        [
+          33,
+          0
+        ],
+        [
+          34,
+          0
+        ],
+        [
+          35,
+          0
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 6,
+      "filter": "NEAREST",
+      "pattern": "fractional alpha atlas",
+      "pixels_over_tolerance": 911,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          43,
+          29
+        ],
+        [
+          44,
+          29
+        ],
+        [
+          47,
+          29
+        ],
+        [
+          48,
+          29
+        ],
+        [
+          43,
+          30
+        ],
+        [
+          44,
+          30
+        ],
+        [
+          47,
+          30
+        ],
+        [
+          48,
+          30
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 7,
+      "filter": "LINEAR",
+      "pattern": "fractional alpha atlas",
+      "pixels_over_tolerance": 2078,
+      "max_channel_error": 222,
+      "first_mismatches": [
+        [
+          28,
+          0
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          32,
+          0
+        ],
+        [
+          33,
+          0
+        ],
+        [
+          34,
+          0
+        ],
+        [
+          35,
+          0
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 8,
+      "filter": "untextured",
+      "pattern": "asymmetric RGB control",
+      "pixels_over_tolerance": 11600,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          28,
+          0
+        ],
+        [
+          29,
+          0
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          32,
+          0
+        ],
+        [
+          33,
+          0
+        ],
+        [
+          34,
+          0
+        ],
+        [
+          35,
+          0
+        ]
+      ],
+      "passed": false
+    }
+  ],
+  "unmapped_accesses": 0,
+  "hardware_tested": false,
+  "cpu_baseline_modified": false,
+  "cxi_sha256": "6b8d08c6d6c470f9fc55246b347d451261f4773fb553f5914398e7db0eff21ac",
+  "elapsed_seconds": 1.516,
+  "opengl_capture": {
+    "version": "4.3.0 Core Profile Context 25.10.30.250902",
+    "renderer": "AMD Radeon RX 7800 XT",
+    "captures": [
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      },
+      {
+        "width": 400,
+        "height": 480,
+        "pitch": 0,
+        "pack": {
+          "3333": 4,
+          "3330": 0,
+          "3331": 0,
+          "3332": 0,
+          "3328": 0,
+          "3329": 0
+        },
+        "pbo": 0,
+        "read_fbo": 0,
+        "read_buffer": 1029,
+        "error_before": 0,
+        "error_after": 0
+      }
+    ]
+  },
+  "capture_control_passed": false,
+  "text_comparison_valid": false,
+  "limitation": "Control framebuffer is incorrect; text differences cannot identify a backend UV/filter defect.",
+  "render_target": "RGB8",
+  "analysis_updated_without_rerun": true
+}

@@ -11,17 +11,63 @@
 #define STREAM 8190u
 #define CACHE 32u
 #define BUDGET (4u*1024*1024)
-typedef struct {DS15Object *object;C3D_Tex tex;void *staging;uint32_t used,bytes,stamp,wrap_s,wrap_t;} Entry;
+/* Capture diagnostic only; default game/fixture RGB8 path is preserved. */
+#ifdef DS34_CAPTURE_RGBA
+#define TARGET_COLOR GPU_RB_RGBA8
+#define TRANSFER_COLOR GX_TRANSFER_FMT_RGBA8
+#else
+#define TARGET_COLOR GPU_RB_RGB8
+#define TRANSFER_COLOR GX_TRANSFER_FMT_RGB8
+#endif
+typedef struct {DS15Object *object;C3D_Tex tex;void *staging;uint32_t used,bytes,stamp,wrap_s,wrap_t;
+#ifdef DS34_SEQUENCE_AUDIT
+    uint32_t expected_hash;
+#endif
+} Entry;
 static struct {
     DS13Context *ctx;C3D_RenderTarget *target;DVLB_s *dvlb;shaderProgram_s program;
-    C3D_Mtx projection;int projection_loc,scale_loc,frame;
+    C3D_Mtx projection;int projection_loc,scale_loc,frame;C3D_Tex inactive;
     DS34Vertex *stream;uint32_t used,start,draws,triangles,uploads,bytes,stamp,staging_bytes;
     Entry entries[CACHE];DS15Object *protected[2];
 } g;
+#ifdef DS34_SEQUENCE_AUDIT
+static DS34Audit audit;
+/* Word FNV for diagnostics, not a cryptographic integrity guarantee. */
+static uint32_t audit_hash(const void *p,uint32_t bytes){
+    const uint32_t *words=p;uint32_t h=2166136261u;
+    for(uint32_t i=0;i<bytes/4;++i)h=(h^words[i])*16777619u;
+    return h;
+}
+int ds34_sequence_audit(DS34Audit *out){
+    audit.pending_staging=g.staging_bytes;audit.stream_used=g.used;
+    audit.cached_textures=audit.texture_digest=0;
+    for(unsigned i=0;i<CACHE;++i)if(g.entries[i].used){Entry *e=&g.entries[i];
+        ++audit.texture_checks;++audit.cached_textures;
+        uint32_t hash=audit_hash(e->tex.data,e->bytes);
+        audit.texture_mismatches+=hash!=e->expected_hash;audit.texture_digest^=hash;
+    }
+    *out=audit;return audit.upload_mismatches || audit.vertex_mismatches || audit.texture_mismatches || audit.pending_staging || audit.stream_used?-1:0;
+}
+#endif
 static int fail(const char *name,uint32_t value){ds13_unsupported(name,value);return -1;}
+#ifdef DS34_FRAME_DIAGNOSTICS
+#define MARK(phase) ds34_diagnostic_mark(phase)
+#define FRAME_BEGIN(flags) ds34_diagnostic_begin(flags)
+#define FRAME_END() ds34_diagnostic_end()
+static int frame_sync(void){return ds34_diagnostic_sync();}
+#else
+#define MARK(phase) ((void)0)
+#define FRAME_BEGIN(flags) C3D_FrameBegin(flags)
+#define FRAME_END() C3D_FrameEnd(0)
+static int frame_sync(void){C3D_FrameSync();return 0;}
+#endif
 int ds34_active(DS13Context *c){return g.ctx==c;}
 static void release_staging(void){
-    for(unsigned i=0;i<CACHE;++i)if(g.entries[i].staging){linearFree(g.entries[i].staging);g.entries[i].staging=NULL;}
+    for(unsigned i=0;i<CACHE;++i)if(g.entries[i].staging){
+#ifdef DS34_SEQUENCE_AUDIT
+        ++audit.upload_checks;audit.upload_mismatches+=memcmp(g.entries[i].staging,g.entries[i].tex.data,g.entries[i].bytes)!=0;
+#endif
+        linearFree(g.entries[i].staging);g.entries[i].staging=NULL;}
     g.staging_bytes=0;
 }
 /* Split only queues commands. End + blocking Begin actually retires GPU reads.
@@ -29,16 +75,20 @@ static void release_staging(void){
 static int sync_gpu(void){
     if(g.frame){
         u32 flags=g.target->transferFlags;
-        C3D_RenderTargetDetachOutput(g.target);C3D_FrameEnd(0);g.frame=0;
-        if(!C3D_FrameBegin(0))return fail("GPU queue drain unavailable",0);
+        C3D_RenderTargetDetachOutput(g.target);FRAME_END();g.frame=0;
+        if(!FRAME_BEGIN(0))return fail("GPU queue drain unavailable",0);
+#ifdef DS34_SEQUENCE_AUDIT
+        ++audit.drains;
+#endif
         g.frame=1;release_staging();g.used=g.start=0;
         C3D_RenderTargetSetOutput(g.target,GFX_TOP,GFX_LEFT,flags);C3D_FrameDrawOn(g.target);
     }
     return 0;
 }
 static int frame(void){
-    if(!g.frame){if(!C3D_FrameBegin(C3D_FRAME_SYNCDRAW))return fail("GPU frame unavailable",0);g.frame=1;release_staging();g.used=g.start=0;}
-    C3D_FrameDrawOn(g.target);return 0;
+    if(!g.frame){if(!FRAME_BEGIN(C3D_FRAME_SYNCDRAW))return fail("GPU frame unavailable",0);g.frame=1;
+        MARK("STAGING RELEASE BEGIN");release_staging();MARK("STAGING RELEASE OK");g.used=g.start=0;}
+    MARK("FRAME DRAW ON BEGIN");C3D_FrameDrawOn(g.target);MARK("FRAME DRAW ON OK");return 0;
 }
 static uint32_t byte(float v){return (uint32_t)lrintf(fmaxf(0,fminf(1,v))*255);}
 static GPU_TESTFUNC test(uint32_t f,int reverse){
@@ -90,6 +140,9 @@ static Entry *texture(DS15Object *o){
         }
     GSPGPU_FlushDataCache(staging,bytes);C3D_SyncTextureCopy((u32*)staging,0,(u32*)entry->tex.data,0,bytes,8);
     entry->staging=staging;g.staging_bytes+=bytes;
+#ifdef DS34_SEQUENCE_AUDIT
+    entry->expected_hash=audit_hash(staging,bytes);
+#endif
 #ifdef DS34_TRACE
     {unsigned nz=0;for(unsigned i=0;defined && i<w*h*4;++i)nz+=l->rgba[i]!=0;FILE *f=fopen("sdmc:/3ds/deadspace/gpu-texture-trace.txt","a");if(f){fprintf(f,"upload=%lu logical=%u,%u physical=%u,%u format=%lx nz=%u enabled=%lu,%lu\n",(unsigned long)g.uploads,w,h,pw,ph,(unsigned long)(defined?l->format:0),nz,(unsigned long)g.ctx->texture.enabled[0],(unsigned long)g.ctx->texture.enabled[1]);fclose(f);}}
 #endif
@@ -98,16 +151,36 @@ static Entry *texture(DS15Object *o){
 int ds34_attach(DS13Context *c){
     if(g.ctx || !c || c->width!=400 || c->height!=240 || c->layout!=DS13_RGB565_CTR)return -1;
     if(!C3D_Init(C3D_DEFAULT_CMDBUF_SIZE))return -1;
-    g.target=C3D_RenderTargetCreate(240,400,GPU_RB_RGB8,GPU_RB_DEPTH24_STENCIL8);
+    g.target=C3D_RenderTargetCreate(240,400,TARGET_COLOR,GPU_RB_DEPTH24_STENCIL8);
     g.stream=linearAlloc(STREAM*sizeof(DS34Vertex));
     g.dvlb=DVLB_ParseFile((u32*)ds34_shader,sizeof(ds34_shader));
     if(!g.target || !g.stream || !g.dvlb)return -1;
+    /* Citro3D 1.7.1 dereferences tex in TexBind(unit>0,NULL). Keep a valid
+     * neutral descriptor/storage alive; disabled GLES stages pass PREVIOUS
+     * through TEV and never consume this hardware sampler. */
+    if(!C3D_TexInitVRAM(&g.inactive,8,8,GPU_RGBA8))return -1;
+    /* VRAM is mapped read-only for the CPU. Attach runs outside a C3D frame,
+     * so TexUpload uses SyncTextureCopy's blocking transfer path. Keep the
+     * linear source alive until that call returns; never memset VRAM. */
+    uint8_t *white=linearAlloc(g.inactive.size);
+    if(!white)return fail("GPU inactive staging allocation",g.inactive.size);
+    memset(white,255,g.inactive.size);
+    Result flushed=GSPGPU_FlushDataCache(white,g.inactive.size);
+    if(R_FAILED(flushed)){linearFree(white);return fail("GPU inactive staging flush",(uint32_t)flushed);}
+    C3D_TexUpload(&g.inactive,white);
+#ifdef DS34_SEQUENCE_AUDIT
+    int mismatch=memcmp(white,g.inactive.data,g.inactive.size)!=0;
+    if(mismatch){linearFree(white);return fail("GPU inactive upload mismatch",g.inactive.size);}
+#endif
+    linearFree(white);
+    C3D_TexSetFilter(&g.inactive,GPU_NEAREST,GPU_NEAREST);
+    C3D_TexSetWrap(&g.inactive,GPU_CLAMP_TO_EDGE,GPU_CLAMP_TO_EDGE);
     shaderProgramInit(&g.program);shaderProgramSetVsh(&g.program,&g.dvlb->DVLE[0]);C3D_BindProgram(&g.program);
     g.projection_loc=shaderInstanceGetUniformLocation(g.program.vertexShader,"projection");g.scale_loc=shaderInstanceGetUniformLocation(g.program.vertexShader,"texture_scale");
     if(g.projection_loc<0 || g.scale_loc<0)return -1;
     Mtx_OrthoTilt(&g.projection,0,400,0,240,0,1,true);
     C3D_AttrInfo *a=C3D_GetAttrInfo();AttrInfo_Init(a);for(unsigned i=0;i<4;++i)AttrInfo_AddLoader(a,i,GPU_FLOAT,4);
-    u32 flags=GX_TRANSFER_FLIP_VERT(0)|GX_TRANSFER_OUT_TILED(0)|GX_TRANSFER_RAW_COPY(0)|GX_TRANSFER_IN_FORMAT(GX_TRANSFER_FMT_RGB8)|GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB565)|GX_TRANSFER_SCALING(GX_TRANSFER_SCALE_NO);
+    u32 flags=GX_TRANSFER_FLIP_VERT(0)|GX_TRANSFER_OUT_TILED(0)|GX_TRANSFER_RAW_COPY(0)|GX_TRANSFER_IN_FORMAT(TRANSFER_COLOR)|GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB565)|GX_TRANSFER_SCALING(GX_TRANSFER_SCALE_NO);
     C3D_RenderTargetSetOutput(g.target,GFX_TOP,GFX_LEFT,flags);C3D_CullFace(GPU_CULL_NONE);g.ctx=c;return 0;
 }
 int ds34_begin_draw(DS13Context *c){
@@ -120,7 +193,7 @@ int ds34_begin_draw(DS13Context *c){
     for(unsigned i=0;i<6;++i)C3D_TexEnvInit(C3D_GetTexEnv(i));
     C3D_TexEnvSrc(C3D_GetTexEnv(0),C3D_Both,GPU_PRIMARY_COLOR,0,0);
     for(unsigned u=0;u<2;++u){
-        if(!c->texture.enabled[u]){C3D_TexBind(u,NULL);continue;}
+        if(!c->texture.enabled[u]){C3D_TexBind(u,u?&g.inactive:NULL);continue;}
         DS15Object *o=c->draw->sampler[u];Entry *e=texture(o);if(!e)return -1;
         C3D_TexSetFilter(&e->tex,o && o->mag_filter==0x2601?GPU_LINEAR:GPU_NEAREST,o && o->min_filter==0x2601?GPU_LINEAR:GPU_NEAREST);
         C3D_TexSetWrap(&e->tex,o && o->wrap_s==0x2901?GPU_REPEAT:GPU_CLAMP_TO_EDGE,o && o->wrap_t==0x2901?GPU_REPEAT:GPU_CLAMP_TO_EDGE);C3D_TexBind(u,&e->tex);
@@ -152,18 +225,23 @@ void ds34_end_draw(DS13Context *c){
     if(g.draws<8 || g.draws%120==0){FILE *f=fopen("sdmc:/3ds/deadspace/gpu-draw-trace.txt","a");if(f){
         DS34Vertex *v=g.stream+g.start;fprintf(f,"draw=%lu blend=%lu factors=%lx,%lx depth=%lu/%lx alpha=%lu/%lx/%g mask=%u%u%u env=%lx,%lx tex=%lu,%lu vertex=%g,%g,%g,%g color=%g,%g,%g,%g uv=%g,%g\n",(unsigned long)g.draws,(unsigned long)c->blend,(unsigned long)c->pipeline.blend_src,(unsigned long)c->pipeline.blend_dst,(unsigned long)c->pipeline.depth,(unsigned long)c->pipeline.depth_func,(unsigned long)c->pipeline.alpha,(unsigned long)c->pipeline.alpha_func,(double)c->pipeline.alpha_ref,c->color_mask[0],c->color_mask[1],c->color_mask[2],(unsigned long)c->draw->env_mode[0],(unsigned long)c->draw->env_mode[1],(unsigned long)c->texture.binding[0],(unsigned long)c->texture.binding[1],(double)v->p[0],(double)v->p[1],(double)v->p[2],(double)v->p[3],(double)v->color[0],(double)v->color[1],(double)v->color[2],(double)v->color[3],(double)v->tex[0][0],(double)v->tex[0][1]);fclose(f);}}
 #endif
-    void *p=g.stream+g.start;unsigned n=g.used-g.start;GSPGPU_FlushDataCache(p,n*sizeof(DS34Vertex));
+    void *p=g.stream+g.start;unsigned n=g.used-g.start;
+    MARK("VERTEX CACHE FLUSH BEGIN");GSPGPU_FlushDataCache(p,n*sizeof(DS34Vertex));MARK("VERTEX CACHE FLUSH OK");
     C3D_BufInfo *b=C3D_GetBufInfo();BufInfo_Init(b);
     /* Attribute offsets are only 28 bits. The default VRAM base (0x18000000)
      * overflows once New3DS linear allocations reach physical 0x28000000. */
     b->base_paddr=osConvertVirtToPhys(g.stream);
     if(BufInfo_Add(b,p,sizeof(DS34Vertex),4,0x3210)<0){fail("GPU vertex buffer address",b->base_paddr);return;}
-    C3D_DrawArrays(GPU_TRIANGLES,0,n);++g.draws;g.start=g.used;
+    MARK("DRAW ARRAYS BEGIN");C3D_DrawArrays(GPU_TRIANGLES,0,n);MARK("DRAW ARRAYS OK");++g.draws;g.start=g.used;
 }
 int ds34_triangle(DS13Context *c,const DS34Vertex v[3]){
     for(unsigned u=0;u<2;++u)if(c->texture.enabled[u])for(unsigned i=0;i<3;++i)if(v[i].tex[u][3]!=1)return fail("GPU projective coordinates unsupported",u);
     if(g.used+3>STREAM){ds34_end_draw(c);if(sync_gpu())return -1;}
-    memcpy(g.stream+g.used,v,3*sizeof(*v));g.used+=3;++g.triangles;return 1;
+    memcpy(g.stream+g.used,v,3*sizeof(*v));g.used+=3;++g.triangles;
+#ifdef DS34_SEQUENCE_AUDIT
+    if(g.used>audit.peak_vertices)audit.peak_vertices=g.used;
+#endif
+    return 1;
 }
 int ds34_clear(DS13Context *c,uint32_t mask){
     if(!ds34_active(c) || c->framebuffer_binding)return 0;
@@ -171,15 +249,25 @@ int ds34_clear(DS13Context *c,uint32_t mask){
     if(frame())return 1;
     C3D_ClearBits bits=0;if(mask&0x4000)bits|=C3D_CLEAR_COLOR;if(mask&(0x100|0x400))bits|=C3D_CLEAR_DEPTH;
     uint32_t color=byte(c->clear_color[0])<<16|byte(c->clear_color[1])<<8|byte(c->clear_color[2]);
+#ifdef DS34_CAPTURE_RGBA
+    color=color<<8|255; /* RGB565 destination has implicit alpha one. */
+#endif
     /* MemoryFill is queued immediately; submit earlier PICA draws first. */
-    if(bits){C3D_FrameSplit(0);C3D_RenderTargetClear(g.target,bits,color,(uint32_t)lrintf((1-c->clear_depth)*16777215));}return 1;
+    if(bits){MARK("CLEAR SPLIT BEGIN");C3D_FrameSplit(0);MARK("CLEAR SPLIT OK");
+        MARK("CLEAR QUEUE BEGIN");C3D_RenderTargetClear(g.target,bits,color,(uint32_t)lrintf((1-c->clear_depth)*16777215));MARK("CLEAR QUEUE OK");}return 1;
 }
 int ds34_integer(DS13Context *c,uint32_t name,int32_t *out){if(!ds34_active(c) || c->framebuffer_binding)return 0;if(name==0xd56){*out=24;return 1;}if(name==0xd57){*out=8;return 1;}return 0;}
 int ds34_present(DS13Context *c){
     if(!ds34_active(c) || frame())return -1;
     u16 w,h;void *pixels=gfxGetFramebuffer(GFX_TOP,GFX_LEFT,&w,&h);
-    C3D_FrameEnd(0);g.frame=0;C3D_FrameSync();
+#ifdef DS34_SEQUENCE_AUDIT
+    uint32_t bytes=g.used*sizeof(*g.stream),hash=audit_hash(g.stream,bytes);
+#endif
+    FRAME_END();g.frame=0;if(frame_sync())return fail("GPU frame sync unavailable",0);
     if(frame())return -1;
+#ifdef DS34_SEQUENCE_AUDIT
+    ++audit.presents;++audit.vertex_checks;audit.vertex_mismatches+=hash!=audit_hash(g.stream,bytes);
+#endif
     c->pixels=pixels;c->capacity=(uint32_t)w*h*2;return 0;
 }
 void ds34_stats(uint32_t out[4]){out[0]=g.draws;out[1]=g.triangles;out[2]=g.uploads;out[3]=g.bytes;}

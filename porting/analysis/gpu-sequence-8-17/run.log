@@ -1,0 +1,586 @@
+DEAD SPACE ENGINE AUDIT - EMULATOR ONLY
+READY - press A
+Backend: Azahar; native RX not tested
+Application memory: bytes=186646528; donor arenas=128+0MiB
+Donor shared arena: 128MiB; bottom brk + top-down mmap
+FS stat begin: appdata://var/settings.sb result=0
+FS stat mapped: sdmc:/3ds/deadspace/test-output/var/settings.sb result=0
+FS stat native: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/var/settings.sb result=-1
+Pre-thread missing stat: -1 errno=2
+Jump probe ARM: OK cases=8 core/VFP=OK
+Jump probe Thumb: OK cases=8 core/VFP=OK
+Jump probe counters: saves=18 restores=18 refusals=0
+String probe: 0 checks=43 units=7 bytes=17
+String cleanup: files=0 heap=0
+FS open fd: published/data/achievements.sb result=1024
+FS open fd: published/data/achievements.sb result=1024
+JNI I/O probe: 0 checks=201 bytes=3568 CRC32=4a8d9499
+JNI I/O cleanup: files=0 heap=0
+Asset probe: 0 checks=378 names=176 CRC32-xor=3a761eb9
+Asset cleanup: files=0 heap=0
+Platform probe: 0 checks=168 properties=29
+Platform cleanup: files=0 heap=0
+EA allocator compatibility: verified growth-call new-break result; other sbrk callers unchanged
+Production preflight: bound=154 missing=234 weak=4
+Production guard: REFUSED; image unchanged
+Audit clock: emulator monotonic, excluded from supported count
+GLES surface probe: OK 400x240; black clear + green scissor; pixels=97200 format=2
+GLES buffer probe: OK upload=24 sub=12 readback=12 active=0
+GLES upload: 2x2 format=1908 required=16 limit=2097152 result=0
+GLES texture probe: OK upload=16 sub=4 readback=4 active=0
+GLES pipeline probe: OK cull=2 alpha=2 blend=4 typed=1
+PICA backend attached: experimental GPU fragments; CPU vertex processing
+Graphics budget: texture names=128 bytes=50331648
+Stack query: sp=0803d448 result=00000000 base=08000000 size=02800000 perm=3
+GLES context bindings: 99; bounded CPU triangle renderer
+Fog bridge attached: 4 operations; LINEAR/EXP/EXP2; eye-z vertex factors + RGB after texturing
+Combine bridge attached: 2 units; RGB/alpha functions, sources, operands, scales + DOT3
+Lighting bridge attached: 18 operations; 8 lights + material + transformed normals + two-sided colors
+Default depth attached: depth16/stencil8; 288000 owned bytes; borrowed LCD color
+FBO bridge attached: 15 operations; texture/RBO targets + depth16/stencil8 + readback
+Texture paging attached: 128 names; 96MiB logical; 6MiB resident; exact RGBA8 + CRC
+Font subset attached: bytes=47036 CRC32=71dcae12; original font untouched
+FS private open: appdata:/fd-probe.bin result=1024
+FS private open: appdata:/fd-probe.bin result=1024
+FS private native open errno: sdmc:/3ds/deadspace/test-output/save-bridge/fd-probe.bin result=-937409346
+FS private open failure: appdata:/fd-probe.bin result=-17
+FS private open: appdata:/fd-probe.bin result=1024
+FS private open: appdata:/fd-probe.bin result=1024
+FS open failure: published/data/achievements.sb result=-30
+Private fd probe: OK read/write/reopen/append/exclusive/fstat; asset writes refused
+Private file bridge: appdata mounted at test-output/save-bridge; 5 bindings
+APK AssetManager attached: 20 genuine files; EAMCore.ini bytes=3119 CRC32=33c9beb3
+Sensor bridge attached: native HID; emulator identity axes, nominal 512 counts/g
+Running 209 donor constructors...
+ARENA request: sbrk bytes=16781312 caller=0025343c thread=main frame=0
+ARENA result: sbrk pointer=3118b000
+Donor constructors completed: 209
+JNI_OnLoad: 00010004; stored VM: MATCH
+Calling NativeOnCreate...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnCreate returned
+Calling NativeOnSurfaceCreated...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnSurfaceCreated returned
+Calling NativeOnSurfaceChanged...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnSurfaceChanged returned
+Frame 1 begin
+JNI PushLocalFrame: . 
+JNI FindClass: com/ea/EAIO/EAIO. 
+JNI GetStaticMethodID: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: com/ea/blast/MainActivity. 
+JNI GetStaticMethodID: com/ea/blast/MainActivity.GetInstance ()Lcom/ea/blast/MainActivity;
+JNI CallMethod: com/ea/blast/MainActivity.GetInstance ()Lcom/ea/blast/MainActivity;
+JNI GetMethodID: com/ea/blast/MainActivity.getAssets ()Landroid/content/res/AssetManager;
+JNI CallMethod: com/ea/blast/MainActivity.getAssets ()Landroid/content/res/AssetManager;
+JNI CallMethod: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: java/io/InputStream. 
+JNI GetMethodID: java/io/InputStream.read ([BII)I
+JNI GetMethodID: java/io/InputStream.close ()V
+JNI GetMethodID: java/io/InputStream.skip (J)J
+JNI GetMethodID: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+JNI GetMethodID: android/content/res/AssetManager.openFd (Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+JNI GetMethodID: android/content/res/AssetManager.list (Ljava/lang/String;)[Ljava/lang/String;
+JNI FindClass: android/content/res/AssetFileDescriptor. 
+JNI GetMethodID: android/content/res/AssetFileDescriptor.getLength ()J
+JNI NativeEAIOStartup returned: com/ea/EAIO/EAIO.Startup (Landroid/content/res/AssetManager;)V
+JNI FindClass: com/ea/blast/SystemAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/SystemAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetAccelerometerCount 1
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.IsBatteryStateAvailable 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetCameraCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetCameraCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetCameraCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetChipset ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetChipset ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetChipset ARM11/PICA200
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetCompassCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetCompassCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetCompassCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetManufacturer ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetManufacturer ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetManufacturer Nintendo
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceModel ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceModel ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceModel New Nintendo 3DS
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceName new3ds
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPhoneNumber 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDeviceUniqueId 
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetDisplayCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetDisplayCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetDisplayCount 1
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetGyroscopeCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLocationAvailable false
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetMicrophoneCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetApiLevel ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetApiLevel ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetApiLevel 10
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformRawName Nintendo 3DS
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformStdName Android
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPlatformVersion 2.3.3
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetPhysicalKeyboardCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetProcessorArchitecture armeabi
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLanguage ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLanguage ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLanguage en
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetLocale ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetLocale ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetLocale en_US
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTotalRAM ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTotalRAM ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTotalRAM 67108864
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTouchPadCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTouchScreenCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetTrackBallCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetVibratorCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetVibratorCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetVibratorCount 0
+JNI GetMethodID: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount ()Ljava/lang/String;
+JNI PropertyValue: com/ea/blast/SystemAndroidDelegate.GetVirtualKeyboardCount 0
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+JNI CallMethod: android/content/res/AssetManager.openFd (Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+JNI AssetManager.openFd requested: android/content/res/AssetManager.EAMCore.ini 
+JNI AssetManager.openFd IOException: android/content/res/AssetManager.EAMCore.ini  EXCEPTION
+JNI PopLocalFrame: . 
+JNI PushLocalFrame: . 
+JNI CallMethod: java/io/InputStream.read ([BII)I
+JNI CallMethod: java/io/InputStream.read ([BII)I
+JNI PopLocalFrame: . 
+JNI PushLocalFrame: . 
+JNI CallMethod: java/io/InputStream.close ()V
+JNI PopLocalFrame: . 
+JNI FindClass: com/ea/blast/PowerManagerAndroid. 
+JNI GetMethodID: com/ea/blast/PowerManagerAndroid.<init> ()V
+JNI NewObject: com/ea/blast/PowerManagerAndroid.<init> ()V
+JNI GetMethodID: com/ea/blast/PowerManagerAndroid.ApplyKeepAwake (Z)V
+JNI PopLocalFrame: . 
+Frame 1 returned
+Frame 2 begin
+JNI PushLocalFrame: . 
+JNI CallMethod: com/ea/blast/PowerManagerAndroid.ApplyKeepAwake (Z)V
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.isContentReady ()Z
+JNI CallMethod: com/eamobile/Query.isContentReady ()Z
+JNI JNI compatibility: com/eamobile/Query.isContentReady ObjectMethodV for boolean
+JNI FindClass: com/ea/blast/GetAppDataDirectoryDelegate. 
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.<init> ()V
+JNI NewObject: com/ea/blast/GetAppDataDirectoryDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.GetAppDataDirectory ()Ljava/lang/String;
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.GetExternalStorageDirectory ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/GetAppDataDirectoryDelegate.GetAppDataDirectory ()Ljava/lang/String;
+FS stat begin: appdata://published/var result=0
+FS stat mapped: sdmc:/3ds/deadspace/test-output/save-bridge/published/var result=0
+FS stat native: sdmc:/3ds/deadspace/test-output/save-bridge/published/var result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/save-bridge/published/var result=-1
+FS stat begin: appdata://published/var result=0
+FS stat mapped: sdmc:/3ds/deadspace/test-output/save-bridge/published/var result=0
+FS stat native: sdmc:/3ds/deadspace/test-output/save-bridge/published/var result=-1
+FS stat end: sdmc:/3ds/deadspace/test-output/save-bridge/published/var result=-1
+JNI FindClass: com/ea/blast/DisplayAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/DisplayAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetStdOrientation ()I
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetDefaultWidth ()I
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.GetDefaultWidth ()I
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetDefaultHeight ()I
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.GetDefaultHeight ()I
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetDpiX ()F
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.GetDpiX ()F
+JNI GetMethodID: com/ea/blast/DisplayAndroidDelegate.GetDpiY ()F
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.GetDpiY ()F
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+JNI FindClass: com/ea/blast/DeviceOrientationHandlerAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.OnLifeCycleFocusGained ()V
+JNI GetMethodID: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.SetEnabled (Z)V
+JNI CallMethod: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.OnLifeCycleFocusGained ()V
+JNI CallMethod: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.SetEnabled (Z)V
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+JNI FindClass: com/ea/blast/AccelerometerAndroidDelegate. 
+JNI GetMethodID: com/ea/blast/AccelerometerAndroidDelegate.<init> ()V
+JNI NewObject: com/ea/blast/AccelerometerAndroidDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI GetMethodID: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency (I)V
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency (I)V
+JNI SensorDelay: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency 3
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 0
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
+GLES upload: 512x512 format=1908 required=1048576 limit=100663296 result=0
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.open (Ljava/lang/String;)Ljava/io/InputStream;
+JNI AssetManager.open IOException: android/content/res/AssetManager.data.zip  EXCEPTION
+JNI PopLocalFrame: . 
+JNI PushLocalFrame: . 
+JNI CallMethod: android/content/res/AssetManager.list (Ljava/lang/String;)[Ljava/lang/String;
+JNI AssetManager.list requested: android/content/res/AssetManager. 
+JNI AssetManager.list returned: android/content/res/AssetManager. 7
+JNI PopLocalFrame: . 
+JNI FindClass: com/ea/blast/GetAppDataDirectoryDelegate. 
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.<init> ()V
+JNI NewObject: com/ea/blast/GetAppDataDirectoryDelegate.<init> ()V
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.GetAppDataDirectory ()Ljava/lang/String;
+JNI GetMethodID: com/ea/blast/GetAppDataDirectoryDelegate.GetExternalStorageDirectory ()Ljava/lang/String;
+JNI CallMethod: com/ea/blast/GetAppDataDirectoryDelegate.GetExternalStorageDirectory ()Ljava/lang/String;
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts/Ascender_Uni.ttf result=0
+FS stat mapped: sdmc:/3ds/deadspace/test-output/font-subset/Ascender_Uni.ttf result=0
+FS stat native: sdmc:/3ds/deadspace/test-output/font-subset/Ascender_Uni.ttf result=0
+FS stat end: sdmc:/3ds/deadspace/test-output/font-subset/Ascender_Uni.ttf result=0
+FS open fd: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts/Ascender_Uni.ttf result=1024
+Thread event: 1 id=00000100 detail=087efd9c
+Thread event: 2 id=00000201 detail=087efd9c
+Thread event: 3 id=00000201 detail=087efd9c
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/ result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/Downloaded.indicate result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat native: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat end: sdmc:/3ds/deadspace/assets/Downloaded.indicate result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/ result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/data result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/data result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/data result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/data result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts result=0
+FS stat begin: /sdcard/Android/data/com.ea.deadspace/files/ea/deadspace/published/fonts result=0
+FS stat mapped: sdmc:/3ds/deadspace/assets/published/fonts result=0
+WATCH phase=NativeOnDrawFrame frame=2 image=0848f000 fs-events=824
+WATCH thread=00000100 entry-offset=f7b71000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH phase=NativeOnDrawFrame frame=2 image=0848f000 fs-events=1560
+WATCH thread=00000100 entry-offset=f7b71000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+JNI FindClass: com/eamobile/Query. 
+JNI GetStaticMethodID: com/eamobile/Query.getVersion ()Ljava/lang/String;
+JNI CallMethod: com/eamobile/Query.getVersion ()Ljava/lang/String;
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat native: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+FS stat end: sdmc:/3ds/deadspace/assets/published/fonts/HiraKakuProN-W3 result=-1
+Thread event: 1 id=00000100 detail=086db7f8
+Thread event: 2 id=00000302 detail=086db7f8
+Thread event: 3 id=00000302 detail=086db7f8
+Thread event: 1 id=00000100 detail=086db7f8
+Thread event: 2 id=00000403 detail=086db7f8
+Thread event: 3 id=00000403 detail=086db7f8
+Thread event: 1 id=00000100 detail=086db914
+Thread event: 2 id=00000504 detail=086db914
+Thread event: 3 id=00000504 detail=086db914
+Thread event: 1 id=00000100 detail=086db914
+Thread event: 2 id=00000605 detail=086db914
+Thread event: 3 id=00000605 detail=086db914
+WATCH phase=NativeOnDrawFrame frame=2 image=0848f000 fs-events=2295
+WATCH thread=00000100 entry-offset=f7b71000 wait=0 object=00000000
+WATCH thread=00000201 entry-offset=00360d9c wait=0 object=00000000
+WATCH thread=00000302 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=302f6a70 state=1
+WATCH thread=00000403 entry-offset=0024c7f8 wait=0 object=00000000
+WATCH EA callback=00355340 argument=302f6ac0 state=1
+WATCH thread=00000504 entry-offset=0024c914 wait=3 object=302f30f8
+WATCH EA callback=0029bf3c argument=302f2ea0 state=1
+WATCH thread=00000605 entry-offset=0024c914 wait=0 object=00000000
+WATCH EA callback=00271a10 argument=302f2ea0 state=1
+Thread event: 1 id=00000100 detail=086db914
+Thread event: 2 id=00000706 detail=086db914
+Thread event: 3 id=00000706 detail=086db914
+JNI CallMethod: com/ea/blast/DisplayAndroidDelegate.SetStdOrientation (I)V
+GLES upload: 512x512 format=1908 required=1048576 limit=100663296 result=0
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency (I)V
+JNI SensorDelay: com/ea/blast/AccelerometerAndroidDelegate.SetUpdateFrequency 1
+JNI CallMethod: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled (Z)V
+JNI SensorEnabled: com/ea/blast/AccelerometerAndroidDelegate.SetEnabled 1
+GLES upload: 1x1 format=1907 required=1048580 limit=100663296 result=0
+GAME DRAW: caller-offset=003244e0 calls=1 triangles=2 fragments=0 samples=0
+GLES upload: 512x128 format=1908 required=1310724 limit=100663296 result=0
+GAME DRAW: caller-offset=003244e0 calls=2 triangles=4 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 2 returned
+Calling NativeOnResume after engine initialization...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnResume returned
+Calling NativeOnWindowFocusChanged after engine initialization...
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+NativeOnWindowFocusChanged returned
+JNI OrientationEvent: com/ea/blast/DeviceOrientationHandlerAndroidDelegate.NativeOnDeviceOrientationChange fixed display
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 3 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=3 triangles=6 fragments=0 samples=0
+GLES upload: 256x256 format=1908 required=1572868 limit=100663296 result=0
+GAME DRAW: caller-offset=003244e0 calls=4 triangles=8 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 3 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 4 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=5 triangles=10 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=6 triangles=12 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 4 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 5 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=7 triangles=14 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=8 triangles=16 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 5 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 6 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=9 triangles=18 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=10 triangles=20 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 6 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 7 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=11 triangles=22 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=12 triangles=24 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 7 returned
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 8 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=13 triangles=26 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=14 triangles=28 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 8 returned
+GPU SEQUENCE FRAME SAVED: frame=8 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 9 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=15 triangles=30 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=16 triangles=32 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 9 returned
+GPU SEQUENCE FRAME SAVED: frame=9 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 10 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=17 triangles=34 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=18 triangles=36 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 10 returned
+GPU SEQUENCE FRAME SAVED: frame=10 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 11 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=19 triangles=38 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=20 triangles=40 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 11 returned
+GPU SEQUENCE FRAME SAVED: frame=11 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 12 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=21 triangles=42 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=22 triangles=44 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 12 returned
+GPU SEQUENCE FRAME SAVED: frame=12 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 13 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=23 triangles=46 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=24 triangles=48 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 13 returned
+GPU SEQUENCE FRAME SAVED: frame=13 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 14 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=25 triangles=50 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=26 triangles=52 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 14 returned
+GPU SEQUENCE FRAME SAVED: frame=14 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 15 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=27 triangles=54 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=28 triangles=56 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 15 returned
+GPU SEQUENCE FRAME SAVED: frame=15 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 16 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=29 triangles=58 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=30 triangles=60 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 16 returned
+GPU SEQUENCE FRAME SAVED: frame=16 audit=OK
+JNI PushLocalFrame: . 
+JNI PopLocalFrame: . 
+JNI AccelerationEvent: com/ea/blast/AccelerometerAndroidDelegate.NativeOnAcceleration (FFF)V
+Frame 17 begin
+JNI PushLocalFrame: . 
+GAME DRAW: caller-offset=003244e0 calls=31 triangles=62 fragments=0 samples=0
+GAME DRAW: caller-offset=003244e0 calls=32 triangles=64 fragments=0 samples=0
+JNI PopLocalFrame: . 
+Frame 17 returned
+GPU SEQUENCE FRAME SAVED: frame=17 audit=OK
+PICA checkpoint: draws=32 triangles=64 uploads=2 VRAM=524288
+FIRST GAME FRAME CAPTURED: frame=17 draws=32 fragments=0 samples=0
+Default surface: depth=16 stencil=8 bytes=288000
+Lighting state: enabled=0 lights=00 two-side=0 setters=0 vertices=0 normal=0,0,1
+Fog state: enabled=0 mode=0800 density=1 start=0 end=1 color=0,0,0,0
+Combine state: unit=0 enabled=0 mode=2100 rgb=2100 alpha=2100 scale=1,1
+Combine state: unit=1 enabled=0 mode=2100 rgb=2100 alpha=2100 scale=1,1
+FBO state: objects=0 renderbuffers=0 bytes=0 changes=0 bound=0
+JNI assets: lists=1 names=7 gets=7 sets=0 strings=0 arrays=0
+JNI strings: new16=1 newUTF=33 get16=7 getUTF=31 regions=0 errors=0
+GLES error at stop: 00000000
+GLES counters: queries=14 clears=0 pixels=0 flushes=0
+GLES texture stores: names=4 bytes=1572868 uploads=5 patches=0
+Texture pages: resident=1572868 limit=6291456 saves=0 loads=0 failures=0
+Jump contexts: saves=569 restores=0 refusals=0
+Native heap: used=12412776 free=559256; runtime live=1933155 peak=1933155 blocks=21 failures=0
+CLOCK main: kind=3 caller=00249620 id=1 calls=1 first-us=182 last-us=182
+CLOCK main: kind=1 caller=0023775c id=0 calls=1 first-us=1793235852328000 last-us=1793235852328000
+CLOCK main: kind=1 caller=00246930 id=0 calls=49 first-us=1793235852444000 last-us=1793235887326000
+CLOCK main: kind=1 caller=00360c84 id=0 calls=42 first-us=1793235852696000 last-us=1793235887325000
+Thread pools: active=6 mutex=34 cond=0 sem=31 keys=0
+Donor arenas: break=16781312 peak=16781312 mapped-pages=0 map-peak=0 refusals=0
+JNI checkpoint: pending=0 failures=2 refs=11 frame-depth=0 string-loans=1
+JNI retained string: slot=2 text=1.1.33 Universal SD (Default) loans=1 refs=0
+Sensor shutdown: result=0 active=0 events=15 delay=1
+ENGINE EXPERIMENT STOPPED
+Completed game frame saved.

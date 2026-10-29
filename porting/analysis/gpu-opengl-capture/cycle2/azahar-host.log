@@ -1,0 +1,46 @@
+3 [   0.073892] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sampling-gl-rgba/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config can't be open without mode create.
+
+3 [   0.073922] Service.FS <Error> core/file_sys/savedata_archive.cpp:DeleteFile:117: File not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sampling-gl-rgba/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config
+
+3 [   0.077292] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sampling-gl-rgba/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010035/00000000/news.db can't be open without mode create.
+
+3 [   0.086373] Service.NWM <Error> core/hle/service/nwm/nwm_uds.cpp:NWM_UDS:1738: Network isn't initalized
+
+3 [   0.089162] Service.HTTP <Error> core/hle/service/http/http_c.cpp:DecryptClCertA:2282: ClCertA file missing, using default
+
+2 [   0.104010] Service.FS <Warning> core/file_sys/ncch_container.cpp:OpenFile:192: Failed to open C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sampling-gl-rgba/Azahar/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004000e/0fde6500/content/00000000.app
+
+0 [   0.110036] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00100000, size=00030000
+
+0 [   0.110040] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BD0000, upper=07C00000
+
+0 [   0.110061] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00130000, size=00003000
+
+0 [   0.110062] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BCD000, upper=07BD0000
+
+0 [   0.110065] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00133000, size=00079000
+
+0 [   0.110066] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07B54000, upper=07BCD000
+
+0 [   0.110094] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=0FFC0000, size=00040000
+
+0 [   0.110095] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07B14000, upper=07B54000
+
+0 [   0.147741] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000003, addr0=0x08000000, addr1=0x00000000, size=0x1F14000, permissions=0x00000003
+
+0 [   0.147746] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=08000000, size=01F14000
+
+0 [   0.147749] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=05C00000, upper=07B14000
+
+0 [   0.148323] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00010003, addr0=0x00000000, addr1=0x00000000, size=0x2000000, permissions=0x00000003
+
+2 [   0.149116] Service.SRV <Warning> core/hle/service/sm/srv.cpp:RegisterClient:64: (STUBBED) called. Caller PID=11
+
+2 [   0.166039] Service.APT <Warning> core/hle/service/apt/apt.cpp:NotifyToWait:362: (STUBBED) app_id=768
+
+3 [   0.166504] Service <Error> core/hle/service/service.cpp:ReportUnimplementedFunction:170: unknown / unimplemented function 'ConfigureNew3DSCPU': port='ptm:sysm' cmd_buf={[0]=0x8180040 (0x0818, 1, 0), [1]=0x0}
+
+2 [   0.166616] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000007, input_size=0X00000004, output_size=0X00000001
+
+2 [   0.166678] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+

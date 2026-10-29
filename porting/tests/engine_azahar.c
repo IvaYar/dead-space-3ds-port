@@ -692,6 +692,15 @@ static void run(void) {
     phase="NativeOnDrawFrame";
     uint32_t capture_after=2;FILE *capture_config=fopen("sdmc:/3ds/deadspace/capture-frame.txt","rb");
     if(capture_config){unsigned value=0;if(fscanf(capture_config,"%u",&value)==1 && value>=2 && value<=12000)capture_after=value;fclose(capture_config);}
+#ifdef DS34_SEQUENCE_AUDIT
+    unsigned sequence_start=0,sequence_count=0;
+    FILE *sequence_config=fopen("sdmc:/3ds/deadspace/gpu-sequence-test.txt","rb");
+    int sequence_valid=sequence_config && fscanf(sequence_config,"%u %u",&sequence_start,&sequence_count)==2;
+    if(sequence_config)fclose(sequence_config);
+    if(!sequence_valid || !graphics_attached || sequence_start<2 || sequence_count<2 || sequence_count>10 || sequence_start+sequence_count-1!=capture_after){report("Invalid GPU sequence configuration\n");return;}
+    FILE *sequence_log=fopen("sdmc:/3ds/deadspace/gpu-sequence.jsonl","w");
+    if(!sequence_log){report("GPU sequence journal unavailable\n");return;}fclose(sequence_log);
+#endif
     unsigned auto_menu=0,auto_state=0,auto_frame=0,auto_confirm=0;
     FILE *auto_config=fopen("sdmc:/3ds/deadspace/auto-menu-test.txt","rb");
     if(auto_config){unsigned value=0;if(fscanf(auto_config,"%u",&value)==1 && value>=2 && value<=3600)auto_menu=value;fclose(auto_config);
@@ -757,6 +766,19 @@ static void run(void) {
                     if(valid && value!=auto_menu){auto_menu=value;capture_after=auto_confirm+value;report("AUTO MENU duration updated: callbacks=%u target=%lu\n",value,(unsigned long)capture_after);}}
             }
             uint32_t drawn[4];ds22_stats(&graphics,drawn);
+#ifdef DS34_SEQUENCE_AUDIT
+            if(frame>=sequence_start && frame<sequence_start+sequence_count){
+                DS34Audit a;int bad=ds34_sequence_audit(&a);uint32_t counters[4];ds34_stats(counters);
+                char stem[48];snprintf(stem,sizeof(stem),"gpu-frame-%lu",(unsigned long)frame);
+                if(save_surface(&graphics,stem,image_base)){report("GPU sequence capture failed\n");return;}
+                FILE *f=fopen("sdmc:/3ds/deadspace/gpu-sequence.jsonl","a");if(!f){report("GPU sequence journal failed\n");return;}
+                fprintf(f,"{\"frame\":%lu,\"gl_error\":%lu,\"draws\":%lu,\"triangles\":%lu,\"uploads\":%lu,\"vram\":%lu,\"presents\":%lu,\"drains\":%lu,\"peak_vertices\":%lu,\"upload_checks\":%lu,\"upload_mismatches\":%lu,\"vertex_checks\":%lu,\"vertex_mismatches\":%lu,\"texture_checks\":%lu,\"texture_mismatches\":%lu,\"pending_staging\":%lu,\"stream_used\":%lu,\"cached_textures\":%lu,\"texture_digest\":%lu}\n",
+                    (unsigned long)frame,(unsigned long)graphics.error,(unsigned long)counters[0],(unsigned long)counters[1],(unsigned long)counters[2],(unsigned long)counters[3],(unsigned long)a.presents,(unsigned long)a.drains,(unsigned long)a.peak_vertices,(unsigned long)a.upload_checks,(unsigned long)a.upload_mismatches,(unsigned long)a.vertex_checks,(unsigned long)a.vertex_mismatches,(unsigned long)a.texture_checks,(unsigned long)a.texture_mismatches,(unsigned long)a.pending_staging,(unsigned long)a.stream_used,(unsigned long)a.cached_textures,(unsigned long)a.texture_digest);
+                if(fclose(f)){report("GPU sequence journal close failed\n");return;}
+                report("GPU SEQUENCE FRAME SAVED: frame=%lu audit=%s\n",(unsigned long)frame,bad?"FAILED":"OK");
+                if(bad || graphics.error){report("GPU sequence audit failed\n");return;}
+            }
+#endif
             if(capture_after>120 && frame%120==0 && frame<capture_after){
                 char stem[48];snprintf(stem,sizeof(stem),"progress-frame-%lu",(unsigned long)frame);
                 if(!save_surface(&graphics,stem,image_base))report("PROGRESS FRAME SAVED: frame=%lu\n",(unsigned long)frame);

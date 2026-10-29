@@ -1,0 +1,113 @@
+{
+  "base_commit": "c010305",
+  "date_local": "2026-10-28",
+  "safety": {
+    "passed": true,
+    "cycles": 2,
+    "implementation": "Persistent white 8x8 RGBA8 VRAM texture (256 bytes) for inactive unit1; TEV passes previous color. Citro3D public TexBind always receives valid descriptor/storage for unit1. Physical unit stays enabled; disabled GLES stage does not use it.",
+    "rejected_first_attempt": "Same neutral texture in linear memory caused host exit code 1 after fixture capture0 in both memory profiles; root cause not established. Not retained.",
+    "fixtures": {
+      "azahar-gpu-gles": {
+        "passed": true,
+        "gpu_draws": 22,
+        "gpu_triangles": 2772,
+        "gpu_uploads": 5,
+        "gpu_bytes": 262144,
+        "cpu_fragments": 0,
+        "cpu_samples": 0,
+        "unmapped_accesses": 0,
+        "engine_memory": false,
+        "scope": "GLES adapter GPU fragments; original game not called",
+        "hardware_tested": false,
+        "emulator_sd_isolated": true,
+        "cxi_sha256": "f8523a654f6311ef5516896ec37182bfb9f98284b1a945b586402488fb1c3a7a",
+        "png_sha256": [
+          "66072f89440fc624c466760e5d248226afb89a0ae8ecf29f9c375c1d500f0110",
+          "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
+          "aefc77b9ff970f5b84505dfb4b7a2cdf560d15cd3fa38fc2e032ec12fcbec734",
+          "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+          "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+          "819edd88f5fc59c64977f5dcd2dab93876beb9b5ef577528047de30a3686fe2a",
+          "4054ba2c17136dcd85eb97df731f72c3b745b06c154ba1c4ed1a138b9b5f1dde",
+          "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
+          "e44426538c3baf7506390ee18364d9926031ae115eaeb337be317c289f032451"
+        ],
+        "elapsed_seconds": 0.578
+      },
+      "azahar-gpu-gles-memory": {
+        "passed": true,
+        "gpu_draws": 22,
+        "gpu_triangles": 2772,
+        "gpu_uploads": 5,
+        "gpu_bytes": 262144,
+        "cpu_fragments": 0,
+        "cpu_samples": 0,
+        "unmapped_accesses": 0,
+        "engine_memory": true,
+        "scope": "GLES adapter GPU fragments; original game not called",
+        "hardware_tested": false,
+        "emulator_sd_isolated": true,
+        "cxi_sha256": "e6422e886bc0e79f29ccd0cb6b9f922b91c49587439942530b2ec2d3be97dd0e",
+        "png_sha256": [
+          "66072f89440fc624c466760e5d248226afb89a0ae8ecf29f9c375c1d500f0110",
+          "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
+          "aefc77b9ff970f5b84505dfb4b7a2cdf560d15cd3fa38fc2e032ec12fcbec734",
+          "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+          "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+          "819edd88f5fc59c64977f5dcd2dab93876beb9b5ef577528047de30a3686fe2a",
+          "4054ba2c17136dcd85eb97df731f72c3b745b06c154ba1c4ed1a138b9b5f1dde",
+          "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
+          "e44426538c3baf7506390ee18364d9926031ae115eaeb337be317c289f032451"
+        ],
+        "elapsed_seconds": 0.625
+      }
+    },
+    "invalid_accesses": {
+      "azahar-gpu-gles": [],
+      "azahar-gpu-gles-memory": [],
+      "azahar-gpu-engine": []
+    }
+  },
+  "text": {
+    "resolved": false,
+    "backend_uv_changed": false,
+    "experiments": 2,
+    "software_result": "azahar-gpu-sampling/result.json",
+    "opengl_result": "azahar-gpu-sampling-gl/result.json",
+    "software_findings": "NEAREST magnified and fractional cases 0/2 match DS22 exactly. LINEAR acts as NEAREST; boundary and atlas cases also differ.",
+    "software_source": "https://github.com/azahar-emu/azahar/blob/2126.2/src/video_core/renderer_software/sw_rasterizer.cpp#L512",
+    "opengl_findings": "Opt-in hidden OpenGL 4.3 context negotiates and completes all draws, but captured framebuffer is distorted even in NEAREST control case0. Not a valid filtering oracle. Cause unconfirmed; no backend UV workaround applied.",
+    "test_harness": "azahar_opengl.py; glfw==2.11.0 installed only under ignored toolchain/python-glfw; CPU frontend defaults unchanged."
+  },
+  "engine": {
+    "passed_capture": true,
+    "visual_equivalence_validated": false,
+    "cxi_sha256": "07a9262285e1254447067af40ae947fa18e7ae69be1daaf2ca503717b40350fa",
+    "metadata": {
+      "width": 400,
+      "height": 240,
+      "layout": 2,
+      "bytes": 192000,
+      "crc32": "ea733050",
+      "frame": 180,
+      "caller_offset": "00000000",
+      "draws": 387,
+      "triangles": 3006,
+      "fragments": 0,
+      "samples": 0
+    },
+    "identical_to_c010305_frame": true,
+    "png_sha256": "3410c1d5776fa32c658747f30a373292d781d078e412248d589a0866d80808a5",
+    "gl_error": 0,
+    "text_artifacts_remain": true
+  },
+  "sequential_frames": {
+    "tested": false,
+    "reason": "Conditional on resolving text; visual validation remains blocked."
+  },
+  "cpu_baseline_sha256": "ffb0be375d0bbef61f1fd58faf0f052a41326d0825995a52eb49cd7cc6a2e8d8",
+  "full_552_tests_run": false,
+  "hardware_tested": false,
+  "pushed": false,
+  "next_step": "Validate OpenGL framebuffer capture on the synthetic NEAREST control before interpreting LINEAR. Isolate render-target RGB8 vs transfer/readback/frontend handling without changing donor passes; then compare atlas sampling and only fix a confirmed adapter defect."
+}

@@ -1,0 +1,3 @@
+DS34 native GPU fixture v0.1.1 environment=native
+ATTACH BEGIN: GPU white texture transfer
+ATTACH OK: white texture transfer verified

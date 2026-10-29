@@ -7,6 +7,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--case',choices=('present','missing','wrong','ready','asset-missing','asset-wrong','content-unverified','sensor','graphics'),default='present')
     parser.add_argument('--explore',action='store_true',help='Capture the next stop without claiming the checkpoint regression passed')
     parser.add_argument('--gpu',action='store_true',help='Isolated experimental PICA engine build; requires exploratory graphics and separate SD')
+    parser.add_argument('--gpu-sequence-start',type=int,default=0,help='First native callback saved by the separate GPU sequence audit build')
+    parser.add_argument('--gpu-sequence-count',type=int,default=0,help='Consecutive GPU captures, 2..10; end must equal capture-frame')
     parser.add_argument('--capture-frame',type=int,default=8,help='Graphics capture callback/auto-menu ceiling (2..12000); custom values require --explore')
     parser.add_argument('--timeout-seconds',type=int,default=60,help='Wall time budget, 1..3600; over 60 requires --explore')
     parser.add_argument('--resume-focus',action='store_true',help='Exploratory resume/focus lifecycle after donor initialization')
@@ -33,6 +35,8 @@ def main():
     parser.add_argument('--stop-after-checkpoint',action='store_true',help='Finish after saving a private emulator checkpoint, without claiming a game-frame checkpoint')
     parser.add_argument('--control-file',type=Path,help='Live JSON pressed/x/y input, optional scene_frames and screenshot sequence; exploratory fixed 400x480 layout')
     args=parser.parse_args()
+    if (args.gpu_sequence_start or args.gpu_sequence_count) and (not args.gpu or args.gpu_sequence_start<2 or not 2<=args.gpu_sequence_count<=10 or args.gpu_sequence_start+args.gpu_sequence_count-1!=args.capture_frame or args.auto_menu):
+        parser.error('GPU sequence requires --gpu, start>=2, count2..10, matching capture-frame and no auto-menu')
     if args.gpu and (not args.explore or args.case!='graphics' or args.memory_mib!=178 or ROOT==PORTING/'analysis/azahar-smoke' or args.save_checkpoint or args.restore_checkpoint):
         parser.error('--gpu requires exploratory graphics, 178MiB and an isolated SD; CPU checkpoints are incompatible')
     if args.cpu_percent not in range(25,401,25) or (args.cpu_percent!=100 and not args.explore):
@@ -74,6 +78,9 @@ def main():
     gl_marker=card/'graphics-bridge-test.txt';gl_backup=gl_marker.read_bytes() if gl_marker.exists() else None
     capture=card/'capture-frame.txt';capture_backup=capture.read_bytes() if capture.exists() else None
     if args.case=='graphics':capture.write_text(str(args.capture_frame)+'\n',encoding='ascii')
+    sequence=card/'gpu-sequence-test.txt';sequence_backup=sequence.read_bytes() if sequence.exists() else None
+    if args.gpu_sequence_count:sequence.write_text(f'{args.gpu_sequence_start} {args.gpu_sequence_count}\n',encoding='ascii')
+    elif sequence.exists():sequence.unlink()
     if args.case=='graphics':gl_marker.write_bytes(b'1\n')
     elif gl_marker.exists():gl_marker.unlink()
     lifecycle=card/'lifecycle-bridge-test.txt';lifecycle_backup=lifecycle.read_bytes() if lifecycle.exists() else None
@@ -118,7 +125,7 @@ def main():
     def restore_markers():
         for path,backup in ((marker,marker_backup),(gl_marker,gl_backup),(capture,capture_backup),(lifecycle,lifecycle_backup),
             (touch,touch_backup),(private,private_backup),(apk,apk_backup),(arena,arena_backup),(fbo,fbo_backup),(font,font_backup),
-            (allocator,allocator_backup),(fog,fog_backup),(combine,combine_backup),(lighting,lighting_backup),(depth,depth_backup),(auto,auto_backup)):
+            (allocator,allocator_backup),(fog,fog_backup),(combine,combine_backup),(lighting,lighting_backup),(depth,depth_backup),(auto,auto_backup),(sequence,sequence_backup)):
             if backup is not None:path.write_bytes(backup)
             elif path.exists():path.unlink()
         if args.case=='content-unverified' and receipt_backup is not None:receipt.write_bytes(receipt_backup)
@@ -145,6 +152,7 @@ def main():
         asset.write_bytes(data)
     app=PORTING/('3ds/build-emulator/engine-audit-178.cxi' if args.memory_mib==178 else '3ds/build-emulator/engine-audit.cxi')
     if args.gpu:app=PORTING/'3ds/build-gpu-engine/engine-gpu.cxi'
+    if args.gpu_sequence_count:app=PORTING/'3ds/build-gpu-sequence/engine-gpu.cxi'
     def wall_timeout():
         failed=ROOT/f'engine-{args.case}-wall-timeout.log'
         if log.exists():shutil.copyfile(log,failed)
@@ -166,7 +174,7 @@ def main():
     core.retro_init();game=frontend.GameInfo(str(app.resolve()).encode(),None,0,None)
     assert core.retro_load_game(C.byref(game))
     checkpoint_saved=None;checkpoint_restored=None
-    profile={k:v for k,v in vars(args).items() if k not in ('save_checkpoint','restore_checkpoint','timeout_seconds','stop_after_checkpoint','control_file')}
+    profile={k:v for k,v in vars(args).items() if k not in ('save_checkpoint','restore_checkpoint','timeout_seconds','stop_after_checkpoint','control_file','gpu_sequence_start','gpu_sequence_count')}
     if args.restore_checkpoint:
         # The core advertises RETRO_SERIALIZATION_QUIRK_MUST_INITIALIZE.
         # Initialize its core-loop thread and services with no launch input

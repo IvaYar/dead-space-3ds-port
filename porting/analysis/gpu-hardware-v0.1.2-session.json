@@ -1,0 +1,125 @@
+{
+  "version": "0.1.2",
+  "diagnostic_only": true,
+  "hardware_tested": false,
+  "hardware_hang_fixed": false,
+  "cause_confirmed": false,
+  "hardware_evidence": "analysis/hardware/gpu-test-v0.1.1-user-result.json",
+  "implementation_cycle": 1,
+  "root_cause_repair_cycles": 0,
+  "changes": [
+    "Fixture-only phase tracing including FrameEnd/GSP readback/capture",
+    "2000 ms VBlank counter and GX NONBLOCK polling waits",
+    "Failure JSON with timeout phase and completed case count",
+    "CPU wait loop does not depend on VBlank after timeout",
+    "Defer Fini/exit and retain allocations until real GX queue idle",
+    "Separate SD directory preserves v0.1.1 evidence",
+    "Fault injection compiled only into separate Azahar test binary"
+  ],
+  "checks": {
+    "success": {
+      "report": "analysis/azahar-gpu-hardware-v0.1.2/result.json",
+      "sha256": "7bc2fee43707c7f71ecbd2bbe50da09f045c1820f7d8492ae8471b6d1576fd10",
+      "passed": true
+    },
+    "vblank0": {
+      "report": "analysis/azahar-gpu-hardware-v0.1.2-vblank0/result.json",
+      "sha256": "866b3904638c2cb57667e6e3e264e11f0379ff185da73adca2fdfd23421e9d67",
+      "passed": true
+    },
+    "vblank1": {
+      "report": "analysis/azahar-gpu-hardware-v0.1.2-vblank1/result.json",
+      "sha256": "80bce658d91d769ffab6546364c3173d4213ea23533f12c3cbe9927274480e09",
+      "passed": true
+    },
+    "queue-after-submit": {
+      "report": "analysis/azahar-gpu-hardware-v0.1.2-queue-after-submit/result.json",
+      "sha256": "fda88c5172c03df8a3abeed4f48c10f781d5f8ad3f1340bf56d7ef0d45c000d1",
+      "passed": true
+    }
+  },
+  "production_branch_compile": {
+    "passed": true,
+    "diagnostic_symbols_absent": true,
+    "command": [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\devkitARM\\bin\\arm-none-eabi-gcc.exe",
+      "-march=armv6k",
+      "-mtune=mpcore",
+      "-mfloat-abi=hard",
+      "-mtp=soft",
+      "-std=c11",
+      "-O2",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-D__3DS__",
+      "-mword-relocations",
+      "-IC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\libctru\\include",
+      "-IC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\citro3d\\include",
+      "-IC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\include",
+      "-IC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-gpu-hardware-v0.1.2",
+      "-c",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\source\\ds34_gpu_3ds.c",
+      "-o",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-gpu-hardware-v0.1.2\\production-ds34.o"
+    ]
+  },
+  "baseline_preservation": {
+    "passed": true,
+    "files_checked": 179,
+    "report": "analysis/gpu-hardware-v0.1.2-preservation.json"
+  },
+  "package": {
+    "passed": true,
+    "version": "0.1.2",
+    "title_id": "000400000FDE6800",
+    "cia_sha256": "a155ed7bb1e1ab301b1e6f2c212985ce66797b9d44a8e4761bc7ab7ee899e72e",
+    "hash_checks": [
+      "\\- Hash: (GOOD) 411FD53FFAA48A38D7E9DD77FCA7084FADCCDE33B11ACEEBBE9DEA8A29003C8B",
+      "Exheader hash: (GOOD)   551C0AE9A509E31EEFCA67B160B4A452B64776C53CABEA77A8F467D6DDD08CD3",
+      "ExeFS hash: (GOOD)      4DA52D576A2A2B4675E054C663FDDB124E559A84DCF17A5D9EA031397C4ACCA6",
+      "Section hash: (GOOD)    B10ED2A08794544226DA6AB47F2CF395F701C9A9A4EC9E4D8ADEA6D15807E971",
+      "Section hash: (GOOD)    33A970C7B0850E2B8B74B4BD5DF604182F3EAD3AE20D2455FAF4C4A2DC2BC415",
+      "Section hash: (GOOD)    91547C48932189131C9A50013C7FE7F10DC629D51B9283C793CECB95236A63C4",
+      "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+    ],
+    "homebrew_test_signatures": true,
+    "rx_and_donor_execution_symbols_absent": true,
+    "cpu_vram_mapping": "read-only",
+    "inactive_transfer_verified": true,
+    "v0.1.0_pixel_sha_unchanged": true,
+    "fault_injection_absent_from_release": true,
+    "timeout_fault_scenarios_passed": [
+      "vblank0",
+      "vblank1",
+      "queue-after-submit"
+    ],
+    "hardware_tested": false,
+    "diagnostic_only": true,
+    "hardware_hang_fixed": false,
+    "archive_sha256": "89e39fea17d1a713392993c1cd69d71d3d44372fff21cd85157825e50d9b491c",
+    "archive_bytes": 160984,
+    "game_resources_included": false,
+    "file_count": 18
+  },
+  "limits": [
+    "No new hardware execution; actual hang not reproduced in Azahar",
+    "Synthetic timeout injection is not an actual wedged GPU",
+    "Initial SDK texture copy, FrameEnd, GSP/SD calls and Fini are not generally time bounded",
+    "Normal application exit cannot be guaranteed while hardware GPU is stalled",
+    "Production/game wait policy unchanged",
+    "Original game CIA not ready"
+  ],
+  "next_step": "One instrumented native run of v0.1.2 when user is available; retain gpu-test.log/result.json from new versioned SD directory. Use last BEGIN/OK and timeout counters to identify the first failing stage before making a rendering correction.",
+  "not_run": [
+    "552 ARM tests",
+    "hardware tests",
+    "OpenGL/text experiments",
+    "original game sequence reruns",
+    "git push",
+    "git commit"
+  ]
+}

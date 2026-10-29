@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-29",
+  "timezone": "Asia/Irkutsk",
+  "repository": "IvaYar/dead-space-3ds-port",
+  "repository_visibility_verified": "public",
+  "branch": "main",
+  "base_commit": "c0103058b85e99cb68c1a0807220354a104d090b",
+  "user_authorized_upload": true,
+  "candidate_files_before_this_audit": 419,
+  "candidate_bytes_before_this_audit": 6089646,
+  "checks": {
+    "excluded_game_resource_and_toolchain_paths": "PASS",
+    "no_APK_SO_OBB_executable_or_audio_asset_files": "PASS",
+    "no_ELF_PE_ZIP_payloads_in_commit_candidates": "PASS",
+    "no_observed_GitHub_tokens_or_private_key_blocks_in_text_candidates": "PASS",
+    "raw_files_are_known_192000_byte_framebuffer_captures": 21,
+    "png_integrity": 226,
+    "python_syntax": 10,
+    "json_parse": 103,
+    "jsonl_parse": 2,
+    "latest_tested_build_source_hashes": "PASS",
+    "preserved_baseline_and_artifact_hashes": 313,
+    "all_four_ZIP_payloads_match_preserved_manifests": "PASS"
+  },
+  "diagnostic_images": "PNG and raw framebuffer captures are included as test evidence; extracted original game assets and donor binaries are excluded",
+  "release": {
+    "tag": "gpu-diagnostics-2026-10-29",
+    "draft": true,
+    "prerelease": true,
+    "hardware_status": "ALL FOUR VERSIONS FAILED; NOT A WORKING NATIVE GAME BUILD",
+    "archives": {
+      "ds34-gpu-test-v0.1.0.zip": "76cbc3c8e28a0610cb3176251cb5ff45402279d024015ecde74bbe875c89dd5c",
+      "ds34-gpu-test-v0.1.1.zip": "9d54c1874aea4a56d8ca68caa11eb87851bb59e197e73ed46682d517cb6101ee",
+      "ds34-gpu-test-v0.1.2.zip": "89e39fea17d1a713392993c1cd69d71d3d44372fff21cd85157825e50d9b491c",
+      "ds34-gpu-test-v0.1.3.zip": "a479645773a2548ce3c14aaaa592f7222208c574b45966d51f30db3666ee2efd"
+    },
+    "original_game_resources_included": false
+  },
+  "validation_scope": "Existing emulator/native reports and source/artifact integrity checks; no emulator reruns or full 552 ARM tests for this upload",
+  "remaining_blocker": "Native first GX queue submitted=3/completed=1; exact root cause unconfirmed; START works and exit is deferred while queue remains busy"
+}

@@ -1,0 +1,54 @@
+3 [   0.046070] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sequence-180-189/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config can't be open without mode create.
+
+3 [   0.046105] Service.FS <Error> core/file_sys/savedata_archive.cpp:DeleteFile:117: File not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sequence-180-189/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config
+
+3 [   0.049452] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sequence-180-189/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010035/00000000/news.db can't be open without mode create.
+
+3 [   0.058169] Service.NWM <Error> core/hle/service/nwm/nwm_uds.cpp:NWM_UDS:1738: Network isn't initalized
+
+3 [   0.061094] Service.HTTP <Error> core/hle/service/http/http_c.cpp:DecryptClCertA:2282: ClCertA file missing, using default
+
+2 [   0.061514] Service.FS <Warning> core/file_sys/ncch_container.cpp:OpenFile:192: Failed to open C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sequence-180-189/Azahar/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004000e/0fde6600/content/00000000.app
+
+0 [   0.068421] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00100000, size=0005D000
+
+0 [   0.068425] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0B1A3000, upper=0B200000
+
+0 [   0.068457] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=0015D000, size=00024000
+
+0 [   0.068457] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0B17F000, upper=0B1A3000
+
+0 [   0.068469] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00181000, size=00025000
+
+0 [   0.068469] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0B15A000, upper=0B17F000
+
+0 [   0.068480] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=0FFC0000, size=00040000
+
+0 [   0.068480] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0B11A000, upper=0B15A000
+
+0 [   0.099291] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000003, addr0=0x08000000, addr1=0x00000000, size=0x2800000, permissions=0x00000003
+
+0 [   0.099295] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=08000000, size=02800000
+
+0 [   0.099298] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0891A000, upper=0B11A000
+
+0 [   0.100033] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00010003, addr0=0x00000000, addr1=0x00000000, size=0x8400000, permissions=0x00000003
+
+2 [   0.102584] Service.SRV <Warning> core/hle/service/sm/srv.cpp:RegisterClient:64: (STUBBED) called. Caller PID=11
+
+2 [   0.119615] Service.APT <Warning> core/hle/service/apt/apt.cpp:NotifyToWait:362: (STUBBED) app_id=768
+
+3 [   0.120196] Service <Error> core/hle/service/service.cpp:ReportUnimplementedFunction:170: unknown / unimplemented function 'ConfigureNew3DSCPU': port='ptm:sysm' cmd_buf={[0]=0x8180040 (0x0818, 1, 0), [1]=0x0}
+
+2 [   0.120305] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000007, input_size=0X00000004, output_size=0X00000001
+
+2 [   0.120364] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+
+2 [   0.819182] Service.APT <Warning> core/hle/service/apt/apt.cpp:ReplySleepQuery:1003: (STUBBED) called, from_app_id=00000300, reply_value=00000000
+
+2 [   0.819359] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+
+3 [   1.573831] Service.FS <Error> core/file_sys/archive_sdmc.cpp:CreateFile:247: C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-sequence-180-189/Azahar/sdmc/3ds/deadspace/test-output/save-bridge/fd-probe.bin already exists
+
+2 [   1.924279] Service.APT <Warning> core/hle/service/apt/apt.cpp:ReplySleepQuery:1003: (STUBBED) called, from_app_id=00000300, reply_value=00000000
+

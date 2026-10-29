@@ -1,0 +1,22 @@
+{
+  "version": "0.1.0",
+  "title_id": "000400000FDE6800",
+  "cia_sha256": "873f5398717c68fb9c483ae744d0fcd43a901ac6fc4546eff57de610dbaac821",
+  "hardware_tested": true,
+  "passed": false,
+  "evidence": "User report and two console photos in conversation; binary crash dump not received",
+  "last_visible_stage": "Initialization before any Case 0 PASS",
+  "processor": "ARM11 core 0",
+  "exception": "data abort",
+  "fault_status": "Permission - Section",
+  "access": "Write",
+  "pc": "00121068",
+  "far": "1F046500",
+  "r0": "1F046500",
+  "r1": "000000FF",
+  "r2": "00000100",
+  "elf_resolution": "memset; fault instruction str ip,[r3]",
+  "diagnosis": "High confidence: memset of 256-byte inactive white texture attempts CPU write into VRAM mapped read-only by CIA",
+  "followup_version": "0.1.1",
+  "followup_hardware_verified": false
+}

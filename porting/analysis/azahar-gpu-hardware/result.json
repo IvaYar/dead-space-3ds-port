@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "tested_payload": "NCCH extracted from actual CIA",
+  "cia_sha256": "873f5398717c68fb9c483ae744d0fcd43a901ac6fc4546eff57de610dbaac821",
+  "payload_sha256": "a43fb5ae57c6e2bb080ff284744577a1fac1ede481b5804ec4c89447c4cb0365",
+  "title_id": "000400000FDE6800",
+  "stale_result_cleared": true,
+  "start_A_gate_verified": true,
+  "START_exit_gpu_drained": true,
+  "invalid_accesses": 0,
+  "native_result": {
+    "passed": true,
+    "environment": "emulator",
+    "game_called": false,
+    "cases": 8,
+    "presents": 23,
+    "gpu_draws": 26,
+    "gpu_triangles": 2780,
+    "uploads": 2,
+    "cpu_fragments": 0,
+    "cpu_samples": 0,
+    "gl_error": 0,
+    "peak_vertices": 8190,
+    "drains": 2,
+    "upload_checks": 2,
+    "upload_mismatches": 0,
+    "vertex_mismatches": 0,
+    "texture_mismatches": 0
+  },
+  "png_sha256": [
+    "66072f89440fc624c466760e5d248226afb89a0ae8ecf29f9c375c1d500f0110",
+    "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618",
+    "79b84941363657a2edd90ad9aa80bb7eb8557dc117956feafa556fdfc296497f",
+    "e44426538c3baf7506390ee18364d9926031ae115eaeb337be317c289f032451",
+    "819edd88f5fc59c64977f5dcd2dab93876beb9b5ef577528047de30a3686fe2a",
+    "4054ba2c17136dcd85eb97df731f72c3b745b06c154ba1c4ed1a138b9b5f1dde",
+    "09c37b5b14a9df6137fb6f6bcd70e3ee67cc0c3e0e058519f6d94b9b2338a499",
+    "ec65bbb7b581f470753e0b76f783aba76e1a45160462e3db3320483f2372f618"
+  ],
+  "hardware_tested": false,
+  "game_resources_used": false,
+  "elapsed_seconds": 0.672
+}

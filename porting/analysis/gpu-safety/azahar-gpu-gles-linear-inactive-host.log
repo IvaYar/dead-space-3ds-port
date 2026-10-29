@@ -1,0 +1,40 @@
+3 [   0.041728] Service.NWM <Error> core/hle/service/nwm/nwm_uds.cpp:NWM_UDS:1738: Network isn't initalized
+
+3 [   0.041943] Service.HTTP <Error> core/hle/service/http/http_c.cpp:DecryptClCertA:2282: ClCertA file missing, using default
+
+2 [   0.042339] Service.FS <Warning> core/file_sys/ncch_container.cpp:OpenFile:192: Failed to open C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-gpu-gles/Azahar/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004000e/0fde6500/content/00000000.app
+
+0 [   0.048449] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00100000, size=00030000
+
+0 [   0.048453] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BD0000, upper=07C00000
+
+0 [   0.048471] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00130000, size=00003000
+
+0 [   0.048472] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BCD000, upper=07BD0000
+
+0 [   0.048476] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00133000, size=00060000
+
+0 [   0.048476] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07B6D000, upper=07BCD000
+
+0 [   0.048504] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=0FFC0000, size=00040000
+
+0 [   0.048504] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07B2D000, upper=07B6D000
+
+0 [   0.078144] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000003, addr0=0x08000000, addr1=0x00000000, size=0x1F2D000, permissions=0x00000003
+
+0 [   0.078150] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=08000000, size=01F2D000
+
+0 [   0.078152] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=05C00000, upper=07B2D000
+
+0 [   0.078732] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00010003, addr0=0x00000000, addr1=0x00000000, size=0x2000000, permissions=0x00000003
+
+2 [   0.079522] Service.SRV <Warning> core/hle/service/sm/srv.cpp:RegisterClient:64: (STUBBED) called. Caller PID=11
+
+2 [   0.096247] Service.APT <Warning> core/hle/service/apt/apt.cpp:NotifyToWait:362: (STUBBED) app_id=768
+
+3 [   0.096720] Service <Error> core/hle/service/service.cpp:ReportUnimplementedFunction:170: unknown / unimplemented function 'ConfigureNew3DSCPU': port='ptm:sysm' cmd_buf={[0]=0x8180040 (0x0818, 1, 0), [1]=0x0}
+
+2 [   0.096826] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000007, input_size=0X00000004, output_size=0X00000001
+
+2 [   0.096885] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+

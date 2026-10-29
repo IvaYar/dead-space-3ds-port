@@ -1,0 +1,55 @@
+{
+  "hardware_tested": false,
+  "queue_types": [
+    "FILL",
+    "PICA",
+    "DISPLAY"
+  ],
+  "pica": [
+    {
+      "file": "gx-first-1.pica",
+      "sha256": "c08d6b8982c4e35c8c5a09064a8b88dc5603e12c7e63461389553c87ae851e19",
+      "bytes": 1168,
+      "packets": 82,
+      "packet_bounds_checked": true,
+      "last_packets": [
+        {
+          "word_offset": 282,
+          "register": 561,
+          "mask": 15,
+          "extra": 0,
+          "consecutive": false
+        },
+        {
+          "word_offset": 284,
+          "register": 273,
+          "mask": 15,
+          "extra": 0,
+          "consecutive": false
+        },
+        {
+          "word_offset": 286,
+          "register": 272,
+          "mask": 15,
+          "extra": 0,
+          "consecutive": false
+        },
+        {
+          "word_offset": 288,
+          "register": 99,
+          "mask": 15,
+          "extra": 0,
+          "consecutive": false
+        },
+        {
+          "word_offset": 290,
+          "register": 16,
+          "mask": 15,
+          "extra": 0,
+          "consecutive": false
+        }
+      ]
+    }
+  ],
+  "note": "Packet length/bounds validation only; not validation of all GPU register state or proof of native correctness"
+}

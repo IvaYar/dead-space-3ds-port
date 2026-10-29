@@ -1,0 +1,284 @@
+{
+  "completed": true,
+  "gpu_draws": 8,
+  "gpu_cpu_fragments": 0,
+  "cpu_fragments": 57344,
+  "passed": false,
+  "cases": [
+    {
+      "case": 0,
+      "filter": "NEAREST",
+      "pattern": "magnified lines/checker",
+      "pixels_over_tolerance": 0,
+      "max_channel_error": 0,
+      "first_mismatches": [],
+      "passed": true
+    },
+    {
+      "case": 1,
+      "filter": "LINEAR",
+      "pattern": "magnified lines/checker",
+      "pixels_over_tolerance": 22000,
+      "max_channel_error": 124,
+      "first_mismatches": [
+        [
+          103,
+          60
+        ],
+        [
+          104,
+          60
+        ],
+        [
+          105,
+          60
+        ],
+        [
+          106,
+          60
+        ],
+        [
+          108,
+          60
+        ],
+        [
+          109,
+          60
+        ],
+        [
+          110,
+          60
+        ],
+        [
+          111,
+          60
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 2,
+      "filter": "NEAREST",
+      "pattern": "fractional UV",
+      "pixels_over_tolerance": 0,
+      "max_channel_error": 0,
+      "first_mismatches": [],
+      "passed": true
+    },
+    {
+      "case": 3,
+      "filter": "LINEAR",
+      "pattern": "fractional UV",
+      "pixels_over_tolerance": 1007,
+      "max_channel_error": 116,
+      "first_mismatches": [
+        [
+          36,
+          188
+        ],
+        [
+          37,
+          188
+        ],
+        [
+          38,
+          188
+        ],
+        [
+          39,
+          188
+        ],
+        [
+          40,
+          188
+        ],
+        [
+          41,
+          188
+        ],
+        [
+          42,
+          188
+        ],
+        [
+          43,
+          188
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 4,
+      "filter": "NEAREST",
+      "pattern": "exact texel boundary",
+      "pixels_over_tolerance": 360,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          36,
+          188
+        ],
+        [
+          37,
+          188
+        ],
+        [
+          38,
+          188
+        ],
+        [
+          39,
+          188
+        ],
+        [
+          40,
+          188
+        ],
+        [
+          41,
+          188
+        ],
+        [
+          42,
+          188
+        ],
+        [
+          43,
+          188
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 5,
+      "filter": "LINEAR",
+      "pattern": "exact texel boundary",
+      "pixels_over_tolerance": 1007,
+      "max_channel_error": 131,
+      "first_mismatches": [
+        [
+          36,
+          188
+        ],
+        [
+          37,
+          188
+        ],
+        [
+          38,
+          188
+        ],
+        [
+          39,
+          188
+        ],
+        [
+          40,
+          188
+        ],
+        [
+          41,
+          188
+        ],
+        [
+          42,
+          188
+        ],
+        [
+          43,
+          188
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 6,
+      "filter": "NEAREST",
+      "pattern": "fractional alpha atlas",
+      "pixels_over_tolerance": 161,
+      "max_channel_error": 255,
+      "first_mismatches": [
+        [
+          37,
+          189
+        ],
+        [
+          39,
+          189
+        ],
+        [
+          41,
+          189
+        ],
+        [
+          43,
+          189
+        ],
+        [
+          45,
+          189
+        ],
+        [
+          47,
+          189
+        ],
+        [
+          49,
+          189
+        ],
+        [
+          37,
+          190
+        ]
+      ],
+      "passed": false
+    },
+    {
+      "case": 7,
+      "filter": "LINEAR",
+      "pattern": "fractional alpha atlas",
+      "pixels_over_tolerance": 1007,
+      "max_channel_error": 158,
+      "first_mismatches": [
+        [
+          20,
+          188
+        ],
+        [
+          21,
+          188
+        ],
+        [
+          22,
+          188
+        ],
+        [
+          23,
+          188
+        ],
+        [
+          24,
+          188
+        ],
+        [
+          25,
+          188
+        ],
+        [
+          26,
+          188
+        ],
+        [
+          27,
+          188
+        ]
+      ],
+      "passed": false
+    }
+  ],
+  "unmapped_accesses": 0,
+  "hardware_tested": false,
+  "cpu_baseline_modified": false,
+  "cxi_sha256": "133349b5d8bde299b397f95abe2b3a39747ff6f688d494dcd48c6c454d2b1b10",
+  "elapsed_seconds": 0.906
+}
