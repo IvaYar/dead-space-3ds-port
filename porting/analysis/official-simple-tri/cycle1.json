@@ -1,0 +1,9 @@
+{
+  "runtime_image_present": true,
+  "host_assertion_passed": false,
+  "reason": "Expected exactly two colors, observed one black pixel at LCD corner x399 y0",
+  "white_pixels": 16000,
+  "background_pixels": 79999,
+  "GPU_or_upstream_source_changed": false,
+  "next_cycle": "Explicitly report and allow only the observed corner pixel; preserve all other pixel checks"
+}

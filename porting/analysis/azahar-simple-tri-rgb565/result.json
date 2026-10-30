@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "hardware_tested": false,
+  "diagnostic_cycle": 1,
+  "tested_payload": "NCCH extracted from actual CIA; FBI installation not emulated",
+  "CIA_sha256": "9780e38e25b586f8777e851b8f5494df9e7e2c9c2687212fd4f929bddaf042cc",
+  "payload_sha256": "9386096137e8988caaca551dc36cfccdb8fe0405dfd9efe11580a5789186a6f9",
+  "ELF_sha256": "691b90ebc8d7edb7c86c843a530b7fea5b47f20547b8c8264fae50cf5657e13c",
+  "capture": "Azahar2126.2 software LCD libretro video callback; no OpenGL",
+  "observations": [
+    {
+      "frontend_frame": 60,
+      "background_RGB": [
+        107,
+        178,
+        222
+      ],
+      "white_pixels": 16000,
+      "background_pixels": 79999,
+      "corner_anomalies": [
+        [
+          399,
+          0,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "top_pixels_sha256": "d981d32f722c6264c78e257158bd08e0e7f3dac4ec68be3dc7ae6344d588c630",
+      "image": "frame-60.png"
+    },
+    {
+      "frontend_frame": 90,
+      "background_RGB": [
+        107,
+        178,
+        222
+      ],
+      "white_pixels": 16000,
+      "background_pixels": 79999,
+      "corner_anomalies": [
+        [
+          399,
+          0,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "top_pixels_sha256": "d981d32f722c6264c78e257158bd08e0e7f3dac4ec68be3dc7ae6344d588c630",
+      "image": "frame-90.png"
+    },
+    {
+      "frontend_frame": 120,
+      "background_RGB": [
+        107,
+        178,
+        222
+      ],
+      "white_pixels": 16000,
+      "background_pixels": 79999,
+      "corner_anomalies": [
+        [
+          399,
+          0,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "top_pixels_sha256": "d981d32f722c6264c78e257158bd08e0e7f3dac4ec68be3dc7ae6344d588c630",
+      "image": "frame-120.png"
+    }
+  ],
+  "invalid_accesses_in_host_log": 0,
+  "START_guest_GSP_release_and_heap_free": true,
+  "frontend_shutdown_signal": false,
+  "elapsed_seconds": 0.562,
+  "limitations": [
+    "No native queue/IRQ instrumentation; frontend observations are not a native frame count",
+    "Stock-style rendering starts immediately and has no native timeout or SD log",
+    "Azahar PASS does not establish hardware success; expected service stubs remain"
+  ]
+}

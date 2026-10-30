@@ -1,0 +1,29 @@
+--- hardware-working-stock/main.c
++++ rgb565-only/main.c
+@@ -3,11 +3,11 @@
+ #include <string.h>
+ #include "vshader_shbin.h"
+ 
+-#define CLEAR_COLOR 0x68B0D8FF
++#define CLEAR_COLOR 0x0068B0D8
+ 
+ #define DISPLAY_TRANSFER_FLAGS \
+ 	(GX_TRANSFER_FLIP_VERT(0) | GX_TRANSFER_OUT_TILED(0) | GX_TRANSFER_RAW_COPY(0) | \
+-	GX_TRANSFER_IN_FORMAT(GX_TRANSFER_FMT_RGBA8) | GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB8) | \
++	GX_TRANSFER_IN_FORMAT(GX_TRANSFER_FMT_RGB8) | GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB565) | \
+ 	GX_TRANSFER_SCALING(GX_TRANSFER_SCALE_NO))
+ 
+ typedef struct { float x, y, z; } vertex;
+@@ -91,10 +91,11 @@
+ {
+ 	// Initialize graphics
+ 	gfxInitDefault();
++	gfxSetScreenFormat(GFX_TOP, GSP_RGB565_OES);
+ 	C3D_Init(C3D_DEFAULT_CMDBUF_SIZE);
+ 
+ 	// Initialize the render target
+-	C3D_RenderTarget* target = C3D_RenderTargetCreate(240, 400, GPU_RB_RGBA8, GPU_RB_DEPTH24_STENCIL8);
++	C3D_RenderTarget* target = C3D_RenderTargetCreate(240, 400, GPU_RB_RGB8, GPU_RB_DEPTH24_STENCIL8);
+ 	C3D_RenderTargetSetOutput(target, GFX_TOP, GFX_LEFT, DISPLAY_TRANSFER_FLAGS);
+ 
+ 	// Initialize the scene

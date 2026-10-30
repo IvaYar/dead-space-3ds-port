@@ -1,0 +1,21 @@
+{
+  "cycle": 1,
+  "passed": false,
+  "reason": "Host test expected PSC1=1 and an assumed ARM11 clock constant. Actual pinned Azahar dual-fill dispatch is PSC0 only; pinned SDK clock is 268111856.",
+  "observer_fault_proven": false,
+  "decision": "Keep GPU code/packets and passive counters unchanged; correct host expectation, add recorder-only selfcheck in non-shipping fault binary.",
+  "source": "https://github.com/azahar-emu/azahar/blob/2126.2/src/video_core/gpu.cpp#L188",
+  "native_hardware_tested": false,
+  "first_emu_native_result": {
+    "version": "0.1.1",
+    "environment": "emulator",
+    "passed": true,
+    "stages_completed": 1,
+    "timeout": false,
+    "failure": "none",
+    "checkpoint_io_failed": false,
+    "last_checkpoint": "events-0004-result.json",
+    "ds34_linked": false,
+    "triangle_called": false
+  }
+}

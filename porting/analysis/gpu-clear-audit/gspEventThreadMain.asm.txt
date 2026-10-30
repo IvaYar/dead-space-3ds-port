@@ -1,0 +1,92 @@
+
+C:\Users\jarom\Desktop\Dead_space_mobile\porting\3ds\build-citro3d-control\control.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+0010a984 <gspEventThreadMain>:
+  10a984:	e92d4ff8 	push	{r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  10a988:	e59f5124 	ldr	r5, [pc, #292]	@ 10aab4 <gspEventThreadMain+0x130>
+  10a98c:	e5d53000 	ldrb	r3, [r5]
+  10a990:	e3530000 	cmp	r3, #0
+  10a994:	08bd8ff8 	popeq	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  10a998:	e59f6118 	ldr	r6, [pc, #280]	@ 10aab8 <gspEventThreadMain+0x134>
+  10a99c:	e59f8118 	ldr	r8, [pc, #280]	@ 10aabc <gspEventThreadMain+0x138>
+  10a9a0:	e59f7118 	ldr	r7, [pc, #280]	@ 10aac0 <gspEventThreadMain+0x13c>
+  10a9a4:	e59f9118 	ldr	r9, [pc, #280]	@ 10aac4 <gspEventThreadMain+0x140>
+  10a9a8:	e59f4118 	ldr	r4, [pc, #280]	@ 10aac8 <gspEventThreadMain+0x144>
+  10a9ac:	e3e03000 	mvn	r3, #0
+  10a9b0:	e3e02000 	mvn	r2, #0
+  10a9b4:	e5960000 	ldr	r0, [r6]
+  10a9b8:	eb00067b 	bl	10c3ac <svcWaitSynchronization>
+  10a9bc:	e5960000 	ldr	r0, [r6]
+  10a9c0:	eb00066a 	bl	10c370 <svcClearEvent>
+  10a9c4:	e5d53000 	ldrb	r3, [r5]
+  10a9c8:	e3530000 	cmp	r3, #0
+  10a9cc:	08bd8ff8 	popeq	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  10a9d0:	e5d73000 	ldrb	r3, [r7]
+  10a9d4:	e598c000 	ldr	ip, [r8]
+  10a9d8:	e08cc303 	add	ip, ip, r3, lsl #6
+  10a9dc:	ea00000b 	b	10aa10 <gspEventThreadMain+0x8c>
+  10a9e0:	e3520034 	cmp	r2, #52	@ 0x34
+  10a9e4:	220e20ff 	andcs	r2, lr, #255	@ 0xff
+  10a9e8:	e1822801 	orr	r2, r2, r1, lsl #16
+  10a9ec:	e1821403 	orr	r1, r2, r3, lsl #8
+  10a9f0:	e5d0b00c 	ldrb	fp, [r0, #12]
+  10a9f4:	e3c118ff 	bic	r1, r1, #16711680	@ 0xff0000
+  10a9f8:	e18c2f91 	strex	r2, r1, [ip]
+  10a9fc:	e6efa072 	uxtb	sl, r2
+  10aa00:	e35a0000 	cmp	sl, #0
+  10aa04:	1a000001 	bne	10aa10 <gspEventThreadMain+0x8c>
+  10aa08:	e35b0006 	cmp	fp, #6
+  10aa0c:	da000010 	ble	10aa54 <gspEventThreadMain+0xd0>
+  10aa10:	e19c3f9f 	ldrex	r3, [ip]
+  10aa14:	e6ef0073 	uxtb	r0, r3
+  10aa18:	e1a01823 	lsr	r1, r3, #16
+  10aa1c:	e3130cff 	tst	r3, #65280	@ 0xff00
+  10aa20:	e6ef3473 	uxtb	r3, r3, ror #8
+  10aa24:	e2802001 	add	r2, r0, #1
+  10aa28:	e2433001 	sub	r3, r3, #1
+  10aa2c:	e240e033 	sub	lr, r0, #51	@ 0x33
+  10aa30:	e6ef2072 	uxtb	r2, r2
+  10aa34:	e08c0000 	add	r0, ip, r0
+  10aa38:	e6ef3073 	uxtb	r3, r3
+  10aa3c:	1affffe7 	bne	10a9e0 <gspEventThreadMain+0x5c>
+  10aa40:	f57ff01f 	clrex
+  10aa44:	e5d53000 	ldrb	r3, [r5]
+  10aa48:	e3530000 	cmp	r3, #0
+  10aa4c:	1affffd6 	bne	10a9ac <gspEventThreadMain+0x28>
+  10aa50:	e8bd8ff8 	pop	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  10aa54:	e1a0000b 	mov	r0, fp
+  10aa58:	ebfff032 	bl	106b28 <gxCmdQueueInterrupt>
+  10aa5c:	e799110b 	ldr	r1, [r9, fp, lsl #2]
+  10aa60:	e3510000 	cmp	r1, #0
+  10aa64:	0a000006 	beq	10aa84 <gspEventThreadMain+0x100>
+  10aa68:	e59f305c 	ldr	r3, [pc, #92]	@ 10aacc <gspEventThreadMain+0x148>
+  10aa6c:	e59f205c 	ldr	r2, [pc, #92]	@ 10aad0 <gspEventThreadMain+0x14c>
+  10aa70:	e7d3000b 	ldrb	r0, [r3, fp]
+  10aa74:	e3500000 	cmp	r0, #0
+  10aa78:	e792010b 	ldr	r0, [r2, fp, lsl #2]
+  10aa7c:	1789a10b 	strne	sl, [r9, fp, lsl #2]
+  10aa80:	e12fff31 	blx	r1
+  10aa84:	e59f3048 	ldr	r3, [pc, #72]	@ 10aad4 <gspEventThreadMain+0x150>
+  10aa88:	e083018b 	add	r0, r3, fp, lsl #3
+  10aa8c:	eb00086f 	bl	10cc50 <LightEvent_Signal>
+  10aa90:	e1942f9f 	ldrex	r2, [r4]
+  10aa94:	e1841f9b 	strex	r1, fp, [r4]
+  10aa98:	e6ef1071 	uxtb	r1, r1
+  10aa9c:	e3510000 	cmp	r1, #0
+  10aaa0:	1afffffa 	bne	10aa90 <gspEventThreadMain+0x10c>
+  10aaa4:	e3a02001 	mov	r2, #1
+  10aaa8:	e1a00004 	mov	r0, r4
+  10aaac:	eb0007b9 	bl	10c998 <syncArbitrateAddress>
+  10aab0:	eaffffc6 	b	10a9d0 <gspEventThreadMain+0x4c>
+  10aab4:	00129e80 	.word	0x00129e80
+  10aab8:	00129e88 	.word	0x00129e88
+  10aabc:	00129e90 	.word	0x00129e90
+  10aac0:	00129e8d 	.word	0x00129e8d
+  10aac4:	00129e28 	.word	0x00129e28
+  10aac8:	00129e7c 	.word	0x00129e7c
+  10aacc:	00129e04 	.word	0x00129e04
+  10aad0:	00129e0c 	.word	0x00129e0c
+  10aad4:	00129e44 	.word	0x00129e44

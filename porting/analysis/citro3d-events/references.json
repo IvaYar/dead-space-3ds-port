@@ -1,0 +1,21 @@
+{
+  "Azahar_2126_2_dual_fill": {
+    "url": "https://github.com/azahar-emu/azahar/blob/2126.2/src/video_core/gpu.cpp#L188",
+    "local_sha256": "ab190758e2728a5f9974f05b504cdfcc5211edb67f50b75cf12d156deb996510",
+    "fact": "When both buffers are present, only PSC0 is signaled; PSC1=0 is expected in this emulator run."
+  },
+  "SDK_clock": {
+    "header": "toolchain/devkitpro/libctru/include/3ds/os.h",
+    "SYSCLOCK_ARM11": 268111856,
+    "unit": "nominal ticks per second"
+  },
+  "SDK_event_order": {
+    "source": "analysis/gpu-clear-audit/upstream/gspgpu.c",
+    "order": [
+      "gxCmdQueueInterrupt",
+      "public per-event callback",
+      "LightEvent signal",
+      "gspLastEvent notification"
+    ]
+  }
+}

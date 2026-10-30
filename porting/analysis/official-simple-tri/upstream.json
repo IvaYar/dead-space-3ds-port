@@ -1,0 +1,26 @@
+{
+  "repository": "https://github.com/devkitPro/3ds-examples",
+  "commit": "be2001fee08cf8ec7d3366e095e83f6f75da8942",
+  "files": {
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/devkitPro/3ds-examples/be2001fee08cf8ec7d3366e095e83f6f75da8942/README.md",
+      "sha256": "088647a0521d5a60db20732e39fb482951a9215142987b506d5ce9c36b5c56bd"
+    },
+    "graphics/gpu/simple_tri/Makefile": {
+      "url": "https://raw.githubusercontent.com/devkitPro/3ds-examples/be2001fee08cf8ec7d3366e095e83f6f75da8942/graphics/gpu/simple_tri/Makefile",
+      "sha256": "c9caa71880612e5d2106a9a4f6c2718c10c83da63bedf2244a595f117dd292d6"
+    },
+    "graphics/gpu/simple_tri/source/main.c": {
+      "url": "https://raw.githubusercontent.com/devkitPro/3ds-examples/be2001fee08cf8ec7d3366e095e83f6f75da8942/graphics/gpu/simple_tri/source/main.c",
+      "sha256": "41ef6b41e4c237a209c453873966a0f1adcc3b837dbf43555fddea06743d65b6"
+    },
+    "graphics/gpu/simple_tri/source/vshader.v.pica": {
+      "url": "https://raw.githubusercontent.com/devkitPro/3ds-examples/be2001fee08cf8ec7d3366e095e83f6f75da8942/graphics/gpu/simple_tri/source/vshader.v.pica",
+      "sha256": "99a3976be8ea6b77663cdff238b964662ab280f171af55892b2ecd981b00f858"
+    },
+    "graphics/gpu/immediate/source/main.c": {
+      "url": "https://raw.githubusercontent.com/devkitPro/3ds-examples/be2001fee08cf8ec7d3366e095e83f6f75da8942/graphics/gpu/immediate/source/main.c",
+      "sha256": "d3fd468373d3365c9cf47cbd09c5f84225652fce898fec188e3c383cfcc37f15"
+    }
+  }
+}

@@ -1,0 +1,714 @@
+{
+  "date": "2026-10-30",
+  "timezone": "Asia/Irkutsk",
+  "repository": "IvaYar/dead-space-3ds-port",
+  "branch": "main",
+  "base_commit": "b3807762d99d74c396a103195a270f6973a8ce37",
+  "repository_visibility_verified": "public",
+  "user_authorized_commit_and_push": true,
+  "candidate_files_before_audit": 170,
+  "candidate_bytes_before_audit": 1125756,
+  "checks": {
+    "no_original_game_resource_or_toolchain_paths": true,
+    "no_executable_archive_or_audio_payloads": true,
+    "no_observed_tokens_or_private_key_blocks": true,
+    "json": 78,
+    "synthetic_png": 29,
+    "synthetic_vertex_buffers": 2,
+    "python_syntax": 14,
+    "preserved_baseline_files": 622,
+    "upstream_reference_files_hash_verified": 5,
+    "source_and_documentation_whitespace": "PASS; original host-log blank EOF and unified-diff context whitespace retained as pinned evidence"
+  },
+  "validation_scope": "File integrity, JSON/Python parsing and publication audit only; no emulator/hardware/full552 reruns",
+  "hardware_summary": {
+    "official_RGBA8_RGB8_3DSX": "visual and START exit PASS, user photo/report",
+    "official_RGBA8_RGB8_CIA": "visual and START exit PASS, user photo/report",
+    "RGB8_RGB565_CIA": "thin blue strip then hang; POWER required, user text report",
+    "root_cause_confirmed": false
+  },
+  "new_release_created": false,
+  "archives_and_binaries_uploaded": false,
+  "files": {
+    ".gitignore": {
+      "bytes": 16034,
+      "sha256": "44979c9c18e560b471c9fb67741ed7b68c714467e07b4c790ff59ea2f726f3a7"
+    },
+    "HANDOFF.md": {
+      "bytes": 117211,
+      "sha256": "bd08d109bb262f096d159bfa0d7e80518800702d32e0ef06708458b945b22632"
+    },
+    "README.md": {
+      "bytes": 5034,
+      "sha256": "864ab535e85929f6e699a10a80d09a88bd312ff9b2c17e1a03e88e6c6957641e"
+    },
+    "porting/3ds/README-citro3d-control.ru.md": {
+      "bytes": 6799,
+      "sha256": "fe51a1320b78271a80547ef85c14993d9a58558fce18f11caa0b03642ac6b922"
+    },
+    "porting/3ds/README-citro3d-events.ru.md": {
+      "bytes": 8884,
+      "sha256": "b9e533264ad43ac1aba8878477b0b6139d849d546b79beb0ab15e4ca769a0156"
+    },
+    "porting/3ds/README-official-simple-tri.ru.md": {
+      "bytes": 5755,
+      "sha256": "e739508966f9a6585609bdd39faa408c477c60075ec2b2374518a485dc4cc2ed"
+    },
+    "porting/3ds/README-simple-tri-rgb565.ru.md": {
+      "bytes": 5610,
+      "sha256": "714702286549e51c9e4c9e172b787b7e301fabc06ebae868f0fe4c06f6f3f80a"
+    },
+    "porting/3ds/build-citro3d-control-fault/build-manifest.json": {
+      "bytes": 2670,
+      "sha256": "3b8fd0ff2c716e10a7c0eb2cd89bba46e6d4d32762390b8d4ab5c0b46ba13644"
+    },
+    "porting/3ds/build-citro3d-control/build-manifest.json": {
+      "bytes": 2671,
+      "sha256": "f233d3e447dab3fe0f35f86b97084d6c0ca962e7a6a44d367efb726420f1cb2c"
+    },
+    "porting/3ds/build-citro3d-events-fault/build-manifest.json": {
+      "bytes": 3009,
+      "sha256": "983160da030825b24eda2843bc66c5d419208beaf61b4b8c2d0b054d0daafd11"
+    },
+    "porting/3ds/build-citro3d-events/build-manifest.json": {
+      "bytes": 3010,
+      "sha256": "cc97ef9f1f5dbc3a4542479bf1c64f635ac1e105f93c2751293ea64bd1c68f90"
+    },
+    "porting/3ds/build-official-simple-tri/build-manifest.json": {
+      "bytes": 6803,
+      "sha256": "c06bfc7bbff01efb4db339c178e69e155b93309f2de7f8cd94e400ff2aab47ca"
+    },
+    "porting/3ds/build-simple-tri-rgb565/build-manifest.json": {
+      "bytes": 5801,
+      "sha256": "a31fe16595e8454ed3cb455e9890d3b63942d68079a6863802f8d20d8accc7f1"
+    },
+    "porting/EMULATOR-FIRST.ru.md": {
+      "bytes": 11629,
+      "sha256": "1c294835443274fd69206989acf2cb2c533a59faaf8943a393948b18028ddd87"
+    },
+    "porting/analysis/azahar-citro3d-control-fault/control.log": {
+      "bytes": 1756,
+      "sha256": "3ffb1ac50a2db4bce80d351f24760c30a8163d64c6287b55e097e99b7bca45aa"
+    },
+    "porting/analysis/azahar-citro3d-control-fault/result.json": {
+      "bytes": 848,
+      "sha256": "476d7e6895dad27eedf0098d18a9c5dd15b87c2dba7c1b41e19b1363e1004ea5"
+    },
+    "porting/analysis/azahar-citro3d-control-fault/screen.png": {
+      "bytes": 2278,
+      "sha256": "ffc55511d4544b0230f036141855405b4dfa743a6389cfc4f250bdcf9a296898"
+    },
+    "porting/analysis/azahar-citro3d-control-fault/stage-0-queue.json": {
+      "bytes": 210,
+      "sha256": "6dcad7c01371d36ef7eeb91ff4e47f2a3165d20ec96f949b6230d5a76a8413b8"
+    },
+    "porting/analysis/azahar-citro3d-control/clear.png": {
+      "bytes": 873,
+      "sha256": "19a16700a3d5bc19bb2c7af5ad3fd08b804ea9a260923582ed04349a6bdefed3"
+    },
+    "porting/analysis/azahar-citro3d-control/control.log": {
+      "bytes": 3103,
+      "sha256": "d82a7bcc7a816f7a741d379acc12410cebfaa2f02a0f8616015c32c9e84f84fb"
+    },
+    "porting/analysis/azahar-citro3d-control/result.json": {
+      "bytes": 1359,
+      "sha256": "478b2a64707926c2af279437f0018b44f1f44b5d79fb436796afcc747c43ad4f"
+    },
+    "porting/analysis/azahar-citro3d-control/screen.png": {
+      "bytes": 3670,
+      "sha256": "a63a9a42debc87753f9ff091a5efcc0900e88aa69146ad1e7fadc0415d227a0b"
+    },
+    "porting/analysis/azahar-citro3d-control/stage-0-queue.json": {
+      "bytes": 210,
+      "sha256": "6dcad7c01371d36ef7eeb91ff4e47f2a3165d20ec96f949b6230d5a76a8413b8"
+    },
+    "porting/analysis/azahar-citro3d-control/stage-1-1.pica": {
+      "bytes": 1168,
+      "sha256": "1353e91eb627a489d9c47949f3fc391f7efa002f1ceeb35c3209c91ea2faf9d0"
+    },
+    "porting/analysis/azahar-citro3d-control/stage-1-queue.json": {
+      "bytes": 275,
+      "sha256": "f98581f4e94f2f5548796b308a73ce2eae49cf6d7ac5683a15e4e12220ca71dc"
+    },
+    "porting/analysis/azahar-citro3d-control/triangle-vertices.bin": {
+      "bytes": 36,
+      "sha256": "7ee34deaba72f32e42c566a4c30966e522ddaa55d889e27ee3aec0491b5484e7"
+    },
+    "porting/analysis/azahar-citro3d-control/triangle.png": {
+      "bytes": 1438,
+      "sha256": "9533934d8a0786f1d8df2ce71b180b99578bb814fd4edbd02278f0b1f7d9ddf4"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/control.log": {
+      "bytes": 1632,
+      "sha256": "76592abd4f9c336edcd35b2a873f7d5a715ee87228f9833e2bce16e417e62b4b"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/events-0001-before-submit.json": {
+      "bytes": 961,
+      "sha256": "c794c6434e025a0fabbcf8c1130f88eed0b113c972755b3a6f493a2d8bd3a42f"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/events-0002-after-submit.json": {
+      "bytes": 1008,
+      "sha256": "3d29b7cc33c89bb1bfd777e8bf65c2ce38ed7286897998be04712772f50dd8e9"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/events-0003-timeout.json": {
+      "bytes": 1004,
+      "sha256": "bc60087507c386c60dbd4367e9e0b964b0a2e4244e8a7f83a4e1d4d1a26a1473"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/events-0004-result.json": {
+      "bytes": 1003,
+      "sha256": "32b6e44997ce689fe1ca53612aca046fe9d7407f70f43e29f03a00ead27c9d31"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/events-0005-exit-precheck.json": {
+      "bytes": 1010,
+      "sha256": "c7a080b903f50c7aed2df007c91c9c32a5b11f9fd3f3057b28f8586a7d86bece"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/native-result.json": {
+      "bytes": 242,
+      "sha256": "2972db8a20644a510a8e14670037f07453b72b1912c7ef8f22481a92231318db"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/result.json": {
+      "bytes": 1061,
+      "sha256": "7a54a87cc096d07249d4ea0cb78523b23e6135f7d313ee666b9843df17270b77"
+    },
+    "porting/analysis/azahar-citro3d-events-fault/screen.png": {
+      "bytes": 2320,
+      "sha256": "9a99f2bb030dba168334c60c71a35e372f28d71bc740fc4c5e3d764b43cfe47e"
+    },
+    "porting/analysis/azahar-citro3d-events/clear.png": {
+      "bytes": 873,
+      "sha256": "19a16700a3d5bc19bb2c7af5ad3fd08b804ea9a260923582ed04349a6bdefed3"
+    },
+    "porting/analysis/azahar-citro3d-events/control.log": {
+      "bytes": 1694,
+      "sha256": "527797288aabcd723f4912fa7cab4f574a57d474b53109a9bb15d12f0bc9095a"
+    },
+    "porting/analysis/azahar-citro3d-events/events-0001-before-submit.json": {
+      "bytes": 961,
+      "sha256": "7b210eaf8c3e29384e3170e175b4e4ecb147ed6ffa41e0fa0d764a7eeb6fc018"
+    },
+    "porting/analysis/azahar-citro3d-events/events-0002-after-submit.json": {
+      "bytes": 1008,
+      "sha256": "d8f240139cfe22ab48335c8a62c0b561dcd4f4a7d1a6af4ae995e0dd50099773"
+    },
+    "porting/analysis/azahar-citro3d-events/events-0003-retired.json": {
+      "bytes": 876,
+      "sha256": "b08e144b467fc3f890e099bc214bb5c42f6e37d722eddbb34088b30d15a944fe"
+    },
+    "porting/analysis/azahar-citro3d-events/events-0004-result.json": {
+      "bytes": 875,
+      "sha256": "42498cea224f7859444151bbc444a4979dc45bc70502b4c010e9a681a0c1ba74"
+    },
+    "porting/analysis/azahar-citro3d-events/events-0005-exit-precheck.json": {
+      "bytes": 882,
+      "sha256": "0839b2a8ca36879935d9a3ee9b749713896c8e0dbbecec5ad8aea6b94d99f1fe"
+    },
+    "porting/analysis/azahar-citro3d-events/native-result.json": {
+      "bytes": 230,
+      "sha256": "c3d20b079383bc54d37b4dc4898eac5940318ea8ddcc33c2796e9901a9fb4047"
+    },
+    "porting/analysis/azahar-citro3d-events/result.json": {
+      "bytes": 1051,
+      "sha256": "a88b54693ae23b92bf30e635c5a70d806060aeb6414cd54926931464cd2ad73c"
+    },
+    "porting/analysis/azahar-citro3d-events/screen.png": {
+      "bytes": 2316,
+      "sha256": "239cfc8d24cb284dce2289f4c7d2508f37f29e4a10923cf3215318c474b721d9"
+    },
+    "porting/analysis/azahar-official-simple-tri-3dsx/azahar-host.log": {
+      "bytes": 3387,
+      "sha256": "5fd224629e160f8eafd9d58043a15c90659ce021cb0d4992f2be67f55459818c"
+    },
+    "porting/analysis/azahar-official-simple-tri-3dsx/frame-120.png": {
+      "bytes": 2380,
+      "sha256": "ef5ea814d95cea009132588ea5892b0d87598c1527825119933b3b7d15a0c0d9"
+    },
+    "porting/analysis/azahar-official-simple-tri-3dsx/frame-60.png": {
+      "bytes": 2380,
+      "sha256": "ef5ea814d95cea009132588ea5892b0d87598c1527825119933b3b7d15a0c0d9"
+    },
+    "porting/analysis/azahar-official-simple-tri-3dsx/frame-90.png": {
+      "bytes": 2380,
+      "sha256": "ef5ea814d95cea009132588ea5892b0d87598c1527825119933b3b7d15a0c0d9"
+    },
+    "porting/analysis/azahar-official-simple-tri-3dsx/result.json": {
+      "bytes": 2006,
+      "sha256": "cb5356984975428e4067e7959cbb1dd44809273ec45beb191b90a3d1a7788b58"
+    },
+    "porting/analysis/azahar-official-simple-tri-3dsx/top-120.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "porting/analysis/azahar-official-simple-tri-3dsx/top-60.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "porting/analysis/azahar-official-simple-tri-3dsx/top-90.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "porting/analysis/azahar-official-simple-tri-cia/azahar-host.log": {
+      "bytes": 4338,
+      "sha256": "7e0796c354b01d77d1971fc22374bf081eb1b457ccb2bb7c6a65a26b3b62fbe5"
+    },
+    "porting/analysis/azahar-official-simple-tri-cia/frame-120.png": {
+      "bytes": 2380,
+      "sha256": "ef5ea814d95cea009132588ea5892b0d87598c1527825119933b3b7d15a0c0d9"
+    },
+    "porting/analysis/azahar-official-simple-tri-cia/frame-60.png": {
+      "bytes": 2380,
+      "sha256": "ef5ea814d95cea009132588ea5892b0d87598c1527825119933b3b7d15a0c0d9"
+    },
+    "porting/analysis/azahar-official-simple-tri-cia/frame-90.png": {
+      "bytes": 2380,
+      "sha256": "ef5ea814d95cea009132588ea5892b0d87598c1527825119933b3b7d15a0c0d9"
+    },
+    "porting/analysis/azahar-official-simple-tri-cia/result.json": {
+      "bytes": 2067,
+      "sha256": "d579dae6dbbbad8a66644e873e4ee62c28f3aa15f23c9a11cc7b79072dd4580a"
+    },
+    "porting/analysis/azahar-official-simple-tri-cia/top-120.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "porting/analysis/azahar-official-simple-tri-cia/top-60.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "porting/analysis/azahar-official-simple-tri-cia/top-90.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/azahar-host.log": {
+      "bytes": 4314,
+      "sha256": "b61a2c9ae30d115433c7668a617343a7b3146ca61224e0a9a01629fada84f078"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/frame-120.png": {
+      "bytes": 2380,
+      "sha256": "fcd96c4e54cd8dd768286f152ba30f6ca0f9c3b14112646e8825b032e44cc3a2"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/frame-60.png": {
+      "bytes": 2380,
+      "sha256": "fcd96c4e54cd8dd768286f152ba30f6ca0f9c3b14112646e8825b032e44cc3a2"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/frame-90.png": {
+      "bytes": 2380,
+      "sha256": "fcd96c4e54cd8dd768286f152ba30f6ca0f9c3b14112646e8825b032e44cc3a2"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/observations.json": {
+      "bytes": 1303,
+      "sha256": "1286efe4931e025b761f57f25761d44a6bb17c4f18e6ddbf32aa733986e233ad"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/result.json": {
+      "bytes": 2412,
+      "sha256": "7da7531a49b0638329aa889ae79bba6181741d14803c926956db1f5a38f924ff"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/top-120.png": {
+      "bytes": 1453,
+      "sha256": "ebb65eb912386aa395e7c43578de5788bdc61a41d878738da7d81ad71af8aba6"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/top-60.png": {
+      "bytes": 1453,
+      "sha256": "ebb65eb912386aa395e7c43578de5788bdc61a41d878738da7d81ad71af8aba6"
+    },
+    "porting/analysis/azahar-simple-tri-rgb565/top-90.png": {
+      "bytes": 1453,
+      "sha256": "ebb65eb912386aa395e7c43578de5788bdc61a41d878738da7d81ad71af8aba6"
+    },
+    "porting/analysis/citro3d-control/comparison.json": {
+      "bytes": 3958,
+      "sha256": "7a27bf78cafadf4f8bb21a1e4fcfe05d0da2e88bade3ce65691917408048ce12"
+    },
+    "porting/analysis/citro3d-control/comparison.md": {
+      "bytes": 3804,
+      "sha256": "9682470cef23bd2dbca0b7d01d3c6a18fbb8eb515eb092a5d8bd5fcefa44f5ee"
+    },
+    "porting/analysis/citro3d-control/package.json": {
+      "bytes": 1147,
+      "sha256": "18904645e8bfe5c7d4aadf119eba2f36b9378d54d15c3629c9a3568613c93418"
+    },
+    "porting/analysis/citro3d-control/preflight.json": {
+      "bytes": 1725,
+      "sha256": "01942cb0116605c83bc3011c618fb77439753393d54e23efda09e55d63ed2f4b"
+    },
+    "porting/analysis/citro3d-control/preservation.json": {
+      "bytes": 106604,
+      "sha256": "7603e5ae1504e759603748989cc7d320518dab2acd55bac2273407e2831ee526"
+    },
+    "porting/analysis/citro3d-control/session-result.json": {
+      "bytes": 2733,
+      "sha256": "4d10c8bfd7fd9799f98fded458e43bd74a4632d290b6651a06f1265dc648e8ca"
+    },
+    "porting/analysis/citro3d-events/callback-call-edges.json": {
+      "bytes": 420,
+      "sha256": "0d2371257e32e33809e705dc496193f61b1452fce75c8ff742467066af6e6897"
+    },
+    "porting/analysis/citro3d-events/cycle1.json": {
+      "bytes": 859,
+      "sha256": "11a4a71b3d135b209e36e62dd68cbaaf17319b1316c46627b6b40e0ee48af67c"
+    },
+    "porting/analysis/citro3d-events/package.json": {
+      "bytes": 462,
+      "sha256": "166feea59d87042ab6aa6ac4963163b92d822737e56d67e02de7d9818aee3a51"
+    },
+    "porting/analysis/citro3d-events/preservation.json": {
+      "bytes": 120694,
+      "sha256": "07d6873f4c26281a2326befdce0c8c1471ba05a84fcae4b3e178c5ceef4657b0"
+    },
+    "porting/analysis/citro3d-events/references.json": {
+      "bytes": 738,
+      "sha256": "349feaf5bb2a84f57bac4aa2eaabdaa1f56370c4d6b44b4918305f77a380d7d1"
+    },
+    "porting/analysis/citro3d-events/session-result.json": {
+      "bytes": 2128,
+      "sha256": "9d7b7ae1e4f47b9d575f0983cc6d95e53434f4510db0b47e0407006de49603ca"
+    },
+    "porting/analysis/gpu-clear-audit/C3D_FrameBegin.asm.txt": {
+      "bytes": 2758,
+      "sha256": "c5daaee2f2846ba41920f9f0a5b8fe6e374734469f718e676a2adff39607a0ce"
+    },
+    "porting/analysis/gpu-clear-audit/__wrap_gspSubmitGxCommand.asm.txt": {
+      "bytes": 1738,
+      "sha256": "3182dc3ff3379538ce832df6974a3dc7f9b0674e15a8ecd74a9cfb3e325c6348"
+    },
+    "porting/analysis/gpu-clear-audit/audit.md": {
+      "bytes": 14862,
+      "sha256": "9fcff535964765aed9da6097c63416240128da29c4f5199b446832a8eb4f0a3c"
+    },
+    "porting/analysis/gpu-clear-audit/gspEventThreadMain.asm.txt": {
+      "bytes": 4049,
+      "sha256": "fed75d30e95bf788ecd2e49b7134011a1af507c1dbdb25247600016916c9d5e0"
+    },
+    "porting/analysis/gpu-clear-audit/gxCmdQueueInterrupt.asm.txt": {
+      "bytes": 2712,
+      "sha256": "a35914ba226db52ad3b2e3dacbc1fd214ae8a66d05d0b542d8a79b7213622603"
+    },
+    "porting/analysis/gpu-clear-audit/gxCmdQueueWait.asm.txt": {
+      "bytes": 1963,
+      "sha256": "b8fdab678408af223980f6f0a1dfe80be13d9fe04d8bce0a6d8a74cac2b8f499"
+    },
+    "porting/analysis/gpu-clear-audit/result.json": {
+      "bytes": 3121,
+      "sha256": "50ce0a49d7a892b2c4ed9b126da64b506610d4bae7b0796a691c950b297599be"
+    },
+    "porting/analysis/gpu-clear-audit/sources.json": {
+      "bytes": 2124,
+      "sha256": "80f25008fcf3622c9a199622571ce397e75d2cf6f310c47bb1a9f29d12a7c622"
+    },
+    "porting/analysis/hardware/citro3d-control-v0.1.0-user-result.json": {
+      "bytes": 3604,
+      "sha256": "b73de701424afc9a89570b551ff4722f46c8429cd48c44ca55c04dbac2cf83cf"
+    },
+    "porting/analysis/hardware/citro3d-control-v0.1.0-user/control.log": {
+      "bytes": 1886,
+      "sha256": "a99822c1b8a9136555d6dbf2d8f91d7bab6f0c9b970256697399b85b64e2069f"
+    },
+    "porting/analysis/hardware/citro3d-control-v0.1.0-user/ready.txt": {
+      "bytes": 8,
+      "sha256": "e932aabaf656783b5118a53cd805f29049afdfdd6e09aa045a966a2f3cd46c1d"
+    },
+    "porting/analysis/hardware/citro3d-control-v0.1.0-user/result.json": {
+      "bytes": 173,
+      "sha256": "96400b8afd3b71a33949c666d4e0a50396781bd87e8176d245e5c9890b672d03"
+    },
+    "porting/analysis/hardware/citro3d-control-v0.1.0-user/stage-0-queue.json": {
+      "bytes": 210,
+      "sha256": "6dcad7c01371d36ef7eeb91ff4e47f2a3165d20ec96f949b6230d5a76a8413b8"
+    },
+    "porting/analysis/hardware/official-simple-tri-profile-cia-v0.1.0-user-result.json": {
+      "bytes": 3010,
+      "sha256": "ecbf06feb80f3878996b8ea778be5e3a68b36c3766b321a52edf60540b3543b5"
+    },
+    "porting/analysis/hardware/official-simple-tri-v0.1.0-user-result.json": {
+      "bytes": 2529,
+      "sha256": "5dbf11a6bbd5a9893a748eae3ec0b7edb863c9eb99e2265036f5d61e0085a990"
+    },
+    "porting/analysis/hardware/simple-tri-rgb565-v0.1.0-user-result.json": {
+      "bytes": 3108,
+      "sha256": "0d3d3fd2a96986ec2460fb33d2fcae8e72adbe64a3c4ebb8efca0bd4d13f3af2"
+    },
+    "porting/analysis/official-simple-tri/comparison.md": {
+      "bytes": 11239,
+      "sha256": "88ca879e2418cbed5643aee5192bfedf873322abc054b2fdc5140ff8bb2bb8a7"
+    },
+    "porting/analysis/official-simple-tri/cycle1-top.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "porting/analysis/official-simple-tri/cycle1.json": {
+      "bytes": 379,
+      "sha256": "36a22a27d9b4ac21cf82fb91e5be7cb4109f4b88e6ddd52772e338d5bbda253b"
+    },
+    "porting/analysis/official-simple-tri/package.json": {
+      "bytes": 5878,
+      "sha256": "476d4c2a7dcb5450c23ab894060015e4e5ac6dd406957d9cdf4b74d464a9f0e6"
+    },
+    "porting/analysis/official-simple-tri/preservation.json": {
+      "bytes": 145658,
+      "sha256": "b37c519121390b5bfb2c9bd4f6ca986b28c8bb6d5c44a39fc9494050aecaa578"
+    },
+    "porting/analysis/official-simple-tri/session-result.json": {
+      "bytes": 1974,
+      "sha256": "826308cf548e31618b9bf95b0ba7a875c2152dbecd3c9361b8e7e926cf19ae67"
+    },
+    "porting/analysis/official-simple-tri/upstream.json": {
+      "bytes": 1556,
+      "sha256": "a274d5dd30a6c33e3b0518f086ed929953c40adffd6e17950f084c18284c9397"
+    },
+    "porting/analysis/official-simple-tri/upstream/README.md": {
+      "bytes": 244,
+      "sha256": "088647a0521d5a60db20732e39fb482951a9215142987b506d5ce9c36b5c56bd"
+    },
+    "porting/analysis/official-simple-tri/upstream/graphics/gpu/immediate/source/main.c": {
+      "bytes": 3137,
+      "sha256": "d3fd468373d3365c9cf47cbd09c5f84225652fce898fec188e3c383cfcc37f15"
+    },
+    "porting/analysis/official-simple-tri/upstream/graphics/gpu/simple_tri/Makefile": {
+      "bytes": 8832,
+      "sha256": "c9caa71880612e5d2106a9a4f6c2718c10c83da63bedf2244a595f117dd292d6"
+    },
+    "porting/analysis/official-simple-tri/upstream/graphics/gpu/simple_tri/source/main.c": {
+      "bytes": 3412,
+      "sha256": "41ef6b41e4c237a209c453873966a0f1adcc3b837dbf43555fddea06743d65b6"
+    },
+    "porting/analysis/official-simple-tri/upstream/graphics/gpu/simple_tri/source/vshader.v.pica": {
+      "bytes": 709,
+      "sha256": "99a3976be8ea6b77663cdff238b964662ab280f171af55892b2ecd981b00f858"
+    },
+    "porting/analysis/simple-tri-rgb565/package.json": {
+      "bytes": 4813,
+      "sha256": "b62ea1ab9cc796b06f5a84f5c31a03fdc32ff579ae6169d2f9b47d00c3c59e5c"
+    },
+    "porting/analysis/simple-tri-rgb565/preservation.json": {
+      "bytes": 159220,
+      "sha256": "f56f5bfa5478e1642c254b7b4b231cfcbbc1d394267df674b61ce2fbc33e23db"
+    },
+    "porting/analysis/simple-tri-rgb565/session-result.json": {
+      "bytes": 1372,
+      "sha256": "a3c9db73df2d8181f55acef276cdbb9128287bae562064fb8e5b01dbf113c5d0"
+    },
+    "porting/analysis/simple-tri-rgb565/source.diff": {
+      "bytes": 1126,
+      "sha256": "2ab3bcca1a2248d7d48d26e0193efabc91477f7e3408284dc4a21be714bb04d9"
+    },
+    "porting/dist/citro3d-control-v0.1.0/LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "porting/dist/citro3d-control-v0.1.0/README.ru.md": {
+      "bytes": 6799,
+      "sha256": "fe51a1320b78271a80547ef85c14993d9a58558fce18f11caa0b03642ac6b922"
+    },
+    "porting/dist/citro3d-control-v0.1.0/build-manifest.json": {
+      "bytes": 5455,
+      "sha256": "b0126d1f5c11fe2fc48c92c248ac578c1ac30e9e4aeacf4e086e27a2baa32094"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/clear.png": {
+      "bytes": 873,
+      "sha256": "19a16700a3d5bc19bb2c7af5ad3fd08b804ea9a260923582ed04349a6bdefed3"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/comparison.json": {
+      "bytes": 3958,
+      "sha256": "7a27bf78cafadf4f8bb21a1e4fcfe05d0da2e88bade3ce65691917408048ce12"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/control.log": {
+      "bytes": 3103,
+      "sha256": "d82a7bcc7a816f7a741d379acc12410cebfaa2f02a0f8616015c32c9e84f84fb"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/fault-test.json": {
+      "bytes": 848,
+      "sha256": "476d7e6895dad27eedf0098d18a9c5dd15b87c2dba7c1b41e19b1363e1004ea5"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/result.json": {
+      "bytes": 1359,
+      "sha256": "478b2a64707926c2af279437f0018b44f1f44b5d79fb436796afcc747c43ad4f"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/stage-0-queue.json": {
+      "bytes": 210,
+      "sha256": "6dcad7c01371d36ef7eeb91ff4e47f2a3165d20ec96f949b6230d5a76a8413b8"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/stage-1-1.pica": {
+      "bytes": 1168,
+      "sha256": "1353e91eb627a489d9c47949f3fc391f7efa002f1ceeb35c3209c91ea2faf9d0"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/stage-1-queue.json": {
+      "bytes": 275,
+      "sha256": "f98581f4e94f2f5548796b308a73ce2eae49cf6d7ac5683a15e4e12220ca71dc"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/triangle-vertices.bin": {
+      "bytes": 36,
+      "sha256": "7ee34deaba72f32e42c566a4c30966e522ddaa55d889e27ee3aec0491b5484e7"
+    },
+    "porting/dist/citro3d-control-v0.1.0/validation/triangle.png": {
+      "bytes": 1438,
+      "sha256": "9533934d8a0786f1d8df2ce71b180b99578bb814fd4edbd02278f0b1f7d9ddf4"
+    },
+    "porting/dist/citro3d-control-v0.1.1/LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "porting/dist/citro3d-control-v0.1.1/README.ru.md": {
+      "bytes": 8884,
+      "sha256": "b9e533264ad43ac1aba8878477b0b6139d849d546b79beb0ab15e4ca769a0156"
+    },
+    "porting/dist/citro3d-control-v0.1.1/build-manifest.json": {
+      "bytes": 7002,
+      "sha256": "79f3055b8b2e436e6fbe71d478b4da7fd96f8ae9a551433cc077751ae60fe0d3"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/callback-call-edges.json": {
+      "bytes": 420,
+      "sha256": "0d2371257e32e33809e705dc496193f61b1452fce75c8ff742467066af6e6897"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/clear.png": {
+      "bytes": 873,
+      "sha256": "19a16700a3d5bc19bb2c7af5ad3fd08b804ea9a260923582ed04349a6bdefed3"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/fault-control.log": {
+      "bytes": 1632,
+      "sha256": "76592abd4f9c336edcd35b2a873f7d5a715ee87228f9833e2bce16e417e62b4b"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/fault-events-0001-before-submit.json": {
+      "bytes": 961,
+      "sha256": "c794c6434e025a0fabbcf8c1130f88eed0b113c972755b3a6f493a2d8bd3a42f"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/fault-events-0002-after-submit.json": {
+      "bytes": 1008,
+      "sha256": "3d29b7cc33c89bb1bfd777e8bf65c2ce38ed7286897998be04712772f50dd8e9"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/fault-events-0003-timeout.json": {
+      "bytes": 1004,
+      "sha256": "bc60087507c386c60dbd4367e9e0b964b0a2e4244e8a7f83a4e1d4d1a26a1473"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/fault-events-0004-result.json": {
+      "bytes": 1003,
+      "sha256": "32b6e44997ce689fe1ca53612aca046fe9d7407f70f43e29f03a00ead27c9d31"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/fault-events-0005-exit-precheck.json": {
+      "bytes": 1010,
+      "sha256": "c7a080b903f50c7aed2df007c91c9c32a5b11f9fd3f3057b28f8586a7d86bece"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/fault-result.json": {
+      "bytes": 1061,
+      "sha256": "7a54a87cc096d07249d4ea0cb78523b23e6135f7d313ee666b9843df17270b77"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/normal-control.log": {
+      "bytes": 1694,
+      "sha256": "527797288aabcd723f4912fa7cab4f574a57d474b53109a9bb15d12f0bc9095a"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/normal-events-0001-before-submit.json": {
+      "bytes": 961,
+      "sha256": "7b210eaf8c3e29384e3170e175b4e4ecb147ed6ffa41e0fa0d764a7eeb6fc018"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/normal-events-0002-after-submit.json": {
+      "bytes": 1008,
+      "sha256": "d8f240139cfe22ab48335c8a62c0b561dcd4f4a7d1a6af4ae995e0dd50099773"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/normal-events-0003-retired.json": {
+      "bytes": 876,
+      "sha256": "b08e144b467fc3f890e099bc214bb5c42f6e37d722eddbb34088b30d15a944fe"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/normal-events-0004-result.json": {
+      "bytes": 875,
+      "sha256": "42498cea224f7859444151bbc444a4979dc45bc70502b4c010e9a681a0c1ba74"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/normal-events-0005-exit-precheck.json": {
+      "bytes": 882,
+      "sha256": "0839b2a8ca36879935d9a3ee9b749713896c8e0dbbecec5ad8aea6b94d99f1fe"
+    },
+    "porting/dist/citro3d-control-v0.1.1/validation/normal-result.json": {
+      "bytes": 1051,
+      "sha256": "a88b54693ae23b92bf30e635c5a70d806060aeb6414cd54926931464cd2ad73c"
+    },
+    "porting/dist/official-simple-tri-v0.1.0/README.ru.md": {
+      "bytes": 5755,
+      "sha256": "e739508966f9a6585609bdd39faa408c477c60075ec2b2374518a485dc4cc2ed"
+    },
+    "porting/dist/official-simple-tri-v0.1.0/manifest.json": {
+      "bytes": 5708,
+      "sha256": "5040de36c26923090d87264764767fa3dc15fd5d56b98791924614bd69599b63"
+    },
+    "porting/dist/simple-tri-rgb565-v0.1.0/README.ru.md": {
+      "bytes": 5610,
+      "sha256": "714702286549e51c9e4c9e172b787b7e301fabc06ebae868f0fe4c06f6f3f80a"
+    },
+    "porting/dist/simple-tri-rgb565-v0.1.0/manifest.json": {
+      "bytes": 4646,
+      "sha256": "3ba8e8a754ffcfc3ab2b4df89b96d805105880037fb529dc57469562fb7742ff"
+    },
+    "porting/tests/citro3d_control.c": {
+      "bytes": 11458,
+      "sha256": "99c9dc3cd52f05bfad4746c9688ecc5b2d2abe343d345d238e8362c70410743a"
+    },
+    "porting/tests/citro3d_control.v.pica": {
+      "bytes": 518,
+      "sha256": "46b34b8ca5fafeaa3e176952ef8e6c0536c386f8cfb9e0cf6ca45bf1155d98dc"
+    },
+    "porting/tests/citro3d_event_observer.c": {
+      "bytes": 8093,
+      "sha256": "c6ea055ff243f1b5ce84ca59ec9925570ca179dd60504ae6981f6cc0dd6fe66b"
+    },
+    "porting/tests/citro3d_event_observer.h": {
+      "bytes": 545,
+      "sha256": "a25a5848997182e97d4c747d06cbd675e084ef106c2a499e94db5c97740e0735"
+    },
+    "porting/tests/citro3d_events.c": {
+      "bytes": 7738,
+      "sha256": "dca6670d2e3acbb2bda9ada9a32069a2c7215d48ca7d0fdabffbaef03c11015c"
+    },
+    "porting/tests/smoke_citro3d_control.py": {
+      "bytes": 6534,
+      "sha256": "ef85a056b6a1b650f92ddc8462a17deff98b54bda6c1b499f926362674b22a81"
+    },
+    "porting/tests/smoke_citro3d_events.py": {
+      "bytes": 8420,
+      "sha256": "76caff79dbae39dc7258cf0b7a9f8ceef1c05a930baf7e0a8794b0fbd5a3d877"
+    },
+    "porting/tests/smoke_official_simple_tri.py": {
+      "bytes": 4512,
+      "sha256": "059a3324f88f3e51181ef9bcd0b574f443cfd6251e2bc2c58cfaf963700fcf1b"
+    },
+    "porting/tests/smoke_simple_tri_rgb565.py": {
+      "bytes": 5153,
+      "sha256": "ab6eaeb6bad45b95f701889b32d37c729eddcb9b34164a91ae3012272eef892c"
+    },
+    "porting/tools/audit_gpu_clear.py": {
+      "bytes": 4946,
+      "sha256": "3e4a71a5bf6d0fd98c6c7d8bb2c5c6d994999d9ab8107abf7a0dd88cd20fd769"
+    },
+    "porting/tools/build_citro3d_control.py": {
+      "bytes": 5175,
+      "sha256": "e17f3d57714c3a6f4da07cbadc0f1868c44089584ed93b7c33bbdb0e127793d7"
+    },
+    "porting/tools/build_citro3d_events.py": {
+      "bytes": 5525,
+      "sha256": "ad3f99c4caa87cca99676aa65232f14261b821ef0e2920e6cf6ff7b05438046d"
+    },
+    "porting/tools/build_official_simple_tri.py": {
+      "bytes": 6379,
+      "sha256": "3204203d62a0fcf4c06690375de45a19edd873d298d371d52e18632666de0c98"
+    },
+    "porting/tools/build_simple_tri_rgb565.py": {
+      "bytes": 6457,
+      "sha256": "b592d86a58fa8c1be702e6220f50859380100010488eb64df8b046a2bcb7d515"
+    },
+    "porting/tools/compare_citro3d_control.py": {
+      "bytes": 4805,
+      "sha256": "8e2c6c3f24cb33301ca32c7c1ffd9ca7d99d64aa819cacc2f6996652fb4c4fc8"
+    },
+    "porting/tools/package_citro3d_control.py": {
+      "bytes": 4482,
+      "sha256": "cf750ed68be56a11bcef60fa6004aee65a50bb4eab3782478874136296706636"
+    },
+    "porting/tools/package_citro3d_events.py": {
+      "bytes": 4610,
+      "sha256": "e04a1eda4a4df68f413843bca56715d93867d265ae54edffd1412b2fa4dd4626"
+    },
+    "porting/tools/package_official_simple_tri.py": {
+      "bytes": 5940,
+      "sha256": "62f9704cd832f308e2ecbfd4bbf35ec9cd0bf45a30e3fd3fdb26df1617583b57"
+    },
+    "porting/tools/package_simple_tri_rgb565.py": {
+      "bytes": 5710,
+      "sha256": "2737d261ca13f0af25b82bc0ff15dc5b01cb4206dea42fbe54a735db635b164b"
+    }
+  }
+}

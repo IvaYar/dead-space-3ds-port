@@ -1,0 +1,70 @@
+{
+  "version": "0.1.1",
+  "title_id": "000400000FDE6900",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "ds34_linked": false,
+  "game_resources_used": false,
+  "fault_injection_compiled": true,
+  "sources": [
+    "tests/citro3d_events.c",
+    "tests/citro3d_event_observer.c"
+  ],
+  "clear_only": true,
+  "same_v0.1.0_binary_capabilities": true,
+  "passive_event_slots": [
+    "PSC0",
+    "PSC1",
+    "PPF"
+  ],
+  "callback_IO_allocation_waits": false,
+  "SDK_handlers_replaced": false,
+  "IRQ_linker_wrap": false,
+  "compiler_flags": [
+    "-march=armv6k",
+    "-mtune=mpcore",
+    "-mfloat-abi=hard",
+    "-mtp=soft",
+    "-std=c11",
+    "-O2",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-D__3DS__",
+    "-mword-relocations",
+    "-specs=3dsx.specs",
+    "-Wl,-z,noexecstack",
+    "-Wl,--wrap=gxCmdQueueRun,--wrap=gspSubmitGxCommand"
+  ],
+  "same_SDK_library_hashes": true,
+  "same_RSF_access_and_system_control": true,
+  "same_binary_capabilities_except_program_id": true,
+  "profile": "Legacy 64MB / application / CPU read-only VRAM / 256KiB stack",
+  "render_target": "240x400 RGB8 / D24S8 / TOP RGB565, identical formats and transfer flags to DS34",
+  "reference_example": "https://github.com/devkitPro/3ds-examples/tree/master/graphics/gpu/simple_tri",
+  "adaptations": [
+    "RGB8/RGB565 to match DS34 rather than example RGBA8/RGB8",
+    "one CLEAR only; public PSC0 PSC1 PPF callbacks with no SDK handler replacement",
+    "A gate; bounded waits; diagnostics and CPU pixel reads"
+  ],
+  "sdk_commit": "9f21cf7b380ce6f9e01a0420f19f0763e5443ca7",
+  "inputs_sha256": {
+    "tests/citro3d_events.c": "dca6670d2e3acbb2bda9ada9a32069a2c7215d48ca7d0fdabffbaef03c11015c",
+    "tests/citro3d_event_observer.c": "c6ea055ff243f1b5ce84ca59ec9925570ca179dd60504ae6981f6cc0dd6fe66b",
+    "tests/citro3d_event_observer.h": "a25a5848997182e97d4c747d06cbd675e084ef106c2a499e94db5c97740e0735",
+    "tools/build_citro3d_events.py": "ad3f99c4caa87cca99676aa65232f14261b821ef0e2920e6cf6ff7b05438046d",
+    "3ds/stage1.rsf": "2495be2f6ff9257afacac3ef557fe7cb9ad36ff1e9849664c9249b311147e036",
+    "3ds/build-gpu-hardware-v0.1.3/ds34-gpu-test.rsf": "19a938389c2f92ebc32045d02aec7e456ace4563d9047784c84f5909eff2c413",
+    "toolchain/citro3d/lib/libcitro3d.a": "b0e944fdaedda863a6c3d6851e4092a65f09a656d86d6d2eb138542a27319705",
+    "toolchain/devkitpro/libctru/lib/libctru.a": "5e72cd24512b57908545e928cf0a1c1affbb8535f97773d7007be8f10f0e02bc",
+    "toolchain/devkitpro/devkitARM/bin/arm-none-eabi-gcc.exe": "2c6ba4533884071c3149058ac00c89d133af458172aaa7f2f7c785747769d317"
+  },
+  "outputs_sha256": {
+    "control.elf": "d7fa07d14cf334ce708c3c3341d773334aa7635c7213f6dd7c125e4d6709e49d",
+    "control.cia": "6fab88ce7f43a746bd71dd0c68c54f56309fca45d3b92c306b2ff7eb87907c1e",
+    "control.cxi": "e5b4638e016473a96ee86710742f91d5cb9fa81cc5808a4ea3e2528642fb1c35"
+  }
+}

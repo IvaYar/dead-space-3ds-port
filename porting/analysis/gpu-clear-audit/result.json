@@ -1,0 +1,98 @@
+{
+  "audit_cycles": 2,
+  "hardware_executed": false,
+  "new_CIA_created": false,
+  "renderer_or_SDK_modified": false,
+  "root_cause_proven": false,
+  "existing_hardware_result": "CLEAR queue submitted=2, SDK event count=1; event types not logged",
+  "arguments": {
+    "GX_MemoryFill": [
+      "0x1f000000",
+      "0x00102030",
+      "0x1f046500",
+      "0x00000101",
+      "0x1f300000",
+      "0x00000000",
+      "0x1f35dc00",
+      "0x00000201"
+    ],
+    "GX_DisplayTransfer": [
+      "0x1f000000",
+      "0x019000f0",
+      "0x1408ca00",
+      "0x019000f0",
+      "0x00002100"
+    ]
+  },
+  "bounds": {
+    "width": 240,
+    "height": 400,
+    "color_bytes": 288000,
+    "depth_bytes": 384000,
+    "destination_write_bytes": 192000,
+    "destination_start": "0x1408ca00",
+    "destination_write_end": "0x140bb800",
+    "destination_allocation_bytes_from_pinned_gfx_source": 576000,
+    "addresses_128_aligned": true,
+    "VRAM_ranges_nonoverlapping": true,
+    "all_checks_are_static_not_runtime_memory_queries": true
+  },
+  "flags": {
+    "raw": "0x00002100",
+    "input": "RGB8",
+    "output": "RGB565",
+    "output_tiled": false,
+    "flip": false,
+    "raw_copy": false,
+    "scaling": 0
+  },
+  "binary_dispatch": {
+    "event_call_site": "0x0010aa58",
+    "real_GX_handler": "0x00106b28",
+    "weak_stub_excluded": true
+  },
+  "completion": {
+    "counted_events": [
+      "PSC0",
+      "PPF",
+      "P3D",
+      "DMA"
+    ],
+    "ignored_events": [
+      "PSC1",
+      "VBlank0",
+      "VBlank1"
+    ],
+    "command_ID_matching": false,
+    "wait_tests_global_isRunning": true,
+    "wait_timeout_values_used": [
+      0,
+      -1
+    ],
+    "event_wait_can_undo_prior_queue_increment": false,
+    "FILL_vs_DISPLAY_identifiable_from_current_log": false,
+    "physical_GPU_hang_proven": false,
+    "unambiguous_counterexamples": [
+      "PSC0 only => 1/2",
+      "PPF only => 1/2"
+    ]
+  },
+  "proven_project_errors_causing_CLEAR": [],
+  "unrelated_SDK_observation": "Positive gxCmdQueueWait timeout is documented ns but added to ticks in v2.7.0; current path uses only 0/-1, so not causal and not patched",
+  "hypotheses_remaining": [
+    "Missing PPF/transfer completion or delivery",
+    "Missing PSC0/fill completion or delivery",
+    "GSP IRQ delivery or queue lifecycle/accounting",
+    "Shared format/profile/service handling difference vs unmodified official example"
+  ],
+  "next_minimal_test": "One identical CLEAR-only queue with passive PSC0/PSC1/PPF callbacks and SDK queue snapshots; preserve VBlank callbacks, command ordering and formats; no IRQ linker wrap",
+  "next_test_limit": "Identifies delivered event type and accounting disagreement, not necessarily physical GPU completion if an event is absent",
+  "next_build_ready": false,
+  "permission_required_for_next_build_and_hardware_test": true,
+  "reports": [
+    "analysis/gpu-clear-audit/audit.md",
+    "analysis/gpu-clear-audit/sources.json"
+  ],
+  "baseline_tested_inputs_and_outputs_unchanged": true,
+  "commit_or_push_performed": false
+}

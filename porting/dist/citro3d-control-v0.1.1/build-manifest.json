@@ -1,0 +1,167 @@
+{
+  "version": "0.1.1",
+  "title_id": "000400000FDE6900",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "ds34_linked": false,
+  "game_resources_used": false,
+  "fault_injection_compiled": false,
+  "sources": [
+    "tests/citro3d_events.c",
+    "tests/citro3d_event_observer.c"
+  ],
+  "clear_only": true,
+  "same_v0.1.0_binary_capabilities": true,
+  "passive_event_slots": [
+    "PSC0",
+    "PSC1",
+    "PPF"
+  ],
+  "callback_IO_allocation_waits": false,
+  "SDK_handlers_replaced": false,
+  "IRQ_linker_wrap": false,
+  "compiler_flags": [
+    "-march=armv6k",
+    "-mtune=mpcore",
+    "-mfloat-abi=hard",
+    "-mtp=soft",
+    "-std=c11",
+    "-O2",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-D__3DS__",
+    "-mword-relocations",
+    "-specs=3dsx.specs",
+    "-Wl,-z,noexecstack",
+    "-Wl,--wrap=gxCmdQueueRun,--wrap=gspSubmitGxCommand"
+  ],
+  "same_SDK_library_hashes": true,
+  "same_RSF_access_and_system_control": true,
+  "same_binary_capabilities_except_program_id": true,
+  "profile": "Legacy 64MB / application / CPU read-only VRAM / 256KiB stack",
+  "render_target": "240x400 RGB8 / D24S8 / TOP RGB565, identical formats and transfer flags to DS34",
+  "reference_example": "https://github.com/devkitPro/3ds-examples/tree/master/graphics/gpu/simple_tri",
+  "adaptations": [
+    "RGB8/RGB565 to match DS34 rather than example RGBA8/RGB8",
+    "one CLEAR only; public PSC0 PSC1 PPF callbacks with no SDK handler replacement",
+    "A gate; bounded waits; diagnostics and CPU pixel reads"
+  ],
+  "sdk_commit": "9f21cf7b380ce6f9e01a0420f19f0763e5443ca7",
+  "inputs_sha256": {
+    "tests/citro3d_events.c": "dca6670d2e3acbb2bda9ada9a32069a2c7215d48ca7d0fdabffbaef03c11015c",
+    "tests/citro3d_event_observer.c": "c6ea055ff243f1b5ce84ca59ec9925570ca179dd60504ae6981f6cc0dd6fe66b",
+    "tests/citro3d_event_observer.h": "a25a5848997182e97d4c747d06cbd675e084ef106c2a499e94db5c97740e0735",
+    "tools/build_citro3d_events.py": "ad3f99c4caa87cca99676aa65232f14261b821ef0e2920e6cf6ff7b05438046d",
+    "3ds/stage1.rsf": "2495be2f6ff9257afacac3ef557fe7cb9ad36ff1e9849664c9249b311147e036",
+    "3ds/build-gpu-hardware-v0.1.3/ds34-gpu-test.rsf": "19a938389c2f92ebc32045d02aec7e456ace4563d9047784c84f5909eff2c413",
+    "toolchain/citro3d/lib/libcitro3d.a": "b0e944fdaedda863a6c3d6851e4092a65f09a656d86d6d2eb138542a27319705",
+    "toolchain/devkitpro/libctru/lib/libctru.a": "5e72cd24512b57908545e928cf0a1c1affbb8535f97773d7007be8f10f0e02bc",
+    "toolchain/devkitpro/devkitARM/bin/arm-none-eabi-gcc.exe": "2c6ba4533884071c3149058ac00c89d133af458172aaa7f2f7c785747769d317"
+  },
+  "outputs_sha256": {
+    "control.elf": "afeae301f12b61cbfa3e122a5eb54816866ff47ef7ef972e23ef8fce9c263ce5",
+    "control.cia": "6796c0301361ab2c4dec7d43563fa51b9ce3fb414f0878e18bba8f29b62dfc8a",
+    "control.cxi": "440d84cf947ecd64bd94f8151e1f21a42f1b877018228c46fa9b682833fb693d"
+  },
+  "emulator_tested": true,
+  "not_a_GPU_fix": true,
+  "GPU_packets_unchanged": true,
+  "hash_checks": [
+    "\\- Hash: (GOOD) 440D84CF947ECD64BD94F8151E1F21A42F1B877018228C46FA9B682833FB693D",
+    "Exheader hash: (GOOD)   ED3B1DD89CC8DCEB976956764FAD883A77822C2CA561C92DBF17913F006F059C",
+    "ExeFS hash: (GOOD)      552660BBCD7FBE21384F483BC208348AFCFD88E0326B45A133AB0C76E97017E9",
+    "Section hash: (GOOD)    ECCB0E77A640B3F18C7E3BB629A021F919FC8EE06968EB1FCB41348A3A958A68",
+    "Section hash: (GOOD)    A168EEAEBF9B893F723FA0E2472646DD20C280008FE033FFF85E7C1E47934414",
+    "Section hash: (GOOD)    D13A8B36DA2DE0DC5C7F074309583C2E275E3349976C00DD2D410FD2EBFD6718",
+    "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+  ],
+  "normal_event_counts": {
+    "PSC0": 1,
+    "PSC1": 0,
+    "PPF": 1
+  },
+  "fault_test_passed": true,
+  "test_binary_not_included": true,
+  "files": {
+    "citro3d-control-v0.1.1.cia": {
+      "bytes": 189376,
+      "sha256": "6796c0301361ab2c4dec7d43563fa51b9ce3fb414f0878e18bba8f29b62dfc8a"
+    },
+    "LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "README.ru.md": {
+      "bytes": 8884,
+      "sha256": "b9e533264ad43ac1aba8878477b0b6139d849d546b79beb0ab15e4ca769a0156"
+    },
+    "validation/callback-call-edges.json": {
+      "bytes": 420,
+      "sha256": "0d2371257e32e33809e705dc496193f61b1452fce75c8ff742467066af6e6897"
+    },
+    "validation/clear.png": {
+      "bytes": 873,
+      "sha256": "19a16700a3d5bc19bb2c7af5ad3fd08b804ea9a260923582ed04349a6bdefed3"
+    },
+    "validation/fault-control.log": {
+      "bytes": 1632,
+      "sha256": "76592abd4f9c336edcd35b2a873f7d5a715ee87228f9833e2bce16e417e62b4b"
+    },
+    "validation/fault-events-0001-before-submit.json": {
+      "bytes": 961,
+      "sha256": "c794c6434e025a0fabbcf8c1130f88eed0b113c972755b3a6f493a2d8bd3a42f"
+    },
+    "validation/fault-events-0002-after-submit.json": {
+      "bytes": 1008,
+      "sha256": "3d29b7cc33c89bb1bfd777e8bf65c2ce38ed7286897998be04712772f50dd8e9"
+    },
+    "validation/fault-events-0003-timeout.json": {
+      "bytes": 1004,
+      "sha256": "bc60087507c386c60dbd4367e9e0b964b0a2e4244e8a7f83a4e1d4d1a26a1473"
+    },
+    "validation/fault-events-0004-result.json": {
+      "bytes": 1003,
+      "sha256": "32b6e44997ce689fe1ca53612aca046fe9d7407f70f43e29f03a00ead27c9d31"
+    },
+    "validation/fault-events-0005-exit-precheck.json": {
+      "bytes": 1010,
+      "sha256": "c7a080b903f50c7aed2df007c91c9c32a5b11f9fd3f3057b28f8586a7d86bece"
+    },
+    "validation/fault-result.json": {
+      "bytes": 1061,
+      "sha256": "7a54a87cc096d07249d4ea0cb78523b23e6135f7d313ee666b9843df17270b77"
+    },
+    "validation/normal-control.log": {
+      "bytes": 1694,
+      "sha256": "527797288aabcd723f4912fa7cab4f574a57d474b53109a9bb15d12f0bc9095a"
+    },
+    "validation/normal-events-0001-before-submit.json": {
+      "bytes": 961,
+      "sha256": "7b210eaf8c3e29384e3170e175b4e4ecb147ed6ffa41e0fa0d764a7eeb6fc018"
+    },
+    "validation/normal-events-0002-after-submit.json": {
+      "bytes": 1008,
+      "sha256": "d8f240139cfe22ab48335c8a62c0b561dcd4f4a7d1a6af4ae995e0dd50099773"
+    },
+    "validation/normal-events-0003-retired.json": {
+      "bytes": 876,
+      "sha256": "b08e144b467fc3f890e099bc214bb5c42f6e37d722eddbb34088b30d15a944fe"
+    },
+    "validation/normal-events-0004-result.json": {
+      "bytes": 875,
+      "sha256": "42498cea224f7859444151bbc444a4979dc45bc70502b4c010e9a681a0c1ba74"
+    },
+    "validation/normal-events-0005-exit-precheck.json": {
+      "bytes": 882,
+      "sha256": "0839b2a8ca36879935d9a3ee9b749713896c8e0dbbecec5ad8aea6b94d99f1fe"
+    },
+    "validation/normal-result.json": {
+      "bytes": 1051,
+      "sha256": "a88b54693ae23b92bf30e635c5a70d806060aeb6414cd54926931464cd2ad73c"
+    }
+  }
+}

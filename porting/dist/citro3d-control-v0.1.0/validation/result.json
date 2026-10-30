@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "intentional_fault": false,
+  "hardware_tested": false,
+  "tested_payload": "NCCH extracted from actual CIA",
+  "cia_sha256": "5b465c34d8779374695b42869f09fb4e3b52d3008102deef8f3e20dd0027c5aa",
+  "payload_sha256": "798faed4d921e2e132edc6fbcd3d48ca3eeaeeb43cdcda13b38222199210f1d0",
+  "stale_result_cleared": true,
+  "A_gate_verified": true,
+  "START_exit_drained": true,
+  "invalid_accesses": 0,
+  "submit_results_success": true,
+  "queue_types": {
+    "clear": [
+      2,
+      3
+    ],
+    "triangle": [
+      2,
+      1,
+      3
+    ]
+  },
+  "pixel_checks": {
+    "clear": {
+      "raw_sha256": "6e81910b551881e64d9cdd80cacdd024c97bef27051338144cc592b29c3283e6",
+      "png_sha256": "19a16700a3d5bc19bb2c7af5ad3fd08b804ea9a260923582ed04349a6bdefed3",
+      "distinct_colors": 1
+    },
+    "triangle": {
+      "raw_sha256": "3d98322b11982030b560d26ad1c7e3b8a85c2c9dee41da32b6396cca40624500",
+      "png_sha256": "9533934d8a0786f1d8df2ce71b180b99578bb814fd4edbd02278f0b1f7d9ddf4",
+      "distinct_colors": 2
+    }
+  },
+  "native_result": {
+    "version": "0.1.0",
+    "environment": "emulator",
+    "passed": true,
+    "stages_completed": 2,
+    "stage": 1,
+    "timeout": false,
+    "failure": "none",
+    "ds34_linked": false,
+    "game_called": false
+  },
+  "elapsed_seconds": 0.282
+}

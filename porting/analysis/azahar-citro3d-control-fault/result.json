@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "intentional_fault": true,
+  "hardware_tested": false,
+  "tested_payload": "NCCH extracted from actual CIA",
+  "cia_sha256": "7e4880af3537a09d1e80630bb83251703fb7e96eff15b2a87fe531b5df11a6b7",
+  "payload_sha256": "ca99bab6e63150f4d86de97df064e44a4cdb6bf5360b8de5393dac3288230551",
+  "stale_result_cleared": true,
+  "A_gate_verified": true,
+  "START_exit_drained": true,
+  "invalid_accesses": 0,
+  "submit_results_success": true,
+  "queue_types": {
+    "clear": [
+      2,
+      3
+    ]
+  },
+  "pixel_checks": {},
+  "native_result": {
+    "version": "0.1.0",
+    "environment": "emulator",
+    "passed": false,
+    "stages_completed": 0,
+    "stage": 0,
+    "timeout": true,
+    "failure": "GX QUEUE TIMEOUT",
+    "ds34_linked": false,
+    "game_called": false
+  },
+  "elapsed_seconds": 0.265
+}

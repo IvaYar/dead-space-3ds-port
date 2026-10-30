@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-30",
+  "test": "simple_tri RGB8-to-RGB565 v0.1.0 CIA",
+  "hardware_tested": true,
+  "executed_by": "user",
+  "passed": false,
+  "status": "User reported one very thin blue strip flashing at the left, then console hang; POWER required to turn off",
+  "expected_title_id": "000400000FDE6B00",
+  "expected_CIA_sha256": "9780e38e25b586f8777e851b8f5494df9e7e2c9c2687212fd4f929bddaf042cc",
+  "device_binary_hash_measured": false,
+  "evidence": {
+    "type": "User text report in conversation",
+    "verbatim": "Смотри, я запустил, один раз слева моргнула голубая полоска(очень тонкая) и приставка зависла. Выключилась только по кнопке POWER",
+    "photo_or_video_received": false,
+    "native_logs_available": false,
+    "native_logs_expected": false,
+    "raw_framebuffer_available": false
+  },
+  "observations": {
+    "thin_blue_strip_flashes_reported": 1,
+    "strip_position": "left; exact LCD and coordinates not specified",
+    "console_hang_reported": true,
+    "POWER_shutdown_required": true,
+    "successful_triangle_display_confirmed": false,
+    "START_attempt_reported": false,
+    "START_outcome": "not reported",
+    "time_to_hang_measured": false,
+    "event_or_queue_counters_measured": false,
+    "memory_access_audit_available": false
+  },
+  "comparison": {
+    "stock_RGBA8_to_RGB8_CIA": "User photo confirmed triangle and START returned to HOME Menu",
+    "RGB8_to_RGB565_CIA": "User reported brief thin blue strip then hang requiring POWER",
+    "same_SDK_shader_geometry_waits_and_CIA_profile_except_identity": true,
+    "Azahar_RGB8_to_RGB565": "Passed; did not reproduce native failure"
+  },
+  "conclusion": "The format/framebuffer preparation combination reproduces native failure in stock-style simple_tri without DS34 or its diagnostic wrappers. Those wrappers are not required to reproduce this failure. The CIA profile alone supports the stock example.",
+  "root_cause_confirmed": false,
+  "specific_stalled_command_identified": false,
+  "limitations": [
+    "No evidence identifies FILL, PICA, DISPLAY or lost completion delivery",
+    "Brief strip does not prove any particular GX command completed",
+    "RGB8 target and 24-bit fill, RGB565 output, TOP format switch and buffer-size differences changed together",
+    "Do not generalize this failure to all RGB565 or all RGB8 rendering",
+    "Earlier DS34/control failures are not individually explained by this observation"
+  ],
+  "next_proposed_experiment_not_built": "Keep the working RGB8 LCD/default gfx initialization and test RGB8 target -> RGB8 output (flags0x1100), with RGB8 clear packing and unchanged stock draw/SYNCDRAW. This separates the RGB8 source/fill side from RGB565 output/TOP-switch differences but does not isolate FILL from RGB8 source transfer individually.",
+  "authorized_single_run_completed": true,
+  "remaining_authorized_hardware_runs": 0,
+  "repeat_authorized": false,
+  "new_build_created_after_result": false,
+  "GPU_backend_changed": false,
+  "git_push_performed": false
+}

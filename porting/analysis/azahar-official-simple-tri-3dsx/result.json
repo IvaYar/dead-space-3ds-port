@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "format": "3dsx",
+  "hardware_tested": false,
+  "app_sha256": "5cc647c64e97ef1e7564400c1e3b337d2fa7a1d725557f57ed6b54c875db5e5a",
+  "cia_sha256": null,
+  "ELF_sha256": "a5a3c9c2668edc87c1afe1d3baf3bb9f01554b4541bd6366ad57019e73abf1a5",
+  "unmodified_upstream_source": true,
+  "capture": "Azahar software renderer LCD libretro video callback; no OpenGL",
+  "observations": [
+    {
+      "frontend_frame": 60,
+      "white_pixels": 16000,
+      "background_pixels": 79999,
+      "corner_anomalies": [
+        [
+          399,
+          0,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "top_pixels_sha256": "3d159592444ff5c2bf2aa2b5cd168358fe4239a4237354166dec531d6c323809",
+      "image": "frame-60.png"
+    },
+    {
+      "frontend_frame": 90,
+      "white_pixels": 16000,
+      "background_pixels": 79999,
+      "corner_anomalies": [
+        [
+          399,
+          0,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "top_pixels_sha256": "3d159592444ff5c2bf2aa2b5cd168358fe4239a4237354166dec531d6c323809",
+      "image": "frame-90.png"
+    },
+    {
+      "frontend_frame": 120,
+      "white_pixels": 16000,
+      "background_pixels": 79999,
+      "corner_anomalies": [
+        [
+          399,
+          0,
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "top_pixels_sha256": "3d159592444ff5c2bf2aa2b5cd168358fe4239a4237354166dec531d6c323809",
+      "image": "frame-120.png"
+    }
+  ],
+  "invalid_accesses_in_host_log": 0,
+  "START_requested": true,
+  "frontend_shutdown_signal": false,
+  "elapsed_seconds": 0.516,
+  "limitations": [
+    "Frontend observations are not an instrumented native frame count",
+    "CIA tested as extracted NCCH payload; FBI installation not emulated",
+    "No native SD log, observer, timeout or safety gate added to upstream source"
+  ]
+}

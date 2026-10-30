@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "version": "0.1.0",
+  "date": "2026-10-30",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "not_a_DS34_fix": true,
+  "game_resources_included": false,
+  "title_id": "000400000FDE6B00",
+  "title_version": 1,
+  "stock_source_plus_exact_format_whitelist": true,
+  "same_SDK_shader_flags_profile": true,
+  "no_runtime_instrumentation_or_wrappers": true,
+  "real_SDK_queue_handler": true,
+  "compiler_flags": [
+    "-g",
+    "-Wall",
+    "-O2",
+    "-mword-relocations",
+    "-ffunction-sections",
+    "-march=armv6k",
+    "-mtune=mpcore",
+    "-mfloat-abi=hard",
+    "-mtp=soft",
+    "-D__3DS__"
+  ],
+  "source_edits": [
+    [
+      "#define CLEAR_COLOR 0x68B0D8FF",
+      "#define CLEAR_COLOR 0x0068B0D8"
+    ],
+    [
+      "GX_TRANSFER_IN_FORMAT(GX_TRANSFER_FMT_RGBA8) | GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB8)",
+      "GX_TRANSFER_IN_FORMAT(GX_TRANSFER_FMT_RGB8) | GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB565)"
+    ],
+    [
+      "\tgfxInitDefault();",
+      "\tgfxInitDefault();\n\tgfxSetScreenFormat(GFX_TOP, GSP_RGB565_OES);"
+    ],
+    [
+      "C3D_RenderTargetCreate(240, 400, GPU_RB_RGBA8, GPU_RB_DEPTH24_STENCIL8)",
+      "C3D_RenderTargetCreate(240, 400, GPU_RB_RGB8, GPU_RB_DEPTH24_STENCIL8)"
+    ]
+  ],
+  "CIA_sha256": "9780e38e25b586f8777e851b8f5494df9e7e2c9c2687212fd4f929bddaf042cc",
+  "ELF_sha256": "691b90ebc8d7edb7c86c843a530b7fea5b47f20547b8c8264fae50cf5657e13c",
+  "stock_ELF_sha256": "a5a3c9c2668edc87c1afe1d3baf3bb9f01554b4541bd6366ad57019e73abf1a5",
+  "container_hashes": [
+    "\\- Hash: (GOOD) 9386096137E8988CAACA551DC36CFCCDB8FE0405DFD9EFE11580A5789186A6F9",
+    "Exheader hash: (GOOD)   56D1C24FAC507063956179C3014A7B73AF311AB6A376BEE12BBEB944D2CB10AB",
+    "ExeFS hash: (GOOD)      567A62829369A9531C4D8559C207175D7CBC5F7907AD4D752B54452267211D3C",
+    "Section hash: (GOOD)    202B0CB572493B930C7A2E678B573408B7C2C88D9668B4B4C7271C9CC06CE6EE",
+    "Section hash: (GOOD)    55EE0F04C034467E2EF6717EE218027B8AD1AA4FDB53F3B6AC3EFC2A0035F121",
+    "Section hash: (GOOD)    3212BA1EC7177B053CEC2E1F7788D26D7FB45BDC1938DDEFCF99FA2EBB5F41F0",
+    "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+  ],
+  "expected_unsigned_homebrew_signature_errors": [
+    "[ctrtool::CiaProcess ERROR] Signature for Ticket was invalid.",
+    "[ctrtool::CiaProcess ERROR] Signature for TitleMetaData was invalid.",
+    "[ctrtool::ExHeaderProcess ERROR] Signature for AccessDescriptor was invalid."
+  ],
+  "preserved_files": 622,
+  "diagnostic_cycles": 1,
+  "native_logs_produced": false,
+  "starts_immediately": true,
+  "native_timeout": false,
+  "original_game_ready_claimed": false,
+  "files": {
+    "LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "README.ru.md": {
+      "bytes": 5610,
+      "sha256": "714702286549e51c9e4c9e172b787b7e301fabc06ebae868f0fe4c06f6f3f80a"
+    },
+    "reference/README.md": {
+      "bytes": 244,
+      "sha256": "088647a0521d5a60db20732e39fb482951a9215142987b506d5ce9c36b5c56bd"
+    },
+    "reference/main.c": {
+      "bytes": 3412,
+      "sha256": "41ef6b41e4c237a209c453873966a0f1adcc3b837dbf43555fddea06743d65b6"
+    },
+    "reference/vshader.v.pica": {
+      "bytes": 709,
+      "sha256": "99a3976be8ea6b77663cdff238b964662ab280f171af55892b2ecd981b00f858"
+    },
+    "simple-tri-rgb565.cia": {
+      "bytes": 146368,
+      "sha256": "9780e38e25b586f8777e851b8f5494df9e7e2c9c2687212fd4f929bddaf042cc"
+    },
+    "source/main.c": {
+      "bytes": 3587,
+      "sha256": "360a482ef13d12a7e6968fc5eb23f745f8259cbb62791237ab2c544ae469e268"
+    },
+    "validation/azahar-host.log": {
+      "bytes": 4314,
+      "sha256": "b61a2c9ae30d115433c7668a617343a7b3146ca61224e0a9a01629fada84f078"
+    },
+    "validation/result.json": {
+      "bytes": 2412,
+      "sha256": "7da7531a49b0638329aa889ae79bba6181741d14803c926956db1f5a38f924ff"
+    },
+    "validation/source.diff": {
+      "bytes": 1126,
+      "sha256": "2ab3bcca1a2248d7d48d26e0193efabc91477f7e3408284dc4a21be714bb04d9"
+    },
+    "validation/top-120.png": {
+      "bytes": 1453,
+      "sha256": "ebb65eb912386aa395e7c43578de5788bdc61a41d878738da7d81ad71af8aba6"
+    },
+    "validation/top-60.png": {
+      "bytes": 1453,
+      "sha256": "ebb65eb912386aa395e7c43578de5788bdc61a41d878738da7d81ad71af8aba6"
+    },
+    "validation/top-90.png": {
+      "bytes": 1453,
+      "sha256": "ebb65eb912386aa395e7c43578de5788bdc61a41d878738da7d81ad71af8aba6"
+    }
+  }
+}

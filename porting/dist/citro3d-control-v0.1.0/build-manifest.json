@@ -1,0 +1,126 @@
+{
+  "version": "0.1.0",
+  "title_id": "000400000FDE6900",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "ds34_linked": false,
+  "game_resources_used": false,
+  "fault_injection_compiled": false,
+  "sources": [
+    "tests/citro3d_control.c"
+  ],
+  "compiler_flags": [
+    "-march=armv6k",
+    "-mtune=mpcore",
+    "-mfloat-abi=hard",
+    "-mtp=soft",
+    "-std=c11",
+    "-O2",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-D__3DS__",
+    "-mword-relocations",
+    "-specs=3dsx.specs",
+    "-Wl,-z,noexecstack",
+    "-Wl,--wrap=gxCmdQueueRun,--wrap=gspSubmitGxCommand"
+  ],
+  "same_SDK_library_hashes": true,
+  "same_RSF_access_and_system_control": true,
+  "same_binary_capabilities_except_program_id": true,
+  "profile": "Legacy 64MB / application / CPU read-only VRAM / 256KiB stack",
+  "render_target": "240x400 RGB8 / D24S8 / TOP RGB565, identical formats and transfer flags to DS34",
+  "reference_example": "https://github.com/devkitPro/3ds-examples/tree/master/graphics/gpu/simple_tri",
+  "adaptations": [
+    "RGB8/RGB565 to match DS34 rather than example RGBA8/RGB8",
+    "two finite phases: clear then triangle",
+    "A gate; bounded waits; diagnostics and CPU pixel reads"
+  ],
+  "sdk_commit": "9f21cf7b380ce6f9e01a0420f19f0763e5443ca7",
+  "inputs_sha256": {
+    "tests/citro3d_control.c": "99c9dc3cd52f05bfad4746c9688ecc5b2d2abe343d345d238e8362c70410743a",
+    "tests/citro3d_control.v.pica": "46b34b8ca5fafeaa3e176952ef8e6c0536c386f8cfb9e0cf6ca45bf1155d98dc",
+    "tools/build_citro3d_control.py": "e17f3d57714c3a6f4da07cbadc0f1868c44089584ed93b7c33bbdb0e127793d7",
+    "3ds/stage1.rsf": "2495be2f6ff9257afacac3ef557fe7cb9ad36ff1e9849664c9249b311147e036",
+    "3ds/build-gpu-hardware-v0.1.3/ds34-gpu-test.rsf": "19a938389c2f92ebc32045d02aec7e456ace4563d9047784c84f5909eff2c413",
+    "toolchain/citro3d/lib/libcitro3d.a": "b0e944fdaedda863a6c3d6851e4092a65f09a656d86d6d2eb138542a27319705",
+    "toolchain/devkitpro/libctru/lib/libctru.a": "5e72cd24512b57908545e928cf0a1c1affbb8535f97773d7007be8f10f0e02bc",
+    "toolchain/devkitpro/devkitARM/bin/arm-none-eabi-gcc.exe": "2c6ba4533884071c3149058ac00c89d133af458172aaa7f2f7c785747769d317"
+  },
+  "outputs_sha256": {
+    "control.elf": "96f8e328302f457eeeb437ea913b1449c0d4a39c100c6f739ef9ec0cfb34a510",
+    "control.cia": "5b465c34d8779374695b42869f09fb4e3b52d3008102deef8f3e20dd0027c5aa",
+    "control.cxi": "798faed4d921e2e132edc6fbcd3d48ca3eeaeeb43cdcda13b38222199210f1d0",
+    "control.shbin": "0ad085234c7c563294f1695e6036227bf1348ec665b53c381dce7116993d1f38"
+  },
+  "emulator_tested": true,
+  "not_a_DS34_fix": true,
+  "symbols_check_no_DS34_GLES_engine": true,
+  "hash_checks": [
+    "\\- Hash: (GOOD) 798FAED4D921E2E132EDC6FBCD3D48CA3EEAEEB43CDCDA13B38222199210F1D0",
+    "Exheader hash: (GOOD)   248D800417BA048636668196F41B321B15CD43716514FF3A80CE1978B58107C5",
+    "ExeFS hash: (GOOD)      DD04CF0B775236C1FF103499FC225A664A4DBE6B6021DFE70FF9935D18011B81",
+    "Section hash: (GOOD)    4FFDE363203BF5DB1954A9DA4296A1D20489175B9F7721CE7CC03B29B57FCEAA",
+    "Section hash: (GOOD)    6C36E38F17271F4E9B49D9AD3C150533AC937DECC598D32FE7708D8FC65EA2B5",
+    "Section hash: (GOOD)    2C00A56281D0A602315414BFE748D7F27954100DAD120BE3D4A183585A11DAA0",
+    "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+  ],
+  "game_resources_included": false,
+  "files": {
+    "citro3d-control-v0.1.0.cia": {
+      "bytes": 196544,
+      "sha256": "5b465c34d8779374695b42869f09fb4e3b52d3008102deef8f3e20dd0027c5aa"
+    },
+    "LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "README.ru.md": {
+      "bytes": 6799,
+      "sha256": "fe51a1320b78271a80547ef85c14993d9a58558fce18f11caa0b03642ac6b922"
+    },
+    "validation/clear.png": {
+      "bytes": 873,
+      "sha256": "19a16700a3d5bc19bb2c7af5ad3fd08b804ea9a260923582ed04349a6bdefed3"
+    },
+    "validation/comparison.json": {
+      "bytes": 3958,
+      "sha256": "7a27bf78cafadf4f8bb21a1e4fcfe05d0da2e88bade3ce65691917408048ce12"
+    },
+    "validation/control.log": {
+      "bytes": 3103,
+      "sha256": "d82a7bcc7a816f7a741d379acc12410cebfaa2f02a0f8616015c32c9e84f84fb"
+    },
+    "validation/fault-test.json": {
+      "bytes": 848,
+      "sha256": "476d7e6895dad27eedf0098d18a9c5dd15b87c2dba7c1b41e19b1363e1004ea5"
+    },
+    "validation/result.json": {
+      "bytes": 1359,
+      "sha256": "478b2a64707926c2af279437f0018b44f1f44b5d79fb436796afcc747c43ad4f"
+    },
+    "validation/stage-0-queue.json": {
+      "bytes": 210,
+      "sha256": "6dcad7c01371d36ef7eeb91ff4e47f2a3165d20ec96f949b6230d5a76a8413b8"
+    },
+    "validation/stage-1-1.pica": {
+      "bytes": 1168,
+      "sha256": "1353e91eb627a489d9c47949f3fc391f7efa002f1ceeb35c3209c91ea2faf9d0"
+    },
+    "validation/stage-1-queue.json": {
+      "bytes": 275,
+      "sha256": "f98581f4e94f2f5548796b308a73ce2eae49cf6d7ac5683a15e4e12220ca71dc"
+    },
+    "validation/triangle-vertices.bin": {
+      "bytes": 36,
+      "sha256": "7ee34deaba72f32e42c566a4c30966e522ddaa55d889e27ee3aec0491b5484e7"
+    },
+    "validation/triangle.png": {
+      "bytes": 1438,
+      "sha256": "9533934d8a0786f1d8df2ce71b180b99578bb814fd4edbd02278f0b1f7d9ddf4"
+    }
+  }
+}

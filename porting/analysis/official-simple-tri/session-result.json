@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-30",
+  "prepared": true,
+  "root_cause_established": false,
+  "GPU_fix_applied": false,
+  "hardware_tested": true,
+  "hardware_permission_pending": false,
+  "git_pushed": false,
+  "diagnostic_cycles": 2,
+  "reports": [
+    "analysis/official-simple-tri/comparison.md",
+    "analysis/official-simple-tri/upstream.json",
+    "analysis/azahar-official-simple-tri-3dsx/result.json",
+    "analysis/azahar-official-simple-tri-cia/result.json",
+    "analysis/official-simple-tri/package.json",
+    "analysis/hardware/official-simple-tri-profile-cia-v0.1.0-user-result.json"
+  ],
+  "next_proposed_hardware_test": "After separate authorization to build and test: successful official example with only consistent RGB8/RGB565 format combination substituted; keep normal draw, SYNCDRAW, SDK handlers, and CIA profile.",
+  "next_test_does_not_isolate": "FILL versus DISPLAY individually; the format combination changes color fill width and display transfer together.",
+  "archive": "dist/official-simple-tri-v0.1.0.zip",
+  "archive_sha256": "677802affe302a5cef2aca9c945b43fcf16bcee50fc8e90820e79e1f91d023f3",
+  "preservation_passed": true,
+  "preserved_files": 570,
+  "hardware_tested_variants": [
+    "3dsx",
+    "CIA"
+  ],
+  "hardware_3dsx_visual_and_START_exit_passed": true,
+  "hardware_report": "analysis/hardware/official-simple-tri-v0.1.0-user-result.json",
+  "additional_hardware_permission_pending": true,
+  "authorized_next_hardware_run": {
+    "format": "CIA",
+    "artifact": "3ds/build-official-simple-tri/simple_tri-profile.cia",
+    "runs": 1,
+    "result_received": true,
+    "rebuild_authorized": false,
+    "repeat_after_hang_authorized": false,
+    "completed": true
+  },
+  "CIA_hardware_tested": true,
+  "hardware_CIA_visual_and_START_exit_passed": true,
+  "hardware_CIA_report": "analysis/hardware/official-simple-tri-profile-cia-v0.1.0-user-result.json",
+  "next_experimental_build_created": false
+}

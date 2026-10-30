@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "intentional_fault": false,
+  "hardware_tested": false,
+  "tested_payload": "NCCH extracted from actual CIA",
+  "cia_sha256": "6796c0301361ab2c4dec7d43563fa51b9ce3fb414f0878e18bba8f29b62dfc8a",
+  "payload_sha256": "440d84cf947ecd64bd94f8151e1f21a42f1b877018228c46fa9b682833fb693d",
+  "native_result": {
+    "version": "0.1.1",
+    "environment": "emulator",
+    "passed": true,
+    "stages_completed": 1,
+    "timeout": false,
+    "failure": "none",
+    "checkpoint_io_failed": false,
+    "last_checkpoint": "events-0004-result.json",
+    "ds34_linked": false,
+    "triangle_called": false
+  },
+  "A_gate_verified": true,
+  "stale_result_cleared": true,
+  "START_exit_drained": true,
+  "invalid_accesses": 0,
+  "exact_native_v0_1_0_GPU_packets_unchanged": true,
+  "delivered_event_counts": {
+    "PSC0": 1,
+    "PSC1": 0,
+    "PPF": 1
+  },
+  "event_timestamp_and_snapshot_consistency_verified": true,
+  "checkpoint_count": 5,
+  "timeout_checkpoint_verified": false,
+  "elapsed_seconds": 0.235
+}

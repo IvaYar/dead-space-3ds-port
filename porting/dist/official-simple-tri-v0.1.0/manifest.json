@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "date": "2026-10-30",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "not_a_GPU_fix": true,
+  "upstream_sources_unmodified": true,
+  "upstream_commit": "be2001fee08cf8ec7d3366e095e83f6f75da8942",
+  "same_ELF_for_3dsx_and_CIA": true,
+  "CIA_title_id": "000400000FDE6A00",
+  "CIA_title_version": 1,
+  "same_capabilities_except_program_id": true,
+  "game_resources_included": false,
+  "DS34_linked": false,
+  "real_SDK_queue_handler": true,
+  "wrappers_present": false,
+  "container_hash_checks": [
+    "\\- Hash: (GOOD) AB3A59EA9E48C032B07D9D353CF92472B2CDA2727A6235A4A3370DA6B2F59619",
+    "Exheader hash: (GOOD)   1D612E84405902691F3E36EEA74891D8C568BEC1CD8D3CACB2EE7940DA101245",
+    "ExeFS hash: (GOOD)      9BBA331AAB536CEF3AA17634C1B35ABF78E43A9A90F1A02CC9F302FB7C55724A",
+    "Section hash: (GOOD)    03E8ABD54570171CA4EA75BE32B0570FC2BEE79915015A62936F375979C73BA5",
+    "Section hash: (GOOD)    55EE0F04C034467E2EF6717EE218027B8AD1AA4FDB53F3B6AC3EFC2A0035F121",
+    "Section hash: (GOOD)    D3611B1CC63BDBB16E9B205203F25E5107FD4049C05897AD9D6ED5549D55B555",
+    "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+  ],
+  "expected_unsigned_homebrew_signature_errors": [
+    "[ctrtool::CiaProcess ERROR] Signature for Ticket was invalid.",
+    "[ctrtool::CiaProcess ERROR] Signature for TitleMetaData was invalid.",
+    "[ctrtool::ExHeaderProcess ERROR] Signature for AccessDescriptor was invalid."
+  ],
+  "guest_START_cleanup_seen_both_variants": true,
+  "frontend_shutdown_callback_received": false,
+  "same_software_LCD_pixels_both_variants": true,
+  "known_corner_anomaly": {
+    "x": 399,
+    "y": 0,
+    "RGB": [
+      0,
+      0,
+      0
+    ],
+    "cause": "unknown"
+  },
+  "preserved_files": 570,
+  "CIA_sha256": "137f0a876cc199f39f4a65bbd5d3d208df6ce4f6b1d02e35d154761dd00e4a53",
+  "3DSX_sha256": "5cc647c64e97ef1e7564400c1e3b337d2fa7a1d725557f57ed6b54c875db5e5a",
+  "ELF_sha256": "a5a3c9c2668edc87c1afe1d3baf3bb9f01554b4541bd6366ad57019e73abf1a5",
+  "build_adaptations": [
+    "Native Python reproduces Makefile commands; GNU make unavailable",
+    "Explicit separate include/library directory for pinned Citro3D 1.7.1",
+    "Additional CIA wraps unchanged ELF with existing project profile and separate Title ID"
+  ],
+  "SDK_hashes": {
+    "toolchain/citro3d/lib/libcitro3d.a": "b0e944fdaedda863a6c3d6851e4092a65f09a656d86d6d2eb138542a27319705",
+    "toolchain/devkitpro/libctru/lib/libctru.a": "5e72cd24512b57908545e928cf0a1c1affbb8535f97773d7007be8f10f0e02bc"
+  },
+  "files": {
+    "3dsx/simple_tri.3dsx": {
+      "bytes": 81904,
+      "sha256": "5cc647c64e97ef1e7564400c1e3b337d2fa7a1d725557f57ed6b54c875db5e5a"
+    },
+    "LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "README.ru.md": {
+      "bytes": 5755,
+      "sha256": "e739508966f9a6585609bdd39faa408c477c60075ec2b2374518a485dc4cc2ed"
+    },
+    "cia-same-profile/simple_tri-profile.cia": {
+      "bytes": 146368,
+      "sha256": "137f0a876cc199f39f4a65bbd5d3d208df6ce4f6b1d02e35d154761dd00e4a53"
+    },
+    "upstream/README.md": {
+      "bytes": 244,
+      "sha256": "088647a0521d5a60db20732e39fb482951a9215142987b506d5ce9c36b5c56bd"
+    },
+    "upstream/graphics/gpu/simple_tri/Makefile": {
+      "bytes": 8832,
+      "sha256": "c9caa71880612e5d2106a9a4f6c2718c10c83da63bedf2244a595f117dd292d6"
+    },
+    "upstream/graphics/gpu/simple_tri/source/main.c": {
+      "bytes": 3412,
+      "sha256": "41ef6b41e4c237a209c453873966a0f1adcc3b837dbf43555fddea06743d65b6"
+    },
+    "upstream/graphics/gpu/simple_tri/source/vshader.v.pica": {
+      "bytes": 709,
+      "sha256": "99a3976be8ea6b77663cdff238b964662ab280f171af55892b2ecd981b00f858"
+    },
+    "validation/3dsx/azahar-host.log": {
+      "bytes": 3387,
+      "sha256": "5fd224629e160f8eafd9d58043a15c90659ce021cb0d4992f2be67f55459818c"
+    },
+    "validation/3dsx/result.json": {
+      "bytes": 2006,
+      "sha256": "cb5356984975428e4067e7959cbb1dd44809273ec45beb191b90a3d1a7788b58"
+    },
+    "validation/3dsx/top-120.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "validation/3dsx/top-60.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "validation/3dsx/top-90.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "validation/cia/azahar-host.log": {
+      "bytes": 4338,
+      "sha256": "7e0796c354b01d77d1971fc22374bf081eb1b457ccb2bb7c6a65a26b3b62fbe5"
+    },
+    "validation/cia/result.json": {
+      "bytes": 2067,
+      "sha256": "d579dae6dbbbad8a66644e873e4ee62c28f3aa15f23c9a11cc7b79072dd4580a"
+    },
+    "validation/cia/top-120.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "validation/cia/top-60.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "validation/cia/top-90.png": {
+      "bytes": 1453,
+      "sha256": "20a64b41a5b165be2b4dd23924b7b39915ba131aa04531dcb5e881b1f901f7ce"
+    },
+    "validation/comparison.md": {
+      "bytes": 11239,
+      "sha256": "88ca879e2418cbed5643aee5192bfedf873322abc054b2fdc5140ff8bb2bb8a7"
+    },
+    "validation/upstream.json": {
+      "bytes": 1556,
+      "sha256": "a274d5dd30a6c33e3b0518f086ed929953c40adffd6e17950f084c18284c9397"
+    }
+  }
+}

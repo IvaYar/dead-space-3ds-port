@@ -1,0 +1,64 @@
+
+C:\Users\jarom\Desktop\Dead_space_mobile\porting\3ds\build-citro3d-control\control.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00106b28 <gxCmdQueueInterrupt>:
+  106b28:	e59f30c8 	ldr	r3, [pc, #200]	@ 106bf8 <gxCmdQueueInterrupt+0xd0>
+  106b2c:	e5d32000 	ldrb	r2, [r3]
+  106b30:	e3520000 	cmp	r2, #0
+  106b34:	012fff1e 	bxeq	lr
+  106b38:	e2400001 	sub	r0, r0, #1
+  106b3c:	e3500002 	cmp	r0, #2
+  106b40:	912fff1e 	bxls	lr
+  106b44:	e92d4010 	push	{r4, lr}
+  106b48:	e59f40ac 	ldr	r4, [pc, #172]	@ 106bfc <gxCmdQueueInterrupt+0xd4>
+  106b4c:	e59f00ac 	ldr	r0, [pc, #172]	@ 106c00 <gxCmdQueueInterrupt+0xd8>
+  106b50:	e24dd008 	sub	sp, sp, #8
+  106b54:	eb001799 	bl	10c9c0 <LightLock_Lock>
+  106b58:	e5941000 	ldr	r1, [r4]
+  106b5c:	e59fe0a0 	ldr	lr, [pc, #160]	@ 106c04 <gxCmdQueueInterrupt+0xdc>
+  106b60:	e1d120ba 	ldrh	r2, [r1, #10]
+  106b64:	e5dec000 	ldrb	ip, [lr]
+  106b68:	e2822001 	add	r2, r2, #1
+  106b6c:	e6ff2072 	uxth	r2, r2
+  106b70:	e35c0000 	cmp	ip, #0
+  106b74:	e59f307c 	ldr	r3, [pc, #124]	@ 106bf8 <gxCmdQueueInterrupt+0xd0>
+  106b78:	e1c120ba 	strh	r2, [r1, #10]
+  106b7c:	1a00000e 	bne	106bbc <gxCmdQueueInterrupt+0x94>
+  106b80:	e1d100b6 	ldrh	r0, [r1, #6]
+  106b84:	e1500002 	cmp	r0, r2
+  106b88:	8a000017 	bhi	106bec <gxCmdQueueInterrupt+0xc4>
+  106b8c:	e59f006c 	ldr	r0, [pc, #108]	@ 106c00 <gxCmdQueueInterrupt+0xd8>
+  106b90:	e58d1004 	str	r1, [sp, #4]
+  106b94:	e5c3c000 	strb	ip, [r3]
+  106b98:	eb0017b3 	bl	10ca6c <LightLock_Unlock>
+  106b9c:	e59d1004 	ldr	r1, [sp, #4]
+  106ba0:	e591300c 	ldr	r3, [r1, #12]
+  106ba4:	e3530000 	cmp	r3, #0
+  106ba8:	0a00000d 	beq	106be4 <gxCmdQueueInterrupt+0xbc>
+  106bac:	e1a00001 	mov	r0, r1
+  106bb0:	e28dd008 	add	sp, sp, #8
+  106bb4:	e8bd4010 	pop	{r4, lr}
+  106bb8:	e12fff13 	bx	r3
+  106bbc:	e3a02000 	mov	r2, #0
+  106bc0:	e59f1040 	ldr	r1, [pc, #64]	@ 106c08 <gxCmdQueueInterrupt+0xe0>
+  106bc4:	e59f0034 	ldr	r0, [pc, #52]	@ 106c00 <gxCmdQueueInterrupt+0xd8>
+  106bc8:	e5842000 	str	r2, [r4]
+  106bcc:	e5c12000 	strb	r2, [r1]
+  106bd0:	e5c32000 	strb	r2, [r3]
+  106bd4:	e5ce2000 	strb	r2, [lr]
+  106bd8:	e28dd008 	add	sp, sp, #8
+  106bdc:	e8bd4010 	pop	{r4, lr}
+  106be0:	ea0017a1 	b	10ca6c <LightLock_Unlock>
+  106be4:	e28dd008 	add	sp, sp, #8
+  106be8:	e8bd8010 	pop	{r4, pc}
+  106bec:	ebffffb4 	bl	106ac4 <gxCmdQueueDoCommands.part.0>
+  106bf0:	e59f0008 	ldr	r0, [pc, #8]	@ 106c00 <gxCmdQueueInterrupt+0xd8>
+  106bf4:	eafffff7 	b	106bd8 <gxCmdQueueInterrupt+0xb0>
+  106bf8:	00128a85 	.word	0x00128a85
+  106bfc:	00128a88 	.word	0x00128a88
+  106c00:	00125068 	.word	0x00125068
+  106c04:	00128a84 	.word	0x00128a84
+  106c08:	00128a86 	.word	0x00128a86

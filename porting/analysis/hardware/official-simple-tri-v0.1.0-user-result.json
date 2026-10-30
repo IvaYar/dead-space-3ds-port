@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-30",
+  "test": "Official devkitPro simple_tri v0.1.0",
+  "format": "3dsx",
+  "launch_context": "User-authorized single launch through Homebrew Launcher on New Nintendo 3DS",
+  "hardware_tested": true,
+  "executed_by": "user",
+  "passed_visual_and_START_exit": true,
+  "root_cause_of_previous_CIA_failure_confirmed": false,
+  "expected_3dsx_sha256": "5cc647c64e97ef1e7564400c1e3b337d2fa7a1d725557f57ed6b54c875db5e5a",
+  "device_binary_hash_measured": false,
+  "evidence": {
+    "photo": "User attachment in conversation; no local photo file archived",
+    "photo_observation": "Visible light triangle on blue/cyan background on top LCD; bottom LCD has no diagnostic menu",
+    "user_START_confirmation": "Да, вернуло в HBL",
+    "native_SD_logs": "Not produced by unchanged upstream example",
+    "raw_framebuffer_available": false
+  },
+  "observations": {
+    "expected_triangle_visible": true,
+    "START_return_to_HBL_confirmed_by_user": true,
+    "frame_count_measured": false,
+    "duration_measured": false,
+    "event_counters_measured": false,
+    "GX_queue_completion_measured": false,
+    "memory_access_audit_available": false,
+    "precise_pixel_colors_or_corner_anomaly_verified": false,
+    "HBL_version_known": false,
+    "CFW_version_known": false
+  },
+  "comparison": {
+    "DS34_CIA_v0.1.3": "First frame timeout, aggregate queue completed1/submitted3, checked exit deferred",
+    "Citro3D_Control_CIA_v0.1.0": "CLEAR timeout before triangle, aggregate queue completed1/submitted2, checked exit deferred",
+    "official_simple_tri_3dsx_v0.1.0": "Triangle displayed and user confirmed START returned to HBL"
+  },
+  "conclusion": "Basic Citro3D rendering and exit work on this console in this HBL context. Persistent failure of all PICA200 usage is not supported; previous CIA failures remain unexplained.",
+  "remaining_candidates": [
+    "CIA launch environment, permissions, memory/address layout",
+    "RGB8/RGB565 versus official RGBA8/RGB8 fill/transfer path",
+    "Diagnostic wrappers, console/SD timing and bounded polling differences"
+  ],
+  "next_proposed_test": "One existing same-ELF simple_tri-profile.cia launch, only after separate user authorization; do not rebuild or run automatically",
+  "next_test_limitation": "Compares launch packaging/environment with identical rendering code; does not isolate memory mode alone or identify a specific missing IRQ",
+  "additional_hardware_runs_authorized": false,
+  "new_build_created": false,
+  "git_push_performed": false
+}

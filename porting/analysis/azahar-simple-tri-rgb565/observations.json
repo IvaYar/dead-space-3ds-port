@@ -1,0 +1,71 @@
+[
+  {
+    "frontend_frame": 60,
+    "background_RGB": [
+      107,
+      178,
+      222
+    ],
+    "white_pixels": 16000,
+    "background_pixels": 79999,
+    "corner_anomalies": [
+      [
+        399,
+        0,
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "top_pixels_sha256": "d981d32f722c6264c78e257158bd08e0e7f3dac4ec68be3dc7ae6344d588c630",
+    "image": "frame-60.png"
+  },
+  {
+    "frontend_frame": 90,
+    "background_RGB": [
+      107,
+      178,
+      222
+    ],
+    "white_pixels": 16000,
+    "background_pixels": 79999,
+    "corner_anomalies": [
+      [
+        399,
+        0,
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "top_pixels_sha256": "d981d32f722c6264c78e257158bd08e0e7f3dac4ec68be3dc7ae6344d588c630",
+    "image": "frame-90.png"
+  },
+  {
+    "frontend_frame": 120,
+    "background_RGB": [
+      107,
+      178,
+      222
+    ],
+    "white_pixels": 16000,
+    "background_pixels": 79999,
+    "corner_anomalies": [
+      [
+        399,
+        0,
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    ],
+    "top_pixels_sha256": "d981d32f722c6264c78e257158bd08e0e7f3dac4ec68be3dc7ae6344d588c630",
+    "image": "frame-120.png"
+  }
+]

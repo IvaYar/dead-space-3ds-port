@@ -1,0 +1,50 @@
+
+C:\Users\jarom\Desktop\Dead_space_mobile\porting\3ds\build-citro3d-control\control.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00106e60 <gxCmdQueueWait>:
+  106e60:	e3530000 	cmp	r3, #0
+  106e64:	e92d4070 	push	{r4, r5, r6, lr}
+  106e68:	b3e05000 	mvnlt	r5, #0
+  106e6c:	e24dd008 	sub	sp, sp, #8
+  106e70:	b1a06005 	movlt	r6, r5
+  106e74:	ba000005 	blt	106e90 <gxCmdQueueWait+0x30>
+  106e78:	e1a05002 	mov	r5, r2
+  106e7c:	e58d3004 	str	r3, [sp, #4]
+  106e80:	eb00155a 	bl	10c3f0 <svcGetSystemTick>
+  106e84:	e59d3004 	ldr	r3, [sp, #4]
+  106e88:	e0955000 	adds	r5, r5, r0
+  106e8c:	e0a36001 	adc	r6, r3, r1
+  106e90:	e59f4070 	ldr	r4, [pc, #112]	@ 106f08 <gxCmdQueueWait+0xa8>
+  106e94:	e5d42000 	ldrb	r2, [r4]
+  106e98:	e3520000 	cmp	r2, #0
+  106e9c:	0a00000a 	beq	106ecc <gxCmdQueueWait+0x6c>
+  106ea0:	e3530000 	cmp	r3, #0
+  106ea4:	ba00000f 	blt	106ee8 <gxCmdQueueWait+0x88>
+  106ea8:	eb001550 	bl	10c3f0 <svcGetSystemTick>
+  106eac:	e1500005 	cmp	r0, r5
+  106eb0:	e0c11006 	sbc	r1, r1, r6
+  106eb4:	e3510000 	cmp	r1, #0
+  106eb8:	aa00000f 	bge	106efc <gxCmdQueueWait+0x9c>
+  106ebc:	eb000e9d 	bl	10a938 <gspWaitForAnyEvent>
+  106ec0:	e5d43000 	ldrb	r3, [r4]
+  106ec4:	e3530000 	cmp	r3, #0
+  106ec8:	1afffff6 	bne	106ea8 <gxCmdQueueWait+0x48>
+  106ecc:	e3a00001 	mov	r0, #1
+  106ed0:	e28dd008 	add	sp, sp, #8
+  106ed4:	e8bd8070 	pop	{r4, r5, r6, pc}
+  106ed8:	eb000e96 	bl	10a938 <gspWaitForAnyEvent>
+  106edc:	e5d43000 	ldrb	r3, [r4]
+  106ee0:	e3530000 	cmp	r3, #0
+  106ee4:	0afffff8 	beq	106ecc <gxCmdQueueWait+0x6c>
+  106ee8:	eb000e92 	bl	10a938 <gspWaitForAnyEvent>
+  106eec:	e5d43000 	ldrb	r3, [r4]
+  106ef0:	e3530000 	cmp	r3, #0
+  106ef4:	1afffff7 	bne	106ed8 <gxCmdQueueWait+0x78>
+  106ef8:	eafffff3 	b	106ecc <gxCmdQueueWait+0x6c>
+  106efc:	e3a00000 	mov	r0, #0
+  106f00:	e28dd008 	add	sp, sp, #8
+  106f04:	e8bd8070 	pop	{r4, r5, r6, pc}
+  106f08:	00128a85 	.word	0x00128a85

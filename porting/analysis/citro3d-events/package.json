@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "hardware_tested": false,
+  "cia_sha256": "6796c0301361ab2c4dec7d43563fa51b9ce3fb414f0878e18bba8f29b62dfc8a",
+  "archive_sha256": "31858e2f406124398140e529eeb17d7cb208f0254d4677ed2e5627ad2f2aafeb",
+  "archive_bytes": 104213,
+  "title_id": "000400000FDE6900",
+  "title_version": 2,
+  "GPU_packets_unchanged": true,
+  "SDK_handlers_replaced": false,
+  "original_game_resources_included": false,
+  "test_binary_included": false
+}

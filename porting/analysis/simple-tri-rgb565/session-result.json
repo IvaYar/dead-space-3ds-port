@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-30",
+  "prepared": true,
+  "hardware_tested": true,
+  "hardware_run_authorized": true,
+  "GPU_fix_applied": false,
+  "diagnostic_cycles": 1,
+  "Azahar_passed": true,
+  "reports": [
+    "analysis/azahar-simple-tri-rgb565/result.json",
+    "analysis/simple-tri-rgb565/source.diff",
+    "analysis/simple-tri-rgb565/package.json",
+    "analysis/simple-tri-rgb565/preservation.json",
+    "analysis/hardware/simple-tri-rgb565-v0.1.0-user-result.json"
+  ],
+  "archive": "dist/simple-tri-rgb565-v0.1.0.zip",
+  "archive_sha256": "377ae02f8977896327628770a515cbccf5f1bf03f873ce99b6c8b73ea3f5653e",
+  "CIA_sha256": "9780e38e25b586f8777e851b8f5494df9e7e2c9c2687212fd4f929bddaf042cc",
+  "title_id": "000400000FDE6B00",
+  "preservation_passed": true,
+  "preserved_files": 622,
+  "next_step": "Preserve failure; do not repeat. Proposed RGB8-to-RGB8 isolation variant remains a plan requiring separate build/hardware authorization.",
+  "root_cause_confirmed": false,
+  "git_pushed": false,
+  "authorized_hardware_runs": 1,
+  "hardware_result_received": true,
+  "repeat_after_hang_authorized": false,
+  "new_build_authorized": false,
+  "hardware_passed": false,
+  "hardware_report": "analysis/hardware/simple-tri-rgb565-v0.1.0-user-result.json",
+  "authorized_hardware_run_completed": true,
+  "remaining_authorized_hardware_runs": 0
+}

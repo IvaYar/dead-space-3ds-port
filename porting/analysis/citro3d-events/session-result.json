@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-30",
+  "version": "0.1.1",
+  "prepared": true,
+  "hardware_tested": false,
+  "hardware_executed_by_agent": false,
+  "GPU_fix_claimed": false,
+  "diagnostic_cycles": 2,
+  "cycle1": "Observer collected PSC0=1 PSC1=0 PPF=1; host assertion incorrectly required PSC1=1 and assumed a clock constant. Corrected against pinned sources.",
+  "cycle2": "Normal and intentional-timeout tests PASS; recorder selfcheck for all three slots in non-shipping fault build PASS.",
+  "GPU_commands_address_flags_order_unchanged": true,
+  "SDK_handlers_replaced": false,
+  "callbacks_perform_IO_allocation_sleep_or_64bit_atomics": false,
+  "emulator_reports": [
+    "analysis/azahar-citro3d-events/result.json",
+    "analysis/azahar-citro3d-events-fault/result.json"
+  ],
+  "normal_event_counts": {
+    "PSC0": 1,
+    "PSC1": 0,
+    "PPF": 1
+  },
+  "timeout_checkpoint_verified": true,
+  "baseline_preservation": {
+    "passed": true,
+    "files_checked": 482
+  },
+  "package": {
+    "passed": true,
+    "hardware_tested": false,
+    "cia_sha256": "6796c0301361ab2c4dec7d43563fa51b9ce3fb414f0878e18bba8f29b62dfc8a",
+    "archive_sha256": "31858e2f406124398140e529eeb17d7cb208f0254d4677ed2e5627ad2f2aafeb",
+    "archive_bytes": 104213,
+    "title_id": "000400000FDE6900",
+    "title_version": 2,
+    "GPU_packets_unchanged": true,
+    "SDK_handlers_replaced": false,
+    "original_game_resources_included": false,
+    "test_binary_included": false
+  },
+  "limitations": [
+    "Observer timestamps are post-SDK-handler delivery times, not hardware finish times",
+    "PSC1 zero alone is not an error",
+    "SDK queue/counter snapshot is not globally atomic; require stable repeated checkpoints",
+    "No callback does not prove physical GPU hang",
+    "FrameEnd/GSP/SD/APT/Fini remain potentially blocking"
+  ],
+  "next_step": "User performs one CLEAR-only hardware run and returns complete SD:/3ds/citro3d-control-v0.1.1 folder.",
+  "not_run": [
+    "hardware test",
+    "552 ARM regressions",
+    "DS34 shader/VBO/game/effects work",
+    "git commit",
+    "git push"
+  ]
+}

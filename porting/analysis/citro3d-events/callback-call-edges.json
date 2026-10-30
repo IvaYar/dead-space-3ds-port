@@ -1,0 +1,25 @@
+{
+  "record": [
+    "svcGetSystemTick",
+    "record+0xc4",
+    "record+0x68"
+  ],
+  "psc0": [
+    "record"
+  ],
+  "psc1": [
+    "record"
+  ],
+  "ppf": [
+    "record"
+  ],
+  "gspEventThreadMain": [
+    "svcWaitSynchronization",
+    "svcClearEvent",
+    "gspEventThreadMain+0x8c",
+    "gxCmdQueueInterrupt",
+    "LightEvent_Signal",
+    "syncArbitrateAddress",
+    "gspEventThreadMain+0x4c"
+  ]
+}
