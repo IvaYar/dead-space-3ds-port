@@ -1,0 +1,96 @@
+{
+  "CIA_sha256": "90fb19919c1b132e30fed0936802375d2ccecfdbb7d9c504d5edbef131d35622",
+  "variables": "native_game.c strong globals override libctru weak defaults",
+  "normal_heap_bytes": 41943040,
+  "linear_heap_bytes": 138412032,
+  "requested_total_bytes": 180355072,
+  "exheader_decoded_lines": [
+    "Code text max pages:    0x00000057 (0x00057000)",
+    "Code ro max pages:      0x0000000E (0x0000E000)",
+    "Code data size:         0x00001E50",
+    "Code data max pages:    0x00000002 (0x00002000)",
+    "Code bss size:          0x00017C30",
+    "Code stack size:        0x00040000",
+    "System mode:            prod (AppMemory: 64MB) (GOOD)",
+    "System mode (New3DS):   snake dev1 (AppMemory: 178MB) (GOOD)"
+  ],
+  "model_code_pages_commit": 520192,
+  "main_stack_bytes": 262144,
+  "model_TLS_pages": 1,
+  "model_pre_heap_commit_bytes": 786432,
+  "model_assumptions": [
+    "loader code/ro/rounded data+BSS and main stack committed",
+    "one main-thread TLS page; additional real resource charges remain unknown"
+  ],
+  "rows": [
+    {
+      "limit_MiB": 64,
+      "model_pre_heap_commit_bytes": 786432,
+      "available_bytes": 66322432,
+      "available_MiB": 63.25,
+      "requested_bytes": 180355072,
+      "headroom_bytes": -114032640,
+      "headroom_MiB": -108.75,
+      "fits_in_model": false
+    },
+    {
+      "limit_MiB": 124,
+      "model_pre_heap_commit_bytes": 786432,
+      "available_bytes": 129236992,
+      "available_MiB": 123.25,
+      "requested_bytes": 180355072,
+      "headroom_bytes": -51118080,
+      "headroom_MiB": -48.75,
+      "fits_in_model": false
+    },
+    {
+      "limit_MiB": 178,
+      "model_pre_heap_commit_bytes": 786432,
+      "available_bytes": 185860096,
+      "available_MiB": 177.25,
+      "requested_bytes": 180355072,
+      "headroom_bytes": 5505024,
+      "headroom_MiB": 5.25,
+      "fits_in_model": true
+    }
+  ],
+  "real_device_limit_observed": false,
+  "overflow_proven": false,
+  "linked_allocator": "libctru2.7.0 allocateHeaps.o",
+  "rule": "remaining = floor_page(maxCommit-currentCommit); request > remaining calls svcBreak",
+  "linked_ELF_globals": {
+    "h2": {
+      "__ctru_heap_size": 41943040,
+      "__ctru_linear_heap_size": 138412032,
+      "__stacksize__": 262144
+    },
+    "startup": {
+      "__ctru_heap_size": 2097152,
+      "__ctru_linear_heap_size": 2097152,
+      "__stacksize__": 262144
+    }
+  },
+  "commit_models": {
+    "h2": {
+      "image_bytes": 520192,
+      "stack_bytes": 262144,
+      "TLS_allowance_bytes": 4096,
+      "image_and_stack_bytes": 782336,
+      "total_with_TLS_allowance_bytes": 786432
+    },
+    "startup": {
+      "image_bytes": 147456,
+      "stack_bytes": 262144,
+      "TLS_allowance_bytes": 4096,
+      "image_and_stack_bytes": 409600,
+      "total_with_TLS_allowance_bytes": 413696
+    }
+  },
+  "pinned_headers_match_SDK": {
+    "os.h": true,
+    "env.h": true
+  },
+  "donor_arena_is_suballocation_of_linear_heap": true,
+  "startup_image_and_stack_match_three_Azahar_measurements": true,
+  "Azahar_does_not_charge_TLS_allowance_in_measured_pre_heap_commit": true
+}

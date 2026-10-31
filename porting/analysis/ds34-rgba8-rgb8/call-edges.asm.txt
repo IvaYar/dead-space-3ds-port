@@ -1,0 +1,338 @@
+0010e3f4 <record_queue>:
+  10e3f4:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+  10e3f8:	e1a0c000 	mov	ip, r0
+  10e3fc:	e1a07000 	mov	r7, r0
+  10e400:	e59f3148 	ldr	r3, [pc, #328]	@ 10e550 <record_queue+0x15c>
+  10e404:	ee070fba 	mcr	15, 0, r0, cr7, cr10, {5}
+  10e408:	e5831000 	str	r1, [r3]
+  10e40c:	e59f3140 	ldr	r3, [pc, #320]	@ 10e554 <record_queue+0x160>
+  10e410:	e193ef9f 	ldrex	r14, [r3]
+  10e414:	e28e2001 	add	r2, lr, #1
+  10e418:	e1830f92 	strex	r0, r2, [r3]
+  10e41c:	e3500000 	cmp	r0, #0
+  10e420:	1afffffa 	bne	10e410 <record_queue+0x1c>
+  10e424:	e35e003f 	cmp	lr, #63	@ 0x3f
+  10e428:	88bd80f0 	pophi	{r4, r5, r6, r7, pc}
+  10e42c:	e1d130b6 	ldrh	r3, [r1, #6]
+  10e430:	e1d100b8 	ldrh	r0, [r1, #8]
+  10e434:	e59f511c 	ldr	r5, [pc, #284]	@ 10e558 <record_queue+0x164>
+  10e438:	e1a06000 	mov	r6, r0
+  10e43c:	e08e230e 	add	r2, lr, lr, lsl #6
+  10e440:	e08e2102 	add	r2, lr, r2, lsl #2
+  10e444:	e785c102 	str	ip, [r5, r2, lsl #2]
+  10e448:	e591c000 	ldr	ip, [r1]
+  10e44c:	e1d140ba 	ldrh	r4, [r1, #10]
+  10e450:	e0850102 	add	r0, r5, r2, lsl #2
+  10e454:	e35c0000 	cmp	ip, #0
+  10e458:	e5806008 	str	r6, [r0, #8]
+  10e45c:	e580400c 	str	r4, [r0, #12]
+  10e460:	e5803004 	str	r3, [r0, #4]
+  10e464:	0a00001d 	beq	10e4e0 <record_queue+0xec>
+  10e468:	e3530020 	cmp	r3, #32
+  10e46c:	8a00001d 	bhi	10e4e8 <record_queue+0xf4>
+  10e470:	e1d110b4 	ldrh	r1, [r1, #4]
+  10e474:	e1530001 	cmp	r3, r1
+  10e478:	8a00001a 	bhi	10e4e8 <record_queue+0xf4>
+  10e47c:	e3530000 	cmp	r3, #0
+  10e480:	0a00000f 	beq	10e4c4 <record_queue+0xd0>
+  10e484:	e28cc01c 	add	ip, ip, #28
+  10e488:	e285400c 	add	r4, r5, #12
+  10e48c:	e08c0283 	add	r0, ip, r3, lsl #5
+  10e490:	e0844102 	add	r4, r4, r2, lsl #2
+  10e494:	e1a02004 	mov	r2, r4
+  10e498:	e24c3020 	sub	r3, ip, #32
+  10e49c:	e5b31004 	ldr	r1, [r3, #4]!
+  10e4a0:	e153000c 	cmp	r3, ip
+  10e4a4:	e5a21004 	str	r1, [r2, #4]!
+  10e4a8:	1afffffb 	bne	10e49c <record_queue+0xa8>
+  10e4ac:	e283c020 	add	ip, r3, #32
+  10e4b0:	e15c0000 	cmp	ip, r0
+  10e4b4:	e2844020 	add	r4, r4, #32
+  10e4b8:	1afffff5 	bne	10e494 <record_queue+0xa0>
+  10e4bc:	e3570001 	cmp	r7, #1
+  10e4c0:	0a00000e 	beq	10e500 <record_queue+0x10c>
+  10e4c4:	e08e330e 	add	r3, lr, lr, lsl #6
+  10e4c8:	e08e3103 	add	r3, lr, r3, lsl #2
+  10e4cc:	e59f2088 	ldr	r2, [pc, #136]	@ 10e55c <record_queue+0x168>
+  10e4d0:	e28ee001 	add	lr, lr, #1
+  10e4d4:	ee070fba 	mcr	15, 0, r0, cr7, cr10, {5}
+  10e4d8:	e782e103 	str	lr, [r2, r3, lsl #2]
+  10e4dc:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+  10e4e0:	e3530000 	cmp	r3, #0
+  10e4e4:	0afffff6 	beq	10e4c4 <record_queue+0xd0>
+  10e4e8:	e3a02002 	mov	r2, #2
+  10e4ec:	e08e330e 	add	r3, lr, lr, lsl #6
+  10e4f0:	e08e3213 	add	r3, lr, r3, lsl r2
+  10e4f4:	e3570001 	cmp	r7, #1
+  10e4f8:	e7852103 	str	r2, [r5, r3, lsl #2]
+  10e4fc:	1afffff0 	bne	10e4c4 <record_queue+0xd0>
+  10e500:	e59f3058 	ldr	r3, [pc, #88]	@ 10e560 <record_queue+0x16c>
+  10e504:	e1931f9f 	ldrex	r1, [r3]
+  10e508:	e2811001 	add	r1, r1, #1
+  10e50c:	e1832f91 	strex	r2, r1, [r3]
+  10e510:	e3520000 	cmp	r2, #0
+  10e514:	1afffffa 	bne	10e504 <record_queue+0x110>
+  10e518:	e08e330e 	add	r3, lr, lr, lsl #6
+  10e51c:	e08e3103 	add	r3, lr, r3, lsl #2
+  10e520:	e0855103 	add	r5, r5, r3, lsl #2
+  10e524:	e1c520d4 	ldrd	r2, [r5, #4]
+  10e528:	e1530002 	cmp	r3, r2
+  10e52c:	1a000002 	bne	10e53c <record_queue+0x148>
+  10e530:	e595200c 	ldr	r2, [r5, #12]
+  10e534:	e1530002 	cmp	r3, r2
+  10e538:	0affffe1 	beq	10e4c4 <record_queue+0xd0>
+  10e53c:	e59f3020 	ldr	r3, [pc, #32]	@ 10e564 <record_queue+0x170>
+  10e540:	e3a02001 	mov	r2, #1
+  10e544:	ee070fba 	mcr	15, 0, r0, cr7, cr10, {5}
+  10e548:	e5832000 	str	r2, [r3]
+  10e54c:	eaffffdc 	b	10e4c4 <record_queue+0xd0>
+  10e550:	00148b10 	.word	0x00148b10
+  10e554:	00148b0c 	.word	0x00148b0c
+  10e558:	00138608 	.word	0x00138608
+  10e55c:	00138a18 	.word	0x00138a18
+  10e560:	00148b58 	.word	0x00148b58
+  10e564:	00148b54 	.word	0x00148b54
+
+0010e608 <__wrap_gxCmdQueueRun>:
+  10e608:	e1a01000 	mov	r1, r0
+  10e60c:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+  10e610:	e3a00000 	mov	r0, #0
+  10e614:	e24dd00c 	sub	sp, sp, #12
+  10e618:	e58d1004 	str	r1, [sp, #4]
+  10e61c:	ebffff74 	bl	10e3f4 <record_queue>
+  10e620:	e59d0004 	ldr	r0, [sp, #4]
+  10e624:	e28dd00c 	add	sp, sp, #12
+  10e628:	e49de004 	pop	{lr}		@ (ldr lr, [sp], #4)
+  10e62c:	ea001a23 	b	114ec0 <gxCmdQueueRun>
+
+0010e630 <__wrap_gxCmdQueueClear>:
+  10e630:	e1a01000 	mov	r1, r0
+  10e634:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+  10e638:	e3a00001 	mov	r0, #1
+  10e63c:	e24dd00c 	sub	sp, sp, #12
+  10e640:	e58d1004 	str	r1, [sp, #4]
+  10e644:	ebffff6a 	bl	10e3f4 <record_queue>
+  10e648:	e59d0004 	ldr	r0, [sp, #4]
+  10e64c:	e28dd00c 	add	sp, sp, #12
+  10e650:	e49de004 	pop	{lr}		@ (ldr lr, [sp], #4)
+  10e654:	ea0019bd 	b	114d50 <gxCmdQueueClear>
+
+0010cd8c <ds34_attach>:
+  10cd8c:	e16f2f10 	clz	r2, r0
+  10cd90:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+  10cd94:	e59f4278 	ldr	r4, [pc, #632]	@ 10d014 <ds34_attach+0x288>
+  10cd98:	e1a022a2 	lsr	r2, r2, #5
+  10cd9c:	e5943000 	ldr	r3, [r4]
+  10cda0:	e3530000 	cmp	r3, #0
+  10cda4:	01a05002 	moveq	r5, r2
+  10cda8:	13825001 	orrne	r5, r2, #1
+  10cdac:	e3550000 	cmp	r5, #0
+  10cdb0:	1a000086 	bne	10cfd0 <ds34_attach+0x244>
+  10cdb4:	e5906004 	ldr	r6, [r0, #4]
+  10cdb8:	e3560e19 	cmp	r6, #400	@ 0x190
+  10cdbc:	1a000083 	bne	10cfd0 <ds34_attach+0x244>
+  10cdc0:	e5907008 	ldr	r7, [r0, #8]
+  10cdc4:	e35700f0 	cmp	r7, #240	@ 0xf0
+  10cdc8:	1a000080 	bne	10cfd0 <ds34_attach+0x244>
+  10cdcc:	e5903010 	ldr	r3, [r0, #16]
+  10cdd0:	e3530001 	cmp	r3, #1
+  10cdd4:	1a00007d 	bne	10cfd0 <ds34_attach+0x244>
+  10cdd8:	e1a08000 	mov	r8, r0
+  10cddc:	e1a00005 	mov	r0, r5
+  10cde0:	eb001cfa 	bl	1141d0 <gfxGetScreenFormat>
+  10cde4:	e3500001 	cmp	r0, #1
+  10cde8:	1a000078 	bne	10cfd0 <ds34_attach+0x244>
+  10cdec:	e3a00701 	mov	r0, #262144	@ 0x40000
+  10cdf0:	eb000b43 	bl	10fb04 <C3D_Init>
+  10cdf4:	e3500000 	cmp	r0, #0
+  10cdf8:	0a000074 	beq	10cfd0 <ds34_attach+0x244>
+  10cdfc:	e3a03003 	mov	r3, #3
+  10ce00:	e1a02005 	mov	r2, r5
+  10ce04:	e1a01006 	mov	r1, r6
+  10ce08:	e1a00007 	mov	r0, r7
+  10ce0c:	eb00123e 	bl	11170c <C3D_RenderTargetCreate>
+  10ce10:	e5840004 	str	r0, [r4, #4]
+  10ce14:	e59f01fc 	ldr	r0, [pc, #508]	@ 10d018 <ds34_attach+0x28c>
+  10ce18:	eb001623 	bl	1126ac <linearAlloc>
+  10ce1c:	e3a01f46 	mov	r1, #280	@ 0x118
+  10ce20:	e5840084 	str	r0, [r4, #132]	@ 0x84
+  10ce24:	e59f01f0 	ldr	r0, [pc, #496]	@ 10d01c <ds34_attach+0x290>
+  10ce28:	eb0023dd 	bl	115da4 <DVLB_ParseFile>
+  10ce2c:	e5943004 	ldr	r3, [r4, #4]
+  10ce30:	e5840008 	str	r0, [r4, #8]
+  10ce34:	e3530000 	cmp	r3, #0
+  10ce38:	0a000064 	beq	10cfd0 <ds34_attach+0x244>
+  10ce3c:	e5941084 	ldr	r1, [r4, #132]	@ 0x84
+  10ce40:	e3500000 	cmp	r0, #0
+  10ce44:	13510000 	cmpne	r1, #0
+  10ce48:	03a01001 	moveq	r1, #1
+  10ce4c:	13a01000 	movne	r1, #0
+  10ce50:	0a00005e 	beq	10cfd0 <ds34_attach+0x244>
+  10ce54:	e3a03b02 	mov	r3, #2048	@ 0x800
+  10ce58:	e59f21c0 	ldr	r2, [pc, #448]	@ 10d020 <ds34_attach+0x294>
+  10ce5c:	e284006c 	add	r0, r4, #108	@ 0x6c
+  10ce60:	eb00130d 	bl	111a9c <C3D_TexInitWithParams>
+  10ce64:	e3500000 	cmp	r0, #0
+  10ce68:	0a000058 	beq	10cfd0 <ds34_attach+0x244>
+  10ce6c:	e5940070 	ldr	r0, [r4, #112]	@ 0x70
+  10ce70:	e1a00220 	lsr	r0, r0, #4
+  10ce74:	eb00160c 	bl	1126ac <linearAlloc>
+  10ce78:	e5942070 	ldr	r2, [r4, #112]	@ 0x70
+  10ce7c:	e2505000 	subs	r5, r0, #0
+  10ce80:	e1a02222 	lsr	r2, r2, #4
+  10ce84:	0a00005a 	beq	10cff4 <ds34_attach+0x268>
+  10ce88:	e3a010ff 	mov	r1, #255	@ 0xff
+  10ce8c:	e1a00005 	mov	r0, r5
+  10ce90:	eb004f5b 	bl	120c04 <memset>
+  10ce94:	e5941070 	ldr	r1, [r4, #112]	@ 0x70
+  10ce98:	e1a00005 	mov	r0, r5
+  10ce9c:	e1a01221 	lsr	r1, r1, #4
+  10cea0:	eb002f77 	bl	118c84 <GSPGPU_FlushDataCache>
+  10cea4:	e2506000 	subs	r6, r0, #0
+  10cea8:	ba00004b 	blt	10cfdc <ds34_attach+0x250>
+  10ceac:	e3a03000 	mov	r3, #0
+  10ceb0:	e1a01005 	mov	r1, r5
+  10ceb4:	e1a02003 	mov	r2, r3
+  10ceb8:	e59f0164 	ldr	r0, [pc, #356]	@ 10d024 <ds34_attach+0x298>
+  10cebc:	eb0013ad 	bl	111d78 <C3D_TexLoadImage>
+  10cec0:	e5942070 	ldr	r2, [r4, #112]	@ 0x70
+  10cec4:	e1a00005 	mov	r0, r5
+  10cec8:	e594106c 	ldr	r1, [r4, #108]	@ 0x6c
+  10cecc:	e1a02222 	lsr	r2, r2, #4
+  10ced0:	eb004ead 	bl	12098c <memcmp>
+  10ced4:	e2507000 	subs	r7, r0, #0
+  10ced8:	e1a00005 	mov	r0, r5
+  10cedc:	1a000036 	bne	10cfbc <ds34_attach+0x230>
+  10cee0:	eb0015f3 	bl	1126b4 <linearFree>
+  10cee4:	e5943078 	ldr	r3, [r4, #120]	@ 0x78
+  10cee8:	e59f0138 	ldr	r0, [pc, #312]	@ 10d028 <ds34_attach+0x29c>
+  10ceec:	e3c33c33 	bic	r3, r3, #13056	@ 0x3300
+  10cef0:	e3c33006 	bic	r3, r3, #6
+  10cef4:	e5843078 	str	r3, [r4, #120]	@ 0x78
+  10cef8:	eb0020d2 	bl	115248 <shaderProgramInit>
+  10cefc:	e5943008 	ldr	r3, [r4, #8]
+  10cf00:	e59f0120 	ldr	r0, [pc, #288]	@ 10d028 <ds34_attach+0x29c>
+  10cf04:	e5931014 	ldr	r1, [r3, #20]
+  10cf08:	eb0020d5 	bl	115264 <shaderProgramSetVsh>
+  10cf0c:	e59f0114 	ldr	r0, [pc, #276]	@ 10d028 <ds34_attach+0x29c>
+  10cf10:	eb000d2f 	bl	1103d4 <C3D_BindProgram>
+  10cf14:	e59f1110 	ldr	r1, [pc, #272]	@ 10d02c <ds34_attach+0x2a0>
+  10cf18:	e594000c 	ldr	r0, [r4, #12]
+  10cf1c:	eb0020c3 	bl	115230 <shaderInstanceGetUniformLocation>
+  10cf20:	e59f1108 	ldr	r1, [pc, #264]	@ 10d030 <ds34_attach+0x2a4>
+  10cf24:	e5840060 	str	r0, [r4, #96]	@ 0x60
+  10cf28:	e594000c 	ldr	r0, [r4, #12]
+  10cf2c:	eb0020bf 	bl	115230 <shaderInstanceGetUniformLocation>
+  10cf30:	e5943060 	ldr	r3, [r4, #96]	@ 0x60
+  10cf34:	e5840064 	str	r0, [r4, #100]	@ 0x64
+  10cf38:	e1933000 	orrs	r3, r3, r0
+  10cf3c:	4a000023 	bmi	10cfd0 <ds34_attach+0x244>
+  10cf40:	ed9f2a2f 	vldr	s4, [pc, #188]	@ 10d004 <ds34_attach+0x278>
+  10cf44:	e3a01001 	mov	r1, #1
+  10cf48:	eddf2a2e 	vldr	s5, [pc, #184]	@ 10d008 <ds34_attach+0x27c>
+  10cf4c:	eddf1a2e 	vldr	s3, [pc, #184]	@ 10d00c <ds34_attach+0x280>
+  10cf50:	eddf0a2e 	vldr	s1, [pc, #184]	@ 10d010 <ds34_attach+0x284>
+  10cf54:	eeb01a42 	vmov.f32	s2, s4
+  10cf58:	eeb00a42 	vmov.f32	s0, s4
+  10cf5c:	e59f00d0 	ldr	r0, [pc, #208]	@ 10d034 <ds34_attach+0x2a8>
+  10cf60:	eb001544 	bl	112478 <Mtx_OrthoTilt>
+  10cf64:	eb000a85 	bl	10f980 <C3D_GetAttrInfo>
+  10cf68:	e1a05007 	mov	r5, r7
+  10cf6c:	e1a06000 	mov	r6, r0
+  10cf70:	eb000a52 	bl	10f8c0 <AttrInfo_Init>
+  10cf74:	e1a01005 	mov	r1, r5
+  10cf78:	e3a03004 	mov	r3, #4
+  10cf7c:	e3a02003 	mov	r2, #3
+  10cf80:	e1a00006 	mov	r0, r6
+  10cf84:	e2855001 	add	r5, r5, #1
+  10cf88:	eb000a56 	bl	10f8e8 <AttrInfo_AddLoader>
+  10cf8c:	e3550004 	cmp	r5, #4
+  10cf90:	1afffff7 	bne	10cf74 <ds34_attach+0x1e8>
+  10cf94:	e3a02000 	mov	r2, #0
+  10cf98:	e3a03a01 	mov	r3, #4096	@ 0x1000
+  10cf9c:	e1a01002 	mov	r1, r2
+  10cfa0:	e5940004 	ldr	r0, [r4, #4]
+  10cfa4:	eb001238 	bl	11188c <C3D_RenderTargetSetOutput>
+  10cfa8:	e3a00000 	mov	r0, #0
+  10cfac:	eb000e1d 	bl	110828 <C3D_CullFace>
+  10cfb0:	e1a00007 	mov	r0, r7
+  10cfb4:	e5848000 	str	r8, [r4]
+  10cfb8:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+  10cfbc:	eb0015bc 	bl	1126b4 <linearFree>
+  10cfc0:	e5941070 	ldr	r1, [r4, #112]	@ 0x70
+  10cfc4:	e59f006c 	ldr	r0, [pc, #108]	@ 10d038 <ds34_attach+0x2ac>
+  10cfc8:	e1a01221 	lsr	r1, r1, #4
+  10cfcc:	ebffd455 	bl	102128 <ds13_unsupported>
+  10cfd0:	e3e07000 	mvn	r7, #0
+  10cfd4:	e1a00007 	mov	r0, r7
+  10cfd8:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+  10cfdc:	e1a00005 	mov	r0, r5
+  10cfe0:	eb0015b3 	bl	1126b4 <linearFree>
+  10cfe4:	e1a01006 	mov	r1, r6
+  10cfe8:	e59f004c 	ldr	r0, [pc, #76]	@ 10d03c <ds34_attach+0x2b0>
+  10cfec:	ebffd44d 	bl	102128 <ds13_unsupported>
+  10cff0:	eafffff6 	b	10cfd0 <ds34_attach+0x244>
+  10cff4:	e1a01002 	mov	r1, r2
+  10cff8:	e59f0040 	ldr	r0, [pc, #64]	@ 10d040 <ds34_attach+0x2b4>
+  10cffc:	ebffd449 	bl	102128 <ds13_unsupported>
+  10d000:	eafffff2 	b	10cfd0 <ds34_attach+0x244>
+  10d004:	00000000 	.word	0x00000000
+  10d008:	3f800000 	.word	0x3f800000
+  10d00c:	43700000 	.word	0x43700000
+  10d010:	43c80000 	.word	0x43c80000
+  10d014:	00137e58 	.word	0x00137e58
+  10d018:	0007ff80 	.word	0x0007ff80
+  10d01c:	00133920 	.word	0x00133920
+  10d020:	00080008 	.word	0x00080008
+  10d024:	00137ec4 	.word	0x00137ec4
+  10d028:	00137e64 	.word	0x00137e64
+  10d02c:	001329c4 	.word	0x001329c4
+  10d030:	001329d0 	.word	0x001329d0
+  10d034:	00137e78 	.word	0x00137e78
+  10d038:	001329a4 	.word	0x001329a4
+  10d03c:	00132988 	.word	0x00132988
+  10d040:	00132968 	.word	0x00132968
+
+0010e998 <ds34_diagnostic_begin>:
+  10e998:	e92d4010 	push	{r4, lr}
+  10e99c:	e1a04000 	mov	r4, r0
+  10e9a0:	e59f002c 	ldr	r0, [pc, #44]	@ 10e9d4 <ds34_diagnostic_begin+0x3c>
+  10e9a4:	ebffff2b 	bl	10e658 <ds34_diagnostic_mark>
+  10e9a8:	e6ef0074 	uxtb	r0, r4
+  10e9ac:	eb000a7c 	bl	1113a4 <C3D_FrameBegin>
+  10e9b0:	e2501000 	subs	r1, r0, #0
+  10e9b4:	e1a04001 	mov	r4, r1
+  10e9b8:	e59f2018 	ldr	r2, [pc, #24]	@ 10e9d8 <ds34_diagnostic_begin+0x40>
+  10e9bc:	e59f3018 	ldr	r3, [pc, #24]	@ 10e9dc <ds34_diagnostic_begin+0x44>
+  10e9c0:	01a00002 	moveq	r0, r2
+  10e9c4:	11a00003 	movne	r0, r3
+  10e9c8:	ebffff22 	bl	10e658 <ds34_diagnostic_mark>
+  10e9cc:	e1a00004 	mov	r0, r4
+  10e9d0:	e8bd8010 	pop	{r4, pc}
+  10e9d4:	00132d2c 	.word	0x00132d2c
+  10e9d8:	00132d14 	.word	0x00132d14
+  10e9dc:	00132d00 	.word	0x00132d00
+
+0010ea08 <ds34_diagnostic_sync>:
+  10ea08:	e92d4010 	push	{r4, lr}
+  10ea0c:	e59f0014 	ldr	r0, [pc, #20]	@ 10ea28 <ds34_diagnostic_sync+0x20>
+  10ea10:	ebffff10 	bl	10e658 <ds34_diagnostic_mark>
+  10ea14:	eb0009e7 	bl	1111b8 <C3D_FrameSync>
+  10ea18:	e59f000c 	ldr	r0, [pc, #12]	@ 10ea2c <ds34_diagnostic_sync+0x24>
+  10ea1c:	ebffff0d 	bl	10e658 <ds34_diagnostic_mark>
+  10ea20:	e3a00000 	mov	r0, #0
+  10ea24:	e8bd8010 	pop	{r4, pc}
+  10ea28:	00132d64 	.word	0x00132d64
+  10ea2c:	00132d74 	.word	0x00132d74
+
+0010e9e0 <ds34_diagnostic_end>:
+  10e9e0:	e92d4010 	push	{r4, lr}
+  10e9e4:	e59f0014 	ldr	r0, [pc, #20]	@ 10ea00 <ds34_diagnostic_end+0x20>
+  10e9e8:	ebffff1a 	bl	10e658 <ds34_diagnostic_mark>
+  10e9ec:	e3a00000 	mov	r0, #0
+  10e9f0:	eb000ad0 	bl	111538 <C3D_FrameEnd>
+  10e9f4:	e8bd4010 	pop	{r4, lr}
+  10e9f8:	e59f0004 	ldr	r0, [pc, #4]	@ 10ea04 <ds34_diagnostic_end+0x24>
+  10e9fc:	eaffff15 	b	10e658 <ds34_diagnostic_mark>
+  10ea00:	00132d3c 	.word	0x00132d3c
+  10ea04:	00132d50 	.word	0x00132d50

@@ -1,0 +1,1 @@
+{"version":"0.1.0","passed":true,"environment":"emulator","game_called":false,"frames":9,"bytes":288000,"layout":1,"gpu_draws":9,"gpu_triangles":18,"cpu_fragments":0,"cpu_samples":0,"gl_error":0,"retired_runs":10,"bad_retirement":0,"vertex_mismatches":0,"texture_mismatches":0}

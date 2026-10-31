@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-31",
+  "test": "DS34 UV Mask v0.2.1 user hardware run-0002",
+  "hardware_tested": true,
+  "executed_by": "user",
+  "environment": "native",
+  "fault": false,
+  "passed_PICA_display_pixels_and_START_HOME": true,
+  "user_START_confirmation": "??, ??????? ? HOME",
+  "exit_marker": "GPU drained; returning to HOME",
+  "received_files": 7,
+  "RAM_samples": 26,
+  "all_samples_stable_and_consistent": true,
+  "event_order": [
+    "PSC0",
+    "P3D",
+    "PPF"
+  ],
+  "event_completed_counts": [
+    1,
+    2,
+    3
+  ],
+  "queue_at_decision": {
+    "total": 3,
+    "submitted": 3,
+    "completed": 3,
+    "capacity": 32
+  },
+  "idle_at_decision": true,
+  "window_ms": 100,
+  "window_is_not_GPU_duration_or_FPS": true,
+  "GL_error": 0,
+  "overflow": 0,
+  "critical_io_blocked": 0,
+  "frame_bytes": 288000,
+  "pixels_checked": 96000,
+  "white_pixels": 5120,
+  "background_pixels": 90880,
+  "native_raw_byte_identical_to_Azahar": true,
+  "native_PICA_byte_identical_to_candidate_Azahar": true,
+  "PICA_bytes": 1168,
+  "PICA_packets": 82,
+  "PICA_changed_byte_offsets_from_failed_native": [
+    240,
+    244
+  ],
+  "all_24_GX_words_identical_to_failed_native": true,
+  "PICA_sha256": "05b59185d7fb0aded20862db216bfa99ce5603caf5cd3454fce3bd97165c3cb4",
+  "frame_raw_sha256": "9964d7d74243520bf9451222df91869be3c17a255fccf9c0ab5e2ef6d70d94d6",
+  "expected_CIA_sha256": "5e853550bede4aa6a911959c122dcc6aa595c673071d6f52aacf37e1086284ee",
+  "expected_title_id": "000400000FDE6F00",
+  "device_CIA_hash_measured": false,
+  "interpretation": {
+    "physical_GPU_stall_proven": false,
+    "note": "Event callbacks measure delivery after SDK handling, not physical engine status.",
+    "decision_before_NONBLOCK": true,
+    "event_deltas": {
+      "PSC0": 1,
+      "P3D": 1,
+      "PPF": 1,
+      "PSC1": 0,
+      "DMA": 0
+    },
+    "queue": {
+      "total": 3,
+      "submitted": 3,
+      "completed": 3,
+      "capacity": 32
+    },
+    "SDK_queue_idle": true,
+    "vblank_phases": 2,
+    "missing_notifications": [],
+    "classification": "queue_retired"
+  },
+  "root_cause_assessment": "Full UV output writes fix the observed first-frame DS34 failure in this paired hardware comparison; physical GPU internal stall state was not sampled",
+  "game_frame_hardware_tested": false,
+  "further_hardware_runs_authorized": false,
+  "push_performed": false
+}

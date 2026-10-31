@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-31",
+  "preparation_for_one_user_hardware_test_authorized": true,
+  "hardware_executions_this_turn": 0,
+  "additional_tests_authorized": false,
+  "push_authorized": false,
+  "rebuild_performed": false,
+  "new_emulator_runs": 0,
+  "ELF_changed_byte_offsets": [
+    "0x35c44",
+    "0x35c4c"
+  ],
+  "SHBIN_changed_bytes": {
+    "0x7c": "AC -> AF",
+    "0x84": "EC -> EF"
+  },
+  "all_outputs": [
+    {
+      "register": 0,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 1,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 2,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 3,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    }
+  ],
+  "all_declared_components_exactly_once": true,
+  "CPU_ELF_unchanged_except_two_shader_descriptor_bytes": true,
+  "CIA_capabilities_and_memory_profile_unchanged": true,
+  "CIA_title_id": "000400000FDE6F00",
+  "CIA_sha256": "5e853550bede4aa6a911959c122dcc6aa595c673071d6f52aacf37e1086284ee",
+  "ZIP_sha256": "620267c4497301d3b52a881f6bda8fd9c370e4b668990286bdb50b483df5b56e",
+  "ZIP_all_file_hashes_verified": true,
+  "sd_root_unchanged": "SD:/3ds/ds34-gx-watch-v0.2.0/",
+  "separate_log_folder": "first unused run-NNNN created by mkdir; EEXIST is skipped, other errors abort",
+  "previous_run_preservation_test": true,
+  "previous_baseline_files_hash_verified": 145
+}

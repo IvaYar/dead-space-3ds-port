@@ -1,0 +1,52 @@
+3 [   0.047559] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-simple-tri-rgb8/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config can't be open without mode create.
+
+3 [   0.047596] Service.FS <Error> core/file_sys/savedata_archive.cpp:DeleteFile:117: File not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-simple-tri-rgb8/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config
+
+3 [   0.050851] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-simple-tri-rgb8/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010035/00000000/news.db can't be open without mode create.
+
+3 [   0.062269] Service.NWM <Error> core/hle/service/nwm/nwm_uds.cpp:NWM_UDS:1738: Network isn't initalized
+
+3 [   0.065040] Service.HTTP <Error> core/hle/service/http/http_c.cpp:DecryptClCertA:2282: ClCertA file missing, using default
+
+2 [   0.065534] Service.FS <Warning> core/file_sys/ncch_container.cpp:OpenFile:192: Failed to open C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-simple-tri-rgb8/Azahar/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004000e/0fde6c00/content/00000000.app
+
+0 [   0.071009] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00100000, size=00010000
+
+0 [   0.071013] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BF0000, upper=07C00000
+
+0 [   0.071023] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00110000, size=00001000
+
+0 [   0.071024] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BEF000, upper=07BF0000
+
+0 [   0.071027] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00111000, size=00005000
+
+0 [   0.071027] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BEA000, upper=07BEF000
+
+0 [   0.071030] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=0FFC0000, size=00040000
+
+0 [   0.071030] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BAA000, upper=07BEA000
+
+0 [   0.100436] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000003, addr0=0x08000000, addr1=0x00000000, size=0x1FAA000, permissions=0x00000003
+
+0 [   0.100440] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=08000000, size=01FAA000
+
+0 [   0.100442] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=05C00000, upper=07BAA000
+
+0 [   0.101021] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00010003, addr0=0x00000000, addr1=0x00000000, size=0x2000000, permissions=0x00000003
+
+2 [   0.101882] Service.SRV <Warning> core/hle/service/sm/srv.cpp:RegisterClient:64: (STUBBED) called. Caller PID=11
+
+2 [   0.118415] Service.APT <Warning> core/hle/service/apt/apt.cpp:NotifyToWait:362: (STUBBED) app_id=768
+
+3 [   0.118891] Service <Error> core/hle/service/service.cpp:ReportUnimplementedFunction:170: unknown / unimplemented function 'ConfigureNew3DSCPU': port='ptm:sysm' cmd_buf={[0]=0x8180040 (0x0818, 1, 0), [1]=0x0}
+
+2 [   0.119012] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000007, input_size=0X00000004, output_size=0X00000001
+
+2 [   0.119069] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+
+2 [   0.522046] Service.GSP <Warning> core/hle/service/gsp/gsp_gpu.cpp:ReleaseRight:999: called
+
+0 [   0.523900] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000001, addr0=0x14000000, addr1=0x00000000, size=0x2000000, permissions=0x00000000
+
+0 [   0.523965] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000001, addr0=0x08000000, addr1=0x00000000, size=0x1FAA000, permissions=0x00000000
+

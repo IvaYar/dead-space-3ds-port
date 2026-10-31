@@ -1,0 +1,9 @@
+{
+  "PICA_changed_byte_offsets": [
+    240,
+    244
+  ],
+  "only_two_output_masks_changed": true,
+  "all_24_GX_words_including_addresses_identical_to_native": true,
+  "shader_outputs_fully_written_once": true
+}

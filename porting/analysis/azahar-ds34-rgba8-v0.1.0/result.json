@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "diagnostic_cycle": 2,
+  "hardware_tested": false,
+  "tested_payload": "NCCH extracted from actual CIA; installation not emulated",
+  "CIA_sha256": "2c91a4d444c9a9a535f1d66fcf81b05371380863ee4fc4272c16aa0f63a7b54b",
+  "payload_sha256": "2e93b156ff2c0b8184de51063b3996c5ac8a6bdb40d2d0e60570b7525831e030",
+  "guest_result": {
+    "version": "0.1.0",
+    "passed": true,
+    "environment": "emulator",
+    "game_called": false,
+    "frames": 9,
+    "bytes": 288000,
+    "layout": 1,
+    "gpu_draws": 9,
+    "gpu_triangles": 18,
+    "cpu_fragments": 0,
+    "cpu_samples": 0,
+    "gl_error": 0,
+    "retired_runs": 10,
+    "bad_retirement": 0,
+    "vertex_mismatches": 0,
+    "texture_mismatches": 0
+  },
+  "first_frame_verified": true,
+  "frames_verified": 9,
+  "unique_frames": 7,
+  "identical_final_frames_verified": 3,
+  "all_pixels_verified_per_frame": 96000,
+  "queue_runs_completed": 9,
+  "initial_texture_copy_runs_completed": 1,
+  "queue_kinds": [
+    "FILL",
+    "PICA",
+    "DISPLAY"
+  ],
+  "SDK_SYNCDRAW_FrameSync_and_handlers_preserved": true,
+  "A_gate_stale_result_and_START_cleanup_verified": true,
+  "invalid_accesses": 0,
+  "observations": [
+    {
+      "frame": 0,
+      "raw_sha256": "9964d7d74243520bf9451222df91869be3c17a255fccf9c0ab5e2ef6d70d94d6",
+      "png_sha256": "5e6ba66021fe6bb4a49a655062dcceefb33e8bb8f2940a80fc89e2cf6714b258",
+      "foreground_RGB": [
+        255,
+        255,
+        255
+      ],
+      "rectangle_left": 40,
+      "pixels_verified": 96000
+    },
+    {
+      "frame": 1,
+      "raw_sha256": "7308e8daddbe953b6a50a7ad7114afee3780488d7423ed9f87ad9bfcd529fedc",
+      "png_sha256": "e7a9c9260b46bea5d5bdb816eb8e5319f21a1701c9ccc0d2cf2bddb4e32f6387",
+      "foreground_RGB": [
+        255,
+        0,
+        0
+      ],
+      "rectangle_left": 72,
+      "pixels_verified": 96000
+    },
+    {
+      "frame": 2,
+      "raw_sha256": "cddb63c954f9959c251f4822c00cc78f182a562c80898696f53fb995e55d5492",
+      "png_sha256": "4d870684f1611014df57b92cb8725557af2d826a17d003114599b50ab540dcc3",
+      "foreground_RGB": [
+        0,
+        255,
+        0
+      ],
+      "rectangle_left": 104,
+      "pixels_verified": 96000
+    },
+    {
+      "frame": 3,
+      "raw_sha256": "e80732c129cfd8da095e014868a186bbd5bbb04587a9acda257f5a7fbdad61eb",
+      "png_sha256": "3f273aece820040da02c468dd1e42bc9edfb0774a26dae7832da4e7b654cc221",
+      "foreground_RGB": [
+        0,
+        0,
+        255
+      ],
+      "rectangle_left": 136,
+      "pixels_verified": 96000
+    },
+    {
+      "frame": 4,
+      "raw_sha256": "95bad7f2afdc9742e67d345063cc68d9b158425be7c5cf6d0ee5bcb96875a6dc",
+      "png_sha256": "391ed6a53c14a6c325d544445aebc42705fcfa00e8aef628d9ac8b6ceb9708fc",
+      "foreground_RGB": [
+        255,
+        0,
+        0
+      ],
+      "rectangle_left": 168,
+      "pixels_verified": 96000
+    },
+    {
+      "frame": 5,
+      "raw_sha256": "88344d4741eee0e4edfb36058d1b9f7e31fb9d4b2c31038d7f37ea1efa2eefbe",
+      "png_sha256": "38b4a31a25060966f037a709129dee377cbc800dffd432b7e9633a379aa3844e",
+      "foreground_RGB": [
+        0,
+        255,
+        0
+      ],
+      "rectangle_left": 200,
+      "pixels_verified": 96000
+    },
+    {
+      "frame": 6,
+      "raw_sha256": "9ecf7804234c3ad252bf7f340ffa46742d112c3e72e49267c0df37d4229d21e5",
+      "png_sha256": "d06c56e3ed6ddf66bee774dea8236102e569c41e64f609ba643e8d7f60a902b8",
+      "foreground_RGB": [
+        0,
+        0,
+        255
+      ],
+      "rectangle_left": 232,
+      "pixels_verified": 96000
+    },
+    {
+      "frame": 7,
+      "raw_sha256": "9ecf7804234c3ad252bf7f340ffa46742d112c3e72e49267c0df37d4229d21e5",
+      "png_sha256": "d06c56e3ed6ddf66bee774dea8236102e569c41e64f609ba643e8d7f60a902b8",
+      "foreground_RGB": [
+        0,
+        0,
+        255
+      ],
+      "rectangle_left": 232,
+      "pixels_verified": 96000
+    },
+    {
+      "frame": 8,
+      "raw_sha256": "9ecf7804234c3ad252bf7f340ffa46742d112c3e72e49267c0df37d4229d21e5",
+      "png_sha256": "d06c56e3ed6ddf66bee774dea8236102e569c41e64f609ba643e8d7f60a902b8",
+      "foreground_RGB": [
+        0,
+        0,
+        255
+      ],
+      "rectangle_left": 232,
+      "pixels_verified": 96000
+    }
+  ],
+  "elapsed_seconds": 0.641,
+  "offline_revalidation_without_runtime_rerun": false,
+  "limitations": [
+    "Software emulator success is not native success",
+    "Cache service stubs remain",
+    "SDK waits are unbounded; hardware can hang",
+    "No textures/game/high-memory stress covered"
+  ]
+}

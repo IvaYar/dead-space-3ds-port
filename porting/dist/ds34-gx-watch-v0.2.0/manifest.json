@@ -1,0 +1,138 @@
+{
+  "prepared": true,
+  "date": "2026-10-31",
+  "version": "0.2.0",
+  "title_id": "000400000FDE6E00",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "native_cause_fixed": false,
+  "Azahar_normal_and_timeout_passed": true,
+  "host_interpretation_cases_passed": 12,
+  "critical_SD_writes": 0,
+  "format_path_preserved": true,
+  "baseline_backend_changed": false,
+  "CIA_sha256": "907500f9e2882ba5f36996890ac209c347e98aaf4da82112e0ddcbbc2ebbb55f",
+  "ELF_sha256": "ec6a0fbfad5a7f3d63e008a38306e9b825392a709e867e622e998fa333caba1b",
+  "container_hashes": [
+    "\\- Hash: (GOOD) B26998F959C3FB10EAE0356D13A3E6EA503604FC69D65B75B1B4CF37FF7E913E",
+    "Exheader hash: (GOOD)   5FA975FFF65B037EE655DDB29659CB5F326085283AA6D1F982599F1ADA1032CD",
+    "ExeFS hash: (GOOD)      6FEEE37B74C714F70D7B731C7170DA1D341EAF75B0B9A42B37765FF7DC62865A",
+    "Section hash: (GOOD)    3A66C2DA5B79DEFDBAEF02BF6C083F128001C27B8C4468C83A9C6423079AFEAD",
+    "Section hash: (GOOD)    55EE0F04C034467E2EF6717EE218027B8AD1AA4FDB53F3B6AC3EFC2A0035F121",
+    "Section hash: (GOOD)    7C07BBC619B2E7F7B8AED0CFB1B967D95612904401778CB701C0A7160281D946",
+    "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+  ],
+  "expected_homebrew_signature_errors": [
+    "[ctrtool::CiaProcess ERROR] Signature for Ticket was invalid.",
+    "[ctrtool::CiaProcess ERROR] Signature for TitleMetaData was invalid.",
+    "[ctrtool::ExHeaderProcess ERROR] Signature for AccessDescriptor was invalid."
+  ],
+  "game_resources_included": false,
+  "fault_binary_included": false,
+  "files": {
+    "LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "README.ru.md": {
+      "bytes": 12680,
+      "sha256": "6677ac2cbc4cd0a3b34ab4f2c6b01522258484e7ad5094910901a2b23247c0e7"
+    },
+    "build-manifest.json": {
+      "bytes": 13234,
+      "sha256": "ed1b8af1b1f525a8f9454179161dbef582cb0f3e2430d6128fa9c30dfb61683b"
+    },
+    "ds34-gx-watch.cia": {
+      "bytes": 248768,
+      "sha256": "907500f9e2882ba5f36996890ac209c347e98aaf4da82112e0ddcbbc2ebbb55f"
+    },
+    "gx_watch_report.py": {
+      "bytes": 2981,
+      "sha256": "338ab2b5b62c3b4faa5781e1f2f64b59fa18e063966b6d4177dde2aeffbc1faf"
+    },
+    "source/ds34_gpu_rgba8_rgb8.c": {
+      "bytes": 18412,
+      "sha256": "fff62c8c5b7e2046516fec37d6c7eb7b7bc9bb6c6edfaed01a0b6f3d8abf419d"
+    },
+    "source/ds34_gx_watch_probe.c": {
+      "bytes": 10652,
+      "sha256": "abf472fccade64e2b425aae0dd7f6ed29971a8dee491d69e2864e52d2b79db89"
+    },
+    "source/gx_watch.c": {
+      "bytes": 8696,
+      "sha256": "1de7ae0673b6b6e755bbff7b3906710e1052e6945d9bcd20dd65c7aa1e26a4be"
+    },
+    "source/gx_watch.h": {
+      "bytes": 1724,
+      "sha256": "85943a6585fa936409b0d87566562bbb34ad2a38cf7cb218b72ea60958d0a1d4"
+    },
+    "source/gx_watch_save.c": {
+      "bytes": 4280,
+      "sha256": "b4acd11cdfba34ac3673869239cd75c1d510bf53daa6a5da9e90b7b06eb77f16"
+    },
+    "validation/START-cleanup.log": {
+      "bytes": 469,
+      "sha256": "da87407200d222bf50d35480713e6ea449d6e70d3532ee010614abff55ebd3d9"
+    },
+    "validation/azahar-host.log": {
+      "bytes": 4326,
+      "sha256": "69ec4a9adff46c3ccf07210a2c85ac7d45d5b50d914e14b56b1652a89e11f47e"
+    },
+    "validation/call-edges.asm.txt": {
+      "bytes": 47413,
+      "sha256": "1ae905c2d3129edaec327e14c1c2e1d312303caacf3ed9aebb80c40de6fe7a50"
+    },
+    "validation/first-frame.pica": {
+      "bytes": 1168,
+      "sha256": "ffd8bbc608ff1f476de21c9e089e3736e29e875c68ca7a4a8f6452c4181e0357"
+    },
+    "validation/frame.png": {
+      "bytes": 898,
+      "sha256": "5e6ba66021fe6bb4a49a655062dcceefb33e8bb8f2940a80fc89e2cf6714b258"
+    },
+    "validation/gpu-test.log": {
+      "bytes": 1037,
+      "sha256": "257f1a09dc6dc38f80fa57918c2d569730d672735725fec22ca87f1d5f0667dc"
+    },
+    "validation/guest-result.json": {
+      "bytes": 346,
+      "sha256": "f2970b10ee6dd92cef870fd7945204b44b678170737d05ba11f03a553a895599"
+    },
+    "validation/host-interpretation-tests.json": {
+      "bytes": 370,
+      "sha256": "2d9d5a3e2313923ce60a798613a520464e0f107f12f8bd3a90d7ad300d6bbc20"
+    },
+    "validation/interpretation.json": {
+      "bytes": 498,
+      "sha256": "21fddfca6c52eeb47898907cae5d942a2c90ce94ee9da09bbb8185ca3b7f9815"
+    },
+    "validation/observation.json": {
+      "bytes": 7929,
+      "sha256": "8066c9c7cd79baf27997ba9ba326ff1895294235d78d759da004590376d3d240"
+    },
+    "validation/result.json": {
+      "bytes": 966,
+      "sha256": "6af76ef0f5d9ba730c7b2fee8a83e1b27f9d8047f9ac7e012314ce5b98e6d676"
+    },
+    "validation/screen.png": {
+      "bytes": 3780,
+      "sha256": "b83fec739dd54c3620555d1a9d740ef88dd2acc84d5c8ff190c15625f73ac9e7"
+    },
+    "validation/symbol-audit.json": {
+      "bytes": 924,
+      "sha256": "3b04af5d620cd2b54e456252563f6279a9b8f5248d91055535dbece5400f39f0"
+    },
+    "validation/timeout-observation.json": {
+      "bytes": 67027,
+      "sha256": "eec90dd96d89f0824bc784745389735ff7f95ccb5f3cde055d47dca1e3c87943"
+    },
+    "validation/timeout-result.json": {
+      "bytes": 980,
+      "sha256": "e236af2ecd1acf86c36b0f9b8b571b0e56d65edc7c6b048d2f3b27b5f6cdecf6"
+    },
+    "validation/timeout-screen.png": {
+      "bytes": 3834,
+      "sha256": "91062ea2d79164c43ab5464c3f5a02a3afddb8dca7b7d010c8446cd374050d16"
+    }
+  }
+}

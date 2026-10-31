@@ -1,0 +1,4 @@
+[   0.000073] Service.AM <Info> core\hle\service\am\am.cpp:Service::AM::InstallCIA:1200: Installing C:\Users\jarom\Desktop\Dead_space_mobile\porting\3ds\build-native-game-v0.1.0-h2\native-game.cia...
+[   0.006630] Service.AM <Info> core\hle\service\am\am.cpp:Service::AM::CIAFile::ApplyContentPreparation:828: Title has no encrypted content, skipping initializing decryption state.
+[   0.010786] Service.AM <Info> core\hle\service\am\am.cpp:Service::AM::InstallCIA:1267: Installed C:\Users\jarom\Desktop\Dead_space_mobile\porting\3ds\build-native-game-v0.1.0-h2\native-game.cia successfully.
+[   0.010786] Service.AM <Info> core\hle\service\am\am.cpp:Service::AM::InstallCIA:1267: Installed C:\Users\jarom\Desktop\Dead_space_mobile\porting\3ds\build-native-game-v0.1.0-h2\native-game.cia successfully.

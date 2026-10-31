@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "CIA_created": false,
+  "tests": [
+    {
+      "case": "pass_dry_run",
+      "expected_accept": true,
+      "actual_accept": true,
+      "makerom_executed": false
+    },
+    {
+      "case": "safe_exit_false",
+      "expected_accept": false,
+      "actual_accept": false,
+      "makerom_executed": false
+    },
+    {
+      "case": "frame_diff",
+      "expected_accept": false,
+      "actual_accept": false,
+      "makerom_executed": false
+    },
+    {
+      "case": "one_cycle",
+      "expected_accept": false,
+      "actual_accept": false,
+      "makerom_executed": false
+    },
+    {
+      "case": "worker_handle_left",
+      "expected_accept": false,
+      "actual_accept": false,
+      "makerom_executed": false
+    },
+    {
+      "case": "kernel_join_missing",
+      "expected_accept": false,
+      "actual_accept": false,
+      "makerom_executed": false
+    },
+    {
+      "case": "unbalanced_files",
+      "expected_accept": false,
+      "actual_accept": false,
+      "makerom_executed": false
+    },
+    {
+      "case": "stale_CXI",
+      "expected_accept": false,
+      "actual_accept": false,
+      "makerom_executed": false
+    },
+    {
+      "case": "stale_runner",
+      "expected_accept": false,
+      "actual_accept": false,
+      "makerom_executed": false
+    }
+  ]
+}

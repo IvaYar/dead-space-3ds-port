@@ -1,0 +1,68 @@
+{
+  "main_shader_updated": true,
+  "source_edits_only_two_destination_masks": true,
+  "assembled_SHBIN_byte_identical_to_hardware_successful_variant": true,
+  "shader_bytes": 280,
+  "shader_sha256": "d006d684cbd5d40949387d80243830d83a4c7d2d10768fff0cbcb4262a9e4ee8",
+  "all_outputs": [
+    {
+      "register": 0,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 1,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 2,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 3,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    }
+  ],
+  "previous_145_file_inventory_intentional_changes": [
+    "3ds/source/ds34_gpu.v.pica"
+  ],
+  "previous_144_files_unchanged": true,
+  "C_backend_unchanged": true,
+  "old_builds_rebuilt": false,
+  "new_runtime_tests": 0,
+  "reason_no_redundant_runtime_run": "Main source assembles to the exact SHBIN already verified in Azahar and in the native PICA dump",
+  "native_game_entrypoint_modified": false,
+  "native_game_CIA_created": false,
+  "git_push": false
+}

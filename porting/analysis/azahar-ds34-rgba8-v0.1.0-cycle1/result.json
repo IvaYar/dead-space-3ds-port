@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "diagnostic_cycle": 1,
+  "guest_rendering_passed": true,
+  "frames_verified_before_host_failure": 9,
+  "failure_scope": "host validation only",
+  "issues": [
+    "Incorrectly expected nine queues; attach adds one successful TEXCOPY queue",
+    "Runner unloaded immediately after exit.txt creation, before it was filled; native exit must be verified by complete marker plus GSP release/heap free before unload"
+  ],
+  "GPU_code_changed_for_cycle2": false,
+  "evidence_preserved": true
+}

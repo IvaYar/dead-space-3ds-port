@@ -1,0 +1,17 @@
+{
+  "private_SD_root": "private/native-game-v0.1.0-sd",
+  "files": 1752,
+  "bytes": 583364704,
+  "all_source_copy_sha256_match": true,
+  "groups": {
+    "assets": {
+      "files": 1728,
+      "bytes": 414822611
+    },
+    "apk-assets": {
+      "files": 20,
+      "bytes": 163995411
+    }
+  },
+  "originals_in_public_package": false
+}

@@ -1,0 +1,43 @@
+{
+  "archive": "ds34-rgba8-v0.1.0.zip",
+  "archive_bytes": 2558,
+  "archive_sha256": "0576186e878a28343ca682b01b3168247215c3edc1e8b384f485f7f57be2a53c",
+  "files": {
+    "gpu-test.log": {
+      "archive_entry": "New folder/gpu-test.log",
+      "bytes": 1551,
+      "sha256": "89fdfeb238d9b4073f398d45668126dda39b4e82bdec5e8db18835f1f5d0b030"
+    },
+    "queue-00.json": {
+      "archive_entry": "New folder/queue-00.json",
+      "bytes": 84,
+      "sha256": "4232df5b6fbe10aa81d63207c3045dc6bf58ec7c5ecc0c09a8a875e38e7dde7a"
+    },
+    "queue-01.json": {
+      "archive_entry": "New folder/queue-01.json",
+      "bytes": 86,
+      "sha256": "84935bd8cdc677d74f8f44e750fed4ea3f55549ff37b7a6f33d3cb9c6a8a4871"
+    },
+    "queue-02.json": {
+      "archive_entry": "New folder/queue-02.json",
+      "bytes": 126,
+      "sha256": "fd0b25a6eb00e6a41cb2447c6f35eab91dc834231cbc24e12f87fbd850acd29b"
+    },
+    "queue-03.json": {
+      "archive_entry": "New folder/queue-03.json",
+      "bytes": 128,
+      "sha256": "4a8d565ed92d1a5a096c4653d56707b1b3ef884bae7cdf55866b09d0524acdaf"
+    },
+    "queue-04.json": {
+      "archive_entry": "New folder/queue-04.json",
+      "bytes": 250,
+      "sha256": "150fb7a8f235c8fc39593212aa3cd0c0cd6038087ec1714f94a32c00fd5317b3"
+    },
+    "ready.txt": {
+      "archive_entry": "New folder/ready.txt",
+      "bytes": 18,
+      "sha256": "71e8beaf7342d0d83f337db02aa52dbf0299a8a10a90cca69884edf2c261a553"
+    }
+  },
+  "flattened_single_archive_directory": true
+}

@@ -1,0 +1,281 @@
+CiaHeader:
+|- HeaderSize:      0x2020
+|- Type:            Normal (0x0000)
+|- FormatVersion:   Cia (0x0000)
+|- CertificateSize: 0xa00
+|- TicketSize:      0x350
+|- TitleMetaSize:   0xb34
+|- FooterSize:      0x3ac0
+|- ContentSize:     0x4ae00
+\- EnabledContent:
+   \- 0x0000
+Certificate Chain:
+|- Certificate 0:
+|  |- DigitalSignature: (GOOD)
+|  |  |- SigType:    RSA-4096-SHA256 (0x10003)
+|  |  |- Issuer:     Root
+|  |  \- Signature:  704138EF...61CB4C2E
+|  |- Subject:       CA00000003
+|  \- PublicKey:     RSA-2048 (0x1)
+|     |- m:          B279C9E2...EBEED379
+|     \- e:          00010001
+|- Certificate 1:
+|  |- DigitalSignature: (GOOD)
+|  |  |- SigType:    RSA-2048-SHA256 (0x10004)
+|  |  |- Issuer:     Root-CA00000003
+|  |  \- Signature:  919EBE46...08847982
+|  |- Subject:       XS0000000c
+|  \- PublicKey:     RSA-2048 (0x1)
+|     |- m:          AD505BB6...34652625
+|     \- e:          00010001
+\- Certificate 2:
+   |- DigitalSignature: (GOOD)
+   |  |- SigType:    RSA-2048-SHA256 (0x10004)
+   |  |- Issuer:     Root-CA00000003
+   |  \- Signature:  2EA66C66...D426560C
+   |- Subject:       CP0000000b
+   \- PublicKey:     RSA-2048 (0x1)
+      |- m:          A689C590...6DA3772B
+      \- e:          00010001
+Ticket:
+|- DigitalSignature: (FAIL) 
+|  |- SigType:    RSA-2048-SHA256 (0x10004)
+|  |- Issuer:     Root-CA00000003-XS0000000c
+|  \- Signature:  1A30B6EA...75EE0F96
+|- TitleKey:      509831361757851626C77643C94DADFD (decrypted: 1E9F30CE656D037281ED0619666258CB)
+|- TicketId:      000409611ca7515e
+|- DeviceId:      00000000
+|- TitleId:       000400000fde7100
+|- TicketVersion: 0.0.1 (1)
+|- LicenseType:   00
+|- KeyId:         00
+|- ECAccountID:   00000000
+|- DemoLaunchCnt: 0
+\- EnabledContent:
+   \- 0x0000
+TitleMetaData:
+|- DigitalSignature: (FAIL)
+|  |- SigType:    RSA-2048-SHA256 (0x10004)
+|  |- Issuer:     Root-CA00000003-CP0000000b
+|  \- Signature:  9D2EFBB7...1E679FC3
+|- TitleId:       000400000fde7100
+|- TitleVersion:  0.0.1 (1)
+|- CustomData:
+|  |- SaveDataSize: 0x0
+|  \- IsSnakeOnly: false
+\- ContentInfo:
+   \- 0x0000:
+      |- ContentId:   0x584b7117
+      |- Encrypted:   NO
+      |- Optional:    NO
+      |- Size:        0x4ae00
+      \- Hash: (GOOD) CA6682DD98A63555DE53267C47C9D5A29B80B279F6C31ADBC817C1E0D80357E0
+
+NCCH:
+Header:                 NCCH
+Signature: (GOOD)       422F74754CF9AC0362B404B64B5DAB94523C3AE2E4B42100DC0C5E4780CD6490
+                        15C800B2C5873D918AB51623DA5E2F3A6C54BA377716C12144E205E2237CA405
+                        766E98EF0C2E039F5DD798883AA6EEC73F40BFA308473077DD96C042A5AEBECA
+                        BE1C3A951D3B8C539F17144349518D8AFD54F7F09358D8DF7233951B27268DC2
+                        AA131B5EF16D7F0E9AF370C640B36CB8C518C96EA7B492E2E1461843184F4DB4
+                        D6BD9F2F1D1B68B9D0B23F27C50A616608734F0E0FD56238396DC1676AC53084
+                        FD6ED01BC4DAC98C6785397980F28AC60A14378A62020122E0A424DE349A54F6
+                        A2375250223F18DAA41C4CC2B8CE3DE3DADFB39A48488CFEEA69313D1A519FDE
+Content size:           0x0004ae00
+Title id:               000400000fde7100
+Maker code:             00
+FormatVersion:          2
+Title seed check:       00000000
+Program id:             000400000fde7100
+Logo hash:              0000000000000000000000000000000000000000000000000000000000000000
+Product code:           CTR-H-DSNG
+Exheader size:          0x400
+Exheader hash: (GOOD)   3C211554C55EDBCC041012CD381510CD3718A249911078ED10456907613727A4
+Flags:                  0000000001020007
+ > Crypto Key           None
+ > ContentPlatorm:      CTR
+ > FormType:            Executable (without RomFS)
+ > ContentType:         Application
+ > BlockSize:           0x200
+ > No RomFS mount
+Plain region offset:    0x00000000
+Plain region size:      0x00000000
+Logo offset:            0x00000000
+Logo size:              0x00000000
+ExeFS offset:           0x00000a00
+ExeFS size:             0x0004a400
+ExeFS hash region size: 0x00000200
+RomFS offset:           0x00000000
+RomFS size:             0x00000000
+RomFS hash region size: 0x00000000
+ExeFS hash: (GOOD)      507CC414BAFA592C1FF7837E8EC19B9C656350B11B9704E75DBED1EABC37708F
+RomFS hash:             0000000000000000000000000000000000000000000000000000000000000000
+
+Extended header:
+Signature: (FAIL)       537C6BEF3A1BF88CED7A4B6F154394814C38C7AD249B107DDF2508C1E94BE62D
+                        1445525AB64C4FBF7924DD9EF4724C60C5F5299D8B4E238E786CCD0C5F22125A
+                        9569C5AA704888CAAB1BDC3841853B2A62438461D2034480C20CCA136234E0B6
+                        25765A5AA0C13387F3A93828EFD0264B1D544122B59BFDB3CBD072F5A6447283
+                        1A5F8E69A91A2A188474A00F930DC7B4FA47FD0502A6812319A26134A7F0541A
+                        7AC4B67E1ECC50428A518285C3B4F83804B24BB9ABB1E0AD72D05EEE762979D5
+                        2C8CE652BF45E7E44714F4AFABFA92BB4BB01301AA00C4020A4AA21CED601FDC
+                        08D7F50BC38987EC65717748CEB94575D6D3C6255904AA8A21E43FF2F53F80B0
+NCCH Hdr RSA Modulus:   CAC588C7F12A092B7649C0A835751082C2B5E5B2E9C81888F39889BF9DE6E40B
+                        715DDD3F138271F2ED318699D947FEC57A7593E1F86DC63D9BE11599E1C2E05C
+                        384B35A24D3EE2CEFBB308A3DD0C2631849227C88A8EC883A86CA7A339719EF1
+                        349101DF114A9CF98BF92F46440A7238F38B6D233389BF6634A786E6ADF2DEF9
+                        AB16A140EED8F76CDC0092CB3149FC266424088FC660FF1EE3F0DDFB6D0D0F49
+                        7CAD03EC9F6358FA46DFA2640ECC8557E72C617F59B8627D590EF684969942B0
+                        398380B5522E073F92E39EF547EBA7D7D415F1228232BE2AD08C01CC30A91196
+                        F6E92BEA0EF82D0DB191D51A9451B98539B0AF9F549E99E146E56FE25F4B4E23
+Name:                   DS-NATIV
+Flags:                  03 [compressed] [sd app]
+Remaster version:       0001
+Code text address:      0x00100000
+Code text size:         0x00056274
+Code text max pages:    0x00000057 (0x00057000)
+Code ro address:        0x00157000
+Code ro size:           0x0000D90C
+Code ro max pages:      0x0000000E (0x0000E000)
+Code data address:      0x00165000
+Code data size:         0x00001E50
+Code data max pages:    0x00000002 (0x00002000)
+Code bss size:          0x00017C30
+Code stack size:        0x00040000
+Dependency:             0004013000001502
+Dependency:             0004013000001702
+Dependency:             0004013000001c02
+Dependency:             0004013000001d02
+Dependency:             0004013000003302
+Dependency:             0004013000002202
+Savedata size:          0x0
+Jump id:                000400000fde7100
+Program id:             000400000fde7100 (GOOD)
+Core version:           0x00000002
+System mode:            prod (AppMemory: 64MB) (GOOD)
+System mode (New3DS):   snake dev1 (AppMemory: 178MB) (GOOD)
+CPU Speed (New3DS):     268MHz (GOOD)
+Enable L2 Cache:        NO (GOOD)
+Ideal processor:        0 (GOOD)
+Affinity mask:          1 (GOOD)
+Main thread priority:   48 (GOOD)
+MaxCpu:                 158
+Ext savedata id:        0x0000000000000000
+System savedata id 1:   0x00000000 (GOOD)
+System savedata id 2:   0x00000000 (GOOD)
+OtherUserSaveDataId1:   0x00000
+OtherUserSaveDataId2:   0x00000
+OtherUserSaveDataId3:   0x00000
+Accessible Savedata Ids: None
+Other Variation Saves:  Inaccessible
+FS access: (GOOD)       0x00000000008080
+ > Direct SDMC
+ > Direct SDMC (Write Only)
+Service access: (GOOD)
+ > APT:U
+ > fs:USER
+ > gsp::Gpu
+ > gsp::Lcd
+ > hid:USER
+ > ir:rst
+ > cfg:u
+ > ptm:u
+Reslimit category:      00
+IoMapping:              0x1FF50000-0x1FF57FFF
+IoMapping:              0x1FF70000-0x1FF77FFF
+StaticMapping:          0x1F000000-0x1F5FFFFF:r
+Kernel flags:           
+ > Allow debug:         YES
+ > Force debug:         NO
+ > Allow non-alphanum:  NO
+ > Shared page writing: NO
+ > Privilege priority:  NO
+ > Allow main() args:   NO
+ > Shared device mem:   NO
+ > Memory Type:         APPLICATION
+ > Runnable on sleep:   NO
+ > Special memory:      NO
+ > Access Core 2:       NO
+Handle table size:      0x200
+Kernel release version: 2.44
+Allowed systemcalls:    
+ > 01 ControlMemory
+ > 02 QueryMemory
+ > 03 ExitProcess
+ > 06 GetProcessIdealProcessor
+ > 08 CreateThread
+ > 09 ExitThread
+ > 0A SleepThread
+ > 0B GetThreadPriority
+ > 0C SetThreadPriority
+ > 0F GetThreadIdealProcessor
+ > 11 GetCurrentProcessorNumber
+ > 13 CreateMutex
+ > 14 ReleaseMutex
+ > 15 CreateSemaphore
+ > 16 ReleaseSemaphore
+ > 17 CreateEvent
+ > 18 SignalEvent
+ > 19 ClearEvent
+ > 1A CreateTimer
+ > 1B SetTimer
+ > 1C CancelTimer
+ > 1D ClearTimer
+ > 1E CreateMemoryBlock
+ > 1F MapMemoryBlock
+ > 20 UnmapMemoryBlock
+ > 21 CreateAddressArbiter
+ > 22 ArbitrateAddress
+ > 23 CloseHandle
+ > 24 WaitSynchronization1
+ > 25 WaitSynchronizationN
+ > 27 DuplicateHandle
+ > 28 GetSystemTick
+ > 29 GetHandleInfo
+ > 2A GetSystemInfo
+ > 2B GetProcessInfo
+ > 2C GetThreadInfo
+ > 2D ConnectToPort
+ > 2E SendSyncRequest1
+ > 2F SendSyncRequest2
+ > 30 SendSyncRequest3
+ > 31 SendSyncRequest4
+ > 32 SendSyncRequest
+ > 35 GetProcessId
+ > 36 GetProcessIdOfThread
+ > 37 GetThreadId
+ > 38 GetResourceLimit
+ > 39 GetResourceLimitLimitValues
+ > 3A GetResourceLimitCurrentValues
+ > 3B GetThreadContext
+ > 3C Break
+ > 3D OutputDebugString
+ > 54 FlushProcessDataCache
+ > 70 ControlProcessMemory
+ > 7D QueryProcessMemory
+Allowed interrupts:     none
+Arm9Capability:         
+ > SdApplication
+ > UseDirectSdmc
+Desc Version:           0x2
+
+ExeFS:
+Section name:           .code
+Section offset:         0x00000200
+Section size:           0x00040f78
+Section hash: (GOOD)    8111F6014E71DF95B919EB1F85695C42558D66321D857A80CE38BB6E7C3EB6F0
+Section name:           banner
+Section offset:         0x00041200
+Section size:           0x00003894
+Section hash: (GOOD)    C843CB814539D39E7FBB30FA37A4753D764AD1B119A9506F85443B8ABC0DB1E2
+Section name:           icon
+Section offset:         0x00044c00
+Section size:           0x000036c0
+Section hash: (GOOD)    E8470E67E21950206DB61542016FB7CFB07749B56EF4713E4D4E478C676C59F0
+Section name:           logo
+Section offset:         0x00048400
+Section size:           0x00002000
+Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF
+[ctrtool::CiaProcess ERROR] Signature for Ticket was invalid.
+[ctrtool::CiaProcess ERROR] Signature for TitleMetaData was invalid.
+[ctrtool::ExHeaderProcess ERROR] Signature for AccessDescriptor was invalid.

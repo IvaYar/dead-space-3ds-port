@@ -1,0 +1,86 @@
+3 [   0.044765] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-native-frame-v0.1.0-s14/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config can't be open without mode create.
+
+3 [   0.044831] Service.FS <Error> core/file_sys/savedata_archive.cpp:DeleteFile:117: File not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-native-frame-v0.1.0-s14/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config
+
+3 [   0.048534] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-native-frame-v0.1.0-s14/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010035/00000000/news.db can't be open without mode create.
+
+3 [   0.060026] Service.NWM <Error> core/hle/service/nwm/nwm_uds.cpp:NWM_UDS:1738: Network isn't initalized
+
+3 [   0.063402] Service.HTTP <Error> core/hle/service/http/http_c.cpp:DecryptClCertA:2282: ClCertA file missing, using default
+
+2 [   0.063824] Service.FS <Warning> core/file_sys/ncch_container.cpp:OpenFile:192: Failed to open C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-native-frame-v0.1.0-s14/Azahar/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004000e/0fde7000/content/00000000.app
+
+0 [   0.070613] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00100000, size=00057000
+
+0 [   0.070618] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0B1A9000, upper=0B200000
+
+0 [   0.070648] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00157000, size=0000E000
+
+0 [   0.070649] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0B19B000, upper=0B1A9000
+
+0 [   0.070659] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00165000, size=0001A000
+
+0 [   0.070659] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0B181000, upper=0B19B000
+
+0 [   0.070667] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=0FFC0000, size=00040000
+
+0 [   0.070667] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=0B141000, upper=0B181000
+
+0 [   0.101362] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000003, addr0=0x08000000, addr1=0x00000000, size=0x2800000, permissions=0x00000003
+
+0 [   0.101367] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=08000000, size=02800000
+
+0 [   0.101370] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=08941000, upper=0B141000
+
+0 [   0.102099] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00010003, addr0=0x00000000, addr1=0x00000000, size=0x8400000, permissions=0x00000003
+
+2 [   0.104713] Service.SRV <Warning> core/hle/service/sm/srv.cpp:RegisterClient:64: (STUBBED) called. Caller PID=11
+
+2 [   0.121495] Service.APT <Warning> core/hle/service/apt/apt.cpp:NotifyToWait:362: (STUBBED) app_id=768
+
+3 [   0.121974] Service <Error> core/hle/service/service.cpp:ReportUnimplementedFunction:170: unknown / unimplemented function 'ConfigureNew3DSCPU': port='ptm:sysm' cmd_buf={[0]=0x8180040 (0x0818, 1, 0), [1]=0x0}
+
+2 [   0.122079] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000007, input_size=0X00000004, output_size=0X00000001
+
+2 [   0.122137] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+
+2 [   0.616788] Service.APT <Warning> core/hle/service/apt/apt.cpp:ReplySleepQuery:1003: (STUBBED) called, from_app_id=00000300, reply_value=00000000
+
+3 [   5.588740] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   5.589047] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   5.589201] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   5.604124] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   5.604352] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   5.604733] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+2 [   5.611993] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+
+3 [   5.620929] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   5.621152] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   5.621321] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   6.378854] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   6.379064] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   6.387418] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   6.387625] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   6.398532] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+3 [   6.398735] Kernel.SVC <Error> ./core/hle/kernel/svc_wrapper.h:Call:294: svc=0x02 raw=0xE0E01BF5 level=28 summary=7 module=6 description=1013
+
+2 [   6.419443] Service.GSP <Warning> core/hle/service/gsp/gsp_gpu.cpp:ReleaseRight:999: called
+
+0 [   6.420688] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000001, addr0=0x30000000, addr1=0x00000000, size=0x8400000, permissions=0x00000000
+
+0 [   6.420906] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000001, addr0=0x08000000, addr1=0x00000000, size=0x2800000, permissions=0x00000000
+

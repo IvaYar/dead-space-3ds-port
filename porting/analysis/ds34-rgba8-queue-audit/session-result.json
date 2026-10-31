@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-31",
+  "static_analysis_complete": true,
+  "all_native_archive_files_read": true,
+  "originals_archived_byte_exact": true,
+  "files_received": 7,
+  "queue_metadata_matches_Azahar": true,
+  "root_cause_confirmed": false,
+  "specific_stalled_command_confirmed": false,
+  "new_CIA_created": false,
+  "runtime_tests_run": false,
+  "hardware_tests_run": false,
+  "backend_changed": false,
+  "preservation_passed": true,
+  "preserved_files": 7121,
+  "preservation_manifest": "analysis/ds34-rgba8-queue-audit/preservation.json (local ignored)",
+  "report": "analysis/ds34-rgba8-queue-audit/report.ru.md",
+  "next_step": "Review one bounded passive observation plan; no more v0.1.0 runs and no new artifact without a discriminating purpose",
+  "git_commit_or_push": false
+}

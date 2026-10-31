@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-31",
+  "static_checks_passed": true,
+  "runtime_tests_run": false,
+  "CIA_built": false,
+  "hardware_archive": {
+    "archive": "ds34-rgba8-v0.1.0.zip",
+    "archive_bytes": 2558,
+    "archive_sha256": "0576186e878a28343ca682b01b3168247215c3edc1e8b384f485f7f57be2a53c",
+    "files": {
+      "gpu-test.log": {
+        "archive_entry": "New folder/gpu-test.log",
+        "bytes": 1551,
+        "sha256": "89fdfeb238d9b4073f398d45668126dda39b4e82bdec5e8db18835f1f5d0b030"
+      },
+      "queue-00.json": {
+        "archive_entry": "New folder/queue-00.json",
+        "bytes": 84,
+        "sha256": "4232df5b6fbe10aa81d63207c3045dc6bf58ec7c5ecc0c09a8a875e38e7dde7a"
+      },
+      "queue-01.json": {
+        "archive_entry": "New folder/queue-01.json",
+        "bytes": 86,
+        "sha256": "84935bd8cdc677d74f8f44e750fed4ea3f55549ff37b7a6f33d3cb9c6a8a4871"
+      },
+      "queue-02.json": {
+        "archive_entry": "New folder/queue-02.json",
+        "bytes": 126,
+        "sha256": "fd0b25a6eb00e6a41cb2447c6f35eab91dc834231cbc24e12f87fbd850acd29b"
+      },
+      "queue-03.json": {
+        "archive_entry": "New folder/queue-03.json",
+        "bytes": 128,
+        "sha256": "4a8d565ed92d1a5a096c4653d56707b1b3ef884bae7cdf55866b09d0524acdaf"
+      },
+      "queue-04.json": {
+        "archive_entry": "New folder/queue-04.json",
+        "bytes": 250,
+        "sha256": "150fb7a8f235c8fc39593212aa3cd0c0cd6038087ec1714f94a32c00fd5317b3"
+      },
+      "ready.txt": {
+        "archive_entry": "New folder/ready.txt",
+        "bytes": 18,
+        "sha256": "71e8beaf7342d0d83f337db02aa52dbf0299a8a10a90cca69884edf2c261a553"
+      }
+    },
+    "flattened_single_archive_directory": true
+  },
+  "native_environment_marker": true,
+  "final_phase": [
+    "4253",
+    "0",
+    "27",
+    "27",
+    "SDK FRAME BEGIN"
+  ],
+  "initial_TEXCOPY_credited_completed": true,
+  "queue_04_is_before_run_not_live_after_run": true,
+  "native_post_run_counters_available": false,
+  "all_5_queue_records_match_saved_Azahar_JSON": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "native_PICA_vertex_texture_payloads_compared": false,
+  "SDK_sources_and_libraries_match_pinned_build": true,
+  "linked_binary_inlines_VBlank_wait_before_GX_wait_in_FrameBegin": true,
+  "linked_real_GX_IRQ_handler_reachable": true,
+  "operations": [
+    {
+      "operation": "FILL",
+      "expected_completion": "PSC0 (PSC1 ignored by SDK queue)",
+      "raw_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ]
+    },
+    {
+      "operation": "PICA",
+      "expected_completion": "P3D",
+      "raw_words_hex": [
+        "01000101",
+        "14189c00",
+        "00000490",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000",
+        "00000000"
+      ]
+    },
+    {
+      "operation": "DISPLAY",
+      "expected_completion": "PPF",
+      "raw_words_hex": [
+        "01000103",
+        "1f000000",
+        "14000000",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ]
+    }
+  ],
+  "nonoverlapping_known_memory_spans": [
+    [
+      "1f000000",
+      "1f05dc00"
+    ],
+    [
+      "1f300000",
+      "1f35dc00"
+    ],
+    [
+      "14000000",
+      "14046500"
+    ],
+    [
+      "14189c00",
+      "1418a090"
+    ]
+  ],
+  "inference": "Incomplete GX queue is plausible but not established by before-run counters; nested VBlank wait and logging windows also remain.",
+  "first_GPU_candidate_to_measure": "PICA/P3D completion (hypothesis, not a localized native failure)",
+  "known_limits": [
+    "No native post-Run fields, submission Results or event deltas",
+    "FrameBegin(SYNCDRAW) has another unlabelled FrameSync",
+    "Last PHASE line does not prove its fflush returned or exclude post-Begin dump I/O",
+    "No native stock GX/PICA payload capture"
+  ],
+  "sources_sha256": {
+    "analysis/gpu-clear-audit/upstream/gxqueue.c": "9862fef36f458afefac753a31808f92eac5e59de9562c8145a4a9af0469535d5",
+    "analysis/gpu-clear-audit/upstream/gx.c": "6a112d48c9317dce081cad34d6ffbbedae9731bed0964024b2c9bf16fc1be141",
+    "analysis/gpu-clear-audit/upstream/gspgpu.c": "076019948b34ecdd4abf90ad30d4fab5cbc0f665c0029430225e3e282c0945ef",
+    "analysis/gpu-clear-audit/upstream/gfx.c": "5890e1c1c6e573bd7e08a50fa9ac14f302bea11b14f6fff385177e5217eb6b5b",
+    "toolchain/citro3d-source/source/renderqueue.c": "8face2edf47bd759f6ed7cb5dd339b6d0e959e3424bd6c6ab556144151436b93",
+    "toolchain/citro3d-source/source/framebuffer.c": "6641661f4353f675c93cc8516a18a09d2b75f832aa443c773dc17ac06fae51f6",
+    "toolchain/citro3d-source/source/base.c": "291ecfabef7a948f015f2746cdd34b8f0947352d6e00b40d4384449ef59c413e"
+  }
+}

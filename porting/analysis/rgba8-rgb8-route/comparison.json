@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-30",
+  "passed": true,
+  "analysis_only_no_hardware": true,
+  "working_to_failed_source_edits_exactly_verified": [
+    [
+      "#define CLEAR_COLOR 0x68B0D8FF",
+      "#define CLEAR_COLOR 0x0068B0D8"
+    ],
+    [
+      "GX_TRANSFER_IN_FORMAT(GX_TRANSFER_FMT_RGBA8) | GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB8)",
+      "GX_TRANSFER_IN_FORMAT(GX_TRANSFER_FMT_RGB8) | GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB565)"
+    ],
+    [
+      "\tgfxInitDefault();",
+      "\tgfxInitDefault();\n\tgfxSetScreenFormat(GFX_TOP, GSP_RGB565_OES);"
+    ],
+    [
+      "C3D_RenderTargetCreate(240, 400, GPU_RB_RGBA8, GPU_RB_DEPTH24_STENCIL8)",
+      "C3D_RenderTargetCreate(240, 400, GPU_RB_RGB8, GPU_RB_DEPTH24_STENCIL8)"
+    ]
+  ],
+  "failed_to_new_source_edits_exactly_verified": [
+    [
+      "GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB565)",
+      "GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB8)"
+    ],
+    [
+      "\tgfxSetScreenFormat(GFX_TOP, GSP_RGB565_OES);\n",
+      ""
+    ]
+  ],
+  "no_other_main_source_differences": true,
+  "compiler_flags_identical": true,
+  "shader_binary_object_header_identical": true,
+  "RSF_AccessControl_and_SystemControl_identical": true,
+  "binary_capabilities_system_flags_stack_identical_except_identity": true,
+  "old_CIA_hashes_match_hardware_reports_expected_files": true,
+  "device_binary_hash_measured": false,
+  "inputs_sha256": {
+    "analysis/official-simple-tri/upstream/graphics/gpu/simple_tri/source/main.c": "41ef6b41e4c237a209c453873966a0f1adcc3b837dbf43555fddea06743d65b6",
+    "3ds/build-simple-tri-rgb565/main.c": "360a482ef13d12a7e6968fc5eb23f745f8259cbb62791237ab2c544ae469e268",
+    "3ds/build-simple-tri-rgb8/main.c": "b45f0dc49983c0edb1e5ddb6f1fadedb009788bb33168059649c35bb903d937e",
+    "3ds/build-official-simple-tri/build-manifest.json": "c06bfc7bbff01efb4db339c178e69e155b93309f2de7f8cd94e400ff2aab47ca",
+    "3ds/build-simple-tri-rgb565/build-manifest.json": "a31fe16595e8454ed3cb455e9890d3b63942d68079a6863802f8d20d8accc7f1",
+    "3ds/build-simple-tri-rgb8/build-manifest.json": "e058d216ddd3a58d559e31db81c6cb20a3b8eaeb3b642da87503601f0be5ce5e",
+    "analysis/hardware/official-simple-tri-profile-cia-v0.1.0-user-result.json": "ecbf06feb80f3878996b8ea778be5e3a68b36c3766b321a52edf60540b3543b5",
+    "analysis/hardware/simple-tri-rgb565-v0.1.0-user-result.json": "0d3d3fd2a96986ec2460fb33d2fcae8e72adbe64a3c4ebb8efca0bd4d13f3af2",
+    "3ds/source/ds34_gpu_3ds.c": "f0f65b19f00b9c2cbd2ddde47d7569c9f477111574918dc61efaa468f7221260",
+    "tests/engine_azahar.c": "f4b921275880775eb28c51bd4047daf258f1a46672c5590d1049d40999eb4faa",
+    "3ds/source/ds13_gles.c": "81fe63fab34679fe2b3e2cba1aaecc3fa2f4646a14be0895629f10d375ed00c8",
+    "tools/export_native_frame.py": "a2b348077dba6b202f8ef7cdff318031e6ee464895daf346fbbda956ca30f662"
+  },
+  "builds": [
+    {
+      "directory": "3ds/build-official-simple-tri",
+      "CIA_sha256": "137f0a876cc199f39f4a65bbd5d3d208df6ce4f6b1d02e35d154761dd00e4a53",
+      "title_id": "000400000FDE6A00",
+      "hardware_status": "visual+START PASS"
+    },
+    {
+      "directory": "3ds/build-simple-tri-rgb565",
+      "CIA_sha256": "9780e38e25b586f8777e851b8f5494df9e7e2c9c2687212fd4f929bddaf042cc",
+      "title_id": "000400000FDE6B00",
+      "hardware_status": "thin strip+hang/POWER FAIL"
+    },
+    {
+      "directory": "3ds/build-simple-tri-rgb8",
+      "CIA_sha256": "3126513a87c663c278133ca8395520fc05a27693ffd32528db5da1e708d3d21f",
+      "title_id": "000400000FDE6C00",
+      "hardware_status": "NOT TESTED"
+    }
+  ],
+  "interpretation": "Format/framebuffer preparation combination differs; root cause and individual stalled command unconfirmed. RGB8->RGB8 is optional for RGBA8->RGB8 integration."
+}

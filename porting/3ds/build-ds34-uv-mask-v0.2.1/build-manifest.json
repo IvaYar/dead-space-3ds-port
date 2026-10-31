@@ -1,0 +1,350 @@
+{
+  "version": "0.2.1",
+  "title_id": "000400000FDE6F00",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "game_called": false,
+  "source_edits": [
+    [
+      "mul uv0_out.xy,",
+      "mul uv0_out,"
+    ],
+    [
+      "mul uv1_out.xy,",
+      "mul uv1_out,"
+    ]
+  ],
+  "baseline_shader": {
+    "code_words": [
+      134348800,
+      134352897,
+      134356994,
+      134361091,
+      1277169668,
+      541212933,
+      543310214,
+      2281701376
+    ],
+    "descriptors": [
+      443240,
+      443236,
+      443234,
+      443233,
+      879,
+      344748,
+      350188
+    ],
+    "instructions": [
+      {
+        "pc": 0,
+        "opcode": 2,
+        "dest": 0,
+        "mask": 8,
+        "descriptor": 0,
+        "word": "08020000"
+      },
+      {
+        "pc": 1,
+        "opcode": 2,
+        "dest": 0,
+        "mask": 4,
+        "descriptor": 1,
+        "word": "08021001"
+      },
+      {
+        "pc": 2,
+        "opcode": 2,
+        "dest": 0,
+        "mask": 2,
+        "descriptor": 2,
+        "word": "08022002"
+      },
+      {
+        "pc": 3,
+        "opcode": 2,
+        "dest": 0,
+        "mask": 1,
+        "descriptor": 3,
+        "word": "08023003"
+      },
+      {
+        "pc": 4,
+        "opcode": 19,
+        "dest": 1,
+        "mask": 15,
+        "descriptor": 4,
+        "word": "4c201004"
+      },
+      {
+        "pc": 5,
+        "opcode": 8,
+        "dest": 2,
+        "mask": 12,
+        "descriptor": 5,
+        "word": "20424105"
+      },
+      {
+        "pc": 6,
+        "opcode": 8,
+        "dest": 3,
+        "mask": 12,
+        "descriptor": 6,
+        "word": "20624186"
+      }
+    ],
+    "outputs": [
+      {
+        "register": 0,
+        "declared_mask": 15,
+        "written_mask": 15,
+        "writes_xyzw": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "missing": ""
+      },
+      {
+        "register": 1,
+        "declared_mask": 15,
+        "written_mask": 15,
+        "writes_xyzw": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "missing": ""
+      },
+      {
+        "register": 2,
+        "declared_mask": 15,
+        "written_mask": 12,
+        "writes_xyzw": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "missing": "zw"
+      },
+      {
+        "register": 3,
+        "declared_mask": 15,
+        "written_mask": 12,
+        "writes_xyzw": [
+          1,
+          1,
+          0,
+          0
+        ],
+        "missing": "zw"
+      }
+    ],
+    "all_declared_components_once": false
+  },
+  "candidate_shader": {
+    "code_words": [
+      134348800,
+      134352897,
+      134356994,
+      134361091,
+      1277169668,
+      541212933,
+      543310214,
+      2281701376
+    ],
+    "descriptors": [
+      443240,
+      443236,
+      443234,
+      443233,
+      879,
+      344751,
+      350191
+    ],
+    "instructions": [
+      {
+        "pc": 0,
+        "opcode": 2,
+        "dest": 0,
+        "mask": 8,
+        "descriptor": 0,
+        "word": "08020000"
+      },
+      {
+        "pc": 1,
+        "opcode": 2,
+        "dest": 0,
+        "mask": 4,
+        "descriptor": 1,
+        "word": "08021001"
+      },
+      {
+        "pc": 2,
+        "opcode": 2,
+        "dest": 0,
+        "mask": 2,
+        "descriptor": 2,
+        "word": "08022002"
+      },
+      {
+        "pc": 3,
+        "opcode": 2,
+        "dest": 0,
+        "mask": 1,
+        "descriptor": 3,
+        "word": "08023003"
+      },
+      {
+        "pc": 4,
+        "opcode": 19,
+        "dest": 1,
+        "mask": 15,
+        "descriptor": 4,
+        "word": "4c201004"
+      },
+      {
+        "pc": 5,
+        "opcode": 8,
+        "dest": 2,
+        "mask": 15,
+        "descriptor": 5,
+        "word": "20424105"
+      },
+      {
+        "pc": 6,
+        "opcode": 8,
+        "dest": 3,
+        "mask": 15,
+        "descriptor": 6,
+        "word": "20624186"
+      }
+    ],
+    "outputs": [
+      {
+        "register": 0,
+        "declared_mask": 15,
+        "written_mask": 15,
+        "writes_xyzw": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "missing": ""
+      },
+      {
+        "register": 1,
+        "declared_mask": 15,
+        "written_mask": 15,
+        "writes_xyzw": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "missing": ""
+      },
+      {
+        "register": 2,
+        "declared_mask": 15,
+        "written_mask": 15,
+        "writes_xyzw": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "missing": ""
+      },
+      {
+        "register": 3,
+        "declared_mask": 15,
+        "written_mask": 15,
+        "writes_xyzw": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "missing": ""
+      }
+    ],
+    "all_declared_components_once": true
+  },
+  "SHBIN_changed_byte_offsets": [
+    124,
+    132
+  ],
+  "ELF_changed_byte_offsets": [
+    220228,
+    220236
+  ],
+  "embedded_SHBIN_ELF_offset": 220104,
+  "embedded_SHBIN_virtual_address": 1264584,
+  "CPU_code_and_resource_addresses_identical": true,
+  "old_builds_regenerated": false,
+  "shader_instruction_words_and_DVLE_identical": true,
+  "reused_observer": "GX Watch 0.2.0, unchanged ELF; same version strings and SD root; fresh run-NNNN",
+  "commands": [
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\tools\\bin\\picasso.exe",
+      "-o",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\baseline.shbin",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\baseline.v.pica"
+    ],
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\tools\\bin\\picasso.exe",
+      "-o",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\ds34.shbin",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\ds34_gpu.v.pica"
+    ],
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\tools\\bin\\smdhtool.exe",
+      "--create",
+      "DS34 UV Mask 0.2.1",
+      "One factor: full UV output writes",
+      "Homebrew port research",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\libctru\\default_icon.png",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\ds34-uv-mask.smdh"
+    ],
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\extras\\makerom\\makerom.exe",
+      "-f",
+      "cia",
+      "-o",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\ds34-uv-mask.cia",
+      "-rsf",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\ds34-uv-mask.rsf",
+      "-target",
+      "t",
+      "-exefslogo",
+      "-elf",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\ds34-uv-mask.elf",
+      "-icon",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-ds34-uv-mask-v0.2.1\\ds34-uv-mask.smdh",
+      "-banner",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-official-simple-tri\\simple_tri.bnr",
+      "-ver",
+      "1"
+    ]
+  ],
+  "inputs_sha256": {
+    "tools/build_ds34_uv_mask.py": "005ba5e7ed92890d7f611d7140ab4e9c3650d9c8d1cba648ce157513d51fd78f",
+    "tools/audit_pica_outputs.py": "39eb7f389b24ae83f5e7e74b32001299127ecee2833dbca31d30d8aca130816e",
+    "3ds/source/ds34_gpu.v.pica": "274ffd441730c29de7b885a3b1182582456285bdcab2025024adbb19957cede7",
+    "3ds/build-ds34-gx-watch-v0.2.0/ds34.shbin": "c13d80d90646a66cf4cc98bce98bdca44ba09d559aeed0ad8ea3a06481ccfc21",
+    "3ds/build-ds34-gx-watch-v0.2.0/ds34-gx-watch.elf": "ec6a0fbfad5a7f3d63e008a38306e9b825392a709e867e622e998fa333caba1b",
+    "3ds/build-ds34-gx-watch-v0.2.0/build-manifest.json": "ed1b8af1b1f525a8f9454179161dbef582cb0f3e2430d6128fa9c30dfb61683b",
+    "toolchain/devkitpro/tools/bin/picasso.exe": "09c08d907f51531c642dd7ec747f2b323327d0dcc7c4823489525b2e750dd9ad",
+    "toolchain/extras/makerom/makerom.exe": "4cf0431e7c0a4fa82c85863e9f9411b120d9d7b208cb2b9a074a28ae02d3a787"
+  },
+  "outputs_sha256": {
+    "ds34-uv-mask.elf": "90750893d9221d9f412e6fd5353df821afd27466310e3e7dbacd838ce3237c59",
+    "ds34-uv-mask.cia": "5e853550bede4aa6a911959c122dcc6aa595c673071d6f52aacf37e1086284ee",
+    "cia-payload.cxi": "b279ea1824867a14463eeff3af7281be8634994884a8fab436da030227b5388d",
+    "ds34.shbin": "d006d684cbd5d40949387d80243830d83a4c7d2d10768fff0cbcb4262a9e4ee8"
+  }
+}

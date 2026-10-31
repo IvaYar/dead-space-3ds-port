@@ -1,0 +1,1 @@
+{"version":"0.2.0","environment":"emulator","fault":true,"observation_saved":true,"pica_saved":true,"render_verified":false,"present_return":-1,"initial_error_before_End":0,"GL_error_after_diagnostic_wait":1280,"gpu_draws":1,"gpu_triangles":2,"cpu_fragments":0,"cpu_samples":0,"layout":1,"bytes":288000,"game_called":false,"GPU_fixed_claimed":false}

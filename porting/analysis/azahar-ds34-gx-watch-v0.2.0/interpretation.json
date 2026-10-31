@@ -1,0 +1,22 @@
+{
+  "physical_GPU_stall_proven": false,
+  "note": "Event callbacks measure delivery after SDK handling, not physical engine status.",
+  "decision_before_NONBLOCK": true,
+  "event_deltas": {
+    "PSC0": 1,
+    "P3D": 1,
+    "PPF": 1,
+    "PSC1": 0,
+    "DMA": 0
+  },
+  "queue": {
+    "total": 3,
+    "submitted": 3,
+    "completed": 3,
+    "capacity": 32
+  },
+  "SDK_queue_idle": true,
+  "vblank_phases": 2,
+  "missing_notifications": [],
+  "classification": "queue_retired"
+}

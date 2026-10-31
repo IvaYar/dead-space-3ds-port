@@ -1,0 +1,37 @@
+--- baseline/ds34_gpu_3ds.c
++++ isolated/ds34_gpu_rgba8_rgb8.c
+@@ -149,7 +149,7 @@
+     entry->object=o;entry->used=1;entry->bytes=bytes;entry->stamp=++g.stamp;entry->wrap_s=ws;entry->wrap_t=wt;g.bytes+=bytes;++g.uploads;return entry;
+ }
+ int ds34_attach(DS13Context *c){
+-    if(g.ctx || !c || c->width!=400 || c->height!=240 || c->layout!=DS13_RGB565_CTR)return -1;
++    if(g.ctx || !c || c->width!=400 || c->height!=240 || c->layout!=DS13_BGR8_CTR || gfxGetScreenFormat(GFX_TOP)!=GSP_BGR8_OES)return -1;
+     if(!C3D_Init(C3D_DEFAULT_CMDBUF_SIZE))return -1;
+     g.target=C3D_RenderTargetCreate(240,400,TARGET_COLOR,GPU_RB_DEPTH24_STENCIL8);
+     g.stream=linearAlloc(STREAM*sizeof(DS34Vertex));
+@@ -180,7 +180,7 @@
+     if(g.projection_loc<0 || g.scale_loc<0)return -1;
+     Mtx_OrthoTilt(&g.projection,0,400,0,240,0,1,true);
+     C3D_AttrInfo *a=C3D_GetAttrInfo();AttrInfo_Init(a);for(unsigned i=0;i<4;++i)AttrInfo_AddLoader(a,i,GPU_FLOAT,4);
+-    u32 flags=GX_TRANSFER_FLIP_VERT(0)|GX_TRANSFER_OUT_TILED(0)|GX_TRANSFER_RAW_COPY(0)|GX_TRANSFER_IN_FORMAT(TRANSFER_COLOR)|GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB565)|GX_TRANSFER_SCALING(GX_TRANSFER_SCALE_NO);
++    u32 flags=GX_TRANSFER_FLIP_VERT(0)|GX_TRANSFER_OUT_TILED(0)|GX_TRANSFER_RAW_COPY(0)|GX_TRANSFER_IN_FORMAT(TRANSFER_COLOR)|GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB8)|GX_TRANSFER_SCALING(GX_TRANSFER_SCALE_NO);
+     C3D_RenderTargetSetOutput(g.target,GFX_TOP,GFX_LEFT,flags);C3D_CullFace(GPU_CULL_NONE);g.ctx=c;return 0;
+ }
+ int ds34_begin_draw(DS13Context *c){
+@@ -250,7 +250,7 @@
+     C3D_ClearBits bits=0;if(mask&0x4000)bits|=C3D_CLEAR_COLOR;if(mask&(0x100|0x400))bits|=C3D_CLEAR_DEPTH;
+     uint32_t color=byte(c->clear_color[0])<<16|byte(c->clear_color[1])<<8|byte(c->clear_color[2]);
+ #ifdef DS34_CAPTURE_RGBA
+-    color=color<<8|255; /* RGB565 destination has implicit alpha one. */
++    color=color<<8|255; /* RGB8 LCD has implicit alpha one. */
+ #endif
+     /* MemoryFill is queued immediately; submit earlier PICA draws first. */
+     if(bits){MARK("CLEAR SPLIT BEGIN");C3D_FrameSplit(0);MARK("CLEAR SPLIT OK");
+@@ -268,6 +268,6 @@
+ #ifdef DS34_SEQUENCE_AUDIT
+     ++audit.presents;++audit.vertex_checks;audit.vertex_mismatches+=hash!=audit_hash(g.stream,bytes);
+ #endif
+-    c->pixels=pixels;c->capacity=(uint32_t)w*h*2;return 0;
++    c->pixels=pixels;c->capacity=(uint32_t)w*h*3;return 0;
+ }
+ void ds34_stats(uint32_t out[4]){out[0]=g.draws;out[1]=g.triangles;out[2]=g.uploads;out[3]=g.bytes;}

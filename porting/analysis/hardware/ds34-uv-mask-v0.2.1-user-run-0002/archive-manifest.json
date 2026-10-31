@@ -1,0 +1,35 @@
+{
+  "source": "porting/run-0002",
+  "all_received_files_read": true,
+  "files": {
+    "exit.txt": {
+      "bytes": 31,
+      "sha256": "1b86b4ca679bb26af24026e46d0d6fbdf0bd3c1b8c0228a17033622bed6a83ee"
+    },
+    "first-frame.pica": {
+      "bytes": 1168,
+      "sha256": "05b59185d7fb0aded20862db216bfa99ce5603caf5cd3454fce3bd97165c3cb4"
+    },
+    "frame.raw": {
+      "bytes": 288000,
+      "sha256": "9964d7d74243520bf9451222df91869be3c17a255fccf9c0ab5e2ef6d70d94d6"
+    },
+    "gpu-test.log": {
+      "bytes": 1058,
+      "sha256": "dac4a6050b8ac37531f9052e4f10e7d094b770252be24ec2fbafc6f6b1d68a85"
+    },
+    "observation.json": {
+      "bytes": 8796,
+      "sha256": "a8750a2a1db18c472c78d2a023e7dc183396c260cbb1a17a327843961bec5025"
+    },
+    "ready.txt": {
+      "bytes": 40,
+      "sha256": "d246f19290b3f514681d923e8ae3ca99a6faabab27fdafc5b74de8a445983a5b"
+    },
+    "result.json": {
+      "bytes": 344,
+      "sha256": "012f31e8b36b364c3094d4e54a14cca4d049f7d756b5963304bd2f175f268871"
+    }
+  },
+  "photo": "User attachment in conversation; not available as a local file"
+}

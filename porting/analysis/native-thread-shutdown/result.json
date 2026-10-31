@@ -1,0 +1,117 @@
+{
+  "passed": true,
+  "safe_exit": true,
+  "branch": "fix/native-donor-shutdown",
+  "HEAD": "d30fcc5",
+  "CXI_sha256": "50feded2db3aad2c5acad7c2d046683d9390224104851c4b1c29d65c98a19d8e",
+  "CIA_created": false,
+  "hardware_tested": false,
+  "push_performed": false,
+  "forced_terminations_in_solution": 0,
+  "frame_baseline_exact_all_cycles": true,
+  "same_core_same_SD_cycles": 3,
+  "gate_open_for_CIA_preparation": true,
+  "preservation": {
+    "inventory": 218,
+    "unchanged": 215,
+    "authorized_native_files_changed": [
+      "tests/engine_native_frame.c",
+      "tests/smoke_native_frame.py",
+      "tools/build_native_frame.py"
+    ]
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "callback": 351,
+      "different_pixels": 0,
+      "safe_exit": true,
+      "both_heaps_released": true,
+      "kernel_joins": 6,
+      "worker_handles_remaining": 0,
+      "files_balanced": true,
+      "io_opens": 94,
+      "io_closes": 94,
+      "sleep_EINTR_returns": 2
+    },
+    {
+      "cycle": 2,
+      "callback": 352,
+      "different_pixels": 0,
+      "safe_exit": true,
+      "both_heaps_released": true,
+      "kernel_joins": 6,
+      "worker_handles_remaining": 0,
+      "files_balanced": true,
+      "io_opens": 73,
+      "io_closes": 73,
+      "sleep_EINTR_returns": 2
+    },
+    {
+      "cycle": 3,
+      "callback": 351,
+      "different_pixels": 0,
+      "safe_exit": true,
+      "both_heaps_released": true,
+      "kernel_joins": 6,
+      "worker_handles_remaining": 0,
+      "files_balanced": true,
+      "io_opens": 73,
+      "io_closes": 73,
+      "sleep_EINTR_returns": 2
+    }
+  ],
+  "retention": "Donor image, arenas, global objects and their registry records remain allocated until verified process heap teardown. This is a one-frame process, not in-process unload/restart.",
+  "evidence": "analysis/azahar-native-frame-v0.1.0-s16/result.json",
+  "threads": [
+    {
+      "token": "0x201",
+      "entry": "0x360d9c",
+      "role": "periodic callback dispatcher, 50ms period; heap label rejected",
+      "stop": "original run/thread word at image+0x46cc24=0, interrupt sleep, bounded kernel join",
+      "kernel_exit_confirmed": true
+    },
+    {
+      "token": "0x302",
+      "entry": "0x24c7f8",
+      "callback": "0x355340",
+      "role": "job scheduler worker 1",
+      "stop": "original non-destructive request at 0x35532c, bounded kernel join",
+      "kernel_exit_confirmed": true
+    },
+    {
+      "token": "0x403",
+      "entry": "0x24c7f8",
+      "callback": "0x355340",
+      "role": "job scheduler worker 2",
+      "stop": "original non-destructive request at 0x35532c, bounded kernel join",
+      "kernel_exit_confirmed": true
+    },
+    {
+      "token": "0x504",
+      "entry": "0x24c914",
+      "callback": "0x29bf3c -> 0x29bcec",
+      "role": "audio mixer worker",
+      "stop": "original running byte at image+0x44d4bd=0, original EA semaphore post(2), bounded kernel join",
+      "kernel_exit_confirmed": true
+    },
+    {
+      "token": "0x605",
+      "entry": "0x24c914",
+      "callback": "0x271a10",
+      "role": "PCM output consumer worker",
+      "blocking_sleep_seconds": 4294967,
+      "blocking_sleep_nanoseconds": 295000000,
+      "stop": "same audio stop, cooperative EINTR from sleep, original loop returns, bounded kernel join",
+      "kernel_exit_confirmed": true
+    },
+    {
+      "token": "0x706",
+      "entry": "0x24c914",
+      "callback": "0x320624 -> virtual 0xb60bc",
+      "role": "finite original startup resource loader",
+      "stop": "natural completion, bounded kernel join up to 30000ms before any resource destruction",
+      "kernel_exit_confirmed": true
+    }
+  ]
+}

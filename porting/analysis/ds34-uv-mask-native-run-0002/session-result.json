@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-31",
+  "hardware_result_received": true,
+  "user_executed_runs_received": 1,
+  "agent_hardware_runs": 0,
+  "native_draw_present_pixels_and_HOME_PASS": true,
+  "source_shader_two_line_fix_integrated": true,
+  "integration_verification": "Picasso output exactly matches hardware-successful candidate SHBIN",
+  "new_runtime_runs": 0,
+  "new_native_game_CIA_created": false,
+  "native_game_bootstrap_preparation": "native-game-frame-next.ru.md; implementation pending",
+  "full_552_run": false,
+  "push": false,
+  "commit": false,
+  "current_branch": "test/ds34-full-output-mask",
+  "reports": [
+    "report.ru.md",
+    "result.json",
+    "integration.json"
+  ],
+  "source_shader_sha256": "85a8a4c18886b83f2262a3b5720674b5ebc36339f115f3e463a36305ea4e31a7"
+}

@@ -1,0 +1,24 @@
+{
+  "ready_for_hardware_approval": true,
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "startup_only": true,
+  "memory_mode": "New3DS Prod124",
+  "actual_AccessDesc_modes": [
+    1,
+    1
+  ],
+  "kernel_and_SVC_unchanged": true,
+  "same_ELF_verified": true,
+  "CIA_sha256": "a9a07b6ba105ca95fa139c2fb5ea69a155b5a7e8b7b08720e73b5dd8a03f5911",
+  "CIA_bytes": 146880,
+  "title_id": "000400000FDE7200",
+  "Azahar_CIA_payload_cycles_passed": 3,
+  "actual_limit_MiB_in_Azahar": 124,
+  "START_cleanup_before_host_unload": true,
+  "baseline_protected_files": 239,
+  "baseline_changes": [],
+  "Luma_firmware_or_device_config_changed": false,
+  "game_budget_124_supported_by_existing_CIA": false,
+  "game_memory_probe_CIA_created": false
+}

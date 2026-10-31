@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-30",
+  "temporary_workaround_feasible": true,
+  "workaround": "RGBA8 target -> RGB8 LCD, flags0x1000",
+  "workaround_integrated_in_DS34": false,
+  "DS34_hardware_workaround_verified": false,
+  "RGB8_to_RGB8_required_before_integration": false,
+  "RGB8_to_RGB8_prepared": true,
+  "RGB8_to_RGB8_hardware_tested": false,
+  "new_emulator_runtime_cycles": 1,
+  "new_emulator_test": "analysis/azahar-simple-tri-rgb8/result.json",
+  "comparison_passed": true,
+  "preservation_passed": true,
+  "preserved_files": 6978,
+  "preservation_manifest": "analysis/rgba8-rgb8-route/preservation.json (local, ignored private file inventory)",
+  "plan": "analysis/rgba8-rgb8-route/plan.ru.md",
+  "package": {
+    "archive": "dist/simple-tri-rgb8-v0.1.0.zip",
+    "archive_bytes": 69218,
+    "archive_sha256": "14525a8b897ba13815a5b33d4ed378cc145cf2302ab35f5f265b56e26b4e28f8",
+    "CIA_sha256": "3126513a87c663c278133ca8395520fc05a27693ffd32528db5da1e708d3d21f",
+    "title_id": "000400000FDE6C00"
+  },
+  "next_minimal_step": "Implement opt-in DS34 RGBA8/RGB8 with matching LCD, BGR8 context and 3-byte present/capture; verify a short new-path draw before native integration.",
+  "independent_game_blocker": "engine_azahar.c is emulator-only; native-safe entry point/import/thread lifecycle still needed",
+  "unchanged": [
+    "CPU/GPU baseline",
+    "SDK",
+    "DS34 runtime source",
+    "original resources",
+    "all previous diagnostics",
+    "controls",
+    "audio",
+    "game logic"
+  ],
+  "not_run": [
+    "hardware tests",
+    "552 ARM tests",
+    "old graphics runtime experiments",
+    "game runtime",
+    "OpenGL/sampling",
+    "git commit",
+    "git push"
+  ]
+}

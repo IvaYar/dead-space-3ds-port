@@ -1,0 +1,132 @@
+{
+  "title_id": "000400000FDE6C00",
+  "version": "0.1.0",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "source_edits": [
+    [
+      "GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB565)",
+      "GX_TRANSFER_OUT_FORMAT(GX_TRANSFER_FMT_RGB8)"
+    ],
+    [
+      "\tgfxSetScreenFormat(GFX_TOP, GSP_RGB565_OES);\n",
+      ""
+    ]
+  ],
+  "hypothesis": "RGB8 source/fill works when output uses default RGB8 LCD instead of RGB565 plus TOP switch",
+  "changed_logical_parameter": "output format; two consistent source sites, not a one-line edit",
+  "render_target": "240x400 RGB8 / D24S8",
+  "TOP_format": "RGB8",
+  "transfer_flags": 4352,
+  "color_bytes": 288000,
+  "depth_bytes": 384000,
+  "fill_controls": [
+    257,
+    513
+  ],
+  "unchanged_clear_color": "0x0068B0D8",
+  "unchanged_shader_object": true,
+  "unchanged_SYNCDRAW_draw_FrameEnd_and_handlers": true,
+  "runtime_instrumentation": false,
+  "CIA_capabilities_unchanged_except_identity": true,
+  "compiler_flags": [
+    "-g",
+    "-Wall",
+    "-O2",
+    "-mword-relocations",
+    "-ffunction-sections",
+    "-march=armv6k",
+    "-mtune=mpcore",
+    "-mfloat-abi=hard",
+    "-mtp=soft",
+    "-D__3DS__"
+  ],
+  "commands": [
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\devkitARM\\bin\\arm-none-eabi-gcc.exe",
+      "-g",
+      "-Wall",
+      "-O2",
+      "-mword-relocations",
+      "-ffunction-sections",
+      "-march=armv6k",
+      "-mtune=mpcore",
+      "-mfloat-abi=hard",
+      "-mtp=soft",
+      "-D__3DS__",
+      "-IC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\citro3d\\include",
+      "-IC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\libctru\\include",
+      "-IC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-simple-tri-rgb8",
+      "-c",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-simple-tri-rgb8\\main.c",
+      "-o",
+      "main.o"
+    ],
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\devkitARM\\bin\\arm-none-eabi-gcc.exe",
+      "-specs=3dsx.specs",
+      "-g",
+      "-march=armv6k",
+      "-mtune=mpcore",
+      "-mfloat-abi=hard",
+      "-mtp=soft",
+      "-Wl,-Map,triangle.map",
+      "vshader.shbin.o",
+      "main.o",
+      "-LC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\citro3d\\lib",
+      "-LC:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\libctru\\lib",
+      "-lcitro3d",
+      "-lctru",
+      "-lm",
+      "-o",
+      "triangle.elf"
+    ],
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\tools\\bin\\smdhtool.exe",
+      "--create",
+      "tri RGB8 v0.1.0",
+      "RGB8 source / RGB8 output",
+      "Homebrew port research",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\devkitpro\\libctru\\default_icon.png",
+      "triangle.smdh"
+    ],
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\extras\\makerom\\makerom.exe",
+      "-f",
+      "cia",
+      "-o",
+      "simple-tri-rgb8.cia",
+      "-rsf",
+      "triangle.rsf",
+      "-target",
+      "t",
+      "-exefslogo",
+      "-elf",
+      "triangle.elf",
+      "-icon",
+      "triangle.smdh",
+      "-banner",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-official-simple-tri\\simple_tri.bnr",
+      "-ver",
+      "1"
+    ]
+  ],
+  "inputs_sha256": {
+    "3ds/build-simple-tri-rgb8/main.c": "b45f0dc49983c0edb1e5ddb6f1fadedb009788bb33168059649c35bb903d937e",
+    "3ds/build-simple-tri-rgb565/main.c": "360a482ef13d12a7e6968fc5eb23f745f8259cbb62791237ab2c544ae469e268",
+    "3ds/build-simple-tri-rgb565/build-manifest.json": "a31fe16595e8454ed3cb455e9890d3b63942d68079a6863802f8d20d8accc7f1",
+    "3ds/build-simple-tri-rgb8/triangle.rsf": "aae86da22dc4c12ac3e0cc338c3074fc2023f45e54f70addf19efd7cdcff2be7",
+    "3ds/build-official-simple-tri/simple_tri.bnr": "55ee0f04c034467e2ef6717ee218027b8ad1aa4fdb53f3b6ac3efc2a0035f121",
+    "3ds/build-simple-tri-rgb565/vshader.shbin.o": "4fd50554dd41fe696063837d479d307aa0c49db04b4835cf34f699e7bed31d0a",
+    "toolchain/citro3d/lib/libcitro3d.a": "b0e944fdaedda863a6c3d6851e4092a65f09a656d86d6d2eb138542a27319705",
+    "toolchain/devkitpro/libctru/lib/libctru.a": "5e72cd24512b57908545e928cf0a1c1affbb8535f97773d7007be8f10f0e02bc",
+    "toolchain/devkitpro/devkitARM/bin/arm-none-eabi-gcc.exe": "2c6ba4533884071c3149058ac00c89d133af458172aaa7f2f7c785747769d317",
+    "tools/build_simple_tri_rgb8.py": "4473719b7f7f934065f3ba9a13f08d5a70efe4718d2c175020b5b89d0e70192e"
+  },
+  "outputs_sha256": {
+    "triangle.elf": "b29fba05ea56ee01dc1e6b2667808a1160d7153ee30a3d7c783c4a07a791eae8",
+    "simple-tri-rgb8.cia": "3126513a87c663c278133ca8395520fc05a27693ffd32528db5da1e708d3d21f",
+    "cia-payload.cxi": "d40d7bc309ae8a1356192a672243353d64d12da4350996729e8f75b23ae99ae0",
+    "vshader.shbin": "c78296c0f1cb988b1befb9e4214d606374bfc90a62d5bf88ea42c6d6bb5cd0f8"
+  }
+}

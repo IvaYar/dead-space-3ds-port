@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "stage": "host queue count validation",
+  "reason": "Nine frame queues plus one normal attach TEXCOPY queue; additionally runner stopped on empty exit-file creation",
+  "guest_rendering_failed": false,
+  "runtime_rerun_required_for_complete_START_validation": true,
+  "resolved_by": "cycle2 with unchanged CIA"
+}

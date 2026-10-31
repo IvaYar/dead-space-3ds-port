@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "safe_exit": false,
+  "reason": "Rejected NativeOsExit while async loader active; PC=0 guest exception, host harness cancelled after guest failure; no guest cleanup claimed"
+}

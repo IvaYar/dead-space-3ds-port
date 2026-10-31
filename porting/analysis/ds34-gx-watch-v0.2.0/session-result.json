@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-31",
+  "prepared": true,
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "native_cause_fixed": false,
+  "game_backend_changed": false,
+  "normal_and_forced_timeout_Azahar_passed": true,
+  "implementation_cycles": 2,
+  "runtime_runs": 4,
+  "cycle1": "Normal + forced-timeout passed; final review identified a resource-lifetime ambiguity when SDK idle but a public completion callback is missing",
+  "cycle2": "Retain memory until SDK idle plus PSC0/P3D/PPF confirmed; normal + forced-timeout rerun passed; renderer and GPU words unchanged",
+  "previous_implementation_evidence_preserved": true,
+  "host_interpretation_cases": 12,
+  "critical_SD_writes": 0,
+  "PSC0_P3D_PPF_Azahar": [
+    1,
+    1,
+    1
+  ],
+  "live_post_Run_and_submit_Results_saved": true,
+  "PICA_payload_saved_and_validated_bytes": 1168,
+  "PICA_packets_bounds_checked": 82,
+  "pre_NONBLOCK_decision_preserved": true,
+  "bottom_stage_indication": "Outside critical window only; coarse stages including pre-window checkpoint and SD-save stage",
+  "old_run_directories_overwritten": false,
+  "safe_exit": "SDK idle and all three expected completion notifications required after arm; buffers retained otherwise",
+  "preservation_passed": true,
+  "preserved_files": 7128,
+  "preservation_manifest": "analysis/ds34-gx-watch-v0.2.0/preservation.json (local ignored inventory)",
+  "package": {
+    "archive": "dist/ds34-gx-watch-v0.2.0.zip",
+    "archive_bytes": 200688,
+    "archive_sha256": "54ad844c029686be082b5a42507e1254b9842ebfc7d7651e510cb263a91d0738",
+    "CIA_sha256": "907500f9e2882ba5f36996890ac209c347e98aaf4da82112e0ddcbbc2ebbb55f",
+    "title_id": "000400000FDE6E00"
+  },
+  "next_step": "One separately authorized user run of DS34 GX Watch 0.2.0; preserve complete new run folder before choosing the concrete correction",
+  "not_run": [
+    "hardware tests",
+    "full552",
+    "old GPU runtime tests",
+    "original game",
+    "RGB565",
+    "git commit",
+    "git push"
+  ]
+}

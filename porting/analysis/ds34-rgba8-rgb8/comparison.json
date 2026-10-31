@@ -1,0 +1,292 @@
+{
+  "passed": true,
+  "source_of_stock_expectations": "Pinned stock main.c + same pinned SDK; no native stock GX capture available",
+  "native_stock_addresses_measured": false,
+  "new_arguments_captured_in": "Azahar queue-*.json",
+  "stock_and_DS34_color_depth_fill_dimensions_transfer_match": true,
+  "same_SDK_libraries_and_CIA_capabilities_except_identity": true,
+  "Run_Clear_wrappers_memory_only_call_edges_verified": true,
+  "real_SDK_IRQ_handler_linked_and_not_wrapped": true,
+  "baseline_source_unchanged": true,
+  "stock_expected": {
+    "target": "240x400 RGBA8 / D24S8",
+    "clear_word": "68b0d8ff",
+    "color_depth_bytes": [
+      384000,
+      384000
+    ],
+    "fill_controls": [
+      513,
+      513
+    ],
+    "transfer_dimensions": [
+      26214640,
+      26214640
+    ],
+    "transfer_flags": 4096
+  },
+  "measured_new_runs": [
+    {
+      "queue_index": 4,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "14000000",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 1168,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    },
+    {
+      "queue_index": 6,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "1408ca00",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 848,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    },
+    {
+      "queue_index": 8,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "14000000",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 848,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    },
+    {
+      "queue_index": 10,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "1408ca00",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 848,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    },
+    {
+      "queue_index": 12,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "14000000",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 848,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    },
+    {
+      "queue_index": 14,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "1408ca00",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 848,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    },
+    {
+      "queue_index": 16,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "14000000",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 848,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    },
+    {
+      "queue_index": 18,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "1408ca00",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 848,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    },
+    {
+      "queue_index": 20,
+      "FILL_words_hex": [
+        "01000102",
+        "1f000000",
+        "68b0d8ff",
+        "1f05dc00",
+        "1f300000",
+        "00000000",
+        "1f35dc00",
+        "02010201"
+      ],
+      "DISPLAY_words_hex": [
+        "01000103",
+        "1f000000",
+        "14000000",
+        "019000f0",
+        "019000f0",
+        "00001000",
+        "00000000",
+        "00000000"
+      ],
+      "PICA_cpu_address": "14189c00",
+      "PICA_bytes": 848,
+      "color_bytes": 384000,
+      "depth_bytes": 384000,
+      "LCD_bytes": 288000
+    }
+  ],
+  "differences": [
+    "DS34 shader/GLES, 4xfloat4 vertex and scissor; 2 triangles instead of stock 1",
+    "Inactive 256-byte texture copy, stream and CPU-runtime allocations",
+    "RGB-only writes, alpha kept one",
+    "FrameDrawOn before clear/FrameSplit",
+    "Explicit present with extra FrameSync/Begin and CPU readback",
+    "A gate, bottom console, phase logging, Run/Clear observation and SD capture",
+    "Extra compiler diagnostics/section flags; different ELF/code/address layout/identity"
+  ],
+  "hardware_success_not_claimed": true
+}

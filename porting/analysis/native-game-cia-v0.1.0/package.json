@@ -1,0 +1,9 @@
+{
+  "archive": "dist/native-game-v0.1.0.zip",
+  "archive_bytes": 323900,
+  "archive_sha256": "7b9192dbc86d9b64c77c205fe46400b773f8bb7f63bb86a3d6e40c94334701ce",
+  "CIA_sha256": "90fb19919c1b132e30fed0936802375d2ccecfdbb7d9c504d5edbef131d35622",
+  "files": 29,
+  "original_resources_included": false,
+  "hardware_run_authorized": false
+}

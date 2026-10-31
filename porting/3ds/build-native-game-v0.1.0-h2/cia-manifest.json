@@ -1,0 +1,11 @@
+{
+  "title_id": "000400000FDE7100",
+  "CIA_sha256": "90fb19919c1b132e30fed0936802375d2ccecfdbb7d9c504d5edbef131d35622",
+  "payload_sha256": "ca6682dd98a63555de53267c47c9d5a29b80b279f6c31adbc817c1e0d80357e0",
+  "CIA_bytes": 336320,
+  "payload_offset": 14592,
+  "payload_bytes": 306688,
+  "game_resources_included": false,
+  "hardware_tested": false,
+  "CXI_validation": "analysis/azahar-native-game-v0.1.0-h2-cxi"
+}

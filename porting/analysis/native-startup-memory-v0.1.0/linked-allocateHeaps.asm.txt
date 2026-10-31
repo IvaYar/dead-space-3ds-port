@@ -1,0 +1,141 @@
+
+C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\native-startup-memory-v0.1.0\allocateHeaps.o:     file format elf32-littlearm
+
+
+Disassembly of section .text.__system_allocateHeaps:
+
+00000000 <__system_allocateHeaps>:
+   0:	e92d4030 	push	{r4, r5, lr}
+   4:	e3a04000 	mov	r4, #0
+   8:	e24dd02c 	sub	sp, sp, #44	@ 0x2c
+   c:	e59f11b4 	ldr	r1, [pc, #436]	@ 1c8 <__system_allocateHeaps+0x1c8>
+  10:	e28d0010 	add	r0, sp, #16
+  14:	e58d4010 	str	r4, [sp, #16]
+  18:	ebfffffe 	bl	0 <svcGetResourceLimit>
+			18: R_ARM_CALL	svcGetResourceLimit
+  1c:	e1500004 	cmp	r0, r4
+  20:	ba00005d 	blt	19c <__system_allocateHeaps+0x19c>
+  24:	e3a04001 	mov	r4, #1
+  28:	ed9f7b64 	vldr	d7, [pc, #400]	@ 1c0 <__system_allocateHeaps+0x1c0>
+  2c:	e1a03004 	mov	r3, r4
+  30:	e59d1010 	ldr	r1, [sp, #16]
+  34:	e28d2014 	add	r2, sp, #20
+  38:	e28d0018 	add	r0, sp, #24
+  3c:	ed8d7b06 	vstr	d7, [sp, #24]
+  40:	ed8d7b08 	vstr	d7, [sp, #32]
+  44:	e58d4014 	str	r4, [sp, #20]
+  48:	ebfffffe 	bl	0 <svcGetResourceLimitLimitValues>
+			48: R_ARM_CALL	svcGetResourceLimitLimitValues
+  4c:	e1a03004 	mov	r3, r4
+  50:	e59d1010 	ldr	r1, [sp, #16]
+  54:	e28d2014 	add	r2, sp, #20
+  58:	e28d0020 	add	r0, sp, #32
+  5c:	ebfffffe 	bl	0 <svcGetResourceLimitCurrentValues>
+			5c: R_ARM_CALL	svcGetResourceLimitCurrentValues
+  60:	e59d0010 	ldr	r0, [sp, #16]
+  64:	ebfffffe 	bl	0 <svcCloseHandle>
+			64: R_ARM_CALL	svcCloseHandle
+  68:	e59f415c 	ldr	r4, [pc, #348]	@ 1cc <__system_allocateHeaps+0x1cc>
+  6c:	e59f515c 	ldr	r5, [pc, #348]	@ 1d0 <__system_allocateHeaps+0x1d0>
+  70:	e59d2018 	ldr	r2, [sp, #24]
+  74:	e59dc020 	ldr	ip, [sp, #32]
+  78:	e5943000 	ldr	r3, [r4]
+  7c:	e5951000 	ldr	r1, [r5]
+  80:	e042200c 	sub	r2, r2, ip
+  84:	e3c22eff 	bic	r2, r2, #4080	@ 0xff0
+  88:	e0830001 	add	r0, r3, r1
+  8c:	e3c2200f 	bic	r2, r2, #15
+  90:	e1500002 	cmp	r0, r2
+  94:	8a000039 	bhi	180 <__system_allocateHeaps+0x180>
+  98:	e3530000 	cmp	r3, #0
+  9c:	0a000023 	beq	130 <__system_allocateHeaps+0x130>
+  a0:	e3510000 	cmp	r1, #0
+  a4:	00422003 	subeq	r2, r2, r3
+  a8:	05852000 	streq	r2, [r5]
+  ac:	e3a0c003 	mov	ip, #3
+  b0:	e3a02000 	mov	r2, #0
+  b4:	e3a01302 	mov	r1, #134217728	@ 0x8000000
+  b8:	e59f0114 	ldr	r0, [pc, #276]	@ 1d4 <__system_allocateHeaps+0x1d4>
+  bc:	e58dc004 	str	ip, [sp, #4]
+  c0:	e58dc000 	str	ip, [sp]
+  c4:	ebfffffe 	bl	0 <svcControlMemory>
+			c4: R_ARM_CALL	svcControlMemory
+  c8:	e3500000 	cmp	r0, #0
+  cc:	ba000038 	blt	1b4 <__system_allocateHeaps+0x1b4>
+  d0:	e3a01003 	mov	r1, #3
+  d4:	e3a02000 	mov	r2, #0
+  d8:	e59f00f8 	ldr	r0, [pc, #248]	@ 1d8 <__system_allocateHeaps+0x1d8>
+  dc:	e5953000 	ldr	r3, [r5]
+  e0:	e58d0000 	str	r0, [sp]
+  e4:	e58d1004 	str	r1, [sp, #4]
+  e8:	e59f00ec 	ldr	r0, [pc, #236]	@ 1dc <__system_allocateHeaps+0x1dc>
+  ec:	e1a01002 	mov	r1, r2
+  f0:	ebfffffe 	bl	0 <svcControlMemory>
+			f0: R_ARM_CALL	svcControlMemory
+  f4:	e3500000 	cmp	r0, #0
+  f8:	ba00002a 	blt	1a8 <__system_allocateHeaps+0x1a8>
+  fc:	e3a01305 	mov	r1, #335544320	@ 0x14000000
+ 100:	e3a00201 	mov	r0, #268435456	@ 0x10000000
+ 104:	ebfffffe 	bl	0 <mappableInit>
+			104: R_ARM_CALL	mappableInit
+ 108:	e59f30c4 	ldr	r3, [pc, #196]	@ 1d4 <__system_allocateHeaps+0x1d4>
+ 10c:	e59f10cc 	ldr	r1, [pc, #204]	@ 1e0 <__system_allocateHeaps+0x1e0>
+ 110:	e5933000 	ldr	r3, [r3]
+ 114:	e59f20c8 	ldr	r2, [pc, #200]	@ 1e4 <__system_allocateHeaps+0x1e4>
+ 118:	e5813000 	str	r3, [r1]
+ 11c:	e5941000 	ldr	r1, [r4]
+ 120:	e0833001 	add	r3, r3, r1
+ 124:	e5823000 	str	r3, [r2]
+ 128:	e28dd02c 	add	sp, sp, #44	@ 0x2c
+ 12c:	e8bd8030 	pop	{r4, r5, pc}
+ 130:	e3510000 	cmp	r1, #0
+ 134:	0a000002 	beq	144 <__system_allocateHeaps+0x144>
+ 138:	e0423001 	sub	r3, r2, r1
+ 13c:	e5843000 	str	r3, [r4]
+ 140:	eaffffd9 	b	ac <__system_allocateHeaps+0xac>
+ 144:	e2411a01 	sub	r1, r1, #4096	@ 0x1000
+ 148:	e00110a2 	and	r1, r1, r2, lsr #1
+ 14c:	e0423001 	sub	r3, r2, r1
+ 150:	e3530506 	cmp	r3, #25165824	@ 0x1800000
+ 154:	e5851000 	str	r1, [r5]
+ 158:	9afffff7 	bls	13c <__system_allocateHeaps+0x13c>
+ 15c:	e2421506 	sub	r1, r2, #25165824	@ 0x1800000
+ 160:	e3a03506 	mov	r3, #25165824	@ 0x1800000
+ 164:	e3510402 	cmp	r1, #33554432	@ 0x2000000
+ 168:	83a01402 	movhi	r1, #33554432	@ 0x2000000
+ 16c:	e5843000 	str	r3, [r4]
+ 170:	828234fe 	addhi	r3, r2, #-33554432	@ 0xfe000000
+ 174:	85843000 	strhi	r3, [r4]
+ 178:	e5851000 	str	r1, [r5]
+ 17c:	eaffffca 	b	ac <__system_allocateHeaps+0xac>
+ 180:	e3a00000 	mov	r0, #0
+ 184:	e58d200c 	str	r2, [sp, #12]
+ 188:	ebfffffe 	bl	0 <svcBreak>
+			188: R_ARM_CALL	svcBreak
+ 18c:	e5943000 	ldr	r3, [r4]
+ 190:	e5951000 	ldr	r1, [r5]
+ 194:	e59d200c 	ldr	r2, [sp, #12]
+ 198:	eaffffbe 	b	98 <__system_allocateHeaps+0x98>
+ 19c:	e1a00004 	mov	r0, r4
+ 1a0:	ebfffffe 	bl	0 <svcBreak>
+			1a0: R_ARM_CALL	svcBreak
+ 1a4:	eaffff9e 	b	24 <__system_allocateHeaps+0x24>
+ 1a8:	e3a00000 	mov	r0, #0
+ 1ac:	ebfffffe 	bl	0 <svcBreak>
+			1ac: R_ARM_CALL	svcBreak
+ 1b0:	eaffffd1 	b	fc <__system_allocateHeaps+0xfc>
+ 1b4:	e3a00000 	mov	r0, #0
+ 1b8:	ebfffffe 	bl	0 <svcBreak>
+			1b8: R_ARM_CALL	svcBreak
+ 1bc:	eaffffc3 	b	d0 <__system_allocateHeaps+0xd0>
+	...
+ 1c8:	ffff8001 	.word	0xffff8001
+	...
+			1cc: R_ARM_ABS32	__ctru_heap_size
+			1d0: R_ARM_ABS32	__ctru_linear_heap_size
+			1d4: R_ARM_ABS32	__ctru_heap
+ 1d8:	00010003 	.word	0x00010003
+	...
+			1dc: R_ARM_ABS32	__ctru_linear_heap
+			1e0: R_ARM_ABS32	fake_heap_start
+			1e4: R_ARM_ABS32	fake_heap_end

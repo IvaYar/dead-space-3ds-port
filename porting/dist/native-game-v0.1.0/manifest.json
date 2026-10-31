@@ -1,0 +1,129 @@
+{
+  "version": "0.1.0",
+  "revision": "h2",
+  "experimental": true,
+  "title_id": "000400000FDE7100",
+  "CIA_sha256": "90fb19919c1b132e30fed0936802375d2ccecfdbb7d9c504d5edbef131d35622",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "original_code_frame": true,
+  "software_passed": true,
+  "successful_final_cycles": 9,
+  "installed_CIA_content_tested": true,
+  "original_resources_included": false,
+  "known_earlier_host_crash": "h1 Azahar DLL 0xc0000005, not reproduced in final nine h2 cycles; cause unproven",
+  "files": {
+    "LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "README.ru.md": {
+      "bytes": 9609,
+      "sha256": "bf8a1287423b5a7b141cd58747975d42f757ded4a9e3022c90dc779e8231b78b"
+    },
+    "native-game.cia": {
+      "bytes": 336320,
+      "sha256": "90fb19919c1b132e30fed0936802375d2ccecfdbb7d9c504d5edbef131d35622"
+    },
+    "source/build_native_game.py": {
+      "bytes": 6457,
+      "sha256": "eb24cec0b5401144b8db13cf8846cbeae41ae13c1d109b9d7b2547a02265d23f"
+    },
+    "source/ds34_gpu.v.pica": {
+      "bytes": 555,
+      "sha256": "85a8a4c18886b83f2262a3b5720674b5ebc36339f115f3e463a36305ea4e31a7"
+    },
+    "source/native_game.c": {
+      "bytes": 31446,
+      "sha256": "f92b08e808446bd265148c4b2d13b22b51e94a37ef6b8d53ffa3e9d0703350f0"
+    },
+    "source/native_thread_probe.h": {
+      "bytes": 715,
+      "sha256": "958c22dfd7ba7fac53f45c563f10ce0963e5ac24ba875de15d6a8f65c59ae536"
+    },
+    "source/package_native_game.py": {
+      "bytes": 4845,
+      "sha256": "dc58b92e8f6ec6ab87e3dae42b72599e51d15828b98d1d981b07d8d4b1ae52d2"
+    },
+    "source/runtime/ds34_gpu_native.c": {
+      "bytes": 18612,
+      "sha256": "a4236753f98197e26ef591f9439217e41fd4ffd13a55a52b38078a66a21fad26"
+    },
+    "source/runtime/ds34_shader.h": {
+      "bytes": 749,
+      "sha256": "fbdc2117ce88d4fac6e037e3ed7e6b4d73b457dd02a2b85a75c4b08a9c227f11"
+    },
+    "source/runtime/ds6_time_probe.c": {
+      "bytes": 4628,
+      "sha256": "ad7defb693ea064ce1ee5691ef357a17997c941d7d85e270418d7e2f7347bca2"
+    },
+    "source/runtime/ds7_platform_probe.c": {
+      "bytes": 2612,
+      "sha256": "3ca376d27d55409d52f360e0a9489b0666031e5274e66a4861761feecbc18c69"
+    },
+    "source/runtime/ds7_threads_probe.c": {
+      "bytes": 25032,
+      "sha256": "5d35cea0f95e79b47a96b6bb624c03010f44bd51098df2d85bc314c986356653"
+    },
+    "source/runtime/ds8_cpp_probe.c": {
+      "bytes": 5795,
+      "sha256": "7a9569c957133b6e2580d1902df3606db08e5a7e7bd973558e3c8310ccd4b680"
+    },
+    "source/smoke_installed_native_game.py": {
+      "bytes": 1147,
+      "sha256": "9016b8f05edf9830ad1b5a19f5dda4a8cb3a091eeab87faec95fc4a271ddbf17"
+    },
+    "source/smoke_native_game.py": {
+      "bytes": 10283,
+      "sha256": "9e926c6e18571a35c2862bf0ddf792c4c24bf1605f49d7aba1546339231825c3"
+    },
+    "validation/CIA-container-audit.txt": {
+      "bytes": 10527,
+      "sha256": "8f6bf8c92e491d443926cee4fe371a68ee274f41ff343958b636b0c69a238d1e"
+    },
+    "validation/CIA-install.json": {
+      "bytes": 625,
+      "sha256": "7107d71538f732d4ade05bc6467ea6f63814adc0988ccedb081634e6ac2a14ba"
+    },
+    "validation/CIA-install.log": {
+      "bytes": 802,
+      "sha256": "6c10ec5ae4a5ab0eb0e26ac10da4071ab757e9f155ca3a7065ad3d83061c7a3e"
+    },
+    "validation/SD-summary.json": {
+      "bytes": 351,
+      "sha256": "7a701e0717f7df79df87143ccc4b6ee3724187669974d3d8cb71e0a3c460e10a"
+    },
+    "validation/build-manifest.json": {
+      "bytes": 20415,
+      "sha256": "95f01ac3bc743e3e7e6035888e4768f6a3235ac3a1cdf95809e2b75c54f2c75f"
+    },
+    "validation/cia-installed-result.json": {
+      "bytes": 9953,
+      "sha256": "9fbf8b70f87f51ab5849b407f7bcda1182b3486cd43b2703288a447302940c1f"
+    },
+    "validation/cia-manifest.json": {
+      "bytes": 426,
+      "sha256": "03cd385ae798bd828c905c7f9adcf8b0886ed4444e6496da4781d994a9e1eec9"
+    },
+    "validation/cia-result.json": {
+      "bytes": 9384,
+      "sha256": "ad84ab5235a93dd5f1fae37fa899e040541bedc383f83ce60e7a7730d2f0542c"
+    },
+    "validation/cxi-result.json": {
+      "bytes": 9324,
+      "sha256": "69f073ca69ff6474d645a9031de6113a5916b1b3e2840273772a93240502db06"
+    },
+    "validation/initial-host-crash.json": {
+      "bytes": 323,
+      "sha256": "2a704a8bdfead0ba6fdc4ea581c2caebc5355355db7c7df98263d16ba721d4c6"
+    },
+    "validation/preflight.json": {
+      "bytes": 3084,
+      "sha256": "193920ea3dae33deaf047f4f5ffc313c8651b60dd1523cf1510ebb01299bdf53"
+    },
+    "validation/report.ru.md": {
+      "bytes": 11709,
+      "sha256": "cf2f2110fcecf4e0cf31ad9fe459291025754ae4230de01db5907f2d5d1bd291"
+    }
+  }
+}

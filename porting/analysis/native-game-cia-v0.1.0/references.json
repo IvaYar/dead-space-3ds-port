@@ -1,0 +1,44 @@
+[
+  {
+    "tag": "v10.0",
+    "commit": "37544a0eb9f7e66a01823631ea9dfd0dc3a62ed9",
+    "path": "k11_extension/source/svc.c",
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/37544a0eb9f7e66a01823631ea9dfd0dc3a62ed9/k11_extension/source/svc.c",
+    "sha256": "ebe55e1701457fc203e709c7d5fd873bef364d6700a6a17d04ac3a67da7f8264"
+  },
+  {
+    "tag": "v10.0",
+    "commit": "37544a0eb9f7e66a01823631ea9dfd0dc3a62ed9",
+    "path": "k11_extension/source/svc/GetSystemInfo.c",
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/37544a0eb9f7e66a01823631ea9dfd0dc3a62ed9/k11_extension/source/svc/GetSystemInfo.c",
+    "sha256": "9a9bb21d2b1935d7ca8374744bb9f249a83fabd75bce99a6a1512f9a3cc29e2c"
+  },
+  {
+    "tag": "v10.0",
+    "commit": "37544a0eb9f7e66a01823631ea9dfd0dc3a62ed9",
+    "path": "k11_extension/source/utils.s",
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/37544a0eb9f7e66a01823631ea9dfd0dc3a62ed9/k11_extension/source/utils.s",
+    "sha256": "1b716171ea6b04cea019a4d85ebbde6d7e7c1bedc4589677a55448f7f8c2f5a5"
+  },
+  {
+    "tag": "v13.3",
+    "commit": "043e2d2497f972f9194f869ff41da299835ecf41",
+    "path": "k11_extension/source/svc.c",
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/043e2d2497f972f9194f869ff41da299835ecf41/k11_extension/source/svc.c",
+    "sha256": "d91e0a5ad87ca48586c0978c50fe5454e731835a6c029d5b7dfa28b63f1bf3c7"
+  },
+  {
+    "tag": "v13.3",
+    "commit": "043e2d2497f972f9194f869ff41da299835ecf41",
+    "path": "k11_extension/source/svc/GetSystemInfo.c",
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/043e2d2497f972f9194f869ff41da299835ecf41/k11_extension/source/svc/GetSystemInfo.c",
+    "sha256": "d51a1a4a7eec56d29796a53b8b5a6b75475875941da1e580eeaed52f9a6102a5"
+  },
+  {
+    "tag": "v13.3",
+    "commit": "043e2d2497f972f9194f869ff41da299835ecf41",
+    "path": "k11_extension/source/utils.s",
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/043e2d2497f972f9194f869ff41da299835ecf41/k11_extension/source/utils.s",
+    "sha256": "eeb6287d6e392fb706df28c8906983bfd2b5dcf4629321ecea919d8278be3902"
+  }
+]

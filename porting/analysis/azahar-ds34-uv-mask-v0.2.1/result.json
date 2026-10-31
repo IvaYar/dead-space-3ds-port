@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "fault_test": false,
+  "hardware_tested": false,
+  "CIA_sha256": "5e853550bede4aa6a911959c122dcc6aa595c673071d6f52aacf37e1086284ee",
+  "payload_sha256": "b279ea1824867a14463eeff3af7281be8634994884a8fab436da030227b5388d",
+  "post_Run_live_snapshot_verified": true,
+  "three_submission_Results_verified": true,
+  "PSC0_P3D_PPF_deltas": [
+    1,
+    1,
+    1
+  ],
+  "decision_before_NONBLOCK_and_Clear": true,
+  "window_elapsed_ms": 100,
+  "critical_io_attempts": 0,
+  "PICA_payload_bounds_verified": true,
+  "PICA_packets": 82,
+  "actual_PICA_RGBA8_configuration_verified": true,
+  "RGBA8_RGB8_external_path_unchanged": true,
+  "one_factor_two_output_masks_only": true,
+  "BGR8_whole_frame_verified": true,
+  "A_gate_and_preservation_of_old_run_verified": true,
+  "START_guest_cleanup_before_host_unload": true,
+  "invalid_memory_accesses": 0,
+  "diagnostic_fault_changes_real_GPU_queue": false,
+  "interpretation": "queue_retired",
+  "elapsed_host_seconds": 0.235
+}

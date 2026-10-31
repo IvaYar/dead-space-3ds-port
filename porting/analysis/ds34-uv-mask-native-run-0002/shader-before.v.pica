@@ -1,0 +1,20 @@
+.fvec projection[4]
+.fvec texture_scale
+.out position_out position
+.out color_out color
+.out uv0_out texcoord0
+.out uv1_out texcoord1
+.alias position_in v0
+.alias color_in v1
+.alias uv0_in v2
+.alias uv1_in v3
+.proc main
+    dp4 position_out.x, projection[0], position_in
+    dp4 position_out.y, projection[1], position_in
+    dp4 position_out.z, projection[2], position_in
+    dp4 position_out.w, projection[3], position_in
+    mov color_out, color_in
+    mul uv0_out.xy, texture_scale.xy, uv0_in.xy
+    mul uv1_out.xy, texture_scale.zw, uv1_in.xy
+    end
+.end

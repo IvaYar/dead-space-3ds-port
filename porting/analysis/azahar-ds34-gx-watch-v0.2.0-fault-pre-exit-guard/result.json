@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "fault_test": true,
+  "hardware_tested": false,
+  "CIA_sha256": "8d4b1742ee6515b57eecae7321a67acd835dacc343b4cf2ef8dc19535cb566ee",
+  "payload_sha256": "f0bbde840771ce3e365e724f6e0b8ae13051ce76470c1ad74af6530edf1f5817",
+  "post_Run_live_snapshot_verified": true,
+  "three_submission_Results_verified": true,
+  "PSC0_P3D_PPF_deltas": [
+    1,
+    1,
+    1
+  ],
+  "decision_before_NONBLOCK_and_Clear": true,
+  "window_elapsed_ms": 2000,
+  "critical_io_attempts": 0,
+  "PICA_payload_bounds_verified": true,
+  "PICA_packets": 82,
+  "actual_PICA_RGBA8_configuration_verified": true,
+  "RGBA8_RGB8_draw_path_unchanged": true,
+  "BGR8_whole_frame_verified": false,
+  "A_gate_and_preservation_of_old_run_verified": true,
+  "START_guest_cleanup_before_host_unload": true,
+  "invalid_memory_accesses": 0,
+  "diagnostic_fault_changes_real_GPU_queue": false,
+  "interpretation": "emulator_diagnostic_fault",
+  "elapsed_host_seconds": 0.281
+}

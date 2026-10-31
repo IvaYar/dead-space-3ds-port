@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\jarom\Desktop\Dead_space_mobile\porting\tests\smoke_native_frame.py", line 105, in <module>
+    try:main()
+        ^^^^^^
+  File "C:\Users\jarom\Desktop\Dead_space_mobile\porting\tests\smoke_native_frame.py", line 50, in main
+    core.retro_init();game=f.GameInfo(str(app.resolve()).encode(),None,0,None);assert core.retro_load_game(C.byref(game))
+                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

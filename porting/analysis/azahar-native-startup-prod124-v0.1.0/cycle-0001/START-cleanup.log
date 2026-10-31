@@ -1,0 +1,6 @@
+2 [   0.185395] Service.GSP <Warning> core/hle/service/gsp/gsp_gpu.cpp:ReleaseRight:999: called
+
+0 [   0.186658] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000001, addr0=0x30000000, addr1=0x00000000, size=0x200000, permissions=0x00000000
+
+0 [   0.186681] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000001, addr0=0x08000000, addr1=0x00000000, size=0x200000, permissions=0x00000000
+

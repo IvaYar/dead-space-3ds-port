@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-31",
+  "test": "DS34 RGBA8 -> RGB8 v0.1.0 CIA",
+  "hardware_tested": true,
+  "executed_by": "user",
+  "passed": false,
+  "status": "User reported hang, START unresponsive, powered off with button",
+  "expected_title_id": "000400000FDE6D00",
+  "expected_CIA_sha256": "2c91a4d444c9a9a535f1d66fcf81b05371380863ee4fc4272c16aa0f63a7b54b",
+  "device_binary_hash_measured": false,
+  "evidence": {
+    "type": "User text report in conversation",
+    "verbatim": "Зависла, на старт не реагировала, выключил кнопкой",
+    "photo_or_video_received": false,
+    "native_SD_files_received": false,
+    "expected_SD_directory": "SD:/3ds/ds34-rgba8-v0.1.0/"
+  },
+  "observations": {
+    "console_hang_reported": true,
+    "START_attempt_reported": true,
+    "START_response_reported": false,
+    "powered_off_with_button_reported": true,
+    "power_hold_duration_known": false,
+    "A_press_explicitly_reported_in_this_message": false,
+    "last_visible_screen_or_phase_reported": false,
+    "rendered_frame_visibility_known": false,
+    "completed_frame_count_known": false,
+    "normal_exit_confirmed": false,
+    "native_queue_counters_available": false
+  },
+  "comparison": {
+    "stock_RGBA8_to_RGB8_CIA": "Prior user photo and START return to HOME confirmed",
+    "DS34_RGBA8_to_RGB8_CIA": "Hang and unresponsive START reported; exact phase unknown",
+    "Azahar_DS34_RGBA8_to_RGB8": "Nine frames and cleanup passed; native failure not reproduced"
+  },
+  "conclusion": "Selecting the stock-successful RGBA8/RGB8 output configuration alone was insufficient to make this DS34 diagnostic complete natively. This does not invalidate the earlier stock result or isolate a particular DS34 difference.",
+  "root_cause_confirmed": false,
+  "specific_stalled_command_identified": false,
+  "limitations": [
+    "No native logs or last PHASE supplied yet",
+    "Do not claim no frame appeared or assign failure to attach, draw, present, readback, SD or exit",
+    "Unresponsive START does not distinguish a blocked main thread from a general CPU or GPU hang",
+    "Do not assign a missing IRQ or command completion from this text report"
+  ],
+  "next_step": "Collect the existing SD folder without rerunning the application; archive exact files, then inspect last PHASE and queue/frame records offline before choosing a new hypothesis.",
+  "repeat_requested": false,
+  "additional_hardware_runs_authorized": false,
+  "new_build_created_after_result": false,
+  "runtime_sources_changed": false,
+  "agent_hardware_runs": 0,
+  "git_push_performed": false
+}

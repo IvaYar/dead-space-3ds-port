@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-31",
+  "version": "0.2.0",
+  "hardware_tested": true,
+  "executed_by": "user",
+  "passed": false,
+  "diagnostic_observation_saved": true,
+  "expected_title_id": "000400000FDE6E00",
+  "expected_CIA_sha256": "907500f9e2882ba5f36996890ac209c347e98aaf4da82112e0ddcbbc2ebbb55f",
+  "device_binary_hash_measured": false,
+  "evidence_directory": "analysis/hardware/ds34-gx-watch-v0.2.0-user-run-0001",
+  "files_received": 5,
+  "window_ms": 2000,
+  "delivered_PSC0_P3D_PPF": [
+    1,
+    0,
+    0
+  ],
+  "post_Run_queue": [
+    3,
+    3,
+    0
+  ],
+  "decision_queue": [
+    3,
+    3,
+    1
+  ],
+  "SDK_idle": false,
+  "VBlank_delta": [
+    120,
+    120
+  ],
+  "submit_Results": [
+    0,
+    0,
+    0
+  ],
+  "critical_io_blocked": 0,
+  "snapshots_consistent": true,
+  "native_PICA_matches_Azahar": true,
+  "PICA_sha256": "ffd8bbc608ff1f476de21c9e089e3736e29e875c68ca7a4a8f6452c4181e0357",
+  "START_processed_confirmed": true,
+  "HOME_returned": false,
+  "POWER_required": true,
+  "user_confirmation": "в хоум не вернула, но сообщение вывело. Пришлось через кнопку повер выключать опять",
+  "photo_received": false,
+  "frame_visibility_confirmed": false,
+  "root_cause_confirmed": false,
+  "specific_physical_stalled_command_confirmed": false,
+  "analysis": "analysis/ds34-gx-watch-native-run-0001/report.ru.md",
+  "next_step": "Targeted DS34 PICA state/resources comparison before any correction; do not repeat v0.2.0 or issue speculative CIA",
+  "new_build_created": false,
+  "backend_changed": false,
+  "agent_runtime_or_hardware_tests": false,
+  "git_push": false
+}

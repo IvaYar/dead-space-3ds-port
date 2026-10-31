@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": 12,
+  "command": "python porting/tests/test_gx_watch_report.py",
+  "runtime_or_ARM_tests": false,
+  "source_sha256": {
+    "tests/test_gx_watch_report.py": "2110dda07675227c7aa6ad460bbeeabc7ad4eeeb1241bc5b37b2a15c75f3cbe6",
+    "tools/gx_watch_report.py": "338ab2b5b62c3b4faa5781e1f2f64b59fa18e063966b6d4177dde2aeffbc1faf"
+  }
+}

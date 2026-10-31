@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-31",
+  "branch": "feat/native-original-frame",
+  "original_frame_through_new_entrypoint_in_Azahar": true,
+  "hardware_game_frame_executed": false,
+  "baseline_RGB565_exact": true,
+  "different_pixels": 0,
+  "actual_original_callback": 351,
+  "reference_original_callback": 180,
+  "overall_software_PASS": false,
+  "safe_exit": false,
+  "remaining_live_donor_workers": 6,
+  "CIA_created": false,
+  "CIA_gate_bypassed": false,
+  "original_resources_published": false,
+  "hardware_executions": 0,
+  "git_push": false,
+  "full_552_tests_run": false,
+  "baseline_files_unchanged": 220,
+  "next_minimal_stage": "Identify and implement cooperative termination of the six donor workers, then repeat original frame plus shutdown software checkpoint",
+  "software_report": "analysis/azahar-native-frame-v0.1.0-r5/result.json",
+  "report": "report.ru.md"
+}

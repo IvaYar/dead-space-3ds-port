@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "installer": "Official Azahar 2126.2 Qt --install, isolated portable user directory",
+  "installed_content": "analysis/native-game-cia-v0.1.0/qt-installer/user/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/00040000/0fde7100/content/584b7117.app",
+  "installed_content_sha256": "ca6682dd98a63555de53267c47c9d5a29b80b279f6c31adbc817c1e0d80357e0",
+  "CIA_payload_sha256": "ca6682dd98a63555de53267c47c9d5a29b80b279f6c31adbc817c1e0d80357e0",
+  "installed_bytes_identical_to_tested_payload": true,
+  "log": "CIA-install.log",
+  "hardware_tested": false
+}

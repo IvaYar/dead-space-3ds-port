@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "renderer_shader_and_all_24_GX_words_unchanged": true,
+  "native_reference": "analysis/hardware/ds34-rgba8-v0.1.0-repeat-user/queue-04.json",
+  "real_SDK_IRQ_handler_reachable_not_wrapped": true,
+  "memory_observer_call_graph_has_no_filesystem_or_allocation": true,
+  "callback_recorder_has_no_wait_or_64_bit_atomics": true,
+  "no_file_calls_after_arm_in_FrameEnd_hook": true,
+  "no_critical_stdio_attempts_in_normal_and_fault_tests": true,
+  "PSCl_P3D_PPF_callbacks_only_observe_after_SDK": true,
+  "SDK_idle_alone_does_not_authorize_resource_free": true,
+  "caps_equal_old_except_identity": true,
+  "fault_activation_absent_from_release": true,
+  "linked_wrapper_symbols": [
+    "__wrap_fclose",
+    "__wrap_fflush",
+    "__wrap_fopen",
+    "__wrap_fprintf",
+    "__wrap_fwrite",
+    "__wrap_gspSubmitGxCommand",
+    "__wrap_gxCmdQueueClear",
+    "__wrap_gxCmdQueueRun"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "physical_GPU_stall_proven": false,
+  "note": "Event callbacks measure delivery after SDK handling, not physical engine status.",
+  "classification": "emulator_diagnostic_fault",
+  "native_inference_valid": false
+}

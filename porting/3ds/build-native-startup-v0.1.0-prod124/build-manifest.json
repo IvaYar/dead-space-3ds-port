@@ -1,0 +1,72 @@
+{
+  "startup_only": true,
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "same_ELF_no_recompile": true,
+  "memory_mode": "Prod124",
+  "title_id": "000400000FDE7200",
+  "replaces_previous_startup_title": true,
+  "kernel_version": "2.44",
+  "normal_heap_bytes": 2097152,
+  "linear_heap_bytes": 2097152,
+  "hardcoded_guest_178_label_is_stale": true,
+  "commands": [
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\extras\\makerom\\makerom.exe",
+      "-f",
+      "cxi",
+      "-o",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup-prod124.cxi",
+      "-rsf",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup.rsf",
+      "-target",
+      "t",
+      "-exefslogo",
+      "-elf",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup.elf",
+      "-icon",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup.smdh",
+      "-banner",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup.bnr",
+      "-ver",
+      "1"
+    ],
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\extras\\makerom\\makerom.exe",
+      "-f",
+      "cia",
+      "-o",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup-prod124.cia",
+      "-rsf",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup.rsf",
+      "-target",
+      "t",
+      "-exefslogo",
+      "-elf",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup.elf",
+      "-icon",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup.smdh",
+      "-banner",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-startup-v0.1.0-prod124\\startup.bnr",
+      "-ver",
+      "1"
+    ]
+  ],
+  "protected_files": 239,
+  "baseline_changes": [],
+  "inputs_sha256": {
+    "tools/build_native_startup_prod124.py": "93d236b29e115241ddabaf8a1c11e39ba26c021affbcfecf9c93282d65eca17f",
+    "tools/build_native_startup_legacy.py": "834f9c3954521f1b687f57d9b1560ea646c3528419b1c3355a2a5629d5b10c66",
+    "3ds/build-native-startup-v0.1.0-legacy/startup.elf": "29fd6587561fdc13f2a68e5528366eacfea21ed181efc66afe23150f99f9e839",
+    "3ds/build-native-startup-v0.1.0-legacy/startup.smdh": "96f7c2f34d9dc59fc0a1a3ea2ba7a1eaf16a64499ed90938bafce9b7105f2233",
+    "3ds/build-native-startup-v0.1.0-legacy/startup.bnr": "620262881a8df5213a808aeb08993022e61a2ca31f1af763bf06231d305ad389",
+    "3ds/build-native-startup-v0.1.0-legacy/startup.rsf": "b4301dc9580950c430d46969ed176f8fd903355fc9e75bcd4e2cc855354667d9"
+  },
+  "outputs_sha256": {
+    "startup.elf": "29fd6587561fdc13f2a68e5528366eacfea21ed181efc66afe23150f99f9e839",
+    "startup-prod124.cia": "a9a07b6ba105ca95fa139c2fb5ea69a155b5a7e8b7b08720e73b5dd8a03f5911",
+    "startup-prod124.cxi": "a4e1653a13fbcb82ae972adab1e8ff4f142843a107835513df5bf95d1a920b6b",
+    "cia-payload.cxi": "a4e1653a13fbcb82ae972adab1e8ff4f142843a107835513df5bf95d1a920b6b",
+    "startup.rsf": "748ce490caa1ec286f06ddf64c599aaf14f139aa6bb26a9c5e9b9595bb406390"
+  }
+}

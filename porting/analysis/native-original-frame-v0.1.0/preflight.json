@@ -1,0 +1,44 @@
+{
+  "baseline_files_unchanged": 220,
+  "emulator_harness_unchanged": true,
+  "SDK_and_GPU_CPU_binaries_unchanged": true,
+  "assets": {
+    "assets": {
+      "files": 1728,
+      "bytes": 414822611,
+      "copied_files_sha256_verified": true
+    },
+    "apk-assets": {
+      "files": 20,
+      "bytes": 163995411,
+      "copied_files_sha256_verified": true
+    }
+  },
+  "donor_size": 4499468,
+  "donor_private_SD_sha256_verified": true,
+  "donor_RX_page_interval": [
+    [
+      0,
+      4337664
+    ]
+  ],
+  "donor_RW_page_interval": [
+    [
+      4337664,
+      4792320
+    ]
+  ],
+  "RX_does_not_cover_RW_pages": true,
+  "native_RX_ranges": 2,
+  "RX_pages_including_trampolines": 1062,
+  "native_RX_permission_semantics_hardware_tested": false,
+  "memory_profile_MiB": 178,
+  "normal_heap_MiB": 40,
+  "linear_heap_MiB": 132,
+  "donor_arena_MiB": 128,
+  "source_shader_identical_to_hardware_pass": true,
+  "backend_diff": "RGBA8/RGB8 validated substitutions plus native_finish closing empty frame; base C source untouched",
+  "CIA_withheld": true,
+  "blocking_dependency": "NativeOnPause/NativeOnStop return but six donor workers remain alive after bounded ds7_shutdown; no NativeOnDestroy export",
+  "frame_proof": "analysis\\azahar-native-frame-v0.1.0-r5\\result.json"
+}

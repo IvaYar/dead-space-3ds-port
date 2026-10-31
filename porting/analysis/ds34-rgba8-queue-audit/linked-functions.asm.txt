@@ -1,0 +1,658 @@
+001113a4 <C3D_FrameBegin>:
+  1113a4:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+  1113a8:	e59f60bc 	ldr	r6, [pc, #188]	@ 11146c <C3D_FrameBegin+0xc8>
+  1113ac:	e5d63000 	ldrb	r3, [r6]
+  1113b0:	e3530000 	cmp	r3, #0
+  1113b4:	13a04000 	movne	r4, #0
+  1113b8:	1a00000b 	bne	1113ec <C3D_FrameBegin+0x48>
+  1113bc:	e3100001 	tst	r0, #1
+  1113c0:	e1a04000 	mov	r4, r0
+  1113c4:	1a00001e 	bne	111444 <C3D_FrameBegin+0xa0>
+  1113c8:	e1a030a4 	lsr	r3, r4, #1
+  1113cc:	e2033001 	and	r3, r3, #1
+  1113d0:	e2432001 	sub	r2, r3, #1
+  1113d4:	e1a03002 	mov	r3, r2
+  1113d8:	e59f0090 	ldr	r0, [pc, #144]	@ 111470 <C3D_FrameBegin+0xcc>
+  1113dc:	eb000ef0 	bl	114fa4 <gxCmdQueueWait>
+  1113e0:	e2504000 	subs	r4, r0, #0
+  1113e4:	e3a05000 	mov	r5, #0
+  1113e8:	1a000001 	bne	1113f4 <C3D_FrameBegin+0x50>
+  1113ec:	e1a00004 	mov	r0, r4
+  1113f0:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+  1113f4:	e59f0074 	ldr	r0, [pc, #116]	@ 111470 <C3D_FrameBegin+0xcc>
+  1113f8:	eb000ed0 	bl	114f40 <gxCmdQueueStop>
+  1113fc:	e59f006c 	ldr	r0, [pc, #108]	@ 111470 <C3D_FrameBegin+0xcc>
+  111400:	ebfff48a 	bl	10e630 <__wrap_gxCmdQueueClear>
+  111404:	e3a03001 	mov	r3, #1
+  111408:	e5c63000 	strb	r3, [r6]
+  11140c:	eb002417 	bl	11a470 <svcGetSystemTick>
+  111410:	e59f305c 	ldr	r3, [pc, #92]	@ 111474 <C3D_FrameBegin+0xd0>
+  111414:	e59f2054 	ldr	r2, [pc, #84]	@ 111470 <C3D_FrameBegin+0xcc>
+  111418:	e1c300f8 	strd	r0, [r3, #8]
+  11141c:	e5921018 	ldr	r1, [r2, #24]
+  111420:	e59f3050 	ldr	r3, [pc, #80]	@ 111478 <C3D_FrameBegin+0xd4>
+  111424:	e5922014 	ldr	r2, [r2, #20]
+  111428:	e1a00004 	mov	r0, r4
+  11142c:	e5832000 	str	r2, [r3]
+  111430:	e59f2044 	ldr	r2, [pc, #68]	@ 11147c <C3D_FrameBegin+0xd8>
+  111434:	e59f3044 	ldr	r3, [pc, #68]	@ 111480 <C3D_FrameBegin+0xdc>
+  111438:	e5821000 	str	r1, [r2]
+  11143c:	e5835000 	str	r5, [r3]
+  111440:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+  111444:	e59f5038 	ldr	r5, [pc, #56]	@ 111484 <C3D_FrameBegin+0xe0>
+  111448:	e5958000 	ldr	r8, [r5]
+  11144c:	e5957004 	ldr	r7, [r5, #4]
+  111450:	eb001d58 	bl	1189b8 <gspWaitForAnyEvent>
+  111454:	e5952004 	ldr	r2, [r5, #4]
+  111458:	e5953000 	ldr	r3, [r5]
+  11145c:	e1530008 	cmp	r3, r8
+  111460:	11520007 	cmpne	r2, r7
+  111464:	0afffff9 	beq	111450 <C3D_FrameBegin+0xac>
+  111468:	eaffffd6 	b	1113c8 <C3D_FrameBegin+0x24>
+  11146c:	00149f05 	.word	0x00149f05
+  111470:	00149c20 	.word	0x00149c20
+  111474:	00149f08 	.word	0x00149f08
+  111478:	0014ae2c 	.word	0x0014ae2c
+  11147c:	0014ae28 	.word	0x0014ae28
+  111480:	0014ae24 	.word	0x0014ae24
+  111484:	00149ef8 	.word	0x00149ef8
+
+001111b8 <C3D_FrameSync>:
+  1111b8:	e92d4070 	push	{r4, r5, r6, lr}
+  1111bc:	e59f4020 	ldr	r4, [pc, #32]	@ 1111e4 <C3D_FrameSync+0x2c>
+  1111c0:	e5946000 	ldr	r6, [r4]
+  1111c4:	e5945004 	ldr	r5, [r4, #4]
+  1111c8:	eb001dfa 	bl	1189b8 <gspWaitForAnyEvent>
+  1111cc:	e5942004 	ldr	r2, [r4, #4]
+  1111d0:	e5943000 	ldr	r3, [r4]
+  1111d4:	e1530006 	cmp	r3, r6
+  1111d8:	11520005 	cmpne	r2, r5
+  1111dc:	0afffff9 	beq	1111c8 <C3D_FrameSync+0x10>
+  1111e0:	e8bd8070 	pop	{r4, r5, r6, pc}
+  1111e4:	00149ef8 	.word	0x00149ef8
+
+00111538 <C3D_FrameEnd>:
+  111538:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+  11153c:	e59f6188 	ldr	r6, [pc, #392]	@ 1116cc <C3D_FrameEnd+0x194>
+  111540:	e24dd00c 	sub	sp, sp, #12
+  111544:	e5d63000 	ldrb	r3, [r6]
+  111548:	e3530000 	cmp	r3, #0
+  11154c:	0a000056 	beq	1116ac <C3D_FrameEnd+0x174>
+  111550:	e59f3178 	ldr	r3, [pc, #376]	@ 1116d0 <C3D_FrameEnd+0x198>
+  111554:	e1a04000 	mov	r4, r0
+  111558:	e5933000 	ldr	r3, [r3]
+  11155c:	e3530000 	cmp	r3, #0
+  111560:	0a000042 	beq	111670 <C3D_FrameEnd+0x138>
+  111564:	e59f2168 	ldr	r2, [pc, #360]	@ 1116d4 <C3D_FrameEnd+0x19c>
+  111568:	e5920000 	ldr	r0, [r2]
+  11156c:	e12fff33 	blx	r3
+  111570:	e5d63000 	ldrb	r3, [r6]
+  111574:	e3530000 	cmp	r3, #0
+  111578:	1a00003c 	bne	111670 <C3D_FrameEnd+0x138>
+  11157c:	e3a05000 	mov	r5, #0
+  111580:	e59f2150 	ldr	r2, [pc, #336]	@ 1116d8 <C3D_FrameEnd+0x1a0>
+  111584:	e59f3150 	ldr	r3, [pc, #336]	@ 1116dc <C3D_FrameEnd+0x1a4>
+  111588:	e59f1150 	ldr	r1, [pc, #336]	@ 1116e0 <C3D_FrameEnd+0x1a8>
+  11158c:	e5825000 	str	r5, [r2]
+  111590:	e5835000 	str	r5, [r3]
+  111594:	e5815000 	str	r5, [r1]
+  111598:	eb0023b4 	bl	11a470 <svcGetSystemTick>
+  11159c:	e59f3140 	ldr	r3, [pc, #320]	@ 1116e4 <C3D_FrameEnd+0x1ac>
+  1115a0:	e5c65000 	strb	r5, [r6]
+  1115a4:	e593c008 	ldr	ip, [r3, #8]
+  1115a8:	e593200c 	ldr	r2, [r3, #12]
+  1115ac:	e050c00c 	subs	ip, r0, ip
+  1115b0:	e0c12002 	sbc	r2, r1, r2
+  1115b4:	e3140002 	tst	r4, #2
+  1115b8:	e583c000 	str	ip, [r3]
+  1115bc:	e5830008 	str	r0, [r3, #8]
+  1115c0:	e5832004 	str	r2, [r3, #4]
+  1115c4:	e583100c 	str	r1, [r3, #12]
+  1115c8:	0a000039 	beq	1116b4 <C3D_FrameEnd+0x17c>
+  1115cc:	e3a07000 	mov	r7, #0
+  1115d0:	e59f6110 	ldr	r6, [pc, #272]	@ 1116e8 <C3D_FrameEnd+0x1b0>
+  1115d4:	e59f3110 	ldr	r3, [pc, #272]	@ 1116ec <C3D_FrameEnd+0x1b4>
+  1115d8:	e286500c 	add	r5, r6, #12
+  1115dc:	e5c37000 	strb	r7, [r3]
+  1115e0:	e5354004 	ldr	r4, [r5, #-4]!
+  1115e4:	e3540000 	cmp	r4, #0
+  1115e8:	e2840008 	add	r0, r4, #8
+  1115ec:	0a000011 	beq	111638 <C3D_FrameEnd+0x100>
+  1115f0:	e5d43018 	ldrb	r3, [r4, #24]
+  1115f4:	e3530000 	cmp	r3, #0
+  1115f8:	0a00000e 	beq	111638 <C3D_FrameEnd+0x100>
+  1115fc:	e5943020 	ldr	r3, [r4, #32]
+  111600:	e5d4201d 	ldrb	r2, [r4, #29]
+  111604:	e5d4101c 	ldrb	r1, [r4, #28]
+  111608:	e5c47018 	strb	r7, [r4, #24]
+  11160c:	ebfffe1a 	bl	110e7c <C3D_FrameBufTransfer>
+  111610:	e5d4301c 	ldrb	r3, [r4, #28]
+  111614:	e59f20d4 	ldr	r2, [pc, #212]	@ 1116f0 <C3D_FrameEnd+0x1b8>
+  111618:	e3530000 	cmp	r3, #0
+  11161c:	1a00001e 	bne	11169c <C3D_FrameEnd+0x164>
+  111620:	e3a01001 	mov	r1, #1
+  111624:	e5d4301d 	ldrb	r3, [r4, #29]
+  111628:	e5c21000 	strb	r1, [r2]
+  11162c:	e3530001 	cmp	r3, #1
+  111630:	059f20b4 	ldreq	r2, [pc, #180]	@ 1116ec <C3D_FrameEnd+0x1b4>
+  111634:	05c23000 	strbeq	r3, [r2]
+  111638:	e1550006 	cmp	r5, r6
+  11163c:	1affffe7 	bne	1115e0 <C3D_FrameEnd+0xa8>
+  111640:	e3a02001 	mov	r2, #1
+  111644:	e59f30a8 	ldr	r3, [pc, #168]	@ 1116f4 <C3D_FrameEnd+0x1bc>
+  111648:	e5c32000 	strb	r2, [r3]
+  11164c:	eb002387 	bl	11a470 <svcGetSystemTick>
+  111650:	e1a04000 	mov	r4, r0
+  111654:	e1a05001 	mov	r5, r1
+  111658:	e59f3098 	ldr	r3, [pc, #152]	@ 1116f8 <C3D_FrameEnd+0x1c0>
+  11165c:	e59f0098 	ldr	r0, [pc, #152]	@ 1116fc <C3D_FrameEnd+0x1c4>
+  111660:	e1c340f8 	strd	r4, [r3, #8]
+  111664:	e28dd00c 	add	sp, sp, #12
+  111668:	e8bd40f0 	pop	{r4, r5, r6, r7, lr}
+  11166c:	eafff3e5 	b	10e608 <__wrap_gxCmdQueueRun>
+  111670:	e1a0000d 	mov	r0, sp
+  111674:	e28d1004 	add	r1, sp, #4
+  111678:	ebfffb09 	bl	1102a4 <C3Di_SplitFrame>
+  11167c:	e3500000 	cmp	r0, #0
+  111680:	0affffbd 	beq	11157c <C3D_FrameEnd+0x44>
+  111684:	e59d1004 	ldr	r1, [sp, #4]
+  111688:	e1a02004 	mov	r2, r4
+  11168c:	e59d0000 	ldr	r0, [sp]
+  111690:	e1a01101 	lsl	r1, r1, #2
+  111694:	eb000ce4 	bl	114a2c <GX_ProcessCommandList>
+  111698:	eaffffb7 	b	11157c <C3D_FrameEnd+0x44>
+  11169c:	e3530001 	cmp	r3, #1
+  1116a0:	059f2058 	ldreq	r2, [pc, #88]	@ 111700 <C3D_FrameEnd+0x1c8>
+  1116a4:	05c23000 	strbeq	r3, [r2]
+  1116a8:	eaffffe2 	b	111638 <C3D_FrameEnd+0x100>
+  1116ac:	e28dd00c 	add	sp, sp, #12
+  1116b0:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+  1116b4:	e59f2048 	ldr	r2, [pc, #72]	@ 111704 <C3D_FrameEnd+0x1cc>
+  1116b8:	e59f3048 	ldr	r3, [pc, #72]	@ 111708 <C3D_FrameEnd+0x1d0>
+  1116bc:	e5921000 	ldr	r1, [r2]
+  1116c0:	e5930000 	ldr	r0, [r3]
+  1116c4:	eb001d6e 	bl	118c84 <GSPGPU_FlushDataCache>
+  1116c8:	eaffffbf 	b	1115cc <C3D_FrameEnd+0x94>
+  1116cc:	00149f05 	.word	0x00149f05
+  1116d0:	00149ef4 	.word	0x00149ef4
+  1116d4:	00149ef0 	.word	0x00149ef0
+  1116d8:	0014ae2c 	.word	0x0014ae2c
+  1116dc:	0014ae28 	.word	0x0014ae28
+  1116e0:	0014ae24 	.word	0x0014ae24
+  1116e4:	00149f08 	.word	0x00149f08
+  1116e8:	00149f28 	.word	0x00149f28
+  1116ec:	00149f00 	.word	0x00149f00
+  1116f0:	00149f02 	.word	0x00149f02
+  1116f4:	00149f03 	.word	0x00149f03
+  1116f8:	00149f18 	.word	0x00149f18
+  1116fc:	00149c20 	.word	0x00149c20
+  111700:	00149f01 	.word	0x00149f01
+  111704:	0014c2c8 	.word	0x0014c2c8
+  111708:	0014c2d0 	.word	0x0014c2d0
+
+00114ec0 <gxCmdQueueRun>:
+  114ec0:	e59f3064 	ldr	r3, [pc, #100]	@ 114f2c <gxCmdQueueRun+0x6c>
+  114ec4:	e5d32000 	ldrb	r2, [r3]
+  114ec8:	e3520000 	cmp	r2, #0
+  114ecc:	112fff1e 	bxne	lr
+  114ed0:	e3a01001 	mov	r1, #1
+  114ed4:	e92d4010 	push	{r4, lr}
+  114ed8:	e59fe050 	ldr	lr, [pc, #80]	@ 114f30 <gxCmdQueueRun+0x70>
+  114edc:	e1d0c0ba 	ldrh	ip, [r0, #10]
+  114ee0:	e58e0000 	str	r0, [lr]
+  114ee4:	e1d000b6 	ldrh	r0, [r0, #6]
+  114ee8:	e15c0000 	cmp	ip, r0
+  114eec:	e59f0040 	ldr	r0, [pc, #64]	@ 114f34 <gxCmdQueueRun+0x74>
+  114ef0:	e5c01000 	strb	r1, [r0]
+  114ef4:	3a000001 	bcc	114f00 <gxCmdQueueRun+0x40>
+  114ef8:	e5c32000 	strb	r2, [r3]
+  114efc:	e8bd8010 	pop	{r4, pc}
+  114f00:	e59f0030 	ldr	r0, [pc, #48]	@ 114f38 <gxCmdQueueRun+0x78>
+  114f04:	e5c31000 	strb	r1, [r3]
+  114f08:	eb0016cc 	bl	11aa40 <LightLock_Lock>
+  114f0c:	e59f3028 	ldr	r3, [pc, #40]	@ 114f3c <gxCmdQueueRun+0x7c>
+  114f10:	e5d33000 	ldrb	r3, [r3]
+  114f14:	e3530000 	cmp	r3, #0
+  114f18:	1a000000 	bne	114f20 <gxCmdQueueRun+0x60>
+  114f1c:	ebffff39 	bl	114c08 <gxCmdQueueDoCommands.part.0>
+  114f20:	e8bd4010 	pop	{r4, lr}
+  114f24:	e59f000c 	ldr	r0, [pc, #12]	@ 114f38 <gxCmdQueueRun+0x78>
+  114f28:	ea0016ef 	b	11aaec <LightLock_Unlock>
+  114f2c:	0014ae35 	.word	0x0014ae35
+  114f30:	0014ae38 	.word	0x0014ae38
+  114f34:	0014ae36 	.word	0x0014ae36
+  114f38:	00136064 	.word	0x00136064
+  114f3c:	0014ae34 	.word	0x0014ae34
+
+00114fa4 <gxCmdQueueWait>:
+  114fa4:	e3530000 	cmp	r3, #0
+  114fa8:	e92d4070 	push	{r4, r5, r6, lr}
+  114fac:	b3e05000 	mvnlt	r5, #0
+  114fb0:	e24dd008 	sub	sp, sp, #8
+  114fb4:	b1a06005 	movlt	r6, r5
+  114fb8:	ba000005 	blt	114fd4 <gxCmdQueueWait+0x30>
+  114fbc:	e1a05002 	mov	r5, r2
+  114fc0:	e58d3004 	str	r3, [sp, #4]
+  114fc4:	eb001529 	bl	11a470 <svcGetSystemTick>
+  114fc8:	e59d3004 	ldr	r3, [sp, #4]
+  114fcc:	e0955000 	adds	r5, r5, r0
+  114fd0:	e0a36001 	adc	r6, r3, r1
+  114fd4:	e59f4070 	ldr	r4, [pc, #112]	@ 11504c <gxCmdQueueWait+0xa8>
+  114fd8:	e5d42000 	ldrb	r2, [r4]
+  114fdc:	e3520000 	cmp	r2, #0
+  114fe0:	0a00000a 	beq	115010 <gxCmdQueueWait+0x6c>
+  114fe4:	e3530000 	cmp	r3, #0
+  114fe8:	ba00000f 	blt	11502c <gxCmdQueueWait+0x88>
+  114fec:	eb00151f 	bl	11a470 <svcGetSystemTick>
+  114ff0:	e1500005 	cmp	r0, r5
+  114ff4:	e0c11006 	sbc	r1, r1, r6
+  114ff8:	e3510000 	cmp	r1, #0
+  114ffc:	aa00000f 	bge	115040 <gxCmdQueueWait+0x9c>
+  115000:	eb000e6c 	bl	1189b8 <gspWaitForAnyEvent>
+  115004:	e5d43000 	ldrb	r3, [r4]
+  115008:	e3530000 	cmp	r3, #0
+  11500c:	1afffff6 	bne	114fec <gxCmdQueueWait+0x48>
+  115010:	e3a00001 	mov	r0, #1
+  115014:	e28dd008 	add	sp, sp, #8
+  115018:	e8bd8070 	pop	{r4, r5, r6, pc}
+  11501c:	eb000e65 	bl	1189b8 <gspWaitForAnyEvent>
+  115020:	e5d43000 	ldrb	r3, [r4]
+  115024:	e3530000 	cmp	r3, #0
+  115028:	0afffff8 	beq	115010 <gxCmdQueueWait+0x6c>
+  11502c:	eb000e61 	bl	1189b8 <gspWaitForAnyEvent>
+  115030:	e5d43000 	ldrb	r3, [r4]
+  115034:	e3530000 	cmp	r3, #0
+  115038:	1afffff7 	bne	11501c <gxCmdQueueWait+0x78>
+  11503c:	eafffff3 	b	115010 <gxCmdQueueWait+0x6c>
+  115040:	e3a00000 	mov	r0, #0
+  115044:	e28dd008 	add	sp, sp, #8
+  115048:	e8bd8070 	pop	{r4, r5, r6, pc}
+  11504c:	0014ae35 	.word	0x0014ae35
+
+00114c6c <gxCmdQueueInterrupt>:
+  114c6c:	e59f30c8 	ldr	r3, [pc, #200]	@ 114d3c <gxCmdQueueInterrupt+0xd0>
+  114c70:	e5d32000 	ldrb	r2, [r3]
+  114c74:	e3520000 	cmp	r2, #0
+  114c78:	012fff1e 	bxeq	lr
+  114c7c:	e2400001 	sub	r0, r0, #1
+  114c80:	e3500002 	cmp	r0, #2
+  114c84:	912fff1e 	bxls	lr
+  114c88:	e92d4010 	push	{r4, lr}
+  114c8c:	e59f40ac 	ldr	r4, [pc, #172]	@ 114d40 <gxCmdQueueInterrupt+0xd4>
+  114c90:	e59f00ac 	ldr	r0, [pc, #172]	@ 114d44 <gxCmdQueueInterrupt+0xd8>
+  114c94:	e24dd008 	sub	sp, sp, #8
+  114c98:	eb001768 	bl	11aa40 <LightLock_Lock>
+  114c9c:	e5941000 	ldr	r1, [r4]
+  114ca0:	e59fe0a0 	ldr	lr, [pc, #160]	@ 114d48 <gxCmdQueueInterrupt+0xdc>
+  114ca4:	e1d120ba 	ldrh	r2, [r1, #10]
+  114ca8:	e5dec000 	ldrb	ip, [lr]
+  114cac:	e2822001 	add	r2, r2, #1
+  114cb0:	e6ff2072 	uxth	r2, r2
+  114cb4:	e35c0000 	cmp	ip, #0
+  114cb8:	e59f307c 	ldr	r3, [pc, #124]	@ 114d3c <gxCmdQueueInterrupt+0xd0>
+  114cbc:	e1c120ba 	strh	r2, [r1, #10]
+  114cc0:	1a00000e 	bne	114d00 <gxCmdQueueInterrupt+0x94>
+  114cc4:	e1d100b6 	ldrh	r0, [r1, #6]
+  114cc8:	e1500002 	cmp	r0, r2
+  114ccc:	8a000017 	bhi	114d30 <gxCmdQueueInterrupt+0xc4>
+  114cd0:	e59f006c 	ldr	r0, [pc, #108]	@ 114d44 <gxCmdQueueInterrupt+0xd8>
+  114cd4:	e58d1004 	str	r1, [sp, #4]
+  114cd8:	e5c3c000 	strb	ip, [r3]
+  114cdc:	eb001782 	bl	11aaec <LightLock_Unlock>
+  114ce0:	e59d1004 	ldr	r1, [sp, #4]
+  114ce4:	e591300c 	ldr	r3, [r1, #12]
+  114ce8:	e3530000 	cmp	r3, #0
+  114cec:	0a00000d 	beq	114d28 <gxCmdQueueInterrupt+0xbc>
+  114cf0:	e1a00001 	mov	r0, r1
+  114cf4:	e28dd008 	add	sp, sp, #8
+  114cf8:	e8bd4010 	pop	{r4, lr}
+  114cfc:	e12fff13 	bx	r3
+  114d00:	e3a02000 	mov	r2, #0
+  114d04:	e59f1040 	ldr	r1, [pc, #64]	@ 114d4c <gxCmdQueueInterrupt+0xe0>
+  114d08:	e59f0034 	ldr	r0, [pc, #52]	@ 114d44 <gxCmdQueueInterrupt+0xd8>
+  114d0c:	e5842000 	str	r2, [r4]
+  114d10:	e5c12000 	strb	r2, [r1]
+  114d14:	e5c32000 	strb	r2, [r3]
+  114d18:	e5ce2000 	strb	r2, [lr]
+  114d1c:	e28dd008 	add	sp, sp, #8
+  114d20:	e8bd4010 	pop	{r4, lr}
+  114d24:	ea001770 	b	11aaec <LightLock_Unlock>
+  114d28:	e28dd008 	add	sp, sp, #8
+  114d2c:	e8bd8010 	pop	{r4, pc}
+  114d30:	ebffffb4 	bl	114c08 <gxCmdQueueDoCommands.part.0>
+  114d34:	e59f0008 	ldr	r0, [pc, #8]	@ 114d44 <gxCmdQueueInterrupt+0xd8>
+  114d38:	eafffff7 	b	114d1c <gxCmdQueueInterrupt+0xb0>
+  114d3c:	0014ae35 	.word	0x0014ae35
+  114d40:	0014ae38 	.word	0x0014ae38
+  114d44:	00136064 	.word	0x00136064
+  114d48:	0014ae34 	.word	0x0014ae34
+  114d4c:	0014ae36 	.word	0x0014ae36
+
+00118a04 <gspEventThreadMain>:
+  118a04:	e92d4ff8 	push	{r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  118a08:	e59f5124 	ldr	r5, [pc, #292]	@ 118b34 <gspEventThreadMain+0x130>
+  118a0c:	e5d53000 	ldrb	r3, [r5]
+  118a10:	e3530000 	cmp	r3, #0
+  118a14:	08bd8ff8 	popeq	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  118a18:	e59f6118 	ldr	r6, [pc, #280]	@ 118b38 <gspEventThreadMain+0x134>
+  118a1c:	e59f8118 	ldr	r8, [pc, #280]	@ 118b3c <gspEventThreadMain+0x138>
+  118a20:	e59f7118 	ldr	r7, [pc, #280]	@ 118b40 <gspEventThreadMain+0x13c>
+  118a24:	e59f9118 	ldr	r9, [pc, #280]	@ 118b44 <gspEventThreadMain+0x140>
+  118a28:	e59f4118 	ldr	r4, [pc, #280]	@ 118b48 <gspEventThreadMain+0x144>
+  118a2c:	e3e03000 	mvn	r3, #0
+  118a30:	e3e02000 	mvn	r2, #0
+  118a34:	e5960000 	ldr	r0, [r6]
+  118a38:	eb00067b 	bl	11a42c <svcWaitSynchronization>
+  118a3c:	e5960000 	ldr	r0, [r6]
+  118a40:	eb00066a 	bl	11a3f0 <svcClearEvent>
+  118a44:	e5d53000 	ldrb	r3, [r5]
+  118a48:	e3530000 	cmp	r3, #0
+  118a4c:	08bd8ff8 	popeq	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  118a50:	e5d73000 	ldrb	r3, [r7]
+  118a54:	e598c000 	ldr	ip, [r8]
+  118a58:	e08cc303 	add	ip, ip, r3, lsl #6
+  118a5c:	ea00000b 	b	118a90 <gspEventThreadMain+0x8c>
+  118a60:	e3520034 	cmp	r2, #52	@ 0x34
+  118a64:	220e20ff 	andcs	r2, lr, #255	@ 0xff
+  118a68:	e1822801 	orr	r2, r2, r1, lsl #16
+  118a6c:	e1821403 	orr	r1, r2, r3, lsl #8
+  118a70:	e5d0b00c 	ldrb	fp, [r0, #12]
+  118a74:	e3c118ff 	bic	r1, r1, #16711680	@ 0xff0000
+  118a78:	e18c2f91 	strex	r2, r1, [ip]
+  118a7c:	e6efa072 	uxtb	sl, r2
+  118a80:	e35a0000 	cmp	sl, #0
+  118a84:	1a000001 	bne	118a90 <gspEventThreadMain+0x8c>
+  118a88:	e35b0006 	cmp	fp, #6
+  118a8c:	da000010 	ble	118ad4 <gspEventThreadMain+0xd0>
+  118a90:	e19c3f9f 	ldrex	r3, [ip]
+  118a94:	e6ef0073 	uxtb	r0, r3
+  118a98:	e1a01823 	lsr	r1, r3, #16
+  118a9c:	e3130cff 	tst	r3, #65280	@ 0xff00
+  118aa0:	e6ef3473 	uxtb	r3, r3, ror #8
+  118aa4:	e2802001 	add	r2, r0, #1
+  118aa8:	e2433001 	sub	r3, r3, #1
+  118aac:	e240e033 	sub	lr, r0, #51	@ 0x33
+  118ab0:	e6ef2072 	uxtb	r2, r2
+  118ab4:	e08c0000 	add	r0, ip, r0
+  118ab8:	e6ef3073 	uxtb	r3, r3
+  118abc:	1affffe7 	bne	118a60 <gspEventThreadMain+0x5c>
+  118ac0:	f57ff01f 	clrex
+  118ac4:	e5d53000 	ldrb	r3, [r5]
+  118ac8:	e3530000 	cmp	r3, #0
+  118acc:	1affffd6 	bne	118a2c <gspEventThreadMain+0x28>
+  118ad0:	e8bd8ff8 	pop	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  118ad4:	e1a0000b 	mov	r0, fp
+  118ad8:	ebfff063 	bl	114c6c <gxCmdQueueInterrupt>
+  118adc:	e799110b 	ldr	r1, [r9, fp, lsl #2]
+  118ae0:	e3510000 	cmp	r1, #0
+  118ae4:	0a000006 	beq	118b04 <gspEventThreadMain+0x100>
+  118ae8:	e59f305c 	ldr	r3, [pc, #92]	@ 118b4c <gspEventThreadMain+0x148>
+  118aec:	e59f205c 	ldr	r2, [pc, #92]	@ 118b50 <gspEventThreadMain+0x14c>
+  118af0:	e7d3000b 	ldrb	r0, [r3, fp]
+  118af4:	e3500000 	cmp	r0, #0
+  118af8:	e792010b 	ldr	r0, [r2, fp, lsl #2]
+  118afc:	1789a10b 	strne	sl, [r9, fp, lsl #2]
+  118b00:	e12fff31 	blx	r1
+  118b04:	e59f3048 	ldr	r3, [pc, #72]	@ 118b54 <gspEventThreadMain+0x150>
+  118b08:	e083018b 	add	r0, r3, fp, lsl #3
+  118b0c:	eb00086f 	bl	11acd0 <LightEvent_Signal>
+  118b10:	e1942f9f 	ldrex	r2, [r4]
+  118b14:	e1841f9b 	strex	r1, fp, [r4]
+  118b18:	e6ef1071 	uxtb	r1, r1
+  118b1c:	e3510000 	cmp	r1, #0
+  118b20:	1afffffa 	bne	118b10 <gspEventThreadMain+0x10c>
+  118b24:	e3a02001 	mov	r2, #1
+  118b28:	e1a00004 	mov	r0, r4
+  118b2c:	eb0007b9 	bl	11aa18 <syncArbitrateAddress>
+  118b30:	eaffffc6 	b	118a50 <gspEventThreadMain+0x4c>
+  118b34:	0014c230 	.word	0x0014c230
+  118b38:	0014c238 	.word	0x0014c238
+  118b3c:	0014c240 	.word	0x0014c240
+  118b40:	0014c23d 	.word	0x0014c23d
+  118b44:	0014c1d8 	.word	0x0014c1d8
+  118b48:	0014c22c 	.word	0x0014c22c
+  118b4c:	0014c1b4 	.word	0x0014c1b4
+  118b50:	0014c1bc 	.word	0x0014c1bc
+  118b54:	0014c1f4 	.word	0x0014c1f4
+
+0010e658 <ds34_diagnostic_mark>:
+  10e658:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  10e65c:	e1a07000 	mov	r7, r0
+  10e660:	e59f32d0 	ldr	r3, [pc, #720]	@ 10e938 <ds34_diagnostic_mark+0x2e0>
+  10e664:	e24dd0ac 	sub	sp, sp, #172	@ 0xac
+  10e668:	e5931000 	ldr	r1, [r3]
+  10e66c:	ee070fba 	mcr	15, 0, r0, cr7, cr10, {5}
+  10e670:	e3510040 	cmp	r1, #64	@ 0x40
+  10e674:	83a02001 	movhi	r2, #1
+  10e678:	83a01040 	movhi	r1, #64	@ 0x40
+  10e67c:	859f32b8 	ldrhi	r3, [pc, #696]	@ 10e93c <ds34_diagnostic_mark+0x2e4>
+  10e680:	85832000 	strhi	r2, [r3]
+  10e684:	e59f32b4 	ldr	r3, [pc, #692]	@ 10e940 <ds34_diagnostic_mark+0x2e8>
+  10e688:	e5933000 	ldr	r3, [r3]
+  10e68c:	e1510003 	cmp	r1, r3
+  10e690:	959f32ac 	ldrls	r3, [pc, #684]	@ 10e944 <ds34_diagnostic_mark+0x2ec>
+  10e694:	958d301c 	strls	r3, [sp, #28]
+  10e698:	9a00007f 	bls	10e89c <ds34_diagnostic_mark+0x244>
+  10e69c:	e1a04003 	mov	r4, r3
+  10e6a0:	e59f329c 	ldr	r3, [pc, #668]	@ 10e944 <ds34_diagnostic_mark+0x2ec>
+  10e6a4:	e59fa29c 	ldr	sl, [pc, #668]	@ 10e948 <ds34_diagnostic_mark+0x2f0>
+  10e6a8:	e59fb29c 	ldr	fp, [pc, #668]	@ 10e94c <ds34_diagnostic_mark+0x2f4>
+  10e6ac:	e58d301c 	str	r3, [sp, #28]
+  10e6b0:	e58d1020 	str	r1, [sp, #32]
+  10e6b4:	e58d7024 	str	r7, [sp, #36]	@ 0x24
+  10e6b8:	e1a03304 	lsl	r3, r4, #6
+  10e6bc:	e0845304 	add	r5, r4, r4, lsl #6
+  10e6c0:	e58d3018 	str	r3, [sp, #24]
+  10e6c4:	e59f3284 	ldr	r3, [pc, #644]	@ 10e950 <ds34_diagnostic_mark+0x2f8>
+  10e6c8:	e0845105 	add	r5, r4, r5, lsl #2
+  10e6cc:	e7931105 	ldr	r1, [r3, r5, lsl #2]
+  10e6d0:	ee070fba 	mcr	15, 0, r0, cr7, cr10, {5}
+  10e6d4:	e59f3264 	ldr	r3, [pc, #612]	@ 10e940 <ds34_diagnostic_mark+0x2e8>
+  10e6d8:	e5933000 	ldr	r3, [r3]
+  10e6dc:	e2832001 	add	r2, r3, #1
+  10e6e0:	e1510002 	cmp	r1, r2
+  10e6e4:	1a00006b 	bne	10e898 <ds34_diagnostic_mark+0x240>
+  10e6e8:	e3a01080 	mov	r1, #128	@ 0x80
+  10e6ec:	e59f2260 	ldr	r2, [pc, #608]	@ 10e954 <ds34_diagnostic_mark+0x2fc>
+  10e6f0:	e28d0028 	add	r0, sp, #40	@ 0x28
+  10e6f4:	eb00477f 	bl	1204f8 <snprintf>
+  10e6f8:	e59f1258 	ldr	r1, [pc, #600]	@ 10e958 <ds34_diagnostic_mark+0x300>
+  10e6fc:	e28d0028 	add	r0, sp, #40	@ 0x28
+  10e700:	eb004768 	bl	1204a8 <fopen>
+  10e704:	e2506000 	subs	r6, r0, #0
+  10e708:	0a000085 	beq	10e924 <ds34_diagnostic_mark+0x2cc>
+  10e70c:	e59f322c 	ldr	r3, [pc, #556]	@ 10e940 <ds34_diagnostic_mark+0x2e8>
+  10e710:	e5932000 	ldr	r2, [r3]
+  10e714:	e59f3240 	ldr	r3, [pc, #576]	@ 10e95c <ds34_diagnostic_mark+0x304>
+  10e718:	e7931105 	ldr	r1, [r3, r5, lsl #2]
+  10e71c:	e3510000 	cmp	r1, #0
+  10e720:	0a00007b 	beq	10e914 <ds34_diagnostic_mark+0x2bc>
+  10e724:	e59f0234 	ldr	r0, [pc, #564]	@ 10e960 <ds34_diagnostic_mark+0x308>
+  10e728:	e3510001 	cmp	r1, #1
+  10e72c:	e59f3230 	ldr	r3, [pc, #560]	@ 10e964 <ds34_diagnostic_mark+0x30c>
+  10e730:	01a03000 	moveq	r3, r0
+  10e734:	e59f1220 	ldr	r1, [pc, #544]	@ 10e95c <ds34_diagnostic_mark+0x304>
+  10e738:	e0849304 	add	r9, r4, r4, lsl #6
+  10e73c:	e0849109 	add	r9, r4, r9, lsl #2
+  10e740:	e0819109 	add	r9, r1, r9, lsl #2
+  10e744:	e599100c 	ldr	r1, [r9, #12]
+  10e748:	e1a00006 	mov	r0, r6
+  10e74c:	e58d1008 	str	r1, [sp, #8]
+  10e750:	e5991008 	ldr	r1, [r9, #8]
+  10e754:	e58d1004 	str	r1, [sp, #4]
+  10e758:	e5991004 	ldr	r1, [r9, #4]
+  10e75c:	e58d1000 	str	r1, [sp]
+  10e760:	e59f1200 	ldr	r1, [pc, #512]	@ 10e968 <ds34_diagnostic_mark+0x310>
+  10e764:	eb0054c7 	bl	123a88 <fprintf>
+  10e768:	e5993004 	ldr	r3, [r9, #4]
+  10e76c:	e3530000 	cmp	r3, #0
+  10e770:	0a00001e 	beq	10e7f0 <ds34_diagnostic_mark+0x198>
+  10e774:	e3a07000 	mov	r7, #0
+  10e778:	e1a0200a 	mov	r2, sl
+  10e77c:	e59f81e8 	ldr	r8, [pc, #488]	@ 10e96c <ds34_diagnostic_mark+0x314>
+  10e780:	e58d4014 	str	r4, [sp, #20]
+  10e784:	e0888105 	add	r8, r8, r5, lsl #2
+  10e788:	e1a00006 	mov	r0, r6
+  10e78c:	e59f11dc 	ldr	r1, [pc, #476]	@ 10e970 <ds34_diagnostic_mark+0x318>
+  10e790:	eb0054bc 	bl	123a88 <fprintf>
+  10e794:	e3a04000 	mov	r4, #0
+  10e798:	e1a05008 	mov	r5, r8
+  10e79c:	e1a0200a 	mov	r2, sl
+  10e7a0:	e1a00006 	mov	r0, r6
+  10e7a4:	e59f11c8 	ldr	r1, [pc, #456]	@ 10e974 <ds34_diagnostic_mark+0x31c>
+  10e7a8:	e5b53004 	ldr	r3, [r5, #4]!
+  10e7ac:	e2844001 	add	r4, r4, #1
+  10e7b0:	eb0054b4 	bl	123a88 <fprintf>
+  10e7b4:	e3540008 	cmp	r4, #8
+  10e7b8:	e1a0200b 	mov	r2, fp
+  10e7bc:	1afffff7 	bne	10e7a0 <ds34_diagnostic_mark+0x148>
+  10e7c0:	e1a01006 	mov	r1, r6
+  10e7c4:	e3a0005d 	mov	r0, #93	@ 0x5d
+  10e7c8:	eb0046bb 	bl	1202bc <fputc>
+  10e7cc:	e5993004 	ldr	r3, [r9, #4]
+  10e7d0:	e2877001 	add	r7, r7, #1
+  10e7d4:	e1570003 	cmp	r7, r3
+  10e7d8:	2a000003 	bcs	10e7ec <ds34_diagnostic_mark+0x194>
+  10e7dc:	e3570020 	cmp	r7, #32
+  10e7e0:	e1a0200b 	mov	r2, fp
+  10e7e4:	e2888020 	add	r8, r8, #32
+  10e7e8:	1affffe6 	bne	10e788 <ds34_diagnostic_mark+0x130>
+  10e7ec:	e59d4014 	ldr	r4, [sp, #20]
+  10e7f0:	e1a03006 	mov	r3, r6
+  10e7f4:	e3a02003 	mov	r2, #3
+  10e7f8:	e3a01001 	mov	r1, #1
+  10e7fc:	e59f0174 	ldr	r0, [pc, #372]	@ 10e978 <ds34_diagnostic_mark+0x320>
+  10e800:	eb004a7c 	bl	1211f8 <fwrite>
+  10e804:	e1a00006 	mov	r0, r6
+  10e808:	eb005496 	bl	123a68 <fclose>
+  10e80c:	e3500000 	cmp	r0, #0
+  10e810:	13a02001 	movne	r2, #1
+  10e814:	159f3120 	ldrne	r3, [pc, #288]	@ 10e93c <ds34_diagnostic_mark+0x2e4>
+  10e818:	15832000 	strne	r2, [r3]
+  10e81c:	e59d301c 	ldr	r3, [sp, #28]
+  10e820:	e5930000 	ldr	r0, [r3]
+  10e824:	e3500000 	cmp	r0, #0
+  10e828:	0a000013 	beq	10e87c <ds34_diagnostic_mark+0x224>
+  10e82c:	e59d3018 	ldr	r3, [sp, #24]
+  10e830:	e59f1124 	ldr	r1, [pc, #292]	@ 10e95c <ds34_diagnostic_mark+0x304>
+  10e834:	e0833004 	add	r3, r3, r4
+  10e838:	e0843103 	add	r3, r4, r3, lsl #2
+  10e83c:	e0812103 	add	r2, r1, r3, lsl #2
+  10e840:	e7911103 	ldr	r1, [r1, r3, lsl #2]
+  10e844:	e592300c 	ldr	r3, [r2, #12]
+  10e848:	e59fc12c 	ldr	ip, [pc, #300]	@ 10e97c <ds34_diagnostic_mark+0x324>
+  10e84c:	e58d3008 	str	r3, [sp, #8]
+  10e850:	e5923008 	ldr	r3, [r2, #8]
+  10e854:	e3510000 	cmp	r1, #0
+  10e858:	e58d3004 	str	r3, [sp, #4]
+  10e85c:	e5923004 	ldr	r3, [r2, #4]
+  10e860:	e59f1118 	ldr	r1, [pc, #280]	@ 10e980 <ds34_diagnostic_mark+0x328>
+  10e864:	e58d3000 	str	r3, [sp]
+  10e868:	e59f30d0 	ldr	r3, [pc, #208]	@ 10e940 <ds34_diagnostic_mark+0x2e8>
+  10e86c:	e5932000 	ldr	r2, [r3]
+  10e870:	e59f310c 	ldr	r3, [pc, #268]	@ 10e984 <ds34_diagnostic_mark+0x32c>
+  10e874:	11a0300c 	movne	r3, ip
+  10e878:	eb005482 	bl	123a88 <fprintf>
+  10e87c:	e59f20bc 	ldr	r2, [pc, #188]	@ 10e940 <ds34_diagnostic_mark+0x2e8>
+  10e880:	e5923000 	ldr	r3, [r2]
+  10e884:	e2834001 	add	r4, r3, #1
+  10e888:	e59d3020 	ldr	r3, [sp, #32]
+  10e88c:	e5824000 	str	r4, [r2]
+  10e890:	e1540003 	cmp	r4, r3
+  10e894:	3affff87 	bcc	10e6b8 <ds34_diagnostic_mark+0x60>
+  10e898:	e59d7024 	ldr	r7, [sp, #36]	@ 0x24
+  10e89c:	e59da01c 	ldr	sl, [sp, #28]
+  10e8a0:	e59a6000 	ldr	r6, [sl]
+  10e8a4:	e3560000 	cmp	r6, #0
+  10e8a8:	0a00001b 	beq	10e91c <ds34_diagnostic_mark+0x2c4>
+  10e8ac:	eb00176f 	bl	114670 <osGetTime>
+  10e8b0:	e59f20d0 	ldr	r2, [pc, #208]	@ 10e988 <ds34_diagnostic_mark+0x330>
+  10e8b4:	e59f30d0 	ldr	r3, [pc, #208]	@ 10e98c <ds34_diagnostic_mark+0x334>
+  10e8b8:	e5938000 	ldr	r8, [r3]
+  10e8bc:	e5923000 	ldr	r3, [r2]
+  10e8c0:	e5922004 	ldr	r2, [r2, #4]
+  10e8c4:	e0509003 	subs	r9, r0, r3
+  10e8c8:	e3a00000 	mov	r0, #0
+  10e8cc:	e0c14002 	sbc	r4, r1, r2
+  10e8d0:	eb000a44 	bl	1111e8 <C3D_FrameCounter>
+  10e8d4:	e1a05000 	mov	r5, r0
+  10e8d8:	e3a00001 	mov	r0, #1
+  10e8dc:	eb000a41 	bl	1111e8 <C3D_FrameCounter>
+  10e8e0:	e1a02009 	mov	r2, r9
+  10e8e4:	e58d0008 	str	r0, [sp, #8]
+  10e8e8:	e1a03004 	mov	r3, r4
+  10e8ec:	e1a00006 	mov	r0, r6
+  10e8f0:	e59f1098 	ldr	r1, [pc, #152]	@ 10e990 <ds34_diagnostic_mark+0x338>
+  10e8f4:	e58d700c 	str	r7, [sp, #12]
+  10e8f8:	e58d5004 	str	r5, [sp, #4]
+  10e8fc:	e58d8000 	str	r8, [sp]
+  10e900:	eb005460 	bl	123a88 <fprintf>
+  10e904:	e59a0000 	ldr	r0, [sl]
+  10e908:	e28dd0ac 	add	sp, sp, #172	@ 0xac
+  10e90c:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  10e910:	ea0049e6 	b	1210b0 <fflush>
+  10e914:	e59f3078 	ldr	r3, [pc, #120]	@ 10e994 <ds34_diagnostic_mark+0x33c>
+  10e918:	eaffff85 	b	10e734 <ds34_diagnostic_mark+0xdc>
+  10e91c:	e28dd0ac 	add	sp, sp, #172	@ 0xac
+  10e920:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  10e924:	e3a02001 	mov	r2, #1
+  10e928:	e59f300c 	ldr	r3, [pc, #12]	@ 10e93c <ds34_diagnostic_mark+0x2e4>
+  10e92c:	e59d7024 	ldr	r7, [sp, #36]	@ 0x24
+  10e930:	e5832000 	str	r2, [r3]
+  10e934:	eaffffd8 	b	10e89c <ds34_diagnostic_mark+0x244>
+  10e938:	00148b0c 	.word	0x00148b0c
+  10e93c:	00148b5c 	.word	0x00148b5c
+  10e940:	00148b08 	.word	0x00148b08
+  10e944:	00148b50 	.word	0x00148b50
+  10e948:	001332a4 	.word	0x001332a4
+  10e94c:	00132c9c 	.word	0x00132c9c
+  10e950:	00138a18 	.word	0x00138a18
+  10e954:	00132c08 	.word	0x00132c08
+  10e958:	00132c38 	.word	0x00132c38
+  10e95c:	00138608 	.word	0x00138608
+  10e960:	00132be4 	.word	0x00132be4
+  10e964:	00132bf4 	.word	0x00132bf4
+  10e968:	00132c3c 	.word	0x00132c3c
+  10e96c:	00138614 	.word	0x00138614
+  10e970:	00132c90 	.word	0x00132c90
+  10e974:	00132c94 	.word	0x00132c94
+  10e978:	00132ca0 	.word	0x00132ca0
+  10e97c:	00132c00 	.word	0x00132c00
+  10e980:	00132ca4 	.word	0x00132ca4
+  10e984:	00132bfc 	.word	0x00132bfc
+  10e988:	00148b48 	.word	0x00148b48
+  10e98c:	00148b60 	.word	0x00148b60
+  10e990:	00132cd8 	.word	0x00132cd8
+  10e994:	00132bd8 	.word	0x00132bd8
+
+0010e998 <ds34_diagnostic_begin>:
+  10e998:	e92d4010 	push	{r4, lr}
+  10e99c:	e1a04000 	mov	r4, r0
+  10e9a0:	e59f002c 	ldr	r0, [pc, #44]	@ 10e9d4 <ds34_diagnostic_begin+0x3c>
+  10e9a4:	ebffff2b 	bl	10e658 <ds34_diagnostic_mark>
+  10e9a8:	e6ef0074 	uxtb	r0, r4
+  10e9ac:	eb000a7c 	bl	1113a4 <C3D_FrameBegin>
+  10e9b0:	e2501000 	subs	r1, r0, #0
+  10e9b4:	e1a04001 	mov	r4, r1
+  10e9b8:	e59f2018 	ldr	r2, [pc, #24]	@ 10e9d8 <ds34_diagnostic_begin+0x40>
+  10e9bc:	e59f3018 	ldr	r3, [pc, #24]	@ 10e9dc <ds34_diagnostic_begin+0x44>
+  10e9c0:	01a00002 	moveq	r0, r2
+  10e9c4:	11a00003 	movne	r0, r3
+  10e9c8:	ebffff22 	bl	10e658 <ds34_diagnostic_mark>
+  10e9cc:	e1a00004 	mov	r0, r4
+  10e9d0:	e8bd8010 	pop	{r4, pc}
+  10e9d4:	00132d2c 	.word	0x00132d2c
+  10e9d8:	00132d14 	.word	0x00132d14
+  10e9dc:	00132d00 	.word	0x00132d00
+
+0010e608 <__wrap_gxCmdQueueRun>:
+  10e608:	e1a01000 	mov	r1, r0
+  10e60c:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+  10e610:	e3a00000 	mov	r0, #0
+  10e614:	e24dd00c 	sub	sp, sp, #12
+  10e618:	e58d1004 	str	r1, [sp, #4]
+  10e61c:	ebffff74 	bl	10e3f4 <record_queue>
+  10e620:	e59d0004 	ldr	r0, [sp, #4]
+  10e624:	e28dd00c 	add	sp, sp, #12
+  10e628:	e49de004 	pop	{lr}		@ (ldr lr, [sp], #4)
+  10e62c:	ea001a23 	b	114ec0 <gxCmdQueueRun>

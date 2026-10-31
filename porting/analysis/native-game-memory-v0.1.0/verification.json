@@ -1,0 +1,13 @@
+{
+  "probe_game_frame_exact": true,
+  "safe_exit": true,
+  "kernel_joins": 6,
+  "original_native_game_source_unchanged": true,
+  "GPU_thread_generated_overlays_identical": true,
+  "heap_and_arena_sizes_unchanged": true,
+  "hardware_tested": false,
+  "CIA_created": false,
+  "samples": 366,
+  "baseline_protected_files": 239,
+  "baseline_changes": []
+}

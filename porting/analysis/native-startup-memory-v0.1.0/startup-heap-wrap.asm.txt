@@ -1,0 +1,45 @@
+
+C:\Users\jarom\Desktop\Dead_space_mobile\porting\3ds\build-native-startup-v0.1.0\startup.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00105f60 <__libctru_init>:
+  105f60:	e59f2028 	ldr	r2, [pc, #40]	@ 105f90 <__libctru_init+0x30>
+  105f64:	e92d4010 	push	{r4, lr}
+  105f68:	e5922000 	ldr	r2, [r2]
+  105f6c:	e59f3020 	ldr	r3, [pc, #32]	@ 105f94 <__libctru_init+0x34>
+  105f70:	e3520000 	cmp	r2, #0
+  105f74:	03a00000 	moveq	r0, #0
+  105f78:	e5830000 	str	r0, [r3]
+  105f7c:	eb000461 	bl	107108 <__sync_init>
+  105f80:	eb000085 	bl	10619c <__system_initSyscalls>
+  105f84:	ebffeb2b 	bl	100c38 <__wrap___system_allocateHeaps>
+  105f88:	e8bd4010 	pop	{r4, lr}
+  105f8c:	ea000001 	b	105f98 <__system_initArgv>
+  105f90:	00100008 	.word	0x00100008
+  105f94:	00122408 	.word	0x00122408
+
+
+C:\Users\jarom\Desktop\Dead_space_mobile\porting\3ds\build-native-startup-v0.1.0\startup.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00100c38 <__wrap___system_allocateHeaps>:
+  100c38:	e59f0030 	ldr	r0, [pc, #48]	@ 100c70 <__wrap___system_allocateHeaps+0x38>
+  100c3c:	e92d4010 	push	{r4, lr}
+  100c40:	e590301c 	ldr	r3, [r0, #28]
+  100c44:	e2833001 	add	r3, r3, #1
+  100c48:	e580301c 	str	r3, [r0, #28]
+  100c4c:	ebffff5b 	bl	1009c0 <memory>
+  100c50:	eb001448 	bl	105d78 <__system_allocateHeaps>
+  100c54:	e59f0018 	ldr	r0, [pc, #24]	@ 100c74 <__wrap___system_allocateHeaps+0x3c>
+  100c58:	ebffff58 	bl	1009c0 <memory>
+  100c5c:	e59f0010 	ldr	r0, [pc, #16]	@ 100c74 <__wrap___system_allocateHeaps+0x3c>
+  100c60:	e590301c 	ldr	r3, [r0, #28]
+  100c64:	e2833001 	add	r3, r3, #1
+  100c68:	e580301c 	str	r3, [r0, #28]
+  100c6c:	e8bd8010 	pop	{r4, pc}
+  100c70:	00120e80 	.word	0x00120e80
+  100c74:	00120e60 	.word	0x00120e60

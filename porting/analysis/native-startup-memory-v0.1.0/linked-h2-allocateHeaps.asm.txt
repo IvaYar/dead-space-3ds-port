@@ -1,0 +1,128 @@
+
+porting\3ds\build-native-game-v0.1.0-h2\native-game.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00132188 <__system_allocateHeaps>:
+  132188:	e92d4030 	push	{r4, r5, lr}
+  13218c:	e3a04000 	mov	r4, #0
+  132190:	e24dd02c 	sub	sp, sp, #44	@ 0x2c
+  132194:	e59f11b4 	ldr	r1, [pc, #436]	@ 132350 <__system_allocateHeaps+0x1c8>
+  132198:	e28d0010 	add	r0, sp, #16
+  13219c:	e58d4010 	str	r4, [sp, #16]
+  1321a0:	eb000186 	bl	1327c0 <svcGetResourceLimit>
+  1321a4:	e1500004 	cmp	r0, r4
+  1321a8:	ba00005d 	blt	132324 <__system_allocateHeaps+0x19c>
+  1321ac:	e3a04001 	mov	r4, #1
+  1321b0:	ed9f7b64 	vldr	d7, [pc, #400]	@ 132348 <__system_allocateHeaps+0x1c0>
+  1321b4:	e1a03004 	mov	r3, r4
+  1321b8:	e59d1010 	ldr	r1, [sp, #16]
+  1321bc:	e28d2014 	add	r2, sp, #20
+  1321c0:	e28d0018 	add	r0, sp, #24
+  1321c4:	ed8d7b06 	vstr	d7, [sp, #24]
+  1321c8:	ed8d7b08 	vstr	d7, [sp, #32]
+  1321cc:	e58d4014 	str	r4, [sp, #20]
+  1321d0:	eb00017f 	bl	1327d4 <svcGetResourceLimitLimitValues>
+  1321d4:	e1a03004 	mov	r3, r4
+  1321d8:	e59d1010 	ldr	r1, [sp, #16]
+  1321dc:	e28d2014 	add	r2, sp, #20
+  1321e0:	e28d0020 	add	r0, sp, #32
+  1321e4:	eb00017c 	bl	1327dc <svcGetResourceLimitCurrentValues>
+  1321e8:	e59d0010 	ldr	r0, [sp, #16]
+  1321ec:	eb000151 	bl	132738 <svcCloseHandle>
+  1321f0:	e59f415c 	ldr	r4, [pc, #348]	@ 132354 <__system_allocateHeaps+0x1cc>
+  1321f4:	e59f515c 	ldr	r5, [pc, #348]	@ 132358 <__system_allocateHeaps+0x1d0>
+  1321f8:	e59d2018 	ldr	r2, [sp, #24]
+  1321fc:	e59dc020 	ldr	ip, [sp, #32]
+  132200:	e5943000 	ldr	r3, [r4]
+  132204:	e5951000 	ldr	r1, [r5]
+  132208:	e042200c 	sub	r2, r2, ip
+  13220c:	e3c22eff 	bic	r2, r2, #4080	@ 0xff0
+  132210:	e0830001 	add	r0, r3, r1
+  132214:	e3c2200f 	bic	r2, r2, #15
+  132218:	e1500002 	cmp	r0, r2
+  13221c:	8a000039 	bhi	132308 <__system_allocateHeaps+0x180>
+  132220:	e3530000 	cmp	r3, #0
+  132224:	0a000023 	beq	1322b8 <__system_allocateHeaps+0x130>
+  132228:	e3510000 	cmp	r1, #0
+  13222c:	00422003 	subeq	r2, r2, r3
+  132230:	05852000 	streq	r2, [r5]
+  132234:	e3a0c003 	mov	ip, #3
+  132238:	e3a02000 	mov	r2, #0
+  13223c:	e3a01302 	mov	r1, #134217728	@ 0x8000000
+  132240:	e59f0114 	ldr	r0, [pc, #276]	@ 13235c <__system_allocateHeaps+0x1d4>
+  132244:	e58dc004 	str	ip, [sp, #4]
+  132248:	e58dc000 	str	ip, [sp]
+  13224c:	eb0000f6 	bl	13262c <svcControlMemory>
+  132250:	e3500000 	cmp	r0, #0
+  132254:	ba000038 	blt	13233c <__system_allocateHeaps+0x1b4>
+  132258:	e3a01003 	mov	r1, #3
+  13225c:	e3a02000 	mov	r2, #0
+  132260:	e59f00f8 	ldr	r0, [pc, #248]	@ 132360 <__system_allocateHeaps+0x1d8>
+  132264:	e5953000 	ldr	r3, [r5]
+  132268:	e58d0000 	str	r0, [sp]
+  13226c:	e58d1004 	str	r1, [sp, #4]
+  132270:	e59f00ec 	ldr	r0, [pc, #236]	@ 132364 <__system_allocateHeaps+0x1dc>
+  132274:	e1a01002 	mov	r1, r2
+  132278:	eb0000eb 	bl	13262c <svcControlMemory>
+  13227c:	e3500000 	cmp	r0, #0
+  132280:	ba00002a 	blt	132330 <__system_allocateHeaps+0x1a8>
+  132284:	e3a01305 	mov	r1, #335544320	@ 0x14000000
+  132288:	e3a00201 	mov	r0, #268435456	@ 0x10000000
+  13228c:	eb0002d5 	bl	132de8 <mappableInit>
+  132290:	e59f30c4 	ldr	r3, [pc, #196]	@ 13235c <__system_allocateHeaps+0x1d4>
+  132294:	e59f10cc 	ldr	r1, [pc, #204]	@ 132368 <__system_allocateHeaps+0x1e0>
+  132298:	e5933000 	ldr	r3, [r3]
+  13229c:	e59f20c8 	ldr	r2, [pc, #200]	@ 13236c <__system_allocateHeaps+0x1e4>
+  1322a0:	e5813000 	str	r3, [r1]
+  1322a4:	e5941000 	ldr	r1, [r4]
+  1322a8:	e0833001 	add	r3, r3, r1
+  1322ac:	e5823000 	str	r3, [r2]
+  1322b0:	e28dd02c 	add	sp, sp, #44	@ 0x2c
+  1322b4:	e8bd8030 	pop	{r4, r5, pc}
+  1322b8:	e3510000 	cmp	r1, #0
+  1322bc:	0a000002 	beq	1322cc <__system_allocateHeaps+0x144>
+  1322c0:	e0423001 	sub	r3, r2, r1
+  1322c4:	e5843000 	str	r3, [r4]
+  1322c8:	eaffffd9 	b	132234 <__system_allocateHeaps+0xac>
+  1322cc:	e2411a01 	sub	r1, r1, #4096	@ 0x1000
+  1322d0:	e00110a2 	and	r1, r1, r2, lsr #1
+  1322d4:	e0423001 	sub	r3, r2, r1
+  1322d8:	e3530506 	cmp	r3, #25165824	@ 0x1800000
+  1322dc:	e5851000 	str	r1, [r5]
+  1322e0:	9afffff7 	bls	1322c4 <__system_allocateHeaps+0x13c>
+  1322e4:	e2421506 	sub	r1, r2, #25165824	@ 0x1800000
+  1322e8:	e3a03506 	mov	r3, #25165824	@ 0x1800000
+  1322ec:	e3510402 	cmp	r1, #33554432	@ 0x2000000
+  1322f0:	83a01402 	movhi	r1, #33554432	@ 0x2000000
+  1322f4:	e5843000 	str	r3, [r4]
+  1322f8:	828234fe 	addhi	r3, r2, #-33554432	@ 0xfe000000
+  1322fc:	85843000 	strhi	r3, [r4]
+  132300:	e5851000 	str	r1, [r5]
+  132304:	eaffffca 	b	132234 <__system_allocateHeaps+0xac>
+  132308:	e3a00000 	mov	r0, #0
+  13230c:	e58d200c 	str	r2, [sp, #12]
+  132310:	eb000133 	bl	1327e4 <svcBreak>
+  132314:	e5943000 	ldr	r3, [r4]
+  132318:	e5951000 	ldr	r1, [r5]
+  13231c:	e59d200c 	ldr	r2, [sp, #12]
+  132320:	eaffffbe 	b	132220 <__system_allocateHeaps+0x98>
+  132324:	e1a00004 	mov	r0, r4
+  132328:	eb00012d 	bl	1327e4 <svcBreak>
+  13232c:	eaffff9e 	b	1321ac <__system_allocateHeaps+0x24>
+  132330:	e3a00000 	mov	r0, #0
+  132334:	eb00012a 	bl	1327e4 <svcBreak>
+  132338:	eaffffd1 	b	132284 <__system_allocateHeaps+0xfc>
+  13233c:	e3a00000 	mov	r0, #0
+  132340:	eb000127 	bl	1327e4 <svcBreak>
+  132344:	eaffffc3 	b	132258 <__system_allocateHeaps+0xd0>
+	...
+  132350:	ffff8001 	.word	0xffff8001
+  132354:	00165090 	.word	0x00165090
+  132358:	0016508c 	.word	0x0016508c
+  13235c:	0017d224 	.word	0x0017d224
+  132360:	00010003 	.word	0x00010003
+  132364:	0017d220 	.word	0x0017d220
+  132368:	0017de64 	.word	0x0017de64
+  13236c:	0017de68 	.word	0x0017de68

@@ -1,0 +1,212 @@
+3 [   0.047854] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config can't be open without mode create.
+
+3 [   0.047886] Service.FS <Error> core/file_sys/savedata_archive.cpp:DeleteFile:117: File not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010017/00000000/config
+
+3 [   0.050925] Service.FS <Error> core/file_sys/savedata_archive.cpp:OpenFile:75: Non-existing file C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/nand/data/00000000000000000000000000000000/sysdata/00010035/00000000/news.db can't be open without mode create.
+
+3 [   0.060450] Service.NWM <Error> core/hle/service/nwm/nwm_uds.cpp:NWM_UDS:1738: Network isn't initalized
+
+3 [   0.088062] Service.HTTP <Error> core/hle/service/http/http_c.cpp:DecryptClCertA:2282: ClCertA file missing, using default
+
+2 [   0.088485] Service.FS <Warning> core/file_sys/ncch_container.cpp:OpenFile:192: Failed to open C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004000e/0fde6d00/content/00000000.app
+
+0 [   0.094754] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00100000, size=00032000
+
+0 [   0.094760] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BCE000, upper=07C00000
+
+0 [   0.094781] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00132000, size=00004000
+
+0 [   0.094782] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BCA000, upper=07BCE000
+
+0 [   0.094786] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=00136000, size=00018000
+
+0 [   0.094787] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07BB2000, upper=07BCA000
+
+0 [   0.094794] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=0FFC0000, size=00040000
+
+0 [   0.094794] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=07B72000, upper=07BB2000
+
+0 [   0.126053] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00000003, addr0=0x08000000, addr1=0x00000000, size=0x1F72000, permissions=0x00000003
+
+0 [   0.126058] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:307: Allocate heap target=08000000, size=01F72000
+
+0 [   0.126061] Kernel <Debug> core/hle/kernel/process.cpp:HeapAllocate:333: Allocated FCRAM region lower=05C00000, upper=07B72000
+
+0 [   0.126633] Kernel.SVC <Debug> core/hle/kernel/svc.cpp:ControlMemory:519: called operation=0x00010003, addr0=0x00000000, addr1=0x00000000, size=0x2000000, permissions=0x00000003
+
+2 [   0.127444] Service.SRV <Warning> core/hle/service/sm/srv.cpp:RegisterClient:64: (STUBBED) called. Caller PID=11
+
+2 [   0.144133] Service.APT <Warning> core/hle/service/apt/apt.cpp:NotifyToWait:362: (STUBBED) app_id=768
+
+3 [   0.144601] Service <Error> core/hle/service/service.cpp:ReportUnimplementedFunction:170: unknown / unimplemented function 'ConfigureNew3DSCPU': port='ptm:sysm' cmd_buf={[0]=0x8180040 (0x0818, 1, 0), [1]=0x0}
+
+2 [   0.144708] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000007, input_size=0X00000004, output_size=0X00000001
+
+2 [   0.144766] Service.APT <Warning> core/hle/service/apt/apt.cpp:AppletUtility:733: (STUBBED) called command=0X00000004, input_size=0X00000001, output_size=0X00000001
+
+3 [   0.179037] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/ready.txt
+
+3 [   0.180863] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-00.raw
+
+3 [   0.182365] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-00.json
+
+3 [   0.183821] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-01.raw
+
+3 [   0.185500] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-01.json
+
+3 [   0.186952] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-02.raw
+
+3 [   0.188418] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-02.json
+
+3 [   0.189881] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-03.raw
+
+3 [   0.191298] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-03.json
+
+3 [   0.192679] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-04.raw
+
+3 [   0.194017] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-04.json
+
+3 [   0.195384] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-05.raw
+
+3 [   0.196830] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-05.json
+
+3 [   0.198143] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-06.raw
+
+3 [   0.199519] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-06.json
+
+3 [   0.200919] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-07.raw
+
+3 [   0.202324] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-07.json
+
+3 [   0.203649] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-08.raw
+
+3 [   0.204997] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/frame-08.json
+
+3 [   0.206550] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-00.json
+
+3 [   0.207978] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-01.json
+
+3 [   0.209454] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-02.json
+
+3 [   0.210791] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-03.json
+
+3 [   0.212235] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-04.json
+
+3 [   0.213601] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-05.json
+
+3 [   0.214950] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-06.json
+
+3 [   0.216337] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-07.json
+
+3 [   0.217692] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-08.json
+
+3 [   0.219123] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-09.json
+
+3 [   0.220688] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-10.json
+
+3 [   0.222035] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-11.json
+
+3 [   0.223412] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-12.json
+
+3 [   0.224839] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-13.json
+
+3 [   0.226203] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-14.json
+
+3 [   0.227574] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-15.json
+
+3 [   0.228944] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-16.json
+
+3 [   0.230368] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-17.json
+
+3 [   0.231691] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-18.json
+
+3 [   0.233141] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-19.json
+
+3 [   0.234465] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-20.json
+
+3 [   0.235977] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-21.json
+
+3 [   0.237434] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-22.json
+
+3 [   0.238819] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-23.json
+
+3 [   0.240200] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-24.json
+
+3 [   0.241734] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-25.json
+
+3 [   0.243106] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-26.json
+
+3 [   0.244458] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-27.json
+
+3 [   0.245811] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-28.json
+
+3 [   0.247251] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-29.json
+
+3 [   0.248623] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-30.json
+
+3 [   0.249948] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-31.json
+
+3 [   0.251311] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-32.json
+
+3 [   0.252758] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-33.json
+
+3 [   0.254117] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-34.json
+
+3 [   0.255477] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-35.json
+
+3 [   0.256840] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-36.json
+
+3 [   0.258233] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-37.json
+
+3 [   0.259579] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-38.json
+
+3 [   0.260947] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-39.json
+
+3 [   0.262322] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-40.json
+
+3 [   0.263854] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-41.json
+
+3 [   0.265198] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-42.json
+
+3 [   0.266590] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-43.json
+
+3 [   0.268032] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-44.json
+
+3 [   0.269451] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-45.json
+
+3 [   0.270812] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-46.json
+
+3 [   0.272163] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-47.json
+
+3 [   0.273534] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-48.json
+
+3 [   0.274947] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-49.json
+
+3 [   0.276260] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-50.json
+
+3 [   0.277607] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-51.json
+
+3 [   0.278967] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-52.json
+
+3 [   0.280374] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-53.json
+
+3 [   0.281715] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-54.json
+
+3 [   0.283087] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-55.json
+
+3 [   0.284394] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-56.json
+
+3 [   0.285810] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-57.json
+
+3 [   0.287165] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-58.json
+
+3 [   0.288495] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-59.json
+
+3 [   0.289863] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-60.json
+
+3 [   0.291262] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-61.json
+
+3 [   0.292777] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-62.json
+
+3 [   0.294151] Service.FS <Error> core/file_sys/archive_sdmc.cpp:DeleteDirectoryHelper:198: Path not found C:\Users\jarom\Desktop\Dead_space_mobile\porting\analysis\azahar-ds34-rgba8-v0.1.0/Azahar/sdmc/3ds/ds34-rgba8-v0.1.0/queue-63.json
+

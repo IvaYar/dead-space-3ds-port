@@ -1,0 +1,54 @@
+Environment=emulator appbytes=186646528 Luma=00000000
+Memory image=0848f000 size=4792320 arena=3018a000/134217728 trampoline=08922000
+Bindings=397 unsupported fail-stop functions=258 constructors=209
+RX range 0848f000 bytes=4337664 native_verified=0
+RX range 08922000 bytes=12288 native_verified=0
+Constructors completed=209
+CALL MainActivity_NativeOnCreate
+RETURN MainActivity_NativeOnCreate
+CALL AndroidRenderer_NativeOnSurfaceCreated
+RETURN AndroidRenderer_NativeOnSurfaceCreated
+CALL AndroidRenderer_NativeOnSurfaceChanged
+RETURN AndroidRenderer_NativeOnSurfaceChanged
+JNI FindClass com/ea/EAIO/EAIO.  missing=0
+JNI FindClass com/ea/blast/MainActivity.  missing=0
+JNI FindClass java/io/InputStream.  missing=0
+JNI FindClass android/content/res/AssetFileDescriptor.  missing=0
+JNI FindClass com/ea/blast/SystemAndroidDelegate.  missing=0
+JNI AssetManager.openFd IOException android/content/res/AssetManager.EAMCore.ini  missing=2
+JNI FindClass com/ea/blast/PowerManagerAndroid.  missing=0
+JNI FindClass com/eamobile/Query.  missing=0
+JNI FindClass com/ea/blast/GetAppDataDirectoryDelegate.  missing=0
+JNI FindClass com/ea/blast/DisplayAndroidDelegate.  missing=0
+JNI FindClass com/ea/blast/DeviceOrientationHandlerAndroidDelegate.  missing=0
+JNI FindClass com/ea/blast/AccelerometerAndroidDelegate.  missing=0
+JNI AssetManager.open IOException android/content/res/AssetManager.data.zip  missing=2
+JNI FindClass com/ea/blast/GetAppDataDirectoryDelegate.  missing=0
+JNI FindClass com/eamobile/Query.  missing=0
+CALL MainActivity_NativeOnResume
+RETURN MainActivity_NativeOnResume
+CALL MainActivity_NativeOnWindowFocusChanged
+RETURN MainActivity_NativeOnWindowFocusChanged
+FRAME 30 complete
+FRAME 60 complete
+FRAME 90 complete
+FRAME 120 complete
+FRAME 150 complete
+FRAME 180 complete
+FRAME 210 complete
+FRAME 240 complete
+FRAME 270 complete
+FRAME 300 complete
+FRAME 330 complete
+ORIGINAL FRAME SAVED callback=351 reference565=ea733050 crc=387f6979
+CALL MainActivity_NativeOnPause
+RETURN MainActivity_NativeOnPause
+CALL MainActivity_NativeOnStop
+RETURN MainActivity_NativeOnStop
+LOADER natural completion=0
+JOB 302 completion=0
+JOB 403 completion=0
+AUDIO 504 completion=0
+AUDIO 605 completion=0
+SHUTDOWN live workers=1
+FAIL phase=shutdown lifecycle frame=351: worker/GPU shutdown incomplete

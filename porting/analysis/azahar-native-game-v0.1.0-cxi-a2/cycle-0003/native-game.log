@@ -1,0 +1,420 @@
+STAGE preflight
+Environment=emulator appbytes=186646528 Luma=00000000
+Memory image=0848f000 size=4792320 arena=3018a000/134217728 trampoline=08922000
+STAGE graphics setup
+STAGE font verification
+STAGE private file namespace
+STAGE JNI/bootstrap
+STAGE relocations/imports
+Bindings=397 unsupported fail-stop functions=258 constructors=209
+RX flush address=0848f000 bytes=4337664 result=00000000
+RX range 0848f000 bytes=4337664 native_verified=0
+RX flush address=08922000 bytes=12288 result=00000000
+RX range 08922000 bytes=12288 native_verified=0
+ICACHE entire invalidate before constructors; application affinity core0
+STAGE constructors
+Constructors completed=209
+STAGE JNI_OnLoad
+STAGE lifecycle
+CALL MainActivity_NativeOnCreate
+RETURN MainActivity_NativeOnCreate
+CALL AndroidRenderer_NativeOnSurfaceCreated
+RETURN AndroidRenderer_NativeOnSurfaceCreated
+CALL AndroidRenderer_NativeOnSurfaceChanged
+RETURN AndroidRenderer_NativeOnSurfaceChanged
+STAGE NativeOnDrawFrame
+JNI FindClass com/ea/EAIO/EAIO.  missing=0
+JNI FindClass com/ea/blast/MainActivity.  missing=0
+JNI FindClass java/io/InputStream.  missing=0
+JNI FindClass android/content/res/AssetFileDescriptor.  missing=0
+JNI FindClass com/ea/blast/SystemAndroidDelegate.  missing=0
+JNI AssetManager.openFd IOException android/content/res/AssetManager.EAMCore.ini  missing=2
+JNI FindClass com/ea/blast/PowerManagerAndroid.  missing=0
+STAGE NativeOnDrawFrame
+JNI FindClass com/eamobile/Query.  missing=0
+JNI FindClass com/ea/blast/GetAppDataDirectoryDelegate.  missing=0
+JNI FindClass com/ea/blast/DisplayAndroidDelegate.  missing=0
+JNI FindClass com/ea/blast/DeviceOrientationHandlerAndroidDelegate.  missing=0
+JNI FindClass com/ea/blast/AccelerometerAndroidDelegate.  missing=0
+JNI AssetManager.open IOException android/content/res/AssetManager.data.zip  missing=2
+JNI FindClass com/ea/blast/GetAppDataDirectoryDelegate.  missing=0
+JNI FindClass com/eamobile/Query.  missing=0
+CALL MainActivity_NativeOnResume
+RETURN MainActivity_NativeOnResume
+CALL MainActivity_NativeOnWindowFocusChanged
+RETURN MainActivity_NativeOnWindowFocusChanged
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 30 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 60 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 90 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 120 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 150 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 180 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 210 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 240 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 270 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 300 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+FRAME 330 complete
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE NativeOnDrawFrame
+STAGE GPU completion/readback
+ORIGINAL FRAME SAVED callback=351 reference565=ea733050 crc=387f6979
+STAGE shutdown lifecycle
+CALL MainActivity_NativeOnPause
+RETURN MainActivity_NativeOnPause
+CALL MainActivity_NativeOnStop
+RETURN MainActivity_NativeOnStop
+LOADER natural completion=0
+JOB 302 completion=0
+JOB 403 completion=0
+AUDIO 504 completion=0
+AUDIO 605 completion=0
+PERIODIC 201 completion=0
+RESOURCES JNI=13 stdio=0 appdata=0 IOactive=0 opens/closes=73/73 dirs=0
+SHUTDOWN live workers=0

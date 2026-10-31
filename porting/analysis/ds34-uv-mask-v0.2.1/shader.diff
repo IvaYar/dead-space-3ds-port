@@ -1,0 +1,12 @@
+--- preserved-ds34/shader
++++ full-output-mask/shader
+@@ -14,7 +14,7 @@
+     dp4 position_out.z, projection[2], position_in
+     dp4 position_out.w, projection[3], position_in
+     mov color_out, color_in
+-    mul uv0_out.xy, texture_scale.xy, uv0_in.xy
+-    mul uv1_out.xy, texture_scale.zw, uv1_in.xy
++    mul uv0_out, texture_scale.xy, uv0_in.xy
++    mul uv1_out, texture_scale.zw, uv1_in.xy
+     end
+ .end

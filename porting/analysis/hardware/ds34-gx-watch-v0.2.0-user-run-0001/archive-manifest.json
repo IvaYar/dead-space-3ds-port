@@ -1,0 +1,26 @@
+{
+  "source": "run-0001",
+  "source_type": "User-provided native run directory",
+  "files": {
+    "first-frame.pica": {
+      "bytes": 1168,
+      "sha256": "ffd8bbc608ff1f476de21c9e089e3736e29e875c68ca7a4a8f6452c4181e0357"
+    },
+    "gpu-test.log": {
+      "bytes": 1050,
+      "sha256": "80ae7175e24c3fbdc681f930bca1aa56b3dc026349c3307ad00901dd4372338d"
+    },
+    "observation.json": {
+      "bytes": 68960,
+      "sha256": "22e3e4509e9da2153eb0ab3ddc1dfd5beab390357570716f8c17532963a476ac"
+    },
+    "ready.txt": {
+      "bytes": 40,
+      "sha256": "d246f19290b3f514681d923e8ae3ca99a6faabab27fdafc5b74de8a445983a5b"
+    },
+    "result.json": {
+      "bytes": 349,
+      "sha256": "4fc234371eb37f9f14dea8021de1c3ce3d75f3097f6891d5c95248a9b25a5fef"
+    }
+  }
+}

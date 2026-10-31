@@ -1,0 +1,95 @@
+{
+  "version": "0.2.1",
+  "title_id": "000400000FDE6F00",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "Azahar_passed": true,
+  "runtime_runs": 1,
+  "source_and_ELF_only_two_output_masks_changed": true,
+  "CIA_sha256": "5e853550bede4aa6a911959c122dcc6aa595c673071d6f52aacf37e1086284ee",
+  "shader_sha256": "d006d684cbd5d40949387d80243830d83a4c7d2d10768fff0cbcb4262a9e4ee8",
+  "container_hashes": [
+    "\\- Hash: (GOOD) B279EA1824867A14463EEFF3AF7281BE8634994884A8FAB436DA030227B5388D",
+    "Exheader hash: (GOOD)   CFC2EAB725C3E8EC057D7C9C873F6DB389632FDE14417D0233DD5A7A9349AD69",
+    "ExeFS hash: (GOOD)      5B70D17FD8231A1732CB8930DAC12575D2411429F0D08D97C55B88A3CD972159",
+    "Section hash: (GOOD)    AAE46124CC39FD7E48331A46A038C162CB829CE64589DA955C3F3D17884119AE",
+    "Section hash: (GOOD)    55EE0F04C034467E2EF6717EE218027B8AD1AA4FDB53F3B6AC3EFC2A0035F121",
+    "Section hash: (GOOD)    69A5395A86CE1E37036B69C3F10D27857CAB11A3CE057EC621B0997FDE6CCCFB",
+    "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+  ],
+  "expected_unsigned_homebrew_signature_errors": [
+    "[ctrtool::CiaProcess ERROR] Signature for Ticket was invalid.",
+    "[ctrtool::CiaProcess ERROR] Signature for TitleMetaData was invalid.",
+    "[ctrtool::ExHeaderProcess ERROR] Signature for AccessDescriptor was invalid."
+  ],
+  "game_resources_included": false,
+  "files": {
+    "LICENSE-citro3d.md": {
+      "bytes": 853,
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d"
+    },
+    "README.ru.md": {
+      "bytes": 5540,
+      "sha256": "56a47ecc739d335cfc8f90ad438a6f5ba38c3c7e69795a0525de7b8b498fe5ab"
+    },
+    "ds34-uv-mask.cia": {
+      "bytes": 248768,
+      "sha256": "5e853550bede4aa6a911959c122dcc6aa595c673071d6f52aacf37e1086284ee"
+    },
+    "source/audit_pica_outputs.py": {
+      "bytes": 3591,
+      "sha256": "39eb7f389b24ae83f5e7e74b32001299127ecee2833dbca31d30d8aca130816e"
+    },
+    "source/baseline.v.pica": {
+      "bytes": 581,
+      "sha256": "4b330e0ae823a4034eca6a9761d166a1ff8913d15108ecab37695121af4f70d1"
+    },
+    "source/build_ds34_uv_mask.py": {
+      "bytes": 6308,
+      "sha256": "005ba5e7ed92890d7f611d7140ab4e9c3650d9c8d1cba648ce157513d51fd78f"
+    },
+    "source/ds34_gpu.v.pica": {
+      "bytes": 575,
+      "sha256": "3054415a696a28ea7dcdcc29177805a3cc34c7ab72776735a29eef09ac60f5a1"
+    },
+    "validation/START-cleanup.log": {
+      "bytes": 469,
+      "sha256": "4aeabe1e9b31139488296459ca93c31ef8a152f62666e5ea4c56a852958e3e62"
+    },
+    "validation/build-manifest.json": {
+      "bytes": 8956,
+      "sha256": "92274ac9f085676f15e185a3f97866ecee66f65c35d4ba0963e13615065bcb4c"
+    },
+    "validation/comparison.json": {
+      "bytes": 3075,
+      "sha256": "ae22598d4c6f59f6d5d6f04abe076ae95b397778b2176cd502e824ad9fa2b15e"
+    },
+    "validation/frame.png": {
+      "bytes": 898,
+      "sha256": "5e6ba66021fe6bb4a49a655062dcceefb33e8bb8f2940a80fc89e2cf6714b258"
+    },
+    "validation/report.ru.md": {
+      "bytes": 13558,
+      "sha256": "ce7182a3cb88d40f42ba6e16060bba5097d5fd3f8c8bf8172fb3e8cae5576224"
+    },
+    "validation/result.json": {
+      "bytes": 1016,
+      "sha256": "f7c3c1227ffde1c752b8b76deb3e86fe12793ae54f750cb84ed2ff73f32dbb2e"
+    },
+    "validation/screen.png": {
+      "bytes": 3780,
+      "sha256": "b83fec739dd54c3620555d1a9d740ef88dd2acc84d5c8ff190c15625f73ac9e7"
+    },
+    "validation/shader.diff": {
+      "bytes": 422,
+      "sha256": "183f2b90ab215e4de56d46103ea974a54116cb971ec6cdbeaf882983054c6dce"
+    },
+    "validation/single-factor.json": {
+      "bytes": 220,
+      "sha256": "3051721d61dc10a398a7bc46c109fdcee81f8908d21f660d120271822c3f0b7f"
+    }
+  },
+  "archive": "dist/ds34-uv-mask-v0.2.1.zip",
+  "archive_bytes": 165930,
+  "archive_sha256": "620267c4497301d3b52a881f6bda8fd9c370e4b668990286bdb50b483df5b56e"
+}

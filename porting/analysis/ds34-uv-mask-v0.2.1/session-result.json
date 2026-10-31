@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-31",
+  "branch": "test/ds34-full-output-mask",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "push_performed": false,
+  "commits_created": false,
+  "runtime_runs": 1,
+  "Azahar_passed": true,
+  "PICA_changed_bytes": [
+    240,
+    244
+  ],
+  "all_24_GX_words_including_addresses_identical_to_native": true,
+  "CPU_ELF_changed_bytes_only_in_embedded_shader": true,
+  "old_files_preserved": 145,
+  "core_shader_and_backend_changed": false,
+  "hardware_cause_confirmed": false,
+  "next_experiment": "one user-authorized DS34 UV Mask CIA launch: full UV output writes only",
+  "game_frame_hardware_running": false,
+  "full_552_run": false,
+  "report": "report.ru.md",
+  "package": "dist/ds34-uv-mask-v0.2.1.zip"
+}

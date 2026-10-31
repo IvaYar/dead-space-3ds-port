@@ -1,0 +1,65 @@
+--- native_game.c h2
++++ generated memory probe
+@@ -12,6 +12,7 @@
+ #include "ds_exec.h"
+ #include "ds8.h"
+ #include "ds9_memory.h"
++#include "ds_runtime.h"
+ #include "ds_init.h"
+ #include "ds_bootstrap.h"
+ #include "ds10_jni.h"
+@@ -71,7 +72,28 @@
+     va_list ap;va_start(ap,fmt);if(journal){vfprintf(journal,fmt,ap);fflush(journal);}va_end(ap);
+     RecursiveLock_Unlock(&log_lock);
+ }
+-static void stage(const char *name){if(!strcmp(phase,name))return;phase=name;report("STAGE %s\n",name);}
++
++/* Read-only phase/frame samples. Does not change allocation limits or owners. */
++static void memory_sample(const char *tag){
++    struct mallinfo m=mallinfo();DS9MemoryStats a={0};DSRuntimeStats r={0};
++    if(threads_started){ds9_memory_stats(&a);ds_runtime_stats(&r);}
++    Handle h=0;ResourceLimitType kind=RESLIMIT_COMMIT;s64 limit=0,current=0;
++    Result rc=svcGetResourceLimit(&h,CUR_PROCESS_HANDLE);
++    if(R_SUCCEEDED(rc)){
++        rc=svcGetResourceLimitLimitValues(&limit,h,&kind,1);
++        if(R_SUCCEEDED(rc))rc=svcGetResourceLimitCurrentValues(&current,h,&kind,1);
++        svcCloseHandle(h);
++    }
++    report("MEMJSON {\"tag\":\"%s\",\"frame\":%lu,\"query_result\":%lu,\"limit\":%lld,\"commit\":%lld,\"normal_allocated\":%lu,\"normal_allocator_arena\":%lu,\"normal_allocator_free\":%lu,\"linear_free\":%lu,\"donor_arena_reserved\":%lu,\"donor_brk\":%lu,\"donor_brk_peak\":%lu,\"donor_map_pages\":%lu,\"donor_map_peak_pages\":%lu,\"donor_refusals\":%lu,\"runtime_live\":%lu,\"runtime_peak\":%lu,\"runtime_failures\":%lu}\n",
++        tag,(unsigned long)current_frame,(unsigned long)rc,(long long)limit,(long long)current,
++        (unsigned long)m.uordblks,(unsigned long)m.arena,(unsigned long)m.fordblks,
++        (unsigned long)linearSpaceFree(),arena?134217728ul:0ul,
++        (unsigned long)a.break_bytes,(unsigned long)a.break_peak,(unsigned long)a.mapped_pages,
++        (unsigned long)a.map_peak,(unsigned long)a.refusals,(unsigned long)r.live_bytes,
++        (unsigned long)r.peak_bytes,(unsigned long)r.failures);
++}
++
++static void stage(const char *name){if(!strcmp(phase,name))return;phase=name;report("STAGE %s\n",name);memory_sample(name);}
+ static void path(char out[192],const char *name){snprintf(out,192,"%s%s",folder,name);}
+ static void screen(const char *text){
+     printf("\x1b[2J\x1b[HDS Native Game 0.1.0\n%s\nRun: %s\n",text,folder+strlen(ROOT));
+@@ -269,6 +291,7 @@
+ }
+ static int run(void){
+     if(initialize())return -1;
++    memory_sample("initialized");
+     u32 draw=exported("Java_com_ea_blast_AndroidRenderer_NativeOnDrawFrame");
+     u16 *quantized=malloc(192000);if(!quantized)return -1;
+     screen("Original callbacks running\nTarget: preserved original image\nNo input/audio optimization.");
+@@ -277,6 +300,7 @@
+         if(((PushFrame)bridge.base.env_functions[19])(&bridge.base.env,16))return -1;
+         ((Lifecycle)draw)(&bridge.base.env,NULL,400,240);((PopFrame)bridge.base.env_functions[20])(&bridge.base.env,NULL);
+         if(graphics.error || ds34_present(&graphics))return -1;
++        memory_sample("after_draw");
+         if(current_frame==2){lifecycle("MainActivity_NativeOnResume",1,0);lifecycle("MainActivity_NativeOnWindowFocusChanged",1,0);}
+         /* Async loading changes the callback number between launches. Select
+          * the already-defined original image, not an arbitrary elapsed frame.
+@@ -420,7 +444,7 @@
+     if(gpu_started){ds34_native_finish();if(drain(2000))return -1;C3D_Fini();queue=NULL;gpu_started=0;}
+     /* Code/arena remain allocated until kernel process teardown, after workers
+      * and GPU stop. Never reuse protected donor pages as heap allocations. */
+-    exit_ok=1;outcome("passed","original frame and worker/GPU shutdown complete");
++    exit_ok=1;memory_sample("after_shutdown");outcome("passed","original frame and worker/GPU shutdown complete");
+     char out[192];path(out,"exit.txt");FILE *f=fopen(out,"w");if(!f)return -1;fputs("Workers stopped; GPU drained; returning to HOME\n",f);return fclose(f);
+ }
+ static int make_folder(void){

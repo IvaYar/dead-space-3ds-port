@@ -1,0 +1,155 @@
+{
+  "hardware_cause_confirmed": false,
+  "stock_outputs": [
+    {
+      "register": 0,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 1,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    }
+  ],
+  "DS34_outputs_in_native_shader": [
+    {
+      "register": 0,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 1,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 2,
+      "declared_mask": 15,
+      "written_mask": 12,
+      "writes_xyzw": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "missing": "zw"
+    },
+    {
+      "register": 3,
+      "declared_mask": 15,
+      "written_mask": 12,
+      "writes_xyzw": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "missing": "zw"
+    }
+  ],
+  "candidate_outputs": [
+    {
+      "register": 0,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 1,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 2,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    },
+    {
+      "register": 3,
+      "declared_mask": 15,
+      "written_mask": 15,
+      "writes_xyzw": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "missing": ""
+    }
+  ],
+  "native_uploaded_code_and_descriptors_match_DS34_SHBIN": true,
+  "native_packets": 82,
+  "native_VSH_output_mask": "0x0f",
+  "native_output_maps": [
+    "0x3020100",
+    "0xb0a0908",
+    "0x1f1f0d0c",
+    "0x1f1f0f0e"
+  ],
+  "native_output_clock": "0x303",
+  "native_uniform_float_count": 20,
+  "native_uniforms_all_finite": true,
+  "VBO_base": "0x201c9c00",
+  "VBO_offset": 0,
+  "VBO_stride": 64,
+  "vertices": 6,
+  "referenced_VBO_bytes": 384,
+  "stream_allocation_bytes": 524160,
+  "native_vertex_payload_or_cache_visibility_measured": false,
+  "new_emulator_service_errors": [],
+  "emulator_error_comparison_normalizes_private_SD_root_and_timestamp": true,
+  "reference_urls": [
+    "https://www.3dbrew.org/wiki/GPU/Pitfalls",
+    "https://github.com/devkitPro/3ds-examples/blob/be2001fee08cf8ec7d3366e095e83f6f75da8942/graphics/gpu/simple_tri/source/vshader.v.pica",
+    "https://github.com/devkitPro/libctru/blob/v2.7.0/libctru/source/gpu/shbin.c"
+  ]
+}
