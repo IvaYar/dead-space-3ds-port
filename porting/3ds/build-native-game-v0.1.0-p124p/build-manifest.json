@@ -1,0 +1,43 @@
+{
+  "step": "prod",
+  "revision": "p124p",
+  "normal_MiB": 20,
+  "linear_MiB": 100,
+  "arena_MiB": 92,
+  "required_app_MiB": 124,
+  "memory_mode_MiB": 124,
+  "title_id": "000400000FDE7300",
+  "hardware_run_authorized": false,
+  "CIA_created": false,
+  "commands": [
+    [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\extras\\makerom\\makerom.exe",
+      "-f",
+      "cxi",
+      "-o",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.cxi",
+      "-rsf",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.rsf",
+      "-target",
+      "t",
+      "-exefslogo",
+      "-elf",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.elf",
+      "-icon",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.smdh",
+      "-banner",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.bnr",
+      "-ver",
+      "1"
+    ]
+  ],
+  "observer_sha256": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346",
+  "outputs_sha256": {
+    "native-game.elf": "aa0ed47e87fee91937db7e02ba2f976cf97b6e8a653bb4bd39ab5a390bac39c1",
+    "native-game.cxi": "903ef34b697d39750c0bd7a88c92c6964e22f0ee309694055933d4af57428bc1",
+    "native-game-memory.c": "4038568a2fa356ec011caa78b1464aace450d46ebe478cad98acf74dfcea133f",
+    "native-game.rsf": "a6ef3c9e8a60a673f1ecb9faf87af650c295bcbf5ff5b79d3a9c2dcb84423902",
+    "native-game.smdh": "e878c02b6c2f5bbed5950a51231908d31fe5fdb0f69a1a43d6cbbf6f5209b1d6",
+    "native-game.bnr": "c843cb814539d39e7fbb30fa37a4753d764ad1b119a9506f85443b8abc0db1e2"
+  }
+}

@@ -1,0 +1,75 @@
+--- Prod124 baseline
++++ black
+@@ -1,3 +1,4 @@
++#define TARGET_INITIAL_RGBA 0x000000ffu
+ #define DS_GAME_NORMAL_BYTES (20u*1024*1024)
+ #define DS_GAME_LINEAR_BYTES (100u*1024*1024)
+ #define DS_GAME_ARENA_BYTES (92u*1024*1024)
+@@ -38,7 +39,7 @@
+ #include "font_subset_config.h"
+ #include "native_thread_probe.h"
+ 
+-#define ROOT "sdmc:/3ds/ds-native-game-prod124-v0.1.0/"
++#define ROOT "sdmc:/3ds/ds-native-game-v0.1.1/"
+ #define MAX_CALLBACKS 600u
+ #define TARGET_RGB565_CRC 0xea733050u /* Preserved original GPU frame180, also stable181..189. */
+ #define BYTES 288000u
+@@ -108,7 +109,7 @@
+ static void stage(const char *name){if(!strcmp(phase,name))return;phase=name;report("STAGE %s\n",name);memory_sample(name);}
+ static void path(char out[192],const char *name){snprintf(out,192,"%s%s",folder,name);}
+ static void screen(const char *text){
+-    printf("\x1b[2J\x1b[HDS Game Prod124 0.1.0\n%s\nRun: %s\n",text,folder+strlen(ROOT));
++    printf("\x1b[2J\x1b[HDS Game Init 0.1.1\n%s\nRun: %s\n",text,folder+strlen(ROOT));
+     u16 w,h;void *p=gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,&w,&h);GSPGPU_FlushDataCache(p,(u32)w*h*3);
+ }
+ static int elapsed(u64 tick,u32 ms){return svcGetSystemTick()-tick>(u64)SYSCLOCK_ARM11*ms/1000;}
+@@ -210,6 +211,21 @@
+     char value[160];FILE *f=fopen(file,"rb");if(!f)return -1;size_t n=fread(value,1,sizeof(value),f);fclose(f);
+     return n==strlen(expected) && !memcmp(value,expected,n)?0:-1;
+ }
++
++C3D_RenderTarget *__real_C3D_RenderTargetCreate(int,int,GPU_COLORBUF,C3D_DEPTHTYPE);
++C3D_RenderTarget *__wrap_C3D_RenderTargetCreate(int width,int height,GPU_COLORBUF color,C3D_DEPTHTYPE depth){
++    C3D_RenderTarget *target=__real_C3D_RenderTargetCreate(width,height,color,depth);
++    if(!target)return NULL;
++    if(color!=GPU_RB_RGBA8 || width!=240 || height!=400)fatal("unexpected target format for initialization");
++    u32 bytes=C3D_CalcColorBufSize(width,height,color);
++    report("TARGET INIT color=%08lx bytes=%lu before original draw\n",(unsigned long)TARGET_INITIAL_RGBA,(unsigned long)bytes);
++    /* GPU MemoryFill, not a CPU write to read-only VRAM; complete before use.
++     * Initialize COLOR ONLY once. No game pixels or shader state supplied. */
++    C3D_SyncMemoryFill(target->frameBuf.colorBuf,TARGET_INITIAL_RGBA,
++        (u32 *)((u8 *)target->frameBuf.colorBuf+bytes),0x0201,NULL,0,NULL,0);
++    return target;
++}
++
+ static int graphics_setup(void){
+     u16 w,h;void *pixels=gfxGetFramebuffer(GFX_TOP,GFX_LEFT,&w,&h);
+     if(gfxGetScreenFormat(GFX_TOP)!=GSP_BGR8_OES || w!=240 || h!=400)return -1;
+@@ -274,8 +290,8 @@
+     if(f)fclose(f);
+     free(font);if(!ok || ds_io_read_override(ds28_font_path))return -1;
+     stage("private file namespace");
+-    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-prod124-v010",0700);
+-    if(ds6_appdata_namespace("native-game-prod124-v010") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
++    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-init-v011",0700);
++    if(ds6_appdata_namespace("native-game-init-v011") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
+     DSBinding files[5];if(ds24_bindings(files,5)!=5)return -1;for(unsigned i=0;i<5;++i)add(files[i],&count);
+     count+=ds20_bindings(bindings+count,768-count);add((DSBinding){"__stack_chk_guard",(u32)&canary},&count);
+     stage("JNI/bootstrap");DSBootstrap boot;if(ds_bootstrap_verify(donor,DS_DONOR_SIZE,image,info.image_size,(u32)image,&info,&boot))return -1;
+@@ -342,7 +358,15 @@
+         if(ds12_jni_pump(&bridge,(svcGetSystemTick()-started)*1000000/SYSCLOCK_ARM11)<0)return -1;
+         if(current_frame%30==0)report("FRAME %lu complete\n",(unsigned long)current_frame);
+     }
+-    free(quantized);if(current_frame>MAX_CALLBACKS)return -1;
++    free(quantized);
++    if(current_frame>MAX_CALLBACKS){
++        char missed[192];path(missed,"comparison-miss.raw");
++        GSPGPU_InvalidateDataCache(graphics.pixels,BYTES);
++        FILE *dump=fopen(missed,"wb");if(dump){fwrite(graphics.pixels,1,BYTES,dump);fclose(dump);}
++        report("FULL FRAME CRC GATE NOT REACHED after %lu original callbacks\n",(unsigned long)MAX_CALLBACKS);
++        return -1;
++    }
++
+     stage("GPU completion/readback");ds7_stats(&thread_snapshot);
+     if(drain(2000) || graphics.capacity!=BYTES || R_FAILED(GSPGPU_InvalidateDataCache(graphics.pixels,BYTES)))return -1;
+     DS34Audit audit;if(ds34_sequence_audit(&audit))return -1;

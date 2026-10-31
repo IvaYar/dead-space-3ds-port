@@ -1,0 +1,20 @@
+{
+  "normal_MiB": 20,
+  "linear_MiB": 100,
+  "arena_MiB": 92,
+  "other_linear_budget_MiB": 8,
+  "total_heaps_MiB": 120,
+  "observation_peaks": {
+    "normal_live": 13110344,
+    "normal_footprint": 13406208,
+    "normal_request": 4792320,
+    "linear_used": 137403264,
+    "linear_other": 3185536,
+    "linear_request": 576000,
+    "vram_used": 1816832,
+    "vram_request": 524288,
+    "arena_actual_size": 134217728
+  },
+  "observed_donor_high_water_bytes": 16781312,
+  "not_a_gameplay_minimum": true
+}

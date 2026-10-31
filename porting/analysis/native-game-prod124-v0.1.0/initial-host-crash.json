@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "stage": "initial Prod124 CXI third same-core reload",
+  "first_two_cycles_passed": true,
+  "guest_original_frame_and_safe_exit_first_two": true,
+  "fault_module": "azahar_libretro.dll",
+  "exception_code": "0xc0000005",
+  "RVA": "0x326ccf",
+  "Windows_Application_Event_ID": 1000,
+  "host_event_time": "2026-10-31 23:00:11",
+  "matches_previous_h1_host_signature": true,
+  "guest_failure_proven": false,
+  "host_failure_fixed": false,
+  "CIA_created_before_this_failure": false,
+  "evidence": "analysis/azahar-native-game-v0.1.0-p124p-cxi",
+  "retry_uses_same_ELF_and_CXI": true
+}

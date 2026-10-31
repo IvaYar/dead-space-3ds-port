@@ -1,0 +1,121 @@
+--- mem1
++++ linear
+@@ -1,9 +1,14 @@
++#define DS_GAME_NORMAL_BYTES (40u*1024*1024)
++#define DS_GAME_LINEAR_BYTES (100u*1024*1024)
++#define DS_GAME_ARENA_BYTES (92u*1024*1024)
++#define DS_GAME_REQUIRED_APP_BYTES (178u*1024*1024)
+ /* Separate native-capable checkpoint. Original donor executes; no recorded draws.
+  * No dependency on engine_azahar.c, fixture headers, or its emulator guard. */
+ #include <3ds.h>
+ #include <citro3d.h>
+ #include <errno.h>
+ #include <malloc.h>
++#include "native_game_memory_observer.h"
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -33,12 +38,12 @@
+ #include "font_subset_config.h"
+ #include "native_thread_probe.h"
+ 
+-#define ROOT "sdmc:/3ds/ds-native-game-v0.1.0/"
++#define ROOT "sdmc:/3ds/ds-native-game-prod124-v0.1.0/"
+ #define MAX_CALLBACKS 600u
+ #define TARGET_RGB565_CRC 0xea733050u /* Preserved original GPU frame180, also stable181..189. */
+ #define BYTES 288000u
+-u32 __ctru_heap_size=40*1024*1024;
+-u32 __ctru_linear_heap_size=132*1024*1024;
++u32 __ctru_heap_size=DS_GAME_NORMAL_BYTES;
++u32 __ctru_linear_heap_size=DS_GAME_LINEAR_BYTES;
+ u32 __stacksize__=256*1024;
+ static DSExec exec;
+ static DSInfo info;
+@@ -87,16 +92,23 @@
+     report("MEMJSON {\"tag\":\"%s\",\"frame\":%lu,\"query_result\":%lu,\"limit\":%lld,\"commit\":%lld,\"normal_allocated\":%lu,\"normal_allocator_arena\":%lu,\"normal_allocator_free\":%lu,\"linear_free\":%lu,\"donor_arena_reserved\":%lu,\"donor_brk\":%lu,\"donor_brk_peak\":%lu,\"donor_map_pages\":%lu,\"donor_map_peak_pages\":%lu,\"donor_refusals\":%lu,\"runtime_live\":%lu,\"runtime_peak\":%lu,\"runtime_failures\":%lu}\n",
+         tag,(unsigned long)current_frame,(unsigned long)rc,(long long)limit,(long long)current,
+         (unsigned long)m.uordblks,(unsigned long)m.arena,(unsigned long)m.fordblks,
+-        (unsigned long)linearSpaceFree(),arena?134217728ul:0ul,
++        (unsigned long)linearSpaceFree(),arena?(unsigned long)DS_GAME_ARENA_BYTES:0ul,
+         (unsigned long)a.break_bytes,(unsigned long)a.break_peak,(unsigned long)a.mapped_pages,
+         (unsigned long)a.map_peak,(unsigned long)a.refusals,(unsigned long)r.live_bytes,
+         (unsigned long)r.peak_bytes,(unsigned long)r.failures);
++
++    report("PEAKJSON {\"normal_live\":%lu,\"normal_footprint\":%lu,\"normal_request\":%lu,\"linear_used\":%lu,\"linear_other\":%lu,\"linear_request\":%lu,\"vram_used\":%lu,\"vram_request\":%lu,\"arena_actual_size\":%lu}\n",
++        (unsigned long)observed_normal_live,(unsigned long)observed_normal_footprint,
++        (unsigned long)observed_normal_request,(unsigned long)observed_linear_used,
++        (unsigned long)observed_linear_other,(unsigned long)observed_linear_request,
++        (unsigned long)observed_vram_used,(unsigned long)observed_vram_request,
++        (unsigned long)observed_arena_size);
+ }
+ 
+ static void stage(const char *name){if(!strcmp(phase,name))return;phase=name;report("STAGE %s\n",name);memory_sample(name);}
+ static void path(char out[192],const char *name){snprintf(out,192,"%s%s",folder,name);}
+ static void screen(const char *text){
+-    printf("\x1b[2J\x1b[HDS Native Game 0.1.0\n%s\nRun: %s\n",text,folder+strlen(ROOT));
++    printf("\x1b[2J\x1b[HDS Game Prod124 0.1.0\n%s\nRun: %s\n",text,folder+strlen(ROOT));
+     u16 w,h;void *p=gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,&w,&h);GSPGPU_FlushDataCache(p,(u32)w*h*3);
+ }
+ static int elapsed(u64 tick,u32 ms){return svcGetSystemTick()-tick>(u64)SYSCLOCK_ARM11*ms/1000;}
+@@ -202,7 +214,7 @@
+     u16 w,h;void *pixels=gfxGetFramebuffer(GFX_TOP,GFX_LEFT,&w,&h);
+     if(gfxGetScreenFormat(GFX_TOP)!=GSP_BGR8_OES || w!=240 || h!=400)return -1;
+     if(ds13_init(&graphics,pixels,400,240,BYTES,DS13_BGR8_CTR) || ds13_current(&graphics))return -1;
+-    if(ds22_client_range(&graphics,image,info.image_size) || ds22_client_range(&graphics,arena,128*1024*1024))return -1;
++    if(ds22_client_range(&graphics,image,info.image_size) || ds22_client_range(&graphics,arena,DS_GAME_ARENA_BYTES))return -1;
+     void *sp;__asm__ volatile("mov %0, sp":"=r"(sp));MemInfo mi;PageInfo pi;
+     if(R_FAILED(svcQueryMemory(&mi,&pi,(u32)sp)) || !(mi.perm&1) || !mi.size || mi.size>124*1024*1024 || ds22_client_range(&graphics,(void *)mi.base_addr,mi.size))return -1;
+     if(ds30_attach(&graphics) || ds31_attach(&graphics) || ds32_attach(&graphics) || ds33_attach(&graphics,16,8))return -1;
+@@ -218,22 +230,37 @@
+     if(*count==768)fatal("binding capacity");
+     bindings[(*count)++]=b;
+ }
++
++static int owned_region(const char *name,void *pointer,u32 bytes,u32 alignment,int linear){
++    u32 start=(u32)pointer;MemInfo mi;PageInfo pi;
++    if(!start || !bytes || (start&(alignment-1)) || bytes>UINT32_MAX-start ||
++       R_FAILED(svcQueryMemory(&mi,&pi,start)) || (mi.perm&3)!=3 ||
++       mi.base_addr>start || start-mi.base_addr>mi.size || bytes>mi.size-(start-mi.base_addr))return -1;
++    u32 physical=linear?osConvertVirtToPhys(pointer):0;
++    u32 last=linear?osConvertVirtToPhys((u8 *)pointer+bytes-1):0;
++    if(linear && (!physical || last-physical!=bytes-1 || linearGetSize(pointer)<bytes))return -1;
++    report("REGIONJSON {\"name\":\"%s\",\"base\":%lu,\"bytes\":%lu,\"alignment\":%lu,\"rw_span\":true,\"linear\":%s,\"physical\":%lu,\"physical_last\":%lu}\n",
++        name,(unsigned long)start,(unsigned long)bytes,(unsigned long)alignment,linear?"true":"false",(unsigned long)physical,(unsigned long)last);
++    return 0;
++}
++
+ static int initialize(void){
+     stage("preflight");
+-    if(ds_exec_open(&exec)<0 || osGetMemRegionSize(MEMREGION_APPLICATION)<178*1024*1024)return -1;
++    if(ds_exec_open(&exec)<0 || osGetMemRegionSize(MEMREGION_APPLICATION)<DS_GAME_REQUIRED_APP_BYTES)return -1;
+     report("Environment=%s appbytes=%lu Luma=%08lx\n",exec.emulator?"emulator":"native",(unsigned long)osGetMemRegionSize(MEMREGION_APPLICATION),(unsigned long)exec.luma_version);
+     if(receipt("sdmc:/3ds/deadspace/assets-verified.txt","DS_ASSETS_V1 dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb 1728 414822611\n") || receipt("sdmc:/3ds/deadspace/apk-assets-verified.txt","DS_APK_ASSETS_V1 0d3c870ae38687e1ac7e8dbf0ca8568862437491529e8ef45b818f4c38958845 20\n"))return -1;
+     FILE *f=fopen("sdmc:/3ds/deadspace/libEAMGameDeadSpace_orig.so","rb");if(!f)return -1;
+     donor=malloc(DS_DONOR_SIZE);int ok=donor && fread(donor,1,DS_DONOR_SIZE,f)==DS_DONOR_SIZE && fgetc(f)==EOF;fclose(f);
+     if(!ok || ds_crc32(donor,DS_DONOR_SIZE)!=DS_DONOR_CRC32 || ds_elf_inspect(donor,DS_DONOR_SIZE,&info))return -1;
+-    image=memalign(4096,(info.image_size+4095)&~4095u);arena=linearMemAlign(128*1024*1024,4096);trampoline=memalign(4096,12288);
++    image=memalign(4096,(info.image_size+4095)&~4095u);arena=linearMemAlign(DS_GAME_ARENA_BYTES,4096);trampoline=memalign(4096,12288);
+     if(!image || !arena || !trampoline)return -1;
+-    report("Memory image=%08lx size=%lu arena=%08lx/134217728 trampoline=%08lx\n",(unsigned long)image,(unsigned long)info.image_size,(unsigned long)arena,(unsigned long)trampoline);
++    if(owned_region("donor_file",donor,DS_DONOR_SIZE,1,0) || owned_region("image",image,info.image_size,4096,0) || owned_region("arena",arena,DS_GAME_ARENA_BYTES,4096,1) || owned_region("trampoline",trampoline,12288,4096,0))return -1;
++    report("Memory image=%08lx size=%lu arena=%08lx/%lu trampoline=%08lx\n",(unsigned long)image,(unsigned long)info.image_size,(unsigned long)arena,(unsigned long)DS_GAME_ARENA_BYTES,(unsigned long)trampoline);
+     if(ds_elf_prepare(donor,DS_DONOR_SIZE,image,info.image_size,(u32)image,&info))return -1;
+     ds_io_init(&io,ds_io_sd_ops());ds_runtime_init(64*1024*1024);ds6_init(log_android);
+     if(ds7_init() || ds8_init())return -1;
+     threads_started=1;
+-    if(ds9_memory_init_shared(arena,128*1024*1024) || ds29_allocator_init(image,info.image_size))return -1;
++    if(ds9_memory_init_shared(arena,DS_GAME_ARENA_BYTES) || ds29_allocator_init(image,info.image_size))return -1;
+     ds9_memory_observer(ds_failure);
+     u32 count=ds6_bindings(bindings,768);count+=ds7_bindings(bindings+count,768-count);count+=ds8_bindings(bindings+count,768-count);
+     count+=ds9_memory_bindings(bindings+count,768-count);count+=ds17_bindings(bindings+count,768-count);
+@@ -247,8 +274,8 @@
+     if(f)fclose(f);
+     free(font);if(!ok || ds_io_read_override(ds28_font_path))return -1;
+     stage("private file namespace");
+-    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-v010",0700);
+-    if(ds6_appdata_namespace("native-game-v010") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
++    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-prod124-v010",0700);
++    if(ds6_appdata_namespace("native-game-prod124-v010") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
+     DSBinding files[5];if(ds24_bindings(files,5)!=5)return -1;for(unsigned i=0;i<5;++i)add(files[i],&count);
+     count+=ds20_bindings(bindings+count,768-count);add((DSBinding){"__stack_chk_guard",(u32)&canary},&count);
+     stage("JNI/bootstrap");DSBootstrap boot;if(ds_bootstrap_verify(donor,DS_DONOR_SIZE,image,info.image_size,(u32)image,&info,&boot))return -1;

@@ -1,0 +1,16 @@
+{
+  "passed": false,
+  "completed_cycles": 2,
+  "failed_cycle": 3,
+  "failure": "host DLL access violation during reload, before guest READY",
+  "exception_code": "0xc0000005",
+  "fault_module": "azahar_libretro.dll",
+  "fault_RVA": "0x326ccf",
+  "Windows_Event_1000_time": "2026-11-01T00:03:41+08:00",
+  "Windows_Event_report_id": "0150a36b-a785-4124-a111-fe0cff1f080d",
+  "same_signature_as_previous_h1_and_p124p": true,
+  "cause_fixed": false,
+  "relation_to_target_initialization_proven": false,
+  "evidence_root": "analysis/azahar-native-game-v0.1.1-black-cia",
+  "CIA_sha256": "6ba0c4192a360316b29d98d8847749c9855729e243c7e37be8b1564fe60cd79e"
+}

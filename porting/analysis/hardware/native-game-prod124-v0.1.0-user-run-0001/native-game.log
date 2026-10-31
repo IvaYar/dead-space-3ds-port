@@ -1,0 +1,5 @@
+STAGE preflight
+MEMJSON {"tag":"preflight","frame":0,"query_result":0,"limit":130023424,"commit":126611456,"normal_allocated":18192,"normal_allocator_arena":20480,"normal_allocator_free":2288,"linear_free":103244800,"donor_arena_reserved":0,"donor_brk":0,"donor_brk_peak":0,"donor_map_pages":0,"donor_map_peak_pages":0,"donor_refusals":0,"runtime_live":0,"runtime_peak":0,"runtime_failures":0}
+PEAKJSON {"normal_live":18224,"normal_footprint":20480,"normal_request":7728,"linear_used":1612800,"linear_other":1612800,"linear_request":576000,"vram_used":0,"vram_request":0,"arena_actual_size":0}
+Environment=native appbytes=130023424 Luma=0d030300
+FAIL phase=preflight frame=0: initialization/frame blocked

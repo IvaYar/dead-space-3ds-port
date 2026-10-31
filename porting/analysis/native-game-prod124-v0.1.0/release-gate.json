@@ -1,0 +1,22 @@
+{
+  "software_original_frame_Prod124_PASS": true,
+  "ready_for_separate_hardware_approval": true,
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "title_id": "000400000FDE7300",
+  "CIA_sha256": "9fea6c2923d555511dd19a5d0177041592979dbd22fe8f07a4228a509082e815",
+  "CIA_bytes": 337856,
+  "final_CXI_clean_cycles": 3,
+  "final_CIA_payload_clean_cycles": 3,
+  "initial_third_reload_host_crash_preserved": true,
+  "host_crash_signature_previously_seen_in_h1": true,
+  "host_crash_fixed": false,
+  "no_guest_memory_errors_in_successful_cycles": true,
+  "six_kernel_joins_each_cycle": true,
+  "baseline_files_protected": 261,
+  "baseline_changes": [],
+  "GPU_shader_thread_overlays_identical_to_h2": true,
+  "original_assets_in_CIA": false,
+  "RX_cache_semantics_on_real_hardware_proven": false,
+  "full_gameplay_supported": false
+}

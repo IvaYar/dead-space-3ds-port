@@ -1,0 +1,30 @@
+{
+  "title_id": "000400000FDE7300",
+  "CIA_sha256": "9fea6c2923d555511dd19a5d0177041592979dbd22fe8f07a4228a509082e815",
+  "CIA_bytes": 337856,
+  "payload_sha256": "903ef34b697d39750c0bd7a88c92c6964e22f0ee309694055933d4af57428bc1",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "game_resources_included": false,
+  "CXI_software_proof": "analysis/azahar-native-game-v0.1.0-p124p-cxi-r2",
+  "command": [
+    "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\toolchain\\extras\\makerom\\makerom.exe",
+    "-f",
+    "cia",
+    "-o",
+    "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.cia",
+    "-rsf",
+    "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.rsf",
+    "-target",
+    "t",
+    "-exefslogo",
+    "-elf",
+    "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.elf",
+    "-icon",
+    "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.smdh",
+    "-banner",
+    "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\3ds\\build-native-game-v0.1.0-p124p\\native-game.bnr",
+    "-ver",
+    "1"
+  ]
+}

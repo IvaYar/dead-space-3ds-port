@@ -1,0 +1,78 @@
+{
+  "software_original_frame_and_safe_exit_PASS": true,
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "ready_for_separate_hardware_approval": true,
+  "title_id": "000400000FDE7400",
+  "CIA_sha256": "6ba0c4192a360316b29d98d8847749c9855729e243c7e37be8b1564fe60cd79e",
+  "CIA_bytes": 338368,
+  "SystemModeExt": 1,
+  "AccessDesc_SystemModeExt": 1,
+  "same_kernel_SVC_and_permissions_as_Prod124": true,
+  "initial_target_color_is_only_behavior_change_in_pair": true,
+  "initial_color": "000000ff",
+  "target_fill_bytes": 384000,
+  "depth_clear_added": false,
+  "original_draw_callbacks_unmodified": true,
+  "GPU_shader_thread_sources_identical": true,
+  "process_commit_peak_bytes": 126611456,
+  "uncommitted_headroom_bytes": 3411968,
+  "main_image_and_stack": {
+    "image_bytes": 520192,
+    "stack_bytes": 262144,
+    "TLS_allowance_bytes": 4096,
+    "image_and_stack_bytes": 782336,
+    "total_with_TLS_allowance_bytes": 786432
+  },
+  "protected_baseline_files": 261,
+  "old_Prod124_CIA_unchanged": true,
+  "poison_negative_test_reproduced": true,
+  "cycles": [
+    {
+      "container": "cxi",
+      "cycle": 1,
+      "callback": 351,
+      "exact_baseline": true,
+      "safe_exit": true
+    },
+    {
+      "container": "cxi",
+      "cycle": 2,
+      "callback": 352,
+      "exact_baseline": true,
+      "safe_exit": true
+    },
+    {
+      "container": "cxi",
+      "cycle": 3,
+      "callback": 352,
+      "exact_baseline": true,
+      "safe_exit": true
+    },
+    {
+      "container": "cia",
+      "cycle": 1,
+      "callback": 351,
+      "exact_baseline": true,
+      "safe_exit": true
+    },
+    {
+      "container": "cia",
+      "cycle": 2,
+      "callback": 352,
+      "exact_baseline": true,
+      "safe_exit": true
+    },
+    {
+      "container": "cia",
+      "cycle": 3,
+      "callback": 352,
+      "exact_baseline": true,
+      "safe_exit": true
+    }
+  ],
+  "initial_CIA_third_reload_host_crash_preserved": true,
+  "host_crash_fixed": false,
+  "hardware_hang_cause_fully_proven": false,
+  "full_gameplay_supported": false
+}
