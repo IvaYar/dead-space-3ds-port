@@ -3,6 +3,14 @@
 !/.gitignore
 !/.gitattributes
 !/README.md
+!/docs/
+!/docs/development.md
+!/docs/verification.md
+!/docs/images/
+!/docs/images/README.md
+!/docs/images/azahar-intro-cpu.png
+!/docs/images/azahar-intro-pica200.png
+!/docs/images/azahar-difficulty-menu.png
 !/HANDOFF.ru.md
 !/HANDOFF.md
 !/porting/
@@ -354,3 +362,14 @@
 !/porting/dist/simple-tri-rgb565-v0.1.0/
 !/porting/dist/simple-tri-rgb565-v0.1.0/README.ru.md
 !/porting/dist/simple-tri-rgb565-v0.1.0/manifest.json
+
+# Private runtime state stays local, including under broad historical exceptions.
+/.local/
+**/__pycache__/
+**/*.py[cod]
+/porting/analysis/**/Azahar/
+/porting/analysis/**/azahar/
+**/sdmc/
+**/test-output/
+**/threads-*.json
+**/destructors.json
