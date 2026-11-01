@@ -1,0 +1,137 @@
+--- s16/engine_native_frame.c
++++ native-game/native_game.c
+@@ -32,7 +32,7 @@
+ #include "font_subset_config.h"
+ #include "native_thread_probe.h"
+ 
+-#define ROOT "sdmc:/3ds/ds-native-frame-v0.1.0/"
++#define ROOT "sdmc:/3ds/ds-native-game-v0.1.0/"
+ #define MAX_CALLBACKS 600u
+ #define TARGET_RGB565_CRC 0xea733050u /* Preserved original GPU frame180, also stable181..189. */
+ #define BYTES 288000u
+@@ -71,9 +71,10 @@
+     va_list ap;va_start(ap,fmt);if(journal){vfprintf(journal,fmt,ap);fflush(journal);}va_end(ap);
+     RecursiveLock_Unlock(&log_lock);
+ }
++static void stage(const char *name){phase=name;report("STAGE %s\n",name);}
+ static void path(char out[192],const char *name){snprintf(out,192,"%s%s",folder,name);}
+ static void screen(const char *text){
+-    printf("\x1b[2J\x1b[HDS Native Frame 0.1.0\n%s\nRun: %s\n",text,folder+strlen(ROOT));
++    printf("\x1b[2J\x1b[HDS Native Game 0.1.0\n%s\nRun: %s\n",text,folder+strlen(ROOT));
+     u16 w,h;void *p=gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,&w,&h);GSPGPU_FlushDataCache(p,(u32)w*h*3);
+ }
+ static int elapsed(u64 tick,u32 ms){return svcGetSystemTick()-tick>(u64)SYSCLOCK_ARM11*ms/1000;}
+@@ -146,11 +147,14 @@
+ }
+ static int rx_range(u32 address,u32 bytes){
+     if(rx_ranges>=8 || (address&4095) || (bytes&4095) || !bytes)return -1;
+-    Result r=svcFlushProcessDataCache(exec.process,address,bytes);if(R_FAILED(r))return -1;
++    Result r=svcFlushProcessDataCache(exec.process,address,bytes);
++    report("RX flush address=%08lx bytes=%lu result=%08lx\n",(unsigned long)address,(unsigned long)bytes,(unsigned long)r);
++    if(R_FAILED(r))return -1;
+     if(!exec.emulator){
+         r=svcControlProcessMemory(exec.process,address,0,bytes,MEMOP_PROT,MEMPERM_READEXECUTE);if(R_FAILED(r)){report("RX protect %08lx bytes=%lu result=%08lx\n",(unsigned long)address,(unsigned long)bytes,(unsigned long)r);return -1;}
+         MemInfo mi;PageInfo pi;
+         r=svcQueryProcessMemory(&mi,&pi,exec.process,address);
++        report("RX query result=%08lx base=%08lx size=%lu perm=%lu\n",(unsigned long)r,R_SUCCEEDED(r)?(unsigned long)mi.base_addr:0,R_SUCCEEDED(r)?(unsigned long)mi.size:0,R_SUCCEEDED(r)?(unsigned long)mi.perm:0);
+         if(R_FAILED(r) || mi.perm!=MEMPERM_READEXECUTE || mi.base_addr>address || address-mi.base_addr>mi.size || bytes>mi.size-(address-mi.base_addr))return -1;
+     }
+     protected[rx_ranges].address=address;protected[rx_ranges].size=bytes;++rx_ranges;rx_pages+=bytes/4096;
+@@ -193,7 +197,7 @@
+     bindings[(*count)++]=b;
+ }
+ static int initialize(void){
+-    phase="preflight";
++    stage("preflight");
+     if(ds_exec_open(&exec)<0 || osGetMemRegionSize(MEMREGION_APPLICATION)<178*1024*1024)return -1;
+     report("Environment=%s appbytes=%lu Luma=%08lx\n",exec.emulator?"emulator":"native",(unsigned long)osGetMemRegionSize(MEMREGION_APPLICATION),(unsigned long)exec.luma_version);
+     if(receipt("sdmc:/3ds/deadspace/assets-verified.txt","DS_ASSETS_V1 dd42272365d0abd8ad9c89450bb7f869ee4ac0ad548525758e6a1e7df4d3c1eb 1728 414822611\n") || receipt("sdmc:/3ds/deadspace/apk-assets-verified.txt","DS_APK_ASSETS_V1 0d3c870ae38687e1ac7e8dbf0ca8568862437491529e8ef45b818f4c38958845 20\n"))return -1;
+@@ -212,20 +216,20 @@
+     u32 count=ds6_bindings(bindings,768);count+=ds7_bindings(bindings+count,768-count);count+=ds8_bindings(bindings+count,768-count);
+     count+=ds9_memory_bindings(bindings+count,768-count);count+=ds17_bindings(bindings+count,768-count);
+     add((DSBinding){"sbrk",(u32)compat_sbrk},&count);add((DSBinding){"clock",(u32)monotonic_clock},&count);
+-    phase="graphics setup";if(graphics_setup())return -1;
++    stage("graphics setup");if(graphics_setup())return -1;
+     count+=ds13_bindings(bindings+count,768-count);count+=ds32_bindings(bindings+count,768-count);
+     DSBinding overrides[DS26_BINDINGS];if(ds26_bindings(overrides,DS26_BINDINGS)!=DS26_BINDINGS)return -1;
+     for(unsigned i=0;i<DS26_BINDINGS;++i)add(overrides[i],&count);
+-    phase="font verification";f=fopen(DS28_FONT_PATH,"rb");u8 *font=malloc(DS28_FONT_SIZE);
++    stage("font verification");f=fopen(DS28_FONT_PATH,"rb");u8 *font=malloc(DS28_FONT_SIZE);
+     ok=f && font && fread(font,1,DS28_FONT_SIZE,f)==DS28_FONT_SIZE && fgetc(f)==EOF && ds_crc32(font,DS28_FONT_SIZE)==DS28_FONT_CRC;
+     if(f)fclose(f);
+     free(font);if(!ok || ds_io_read_override(ds28_font_path))return -1;
+-    phase="private file namespace";
+-    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-frame-v010",0700);
+-    if(ds6_appdata_namespace("native-frame-v010") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
++    stage("private file namespace");
++    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-v010",0700);
++    if(ds6_appdata_namespace("native-game-v010") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
+     DSBinding files[5];if(ds24_bindings(files,5)!=5)return -1;for(unsigned i=0;i<5;++i)add(files[i],&count);
+     count+=ds20_bindings(bindings+count,768-count);add((DSBinding){"__stack_chk_guard",(u32)&canary},&count);
+-    phase="JNI/bootstrap";DSBootstrap boot;if(ds_bootstrap_verify(donor,DS_DONOR_SIZE,image,info.image_size,(u32)image,&info,&boot))return -1;
++    stage("JNI/bootstrap");DSBootstrap boot;if(ds_bootstrap_verify(donor,DS_DONOR_SIZE,image,info.image_size,(u32)image,&info,&boot))return -1;
+     if(ds10_init(&bridge,java_request,(DS10Startup)exported("Java_com_ea_EAIO_EAIO_Startup")))return -1;
+     ds19_assets_backend_full(&bridge,ds19_native_list,ds25_native_open,ds19_apk_path,(void *)DS25_ROOT);
+     int fd=ds25_native_open((void *)DS25_ROOT,"EAMCore.ini",2);u8 core[4096];int n=fd<0?-1:ds_io_read(fd,core,sizeof(core));if(fd>=0)ds_io_close(fd);
+@@ -246,7 +250,7 @@
+         if((symbol[12]&15)==1){report("UNSUPPORTED DATA %s\n",name);return -1;}add((DSBinding){name,trap_for(name)},&count);
+     }
+     for(u32 i=4;i<DS_JNI_ENV_SLOTS;++i)if(!bridge.base.env_functions[i]){snprintf(jni_names[i],sizeof(jni_names[i]),"JNI slot %lu",(unsigned long)i);bridge.base.env_functions[i]=trap_for(jni_names[i]);}
+-    phase="relocations/imports";DSResolve resolved;if(ds_init_bind_plan(donor,DS_DONOR_SIZE,image,(u32)image,bindings,count,&plan,&resolved))return -1;
++    stage("relocations/imports");DSResolve resolved;if(ds_init_bind_plan(donor,DS_DONOR_SIZE,image,(u32)image,bindings,count,&plan,&resolved))return -1;
+     report("Bindings=%lu unsupported fail-stop functions=%lu constructors=%lu\n",(unsigned long)count,(unsigned long)trap_count,(unsigned long)plan.count);
+     for(u32 i=0;i<info.phnum;++i){
+         const u8 *ph=donor+info.phoff+i*32;if(word(ph)!=1 || !(word(ph+24)&1))continue;if(word(ph+24)&2)return -1;
+@@ -254,12 +258,13 @@
+         if(last<first || rx_range((u32)image+first-info.load_min,last-first))return -1;
+     }
+     if(rx_range((u32)trampoline,12288))return -1;
++    report("ICACHE entire invalidate before constructors; application affinity core0\n");
+     ds_invalidate_entire_instruction_cache();
+-    phase="constructors";started=svcGetSystemTick();if(ds_init_run(&plan))return -1;
++    stage("constructors");started=svcGetSystemTick();if(ds_init_run(&plan))return -1;
+     report("Constructors completed=%lu\n",(unsigned long)plan.executed);
+     typedef int (*OnLoad)(void *,void *) DS_IO_SOFT;
+-    phase="JNI_OnLoad";if(((OnLoad)((u32)image+boot.on_load-info.load_min))(&bridge.base.vm,NULL)!=0x10004)return -1;
+-    phase="lifecycle";lifecycle("MainActivity_NativeOnCreate",400,240);lifecycle("AndroidRenderer_NativeOnSurfaceCreated",400,240);lifecycle("AndroidRenderer_NativeOnSurfaceChanged",400,240);
++    stage("JNI_OnLoad");if(((OnLoad)((u32)image+boot.on_load-info.load_min))(&bridge.base.vm,NULL)!=0x10004)return -1;
++    stage("lifecycle");lifecycle("MainActivity_NativeOnCreate",400,240);lifecycle("AndroidRenderer_NativeOnSurfaceCreated",400,240);lifecycle("AndroidRenderer_NativeOnSurfaceChanged",400,240);
+     return 0;
+ }
+ static int run(void){
+@@ -268,7 +273,7 @@
+     u16 *quantized=malloc(192000);if(!quantized)return -1;
+     screen("Original callbacks running\nTarget: preserved original image\nNo input/audio optimization.");
+     for(current_frame=1;current_frame<=MAX_CALLBACKS;++current_frame){
+-        phase="NativeOnDrawFrame";
++        stage("NativeOnDrawFrame");
+         if(((PushFrame)bridge.base.env_functions[19])(&bridge.base.env,16))return -1;
+         ((Lifecycle)draw)(&bridge.base.env,NULL,400,240);((PopFrame)bridge.base.env_functions[20])(&bridge.base.env,NULL);
+         if(graphics.error || ds34_present(&graphics))return -1;
+@@ -287,7 +292,7 @@
+         if(current_frame%30==0)report("FRAME %lu complete\n",(unsigned long)current_frame);
+     }
+     free(quantized);if(current_frame>MAX_CALLBACKS)return -1;
+-    phase="GPU completion/readback";ds7_stats(&thread_snapshot);
++    stage("GPU completion/readback");ds7_stats(&thread_snapshot);
+     if(drain(2000) || graphics.capacity!=BYTES || R_FAILED(GSPGPU_InvalidateDataCache(graphics.pixels,BYTES)))return -1;
+     DS34Audit audit;if(ds34_sequence_audit(&audit))return -1;
+     char out[192];path(out,"frame.raw");FILE *f=fopen(out,"wb");if(!f)return -1;
+@@ -381,7 +386,7 @@
+     return result?-1:0;
+ }
+ static int shutdown_game(void){
+-    phase="shutdown lifecycle";
++    stage("shutdown lifecycle");
+     native_thread_snapshot("before_pause");
+     lifecycle("MainActivity_NativeOnPause",0,0);native_thread_snapshot("after_pause");
+     lifecycle("MainActivity_NativeOnStop",0,0);native_thread_snapshot("after_stop");
+@@ -425,7 +430,7 @@
+ int main(void){
+     gfxInitDefault();consoleInit(GFX_BOTTOM,NULL);RecursiveLock_Init(&log_lock);
+     if(make_folder())return 1;
+-    char out[192];path(out,"native-frame.log");journal=fopen(out,"w");if(!journal)return 1;
++    char out[192];path(out,"native-game.log");journal=fopen(out,"w");if(!journal)return 1;
+     screen("READY: A begins original code\nSTART exits before initialization.");path(out,"ready.txt");FILE *f=fopen(out,"w");if(f){fputs("A begins original callback 180\n",f);fclose(f);}
+     while(aptMainLoop()){
+         hidScanInput();u32 keys=hidKeysDown();if(keys&KEY_START)break;

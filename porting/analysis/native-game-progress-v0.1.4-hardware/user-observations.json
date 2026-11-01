@@ -1,0 +1,21 @@
+{
+  "executed_by": "user",
+  "received_on": "2026-11-02",
+  "user_reports": {
+    "run_count": 2,
+    "exit_methods": [
+      "START",
+      "HOME then X"
+    ],
+    "both_exited_successfully": true,
+    "console_did_not_hang": true,
+    "loading_animation_and_shutdown_very_slow": true
+  },
+  "timings_or_button_edges_measured_by_user": false,
+  "photo_in_conversation": {
+    "shows": "DS Game Progress 0.1.4 / FRAME FAIL / Cooperative shutdown running / run-0001",
+    "local_photo_archived": false,
+    "is_exit_proof": false
+  },
+  "scope": "Do not infer registered START from user test label; verify input and automatic exit separately from logs. No hardware test was launched by the agent."
+}

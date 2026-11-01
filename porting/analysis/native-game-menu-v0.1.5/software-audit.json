@@ -1,0 +1,146 @@
+{
+  "audited": true,
+  "runs": {
+    "r14-cpu100": {
+      "safety_passed": true,
+      "CXI_sha256": "a06ee75b979594306cf9add124c9280ebead361d560c0bb86205073d0455c82f",
+      "callbacks": 4323,
+      "capture_count": 38,
+      "kernel_joins_at_shutdown": 5,
+      "independent_readbacks_and_internal_GPU_audits_passed": true,
+      "complete_GX_captures": 37,
+      "partial_initial_font_GX_captures": [
+        2880
+      ],
+      "frame_status": "FAIL",
+      "GL_error": 0,
+      "host_renderer": "OpenGL",
+      "cpu_percent": 100,
+      "steady_FPS_guest_ticks": 40.62091551757901,
+      "steady_callback_ms": 10.829159722222222,
+      "steady_present_ms": 8.490740277777777,
+      "steady_diagnostic_ms": 5.2766625000000005,
+      "steady_vblank_wait_ms": 7.7986152777777775,
+      "max_normal_allocated": 17130832,
+      "min_linear_free": 8610944,
+      "max_normal_footprint": 19419136,
+      "max_linear_used": 104635264,
+      "linear_free_at_peak": 222336,
+      "last_C3D_drawing_ms_samples": [
+        0.22,
+        0.189,
+        0.223,
+        0.221,
+        0.189,
+        0.209,
+        0.189,
+        0.189,
+        0.219,
+        0.189,
+        0.189,
+        0.189
+      ],
+      "max_donor_brk": 67112960,
+      "max_donor_mmap_pages": 3919,
+      "max_callback_window_ms": 383663.514,
+      "control_events": [
+        "CONTROL frame=3361 button=DOWN pointer=160,134",
+        "CONTROL frame=3601 button=UP pointer=160,103",
+        "CONTROL frame=3841 button=DOWN pointer=160,134",
+        "CONTROL frame=4081 B=1 module=600 key=4",
+        "CONTROL frame=4201 B=0 module=600 key=4",
+        "CONTROL frame=4321 button=A pointer=284,225"
+      ],
+      "close_state": {
+        "close_pending": false,
+        "home_pending": false,
+        "source": "none",
+        "stopped_boundary": false,
+        "shutdown_attempts": 1,
+        "cleanup_complete": true,
+        "code_and_arenas_retained_until_process_teardown": true
+      },
+      "private_result_sha256": "c219546f85c9c8e6037d6abc47736f22718e46576872aac30013af2b81ea366e",
+      "original_confirm_callback": 4321,
+      "bounded_tail_complete": 4323,
+      "menu_button_sequence_confirmed": true,
+      "B_visual_back_action_confirmed": false,
+      "menu_images": {
+        "3360": {
+          "raw_sha256": "2aad375a6d6716f8eff48ac17ead302aef7b912ee27c4fa1319da2e4f985bd12",
+          "crc565": "7296717d"
+        },
+        "3480": {
+          "raw_sha256": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+          "crc565": "0ded835d"
+        },
+        "3720": {
+          "raw_sha256": "1de1ff641a1f176675be1f10d3e085dc1af43d1326a5eb813bb287e688c2366d",
+          "crc565": "223b5e75"
+        },
+        "3960": {
+          "raw_sha256": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+          "crc565": "0ded835d"
+        },
+        "4200": {
+          "raw_sha256": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+          "crc565": "0ded835d"
+        }
+      }
+    },
+    "r14home-home": {
+      "safety_passed": true,
+      "CXI_sha256": "90dc5175564371d5379dd1fd1c9f222b79ab7e16d31ee9bd89301a18f9047b42",
+      "callbacks": 3899,
+      "capture_count": 32,
+      "kernel_joins_at_shutdown": 5,
+      "independent_readbacks_and_internal_GPU_audits_passed": true,
+      "complete_GX_captures": 32,
+      "partial_initial_font_GX_captures": [],
+      "frame_status": "FAIL",
+      "GL_error": 0,
+      "host_renderer": "OpenGL",
+      "cpu_percent": 400,
+      "steady_FPS_guest_ticks": 52.074315255300846,
+      "steady_callback_ms": 2.363046875,
+      "steady_present_ms": 14.010705208333333,
+      "steady_diagnostic_ms": 2.824183333333333,
+      "steady_vblank_wait_ms": 13.750504166666667,
+      "max_normal_allocated": 17130832,
+      "min_linear_free": 8610944,
+      "max_normal_footprint": 19419136,
+      "max_linear_used": 104635264,
+      "linear_free_at_peak": 222336,
+      "last_C3D_drawing_ms_samples": [
+        0.106,
+        0.106,
+        0.106,
+        0.106,
+        0.106,
+        0.106,
+        0.106,
+        0.106
+      ],
+      "max_donor_brk": 67112960,
+      "max_donor_mmap_pages": 3919,
+      "max_callback_window_ms": 193027.56,
+      "control_events": [],
+      "close_state": {
+        "close_pending": true,
+        "home_pending": true,
+        "source": "APT",
+        "stopped_boundary": false,
+        "shutdown_attempts": 1,
+        "cleanup_complete": true,
+        "code_and_arenas_retained_until_process_teardown": true
+      },
+      "private_result_sha256": "2f8818d964450f7f7118d2a93f2360e6515c5d62678d357b8c37f60c7dea8b76"
+    }
+  },
+  "frozen_protected_files": 375,
+  "strict_verifier_unchanged": true,
+  "baseline_crc": "ea733050",
+  "resource_files_verified": 1752,
+  "hardware_tested": false,
+  "image_validation_passed": false
+}

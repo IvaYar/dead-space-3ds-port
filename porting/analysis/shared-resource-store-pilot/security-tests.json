@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "tests_run": 8,
+  "tests_failed": 0,
+  "fixture_data": "synthetic only in disposable temporary Git repositories",
+  "real_repository_index_modified": false,
+  "hook_automatically_activated": false,
+  "checker_sha256": "4db4bdd55b003d61220c775a0d72a23bb5b5651b61444c4cf3abbf217fdce793",
+  "test_script_sha256": "6f2016e19d59dc445d18d0d0f52c8f4b06f6a312030f2dc3aa746b21a8b9342b",
+  "old_39_resource_files_checked": 68328,
+  "old_files_size_mtime_changed": [],
+  "original_runner_sha256_unchanged": true
+}

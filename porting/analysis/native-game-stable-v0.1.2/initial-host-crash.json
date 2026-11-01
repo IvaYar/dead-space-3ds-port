@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "completed_cycles": 2,
+  "failed_cycle": 3,
+  "failure": "host DLL access violation during reload before guest READY",
+  "exception_code": "0xc0000005",
+  "fault_module": "azahar_libretro.dll",
+  "fault_RVA": "0x326ccf",
+  "Windows_Event_1000_time_client": "2026-11-01T02:39:47+08:00",
+  "Windows_Event_report_id": "9b7c85f1-c6d7-446b-8301-b4f00598ef44",
+  "same_signature_as_previous_h1_Prod124_Init": true,
+  "cause_fixed": false,
+  "guest_failure_proven": false,
+  "evidence_root": "analysis/azahar-native-game-v0.1.2-normal-cxi-precmd"
+}

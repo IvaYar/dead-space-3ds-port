@@ -1,0 +1,22 @@
+{
+  "store": {
+    "files": 1753,
+    "payload_bytes": 583707695,
+    "allocated_file_bytes": 586299856,
+    "junctions_not_followed": []
+  },
+  "pilot_run_without_following_junctions": {
+    "files": 74,
+    "payload_bytes": 8922242,
+    "allocated_file_bytes": 9031344,
+    "junctions_not_followed": [
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\analysis\\azahar-native-game-v0.1.2-normal-cxi-sharedstorepilot\\Azahar\\sdmc\\3ds\\deadspace\\apk-assets",
+      "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\analysis\\azahar-native-game-v0.1.2-normal-cxi-sharedstorepilot\\Azahar\\sdmc\\3ds\\deadspace\\assets"
+    ]
+  },
+  "future_39_shared_asset_file_allocation_bytes": 22674793128,
+  "future_39_net_file_allocation_saving_after_new_store_bytes": 22088493272,
+  "future_39_logical_saving_before_store_bytes": 22573902858,
+  "future_39_logical_net_after_store_bytes": 21990538154,
+  "old_resource_copies_removed": false
+}

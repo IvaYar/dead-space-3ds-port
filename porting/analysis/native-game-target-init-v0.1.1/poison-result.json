@@ -1,0 +1,40 @@
+{
+  "expected_negative_test": true,
+  "unwritten_target_color_persists": true,
+  "initial_RGBA": "7f11abff",
+  "unchanged_original_callbacks": 600,
+  "unwritten_color_pixels": 33733,
+  "full_frame_pixels": 96000,
+  "raw_sha256": "c4058bc84b433833e036787d2a5911f64a821c46fa9560527d7d240897058695",
+  "raw_crc32": "0a072d39",
+  "full_frame_gate_passed": false,
+  "safe_exit_attempted": false,
+  "guest_result": {
+    "status": "blocked",
+    "reason": "initialization/frame blocked",
+    "environment": "emulator",
+    "frame": 601,
+    "game_called": true,
+    "frame_saved": false,
+    "GL_error": 0,
+    "gpu_draws": 1500,
+    "gpu_triangles": 24816,
+    "gpu_uploads": 4,
+    "cpu_fragments": 0,
+    "cpu_samples": 0,
+    "submits": 1209,
+    "failed_submits": 0,
+    "events": [
+      0,
+      603,
+      604
+    ],
+    "active_threads": 0,
+    "finished_threads": 0,
+    "rx_pages": 1062,
+    "rx_ranges": 2,
+    "native_RX_verified": false,
+    "safe_exit": false
+  },
+  "hardware_cause_fully_proven": false
+}

@@ -1,0 +1,9 @@
+{
+  "hardware_RGB565_unique_colors": 899,
+  "baseline_RGB565_unique_colors": 824,
+  "lower_reference_nonblack_pixels": 551,
+  "lower_reference_exactly_equal_to_EA_frame16_at_same_pixels": 551,
+  "clears_in_all_positive_and_negative_software_samples": 0,
+  "hardware_difference_cause_fully_proven": false,
+  "late_software600_RGB565_exact": true
+}

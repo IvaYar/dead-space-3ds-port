@@ -1,0 +1,17 @@
+{
+  "dataset_id": "a46655efb24fab59c7649322986eea2ae0a5827454bca4c5e71be3d13818ceef",
+  "protected_before": {
+    "tests\\smoke_native_game_stable.py": "f14b3842eab6eafd66a0210e0fd3d68877ea3229f7d2326f84df0a9ecf83a0f4",
+    "tests\\native_game_stable.c": "2dd2f8defc11a021982a3c1b9ad0a14e67e09e9848489398bbe9ccdc69fba657",
+    "3ds\\source\\ds34_gpu_3ds.c": "f0f65b19f00b9c2cbd2ddde47d7569c9f477111574918dc61efaa468f7221260",
+    "3ds\\build-native-game-v0.1.2-normal\\native-game.cxi": "e3bc6ec7757db965c805e542a0181491612448e01999a31438103164e06eb776",
+    "3ds\\build-native-game-v0.1.2-normal\\native-game.cia": "8bc86b29d023211d6469f903ba4eed343b3abbb83a901576e8ba096c424e6226",
+    "3ds\\build-native-game-v0.1.2-normal\\ds34_gpu_native.c": "a4236753f98197e26ef591f9439217e41fd4ffd13a55a52b38078a66a21fad26",
+    "3ds\\build-native-game-v0.1.2-normal\\ds7_threads_probe.c": "5d35cea0f95e79b47a96b6bb624c03010f44bd51098df2d85bc314c986356653"
+  },
+  "existing_source_master_unchanged": true,
+  "original_runner_sha256": "f14b3842eab6eafd66a0210e0fd3d68877ea3229f7d2326f84df0a9ecf83a0f4",
+  "native_build_reused": true,
+  "new_CIA_created": false,
+  "hardware_launch": false
+}

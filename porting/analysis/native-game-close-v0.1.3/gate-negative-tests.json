@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "active worker",
+      "rejected": true
+    },
+    {
+      "case": "missing kernel join",
+      "rejected": true
+    },
+    {
+      "case": "live handle",
+      "rejected": true
+    },
+    {
+      "case": "cleanup incomplete",
+      "rejected": true
+    },
+    {
+      "case": "missing heap release",
+      "rejected": true
+    },
+    {
+      "case": "stale frame",
+      "rejected": true
+    },
+    {
+      "case": "CRC FAIL cannot pass",
+      "rejected": true
+    }
+  ],
+  "actual_guest_tests_unchanged": true
+}

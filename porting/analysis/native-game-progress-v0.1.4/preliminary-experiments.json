@@ -1,0 +1,35 @@
+{
+  "used_for_release_gate": false,
+  "experiments": [
+    {
+      "case": "initial slow two cycles",
+      "result": "PASS but superseded by final token-filtered fixture",
+      "location": "azahar-native-game-v0.1.4-slow-cxi"
+    },
+    {
+      "case": "initial normal three reloads",
+      "result": "first two kernel/heap exits passed; third host terminated during guest bootstrap, no final result; cause unclassified",
+      "location": "azahar-native-game-v0.1.4-normal-cxi"
+    },
+    {
+      "case": "initial stall",
+      "result": "fixture stalled main reads as well as loader; host run incomplete and old assertion raised TypeError; rejected",
+      "location": "azahar-native-game-v0.1.4-stall-cxi"
+    },
+    {
+      "case": "initial system close",
+      "result": "PASS but superseded by final source/headers",
+      "location": "azahar-native-game-v0.1.4-system-cxi"
+    },
+    {
+      "case": "r2 stall initial verdict",
+      "result": "actual safe exit passed, verdict rejected stale retained window metadata; checker corrected to distinguish waiting window from final cleanup",
+      "location": "azahar-native-game-v0.1.4r2-stall-cxi"
+    },
+    {
+      "case": "r2 normal preliminary",
+      "result": "two consecutive passes; final checked series stored separately",
+      "location": "azahar-native-game-v0.1.4r2-normal-cxi"
+    }
+  ]
+}

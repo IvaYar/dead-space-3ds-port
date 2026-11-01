@@ -1,0 +1,3 @@
+#!/bin/sh
+# Opt-in: git config core.hooksPath .githooks
+exec python porting/tools/check_staged_private_files.py

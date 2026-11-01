@@ -1,0 +1,402 @@
+--- frozen stable 0.1.2
++++ close 0.1.3
+@@ -47,7 +47,7 @@
+ #include "font_subset_config.h"
+ #include "native_thread_probe.h"
+ 
+-#define ROOT "sdmc:/3ds/ds-native-game-v0.1.2/"
++#define ROOT "sdmc:/3ds/ds-native-game-v0.1.3/"
+ #define MAX_CALLBACKS 600u
+ #define TARGET_RGB565_CRC 0xea733050u /* Preserved original GPU frame180, also stable181..189. */
+ #define BYTES 288000u
+@@ -81,6 +81,47 @@
+ static u32 rx_pages,rx_ranges;
+ static DS7Stats thread_snapshot;
+ static u32 main_thread_id;
++static int close_pending,home_pending,stopped_boundary,lifecycle_stopped;
++static unsigned shutdown_attempts;
++static const char *close_origin="none";
++static void report(const char *fmt,...);
++#ifdef TEST_APT_CLOSE
++static int test_close_sent;
++static void test_close_ipc(void){
++    if(test_close_sent)return;
++    test_close_sent=1;
++    home_pending=1;
++    report("TEST HOME request at safe boundary; no START substitution\n");
++}
++/* Azahar has no real HOME Menu capture-ready handshake. Test SDK link only:
++ * skip that screenshot wait; retain actual APT jump, wakeup-cancel decoding,
++ * aptMainLoop false, GSP release, SDK exit and kernel process destruction. */
++void aptScreenTransfer(u16 mode,bool is_home){
++    (void)mode;(void)is_home;report("TEST HLE HOME screenshot readiness shim\n");
++}
++#endif
++static bool app_main_loop(void){
++    /* Once X/POWER requests exit, never return to READY or render again. */
++    if(!close_pending && aptShouldClose()){
++        close_pending=1;close_origin="APT";
++        report("APT close pending; quiescence required before process return\n");
++    }
++    if(close_pending)return false;
++    /* HOME cancellation does not restore GSP rights/VBlank (libctru). Keep
++     * HOME disabled while donor users exist and service its rejected press
++     * as a deferred request, then hand over only after all users have exited. */
++    if(aptCheckHomePressRejected() || home_pending){
++        if(!home_pending)report("APT HOME deferred until donor/GPU quiescence\n");
++        home_pending=1;return false;
++    }
++    bool running=aptMainLoop();
++    if(!running || aptShouldClose()){
++        close_pending=1;close_origin="APT";
++        report("APT close pending; quiescence required before process return\n");
++        return false;
++    }
++    return true;
++}
+ /* Bounded, CPU-only recording. No file I/O or allocation in SDK wrappers.
+  * Buffers stay alive until process teardown; never alter GPU command words. */
+ static u8 command_capture[128*1024];
+@@ -128,7 +169,7 @@
+ static void stage(const char *name){if(!strcmp(phase,name))return;phase=name;report("STAGE %s\n",name);memory_sample(name);}
+ static void path(char out[192],const char *name){snprintf(out,192,"%s%s",folder,name);}
+ static void screen(const char *text){
+-    printf("\x1b[2J\x1b[HDS Game Stable 0.1.2\n%s\nRun: %s\n",text,folder+strlen(ROOT));
++    printf("\x1b[2J\x1b[HDS Game Close 0.1.3\n%s\nRun: %s\n",text,folder+strlen(ROOT));
+     u16 w,h;void *p=gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,&w,&h);GSPGPU_FlushDataCache(p,(u32)w*h*3);
+ }
+ static int elapsed(u64 tick,u32 ms){return svcGetSystemTick()-tick>(u64)SYSCLOCK_ARM11*ms/1000;}
+@@ -228,7 +269,7 @@
+         for(;;){
+             /* Service APT/HID on main even when destruction is unsafe. A close
+              * request does not authorize freeing resources still in use. */
+-            aptMainLoop();hidScanInput();
++            app_main_loop();hidScanInput();
+             if(hidKeysDown()&KEY_START)report("START: cleanup incomplete; live resources retained\n");
+             svcSleepThread(16666667);
+         }
+@@ -364,8 +405,8 @@
+     if(f)fclose(f);
+     free(font);if(!ok || ds_io_read_override(ds28_font_path))return -1;
+     stage("private file namespace");
+-    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-stable-v012",0700);
+-    if(ds6_appdata_namespace("native-game-stable-v012") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
++    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-close-v013",0700);
++    if(ds6_appdata_namespace("native-game-close-v013") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
+     DSBinding files[5];if(ds24_bindings(files,5)!=5)return -1;for(unsigned i=0;i<5;++i)add(files[i],&count);
+     count+=ds20_bindings(bindings+count,768-count);add((DSBinding){"__stack_chk_guard",(u32)&canary},&count);
+     stage("JNI/bootstrap");DSBootstrap boot;if(ds_bootstrap_verify(donor,DS_DONOR_SIZE,image,info.image_size,(u32)image,&info,&boot))return -1;
+@@ -461,6 +502,8 @@
+         (unsigned long)current_frame,command_name,(unsigned long)command_bytes,command_overflow?"true":"false",(unsigned long)draw_input_digest,(unsigned long)draw_input_count);
+     return save_raw(name);
+ }
++static void native_thread_snapshot(const char *stage);
++static u32 diagnostic_words(u32 address,u32 out[24]);
+ static int run(void){
+     if(ds_crc32((const u8 *)"123456789",9)!=0xcbf43926u){failure_reason="CRC selfcheck";return -1;}
+     if(initialize()){failure_reason="initialization failed";return -1;}
+@@ -471,7 +514,7 @@
+     screen("Original callbacks running\nStrict full-frame CRC + bounded sequence\nSTART: cooperative exit");
+     for(current_frame=1;current_frame<=MAX_CALLBACKS;++current_frame){
+         command_bytes=command_overflow=draw_input_count=0;draw_input_digest=2166136261u;
+-        if(!aptMainLoop()){failure_reason="APT exit requested";goto done;}
++        if(!app_main_loop()){failure_reason=home_pending?"HOME requested before validation":"APT exit requested";goto done;}
+         hidScanInput();if(hidKeysDown()&KEY_START){failure_reason="START before validation";goto done;}
+         stage("NativeOnDrawFrame");
+         if(((PushFrame)bridge.base.env_functions[19])(&bridge.base.env,16)){failure_reason="JNI PushLocalFrame";goto done;}
+@@ -479,6 +522,57 @@
+         if(graphics.error || ds34_present(&graphics)){failure_reason="draw/present failed";goto done;}
+         callbacks_completed=current_frame;memory_sample("after_draw");
+         if(current_frame==2){lifecycle("MainActivity_NativeOnResume",1,0);lifecycle("MainActivity_NativeOnWindowFocusChanged",1,0);}
++
++#ifdef TEST_LATE_LOADER
++        /* Controlled scheduling: let the real first loader complete before
++         * the next original main update. No donor state/clock/code mutation. */
++        if(current_frame==320){
++            native_thread_snapshot("test_before_startup_wait");
++            NativeWorkerProbe probe[17];ds7_probe_workers(probe);
++            for(unsigned k=1;k<17;++k)if(probe[k].token && probe[k].entry==(u32)image+0x24c914 &&
++                probe[k].argument && ((u32 *)probe[k].argument)[3]==(u32)image+0x320624){
++                int waited=ds7_probe_wait_thread(probe[k].token,30000);
++                report("TEST startup loader yielded completion=%d\n",waited);
++                if(waited){failure_reason="test startup loader deadline";goto done;}
++            }
++            native_thread_snapshot("test_after_startup_wait");
++        }
++#endif
++#ifdef TEST_LATE_PENDING
++        if(current_frame>=320){
++            NativeWorkerProbe probe[17];ds7_probe_workers(probe);
++            for(unsigned k=1;k<17;++k)if(probe[k].token && !probe[k].done && probe[k].entry==(u32)image+0x24c914){
++                u32 arg[24],obj[24];
++                if(diagnostic_words(probe[k].argument,arg)<5 || arg[3]!=(u32)image+0x320624 || diagnostic_words(arg[4],obj)<3 || obj[0]!=(u32)image+0x428390)continue;
++                /* Hold main updates, not the worker: reproduce its published
++                 * delegate waiting for main, rather than a fabricated worker. */
++                u64 tick=svcGetSystemTick();
++                int needs_update=0;
++                while(!elapsed(tick,2000)){
++                    u32 sync[24];
++                    if(diagnostic_words(obj[2],sync)>5 && sync[4]==1 && (sync[5]&255)==0){
++                        /* The hardware was waiting on the second delegate,
++                         * whose member function is b6d04. Service only the
++                         * preceding delegate with the original main method. */
++                        if(((u32 *)arg[4])[5]!=(u32)image+0xb6d04){
++                            needs_update=1;break;
++                        }
++                        native_thread_snapshot("test_pending_delegate");
++                        report("TEST pending later delegate token=%lx flag68=%u kernel_poll=%d\n",(unsigned long)probe[k].token,((u8 *)arg[4])[0x68],ds7_probe_wait_thread(probe[k].token,0));
++                        failure_reason="test stop at pending late loader delegate";
++                        if(diagnostic_capture(quantized,"comparison-miss.raw"))failure_reason="pending capture failed";
++#ifdef TEST_LATE_HOME
++                        test_close_ipc();
++#endif
++                        goto done;
++                    }
++                    svcSleepThread(1000000);
++                }
++                if(needs_update)continue; /* Original draw supplies its context. */
++                failure_reason="test pending delegate deadline";goto done;
++            }
++        }
++#endif
+         u32 stats[4];ds34_stats(stats);
+         if(stats[2]>=4){
+             if(readback()){failure_reason="readback failed";goto done;}
+@@ -538,7 +632,11 @@
+         fputs("],\"vtable_words\":[",f);n=v->done?0:diagnostic_words(table,values);for(u32 j=0;j<n;++j)fprintf(f,"%s%lu",j?",":"",(unsigned long)values[j]);
+         fputs("],\"userdata_words\":[",f);n=v->done?0:diagnostic_words(userdata,values);table=n?values[0]:0;for(u32 j=0;j<n;++j)fprintf(f,"%s%lu",j?",":"",(unsigned long)values[j]);
+         fputs("],\"userdata_vtable\":[",f);n=v->done?0:diagnostic_words(table,values);for(u32 j=0;j<n;++j)fprintf(f,"%s%lu",j?",":"",(unsigned long)values[j]);
+-        fputs("],\"wait_words\":[",f);n=v->done?0:diagnostic_words(v->wait_object,values);for(u32 j=0;j<n;++j)fprintf(f,"%s%lu",j?",":"",(unsigned long)values[j]);
++        u32 obj[24];u32 on=v->done?0:diagnostic_words(userdata,obj);
++        u32 sync=on>2 && (obj[0]==(u32)image+0x428390 || obj[0]==(u32)image+0x428378)?obj[2]:0;
++        fputs("],\"loader_sync_words\":[",f);n=diagnostic_words(sync,values);for(u32 j=0;j<n;++j)fprintf(f,"%s%lu",j?",":"",(unsigned long)values[j]);
++        fprintf(f,"],\"late_flag68\":%u,\"wait_words\":[",on && obj[0]==(u32)image+0x428390?((u8 *)userdata)[0x68]:0);
++        n=v->done?0:diagnostic_words(v->wait_object,values);for(u32 j=0;j<n;++j)fprintf(f,"%s%lu",j?",":"",(unsigned long)values[j]);
+         fprintf(f,"],\"wait_caller\":%lu,\"sleep_seconds\":%lu,\"sleep_nanoseconds\":%lu,\"sleep_EINTR\":%lu,\"wait_stack\":[",(unsigned long)v->wait_caller,(unsigned long)v->sleep_seconds,(unsigned long)v->sleep_nanoseconds,(unsigned long)v->sleep_interrupt_returns);for(u32 j=0;j<32;++j)fprintf(f,"%s%lu",j?",":"",(unsigned long)v->wait_stack[j]);fputs("]}",f);
+     }
+     fputs("]}\n",f);fclose(f);
+@@ -555,12 +653,12 @@
+     typedef void (*RequestStop)(void *) DS_IO_SOFT;
+     RequestStop request=(RequestStop)(image+0x35532c);
+     NativeWorkerProbe view[17];ds7_probe_workers(view);u32 ids[2],count=0;
+-    for(unsigned i=1;i<17;++i)if(view[i].token && view[i].entry==(u32)image+0x24c7f8){
++    for(unsigned i=1;i<17;++i)if(view[i].token && !view[i].done && view[i].entry==(u32)image+0x24c7f8){
+         u32 words[24],table[24];
+         if(diagnostic_words(view[i].argument,words)<4 || diagnostic_words(words[3],table)<1 || table[0]!=(u32)image+0x43bc68 || count==2)return -1;
+         ids[count++]=view[i].token;request((void *)words[3]);
+     }
+-    if(count!=2)return -1;
++    /* A bounded previous attempt may already have reaped one member. */
+     native_thread_snapshot("after_jobs_signal");
+     for(unsigned i=0;i<count;++i){int result=ds7_probe_wait_thread(ids[i],1000);report("JOB %lx completion=%d\n",(unsigned long)ids[i],result);if(result)return -1;}
+     return 0;
+@@ -571,13 +669,14 @@
+     static const u32 expected[]={0xe92d4070,0xe59f3148,0xe59f5148,0xe3a06000,0xe08f3003,0xe0835005,0xe5952030,0xe1a04000,0xe5c56035};
+     if(memcmp(image+0x275634,expected,sizeof(expected)))return -1;
+     NativeWorkerProbe view[17];ds7_probe_workers(view);u32 ids[2],count=0,object=0;
+-    for(unsigned i=1;i<17;++i)if(view[i].token && view[i].entry==(u32)image+0x24c914){
++    for(unsigned i=1;i<17;++i)if(view[i].token && !view[i].done && view[i].entry==(u32)image+0x24c914){
+         u32 words[24];if(diagnostic_words(view[i].argument,words)<5)return -1;
+         if(words[3]!=(u32)image+0x29bf3c && words[3]!=(u32)image+0x271a10)continue;
+         if(count==2 || (object && object!=words[4]))return -1;
+         object=words[4];ids[count++]=view[i].token;
+     }
+-    if(count!=2 || *(u32 *)object!=(u32)image+0x438988)return -1;
++    if(!count)return 0;
++    if(*(u32 *)object!=(u32)image+0x438988)return -1;
+     u32 global=0x27564c+*(u32 *)(image+0x275788)+*(u32 *)(image+0x27578c);
+     if(global!=0x44d488)return -1;
+     __atomic_store_n(image+global+0x35,0,__ATOMIC_RELEASE);
+@@ -596,14 +695,70 @@
+     u32 state=0x360e10+*(u32 *)(image+0x360e60)+*(u32 *)(image+0x360e64);
+     if(state!=0x46cb90 || image[state+0x48])return -1;
+     NativeWorkerProbe view[17];ds7_probe_workers(view);u32 id=0;
+-    for(unsigned i=1;i<17;++i)if(view[i].token && view[i].entry==(u32)image+0x360d9c){if(id)return -1;id=view[i].token;}
+-    if(!id)return -1;
++    for(unsigned i=1;i<17;++i)if(view[i].token && !view[i].done && view[i].entry==(u32)image+0x360d9c){if(id)return -1;id=view[i].token;}
++    if(!id)return 0;
+     __atomic_store_n((u32 *)(image+state+0x94),0,__ATOMIC_RELEASE);
+     if(ds7_checkpoint_interrupt(id))return -1;
+     int result=ds7_probe_wait_thread(id,1000);report("PERIODIC %lx completion=%d\n",(unsigned long)id,result);
+     return result?-1:0;
+ }
++static int native_drain_loaders(void){
++    /* 307468 publishes a main-thread delegate, then waits for state=0.
++     * 3071d0 uses try-acquire(1 -> 2), calls the delegate on MAIN and acks
++     * state=0. Both delegates forward the original Update context. Service
++     * through NativeOnDrawFrame BEFORE Pause/Stop, never with a guessed/null
++     * context. No cancellation bits, Run patches or fabricated exit. */
++    static const u32 pump_head[]={0xe92d4070,0xe2805008,0xe24dd008,0xe1a04000,0xe1a06001};
++    static const u32 dispatch[]={0xe92d4010,0xe5903000,0xe1a0e00f,0xe593f000,0xe3a00000,0xe8bd8010};
++    if(memcmp(image+0x3071d0,pump_head,sizeof(pump_head)) || memcmp(image+0x320624,dispatch,sizeof(dispatch)))return -1;
++    NativeWorkerProbe workers[17];ds7_probe_workers(workers);
++    for(unsigned k=1;k<17;++k){
++        NativeWorkerProbe *w=&workers[k];
++        if(!w->token || w->entry!=(u32)image+0x24c914 || w->done)continue;
++        u32 arg[24],obj[24],vt[24];
++        if(diagnostic_words(w->argument,arg)<5)return -1;
++        if(arg[3]!=(u32)image+0x320624)continue;
++        if(diagnostic_words(arg[4],obj)<12 || diagnostic_words(obj[0],vt)<3)return -1;
++        int late=obj[0]==(u32)image+0x428390 && vt[0]==(u32)image+0xb6e6c;
++        int first=obj[0]==(u32)image+0x428378 && vt[0]==(u32)image+0xb60bc;
++        if(!late && !first){report("LOADER unknown class; retained\n");return -1;}
++        report("LOADER classify token=%lx Run=%lx late=%d\n",(unsigned long)w->token,(unsigned long)(vt[0]-(u32)image),late);
++        u64 tick=svcGetSystemTick();u32 pumps=0,next_sample=5000;int result;
++        while((result=ds7_probe_wait_thread(w->token,10))==110){
++            app_main_loop(); /* Records a pending X even during shutdown. */
++            if(elapsed(tick,next_sample)){
++                report("LOADER progress ms=%lu opens=%lu reads=%lu bytes=%lu closes=%lu active=%lu\n",(unsigned long)next_sample,(unsigned long)io.opens,(unsigned long)io.reads,(unsigned long)io.bytes,(unsigned long)io.closes,(unsigned long)io.active);
++                memory_sample("loader_wait");next_sample+=5000;
++            }
++            if(elapsed(tick,late?60000:30000))break;
++            if(late){
++                u32 state[24],current[24];
++                if(diagnostic_words(obj[2],state)<6 || diagnostic_words(arg[4],current)<8)return -1;
++                if(state[4]==1 && (state[5]&255)==0){
++                    int second=current[4]==(u32)image+0x43f235 && current[5]==(u32)image+0xb6d04 && !current[6] && current[7]==arg[4];
++                    int first_delegate=current[4]==(u32)image+0x43f22d && current[5]==(u32)image+0xb6d88 && !current[6] && current[7]==*(u32 *)(arg[4]+0x30)+0x1764;
++                    if(lifecycle_stopped || pumps==2 || (!second && !first_delegate)){
++                        report("LOADER unsafe/unknown pending delegate; retained fn=%lx\n",(unsigned long)(current[5]-(u32)image));return -1;
++                    }
++                    report("LOADER original Update delegate=%lx via NativeOnDrawFrame\n",(unsigned long)(current[5]-(u32)image));
++                    command_bytes=command_overflow=draw_input_count=0;draw_input_digest=2166136261u;
++                    if(((PushFrame)bridge.base.env_functions[19])(&bridge.base.env,16))return -1;
++                    ((Lifecycle)exported("Java_com_ea_blast_AndroidRenderer_NativeOnDrawFrame"))(&bridge.base.env,NULL,400,240);
++                    ((PopFrame)bridge.base.env_functions[20])(&bridge.base.env,NULL);
++                    if(graphics.error || ds34_present(&graphics))return -1;
++                    ++pumps;
++                }
++            }
++        }
++        report("LOADER drained token=%lx Run=%lx completion=%d pumps=%lu ms=%llu\n",(unsigned long)w->token,(unsigned long)(vt[0]-(u32)image),result,(unsigned long)pumps,(unsigned long long)((svcGetSystemTick()-tick)*1000/SYSCLOCK_ARM11));
++        native_thread_snapshot("after_loader_wait");
++        if(result)return -1; /* Kernel completion, not a done flag, owns exit. */
++    }
++    return 0;
++}
+ static int shutdown_game(void){
++    if(cleanup_complete)return 0;
++    ++shutdown_attempts;
+     cleanup_state="running";
+     stage("shutdown lifecycle");
+     native_thread_snapshot("before_pause");
+@@ -611,18 +766,16 @@
+     /* Host-only fault: prove live handles prevent destruction and PASS. */
+     report("INJECTED cleanup incomplete; no resource destruction\n");return -1;
+ #endif
+-    lifecycle("MainActivity_NativeOnPause",0,0);native_thread_snapshot("after_pause");
+-    lifecycle("MainActivity_NativeOnStop",0,0);native_thread_snapshot("after_stop");
++#ifdef TEST_STOPPED_CLOSE
++    if(shutdown_attempts==1){report("TEST deferred shutdown at safe main boundary; resources retained\n");return -1;}
++#endif
++    if(native_drain_loaders())return -1;
++    if(!lifecycle_stopped){
++        lifecycle("MainActivity_NativeOnPause",0,0);native_thread_snapshot("after_pause");
++        lifecycle("MainActivity_NativeOnStop",0,0);native_thread_snapshot("after_stop");
++        lifecycle_stopped=1;
++    }
+     native_destructor_snapshot();
+-    NativeWorkerProbe initial[17];ds7_probe_workers(initial);
+-    for(unsigned i=1;i<17;++i)if(initial[i].token && initial[i].entry==(u32)image+0x24c914 && initial[i].argument){
+-        u32 words[24];u32 count=diagnostic_words(initial[i].argument,words);
+-        if(count>3 && words[3]==(u32)image+0x320624){
+-            int waited=ds7_probe_wait_thread(initial[i].token,30000);
+-            report("LOADER natural completion=%d\n",waited);native_thread_snapshot("after_loader_wait");
+-            if(waited)return -1;
+-        }
+-    }
+     if(native_stop_job_workers())return -1;
+     if(native_stop_audio_workers())return -1;
+     if(native_stop_periodic_worker())return -1;
+@@ -655,15 +808,41 @@
+     if((mkdir("sdmc:/3ds",0777) && errno!=EEXIST) || (mkdir(ROOT,0777) && errno!=EEXIST))return -1;
+     for(u32 i=1;i<=9999;++i){snprintf(folder,sizeof(folder),ROOT"run-%04lu/",(unsigned long)i);if(!mkdir(folder,0777))return 0;if(errno!=EEXIST)return -1;}return -1;
+ }
++static int stopped_close(void){
++    /* Only called after shutdown_game returned: no imported caller owns a
++     * runtime gate or donor stack. Imported-call fatal never enters here. */
++    stopped_boundary=1;cleanup_state="retained";
++    ds7_stats(&thread_snapshot);outcome("blocked","worker/GPU shutdown incomplete");
++    native_thread_snapshot("stopped_retained");
++    report("STOPPED safe main boundary; awaiting START or pending APT close\n");
++    screen("STOPPED / FAIL: cleanup incomplete\nSTART/HOME close: retry safe shutdown");
++    int retried=0;
++    for(;;){
++#ifdef TEST_STOPPED_CLOSE
++        test_close_ipc();
++#endif
++        app_main_loop();hidScanInput();
++        if(!retried && (close_pending || home_pending || (hidKeysDown()&KEY_START))){
++            retried=1;
++            report("STOPPED retry close_pending=%d home_pending=%d source=%s\n",close_pending,home_pending,close_origin);
++            if(!shutdown_game())return 0;
++            cleanup_state="retained";ds7_stats(&thread_snapshot);outcome("blocked","shutdown retry incomplete");
++            report("CLOSE BLOCKED: live resources retained; no unsafe process return\n");
++            screen("FAIL: shutdown retry incomplete\nLive resources retained; see log");
++        }
++        svcSleepThread(16666667);
++    }
++}
+ int main(void){
+     gfxInitDefault();consoleInit(GFX_BOTTOM,NULL);RecursiveLock_Init(&log_lock);
+     svcGetThreadId(&main_thread_id,CUR_THREAD_HANDLE);
+     if(make_folder())return 1;
+     char out[192];path(out,"native-game.log");journal=fopen(out,"w");if(!journal)return 1;
+     screen("READY: A begins original code\nSTART exits before initialization.");path(out,"ready.txt");FILE *f=fopen(out,"w");if(f){fputs("A begins original callback 180\n",f);fclose(f);}
+-    while(aptMainLoop()){
++    while(app_main_loop()){
+         hidScanInput();u32 keys=hidKeysDown();if(keys&KEY_START)break;
+         if(keys&KEY_A){
++            aptSetHomeAllowed(false);
+             setup_ok=run()==0;
+             if(!lifecycle_ready)fatal("initialization blocked; unsafe to infer donor lifecycle");
+             if(!setup_ok){
+@@ -672,15 +851,45 @@
+                 screen("FRAME FAIL: see log\nCooperative shutdown running");
+             }else{
+                 screen("FRAME + SEQUENCE SAVED\nSTART: donor shutdown + GPU drain");
+-                while(aptMainLoop()){hidScanInput();if(hidKeysDown()&KEY_START)break;svcSleepThread(16666667);}
++                while(app_main_loop()){
++#if defined(TEST_APT_CLOSE) && !defined(TEST_STOPPED_CLOSE)
++                    test_close_ipc();
++#endif
++                    hidScanInput();if(hidKeysDown()&KEY_START){close_origin="START";break;}svcSleepThread(16666667);
++                }
+             }
+             if(shutdown_game()){
+-                ds7_stats(&thread_snapshot); /* Returned main-thread boundary; no imported gate held. */
+-                fatal("worker/GPU shutdown incomplete");
++                if(stopped_close())return 1;
++            }
++            if(home_pending && cleanup_complete){
++                /* No donor or GPU users remain. SDK may now release GSP and
++                 * wait in HOME; X is decoded by the normal libctru path. */
++                report("APT HOME handover AFTER quiescence\n");
++                aptSetHomeAllowed(true);
++#ifdef TEST_APT_CLOSE
++                Result cancel=APT_SendParameter(APPID_HOMEMENU,APPID_APPLICATION,APTCMD_WAKEUP_CANCEL,NULL,0,0);
++                report("TEST APT HOME-menu cancel IPC result=%08lx\n",(unsigned long)cancel);
++#endif
++                aptJumpToHomeMenu();
++                report("APT HOME returned should_close=%d\n",aptShouldClose());
++                while(aptMainLoop()){
++                    hidScanInput();if(hidKeysDown()&KEY_START)break;
++                    svcSleepThread(16666667);
++                }
++                if(aptShouldClose()){
++                    close_pending=1;close_origin="APT";
++                    report("APT close pending; cleanup already complete\n");
++                }
+             }
+             break;}
+         svcSleepThread(16666667);
+     }
++    report("PROCESS return close_pending=%d source=%s stopped_boundary=%d cleanup=%s attempts=%u\n",close_pending,close_origin,stopped_boundary,cleanup_state,shutdown_attempts);
++    if(lifecycle_ready){
++        outcome(frame_failed?"failed":"passed",frame_failed?failure_reason:"original frame sequence and worker/GPU shutdown complete");
++        path(out,"close-state.json");FILE *state=fopen(out,"w");
++        if(state){fprintf(state,"{\"close_pending\":%s,\"home_pending\":%s,\"source\":\"%s\",\"stopped_boundary\":%s,\"shutdown_attempts\":%u,\"cleanup_complete\":%s,\"code_and_arenas_retained_until_process_teardown\":true}\n",close_pending?"true":"false",home_pending?"true":"false",close_origin,stopped_boundary?"true":"false",shutdown_attempts,cleanup_complete?"true":"false");fclose(state);}
++    }
+     if(journal)fclose(journal);
+     gfxExit();return 0;
+ }

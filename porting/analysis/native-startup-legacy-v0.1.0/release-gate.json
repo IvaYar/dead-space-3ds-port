@@ -1,0 +1,20 @@
+{
+  "ready_for_hardware_approval": true,
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "hardware_launch_requires_separate_permission": true,
+  "startup_only": true,
+  "CIA_sha256": "0bc9e96b059c0a0c4d4125afb5525ff7f0726eb9a96a03799c4b74786b1d9fe9",
+  "CIA_bytes": 146880,
+  "title_id": "000400000FDE7200",
+  "same_ELF_verified": true,
+  "only_memory_mode_configuration_changed": true,
+  "derived_AccessDescriptor_signature_changed": true,
+  "kernel_and_SVC_unchanged": true,
+  "Azahar_CIA_payload_cycles_passed": 3,
+  "actual_commit_limit_MiB_in_Azahar": 64,
+  "START_cleanup_before_host_unload": true,
+  "baseline_protected_files": 192,
+  "baseline_changed_files": [],
+  "original_game_fit_in_Legacy_not_claimed": true
+}

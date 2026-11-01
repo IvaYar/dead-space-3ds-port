@@ -1,0 +1,157 @@
+{
+  "hardware_tested": true,
+  "executed_by": "user",
+  "overall_result": "PARTIAL_frame_FAIL_automatic_cleanup_timeout_manual_START_retry_exit",
+  "expected_CIA_sha256": "74f94904ea59e0f1468273dff92f65156e55ece7de82a5a88c40c4ca990fe3e0",
+  "installed_CIA_identity_independently_measured": false,
+  "frame_status": "FAIL",
+  "callbacks_completed": 600,
+  "last_crc565": "bf2a6bfd",
+  "first_final_hardware_CRC_callback": 87,
+  "all_capture_checks": true,
+  "capture_count": 9,
+  "different_pixels_from_frozen_reference": 9231,
+  "final_raw_byte_identical_to_Stable_v012_hardware": true,
+  "automatic_cleanup_first_attempt_passed": false,
+  "late_loader_first_wait_ms": 60069,
+  "late_loader_first_result_errno": 110,
+  "late_loader_shutdown_pumps": 0,
+  "late_loader_at_timeout": {
+    "token": 2054,
+    "Run_offset": 749164,
+    "sync_state": 0,
+    "busy_byte": 0,
+    "flag68": 1,
+    "done": false,
+    "kernel_wait_timeout": true
+  },
+  "delegate_pending_deadlock_at_timeout": false,
+  "hardware_shutdown_delegate_pump_exercised": false,
+  "continuous_IO_progress_observed": true,
+  "IO_progress_samples": [
+    {
+      "ms": 5000,
+      "opens": 103,
+      "reads": 11302,
+      "bytes": 25744113,
+      "closes": 101,
+      "active": 2
+    },
+    {
+      "ms": 10000,
+      "opens": 108,
+      "reads": 12110,
+      "bytes": 29013204,
+      "closes": 106,
+      "active": 2
+    },
+    {
+      "ms": 15000,
+      "opens": 110,
+      "reads": 12923,
+      "bytes": 32327108,
+      "closes": 108,
+      "active": 2
+    },
+    {
+      "ms": 20000,
+      "opens": 111,
+      "reads": 13758,
+      "bytes": 35731124,
+      "closes": 110,
+      "active": 1
+    },
+    {
+      "ms": 25000,
+      "opens": 117,
+      "reads": 14487,
+      "bytes": 38676748,
+      "closes": 115,
+      "active": 2
+    },
+    {
+      "ms": 30000,
+      "opens": 128,
+      "reads": 15065,
+      "bytes": 40955413,
+      "closes": 126,
+      "active": 2
+    },
+    {
+      "ms": 35000,
+      "opens": 132,
+      "reads": 15550,
+      "bytes": 42919797,
+      "closes": 130,
+      "active": 2
+    },
+    {
+      "ms": 40000,
+      "opens": 132,
+      "reads": 16416,
+      "bytes": 46466933,
+      "closes": 130,
+      "active": 2
+    },
+    {
+      "ms": 45000,
+      "opens": 134,
+      "reads": 17277,
+      "bytes": 49977445,
+      "closes": 132,
+      "active": 2
+    },
+    {
+      "ms": 50000,
+      "opens": 138,
+      "reads": 18044,
+      "bytes": 53085551,
+      "closes": 137,
+      "active": 1
+    },
+    {
+      "ms": 55000,
+      "opens": 138,
+      "reads": 18773,
+      "bytes": 56071535,
+      "closes": 137,
+      "active": 1
+    },
+    {
+      "ms": 60000,
+      "opens": 140,
+      "reads": 19491,
+      "bytes": 59000310,
+      "closes": 139,
+      "active": 1
+    }
+  ],
+  "observed_IO_byte_rate_5s_to_60s": 604658.1272727273,
+  "byte_rate_is_not_physical_SD_bandwidth": true,
+  "loader_elapsed_until_actual_exit_known": false,
+  "manual_START_retry_confirmed": true,
+  "late_loader_kernel_exited_before_retry": true,
+  "kernel_joins_after_quiesce": 6,
+  "worker_handles_remaining": 0,
+  "IO_opens": 174,
+  "IO_closes": 174,
+  "exit_marker_present": true,
+  "guest_cleanup_complete": true,
+  "guest_safe_exit": true,
+  "user_confirms_return_to_HOME_and_normal_console_operation": true,
+  "hardware_heap_release_independently_measured": false,
+  "HOME_X_tested": false,
+  "POWER_tested": false,
+  "peak_normal_allocator_footprint": 19222528,
+  "peak_commit_bytes": 126754816,
+  "peak_donor_brk_bytes": 67112960,
+  "peak_donor_mmap_pages": 3919,
+  "donor_refusals": 0,
+  "runtime_failures": 0,
+  "before_pause_snapshot_overwritten_by_retry": true,
+  "banner_version_stale_010_while_guest_reports_Close_013": true,
+  "received_files_preserved_SHA256": true,
+  "repeat_current_CIA_prohibited": true,
+  "ready_for_one_separate_hardware_test": false,
+  "new_hardware_run_authorized": false
+}

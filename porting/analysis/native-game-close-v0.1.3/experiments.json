@@ -1,0 +1,102 @@
+[
+  {
+    "experiment": "lateprobe",
+    "used_for_release_gate": false,
+    "reason": "Controlled A completion reproduced real B, but main had already acknowledged its delegates; not the failing pending state.",
+    "host_result_passed": true,
+    "safe_exit": true,
+    "host_deadline_recorded": false,
+    "guest_memory_exception_observed": false,
+    "CXI_sha256": "721a4e9871b78dee407e35616027974c8e19b2d86cb210619bf8208f3daf61ea"
+  },
+  {
+    "experiment": "latepending",
+    "used_for_release_gate": false,
+    "reason": "Original natural-join path blocked on B first delegate; retained. Test observed full-word padding incorrectly; byte flag fixed in successor.",
+    "host_result_passed": false,
+    "safe_exit": false,
+    "host_deadline_recorded": false,
+    "guest_memory_exception_observed": false,
+    "CXI_sha256": "b4e20417e7e884cf1032ea0b1a5cac5d25d9b757667c3ec65654e42009306e14"
+  },
+  {
+    "experiment": "latefixed",
+    "used_for_release_gate": false,
+    "reason": "Direct first-delegate pump with NULL Update context was invalid; guest memory exception; rejected.",
+    "host_result_passed": false,
+    "safe_exit": false,
+    "host_deadline_recorded": true,
+    "guest_memory_exception_observed": true,
+    "CXI_sha256": "0c0d7204623d2267270044276a8adc051c1a65807ae57aa350af5f7d7d721998"
+  },
+  {
+    "experiment": "latefixed2",
+    "used_for_release_gate": false,
+    "reason": "Second delegate also forwards Update context; direct NULL pump caused guest memory exception; rejected.",
+    "host_result_passed": false,
+    "safe_exit": false,
+    "host_deadline_recorded": true,
+    "guest_memory_exception_observed": true,
+    "CXI_sha256": "ef47b0ff39ca426dd5b96800d9d1feed1c7776b300747062ff0c79e011311f46"
+  },
+  {
+    "experiment": "latefixed3",
+    "used_for_release_gate": false,
+    "reason": "Original entry acknowledged hardware second delegate safely, but data-reading worker exceeded old 30-second deadline; retained.",
+    "host_result_passed": false,
+    "safe_exit": false,
+    "host_deadline_recorded": false,
+    "guest_memory_exception_observed": false,
+    "CXI_sha256": "024785bd3e268c6adf7338063a02a33a6f79617a5560c31a4045502022a707db"
+  },
+  {
+    "experiment": "lateprogress",
+    "used_for_release_gate": false,
+    "reason": "Progress proved 61 MB of actual reads by 30 seconds, not a dead wait; retained. Basis for bounded 60-second late-stage deadline.",
+    "host_result_passed": false,
+    "safe_exit": false,
+    "host_deadline_recorded": false,
+    "guest_memory_exception_observed": false,
+    "CXI_sha256": "ca0348df0ab9d92a04db90327dc181b84c4fc0e3b4b97519481a3f6c1ee9877b"
+  },
+  {
+    "experiment": "apt",
+    "used_for_release_gate": false,
+    "reason": "Cancel parameter alone does not execute libctru HOME wakeup decoding; incomplete test, rejected.",
+    "host_result_passed": false,
+    "safe_exit": false,
+    "host_deadline_recorded": false,
+    "guest_memory_exception_observed": false,
+    "CXI_sha256": "e171d4b93ddfa511554ce0e3e27c51a06b8ab921b4ac727140711a3992677918"
+  },
+  {
+    "experiment": "apthome",
+    "used_for_release_gate": false,
+    "reason": "Full HOME path blocked in unsupported HLE screenshot-readiness handshake; timeout, rejected.",
+    "host_result_passed": false,
+    "safe_exit": false,
+    "host_deadline_recorded": false,
+    "guest_memory_exception_observed": false,
+    "CXI_sha256": "c268938c69c423fc4317ef7b786ec85448104becdbc52f7639538fabb07e2e53"
+  },
+  {
+    "experiment": "latefinal",
+    "used_for_release_gate": false,
+    "reason": "Preliminary exact second-delegate software PASS; superseded by final common-source matrix.",
+    "host_result_passed": true,
+    "safe_exit": true,
+    "host_deadline_recorded": false,
+    "guest_memory_exception_observed": false,
+    "CXI_sha256": "2fba2897f5f102983eb060a62786ad8d78b61be1d138d12003c84e48fdef4ed6"
+  },
+  {
+    "experiment": "apt2",
+    "used_for_release_gate": false,
+    "reason": "Preliminary actual SDK wakeup-cancel exit PASS with screenshot-only shim; superseded by final common-source matrix.",
+    "host_result_passed": true,
+    "safe_exit": true,
+    "host_deadline_recorded": false,
+    "guest_memory_exception_observed": false,
+    "CXI_sha256": "d89d480588f33e3fa0c841a2c3679fa8686fbbeb4e8efee6828f1cb08ea943cc"
+  }
+]

@@ -1,0 +1,123 @@
+{
+  "software_original_frame_and_sequence_PASS": true,
+  "CRC_FAIL_cooperative_exit_PASS": true,
+  "incomplete_cleanup_not_reported_as_PASS": true,
+  "CIA_payload_three_cycles_PASS": true,
+  "title_id": "000400000FDE7500",
+  "CIA_sha256": "8bc86b29d023211d6469f903ba4eed343b3abbb83a901576e8ba096c424e6226",
+  "CIA_bytes": 341952,
+  "CXI_sha256": "e3bc6ec7757db965c805e542a0181491612448e01999a31438103164e06eb776",
+  "protected_files_unchanged": 375,
+  "runtime_GPU_shader_threads_identical": true,
+  "process_commit_peak_bytes": 126750720,
+  "normal_allocator_footprint_peak_bytes": 13406208,
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "ready_for_one_separate_hardware_test": true,
+  "hardware_image_issue_resolved": false,
+  "full_gameplay_supported": false,
+  "host_Azahar_reload_crash_fixed": false,
+  "host_only_CIA_directory_fix_proven_no_guest_or_assertion_changes": true,
+  "cycles": [
+    {
+      "variant": "normal",
+      "container": "cxi",
+      "cycle": 1,
+      "frame_status": "PASS",
+      "callbacks": 346,
+      "sequence_callbacks": 8,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "normal",
+      "container": "cxi",
+      "cycle": 2,
+      "frame_status": "PASS",
+      "callbacks": 346,
+      "sequence_callbacks": 8,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "normal",
+      "container": "cxi",
+      "cycle": 3,
+      "frame_status": "PASS",
+      "callbacks": 346,
+      "sequence_callbacks": 8,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "poison",
+      "container": "cxi",
+      "cycle": 1,
+      "frame_status": "FAIL",
+      "callbacks": 600,
+      "sequence_callbacks": 0,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "poison",
+      "container": "cxi",
+      "cycle": 2,
+      "frame_status": "FAIL",
+      "callbacks": 600,
+      "sequence_callbacks": 0,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "poison",
+      "container": "cxi",
+      "cycle": 3,
+      "frame_status": "FAIL",
+      "callbacks": 600,
+      "sequence_callbacks": 0,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "crc",
+      "container": "cxi",
+      "cycle": 1,
+      "frame_status": "FAIL",
+      "callbacks": 600,
+      "sequence_callbacks": 0,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "normal",
+      "container": "cia",
+      "cycle": 1,
+      "frame_status": "PASS",
+      "callbacks": 346,
+      "sequence_callbacks": 8,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "normal",
+      "container": "cia",
+      "cycle": 2,
+      "frame_status": "PASS",
+      "callbacks": 346,
+      "sequence_callbacks": 8,
+      "safe_exit": true,
+      "kernel_joins": 6
+    },
+    {
+      "variant": "normal",
+      "container": "cia",
+      "cycle": 3,
+      "frame_status": "PASS",
+      "callbacks": 346,
+      "sequence_callbacks": 8,
+      "safe_exit": true,
+      "kernel_joins": 6
+    }
+  ]
+}

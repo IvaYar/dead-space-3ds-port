@@ -1,0 +1,20 @@
+{
+  "tag": "v2.7.0",
+  "files": [
+    {
+      "path": "libctru/source/system/allocateHeaps.c",
+      "url": "https://raw.githubusercontent.com/devkitPro/libctru/v2.7.0/libctru/source/system/allocateHeaps.c",
+      "sha256": "42070f4c926935b49cb62d2015525af81fc031c4a28778d6a6e8f43d49a78a17"
+    },
+    {
+      "path": "libctru/include/3ds/os.h",
+      "url": "https://raw.githubusercontent.com/devkitPro/libctru/v2.7.0/libctru/include/3ds/os.h",
+      "sha256": "4c73326e94120e21a6376991f4a5ac4ea7cd547f09c1002586e8828da4b50244"
+    },
+    {
+      "path": "libctru/include/3ds/env.h",
+      "url": "https://raw.githubusercontent.com/devkitPro/libctru/v2.7.0/libctru/include/3ds/env.h",
+      "sha256": "e900e298da8fdb7eb8454164d865e7916a06b24e90c87d3ceaa5bbabb4be1af1"
+    }
+  ]
+}

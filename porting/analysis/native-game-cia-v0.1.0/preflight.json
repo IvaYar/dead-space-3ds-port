@@ -1,0 +1,71 @@
+{
+  "static_preflight_passed": true,
+  "hardware_compatible_proven": false,
+  "hardware_tested": false,
+  "container_content_hashes": [
+    "\\- Hash: (GOOD) CA6682DD98A63555DE53267C47C9D5A29B80B279F6C31ADBC817C1E0D80357E0",
+    "Exheader hash: (GOOD)   3C211554C55EDBCC041012CD381510CD3718A249911078ED10456907613727A4",
+    "ExeFS hash: (GOOD)      507CC414BAFA592C1FF7837E8EC19B9C656350B11B9704E75DBED1EABC37708F",
+    "Section hash: (GOOD)    8111F6014E71DF95B919EB1F85695C42558D66321D857A80CE38BB6E7C3EB6F0",
+    "Section hash: (GOOD)    C843CB814539D39E7FBB30FA37A4753D764AD1B119A9506F85443B8ABC0DB1E2",
+    "Section hash: (GOOD)    E8470E67E21950206DB61542016FB7CFB07749B56EF4713E4D4E478C676C59F0",
+    "Section hash: (GOOD)    62A5A1F9091AEFB46B52E31FBECA2FDBA9A99FE2473237E21E35B8D2E5659DFF"
+  ],
+  "expected_unsigned_homebrew_signature_errors": [
+    "[ctrtool::CiaProcess ERROR] Signature for Ticket was invalid.",
+    "[ctrtool::CiaProcess ERROR] Signature for TitleMetaData was invalid.",
+    "[ctrtool::ExHeaderProcess ERROR] Signature for AccessDescriptor was invalid."
+  ],
+  "CIA_title_id": "000400000FDE7100",
+  "ExeFS_entries": [
+    ".code",
+    "banner",
+    "icon",
+    "logo"
+  ],
+  "RomFS_present": false,
+  "original_library_or_assets_embedded": false,
+  "donor_architecture": "ARMv5TE, Thumb-1, VFPv2 (readelf attributes)",
+  "donor_RX_page_intervals": [
+    [
+      0,
+      4337664
+    ]
+  ],
+  "donor_RW_page_intervals": [
+    [
+      4337664,
+      4792320
+    ]
+  ],
+  "RX_RW_disjoint": true,
+  "RX_pages": 1059,
+  "trampoline_RX_pages": 3,
+  "normal_heap_MiB": 40,
+  "linear_heap_MiB": 132,
+  "application_profile_MiB": 178,
+  "linear_donor_arena_MiB": 128,
+  "linear_headroom_for_GPU_MiB": 4,
+  "native_application_affinity": "core0 only, including donor workers",
+  "required_native_backend": "Luma3DS >=10.0 kernel extension, SVC0x94; exact real-console version not queried this session",
+  "native_requirements_checked_at_runtime": [
+    "application memory >=178MiB",
+    "page aligned image/trampoline allocations",
+    "donor CRC and asset receipts/font CRC",
+    "process data cache flush success",
+    "ControlProcessMemory RX success",
+    "QueryProcessMemory RX coverage success",
+    "whole instruction cache invalidation before constructors",
+    "allocation failures remain FAIL and retain active resources"
+  ],
+  "no_native_RX_claim_from_Azahar": true,
+  "preserved_graphics_and_cooperative_thread_code_identical_to_s16": true,
+  "native_risks": [
+    "1062 executable pages have not been tested on device as one original-code application",
+    "native CPU/GPU cache coherence and actual buffer addresses require hardware confirmation",
+    "SD timing and the bounded 30-second loader wait may differ",
+    "4MiB linear headroom for GPU; allocations are checked but native peak is not measured",
+    "exact CRC checkpoint may not match if native PICA rasterization differs",
+    "one earlier host-only Azahar libretro crash was not reproduced; cause unproven"
+  ]
+}

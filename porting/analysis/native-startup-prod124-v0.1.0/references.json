@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/043e2d2497f972f9194f869ff41da299835ecf41/arm9/data/config_template.ini",
+    "commit": "043e2d2497f972f9194f869ff41da299835ecf41",
+    "local_file": "references/Luma-config_template.ini",
+    "sha256": "bc1cfbe21084aae62f4cfd5285b939f447aa29e236a8641166d1424eaccfa047"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/043e2d2497f972f9194f869ff41da299835ecf41/sysmodules/pm/source/launch.c",
+    "commit": "043e2d2497f972f9194f869ff41da299835ecf41",
+    "local_file": "references/Luma-launch.c",
+    "sha256": "50a7965586378bf963e81857098a94cc1c5c3d742de22a7f4210e96d0faea652"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/LumaTeam/Luma3DS/043e2d2497f972f9194f869ff41da299835ecf41/sysmodules/pm/source/reslimit.c",
+    "commit": "043e2d2497f972f9194f869ff41da299835ecf41",
+    "local_file": "references/Luma-reslimit.c",
+    "sha256": "718bf5887ca8ba7df150db7416dcce22d62a6c7ec5691e72cd952237cb1a55fb"
+  }
+]

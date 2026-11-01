@@ -1,0 +1,1034 @@
+{
+  "run": "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\analysis\\azahar-native-game-v0.1.2-crc-cxi\\Azahar\\sdmc\\3ds\\ds-native-game-v0.1.2\\run-0001",
+  "captures": [
+    {
+      "frame": 298,
+      "file": "checkpoint-0298.raw.gx",
+      "pixels": 805882368,
+      "next_buffer": 805306368,
+      "physical": 537446912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "a5e25393",
+      "raw_crc_b": "a5e25393",
+      "crc565_a": "6d12a9d2",
+      "crc565_b": "6d12a9d2",
+      "draws": 594,
+      "triangles": 1260,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 605,
+      "events": [
+        0,
+        301,
+        302
+      ],
+      "command_bytes": 2824,
+      "capture_truncated": false,
+      "draw_input_digest": 2730536076,
+      "draw_input_count": 3,
+      "raw_file": "checkpoint-0298.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            848,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 848,
+          "PICA_sha256": "c37fcf3d7c7679fa19994517a06a6f7b50589c4f455477745d83ab98257a6ebd",
+          "PICA_packets": 55,
+          "PICA_writes": 151
+        },
+        {
+          "type": 4,
+          "words": [
+            16777476,
+            904175488,
+            520477952,
+            524288,
+            0,
+            0,
+            8,
+            0
+          ],
+          "PICA_bytes": 0
+        },
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903390032,
+            880,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 880,
+          "PICA_sha256": "1ee6ed8cd28f559f85504d371be7c6712182741a0ead1d8451d55ef23b40bc23",
+          "PICA_packets": 57,
+          "PICA_writes": 157
+        },
+        {
+          "type": 4,
+          "words": [
+            16777476,
+            904699776,
+            523885568,
+            262144,
+            0,
+            0,
+            8,
+            0
+          ],
+          "PICA_bytes": 0
+        },
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903390912,
+            880,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 880,
+          "PICA_sha256": "f2c514aa1e4c74a61c7dd171621c3263620766236d5cf86452f4ec1c4344385c",
+          "PICA_packets": 57,
+          "PICA_writes": 157
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805882368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 11772,
+      "state_key": [
+        2730536076,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    },
+    {
+      "frame": 299,
+      "file": "checkpoint-0299.raw.gx",
+      "pixels": 805306368,
+      "next_buffer": 805882368,
+      "physical": 536870912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "ee10886e",
+      "raw_crc_b": "ee10886e",
+      "crc565_a": "3ce0714b",
+      "crc565_b": "3ce0714b",
+      "draws": 597,
+      "triangles": 1338,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 607,
+      "events": [
+        0,
+        302,
+        303
+      ],
+      "command_bytes": 2648,
+      "capture_truncated": false,
+      "draw_input_digest": 3862438728,
+      "draw_input_count": 3,
+      "raw_file": "checkpoint-0299.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            2576,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 2576,
+          "PICA_sha256": "23110af0d6ae49c7af30f848d1ca3e860988abf45c69383c219f7647a9a69be4",
+          "PICA_packets": 165,
+          "PICA_writes": 461
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805306368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 11772,
+      "state_key": [
+        3862438728,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    },
+    {
+      "frame": 306,
+      "file": "checkpoint-0306.raw.gx",
+      "pixels": 805882368,
+      "next_buffer": 805306368,
+      "physical": 537446912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "31334dc6",
+      "raw_crc_b": "31334dc6",
+      "crc565_a": "39336141",
+      "crc565_b": "39336141",
+      "draws": 618,
+      "triangles": 1884,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 621,
+      "events": [
+        0,
+        309,
+        310
+      ],
+      "command_bytes": 2648,
+      "capture_truncated": false,
+      "draw_input_digest": 1062443592,
+      "draw_input_count": 3,
+      "raw_file": "checkpoint-0306.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            2576,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 2576,
+          "PICA_sha256": "23110af0d6ae49c7af30f848d1ca3e860988abf45c69383c219f7647a9a69be4",
+          "PICA_packets": 165,
+          "PICA_writes": 461
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805882368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 11762,
+      "state_key": [
+        1062443592,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    },
+    {
+      "frame": 351,
+      "file": "checkpoint-0351.raw.gx",
+      "pixels": 805306368,
+      "next_buffer": 805882368,
+      "physical": 536870912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "366b4655",
+      "raw_crc_b": "366b4655",
+      "crc565_a": "ea733050",
+      "crc565_b": "ea733050",
+      "draws": 753,
+      "triangles": 5394,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 711,
+      "events": [
+        0,
+        354,
+        355
+      ],
+      "command_bytes": 2648,
+      "capture_truncated": false,
+      "draw_input_digest": 2363929336,
+      "draw_input_count": 3,
+      "raw_file": "checkpoint-0351.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            2576,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 2576,
+          "PICA_sha256": "23110af0d6ae49c7af30f848d1ca3e860988abf45c69383c219f7647a9a69be4",
+          "PICA_packets": 165,
+          "PICA_writes": 461
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805306368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 0,
+      "state_key": [
+        2363929336,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    },
+    {
+      "frame": 352,
+      "file": "checkpoint-0352.raw.gx",
+      "pixels": 805882368,
+      "next_buffer": 805306368,
+      "physical": 537446912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "366b4655",
+      "raw_crc_b": "366b4655",
+      "crc565_a": "ea733050",
+      "crc565_b": "ea733050",
+      "draws": 756,
+      "triangles": 5472,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 713,
+      "events": [
+        0,
+        355,
+        356
+      ],
+      "command_bytes": 2648,
+      "capture_truncated": false,
+      "draw_input_digest": 2363929336,
+      "draw_input_count": 3,
+      "raw_file": "checkpoint-0352.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            2576,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 2576,
+          "PICA_sha256": "23110af0d6ae49c7af30f848d1ca3e860988abf45c69383c219f7647a9a69be4",
+          "PICA_packets": 165,
+          "PICA_writes": 461
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805882368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 0,
+      "state_key": [
+        2363929336,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    },
+    {
+      "frame": 400,
+      "file": "checkpoint-0400.raw.gx",
+      "pixels": 805882368,
+      "next_buffer": 805306368,
+      "physical": 537446912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "366b4655",
+      "raw_crc_b": "366b4655",
+      "crc565_a": "ea733050",
+      "crc565_b": "ea733050",
+      "draws": 900,
+      "triangles": 9216,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 809,
+      "events": [
+        0,
+        403,
+        404
+      ],
+      "command_bytes": 2648,
+      "capture_truncated": false,
+      "draw_input_digest": 2363929336,
+      "draw_input_count": 3,
+      "raw_file": "checkpoint-0400.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            2576,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 2576,
+          "PICA_sha256": "23110af0d6ae49c7af30f848d1ca3e860988abf45c69383c219f7647a9a69be4",
+          "PICA_packets": 165,
+          "PICA_writes": 461
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805882368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 0,
+      "state_key": [
+        2363929336,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    },
+    {
+      "frame": 534,
+      "file": "checkpoint-0534.raw.gx",
+      "pixels": 805882368,
+      "next_buffer": 805306368,
+      "physical": 537446912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "366b4655",
+      "raw_crc_b": "366b4655",
+      "crc565_a": "ea733050",
+      "crc565_b": "ea733050",
+      "draws": 1302,
+      "triangles": 19668,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 1077,
+      "events": [
+        0,
+        537,
+        538
+      ],
+      "command_bytes": 2648,
+      "capture_truncated": false,
+      "draw_input_digest": 2363929336,
+      "draw_input_count": 3,
+      "raw_file": "checkpoint-0534.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            2576,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 2576,
+          "PICA_sha256": "23110af0d6ae49c7af30f848d1ca3e860988abf45c69383c219f7647a9a69be4",
+          "PICA_packets": 165,
+          "PICA_writes": 461
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805882368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 0,
+      "state_key": [
+        2363929336,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    },
+    {
+      "frame": 600,
+      "file": "checkpoint-0600.raw.gx",
+      "pixels": 805882368,
+      "next_buffer": 805306368,
+      "physical": 537446912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "366b4655",
+      "raw_crc_b": "366b4655",
+      "crc565_a": "ea733050",
+      "crc565_b": "ea733050",
+      "draws": 1500,
+      "triangles": 24816,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 1209,
+      "events": [
+        0,
+        603,
+        604
+      ],
+      "command_bytes": 2648,
+      "capture_truncated": false,
+      "draw_input_digest": 2363929336,
+      "draw_input_count": 3,
+      "raw_file": "checkpoint-0600.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            2576,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 2576,
+          "PICA_sha256": "23110af0d6ae49c7af30f848d1ca3e860988abf45c69383c219f7647a9a69be4",
+          "PICA_packets": 165,
+          "PICA_writes": 461
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805882368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 0,
+      "state_key": [
+        2363929336,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    },
+    {
+      "frame": 600,
+      "file": "comparison-miss.raw.gx",
+      "pixels": 805882368,
+      "next_buffer": 805306368,
+      "physical": 537446912,
+      "bytes": 288000,
+      "column_stride": 720,
+      "format": "BGR8_CTR",
+      "raw_crc_a": "366b4655",
+      "raw_crc_b": "366b4655",
+      "crc565_a": "ea733050",
+      "crc565_b": "ea733050",
+      "draws": 1500,
+      "triangles": 24816,
+      "uploads": 4,
+      "texture_digest": 2964929865,
+      "clears": 0,
+      "clear_rgba": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "viewport": [
+        0,
+        0,
+        400,
+        240
+      ],
+      "submits": 1209,
+      "events": [
+        0,
+        603,
+        604
+      ],
+      "command_bytes": 2648,
+      "capture_truncated": false,
+      "draw_input_digest": 2363929336,
+      "draw_input_count": 3,
+      "raw_file": "comparison-miss.raw",
+      "readback_crc_independently_verified": true,
+      "command_capture_complete": true,
+      "GX": [
+        {
+          "type": 1,
+          "words": [
+            16777473,
+            903389184,
+            2576,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "PICA_bytes": 2576,
+          "PICA_sha256": "23110af0d6ae49c7af30f848d1ca3e860988abf45c69383c219f7647a9a69be4",
+          "PICA_packets": 165,
+          "PICA_writes": 461
+        },
+        {
+          "type": 3,
+          "words": [
+            16777475,
+            520093696,
+            805882368,
+            26214640,
+            26214640,
+            4096,
+            0,
+            0
+          ],
+          "PICA_bytes": 0,
+          "display_RGBA8_to_RGB8_240x400": true
+        }
+      ],
+      "different_pixels_from_frozen_reference": 0,
+      "state_key": [
+        2363929336,
+        3,
+        2964929865,
+        0,
+        0,
+        400,
+        240
+      ]
+    }
+  ],
+  "result": {
+    "status": "failed",
+    "reason": "CRC_FAIL: full frame gate not reached",
+    "environment": "emulator",
+    "frame": 600,
+    "game_called": true,
+    "frame_saved": false,
+    "GL_error": 0,
+    "gpu_draws": 1500,
+    "gpu_triangles": 24816,
+    "gpu_uploads": 4,
+    "cpu_fragments": 0,
+    "cpu_samples": 0,
+    "submits": 1209,
+    "failed_submits": 0,
+    "events": [
+      0,
+      603,
+      604
+    ],
+    "active_threads": 0,
+    "finished_threads": 0,
+    "rx_pages": 1062,
+    "rx_ranges": 2,
+    "native_RX_verified": false,
+    "safe_exit": true
+  },
+  "validation": {
+    "frame_status": "FAIL",
+    "failure_reason": "CRC_FAIL: full frame gate not reached",
+    "cleanup_status": "complete",
+    "cleanup_complete": true,
+    "matched_callback": 0,
+    "callbacks_completed": 600,
+    "sequence_completed": 0,
+    "last_crc565": "ea733050",
+    "expected_crc565": "ea733050",
+    "safe_exit": true
+  },
+  "all_capture_checks": true,
+  "comparison": {
+    "reference_run": "C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting\\analysis\\azahar-native-game-v0.1.2-normal-cxi\\Azahar\\sdmc\\3ds\\ds-native-game-v0.1.2\\run-0001",
+    "pairs": [
+      {
+        "frame": 298,
+        "raw_file": "checkpoint-0298.raw",
+        "candidate_frames_with_same_input_digest": [
+          298
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": true
+      },
+      {
+        "frame": 299,
+        "raw_file": "checkpoint-0299.raw",
+        "candidate_frames_with_same_input_digest": [
+          299
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": true
+      },
+      {
+        "frame": 306,
+        "raw_file": "checkpoint-0306.raw",
+        "candidate_frames_with_same_input_digest": [
+          306
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": false
+      },
+      {
+        "frame": 351,
+        "raw_file": "checkpoint-0351.raw",
+        "candidate_frames_with_same_input_digest": [
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": true
+      },
+      {
+        "frame": 352,
+        "raw_file": "checkpoint-0352.raw",
+        "candidate_frames_with_same_input_digest": [
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": true
+      },
+      {
+        "frame": 400,
+        "raw_file": "checkpoint-0400.raw",
+        "candidate_frames_with_same_input_digest": [
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": true
+      },
+      {
+        "frame": 534,
+        "raw_file": "checkpoint-0534.raw",
+        "candidate_frames_with_same_input_digest": [
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": true
+      },
+      {
+        "frame": 600,
+        "raw_file": "checkpoint-0600.raw",
+        "candidate_frames_with_same_input_digest": [
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": true
+      },
+      {
+        "frame": 600,
+        "raw_file": "comparison-miss.raw",
+        "candidate_frames_with_same_input_digest": [
+          338,
+          339,
+          340,
+          341,
+          342,
+          343,
+          344,
+          345,
+          346
+        ],
+        "input_digest_is_noncryptographic_not_proof_of_identity": true,
+        "same_RGB565_CRC_found": true
+      }
+    ],
+    "note": "Inspect GX/PICA and state as well: equal FNV digests alone do not prove equal inputs."
+  }
+}

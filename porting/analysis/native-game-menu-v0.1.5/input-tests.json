@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "D-pad Normal/Easy",
+    "A confirm and bounded release",
+    "no held-key repeat",
+    "B DOWN/UP ABI and close release",
+    "unknown/fading menu ignores selection",
+    "selected row never re-clicked",
+    "stale readback cannot re-enable input",
+    "stylus cannot bypass bounded button pilot"
+  ],
+  "header_sha256": "604f629d12fa66a004a6a8b744ab27a77524dbf3ee6383a800d74cbcf48d9dcd",
+  "touch_sha256": "95f9c11cb80c46bfae8fb3454b92624c365430db8626c5a5b8689587b868f4e6",
+  "ARM_elf_sha256": "c88a2be3a6420bc60b87d1e4c1d5b9007250a08a9227e1c072fd59aa78ea4e40",
+  "hardware_tested": false
+}

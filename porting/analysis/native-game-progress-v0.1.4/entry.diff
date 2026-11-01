@@ -1,0 +1,194 @@
+--- Close 0.1.3 frozen
++++ Progress 0.1.4
+@@ -47,7 +47,7 @@
+ #include "font_subset_config.h"
+ #include "native_thread_probe.h"
+ 
+-#define ROOT "sdmc:/3ds/ds-native-game-v0.1.3/"
++#define ROOT "sdmc:/3ds/ds-native-game-v0.1.4/"
+ #define MAX_CALLBACKS 600u
+ #define TARGET_RGB565_CRC 0xea733050u /* Preserved original GPU frame180, also stable181..189. */
+ #define BYTES 288000u
+@@ -81,6 +81,24 @@
+ static u32 rx_pages,rx_ranges;
+ static DS7Stats thread_snapshot;
+ static u32 main_thread_id;
++#include "native_loader_budget.h"
++#include "native_loader_io_monitor.h"
++#ifndef LOADER_IDLE_MS
++#define LOADER_IDLE_MS 30000u
++#endif
++#ifndef LOADER_HARD_MS
++#define LOADER_HARD_MS 180000u
++#endif
++static LoaderBudget wait_budget;
++static u32 budget_token,wait_stop_reason;
++static int cancel_requested;
++static u64 loader_now_ms(void){return svcGetSystemTick()*1000/SYSCLOCK_ARM11;}
++static void fixture_poll(void){
++#ifdef TEST_RELEASE_IO
++    if(fixture_active && loader_now_ms()-fixture_started>=7000)__atomic_store_n(&fixture_release,1,__ATOMIC_RELEASE);
++#endif
++}
++
+ static int close_pending,home_pending,stopped_boundary,lifecycle_stopped;
+ static unsigned shutdown_attempts;
+ static const char *close_origin="none";
+@@ -169,7 +187,7 @@
+ static void stage(const char *name){if(!strcmp(phase,name))return;phase=name;report("STAGE %s\n",name);memory_sample(name);}
+ static void path(char out[192],const char *name){snprintf(out,192,"%s%s",folder,name);}
+ static void screen(const char *text){
+-    printf("\x1b[2J\x1b[HDS Game Close 0.1.3\n%s\nRun: %s\n",text,folder+strlen(ROOT));
++    printf("\x1b[2J\x1b[HDS Game Progress 0.1.4\n%s\nRun: %s\n",text,folder+strlen(ROOT));
+     u16 w,h;void *p=gfxGetFramebuffer(GFX_BOTTOM,GFX_LEFT,&w,&h);GSPGPU_FlushDataCache(p,(u32)w*h*3);
+ }
+ static int elapsed(u64 tick,u32 ms){return svcGetSystemTick()-tick>(u64)SYSCLOCK_ARM11*ms/1000;}
+@@ -388,7 +406,7 @@
+     if(owned_region("donor_file",donor,DS_DONOR_SIZE,1,0) || owned_region("image",image,info.image_size,4096,0) || owned_region("arena",arena,DS_GAME_ARENA_BYTES,4096,1) || owned_region("trampoline",trampoline,12288,4096,0))return -1;
+     report("Memory image=%08lx size=%lu arena=%08lx/%lu trampoline=%08lx\n",(unsigned long)image,(unsigned long)info.image_size,(unsigned long)arena,(unsigned long)DS_GAME_ARENA_BYTES,(unsigned long)trampoline);
+     if(ds_elf_prepare(donor,DS_DONOR_SIZE,image,info.image_size,(u32)image,&info))return -1;
+-    ds_io_init(&io,ds_io_sd_ops());ds_runtime_init(64*1024*1024);ds6_init(log_android);
++    LightLock_Init(&loader_io_lock);ds_io_init(&io,&loader_ops);ds_runtime_init(64*1024*1024);ds6_init(log_android);
+     if(ds7_init() || ds8_init())return -1;
+     threads_started=1;
+     if(ds9_memory_init_shared(arena,DS_GAME_ARENA_BYTES) || ds29_allocator_init(image,info.image_size))return -1;
+@@ -396,6 +414,8 @@
+     u32 count=ds6_bindings(bindings,768);count+=ds7_bindings(bindings+count,768-count);count+=ds8_bindings(bindings+count,768-count);
+     count+=ds9_memory_bindings(bindings+count,768-count);count+=ds17_bindings(bindings+count,768-count);
+     add((DSBinding){"sbrk",(u32)compat_sbrk},&count);add((DSBinding){"clock",(u32)monotonic_clock},&count);
++    for(u32 i=0;i<count;++i)if(!strcmp(bindings[i].name,"pthread_self"))loader_self=(void *)bindings[i].address;
++    if(!loader_self)return -1;
+     stage("graphics setup");if(graphics_setup())return -1;
+     count+=ds13_bindings(bindings+count,768-count);count+=ds32_bindings(bindings+count,768-count);
+     DSBinding overrides[DS26_BINDINGS];if(ds26_bindings(overrides,DS26_BINDINGS)!=DS26_BINDINGS)return -1;
+@@ -405,8 +425,8 @@
+     if(f)fclose(f);
+     free(font);if(!ok || ds_io_read_override(ds28_font_path))return -1;
+     stage("private file namespace");
+-    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-close-v013",0700);
+-    if(ds6_appdata_namespace("native-game-close-v013") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
++    mkdir("sdmc:/3ds/deadspace/test-output",0700);mkdir("sdmc:/3ds/deadspace/test-output/native-game-progress-v014",0700);
++    if(ds6_appdata_namespace("native-game-progress-v014") || ds24_init(ds24_native_ops()) || ds20_init(ds20_native_ops()))return -1;
+     DSBinding files[5];if(ds24_bindings(files,5)!=5)return -1;for(unsigned i=0;i<5;++i)add(files[i],&count);
+     count+=ds20_bindings(bindings+count,768-count);add((DSBinding){"__stack_chk_guard",(u32)&canary},&count);
+     stage("JNI/bootstrap");DSBootstrap boot;if(ds_bootstrap_verify(donor,DS_DONOR_SIZE,image,info.image_size,(u32)image,&info,&boot))return -1;
+@@ -559,6 +579,7 @@
+                         }
+                         native_thread_snapshot("test_pending_delegate");
+                         report("TEST pending later delegate token=%lx flag68=%u kernel_poll=%d\n",(unsigned long)probe[k].token,((u8 *)arg[4])[0x68],ds7_probe_wait_thread(probe[k].token,0));
++                        fixture_started=loader_now_ms();fixture_loader_token=probe[k].token;fixture_active=1;
+                         failure_reason="test stop at pending late loader delegate";
+                         if(diagnostic_capture(quantized,"comparison-miss.raw"))failure_reason="pending capture failed";
+ #ifdef TEST_LATE_HOME
+@@ -620,7 +641,7 @@
+ }
+ static void native_thread_snapshot(const char *stage){
+     NativeWorkerProbe view[17];ds7_probe_workers(view);
+-    char name[64],out[192];snprintf(name,sizeof(name),"threads-%s.json",stage);path(out,name);
++    char name[64],out[192];snprintf(name,sizeof(name),"threads-a%u-%s.json",shutdown_attempts,stage);path(out,name);
+     FILE *f=fopen(out,"w");if(!f)return;
+     fprintf(f,"{\"stage\":\"%s\",\"image_base\":%lu,\"image_size\":%lu,\"workers\":[",stage,(unsigned long)image,(unsigned long)info.image_size);
+     unsigned emitted=0;
+@@ -701,6 +722,31 @@
+     if(ds7_checkpoint_interrupt(id))return -1;
+     int result=ds7_probe_wait_thread(id,1000);report("PERIODIC %lx completion=%d\n",(unsigned long)id,result);
+     return result?-1:0;
++}
++static void wait_service_input(void){
++    fixture_poll();
++#ifdef TEST_HOME_WAIT
++    if(loader_waiting && loader_now_ms()-wait_budget.start>=1000)test_close_ipc();
++#endif
++#ifdef TEST_SYSTEM_CLOSE
++    extern u32 aptFlags; /* Test-only global binding, original SDK instructions. */
++    if(loader_waiting && loader_now_ms()-wait_budget.start>=1000)__atomic_fetch_or(&aptFlags,0x200,__ATOMIC_RELEASE);
++#endif
++    app_main_loop();hidScanInput();
++    if((hidKeysDown()&KEY_START) && !close_start_seen){
++        close_start_seen=1;cancel_requested=1;close_origin="START";
++        report("CANCEL START acknowledged during loader wait; no budget reset/no forced IO abort\n");
++    }
++}
++static void wait_record(u32 token,const char *state,LoaderIO m,u64 now){
++    char out[192];path(out,"loader-wait.json");FILE *f=fopen(out,"w");
++    if(f){fprintf(f,"{\"state\":\"%s\",\"token\":%lu,\"attempt\":%u,\"elapsed_ms\":%llu,\"idle_ms\":%llu,\"idle_limit_ms\":%u,\"hard_limit_ms\":%u,\"stop_reason\":%lu,\"bytes\":%lu,\"positive_reads\":%lu,\"completed_files\":%lu,\"completed_IO_ops\":%lu,\"active_IO_ops\":%lu,\"IO_errors\":%lu,\"job_progress_word\":%lu,\"completed_donor_jobs_available\":false,\"cancel_requested\":%s,\"START_seen\":%s,\"home_pending\":%s,\"close_pending\":%s}\n",state,(unsigned long)token,shutdown_attempts,(unsigned long long)(now-wait_budget.start),(unsigned long long)(now-wait_budget.last_progress),LOADER_IDLE_MS,LOADER_HARD_MS,(unsigned long)wait_stop_reason,(unsigned long)m.bytes,(unsigned long)m.positive_reads,(unsigned long)m.files,(unsigned long)m.completed,(unsigned long)m.active,(unsigned long)m.errors,(unsigned long)wait_budget.progress,cancel_requested?"true":"false",close_start_seen?"true":"false",home_pending?"true":"false",close_pending?"true":"false");fclose(f);}
++    report("WAITJSON state=%s token=%lx elapsed=%llu idle=%llu bytes=%lu files=%lu completed_ops=%lu active_ops=%lu stop=%lu START=%lu HOME=%d APT=%d\n",state,(unsigned long)token,(unsigned long long)(now-wait_budget.start),(unsigned long long)(now-wait_budget.last_progress),(unsigned long)m.bytes,(unsigned long)m.files,(unsigned long)m.completed,(unsigned long)m.active,(unsigned long)wait_stop_reason,(unsigned long)close_start_seen,home_pending,close_pending);
++}
++static int loader_kernel_ready(void){
++    NativeWorkerProbe view[17];ds7_probe_workers(view);
++    for(unsigned i=1;i<17;++i)if(view[i].token==budget_token)return view[i].kernel_wait==0;
++    return budget_token!=0; /* Missing token was reaped only after kernel exit. */
+ }
+ static int native_drain_loaders(void){
+     /* 307468 publishes a main-thread delegate, then waits for state=0.
+@@ -723,14 +769,21 @@
+         int first=obj[0]==(u32)image+0x428378 && vt[0]==(u32)image+0xb60bc;
+         if(!late && !first){report("LOADER unknown class; retained\n");return -1;}
+         report("LOADER classify token=%lx Run=%lx late=%d\n",(unsigned long)w->token,(unsigned long)(vt[0]-(u32)image),late);
+-        u64 tick=svcGetSystemTick();u32 pumps=0,next_sample=5000;int result;
++        if(budget_token && budget_token!=w->token)return -1;
++        LoaderIO metric=loader_io_copy(w->token);
++        u32 progress=__atomic_load_n((u32 *)(arg[4]+0x24),__ATOMIC_ACQUIRE);
++        if(!budget_token){budget_token=w->token;loader_budget_begin(&wait_budget,loader_now_ms(),metric.bytes,metric.files,progress);}
++        u32 pumps=0;int result;u64 next_sample=loader_now_ms();loader_waiting=1;wait_stop_reason=0;
+         while((result=ds7_probe_wait_thread(w->token,10))==110){
+-            app_main_loop(); /* Records a pending X even during shutdown. */
+-            if(elapsed(tick,next_sample)){
+-                report("LOADER progress ms=%lu opens=%lu reads=%lu bytes=%lu closes=%lu active=%lu\n",(unsigned long)next_sample,(unsigned long)io.opens,(unsigned long)io.reads,(unsigned long)io.bytes,(unsigned long)io.closes,(unsigned long)io.active);
+-                memory_sample("loader_wait");next_sample+=5000;
++            wait_service_input();
++            u64 now=loader_now_ms();metric=loader_io_copy(w->token);
++            progress=__atomic_load_n((u32 *)(arg[4]+0x24),__ATOMIC_ACQUIRE);
++            wait_stop_reason=loader_budget_poll(&wait_budget,now,metric.bytes,metric.files,progress,LOADER_IDLE_MS,LOADER_HARD_MS);
++            if(now>=next_sample || wait_stop_reason){
++                wait_record(w->token,wait_stop_reason?"retained":"waiting",metric,now);
++                next_sample=now+2000;
+             }
+-            if(elapsed(tick,late?60000:30000))break;
++            if(wait_stop_reason)break;
+             if(late){
+                 u32 state[24],current[24];
+                 if(diagnostic_words(obj[2],state)<6 || diagnostic_words(arg[4],current)<8)return -1;
+@@ -750,7 +803,9 @@
+                 }
+             }
+         }
+-        report("LOADER drained token=%lx Run=%lx completion=%d pumps=%lu ms=%llu\n",(unsigned long)w->token,(unsigned long)(vt[0]-(u32)image),result,(unsigned long)pumps,(unsigned long long)((svcGetSystemTick()-tick)*1000/SYSCLOCK_ARM11));
++        loader_waiting=0;
++        report("LOADER drained token=%lx Run=%lx completion=%d pumps=%lu ms=%llu reason=%lu\n",(unsigned long)w->token,(unsigned long)(vt[0]-(u32)image),result,(unsigned long)pumps,(unsigned long long)(loader_now_ms()-wait_budget.start),(unsigned long)wait_stop_reason);
++        wait_record(w->token,result?"retained":"complete",loader_io_copy(w->token),loader_now_ms());
+         native_thread_snapshot("after_loader_wait");
+         if(result)return -1; /* Kernel completion, not a done flag, owns exit. */
+     }
+@@ -758,7 +813,8 @@
+ }
+ static int shutdown_game(void){
+     if(cleanup_complete)return 0;
+-    ++shutdown_attempts;
++    ++shutdown_attempts;cancel_requested=1;
++    report("CANCEL request attempt=%u: stop scene continuation; drain original in-flight loader\n",shutdown_attempts);
+     cleanup_state="running";
+     stage("shutdown lifecycle");
+     native_thread_snapshot("before_pause");
+@@ -818,17 +874,12 @@
+     screen("STOPPED / FAIL: cleanup incomplete\nSTART/HOME close: retry safe shutdown");
+     int retried=0;
+     for(;;){
+-#ifdef TEST_STOPPED_CLOSE
+-        test_close_ipc();
+-#endif
+-        app_main_loop();hidScanInput();
+-        if(!retried && (close_pending || home_pending || (hidKeysDown()&KEY_START))){
+-            retried=1;
+-            report("STOPPED retry close_pending=%d home_pending=%d source=%s\n",close_pending,home_pending,close_origin);
++        wait_service_input();
++        if(!retried && loader_kernel_ready()){
++            retried=1;report("STOPPED automatic continuation: loader kernel exit observed; no second START\n");
+             if(!shutdown_game())return 0;
+-            cleanup_state="retained";ds7_stats(&thread_snapshot);outcome("blocked","shutdown retry incomplete");
++            cleanup_state="retained";ds7_stats(&thread_snapshot);outcome("blocked","shutdown continuation incomplete");
+             report("CLOSE BLOCKED: live resources retained; no unsafe process return\n");
+-            screen("FAIL: shutdown retry incomplete\nLive resources retained; see log");
+         }
+         svcSleepThread(16666667);
+     }

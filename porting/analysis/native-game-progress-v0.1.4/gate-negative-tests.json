@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "live worker",
+      "rejected": true
+    },
+    {
+      "case": "live handle",
+      "rejected": true
+    },
+    {
+      "case": "unjoined worker",
+      "rejected": true
+    },
+    {
+      "case": "incomplete cleanup",
+      "rejected": true
+    },
+    {
+      "case": "not beyond old deadline",
+      "rejected": true
+    },
+    {
+      "case": "fake status PASS",
+      "rejected": true
+    },
+    {
+      "case": "heap not released",
+      "rejected": true
+    }
+  ]
+}

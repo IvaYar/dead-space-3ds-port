@@ -1,0 +1,197 @@
+{
+  "software_passed": true,
+  "completed_kernel_GPU_process_exits": 10,
+  "retained_negative_case_passed_without_safe_exit": true,
+  "exact_hardware_late_wait_reproduced": true,
+  "APT_wakeup_cancel_process_exit_tested": true,
+  "APT_test_limit": "HOME request injected at safe boundary; only unsupported HLE HOME screenshot readiness skipped; physical HOME Menu needs hardware verification",
+  "source_sha256": "6deccbf3f6d2c1a4b5505db913c463346bc9336db638189b273c0e4f2837ae6b",
+  "generated_runner_sha256": "030946a6e2d47cf5577042b0d4ee723f8d8193bf6837299af95649b219756e4f",
+  "driver_sha256": "8f2f99883f07e21adc8dd1373ce1ecaee8feead203f462502e04c940eeb19130",
+  "protected_SHA_count": 431,
+  "shared_dataset_id": "a46655efb24fab59c7649322986eea2ae0a5827454bca4c5e71be3d13818ceef",
+  "store_and_private_master_verified_unchanged": true,
+  "ready_for_one_separate_hardware_test": true,
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "old_0_1_2_CIA_repeat_prohibited": true,
+  "frame_oracle_hardware_mismatch_remains_FAIL": true,
+  "cases": {
+    "normal": {
+      "CXI_sha256": "c679c04feee5ee9aebae467a425ad43183fa53aa756aa404c2e98955dc9baad2",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 94,
+            "io_closes": 94
+          },
+          "elapsed_host_seconds": 7.672
+        },
+        {
+          "cycle": 2,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 73,
+            "io_closes": 73
+          },
+          "elapsed_host_seconds": 7.062
+        },
+        {
+          "cycle": 3,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 73,
+            "io_closes": 73
+          },
+          "elapsed_host_seconds": 7.093
+        }
+      ]
+    },
+    "crc": {
+      "CXI_sha256": "fa3ce721c6be661fb1bf6fc3062a016bac7ceb31d6a44afcb8b9f5fe8d2db0e8",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 94,
+            "io_closes": 94
+          },
+          "elapsed_host_seconds": 12.235
+        }
+      ]
+    },
+    "late": {
+      "CXI_sha256": "fab76a1f3d7c5305f7c666d6dd000c4d7fde4587d4f4e8f2740721a330851f61",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "elapsed_host_seconds": 8.453
+        },
+        {
+          "cycle": 2,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 153,
+            "io_closes": 153
+          },
+          "elapsed_host_seconds": 8.453
+        }
+      ]
+    },
+    "home": {
+      "CXI_sha256": "7cf78dfe2c6f5074f5dfe94b776541c2485221371df7ea7ceff6c7b2e73d678e",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 94,
+            "io_closes": 94
+          },
+          "elapsed_host_seconds": 6.844
+        }
+      ]
+    },
+    "latestopped": {
+      "CXI_sha256": "37dc3858789ba9cb2a87433967fe5c72a3267c811519030a1fc6ebde9b92553e",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "elapsed_host_seconds": 8.641
+        }
+      ]
+    },
+    "latecrc": {
+      "CXI_sha256": "7b2084ed11934f0801ed51f3c5c741bfcb4aeb75e59305fb63eb0ff6a09e6b43",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "both_heaps_released": true,
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "elapsed_host_seconds": 15.813
+        }
+      ]
+    },
+    "retain": {
+      "CXI_sha256": "ff60b4378eed342d9bd4f0fd2304872800587744edc942e5eb384a6b527eb659",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": false,
+          "both_heaps_released": false,
+          "shutdown_proof": {
+            "kernel_joins": 0,
+            "worker_handles_remaining": 1,
+            "files_balanced": false,
+            "io_opens": null,
+            "io_closes": null
+          },
+          "elapsed_host_seconds": 6.328
+        }
+      ]
+    }
+  },
+  "CIA": {
+    "title_id": "000400000FDE7600",
+    "CIA_sha256": "74f94904ea59e0f1468273dff92f65156e55ece7de82a5a88c40c4ca990fe3e0",
+    "CIA_bytes": 345024,
+    "payload_sha256": "c679c04feee5ee9aebae467a425ad43183fa53aa756aa404c2e98955dc9baad2",
+    "source_sha256": "6deccbf3f6d2c1a4b5505db913c463346bc9336db638189b273c0e4f2837ae6b",
+    "software_gate_passed": true,
+    "hardware_tested": false,
+    "hardware_run_authorized": false
+  },
+  "CIA_payload_test_passed": true
+}

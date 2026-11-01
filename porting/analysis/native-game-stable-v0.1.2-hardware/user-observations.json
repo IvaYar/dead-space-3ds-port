@@ -1,0 +1,10 @@
+{
+  "source": "user clarification in this conversation",
+  "HOME_X_closing_screen_wait_seconds_approx": 120,
+  "POWER_press": "held",
+  "POWER_hold_duration_seconds": null,
+  "user_quote": "ждал около 2х минут. Power удерживал",
+  "short_POWER_press_failure_reported": false,
+  "normal_process_exit_confirmed": false,
+  "new_test_requested": false
+}

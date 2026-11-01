@@ -1,0 +1,583 @@
+{
+  "software_passed": true,
+  "completed_process_exits": 11,
+  "retained_negative_cases": 2,
+  "source_sha256": "2d92180f8a47c7c9173903baf79f484f694f3380c76de53de41fc783bf68812c",
+  "headers_sha256": {
+    "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+    "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596"
+  },
+  "default_idle_ms": 30000,
+  "default_hard_ms": 180000,
+  "frame_crc_unchanged": "ea733050",
+  "original_runtime_GPU_shader_unchanged": true,
+  "old_resources_preserved": true,
+  "cancellation_mode": "stop scene continuation, finish original in-flight Run, then join; no mid-read abort or thread kill",
+  "completed_donor_job_counter_available": false,
+  "APT_test_scope": "deferred HOME injected; original SDK wakeup-cancel path, screenshot readiness shim only in tests; system exit flag injected in separate test",
+  "hardware_tested": false,
+  "hardware_run_authorized": false,
+  "ready_for_one_separate_hardware_test": true,
+  "cases": {
+    "normal": {
+      "CXI_sha256": "f043ad040622405790abc004efdc51de81138adcf47bfc11bf2717f5938e3b3c",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "guest_status": "passed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 94,
+            "io_closes": 94
+          },
+          "wait": {
+            "state": "complete",
+            "token": 1798,
+            "attempt": 1,
+            "elapsed_ms": 7892,
+            "idle_ms": 12,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 9263036,
+            "positive_reads": 2298,
+            "completed_files": 46,
+            "completed_IO_ops": 27570,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": false,
+            "home_pending": false,
+            "source": "START",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        },
+        {
+          "cycle": 2,
+          "safe_exit": true,
+          "guest_status": "passed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 73,
+            "io_closes": 73
+          },
+          "wait": {
+            "state": "complete",
+            "token": 1798,
+            "attempt": 1,
+            "elapsed_ms": 7874,
+            "idle_ms": 17,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 9263036,
+            "positive_reads": 2298,
+            "completed_files": 46,
+            "completed_IO_ops": 27570,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": false,
+            "home_pending": false,
+            "source": "START",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        }
+      ]
+    },
+    "crc": {
+      "CXI_sha256": "1592b7604bc232e597b50ed098a06d9023328ae68cbdd6df89ca96c6a1219ebb",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "guest_status": "failed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 94,
+            "io_closes": 94
+          },
+          "wait": {
+            "state": "complete",
+            "token": 1798,
+            "attempt": 1,
+            "elapsed_ms": 6262,
+            "idle_ms": 16,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 9263036,
+            "positive_reads": 2298,
+            "completed_files": 46,
+            "completed_IO_ops": 27570,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": false,
+            "home_pending": false,
+            "source": "none",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        }
+      ]
+    },
+    "latecrc": {
+      "CXI_sha256": "46559b59edde56a8a9091f18f7b381e1b7a1b2c8fb1083c322270a6d2b89a425",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "guest_status": "failed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "wait": {
+            "state": "complete",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 27613,
+            "idle_ms": 13,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 56134436,
+            "positive_reads": 10897,
+            "completed_files": 79,
+            "completed_IO_ops": 53330,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": false,
+            "home_pending": false,
+            "source": "none",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        }
+      ]
+    },
+    "slow": {
+      "CXI_sha256": "509448675e8a895986bbf5470a14ebdf6f2fd27668c6763b26928bf4428bdfab",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "guest_status": "failed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "wait": {
+            "state": "complete",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 68592,
+            "idle_ms": 11,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 56134436,
+            "positive_reads": 10897,
+            "completed_files": 79,
+            "completed_IO_ops": 53330,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": false,
+            "home_pending": false,
+            "source": "none",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        },
+        {
+          "cycle": 2,
+          "safe_exit": true,
+          "guest_status": "failed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 153,
+            "io_closes": 153
+          },
+          "wait": {
+            "state": "complete",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 70832,
+            "idle_ms": 8,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 56134436,
+            "positive_reads": 10897,
+            "completed_files": 79,
+            "completed_IO_ops": 53330,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": false,
+            "home_pending": false,
+            "source": "none",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        }
+      ]
+    },
+    "start": {
+      "CXI_sha256": "509448675e8a895986bbf5470a14ebdf6f2fd27668c6763b26928bf4428bdfab",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "guest_status": "failed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "wait": {
+            "state": "complete",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 68526,
+            "idle_ms": 12,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 56134436,
+            "positive_reads": 10897,
+            "completed_files": 79,
+            "completed_IO_ops": 53330,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": true,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": false,
+            "home_pending": false,
+            "source": "START",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        }
+      ]
+    },
+    "home": {
+      "CXI_sha256": "4e6ef6bce5456c27eff2decb56e35a2b3a5669669669eca5d0ea86301055b3db",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "guest_status": "failed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "wait": {
+            "state": "complete",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 68627,
+            "idle_ms": 9,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 56134436,
+            "positive_reads": 10897,
+            "completed_files": 79,
+            "completed_IO_ops": 53330,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": true,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": true,
+            "home_pending": true,
+            "source": "APT",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        }
+      ]
+    },
+    "system": {
+      "CXI_sha256": "3b9756f956499001a810f8f8ba895240b011c906947ca72feb7255de3756ffd7",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "guest_status": "failed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "wait": {
+            "state": "complete",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 68560,
+            "idle_ms": 9,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 0,
+            "bytes": 56134436,
+            "positive_reads": 10897,
+            "completed_files": 79,
+            "completed_IO_ops": 53330,
+            "active_IO_ops": 0,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": true
+          },
+          "close": {
+            "close_pending": true,
+            "home_pending": false,
+            "source": "APT",
+            "stopped_boundary": false,
+            "shutdown_attempts": 1,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        }
+      ]
+    },
+    "stall": {
+      "CXI_sha256": "bb8562a86ee2775ed018dafda811da3ad988c8c7b3edca7dbf92eac9576d7b6a",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": true,
+          "guest_status": "failed",
+          "shutdown_proof": {
+            "kernel_joins": 6,
+            "worker_handles_remaining": 0,
+            "files_balanced": true,
+            "io_opens": 174,
+            "io_closes": 174
+          },
+          "wait": {
+            "state": "retained",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 5415,
+            "idle_ms": 5415,
+            "idle_limit_ms": 3000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 1,
+            "bytes": 828,
+            "positive_reads": 1,
+            "completed_files": 1,
+            "completed_IO_ops": 12,
+            "active_IO_ops": 1,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": {
+            "close_pending": false,
+            "home_pending": false,
+            "source": "none",
+            "stopped_boundary": true,
+            "shutdown_attempts": 2,
+            "cleanup_complete": true,
+            "code_and_arenas_retained_until_process_teardown": true
+          }
+        }
+      ]
+    },
+    "stuck": {
+      "CXI_sha256": "9f55ee86be0b6853b364708855f4e52cfbc09fedc2155e1f1a1552edfdf7beda",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": false,
+          "guest_status": "blocked",
+          "shutdown_proof": {
+            "kernel_joins": 0,
+            "worker_handles_remaining": 1,
+            "files_balanced": false,
+            "io_opens": null,
+            "io_closes": null
+          },
+          "wait": {
+            "state": "retained",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 5399,
+            "idle_ms": 5399,
+            "idle_limit_ms": 3000,
+            "hard_limit_ms": 180000,
+            "stop_reason": 1,
+            "bytes": 828,
+            "positive_reads": 1,
+            "completed_files": 1,
+            "completed_IO_ops": 12,
+            "active_IO_ops": 1,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": true,
+            "close_pending": false
+          },
+          "close": null
+        }
+      ]
+    },
+    "hard": {
+      "CXI_sha256": "d64edb1b6a1c9d683fd15d9f2514a6610dd6f9967d6756042e7053bb0bb8b0a5",
+      "cycles": [
+        {
+          "cycle": 1,
+          "safe_exit": false,
+          "guest_status": "blocked",
+          "shutdown_proof": {
+            "kernel_joins": 0,
+            "worker_handles_remaining": 1,
+            "files_balanced": false,
+            "io_opens": null,
+            "io_closes": null
+          },
+          "wait": {
+            "state": "retained",
+            "token": 2054,
+            "attempt": 1,
+            "elapsed_ms": 12051,
+            "idle_ms": 48,
+            "idle_limit_ms": 30000,
+            "hard_limit_ms": 12000,
+            "stop_reason": 2,
+            "bytes": 5962678,
+            "positive_reads": 1325,
+            "completed_files": 6,
+            "completed_IO_ops": 3589,
+            "active_IO_ops": 1,
+            "IO_errors": 0,
+            "job_progress_word": 0,
+            "completed_donor_jobs_available": false,
+            "cancel_requested": true,
+            "START_seen": false,
+            "home_pending": false,
+            "close_pending": false
+          },
+          "close": null
+        }
+      ]
+    }
+  },
+  "CIA": {
+    "title_id": "000400000FDE7700",
+    "CIA_sha256": "89973ea6d2607222895c28f1062d93db610461268befebf8cc19bc92dd34521f",
+    "CIA_bytes": 347072,
+    "CXI_sha256": "f043ad040622405790abc004efdc51de81138adcf47bfc11bf2717f5938e3b3c",
+    "version": "0.1.4",
+    "hardware_tested": false,
+    "hardware_run_authorized": false
+  },
+  "CIA_payload_passed": true
+}

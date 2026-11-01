@@ -1,0 +1,17 @@
+{
+  "reported_by": "user",
+  "photos_in_conversation": 3,
+  "photo_files_archived": false,
+  "after_A_approx_seconds": 180,
+  "animations": [
+    "EA",
+    "headphones"
+  ],
+  "first_photo": "FRAME FAIL / Cooperative shutdown running",
+  "after_first_START_approx_seconds": 60,
+  "second_photo": "STOPPED / FAIL: cleanup incomplete",
+  "after_second_START": "application closed, console returned to normal operation",
+  "HOME_or_X_reported": false,
+  "POWER_reported": false,
+  "timings_are_approximate_observations_not_instrumented": true
+}

@@ -1,0 +1,17 @@
+{
+  "url": "https://codeload.github.com/devkitPro/libctru/tar.gz/refs/tags/v2.7.0",
+  "sha256": "c0b8a5048e15a0ae02772e6db0188f5571e8c26d064d7962212a40681f0d18b3",
+  "files": [
+    "libctru/source/console.c",
+    "libctru/source/gfx.c",
+    "libctru/source/system/allocateHeaps.c",
+    "libctru/source/system/appExit.c",
+    "libctru/source/system/appInit.c",
+    "libctru/source/system/ctru_exit.c",
+    "libctru/source/system/ctru_init.c",
+    "libctru/source/system/initArgv.c",
+    "libctru/source/system/readtp.s",
+    "libctru/source/system/stack_adjust.s",
+    "libctru/source/system/syscalls.c"
+  ]
+}

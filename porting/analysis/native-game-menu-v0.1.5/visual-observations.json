@@ -1,0 +1,41 @@
+{
+  "observer": "Codex visual inspection of decoded real GPU readbacks",
+  "original_difficulty_menu_visible": true,
+  "Dpad_Normal_Easy_Normal_Easy_visible": true,
+  "B_visual_back_action_confirmed": false,
+  "frontend_OpenGL_PNG_black_not_used_as_LCD_proof": true,
+  "hardware_visual_confirmed": false,
+  "images_private": true,
+  "images": [
+    {
+      "frame": 3360,
+      "selection": "Normal",
+      "raw_sha256": "2aad375a6d6716f8eff48ac17ead302aef7b912ee27c4fa1319da2e4f985bd12",
+      "PNG_sha256": "9fefeacbc23f490700a2980704aee386543aaa629030358f3e232c2e3c02c594"
+    },
+    {
+      "frame": 3480,
+      "selection": "Easy",
+      "raw_sha256": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+      "PNG_sha256": "33c7f443cdb63952a9defc6cf2a08f1d8c8f851d0c127af2398e95cca263f0ea"
+    },
+    {
+      "frame": 3720,
+      "selection": "Normal after selection",
+      "raw_sha256": "1de1ff641a1f176675be1f10d3e085dc1af43d1326a5eb813bb287e688c2366d",
+      "PNG_sha256": "e25790aafce97aa691ff9d797b0e6f4392afe0e1b431bb5760139711df9cbe1e"
+    },
+    {
+      "frame": 3960,
+      "selection": "Easy",
+      "raw_sha256": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+      "PNG_sha256": "33c7f443cdb63952a9defc6cf2a08f1d8c8f851d0c127af2398e95cca263f0ea"
+    },
+    {
+      "frame": 4323,
+      "selection": "Easy after original confirm tail",
+      "raw_sha256": "5eabaff9bb9ea70bcbc02f7f26d4d48f6ad6b05a8274bf8588ae9e995fad1f8b",
+      "PNG_sha256": "d45a929cc88356d97a9cdcb4cbb7c0f17a3716d25c2a8c96048732657e39d977"
+    }
+  ]
+}

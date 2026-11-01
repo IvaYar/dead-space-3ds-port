@@ -1,0 +1,273 @@
+{
+  "hardware_tested": true,
+  "executed_by": "user",
+  "overall_result": "FAIL_frame_and_cleanup",
+  "expected_CIA_sha256": "8bc86b29d023211d6469f903ba4eed343b3abbb83a901576e8ba096c424e6226",
+  "installed_CIA_identity_independently_measured": false,
+  "guest_result": {
+    "status": "blocked",
+    "reason": "worker/GPU shutdown incomplete",
+    "environment": "native",
+    "frame": 600,
+    "game_called": true,
+    "frame_saved": false,
+    "GL_error": 0,
+    "gpu_draws": 1724,
+    "gpu_triangles": 41320,
+    "gpu_uploads": 6,
+    "cpu_fragments": 8103,
+    "cpu_samples": 8103,
+    "submits": 1213,
+    "failed_submits": 0,
+    "events": [
+      0,
+      605,
+      606
+    ],
+    "active_threads": 6,
+    "finished_threads": 0,
+    "rx_pages": 1062,
+    "rx_ranges": 2,
+    "native_RX_verified": true,
+    "safe_exit": false
+  },
+  "validation": {
+    "frame_status": "FAIL",
+    "failure_reason": "CRC_FAIL: full frame gate not reached",
+    "cleanup_status": "retained",
+    "cleanup_complete": false,
+    "matched_callback": 0,
+    "callbacks_completed": 600,
+    "sequence_completed": 0,
+    "last_crc565": "bf2a6bfd",
+    "expected_crc565": "ea733050",
+    "safe_exit": false
+  },
+  "frame_CRC_samples": 526,
+  "first_four_texture_callback": 75,
+  "first_final_hardware_CRC_callback": 88,
+  "exact_baseline_gate_ever_matched": false,
+  "final_raw_equal_to_previous_hardware_v011": true,
+  "all_double_readbacks_stable_and_CRC_independently_validated": true,
+  "loader_timeout_errno": 110,
+  "loader_wait_limit_ms": 30000,
+  "shutdown_pause_and_stop_returned": true,
+  "shutdown_stopped_before_job_audio_periodic_signals": true,
+  "resource_cleanup_not_reached": true,
+  "exit_marker_absent": true,
+  "START_seen_in_retained_loop": true,
+  "hardware_generic_workers": [
+    {
+      "token": 2054,
+      "entry_offset": 2410772,
+      "callback_offset": 3278372,
+      "runnable_vtable_offset": 4359056,
+      "virtual_Run_offset": 749164,
+      "done": 0,
+      "kernel_wait": 155196414,
+      "last_recorded_wait_caller_offset": 3364824,
+      "last_sleep_nanoseconds": 1000000,
+      "note": "Wait/sleep fields are sampled diagnostic history, not a stopped CPU PC."
+    }
+  ],
+  "software_generic_workers": [
+    {
+      "token": 1798,
+      "entry_offset": 2410772,
+      "callback_offset": 3278372,
+      "runnable_vtable_offset": 4359032,
+      "virtual_Run_offset": 745660,
+      "done": 0,
+      "kernel_wait": 155196414,
+      "last_recorded_wait_caller_offset": -138997760,
+      "last_sleep_nanoseconds": 0,
+      "note": "Wait/sleep fields are sampled diagnostic history, not a stopped CPU PC."
+    }
+  ],
+  "process_commit_bytes": 126750720,
+  "normal_allocator_footprint_peak": 19222528,
+  "memory_refusals": 0,
+  "runtime_failures": 0,
+  "source_folder_unchanged": true,
+  "new_hardware_run_authorized": false,
+  "PICA_comparison_pairs": [
+    {
+      "hardware_callback": 75,
+      "software_callback": 298,
+      "PICA_register_writes": 465,
+      "only_differences": [
+        {
+          "write": 230,
+          "register": 133,
+          "hardware": 50772864,
+          "software": 50379680
+        },
+        {
+          "write": 387,
+          "register": 133,
+          "hardware": 50412448,
+          "software": 50805632
+        }
+      ],
+      "different_register_name": "GPUREG_TEXUNIT0_ADDR1",
+      "all_nonaddress_PICA_values_and_masks_equal": true,
+      "PICA_raw_word_difference_byte_offsets": [
+        1292,
+        2172
+      ],
+      "texture0_min_and_mag_LINEAR": true,
+      "texture0_param_values": [
+        6,
+        6
+      ],
+      "texture_FNV_equal": true,
+      "vertex_input_FNV_hardware": 2730536076,
+      "texture_hashes_are_noncryptographic_not_full_content_proof": true
+    },
+    {
+      "hardware_callback": 76,
+      "software_callback": 299,
+      "PICA_register_writes": 461,
+      "only_differences": [
+        {
+          "write": 228,
+          "register": 133,
+          "hardware": 50772864,
+          "software": 50379680
+        },
+        {
+          "write": 383,
+          "register": 133,
+          "hardware": 50412448,
+          "software": 50805632
+        }
+      ],
+      "different_register_name": "GPUREG_TEXUNIT0_ADDR1",
+      "all_nonaddress_PICA_values_and_masks_equal": true,
+      "PICA_raw_word_difference_byte_offsets": [
+        1276,
+        2140
+      ],
+      "texture0_min_and_mag_LINEAR": true,
+      "texture0_param_values": [
+        6,
+        6
+      ],
+      "texture_FNV_equal": true,
+      "vertex_input_FNV_hardware": 3862438728,
+      "texture_hashes_are_noncryptographic_not_full_content_proof": true
+    },
+    {
+      "hardware_callback": 351,
+      "software_callback": 351,
+      "PICA_register_writes": 461,
+      "only_differences": [
+        {
+          "write": 228,
+          "register": 133,
+          "hardware": 50772864,
+          "software": 50379680
+        },
+        {
+          "write": 383,
+          "register": 133,
+          "hardware": 50412448,
+          "software": 50805632
+        }
+      ],
+      "different_register_name": "GPUREG_TEXUNIT0_ADDR1",
+      "all_nonaddress_PICA_values_and_masks_equal": true,
+      "PICA_raw_word_difference_byte_offsets": [
+        1276,
+        2140
+      ],
+      "texture0_min_and_mag_LINEAR": true,
+      "texture0_param_values": [
+        6,
+        6
+      ],
+      "texture_FNV_equal": true,
+      "vertex_input_FNV_hardware": 2363929336,
+      "texture_hashes_are_noncryptographic_not_full_content_proof": true
+    },
+    {
+      "hardware_callback": 352,
+      "software_callback": 352,
+      "PICA_register_writes": 461,
+      "only_differences": [
+        {
+          "write": 228,
+          "register": 133,
+          "hardware": 50772864,
+          "software": 50379680
+        },
+        {
+          "write": 383,
+          "register": 133,
+          "hardware": 50412448,
+          "software": 50805632
+        }
+      ],
+      "different_register_name": "GPUREG_TEXUNIT0_ADDR1",
+      "all_nonaddress_PICA_values_and_masks_equal": true,
+      "PICA_raw_word_difference_byte_offsets": [
+        1276,
+        2140
+      ],
+      "texture0_min_and_mag_LINEAR": true,
+      "texture0_param_values": [
+        6,
+        6
+      ],
+      "texture_FNV_equal": true,
+      "vertex_input_FNV_hardware": 2363929336,
+      "texture_hashes_are_noncryptographic_not_full_content_proof": true
+    },
+    {
+      "hardware_callback": 400,
+      "software_callback": 400,
+      "PICA_register_writes": 461,
+      "only_differences": [
+        {
+          "write": 228,
+          "register": 133,
+          "hardware": 50772864,
+          "software": 50379680
+        },
+        {
+          "write": 383,
+          "register": 133,
+          "hardware": 50412448,
+          "software": 50805632
+        }
+      ],
+      "different_register_name": "GPUREG_TEXUNIT0_ADDR1",
+      "all_nonaddress_PICA_values_and_masks_equal": true,
+      "PICA_raw_word_difference_byte_offsets": [
+        1276,
+        2140
+      ],
+      "texture0_min_and_mag_LINEAR": true,
+      "texture0_param_values": [
+        6,
+        6
+      ],
+      "texture_FNV_equal": true,
+      "vertex_input_FNV_hardware": 2363929336,
+      "texture_hashes_are_noncryptographic_not_full_content_proof": true
+    }
+  ],
+  "known_incompatible_oracle_factor": "Captured min/mag LINEAR state; previously saved Azahar Software evidence shows filtering acts as NEAREST. This does not prove attribution of every one of the9231 pixels.",
+  "HOME_close_explanation": "fatal main loop calls aptMainLoop but ignores false; it never reaches process teardown while resources are retained. Suspending to HOME is not process exit.",
+  "user_clarification": {
+    "source": "user clarification in this conversation",
+    "HOME_X_closing_screen_wait_seconds_approx": 120,
+    "POWER_press": "held",
+    "POWER_hold_duration_seconds": null,
+    "user_quote": "\u0436\u0434\u0430\u043b \u043e\u043a\u043e\u043b\u043e 2\u0445 \u043c\u0438\u043d\u0443\u0442. Power \u0443\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u043b",
+    "short_POWER_press_failure_reported": false,
+    "normal_process_exit_confirmed": false,
+    "new_test_requested": false
+  },
+  "unusual_POWER_behavior_cause_proven": false
+}

@@ -1,0 +1,12 @@
+{
+  "source": "User message with console photograph; no additional run requested.",
+  "reported_menu_wait_minutes_approx": 8,
+  "reported_time_until_HOME_after_menu_minutes_approx": [
+    5,
+    7
+  ],
+  "button_reported": "D-pad DOWN",
+  "visible_selection_changed": false,
+  "returned_to_HOME": true,
+  "photo": "Original Select Difficulty with Normal selected; bottom DS Original Menu0.1.5 / FRAME FAIL / run-0001. Photo remains in conversation."
+}

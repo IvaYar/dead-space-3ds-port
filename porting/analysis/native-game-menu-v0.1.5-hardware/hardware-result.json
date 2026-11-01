@@ -1,0 +1,85 @@
+{
+  "hardware_tested": true,
+  "archive_verified": true,
+  "archived_files": 214,
+  "archived_bytes": 29615916,
+  "CIA": {
+    "path": "porting\\3ds\\build-native-game-v0.1.5-r14\\native-game.cia",
+    "title": "DS Original Menu 0.1.5",
+    "title_id": "000400000FDE7800",
+    "bytes": 350656,
+    "sha256": "93ca2d9068bfd7ef33ca7bce33f4176dcd89de66d5bb4ede07d5a393e8b6ea43",
+    "payload_sha256": "a06ee75b979594306cf9add124c9280ebead361d560c0bb86205073d0455c82f",
+    "payload_byte_identical_to_tested_CXI": true
+  },
+  "original_difficulty_menu_observed": true,
+  "visual_evidence": "User photo and independently decoded original hardware raw frame4440: Normal selected.",
+  "hardware_menu_crc565": "95b893de",
+  "first_saved_menu_frame": 4440,
+  "raw_readback_pairs_independently_verified": 100,
+  "complete_saved_GX_traces": 100,
+  "physical_DOWN_reported": true,
+  "physical_DOWN_capture_logged": false,
+  "original_navigation_event_delivered": false,
+  "difficulty_changed": false,
+  "input_blocker": "All hardware FRAMECRC observations miss the three Azahar-only input admission fingerprints; navigation/A remains inhibited. Physical HID sampling itself was not logged.",
+  "software_input_admission_fingerprints": [
+    "7296717d",
+    "223b5e75",
+    "0ded835d"
+  ],
+  "gameplay_started": false,
+  "exit_cause": "normal callback cap12000, no START/HOME/A-confirm or fault stop recorded",
+  "safe_exit": true,
+  "shutdown_attempts": 1,
+  "kernel_completed_workers": 5,
+  "worker_handles_remaining": 0,
+  "IO_opens": 174,
+  "IO_closes": 174,
+  "GL_error": 0,
+  "failed_submits": 0,
+  "frame_status": "FAIL",
+  "baseline_crc_unchanged": "ea733050",
+  "hardware_heap_release_independently_measured": false,
+  "timing": {
+    "steady_frame_range": [
+      4560,
+      12000
+    ],
+    "steady_FPS_including_diagnostics": 24.021808446642343,
+    "steady_ms_per_callback": {
+      "callback_ms": 16.09837552910053,
+      "present_ms": 16.998729497354496,
+      "diagnostic_ms": 8.291396560846561,
+      "gpu_queue_wait_ms": 3.0913646825396826,
+      "vblank_wait_ms": 12.730579497354498
+    },
+    "last_C3D_drawing_ms_range": [
+      2.847,
+      3.272
+    ],
+    "slowest_120_callback_window": {
+      "frame": 4440,
+      "callbacks": 120,
+      "elapsed_ms": 473285.745,
+      "callback_ms": 470513.476,
+      "present_ms": 1833.871,
+      "diagnostic_ms": 911.414,
+      "gpu_queue_wait_ms": 396.332,
+      "vblank_wait_ms": 2681.832,
+      "last_c3d_processing_ms": 16.801,
+      "last_c3d_drawing_ms": 3.139
+    },
+    "sum_callback_loop_windows_ms": 1036759.729,
+    "sum_windows_through_first_saved_menu_ms": 722045.705,
+    "limits": "SDK tick intervals include diagnostics; omit preflight/shutdown. Window timing cannot identify an individual slow call. Queue/VBlank waits overlap measured sections; do not add twice. User wall times are approximate."
+  },
+  "memory": {
+    "normal_peak_footprint": 19746816,
+    "linear_peak_used": 104635264,
+    "linear_transient_headroom": 222336,
+    "runtime_allocation_failures": 0,
+    "donor_allocation_refusals": 0
+  },
+  "repeat_current_CIA_needed": false
+}

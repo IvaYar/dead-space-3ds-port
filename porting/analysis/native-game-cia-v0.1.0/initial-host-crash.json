@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "stage": "CXI validation, third core reload",
+  "first_two_cycles_passed": true,
+  "fault_module": "azahar_libretro.dll",
+  "exception_code": "0xc0000005",
+  "RVA": "0x326ccf",
+  "instruction": "movzx r10d, byte ptr [rdx + 3]",
+  "CIA_created": false,
+  "guest_failure_not_proven": true
+}

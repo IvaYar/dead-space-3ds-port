@@ -1,0 +1,11 @@
+--- startup-178.rsf
++++ startup-legacy.rsf
+@@ -22,7 +22,7 @@
+   ReleaseKernelMinor: "44"
+   MemoryType: Application
+   SystemMode: 64MB
+-  SystemModeExt: 178MB
++  SystemModeExt: Legacy
+   IdealProcessor: 0
+   AffinityMask: 1
+   Priority: 16

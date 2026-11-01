@@ -1,0 +1,35 @@
+{
+  "authorization": "Explicit user clarification: distinguish screenshot sources and actual hardware readability; preserve CRC and graphics implementation.",
+  "README_before_sha256": "a961e2728d5afa26ed50fa3ea99b9a6cd3b0f4b9c86c253ff18363cc1fa632d3",
+  "README_after_sha256": "70b4a87ce01c9cdec13f7f377a8b6f56a77a756a15968ade0b0ce048ffba6024",
+  "changes": {
+    "README.md": {
+      "before_sha256": "a961e2728d5afa26ed50fa3ea99b9a6cd3b0f4b9c86c253ff18363cc1fa632d3",
+      "after_sha256": "70b4a87ce01c9cdec13f7f377a8b6f56a77a756a15968ade0b0ce048ffba6024"
+    },
+    "docs\\images\\README.md": {
+      "before_sha256": "bd00ce3ad4b957d33df26bc326add15abe3c7e83576018a5d7f186ddd42b3439",
+      "after_sha256": "a328c431cd59fd7862584c12a3bb1afe10fcfaa2b8c1b78304a3e68896729275"
+    },
+    "docs\\verification.md": {
+      "before_sha256": "9cb124402df9d7387eeb56b121062c9038fa17a5b445292b0cb95657e183e049",
+      "after_sha256": "7d8d2e9a194a3bdb2160173290ce85fe365676b8710016649bd93dafe44297d6"
+    },
+    "HANDOFF.md": {
+      "before_sha256": "80c134c75ddf1785fd225498beee9c934dcde36100a64b8ba66049b6bd6c338d",
+      "after_sha256": "dc403c09478ff689c40142464015fe5032eed85221bd490476657fa830ddccae"
+    }
+  },
+  "images_native_sources_and_CIA_unchanged": true,
+  "new_builds_tests_hardware_or_push": false,
+  "hardware_feedback_update": {
+    "date": "2026-11-02",
+    "authorization": "Continue checkpoint validation: user supplied two successful real-device exits and logs; update current status without changing runtime or frame criteria.",
+    "README_previous_sha256": "6f4e10cbdc2e1f3012c80e0a2fa6de2cca816a0c360c135690766f6931ba8220",
+    "README_updated_sha256": "70b4a87ce01c9cdec13f7f377a8b6f56a77a756a15968ade0b0ce048ffba6024",
+    "previous_documentation_record_sha256": "fe7f8e67b0a1211dfd0b278b0ed5955a13efef4bea6298cc9c280b57b94601c7",
+    "previous_record": "../native-game-progress-v0.1.4-hardware/documentation-updates-before-hardware-feedback.json",
+    "new_agent_runtime_tests_or_builds": false,
+    "user_hardware_feedback_recorded": true
+  }
+}

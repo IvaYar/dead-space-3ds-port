@@ -1,0 +1,38 @@
+--- frozen runner
++++ pilot preparation only
+@@ -12,7 +12,8 @@
+ from pathlib import Path
+ import zlib
+ 
+-P = Path(__file__).resolve().parents[1]
++P = Path('C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\porting')
++DATASET_PATH = 'C:\\Users\\jarom\\Desktop\\Dead_space_mobile\\.local\\azahar-resource-store\\datasets\\a46655efb24fab59c7649322986eea2ae0a5827454bca4c5e71be3d13818ceef'
+ parser = argparse.ArgumentParser(description=__doc__)
+ parser.add_argument('--container', choices=['cxi', 'cia'], default='cxi')
+ parser.add_argument('--variant', choices=['normal', 'poison', 'crc', 'retain'], default='normal')
+@@ -25,6 +26,8 @@
+ ROOT = P/('analysis/azahar-native-game-v0.1.2-'+args.variant+'-'+args.container+('-'+args.attempt if args.attempt else ''))
+ assert not ROOT.exists(), 'Preserve prior evidence'
+ os.environ['DEADSPACE_EMULATOR_ROOT'] = str(ROOT)
++sys.path.insert(0, str(P/'tests'))
++sys.path.insert(0, str(P/'tools'))
+ import smoke_azahar as f
+ f.OPTIONS[b'citra_cpu_clock_percentage'] = b'400'
+ 
+@@ -175,13 +178,9 @@
+         app.write_bytes(data)
+     source = P/'analysis/azahar-gpu-engine/Azahar/sdmc/3ds/deadspace'
+     card = ROOT/'Azahar/sdmc/3ds/deadspace'
+-    card.mkdir(parents=True)
+-    for name in ['assets', 'apk-assets']:
+-        shutil.copytree(source/name, card/name)
+-    shutil.copytree(source/'test-output/font-subset', card/'test-output/font-subset')
+-    for name in ['assets-verified.txt', 'apk-assets-verified.txt']:
+-        shutil.copyfile(source/name, card/name)
+-    shutil.copyfile(P/'analysis/candidate-sd/libEAMGameDeadSpace_orig.so', card/'libEAMGameDeadSpace_orig.so')
++    from azahar_resource_store import prepare_card
++    layout = prepare_card(card, Path(DATASET_PATH))
++    (ROOT/'resource-layout.json').write_text(json.dumps(layout, indent=2)+'\n')
+     core = C.CDLL(str((P/'toolchain/azahar-libretro/azahar_libretro.dll').resolve()))
+     controls = {'start': False}
+ 

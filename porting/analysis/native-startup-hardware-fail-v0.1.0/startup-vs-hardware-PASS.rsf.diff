@@ -1,0 +1,42 @@
+--- UV-Mask-v0.2.1.rsf
++++ startup-v0.1.0.rsf
+@@ -1,13 +1,13 @@
+ BasicInfo:
+-  Title: "DS34-UV-MASK"
++  Title: "DS-STARTUP"
+   CompanyCode: "00"
+-  ProductCode: "CTR-H-D3UM"
++  ProductCode: "CTR-H-DSST"
+   ContentType: Application
+   Logo: Homebrew
+ 
+ TitleInfo:
+   Category: Application
+-  UniqueId: 0xFDE6F
++  UniqueId: 0xFDE72
+ 
+ Option:
+   UseOnSD: true
+@@ -19,10 +19,10 @@
+   CoreVersion: 2
+   DescVersion: 2
+   ReleaseKernelMajor: "02"
+-  ReleaseKernelMinor: "33"
++  ReleaseKernelMinor: "44"
+   MemoryType: Application
+   SystemMode: 64MB
+-  SystemModeExt: Legacy
++  SystemModeExt: 178MB
+   IdealProcessor: 0
+   AffinityMask: 1
+   Priority: 16
+@@ -46,6 +46,9 @@
+   MemoryMapping:
+     - 1f000000-1f5fffff:r
+   SystemCallAccess:
++    ControlProcessMemory: 112
++    FlushProcessDataCache: 84
++    QueryProcessMemory: 125
+     ControlMemory: 1
+     QueryMemory: 2
+     ExitProcess: 3
