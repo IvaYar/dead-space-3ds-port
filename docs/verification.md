@@ -1,68 +1,70 @@
-# Verification Notes
+# Current Results and Known Limits
 
-Status reviewed on **November 1, 2026**. This English summary was prepared from the current local `HANDOFF.md` and the verified project reports listed below. It publishes conclusions and selected numerical results, without raw game captures, save state, worker/object dumps, or private resource inventories.
+Reviewed **November 2, 2026**, against the latest [HANDOFF.md](../HANDOFF.md), the saved software reports, and user-supplied hardware results. These are development checkpoints, not validation of a playable game.
 
-This is a documentation-only update to `main`. Some experiments described here exist in development branches or the local workspace; their presence in this summary does not mean their source or build artifacts have been merged into `main`. The published [HANDOFF.md](../HANDOFF.md) preserves earlier engineering history.
+## Current status
 
-## Hardware results
+| Area | Status | What has actually been verified |
+| :--- | :--- | :--- |
+| Original engine and intro | Completed milestone | Original ARM32 code and both intro animations run on real New 3DS hardware. |
+| Original difficulty menu | Completed milestone | Select Difficulty is visible on hardware in 0.1.5, supported by a photograph and independently decoded capture. |
+| Menu navigation | Experimental | Original Normal/Easy selection and confirmation work in Azahar. The 0.1.5 hardware test sent no accepted navigation events. |
+| Automatic cleanup | Completed milestone | The 0.1.4 hardware test exited automatically after frame FAIL; 0.1.5 also completed cleanup at its callback limit. |
+| HOME → X | Completed milestone, version-specific | Confirmed on hardware in 0.1.4. Not reverified on 0.1.5. |
+| Rendering | Experimental | Native PICA200 output is visible. The frozen reference mismatch remains; readable hardware text is a separate visual observation. |
+| Player-controlled gameplay | Unfinished | No controllable gameplay scene has been demonstrated on hardware. |
+| Audio | Unfinished | Working sound is unconfirmed; exploratory scene probes encountered audio initialization failures. |
+| Loading and performance | Experimental | A stable menu has been measured; loading still takes minutes. No gameplay FPS benchmark exists. |
 
-Real New Nintendo 3DS hardware executes original Android engine code and has displayed both the EA and Isaac/headphone intro animations. **Stable player-controlled gameplay has not been demonstrated.**
+## Menu 0.1.5 hardware
 
-The latest recorded test is **Close 0.1.3, run-0001**:
+One real-console run reached the original **Select Difficulty** screen, with Normal highlighted. The user reported approximately eight minutes to the menu, DOWN without a visible response, and return to HOME roughly five to seven minutes later. Those are approximate observations, not precise timings.
 
-| Observation | Result and scope |
-| :--- | :--- |
-| Original callbacks | 600 callbacks returned; the intro animations were observed by the user. |
-| Frame verification | Frame remains FAIL: hardware CRC `bf2a6bfd` differs from the frozen software checkpoint `ea733050`. |
-| Remaining image difference | 9,231 of 96,000 pixels differ from the reference; the final capture is byte-identical to the preceding Stable 0.1.2 hardware capture. |
-| First automatic cleanup | Timed out after approximately 60 seconds while the late loader continued making I/O progress; all six workers were still live at the timeout. |
-| Manual recovery | After a later START retry, the loader had completed, all six workers terminated, worker handles were joined, I/O closed, GPU cleanup ran, and the process returned. The user confirmed return to normal console operation/HOME. |
-| Final scope | Manual recovery succeeded. Automatic shutdown did not pass. HOME → X and POWER were not tested in this run. |
+The run completed at its **12,000-callback limit**, without registered START, HOME, or A-confirm events. Cleanup completed in one attempt: the five remaining workers terminated, no worker handles remained after joining, I/O was balanced, and the process returned. The loader had already finished earlier. This is a successful bounded menu-test exit, not a hardware confirmation of selecting difficulty or of HOME → X in this version.
 
-The successful retry preserves the frame failure; cleanup success does not turn a failed frame into a rendering pass. Separate hardware measurement of heap release was not recorded. The test does not directly exercise the newly added pending-delegate pump because no delegate was pending at the observed timeout.
+The menu adapter admits navigation only after recognizing one of three full-frame fingerprints observed in Azahar. Hardware produced a different menu fingerprint, so it never admitted input or sent an original pointer DOWN event. The physical HID held mask was not logged, so this run does not independently prove button capture. The next fix must recognize menu readiness and selection without requiring whole-frame equality to the emulator, while preserving protections against repeated taps on the selected row, fading frames, and stale observations.
 
-The observed I/O counters measure application progress, not the physical throughput of the SD card. These results do not establish a GPU hang, an out-of-memory failure, or a complete gameplay memory budget.
+### Performance and memory
 
-**Do not repeat the current diagnostic CIA to collect more data.** It is not a playable release. The next candidate depends on software work and a new validation decision.
+Stable hardware menu windows measured **24.02 FPS including diagnostics**. Average time per callback was 16.10 ms in original code, 17.00 ms in presentation, and 8.29 ms in diagnostics. Queue and VBlank waits are already included in those intervals. These numbers describe a static menu with readbacks and logging, not gameplay performance.
 
-Evidence basis: local `porting/analysis/native-game-close-v0.1.3-hardware/report.ru.md`, `hardware-result.json`, and the latest handoff entry. The underlying private archive and diagnostics are not part of this publication.
+One 120-callback loading window took **473.286 seconds**, of which 470.513 seconds were inside original callbacks. The current aggregation cannot identify a single responsible call or separate font/atlas work from other engine activity. The summed loop windows reach the first saved menu capture at 722.046 seconds; this excludes preflight/shutdown and is not the timestamp of the first visible LCD menu. It should not replace the user's approximate observation.
 
-## Software validation
+The profile remains **124 MiB**, with 20 MiB normal and 100 MiB linear heap. The menu version uses an **85.5 MiB donor arena**, reduced from the earlier 92 MiB checkpoint, and an 8 MiB GPU texture cache. Recorded linear peak was 104,635,264 of 104,857,600 bytes: only **222,336 bytes** of temporary headroom. Normal allocator peak was 19,746,816 bytes. No donor refusals or runtime allocation failures were recorded; that does not prove a gameplay scene will fit.
 
-The separate Close 0.1.3 software report records ten completed processes and one retained negative case. Completed cases exercised normal checkpoint exit, frame-failure cleanup, the reproduced late-loader state, selected HOME/cancel paths, and the actual CIA payload in Azahar. The retained negative case kept resources live and reported incomplete cleanup rather than freeing memory still in use.
+The hardware report explicitly says not to repeat this CIA for more data. Further hardware testing requires a new software validation decision.
 
-The normal checkpoint and eight-frame sequence retained exact 96,000-pixel agreement with the frozen GPU reference. Completed cases checked six kernel joins, zero worker handles, balanced I/O, GPU/GSP release, and heap cleanup. These results apply to that saved software validation matrix, not to arbitrary future scenes or hardware runs.
+Sources: [hardware report](../porting/analysis/native-game-menu-v0.1.5-hardware/report.ru.md), [numerical results](../porting/analysis/native-game-menu-v0.1.5-hardware/hardware-result.json), [software report](../porting/analysis/native-game-menu-v0.1.5/report.ru.md).
 
-The HOME request was injected at a safe main-thread boundary. A test-only SDK object replaced Azahar's unsupported wait for HOME screenshot readiness; the normal CXI and CIA did not contain that shim. This is a limited software proof, not validation of the physical HOME button, real HOME Menu/Luma behavior, or HOME → X on the console.
+## Progress 0.1.4 hardware
 
-The later hardware result supersedes the earlier readiness decision: automatic cleanup remains unresolved, and the current CIA should not be repeated. Earlier emulator reload crashes remain unexplained.
+Two real-console runs verified the improved shutdown path:
 
-Evidence basis: local `porting/analysis/native-game-close-v0.1.3/report.ru.md`, its saved release gate, and the later hardware result. No runtime tests were run for this documentation publication.
+- The first completed the intro checkpoint and automatically cleaned up after CRC FAIL, with one shutdown attempt and no STOPPED state. All six workers joined, I/O closed, and the process returned. Although the user called it the START test, the guest log did not record START; physical START registration is not separately established by that run.
+- The second recorded a deferred HOME request, waited for worker quiescence, handed control to the real HOME Menu, and returned through APT close after the user chose X. This is a physical HOME → X result, beyond the earlier emulator-only test shim.
 
-## Shutdown work
+Late-loader waits were approximately **76.6 and 81.7 seconds**, with I/O progress. They are not full startup/exit timings or SD throughput measurements. Cancellation waits for the original in-flight native work; it cannot interrupt an arbitrary foreign callback or read. Forced idle/hard-deadline failures and retained-state recovery remain software-fixture results, not hardware guarantees.
 
-The next step is a software fixture that reproduces slow but progressing late-loader I/O. Automatic cleanup needs bounded additional time when progress is proven, an inactivity limit, and an overall hard deadline. Input/close reasons and per-attempt snapshots also need clearer diagnostics.
+Sources: [hardware report](../porting/analysis/native-game-progress-v0.1.4-hardware/report.ru.md), [numerical results](../porting/analysis/native-game-progress-v0.1.4-hardware/hardware-result.json), [software report](../porting/analysis/native-game-progress-v0.1.4/report.ru.md).
 
-Worker lifetime and GPU lifetime checks must remain intact, as must the frame FAIL result. A future hardware test should verify automatic exit and then HOME → X before proceeding toward a controlled gameplay scene. No release date or new hardware readiness is claimed here.
+## Rendering and photographs
 
-## Memory and earlier milestones
+The intro frame remains different from the frozen software checkpoint in **9,231 of 96,000 pixels**: hardware CRC `bf2a6bfd` versus reference `ea733050`. Successful cleanup does not turn this frame failure into a pass, and menu-admission fingerprints are not a replacement for that oracle.
 
-The native checkpoint uses a 124 MiB application profile: 20 MiB normal heap and 100 MiB linear heap, with a 92 MiB donor arena inside the linear allocation. The early software checkpoint recorded 120.746 MiB process commit; later hardware loading reached about 18.33 MiB normal allocator footprint. Neither measurement guarantees that later gameplay scenes will fit.
+The user confirmed that the headphone text is readable on the console. The [hardware photographs](images/README.md) support that visual observation, without proving byte identity. An older Azahar PICA200 screenshot has distorted small text; this is not sufficient evidence of a hardware text defect. GPU textures, UVs, shaders, or filtering should not be changed solely to make those two emulator images match.
 
-Earlier DS34 fixture tests validated the RGBA8-to-RGB8 path, GPU completion, pixel checks, and return to HOME. Separate startup tests reached main/READY/START/HOME in Legacy64 and New 3DS Prod124 profiles. Those are narrower milestones than a full original-game lifecycle pass.
+The README's intro photograph comes from **Close 0.1.3**, whose first cleanup attempt timed out. A later START retry recovered; Progress 0.1.4 subsequently improved automatic cleanup. The failure message visible in that older photo must not be interpreted as the latest shutdown result.
 
-The historical CPU baseline passed 552 ARM tests across 26 suites. That number belongs to its recorded build and is not a claim that the entire suite was rerun after every GPU or shutdown change. The menu screenshot comes from a separate, older emulator experiment with a 178 MiB profile and elevated CPU setting.
+## First scene and remaining work
 
-Already published technical context is preserved in the [Prod124 memory report](https://github.com/IvaYar/dead-space-3ds-port/blob/8b1839c207ca51e2afbd73c93639b97ab8bf08b5/porting/analysis/native-game-prod124-v0.1.0/report.ru.md), [Prod124 startup hardware report](https://github.com/IvaYar/dead-space-3ds-port/blob/8b1839c207ca51e2afbd73c93639b97ab8bf08b5/porting/analysis/native-startup-prod124-v0.1.0/hardware-report.ru.md), and [target-init hardware report](https://github.com/IvaYar/dead-space-3ds-port/blob/8b1839c207ca51e2afbd73c93639b97ab8bf08b5/porting/analysis/native-game-target-init-v0.1.1/hardware-report.ru.md). These pinned reports retain their original historical limits.
+Separate emulator probes began the first scene, but encountered two NULL reads in the EAAudioCore area and an unsupported fog state. Their safety result was false even though cleanup was reached. These were exploratory tests, not stable gameplay, and the scene-probe mode is excluded from the limited hardware package.
 
-## Resource-store pilot
+The next priorities are hardware menu readiness/input, loading attribution, original audio initialization, required scene graphics states, and scene memory. Movement, camera, and actions follow a working scene. Working sound, sustained gameplay, and a release date are not established.
 
-One isolated normal native CXI cycle passed in Azahar with shared read-only assets and separate writable run state. Only `assets` and `apk-assets` were shared through NTFS junctions; the donor library, receipts, font subset, saves, and other writable files remained independent copies. No hard links were used.
+## Historical checks and resource storage
 
-The private content-addressed dataset was checked against a complete inventory and protected by NTFS ACLs. The original runner's frame, CRC, worker-join, GPU, and I/O checks were preserved; the adapter changed preparation and import-root handling only. The original resource sets and saved evidence were retained.
+The historical CPU baseline passed **552 ARM tests across 26 suites**. This applies to its recorded build and was not rerun for every later change. Older CPU menu images used a separate emulator-only 178 MiB profile and elevated CPU setting.
 
-This pilot reduced per-run initial copying from 556.340 MiB to 4.336 MiB, avoiding duplication of 552.004 MiB of assets for each new compatible run. Initial store creation added a copy; no old datasets were deleted and no disk space was claimed as already recovered. Mutating runners were not switched globally to shared assets.
+The shared-resource pilot passed one isolated normal native CXI cycle in Azahar. Only read-only `assets` and `apk-assets` were shared through NTFS junctions; other initial files and writable state stayed independent. It avoided copying 552.004 MiB of assets per compatible new run, but creating the store added a copy and no old datasets were removed. It is a storage/preparation result, not a shutdown or gameplay fix.
 
-This is a storage/preparation result. It does not fix hardware rendering or shutdown, prove save/restore compatibility, or authorize another hardware run. The full dataset manifest and private runtime state are not published.
-
-Evidence basis: local `porting/analysis/shared-resource-store-pilot/report.ru.md`, its numerical results and storage metrics, and `porting/README-shared-resources.ru.md`.
+See [the resource-store report](../porting/analysis/shared-resource-store-pilot/report.ru.md) and [usage notes](../porting/README-shared-resources.ru.md). Raw captures, private archives, dataset inventories, snapshots, and game files remain local; some links in historical engineering reports intentionally refer to those unpublished artifacts.

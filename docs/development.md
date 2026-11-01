@@ -1,16 +1,12 @@
 # Development Notes
 
-This page preserves setup context and technical pointers from the previous project overview. For current status, read the [verification summary](verification.md), prepared from the latest local handoff and verified reports. The published [HANDOFF.md](../HANDOFF.md) retains earlier history. Historical reports describe the builds they tested and can contain superseded next steps.
+For a quick overview, read the [README](../README.md). The [current results](verification.md) distinguish hardware observations from emulator tests. [HANDOFF.md](../HANDOFF.md) contains the detailed engineering chronology in Russian; its newest entry takes precedence over older plans and readiness decisions.
 
-## Environment and prerequisites
+## Setup
 
-The recorded development environment is Windows/PowerShell with Python, devkitARM GCC 16.1, libctru 2.7.0, Citro3D 1.7.1, Unicorn 2.1.4, and Azahar libretro 2126.2. Python dependencies are pinned in [requirements-tools.txt](../porting/requirements-tools.txt). Toolchain bootstrapping is implemented in [bootstrap_toolchain.py](../porting/tools/bootstrap_toolchain.py); Citro3D has a separate [bootstrap helper](../porting/tools/bootstrap_citro3d.py).
+The recorded environment is Windows/PowerShell with Python, devkitARM GCC 16.1, libctru 2.7.0, Citro3D 1.7.1, Unicorn 2.1.4, and Azahar libretro 2126.2. Python dependencies are pinned in [requirements-tools.txt](../porting/requirements-tools.txt).
 
-The working donor is the English Android SD edition 1.1.33. The separate Russian 1.2.0 APK is not the active donor. Original game binaries, resources, derived fonts, saves, emulator SD contents, and test snapshots remain private. A Git clone alone cannot reproduce every recorded experiment. Exact reproduction can also require the matching CXI, emulator DLL, runner, resource inventory, and initial writable state.
-
-This publication updates documentation only. Newer native checkpoint sources remain on development branches or in the local workspace; `main` does not contain every experiment described here. Pinned links preserve already published technical references without merging those source changes.
-
-In a fresh checkout, prepare dependencies from the repository root:
+From a fresh development checkout:
 
 ```powershell
 python -m pip install --target porting/toolchain/python -r porting/requirements-tools.txt
@@ -18,38 +14,41 @@ python porting/tools/bootstrap_toolchain.py --with-emulator
 python porting/tools/bootstrap_citro3d.py
 ```
 
-These are dependency setup commands, not a complete build recipe. The builders depend on private inputs and earlier preparation steps. Do not overwrite a saved build or its manifests just to reproduce a historical command.
+These commands prepare dependencies. They do not supply the game or build a playable port. The working donor is the English Android SD edition 1.1.33; the separate Russian 1.2.0 APK is not the active donor. Compatible game files must be provided privately and lawfully.
 
-## Choosing a build and test path
+Builders can depend on earlier local preparation, private resource receipts, derived fonts, or test state. A Git clone alone cannot reproduce every saved experiment. Exact reproduction can require the matching CXI, emulator DLL, runner, resource inventory, and initial writable state. Existing baselines and evidence should be preserved; new experiments need separate output/attempt identifiers.
 
-| Path | Entry points and constraints |
+## Source and test paths
+
+| Area | Entry points |
 | :--- | :--- |
-| CPU compatibility baseline | [build_emulator_runtime.py](../porting/tools/build_emulator_runtime.py) builds the computer-only runtime experiment. [HANDOFF.md](../HANDOFF.md) lists the 26 suite entry points; run the individual scripts as documented rather than assuming generic test discovery. Preserve the old CPU evidence before rebuilding. |
-| Native 124 MiB checkpoint | [Prod124 documentation](https://github.com/IvaYar/dead-space-3ds-port/blob/8b1839c207ca51e2afbd73c93639b97ab8bf08b5/porting/3ds/README-native-game-prod124.ru.md) explains the memory-reduction steps, build profiles, and original frame verification. Its hardware instructions are historical; consult the latest handoff first. |
-| Shutdown and late-loader work | [Close 0.1.3 documentation](verification.md#shutdown-work) describes isolated software attempts and the saved validation matrix. The [latest hardware report](verification.md#hardware-results) supersedes the original readiness decision. Do not repeat the current CIA for more data. |
-| Shared immutable assets | [Resource-store pilot](verification.md#resource-store-pilot) documents the opt-in Windows/NTFS layout. Only selected read-only runs use it; mutating runners still require independent copies. |
+| Platform and graphics adapters | [3DS source](../porting/3ds/source) and [headers](../porting/3ds/include) |
+| Native menu experiment | [Menu source](../porting/tests/native_game_menu.c), [input adapter](../porting/tests/native_menu_input.h), [texture-memory adapter](../porting/tests/native_menu_texture_memory.h) |
+| Current menu build and validation | [Builder](../porting/tools/build_native_game_menu.py), [smoke runner](../porting/tests/smoke_native_game_menu.py), [audit](../porting/tools/audit_native_game_menu.py), [hardware report](../porting/analysis/native-game-menu-v0.1.5-hardware/report.ru.md) |
+| Progress-aware shutdown | [Source](../porting/tests/native_game_progress.c), [software report](../porting/analysis/native-game-progress-v0.1.4/report.ru.md), [hardware report](../porting/analysis/native-game-progress-v0.1.4-hardware/report.ru.md) |
+| Earlier memory checkpoint | [Prod124 notes](../porting/3ds/README-native-game-prod124.ru.md), [memory report](../porting/analysis/native-game-prod124-v0.1.0/report.ru.md) |
+| CPU compatibility baseline | [Runtime builder](../porting/tools/build_emulator_runtime.py); the handoff lists the 26 individual suite entry points |
+| Shared immutable resources | [Resource-store notes](../porting/README-shared-resources.ru.md) |
 
-Some audits regenerate summary JSON, and builders update manifests. They are not all read-only documentation checks. Native scenarios using the same emulator/SD state must run sequentially. New experiments need distinct output/attempt identifiers; existing evidence and baselines should be retained.
+This update publishes the current port source and selected reports without merging generated builds, the SDK, emulator SD contents, or private runtime diagnostics. The source files were copied byte-for-byte from the working development tree. Saved manifests and raw baselines were not regenerated.
 
-The recorded 552-test CPU result predates later GPU and shutdown work. The original CPU binary and newer sources must not be represented as the same verified build. Historical progress checkers can still expect older test totals or checkpoints; inspect their scope before interpreting a result.
+The historical 552-test CPU result belongs to its recorded build. Run the suite scripts as documented rather than assuming generic test discovery. Older progress checkers may still expect an earlier count or checkpoint. Some audits rewrite summary JSON, and builders update manifests; they are not all read-only checks. Native scenarios sharing emulator/SD state must run sequentially.
 
-## Earlier milestones retained for context
+The limited Menu 0.1.5 package intentionally stops shortly after confirmation. Its separate scene probes are emulator-only. The latest hardware report says not to repeat the existing CIA for more data; a future hardware candidate requires a new validation decision.
 
-- The strict import preflight recorded 154 bindings, 234 unresolved required symbols, and four weak symbols at its documented checkpoint. Experimental runtime overlays are explicit; that count does not mean all later game paths are supported.
-- Real hardware has executed all 209 original constructors, passed native executable-memory checks, and run original callbacks. These observations do not prove the full game lifecycle.
-- The DS34 GPU hardware fixture completed the RGBA8-to-RGB8 path, GPU completion and pixel checks, and return to HOME. It is separate from validation of the full game.
-- Startup-only tests reached main/READY/START/HOME in Legacy64 and New 3DS Prod124 profiles. The older Dev1 178 MiB configuration stalled before observable READY; the exact cause was not established.
-- The early Prod124 software checkpoint recorded 120.746 MiB process commit. Later loading increased the normal allocator footprint to about 18.33 MiB of its 20 MiB heap. These are checkpoint measurements, not a guarantee that a gameplay scene fits.
-- A one-time color-target clear removed the uninitialized background seen in earlier hardware frames. The remaining 9,231-pixel hardware/reference difference is still unresolved.
-- The sensor JNI experiment obtained 40 readings in a separate Azahar test. Hardware axis mapping and calibration remain unverified.
-- Partial geometry and completed black frames are retained as different outcomes. A returned callback is not proof of working gameplay.
+## Technical reading
 
-The latest hardware test adds successful manual recovery after START retry. Automatic shutdown and HOME → X still require further work. Consult the main [README](../README.md#current-development-status) and [verification summary](verification.md) before using any older installation or test instructions.
+- [First original frame](../porting/FIRST-FRAME.ru.md), [headphone screen](../porting/HEADPHONE-SCREEN.ru.md), and [historical CPU difficulty menu](../porting/MENU-BOOTSTRAP.ru.md).
+- [Lighting](../porting/LIGHTING.ru.md) and [default-surface handling](../porting/DEFAULT-SURFACE.ru.md); [lighting results](../porting/analysis/lighting-result.json) and [engine-progress summary](../porting/analysis/engine-progress.json) retain their historical scope.
+- [HID sensor backend](../porting/SENSOR-BACKEND.ru.md) and [JNI integration](../porting/SENSOR-JNI.ru.md). Forty readings were obtained in a separate Azahar experiment; hardware axes and calibration remain unverified.
+- [Native startup](../porting/3ds/README-native-startup-prod124.ru.md), [target initialization](../porting/3ds/README-native-game-target-init.ru.md), and [Close 0.1.3](../porting/3ds/README-native-game-close.ru.md) preserve earlier milestones. Read the latest handoff before using old installation instructions.
 
-## Public documentation boundaries
+## Publication and private inputs
 
-Only the three reviewed screenshots in [docs/images](images/README.md) were prepared for this presentation. Their source captures and all existing evidence remain unchanged. The screenshots do not include emulator desktop UI, file paths, personal data, or diagnostic overlays.
+[check_staged_private_files.py](../porting/tools/check_staged_private_files.py) checks index blobs for private paths, binary content, and private object/stack structures. Its [synthetic tests](../porting/tests/test_private_publication_guard.py) run in disposable temporary Git repositories. The hook in [.githooks/pre-commit](../.githooks/pre-commit) remains opt-in; this update does not change local hook configuration.
 
-The repository uses a narrow ignore allowlist. the local staged-file publication guard examines staged blobs for private paths, binary content, and private diagnostic structures. Its text-only policy deliberately flags PNG files as requiring separate publication review. The three selected image files received separate visual and decoded-pixel review before publication. The local guard and its optional hook configuration were not changed. The guard itself is part of the local development work and is not included in this documentation-only update.
+The guard's text-only policy flags images for separate review. The selected [documentation images](images/README.md) were reviewed individually, including their dimensions, metadata, provenance, and visible content. The guard was not broadened to accept arbitrary images or binaries.
 
-Selected official devkitPro simple_tri/immediate examples preserve their upstream URL, commit, hashes, and Public Domain notices. Citro3D is recorded under the Zlib license. These third-party terms do not grant rights to the proprietary game or establish a blanket license for this repository.
+Do not publish APKs, original libraries, extracted assets or fonts, saves, private SD contents, memory/object dumps, or raw capture archives. Some engineering-report links point to deliberately unpublished local evidence. Numerical conclusions and reports do not include those artifacts.
+
+Selected official devkitPro simple_tri/immediate examples retain upstream provenance and Public Domain notices. Citro3D is recorded under the Zlib license. Those terms do not grant rights to the game or establish a blanket license for this repository.
