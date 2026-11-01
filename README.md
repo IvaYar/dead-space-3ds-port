@@ -32,7 +32,7 @@ For developers, it is a practical experiment in running an existing native engin
 | Original intro · CPU renderer | Original intro · PICA200 renderer |
 | :---: | :---: |
 | ![Azahar CPU-rendered intro showing Isaac and the headphone prompt](docs/images/azahar-intro-cpu.png) | ![Azahar PICA200-rendered intro with visible differences in the small text](docs/images/azahar-intro-pica200.png) |
-| A clear reference capture from the software renderer. | Original engine output through Citro3D/PICA200; small-text differences remain. |
+| A clear reference capture from the software renderer. | Azahar GPU capture: Original engine rendering through Citro3D/PICA200. Text rendering differs from the software reference in this emulator capture; the text appears readable in photographs of real New Nintendo 3DS hardware. |
 
 <p align="center">
   <img src="docs/images/azahar-difficulty-menu.png" width="400" height="240" alt="Azahar CPU-rendered difficulty menu with Easy selected after a touch event">
