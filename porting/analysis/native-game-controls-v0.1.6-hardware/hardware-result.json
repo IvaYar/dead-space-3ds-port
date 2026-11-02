@@ -1,0 +1,183 @@
+{
+  "hardware_tested": true,
+  "archive_verified": true,
+  "archived_files": 200,
+  "archived_bytes": 27664767,
+  "CIA": {
+    "path": "porting/3ds/build-native-game-v0.1.6-final2/native-game.cia",
+    "title": "DS Original Menu 0.1.6",
+    "title_id": "000400000FDE7900",
+    "bytes": 355264,
+    "sha256": "9475886ff5620d9cd14ca36e3eb8487ace8fee70ddd60d673d55a65d3d5b6e0b",
+    "payload_sha256": "cc78537c162466ca0c97cb787e1db368a14f8c05ec5ac5403253d7fc9148be1c",
+    "payload_byte_identical_to_tested_CXI": true
+  },
+  "original_difficulty_menu_observed": true,
+  "image_and_frame_status": "FAIL",
+  "baseline_crc_unchanged": "ea733050",
+  "independently_verified_raw_readback_pairs": 93,
+  "complete_saved_GX_traces": 93,
+  "stable_menu_captures_byte_identical_to_hardware_015": 59,
+  "hardware_menu_crc565": "95b893de",
+  "original_menu_guard_ready_observations": 59,
+  "first_recorded_ready_frame": 4200,
+  "original_selection": "Normal",
+  "physical_DOWN_reported": "Lower D-pad button, explicitly clarified by user.",
+  "Dpad_DOWN_edge_logged": false,
+  "HID_rejection_logged": false,
+  "original_input_event_logged": false,
+  "difficulty_changed": false,
+  "input_root_cause_established": false,
+  "input_conclusion": "Guard reaches ready=1 on hardware. No DOWN relevant edge reaches the logged menu sample. Sparse held snapshots do not exclude short input activity between samples. No claim of a hardware defect or incorrect user control; no native event-delivery proof.",
+  "safe_exit": true,
+  "exit_source": "START",
+  "shutdown_attempts": 1,
+  "kernel_completed_workers": 5,
+  "worker_handles_remaining": 0,
+  "balanced_IO": [
+    174,
+    174
+  ],
+  "GL_error": 0,
+  "failed_submits": 0,
+  "hardware_heap_release_independently_measured": false,
+  "user_menu_wait_seconds": 554,
+  "user_START_to_HOME_seconds_approx": [
+    1,
+    2
+  ],
+  "slowest_original_draw_callback": {
+    "frame": 4132,
+    "ms": 297416.915,
+    "ops": [
+      {
+        "id": 0,
+        "calls": 1146,
+        "ms": 283844.947,
+        "max_ms": 3713.044,
+        "caller": 3294432,
+        "bytes": 0
+      },
+      {
+        "id": 1,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 2,
+        "calls": 34,
+        "ms": 13382.961,
+        "max_ms": 2025.742,
+        "caller": 3288780,
+        "bytes": 0
+      },
+      {
+        "id": 3,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 4,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 5,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 6,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 7,
+        "calls": 1146,
+        "ms": 63097.015,
+        "max_ms": 1178.897,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 8,
+        "calls": 1146,
+        "ms": 197.344,
+        "max_ms": 1.073,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 9,
+        "calls": 1145,
+        "ms": 220268.407,
+        "max_ms": 2604.696,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 10,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 11,
+        "calls": 367,
+        "ms": 50720.375,
+        "max_ms": 199.184,
+        "caller": 0,
+        "bytes": 1069965312
+      }
+    ],
+    "page_saves": 201,
+    "page_loads": 166,
+    "resident_bytes": 5029888,
+    "resource_bytes": 0,
+    "resource_reads": 0,
+    "IO_completions": 0,
+    "gpu_queue_wait_ms": 95.479,
+    "vblank_wait_ms": 1339.81
+  },
+  "same_129_texture_allocation_sequence_as_015": true,
+  "timing": {
+    "steady_FPS_including_diagnostics": 23.20065804799777,
+    "steady_ms_per_callback": {
+      "callback_ms": 16.307746839080462,
+      "present_ms": 16.726329454022988,
+      "diagnostic_ms": 8.236277011494252,
+      "gpu_queue_wait_ms": 3.096011781609195,
+      "vblank_wait_ms": 12.463708764367816
+    },
+    "sum_loop_windows_through_first_saved_menu_ms": 552702.079,
+    "sum_completed_loop_windows_ms": 852693.5700000001,
+    "limits": "SDK tick windows omit initialization, shutdown and partial trailing window. Nested timings overlap. Old473285.745ms is a120-callback window, not a timed individual draw."
+  },
+  "memory": {
+    "normal_peak_footprint": 19746816,
+    "linear_peak_used": 104635264,
+    "linear_transient_headroom": 222336,
+    "kernel_peak_commit": 126775296,
+    "runtime_allocation_failures": 0,
+    "donor_allocation_refusals": 0
+  },
+  "gameplay_started": false,
+  "repeat_current_CIA_needed": false
+}

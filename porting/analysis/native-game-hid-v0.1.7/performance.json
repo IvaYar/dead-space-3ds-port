@@ -1,0 +1,934 @@
+{
+  "new_hardware_tested": false,
+  "loading_optimization_this_stage": false,
+  "timing_units": "Guest SDK ticks converted to milliseconds; not accelerated host wall time.",
+  "operation_ids": [
+    "glDrawElements",
+    "glDrawArrays",
+    "glTexImage2D",
+    "glTexSubImage2D",
+    "glClear",
+    "glFinish",
+    "glReadPixels",
+    "ds34_begin_draw",
+    "ds34_end_draw",
+    "ds15_resident",
+    "texture_copy",
+    "page_CRC32"
+  ],
+  "hardware_016_source_sha256": "1ebf40463487fb56964a764b51b141ffe6775b6cac2633e670da6b9ebe1cecb9",
+  "hardware_016_user_start_to_menu_seconds": 554,
+  "hardware_016_slowest_callback": {
+    "frame": 4132,
+    "ms": 297416.915,
+    "ops": [
+      {
+        "id": 0,
+        "calls": 1146,
+        "ms": 283844.947,
+        "max_ms": 3713.044,
+        "caller": 3294432,
+        "bytes": 0
+      },
+      {
+        "id": 1,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 2,
+        "calls": 34,
+        "ms": 13382.961,
+        "max_ms": 2025.742,
+        "caller": 3288780,
+        "bytes": 0
+      },
+      {
+        "id": 3,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 4,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 5,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 6,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 7,
+        "calls": 1146,
+        "ms": 63097.015,
+        "max_ms": 1178.897,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 8,
+        "calls": 1146,
+        "ms": 197.344,
+        "max_ms": 1.073,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 9,
+        "calls": 1145,
+        "ms": 220268.407,
+        "max_ms": 2604.696,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 10,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 11,
+        "calls": 367,
+        "ms": 50720.375,
+        "max_ms": 199.184,
+        "caller": 0,
+        "bytes": 1069965312
+      }
+    ],
+    "page_saves": 201,
+    "page_loads": 166,
+    "resident_bytes": 5029888,
+    "resource_bytes": 0,
+    "resource_reads": 0,
+    "IO_completions": 0,
+    "gpu_queue_wait_ms": 95.479,
+    "vblank_wait_ms": 1339.81
+  },
+  "hardware_016_timing": {
+    "steady_FPS_including_diagnostics": 23.20065804799777,
+    "steady_ms_per_callback": {
+      "callback_ms": 16.307746839080462,
+      "present_ms": 16.726329454022988,
+      "diagnostic_ms": 8.236277011494252,
+      "gpu_queue_wait_ms": 3.096011781609195,
+      "vblank_wait_ms": 12.463708764367816
+    },
+    "sum_loop_windows_through_first_saved_menu_ms": 552702.079,
+    "sum_completed_loop_windows_ms": 852693.5700000001,
+    "limits": "SDK tick windows omit initialization, shutdown and partial trailing window. Nested timings overlap. Old473285.745ms is a120-callback window, not a timed individual draw."
+  },
+  "software_017": {
+    "release:pulse": {
+      "slowest_callback": {
+        "frame": 2881,
+        "ms": 199874.203,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 195201.265,
+            "max_ms": 2225.892,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4640.851,
+            "max_ms": 671.76,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37664.753,
+            "max_ms": 763.733,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 117.419,
+            "max_ms": 0.605,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 157270.75,
+            "max_ms": 1486.907,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 32053.46,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1257.447
+      },
+      "steady_FPS_including_diagnostics": 45.104066357102425,
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 60024,
+        "invalid_samples": 0,
+        "transitions": 27,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 903.645,
+        "max_ready_raw_sample_gap_ms": 135.719,
+        "max_game_main_sample_gap_ms": 199896.001,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392
+    },
+    "release:hold": {
+      "slowest_callback": {
+        "frame": 2890,
+        "ms": 202506.023,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 197725.03,
+            "max_ms": 3036.222,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4748.907,
+            "max_ms": 671.761,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37664.758,
+            "max_ms": 763.733,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 117.442,
+            "max_ms": 0.563,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 159794.488,
+            "max_ms": 2422.691,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 32053.206,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1257.447
+      },
+      "steady_FPS_including_diagnostics": 44.847935430388816,
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 60547,
+        "invalid_samples": 0,
+        "transitions": 31,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 903.645,
+        "max_ready_raw_sample_gap_ms": 135.718,
+        "max_game_main_sample_gap_ms": 202527.821,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392
+    },
+    "release:circle": {
+      "slowest_callback": {
+        "frame": 2882,
+        "ms": 200550.727,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 195669.047,
+            "max_ms": 2259.319,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4849.593,
+            "max_ms": 688.474,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37664.895,
+            "max_ms": 763.733,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 117.447,
+            "max_ms": 0.532,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 157738.489,
+            "max_ms": 1609.318,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 32053.333,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1257.435
+      },
+      "steady_FPS_including_diagnostics": 45.18147137979695,
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 60087,
+        "invalid_samples": 0,
+        "transitions": 27,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 903.645,
+        "max_ready_raw_sample_gap_ms": 135.719,
+        "max_game_main_sample_gap_ms": 200572.525,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392
+    },
+    "release:early": {
+      "slowest_callback": {
+        "frame": 2,
+        "ms": 25258.527,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 2,
+            "ms": 23.266,
+            "max_ms": 23.038,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 4,
+            "ms": 151.995,
+            "max_ms": 67.581,
+            "caller": 3381172,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 2,
+            "ms": 22.82,
+            "max_ms": 22.815,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 2,
+            "ms": 0.205,
+            "max_ms": 0.106,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1,
+            "ms": 0.002,
+            "max_ms": 0.002,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          }
+        ],
+        "page_saves": 0,
+        "page_loads": 0,
+        "resident_bytes": 1310724,
+        "resource_bytes": 2507752,
+        "resource_reads": 5670,
+        "IO_completions": 7720,
+        "gpu_queue_wait_ms": 0.0,
+        "vblank_wait_ms": 0.0
+      },
+      "steady_FPS_including_diagnostics": null,
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 12766,
+        "invalid_samples": 0,
+        "transitions": 17,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 903.645,
+        "max_ready_raw_sample_gap_ms": 0.0,
+        "max_game_main_sample_gap_ms": 25274.47,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "normal_peak_footprint": 18829312,
+      "linear_peak_used": 92838784,
+      "kernel_peak_commit": 126779392
+    },
+    "releasestall:stall": {
+      "slowest_callback": {
+        "frame": 2890,
+        "ms": 200583.987,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 195702.6,
+            "max_ms": 2440.182,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4849.237,
+            "max_ms": 755.33,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37665.867,
+            "max_ms": 763.733,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 117.509,
+            "max_ms": 0.533,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 157771.072,
+            "max_ms": 1793.169,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 32053.333,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1258.444
+      },
+      "steady_FPS_including_diagnostics": 42.05389435947044,
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 60620,
+        "invalid_samples": 0,
+        "transitions": 27,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 904.337,
+        "max_ready_raw_sample_gap_ms": 135.718,
+        "max_game_main_sample_gap_ms": 200605.785,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392
+    },
+    "releasehome:home": {
+      "slowest_callback": {
+        "frame": 2646,
+        "ms": 146159.985,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 143828.938,
+            "max_ms": 1548.988,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 2323.079,
+            "max_ms": 479.301,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 10406.77,
+            "max_ms": 297.676,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 62.187,
+            "max_ms": 0.16,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 133323.0,
+            "max_ms": 1306.745,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 7989.508,
+            "max_ms": 31.32,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 13.111,
+        "vblank_wait_ms": 1306.645
+      },
+      "steady_FPS_including_diagnostics": 51.91965828458809,
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 58696,
+        "invalid_samples": 0,
+        "transitions": 15,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 225.111,
+        "max_ready_raw_sample_gap_ms": 33.842,
+        "max_game_main_sample_gap_ms": 146180.218,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392
+    }
+  },
+  "interpretation": [
+    "Hardware draw4132 takes297416.915ms: 1146draws,201page saves,166page loads,367CRC operations over1069965312bytes.",
+    "Measured residency/paging and CPU preparation dominate; original loader IO0 does not mean texture-page IO0.",
+    "Timings are nested and must not be added. Subtracting CRC is not an independent pure-IO measurement.",
+    "Software reproduces the expensive original font/menu preparation; callback numbers vary with scheduling.",
+    "No claim of hardware speedup. Stable software and previous hardware FPS are different environments.",
+    "Collector4ms is nominal: raw observation has scheduling gaps. Queue retains observed transitions only."
+  ]
+}

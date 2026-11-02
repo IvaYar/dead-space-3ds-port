@@ -1,0 +1,44 @@
+--- original/ds15_textures.c
++++ experiment/ds15_textures.c
+@@ -32,10 +32,19 @@
+ }
+ static DS15Texture *empty(DS15State *s){for(unsigned i=0;i<s->name_limit;++i)if(!s->textures[i].used)return &s->textures[i];return NULL;}
+ static DS15Object *object(DS15State *,uint32_t);
++/* A backing token denotes the exact current canonical pixels.
++ * CPU writes invalidate it; reads and GPU uploads do not. */
++void ds15_invalidate_backing(DS15State *s,DS15Object *o,uint32_t level){
++    DS15Level *l=&o->levels[level];
++    if(l->backing){s->backing_ops->drop(l->backing);l->backing=0;}
++}
+ static int spill(DS15State *s,DS15Level *l){
+     uint32_t bytes=l->width*l->height*4;
+-    if(s->backing_ops->save(&l->backing,l->rgba,bytes)){++s->page_failures;return -1;}
+-    ds_rt_free(l->rgba);l->rgba=NULL;s->resident-=bytes;++s->page_saves;return 0;
++    if(!l->backing){
++        if(s->backing_ops->save(&l->backing,l->rgba,bytes)){++s->page_failures;return -1;}
++        ++s->page_saves;
++    }
++    ds_rt_free(l->rgba);l->rgba=NULL;s->resident-=bytes;return 0;
+ }
+ static int pinned(DS15State *s,DS15Object *o){
+     for(unsigned u=0;u<2;++u)if(s->enabled[u] && object(s,s->binding[u])==o)return 1;
+@@ -189,6 +198,7 @@
+     if(x<0 || y<0 || w<0 || h<0 || (uint32_t)x>l->width || (uint32_t)y>l->height || (uint32_t)w>l->width-(uint32_t)x || (uint32_t)h>l->height-(uint32_t)y || (w && h && !pixels)){ds13_error(BAD_VALUE);return;}
+     uint32_t bpp=pixel_bytes(format,type),pitch;if(!bpp || !source_range(pixels,(uint32_t)w,(uint32_t)h,bpp,state()->unpack,&pitch))return;
+     if(ds15_resident(state(),o,(uint32_t)level))return;
++    if(w && h)ds15_invalidate_backing(state(),o,(uint32_t)level);
+     if(w && h)copy_image(l->rgba,l->width,(uint32_t)x,(uint32_t)y,(uint32_t)w,(uint32_t)h,format,type,pixels,pitch,bpp);
+     ++state()->patches;
+     if(ds34_texture_dirty)ds34_texture_dirty(state(),o);
+--- original/ds26_framebuffer.c
++++ experiment/ds26_framebuffer.c
+@@ -174,7 +174,8 @@
+ }
+ void ds26_texture_deleted(DS13Context *c,DS15Object *object){Framebuffer *f=frame(c,c->framebuffer_binding);if(f)for(unsigned i=0;i<3;++i)if(f->attachments[i].texture==object)drop(c,&f->attachments[i]);}
+ int ds26_attached(DS13Context *c,DS15Object *object){Framebuffer *f=frame(c,c->framebuffer_binding);if(f)for(unsigned i=0;i<3;++i)if(f->attachments[i].texture==object)return 1;return 0;}
+-void ds34_fbo_dirty(DS13Context *c){Framebuffer *f=frame(c,c->framebuffer_binding);if(f && f->attachments[0].texture && ds34_texture_dirty)ds34_texture_dirty(&c->texture,f->attachments[0].texture);}
++void ds15_invalidate_backing(DS15State *,DS15Object *,uint32_t);
++void ds34_fbo_dirty(DS13Context *c){Framebuffer *f=frame(c,c->framebuffer_binding);if(f && f->attachments[0].texture)ds15_invalidate_backing(&c->texture,f->attachments[0].texture,0);if(f && f->attachments[0].texture && ds34_texture_dirty)ds34_texture_dirty(&c->texture,f->attachments[0].texture);}
+ void ds26_quantize(const DS26Surface *target,float rgba[4]){
+     uint32_t format=target->format;
+     if(format==0x1907)rgba[3]=1;

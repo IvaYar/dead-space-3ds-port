@@ -1,0 +1,274 @@
+{
+  "baseline_private_log_sha256": "e451714063675444e3872b432b5b94b28e9e91e0a01a89d33be0113beeb9104c",
+  "fast_private_log_sha256": "37729847c4f529091eb80b0f19918f77839297c437aed2d9975b809533512a7b",
+  "hardware_015_callback_texture_allocations": {
+    "0": 1,
+    "2": 2,
+    "282": 2,
+    "1017": 2,
+    "4343": 129,
+    "4375": 1,
+    "4376": 3
+  },
+  "hardware_slow_window_ms": 473285.745,
+  "hardware_exact_individual_callback_duration_available": false,
+  "baseline_callback": {
+    "frame": 2861,
+    "ms": 382729.663,
+    "ops": [
+      {
+        "id": 0,
+        "calls": 1146,
+        "ms": 372131.936,
+        "max_ms": 3897.239,
+        "caller": 3294432,
+        "bytes": 0
+      },
+      {
+        "id": 1,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 2,
+        "calls": 34,
+        "ms": 10565.615,
+        "max_ms": 1607.749,
+        "caller": 3288780,
+        "bytes": 0
+      },
+      {
+        "id": 3,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 4,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 5,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 6,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 7,
+        "calls": 1146,
+        "ms": 37663.068,
+        "max_ms": 763.72,
+        "caller": 4157133316,
+        "bytes": 0
+      },
+      {
+        "id": 8,
+        "calls": 1146,
+        "ms": 117.152,
+        "max_ms": 0.525,
+        "caller": 4157134196,
+        "bytes": 0
+      },
+      {
+        "id": 9,
+        "calls": 1145,
+        "ms": 334203.575,
+        "max_ms": 3133.262,
+        "caller": 4157133832,
+        "bytes": 0
+      },
+      {
+        "id": 10,
+        "calls": 367,
+        "ms": 212316.621,
+        "max_ms": 832.291,
+        "caller": 4157161032,
+        "bytes": 1069965312
+      },
+      {
+        "id": 11,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      }
+    ],
+    "page_saves": 201,
+    "page_loads": 166,
+    "resident_bytes": 5029888
+  },
+  "fast_callback": {
+    "frame": 2891,
+    "ms": 202122.103,
+    "ops": [
+      {
+        "id": 0,
+        "calls": 1146,
+        "ms": 197173.303,
+        "max_ms": 2242.587,
+        "caller": 3294432,
+        "bytes": 0
+      },
+      {
+        "id": 1,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 2,
+        "calls": 34,
+        "ms": 4916.791,
+        "max_ms": 755.351,
+        "caller": 3288780,
+        "bytes": 0
+      },
+      {
+        "id": 3,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 4,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 5,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 6,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 7,
+        "calls": 1146,
+        "ms": 37664.932,
+        "max_ms": 763.72,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 8,
+        "calls": 1146,
+        "ms": 117.285,
+        "max_ms": 0.527,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 9,
+        "calls": 1145,
+        "ms": 159242.997,
+        "max_ms": 1575.91,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 10,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 11,
+        "calls": 367,
+        "ms": 32053.143,
+        "max_ms": 125.659,
+        "caller": 0,
+        "bytes": 1069965312
+      }
+    ],
+    "page_saves": 201,
+    "page_loads": 166,
+    "resident_bytes": 5029888,
+    "resource_bytes": 0,
+    "resource_reads": 0,
+    "IO_completions": 0,
+    "gpu_queue_wait_ms": 14.52,
+    "vblank_wait_ms": 1258.43
+  },
+  "callback_speedup": 1.8935567031973737,
+  "callback_reduction_percent": 47.18932903823553,
+  "page_crc_speedup": 6.623893981317215,
+  "same_pager_operation_and_CRC_byte_counts": true,
+  "baseline_and_fast_menu_raw_byte_identity": {
+    "3360": {
+      "p5-baseline": "2aad375a6d6716f8eff48ac17ead302aef7b912ee27c4fa1319da2e4f985bd12",
+      "p6-fast": "2aad375a6d6716f8eff48ac17ead302aef7b912ee27c4fa1319da2e4f985bd12"
+    },
+    "3480": {
+      "p5-baseline": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+      "p6-fast": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22"
+    },
+    "3720": {
+      "p5-baseline": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+      "p6-fast": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22"
+    },
+    "3960": {
+      "p5-baseline": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+      "p6-fast": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22"
+    },
+    "4200": {
+      "p5-baseline": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22",
+      "p6-fast": "aaa92a6d1834dbc7c815745d7d991f83730b8a3baab97796ec295a61eeb1ae22"
+    }
+  },
+  "hardware_new_version_speedup_measured": false,
+  "timing_limit": "Azahar CPU100 SDK guest ticks; nested operation timings overlap; future hardware timings must be measured independently.",
+  "operation_ids": {
+    "0": "glDrawElements",
+    "1": "glDrawArrays",
+    "2": "glTexImage2D",
+    "3": "glTexSubImage2D",
+    "4": "glClear",
+    "5": "glFinish",
+    "6": "glReadPixels",
+    "7": "DS34_begin_draw_CPU_preparation_and_waits",
+    "8": "DS34_end_draw_CPU_submission",
+    "9": "CPU_texture_residency",
+    "10": "unchanged_bitwise_CRC",
+    "11": "exact_table_page_CRC"
+  },
+  "hardware_and_both_software_129_texture_allocation_sequences_identical": true,
+  "texture_allocation_shape_sequence_sha256": "694b8df16889bdb0b90068f4998895dfd8dc797cf126ab5011bf4647f4f2118c"
+}

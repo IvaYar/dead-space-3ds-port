@@ -1,0 +1,136 @@
+{
+  "runs": [
+    {
+      "name": "azahar-native-menu-v0.1.6-final-cycle1",
+      "safety_passed": true,
+      "callbacks": 4323,
+      "reason": "MENU_ONLY: original confirm delivered; scene continuation bounded",
+      "host_seconds": 43.328
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-final-cycle2",
+      "safety_passed": true,
+      "callbacks": 4323,
+      "reason": "MENU_ONLY: original confirm delivered; scene continuation bounded",
+      "host_seconds": 43.5
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-final-cycle3",
+      "safety_passed": true,
+      "callbacks": 4323,
+      "reason": "MENU_ONLY: original confirm delivered; scene continuation bounded",
+      "host_seconds": 48.656
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-final2-confirm",
+      "safety_passed": true,
+      "callbacks": 4323,
+      "reason": "MENU_ONLY: original confirm delivered; scene continuation bounded",
+      "host_seconds": 47.188
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-final2-earlyexit",
+      "safety_passed": true,
+      "callbacks": 720,
+      "reason": "START during exploration",
+      "host_seconds": 14.125
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-final2-repeat2",
+      "safety_passed": true,
+      "callbacks": 4323,
+      "reason": "MENU_ONLY: original confirm delivered; scene continuation bounded",
+      "host_seconds": 42.266
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-final2-repeat3",
+      "safety_passed": true,
+      "callbacks": 4323,
+      "reason": "MENU_ONLY: original confirm delivered; scene continuation bounded",
+      "host_seconds": 40.485
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-final2home-home",
+      "safety_passed": true,
+      "callbacks": 3899,
+      "reason": "HOME during exploration",
+      "host_seconds": 36.344
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p1-profile",
+      "safety_passed": true,
+      "callbacks": 6000,
+      "reason": "EXPLORATORY continuation; image validation remains FAIL",
+      "host_seconds": 119.422
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p2-nav",
+      "result": "Host driver started after failed p2 compilation; no emulator proof."
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p3-nav",
+      "safety_passed": true,
+      "callbacks": 6000,
+      "reason": "EXPLORATORY continuation; image validation remains FAIL",
+      "host_seconds": 120.047
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p4-nav",
+      "safety_passed": true,
+      "callbacks": 6000,
+      "reason": "EXPLORATORY continuation; image validation remains FAIL",
+      "host_seconds": 117.047
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p5-baseline",
+      "safety_passed": true,
+      "callbacks": 6000,
+      "reason": "EXPLORATORY continuation; image validation remains FAIL",
+      "host_seconds": 118.375
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p6-fast",
+      "safety_passed": true,
+      "callbacks": 6000,
+      "reason": "EXPLORATORY continuation; image validation remains FAIL",
+      "host_seconds": 46.469
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p8-back",
+      "safety_passed": true,
+      "callbacks": 4200,
+      "reason": "START during exploration",
+      "host_seconds": 41.86
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p8-state",
+      "safety_passed": true,
+      "callbacks": 4203,
+      "reason": "MENU_ONLY: original confirm delivered; scene continuation bounded",
+      "host_seconds": 40.703
+    },
+    {
+      "name": "azahar-native-menu-v0.1.6-p9-back",
+      "safety_passed": true,
+      "callbacks": 4200,
+      "reason": "START during exploration",
+      "host_seconds": 42.281
+    }
+  ],
+  "failed_build_revisions": [
+    "p2: unused probe rejected by -Werror",
+    "p7: obsolete unused helper rejected by -Werror"
+  ],
+  "notes": {
+    "p1": "GL import profiling; old image admission preserved for baseline.",
+    "p3": "Deep GPU profiling; profile singleton first rejected as outside heap. Safe exit, input unproven.",
+    "p4": "Pager timing isolated; difficulty enum2 after Easy was outside provisional getter mapping; superseded.",
+    "p5": "Bitwise page CRC timing; navigation incomplete after first DOWN; used only as performance/image-preservation comparator.",
+    "p6": "Exact page CRC faster; provisional profile enum mapping superseded.",
+    "p8": "Readonly actual widget checked states solve navigation; B trial at20,20 missed back.",
+    "p9": "Back pointer at64,67 has no visible action; original handler explicitly ignores BTN_BACK. Final uses original keyboard BACK, no forced pop.",
+    "final": "Three successful serial cold-process cycles before the extra read-only confirmation-state trace.",
+    "final2": "Exact candidate: three serial full navigation/confirm cycles, early START, HOME fixture."
+  },
+  "new_CIA_count_before_packaging": 0
+}

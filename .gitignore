@@ -13,6 +13,8 @@
 !/docs/images/azahar-difficulty-menu.png
 !/docs/images/hardware-menu.jpg
 !/docs/images/hardware-intro.jpg
+!/docs/images/azahar-chapter-one.png
+!/docs/images/azahar-chapter-one-top.png
 !/HANDOFF.ru.md
 !/HANDOFF.md
 !/porting/
@@ -751,3 +753,80 @@
 !/porting/analysis/native-game-menu-v0.1.5-hardware/archive-manifest.json
 !/porting/analysis/native-game-menu-v0.1.5-hardware/user-observations.json
 !/porting/analysis/native-game-menu-v0.1.5-hardware/software-release-gate-before-hardware.json
+# Original-state controls and exact texture-page CRC: own source/numerical proofs.
+!/porting/tests/native_menu_engine_state.h
+!/porting/tests/native_menu_controls.h
+!/porting/tests/native_menu_profile.h
+!/porting/tests/native_menu_page_crc.h
+!/porting/analysis/native-game-controls-v0.1.6/
+!/porting/analysis/native-game-controls-v0.1.6/report.ru.md
+!/porting/analysis/native-game-controls-v0.1.6/software-audit.json
+!/porting/analysis/native-game-controls-v0.1.6/input-tests.json
+!/porting/analysis/native-game-controls-v0.1.6/page-crc-tests.json
+!/porting/analysis/native-game-controls-v0.1.6/performance.json
+!/porting/analysis/native-game-controls-v0.1.6/experiments.json
+!/porting/analysis/native-game-controls-v0.1.6/release-gate.json
+# Received Controls0.1.6 hardware: numerical/text summary only.
+!/porting/analysis/native-game-controls-v0.1.6-hardware/
+!/porting/analysis/native-game-controls-v0.1.6-hardware/report.ru.md
+!/porting/analysis/native-game-controls-v0.1.6-hardware/hardware-result.json
+!/porting/analysis/native-game-controls-v0.1.6-hardware/archive-manifest.json
+!/porting/analysis/native-game-controls-v0.1.6-hardware/user-observations.json
+!/porting/analysis/native-game-controls-v0.1.6-hardware/software-release-gate-before-hardware.json
+# HID0.1.7: own observer/queue and selected numerical evidence only.
+!/porting/tests/native_hid_queue.h
+!/porting/tests/native_hid_collector.h
+!/porting/tests/native_menu_hid_controls.h
+!/porting/analysis/native-game-hid-v0.1.7/
+!/porting/analysis/native-game-hid-v0.1.7/report.ru.md
+!/porting/analysis/native-game-hid-v0.1.7/software-audit.json
+!/porting/analysis/native-game-hid-v0.1.7/queue-tests.json
+!/porting/analysis/native-game-hid-v0.1.7/SDK-tests.json
+!/porting/analysis/native-game-hid-v0.1.7/performance.json
+!/porting/analysis/native-game-hid-v0.1.7/experiments.json
+!/porting/analysis/native-game-hid-v0.1.7/release-gate.json
+# Received HID0.1.7 hardware: selected summaries only; all raw/stacks stay private.
+!/porting/analysis/native-game-hid-v0.1.7-hardware/
+!/porting/analysis/native-game-hid-v0.1.7-hardware/report.ru.md
+!/porting/analysis/native-game-hid-v0.1.7-hardware/hardware-result.json
+!/porting/analysis/native-game-hid-v0.1.7-hardware/archive-manifest.json
+!/porting/analysis/native-game-hid-v0.1.7-hardware/user-observations.json
+!/porting/analysis/native-game-hid-v0.1.7-hardware/software-release-gate-before-hardware.json
+# Bounded loading experiment: own instrumentation/diff and numerical summaries.
+!/porting/tests/native_loading_profile.h
+!/porting/analysis/native-loading-optimization/
+!/porting/analysis/native-loading-optimization/report.ru.md
+!/porting/analysis/native-loading-optimization/result.json
+!/porting/analysis/native-loading-optimization/hardware-breakdown.json
+!/porting/analysis/native-loading-optimization/page-working-set.json
+!/porting/analysis/native-loading-optimization/pager-tests.json
+!/porting/analysis/native-loading-optimization/experiments.json
+!/porting/analysis/native-loading-optimization/paging.diff
+!/porting/analysis/native-loading-optimization/index-review.json
+# Original first-scene experiment: own source and numerical summaries only.
+!/porting/tests/native_scene_audio_jni.h
+!/porting/tests/native_scene_observer.h
+!/porting/tests/native_scene_gpu.h
+!/porting/analysis/native-first-scene/
+!/porting/analysis/native-first-scene/report.ru.md
+!/porting/analysis/native-first-scene/result.json
+# Scene texture working set: source, text and selected numerical evidence only.
+!/porting/tests/native_scene_textures.h
+!/porting/analysis/native-scene-textures/
+!/porting/analysis/native-scene-textures/report.ru.md
+!/porting/analysis/native-scene-textures/result.json
+# Regional UV analysis and lossless GPU backing: source/numerical evidence only.
+!/porting/tests/native_scene_uv.h
+!/porting/tests/native_scene_morton.h
+!/porting/tests/native_scene_morton_profile.h
+!/porting/tests/scene_morton_store.h
+!/porting/3ds/vendor/
+!/porting/3ds/vendor/lz4-v1.10.0/
+!/porting/3ds/vendor/lz4-v1.10.0/lz4.c
+!/porting/3ds/vendor/lz4-v1.10.0/lz4.h
+!/porting/3ds/vendor/lz4-v1.10.0/LICENSE
+!/porting/3ds/vendor/lz4-v1.10.0/source.json
+!/porting/analysis/regional-texture-residency/
+!/porting/analysis/regional-texture-residency/report.ru.md
+!/porting/analysis/regional-texture-residency/result.json
+!/porting/analysis/regional-texture-residency/hybrid-4430.json

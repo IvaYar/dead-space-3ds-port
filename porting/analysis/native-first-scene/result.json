@@ -1,0 +1,1409 @@
+{
+  "software_scene_checks_passed": true,
+  "Isaac_seen": false,
+  "playable_gameplay_confirmed": false,
+  "original_prologue_seen": true,
+  "audio_NULL_reproduced": true,
+  "original_audio_init_removes_reproduced_NULL_reads": true,
+  "audible_audio_backend": false,
+  "fog_COMBINE_fixture": {
+    "passed": true,
+    "cases": [
+      {
+        "case": 0,
+        "completed": true,
+        "max_channel_error": 0,
+        "pixels_over_4": 0,
+        "passed": true
+      },
+      {
+        "case": 1,
+        "completed": true,
+        "max_channel_error": 1,
+        "pixels_over_4": 0,
+        "passed": true
+      },
+      {
+        "case": 2,
+        "completed": true,
+        "max_channel_error": 1,
+        "pixels_over_4": 0,
+        "passed": true
+      },
+      {
+        "case": 3,
+        "completed": true,
+        "max_channel_error": 1,
+        "pixels_over_4": 0,
+        "passed": true
+      },
+      {
+        "case": 4,
+        "completed": true,
+        "max_channel_error": 1,
+        "pixels_over_4": 0,
+        "passed": true
+      },
+      {
+        "case": 5,
+        "completed": true,
+        "max_channel_error": 1,
+        "pixels_over_4": 0,
+        "passed": true
+      },
+      {
+        "case": 6,
+        "completed": true,
+        "max_channel_error": 1,
+        "pixels_over_4": 0,
+        "passed": true
+      },
+      {
+        "case": 7,
+        "completed": true,
+        "max_channel_error": 1,
+        "pixels_over_4": 0,
+        "passed": true
+      }
+    ],
+    "invalid_accesses": [],
+    "game_called": false,
+    "hardware_tested": false
+  },
+  "ARM_contracts": {
+    "passed": true,
+    "tests_run": 17,
+    "errors": 0,
+    "failures": 0,
+    "checks": [
+      "test_multiple_images_roundtrip_exact_bytes_with_bounded_resident_memory",
+      "test_subimage_of_spilled_store_survives_next_eviction",
+      "test_spilled_attachment_is_complete_and_clear_modifications_persist",
+      "test_save_failure_preserves_existing_pixels",
+      "test_load_failure_never_returns_fabricated_texels_and_can_retry",
+      "test_backing_cannot_attach_after_images_exist",
+      "test_oversize_image_refuses_without_overcommit",
+      "test_deleting_spilled_texture_drops_private_backing",
+      "test_deleted_unbound_fbo_attachment_can_be_paged_and_drawn",
+      "test_pinned_fbo_and_two_sampled_stores_refuse_overcommit",
+      "test_allocator_pressure_spills_an_extra_page_without_losing_pixels",
+      "test_repeated_read_only_evictions_reuse_exact_backing",
+      "test_FBO_draw_after_clean_reload_invalidates_old_page",
+      "test_replacement_drops_retained_snapshot",
+      "test_short_elements_units_and_typed_regions",
+      "test_pcm_sink_validates_bounds_and_play_state",
+      "test_vm_detach_entry_is_callable"
+    ],
+    "hardware_tested": false,
+    "optimized_source_sha256": {
+      "ds15_textures.c": "e903e39f90829ed578db886af0523933b1cd4b9eaa625aa628702e5e5952c3ab",
+      "ds26_framebuffer.c": "62fa45d0a27daaeda49652305942c90fb5e860c48bc44780bbed70e2b13a4c85"
+    },
+    "ELF_sha256": "2646f5d13ad2b1686545fb6ab914b1ba7531a9940bcc816df681c28bc7096106"
+  },
+  "protected_files_verified": 375,
+  "store_files_verified": 1752,
+  "runs": {
+    "scene14:first": {
+      "safety_passed": true,
+      "CXI_sha256": "49b2b5788db0adbaab513eeaf90aa57bda2bfcc45851fb479e1e1519e7f2d807",
+      "callbacks_completed": 4341,
+      "confirmation_ack_callback": 4323,
+      "callbacks_after_ack": 18,
+      "exit_reason": "SCENE_BUDGET: 120s original scene time; returned main boundary",
+      "scene_time_budget_seconds": 240,
+      "budget_record": [],
+      "elapsed_host_seconds": 62.047,
+      "engine_request_to_ready_ms": 278026.59,
+      "menu_warm_callback": {
+        "frame": 2911,
+        "ms": 161566.832,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 157629.02,
+            "max_ms": 1963.963,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 3905.87,
+            "max_ms": 683.703,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37960.932,
+            "max_ms": 773.434,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 187.974,
+            "max_ms": 0.96,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1274,
+            "ms": 119331.845,
+            "max_ms": 1314.559,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 204,
+            "ms": 16739.688,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 558784512
+          }
+        ],
+        "page_saves": 38,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1244.816
+      },
+      "menu_raw_pairs_byte_identical": [
+        3120,
+        3240,
+        3360,
+        3480,
+        3600,
+        3720,
+        3840,
+        3960,
+        4080,
+        4200,
+        4320
+      ],
+      "captures_crc_verified": 56,
+      "scene_capture_frames": [
+        4324,
+        4325,
+        4326,
+        4327,
+        4328,
+        4329,
+        4330,
+        4331,
+        4332,
+        4333,
+        4334,
+        4335,
+        4336,
+        4337,
+        4338,
+        4339,
+        4340,
+        4341
+      ],
+      "peak": {
+        "normal_live": 17397376,
+        "normal_footprint": 19881984,
+        "normal_request": 4792320,
+        "linear_used": 104635264,
+        "linear_other": 14982016,
+        "linear_request": 4194304,
+        "vram_used": 4192768,
+        "vram_request": 1048576,
+        "arena_actual_size": 89653248
+      },
+      "max_commit": 126840832,
+      "linear_headroom": 222336,
+      "donor_brk_peak": 67112960,
+      "donor_map_peak_pages": 5467,
+      "runtime_allocation_refusals_including_retries": 32,
+      "stable_menu_window": {
+        "frame": 3240,
+        "callbacks": 120,
+        "elapsed_ms": 2624.461,
+        "callback_ms": 1057.706,
+        "present_ms": 960.331,
+        "diagnostic_ms": 600.736,
+        "gpu_queue_wait_ms": 0.672,
+        "vblank_wait_ms": 867.331,
+        "last_c3d_processing_ms": 10.594,
+        "last_c3d_drawing_ms": 0.19
+      },
+      "scene_callbacks_profiled": [
+        {
+          "frame": 4326,
+          "ms": 16398.494,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14653.778,
+          "resident_ms": 9102.319,
+          "page_loads": 16,
+          "page_saves": 2
+        },
+        {
+          "frame": 4327,
+          "ms": 14540.987,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14092.415,
+          "resident_ms": 8548.754,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4328,
+          "ms": 14433.588,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13984.747,
+          "resident_ms": 8436.327,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4329,
+          "ms": 14468.651,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14019.157,
+          "resident_ms": 8467.727,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4330,
+          "ms": 14433.6,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13983.326,
+          "resident_ms": 8433.95,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4331,
+          "ms": 14450.14,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13998.549,
+          "resident_ms": 8449.181,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4332,
+          "ms": 14450.689,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13998.494,
+          "resident_ms": 8449.692,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4333,
+          "ms": 14450.367,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13997.528,
+          "resident_ms": 8448.672,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4334,
+          "ms": 14450.173,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13996.537,
+          "resident_ms": 8446.645,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4335,
+          "ms": 14450.239,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13995.942,
+          "resident_ms": 8445.96,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4336,
+          "ms": 14433.55,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13978.7,
+          "resident_ms": 8434.263,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4337,
+          "ms": 14450.104,
+          "draws": 34,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14000.418,
+          "resident_ms": 8450.088,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4338,
+          "ms": 14450.104,
+          "draws": 34,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13995.329,
+          "resident_ms": 8453.334,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4339,
+          "ms": 14450.201,
+          "draws": 34,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 13996.028,
+          "resident_ms": 8446.492,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4340,
+          "ms": 14468.377,
+          "draws": 34,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14014.134,
+          "resident_ms": 8465.263,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4341,
+          "ms": 14483.372,
+          "draws": 34,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14029.304,
+          "resident_ms": 8483.595,
+          "page_loads": 17,
+          "page_saves": 0
+        }
+      ],
+      "observed_resources": [
+        "sdmc:/3ds/deadspace/assets/published/sounds/music/10_Entering_Zero-G.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/music/AMB_FAN_DRONE_01.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/sfx/cinematics/PrologueCinematic_FullVO_v2.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/sfx/ui/UI_MENU_OPTION_SELECT.sps"
+      ],
+      "observed_app_objects": [
+        [
+          "10",
+          "0043a958"
+        ],
+        [
+          "18",
+          "0043ab50"
+        ],
+        [
+          "20",
+          "004262f0"
+        ],
+        [
+          "2c",
+          "004262f0"
+        ],
+        [
+          "34",
+          "0043a9c0"
+        ],
+        [
+          "38",
+          "0043a890"
+        ],
+        [
+          "40",
+          "00439a60"
+        ],
+        [
+          "44",
+          "00438df8"
+        ],
+        [
+          "48",
+          "00439ad8"
+        ],
+        [
+          "50",
+          "0043b0f0"
+        ],
+        [
+          "54",
+          "00439af0"
+        ],
+        [
+          "5c",
+          "0043b0d8"
+        ],
+        [
+          "60",
+          "0043b0d8"
+        ],
+        [
+          "c",
+          "0043a8c0"
+        ],
+        [
+          "c0",
+          "00427e60"
+        ],
+        [
+          "c4",
+          "00435858"
+        ],
+        [
+          "cc",
+          "00427e60"
+        ],
+        [
+          "d0",
+          "00435858"
+        ],
+        [
+          "d8",
+          "00427dd8"
+        ]
+      ],
+      "new_HOME_fixture": false
+    },
+    "scene15home:home": {
+      "safety_passed": true,
+      "CXI_sha256": "c69f0fa44b6aba96e32dec959aa3b37e38d8b8692c64a297240824837bcc3541",
+      "callbacks_completed": 4329,
+      "confirmation_ack_callback": 4323,
+      "callbacks_after_ack": 6,
+      "exit_reason": "HOME during exploration",
+      "scene_time_budget_seconds": 240,
+      "budget_record": [],
+      "elapsed_host_seconds": 48.187,
+      "engine_request_to_ready_ms": 278611.696,
+      "menu_warm_callback": {
+        "frame": 2888,
+        "ms": 162548.147,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 158406.013,
+            "max_ms": 1896.547,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4110.233,
+            "max_ms": 747.865,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37995.326,
+            "max_ms": 773.905,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 183.845,
+            "max_ms": 0.845,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1274,
+            "ms": 120078.7,
+            "max_ms": 1247.137,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 204,
+            "ms": 16739.435,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 558784512
+          }
+        ],
+        "page_saves": 38,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1281.253
+      },
+      "menu_raw_pairs_byte_identical": [
+        3120,
+        3240,
+        3360,
+        3480,
+        3600,
+        3720,
+        3840,
+        3960,
+        4080,
+        4200,
+        4320
+      ],
+      "captures_crc_verified": 44,
+      "scene_capture_frames": [
+        4324,
+        4325,
+        4326,
+        4327,
+        4328,
+        4329
+      ],
+      "peak": {
+        "normal_live": 17397376,
+        "normal_footprint": 19881984,
+        "normal_request": 4792320,
+        "linear_used": 104635264,
+        "linear_other": 14982016,
+        "linear_request": 4194304,
+        "vram_used": 4192768,
+        "vram_request": 1048576,
+        "arena_actual_size": 89653248
+      },
+      "max_commit": 126840832,
+      "linear_headroom": 222336,
+      "donor_brk_peak": 67112960,
+      "donor_map_peak_pages": 5467,
+      "runtime_allocation_refusals_including_retries": 5,
+      "stable_menu_window": {
+        "frame": 3240,
+        "callbacks": 120,
+        "elapsed_ms": 2624.188,
+        "callback_ms": 1058.096,
+        "present_ms": 959.918,
+        "diagnostic_ms": 600.476,
+        "gpu_queue_wait_ms": 0.672,
+        "vblank_wait_ms": 866.945,
+        "last_c3d_processing_ms": 10.594,
+        "last_c3d_drawing_ms": 0.19
+      },
+      "scene_callbacks_profiled": [
+        {
+          "frame": 4325,
+          "ms": 28635.888,
+          "draws": 960,
+          "texture_allocations": 41,
+          "gpu_begin_draw_ms": 24861.506,
+          "resident_ms": 15605.043,
+          "page_loads": 40,
+          "page_saves": 2
+        },
+        {
+          "frame": 4326,
+          "ms": 15663.021,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14264.168,
+          "resident_ms": 8530.901,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4327,
+          "ms": 14465.185,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14015.184,
+          "resident_ms": 8450.997,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4328,
+          "ms": 14470.168,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14020.094,
+          "resident_ms": 8458.62,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4329,
+          "ms": 14500.34,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14048.98,
+          "resident_ms": 8472.765,
+          "page_loads": 17,
+          "page_saves": 0
+        }
+      ],
+      "observed_resources": [
+        "sdmc:/3ds/deadspace/assets/published/sounds/music/10_Entering_Zero-G.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/music/AMB_FAN_DRONE_01.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/sfx/cinematics/PrologueCinematic_FullVO_v2.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/sfx/ui/UI_MENU_OPTION_SELECT.sps"
+      ],
+      "observed_app_objects": [
+        [
+          "10",
+          "0043a958"
+        ],
+        [
+          "18",
+          "0043ab50"
+        ],
+        [
+          "20",
+          "004262f0"
+        ],
+        [
+          "2c",
+          "004262f0"
+        ],
+        [
+          "34",
+          "0043a9c0"
+        ],
+        [
+          "38",
+          "0043a890"
+        ],
+        [
+          "40",
+          "00439a60"
+        ],
+        [
+          "44",
+          "00438df8"
+        ],
+        [
+          "48",
+          "00439ad8"
+        ],
+        [
+          "50",
+          "0043b0f0"
+        ],
+        [
+          "54",
+          "00439af0"
+        ],
+        [
+          "5c",
+          "0043b0d8"
+        ],
+        [
+          "60",
+          "0043b0d8"
+        ],
+        [
+          "c",
+          "0043a8c0"
+        ],
+        [
+          "c0",
+          "00427e60"
+        ],
+        [
+          "c4",
+          "00435858"
+        ],
+        [
+          "cc",
+          "00427e60"
+        ],
+        [
+          "d0",
+          "00435858"
+        ],
+        [
+          "d8",
+          "00427dd8"
+        ]
+      ],
+      "new_HOME_fixture": true
+    },
+    "scene16:repeat": {
+      "safety_passed": true,
+      "CXI_sha256": "e3c390345ae193500891fe541c94a6f1160a35b15194bf067d4880ec66540f71",
+      "callbacks_completed": 4339,
+      "confirmation_ack_callback": 4323,
+      "callbacks_after_ack": 16,
+      "exit_reason": "SCENE_BUDGET: original scene time limit; returned main boundary",
+      "scene_time_budget_seconds": 240,
+      "budget_record": [
+        [
+          "4339",
+          "240000",
+          "243865"
+        ]
+      ],
+      "elapsed_host_seconds": 60.813,
+      "engine_request_to_ready_ms": 277575.461,
+      "menu_warm_callback": {
+        "frame": 2911,
+        "ms": 161601.03,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 157600.92,
+            "max_ms": 1964.152,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 3968.225,
+            "max_ms": 697.766,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37979.137,
+            "max_ms": 768.554,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 190.0,
+            "max_ms": 1.067,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1274,
+            "ms": 119283.514,
+            "max_ms": 1314.738,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 204,
+            "ms": 16739.435,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 558784512
+          }
+        ],
+        "page_saves": 38,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1267.966
+      },
+      "menu_raw_pairs_byte_identical": [
+        3120,
+        3240,
+        3360,
+        3480,
+        3600,
+        3720,
+        3840,
+        3960,
+        4080,
+        4200,
+        4320
+      ],
+      "captures_crc_verified": 54,
+      "scene_capture_frames": [
+        4324,
+        4325,
+        4326,
+        4327,
+        4328,
+        4329,
+        4330,
+        4331,
+        4332,
+        4333,
+        4334,
+        4335,
+        4336,
+        4337,
+        4338,
+        4339
+      ],
+      "peak": {
+        "normal_live": 17397376,
+        "normal_footprint": 19881984,
+        "normal_request": 4792320,
+        "linear_used": 104635264,
+        "linear_other": 14982016,
+        "linear_request": 4194304,
+        "vram_used": 4192768,
+        "vram_request": 1048576,
+        "arena_actual_size": 89653248
+      },
+      "max_commit": 126840832,
+      "linear_headroom": 222336,
+      "donor_brk_peak": 67112960,
+      "donor_map_peak_pages": 5467,
+      "runtime_allocation_refusals_including_retries": 14,
+      "stable_menu_window": {
+        "frame": 3240,
+        "callbacks": 120,
+        "elapsed_ms": 2661.042,
+        "callback_ms": 1059.585,
+        "present_ms": 959.312,
+        "diagnostic_ms": 636.466,
+        "gpu_queue_wait_ms": 0.672,
+        "vblank_wait_ms": 866.307,
+        "last_c3d_processing_ms": 10.577,
+        "last_c3d_drawing_ms": 0.19
+      },
+      "scene_callbacks_profiled": [
+        {
+          "frame": 4325,
+          "ms": 28637.365,
+          "draws": 960,
+          "texture_allocations": 41,
+          "gpu_begin_draw_ms": 24861.547,
+          "resident_ms": 15623.856,
+          "page_loads": 40,
+          "page_saves": 2
+        },
+        {
+          "frame": 4326,
+          "ms": 15696.448,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14297.48,
+          "resident_ms": 8573.613,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4327,
+          "ms": 14495.056,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14044.282,
+          "resident_ms": 8491.064,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4328,
+          "ms": 14481.889,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14030.704,
+          "resident_ms": 8473.03,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4329,
+          "ms": 14498.283,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14046.548,
+          "resident_ms": 8484.935,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4330,
+          "ms": 14478.795,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14025.138,
+          "resident_ms": 8475.152,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4331,
+          "ms": 14495.515,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14041.642,
+          "resident_ms": 8482.156,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4332,
+          "ms": 14481.607,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14027.135,
+          "resident_ms": 8467.445,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4333,
+          "ms": 14497.9,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14042.274,
+          "resident_ms": 8490.995,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4334,
+          "ms": 14495.515,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14039.592,
+          "resident_ms": 8480.997,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4335,
+          "ms": 14478.797,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14021.697,
+          "resident_ms": 8474.94,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4336,
+          "ms": 14478.806,
+          "draws": 35,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14022.361,
+          "resident_ms": 8473.356,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4337,
+          "ms": 14461.883,
+          "draws": 34,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14010.197,
+          "resident_ms": 8458.369,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4338,
+          "ms": 14478.498,
+          "draws": 34,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14022.257,
+          "resident_ms": 8471.148,
+          "page_loads": 17,
+          "page_saves": 0
+        },
+        {
+          "frame": 4339,
+          "ms": 14478.257,
+          "draws": 34,
+          "texture_allocations": 17,
+          "gpu_begin_draw_ms": 14022.313,
+          "resident_ms": 8472.701,
+          "page_loads": 17,
+          "page_saves": 0
+        }
+      ],
+      "observed_resources": [
+        "sdmc:/3ds/deadspace/assets/published/sounds/music/10_Entering_Zero-G.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/music/AMB_FAN_DRONE_01.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/sfx/cinematics/PrologueCinematic_FullVO_v2.sps",
+        "sdmc:/3ds/deadspace/assets/published/sounds/sfx/ui/UI_MENU_OPTION_SELECT.sps"
+      ],
+      "observed_app_objects": [
+        [
+          "10",
+          "0043a958"
+        ],
+        [
+          "18",
+          "0043ab50"
+        ],
+        [
+          "20",
+          "004262f0"
+        ],
+        [
+          "2c",
+          "004262f0"
+        ],
+        [
+          "34",
+          "0043a9c0"
+        ],
+        [
+          "38",
+          "0043a890"
+        ],
+        [
+          "40",
+          "00439a60"
+        ],
+        [
+          "44",
+          "00438df8"
+        ],
+        [
+          "48",
+          "00439ad8"
+        ],
+        [
+          "50",
+          "0043b0f0"
+        ],
+        [
+          "54",
+          "00439af0"
+        ],
+        [
+          "5c",
+          "0043b0d8"
+        ],
+        [
+          "60",
+          "0043b0d8"
+        ],
+        [
+          "c",
+          "0043a8c0"
+        ],
+        [
+          "c0",
+          "00427e60"
+        ],
+        [
+          "c4",
+          "00435858"
+        ],
+        [
+          "cc",
+          "00427e60"
+        ],
+        [
+          "d0",
+          "00435858"
+        ],
+        [
+          "d8",
+          "00427dd8"
+        ]
+      ],
+      "new_HOME_fixture": false
+    }
+  },
+  "experiments": [
+    {
+      "name": "azahar-native-menu-v0.1.7-scene01-confirmed",
+      "safety_passed": false,
+      "timeout": null,
+      "reason": "unsupported GLES state",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene01-faults",
+      "safety_passed": true,
+      "timeout": null,
+      "reason": "EXPLORATORY continuation; image validation remains FAIL",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene02-audio",
+      "safety_passed": false,
+      "timeout": null,
+      "reason": null,
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene04-combine",
+      "safety_passed": false,
+      "timeout": null,
+      "reason": "GPU fog/stencil/offset not implemented",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene05-audiofixed",
+      "safety_passed": false,
+      "timeout": {
+        "safety_passed": false,
+        "reason": "host deadline 180s"
+      },
+      "reason": null,
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene07-fog",
+      "safety_passed": false,
+      "timeout": null,
+      "reason": "worker/GPU shutdown incomplete",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene08-memory",
+      "safety_passed": true,
+      "timeout": null,
+      "reason": "draw/present failed",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene09-trim",
+      "safety_passed": true,
+      "timeout": null,
+      "reason": "draw/present failed",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene10-pressure",
+      "safety_passed": true,
+      "timeout": null,
+      "reason": "START during exploration",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene12-captured",
+      "safety_passed": true,
+      "timeout": null,
+      "reason": "SCENE_BUDGET: 120s original scene time; returned main boundary",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene14-first",
+      "safety_passed": true,
+      "timeout": null,
+      "reason": "SCENE_BUDGET: 120s original scene time; returned main boundary",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene15home-home",
+      "safety_passed": true,
+      "timeout": null,
+      "reason": "HOME during exploration",
+      "original_data_retained": true
+    },
+    {
+      "name": "azahar-native-menu-v0.1.7-scene16-repeat",
+      "safety_passed": true,
+      "timeout": null,
+      "reason": "SCENE_BUDGET: original scene time limit; returned main boundary",
+      "original_data_retained": true
+    }
+  ],
+  "CIA_created": false,
+  "hardware_tested": false,
+  "hardware_authorized": false,
+  "ready_for_experimental_CIA": false,
+  "blockers": [
+    "Opening prologue only; no Isaac or player control yet.",
+    "Scene canonical/GPU atlas working set thrashes; frequent allocator refusals recovered by safe paging.",
+    "Linear headroom remains 222336 bytes.",
+    "PCM sink is emulator research only."
+  ],
+  "audio_contract": {
+    "DEX_source_sha256": "c7827f417525afd57c9182b3b509c13ec4f9fdf84136c13280e8eec349c05aa5",
+    "native_Init_signature": "(Landroid/media/AudioTrack;III)V",
+    "integer_argument_order": [
+      "bufferFrames",
+      "channels",
+      "sampleRate"
+    ],
+    "emulator_values": [
+      1024,
+      2,
+      22050
+    ],
+    "PCM_method": "AudioTrack.write([SII)I; signed PCM16 sample count",
+    "VM_DetachCurrentThread_required": true,
+    "shutdown_order": [
+      "drain loaders",
+      "Pause/Stop",
+      "stop audio while jobs remain live",
+      "stop jobs",
+      "stop periodic",
+      "Release audio globals",
+      "JNI cleanup",
+      "GPU drain/Fini"
+    ],
+    "old_NULL_donor_offsets": [
+      "265f80",
+      "265f98"
+    ]
+  }
+}

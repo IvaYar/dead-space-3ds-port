@@ -1,0 +1,137 @@
+{
+  "canonical_CPU_residency_limit_bytes": 6291456,
+  "largest_page_bytes": 4194304,
+  "two_largest_pages_need_bytes": 8388608,
+  "same_snapshot_resaves": 163,
+  "same_snapshot_resave_payload_bytes": 511180800,
+  "warm_page_load_lineages": [
+    {
+      "origin_token": 46,
+      "loads": 47,
+      "bytes": 4194304
+    },
+    {
+      "origin_token": 40,
+      "loads": 36,
+      "bytes": 4194304
+    },
+    {
+      "origin_token": 47,
+      "loads": 29,
+      "bytes": 4194304
+    },
+    {
+      "origin_token": 51,
+      "loads": 9,
+      "bytes": 65536
+    },
+    {
+      "origin_token": 8,
+      "loads": 6,
+      "bytes": 262144
+    },
+    {
+      "origin_token": 48,
+      "loads": 6,
+      "bytes": 4194304
+    },
+    {
+      "origin_token": 60,
+      "loads": 4,
+      "bytes": 65536
+    },
+    {
+      "origin_token": 4,
+      "loads": 4,
+      "bytes": 262144
+    },
+    {
+      "origin_token": 49,
+      "loads": 4,
+      "bytes": 131072
+    },
+    {
+      "origin_token": 43,
+      "loads": 3,
+      "bytes": 65536
+    },
+    {
+      "origin_token": 44,
+      "loads": 2,
+      "bytes": 65536
+    },
+    {
+      "origin_token": 83,
+      "loads": 2,
+      "bytes": 262144
+    },
+    {
+      "origin_token": 203,
+      "loads": 2,
+      "bytes": 4194304
+    },
+    {
+      "origin_token": 185,
+      "loads": 1,
+      "bytes": 1048576
+    },
+    {
+      "origin_token": 206,
+      "loads": 1,
+      "bytes": 4194304
+    },
+    {
+      "origin_token": 12,
+      "loads": 1,
+      "bytes": 262144
+    },
+    {
+      "origin_token": 191,
+      "loads": 1,
+      "bytes": 262144
+    },
+    {
+      "origin_token": 19,
+      "loads": 1,
+      "bytes": 65536
+    },
+    {
+      "origin_token": 31,
+      "loads": 1,
+      "bytes": 65536
+    },
+    {
+      "origin_token": 192,
+      "loads": 1,
+      "bytes": 262144
+    },
+    {
+      "origin_token": 74,
+      "loads": 1,
+      "bytes": 262144
+    },
+    {
+      "origin_token": 22,
+      "loads": 1,
+      "bytes": 32768
+    },
+    {
+      "origin_token": 20,
+      "loads": 1,
+      "bytes": 16384
+    },
+    {
+      "origin_token": 5,
+      "loads": 1,
+      "bytes": 524288
+    },
+    {
+      "origin_token": 6,
+      "loads": 1,
+      "bytes": 262144
+    }
+  ],
+  "load_sequence_sizes_and_CRC_identical": true,
+  "warm_load_payload_bytes": 515424256,
+  "interpretation": "4MiB canonical CPU pages alternate under unchanged6MiB LRU. Every old spill rewrites unchanged snapshots. GPU8MiB cache is separate and unchanged."
+}

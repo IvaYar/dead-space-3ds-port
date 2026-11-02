@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "tests_run": 13,
+  "errors": 0,
+  "failures": 0,
+  "checks": [
+    "test_multiple_images_roundtrip_exact_bytes_with_bounded_resident_memory",
+    "test_subimage_of_spilled_store_survives_next_eviction",
+    "test_spilled_attachment_is_complete_and_clear_modifications_persist",
+    "test_save_failure_preserves_existing_pixels",
+    "test_load_failure_never_returns_fabricated_texels_and_can_retry",
+    "test_backing_cannot_attach_after_images_exist",
+    "test_oversize_image_refuses_without_overcommit",
+    "test_deleting_spilled_texture_drops_private_backing",
+    "test_deleted_unbound_fbo_attachment_can_be_paged_and_drawn",
+    "test_pinned_fbo_and_two_sampled_stores_refuse_overcommit",
+    "test_repeated_read_only_evictions_reuse_exact_backing",
+    "test_FBO_draw_after_clean_reload_invalidates_old_page",
+    "test_replacement_drops_retained_snapshot"
+  ],
+  "hardware_tested": false,
+  "optimized_source_sha256": {
+    "ds15_textures.c": "fd21990abe65a79e3d84d118a275560464c5a6ec287e7e93af71cb1d0e22f59d",
+    "ds26_framebuffer.c": "62fa45d0a27daaeda49652305942c90fb5e860c48bc44780bbed70e2b13a4c85"
+  },
+  "ELF_sha256": "03717e6c15ae4ef1a25993d92e4f8c486c3bb2f60ef786f34dcfcb447eb611cd"
+}

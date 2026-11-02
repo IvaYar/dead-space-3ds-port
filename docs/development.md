@@ -23,8 +23,10 @@ Builders can depend on earlier local preparation, private resource receipts, der
 | Area | Entry points |
 | :--- | :--- |
 | Platform and graphics adapters | [3DS source](../porting/3ds/source) and [headers](../porting/3ds/include) |
-| Native menu experiment | [Menu source](../porting/tests/native_game_menu.c), [input adapter](../porting/tests/native_menu_input.h), [texture-memory adapter](../porting/tests/native_menu_texture_memory.h) |
-| Current menu build and validation | [Builder](../porting/tools/build_native_game_menu.py), [smoke runner](../porting/tests/smoke_native_game_menu.py), [audit](../porting/tools/audit_native_game_menu.py), [hardware report](../porting/analysis/native-game-menu-v0.1.5-hardware/report.ru.md) |
+| Current scene and texture work | [Scene builder](../porting/tools/build_native_scene.py), [runner](../porting/tests/smoke_native_scene.py), [Morton store](../porting/tests/scene_morton_store.c), [current report](../porting/analysis/regional-texture-residency/report.ru.md) |
+| Saved scene verification | [First-scene audit](../porting/tools/audit_native_scene.py), [texture audit](../porting/tools/audit_scene_textures.py), [Morton audit](../porting/tools/audit_regional_textures.py), [selective hybrid model](../porting/tools/model_hybrid_regions.py) |
+| Latest hardware menu/input | [HID source](../porting/tests/native_game_hid.c), [collector](../porting/tests/native_hid_collector.h), [queue](../porting/tests/native_hid_queue.h), [hardware report](../porting/analysis/native-game-hid-v0.1.7-hardware/report.ru.md) |
+| Earlier native menu experiment | [Menu source](../porting/tests/native_game_menu.c), [input adapter](../porting/tests/native_menu_input.h), [texture-memory adapter](../porting/tests/native_menu_texture_memory.h) |
 | Progress-aware shutdown | [Source](../porting/tests/native_game_progress.c), [software report](../porting/analysis/native-game-progress-v0.1.4/report.ru.md), [hardware report](../porting/analysis/native-game-progress-v0.1.4-hardware/report.ru.md) |
 | Earlier memory checkpoint | [Prod124 notes](../porting/3ds/README-native-game-prod124.ru.md), [memory report](../porting/analysis/native-game-prod124-v0.1.0/report.ru.md) |
 | CPU compatibility baseline | [Runtime builder](../porting/tools/build_emulator_runtime.py); the handoff lists the 26 individual suite entry points |
@@ -34,7 +36,9 @@ This update publishes the current port source and selected reports without mergi
 
 The historical 552-test CPU result belongs to its recorded build. Run the suite scripts as documented rather than assuming generic test discovery. Older progress checkers may still expect an earlier count or checkpoint. Some audits rewrite summary JSON, and builders update manifests; they are not all read-only checks. Native scenarios sharing emulator/SD state must run sequentially.
 
-The limited Menu 0.1.5 package intentionally stops shortly after confirmation. Its separate scene probes are emulator-only. The latest hardware report says not to repeat the existing CIA for more data; a future hardware candidate requires a new validation decision.
+The current `morton06` scene checkpoint is Azahar-only and reaches Chapter I without confirmed movement or camera input. The earlier HID 0.1.7 hardware package intentionally exits after confirmation; it is not the newer scene experiment. No new scene CIA or hardware run is implied. A future hardware candidate requires a separate validation decision.
+
+The Morton backing uses unmodified [LZ4 v1.10.0 source](../porting/3ds/vendor/lz4-v1.10.0), with its [BSD license](../porting/3ds/vendor/lz4-v1.10.0/LICENSE) and recorded provenance. Its version-specific store checks supplement the existing texture/page CRC and lifetime checks.
 
 ## Technical reading
 

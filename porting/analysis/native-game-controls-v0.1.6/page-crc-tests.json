@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "vectors": 81,
+  "max_payload_bytes": 4194304,
+  "unaligned_offsets": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "single_bit_corruptions_rejected": 5,
+  "reference": "Unmodified ARM ds_crc32 and independent host zlib",
+  "strict_frame_crc_implementation_changed": false,
+  "page_header_and_corruption_checks_removed": false,
+  "header_sha256": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0"
+}

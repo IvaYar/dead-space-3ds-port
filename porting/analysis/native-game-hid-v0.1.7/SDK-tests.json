@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "SDK_ARM_vectors": 72,
+  "PAD_ring_slots": 8,
+  "key_getter_is_nonconsuming": true,
+  "extra_scan_clears_down_but_preserves_held": true,
+  "released_before_next_scan_has_no_down_or_held": true,
+  "compiled_candidate_ELF_sha256": "51ea7113eaf46562490d2c6a24fdbe7022ed278f36df671a64a4cbb1fbcd37d7",
+  "scope": "Actual linked SDK ARM instructions, fixture shared memory; not physical hardware proof."
+}

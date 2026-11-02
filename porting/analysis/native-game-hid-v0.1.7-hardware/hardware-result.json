@@ -1,0 +1,335 @@
+{
+  "hardware_tested": true,
+  "archive_verified": true,
+  "archived_files": 126,
+  "archived_bytes": 16348523,
+  "CIA_candidate": {
+    "path": "porting/3ds/build-native-game-v0.1.7-release/native-game.cia",
+    "title": "DS HID Menu 0.1.7",
+    "title_id": "000400000FDE7A00",
+    "bytes": 360384,
+    "sha256": "e475440fd0cda08abb561d25ffd3c5de82a4030fc3fe59cdb6b8344e90367906",
+    "payload_sha256": "d2377e36b31d6547b0a8aead26c9e85d90416627884d9bd423d6fe4434eef318",
+    "payload_byte_identical_to_tested_CXI": true
+  },
+  "installed_CIA_hash_independently_attested": false,
+  "raw_preflight": {
+    "state": "passed_engine_requested",
+    "required_mask": 243,
+    "seen_mask": 1267,
+    "raw_buttons_passed": true,
+    "scans": 21926,
+    "invalid_samples": 0,
+    "overflow": 0,
+    "engine_loaded": false
+  },
+  "raw_capture": {
+    "collector_joined": true,
+    "thread_freed": true,
+    "scans": 135940,
+    "invalid_samples": 0,
+    "transitions": 31,
+    "overflow": 0,
+    "max_raw_sample_gap_ms": 1537.847,
+    "max_ready_raw_sample_gap_ms": 187.932,
+    "max_game_main_sample_gap_ms": 300843.38,
+    "last_raw_held": 0,
+    "period_ms": 4,
+    "capacity": 64
+  },
+  "original_menu_navigation_confirmed": true,
+  "Easy_confirmed_before_A": true,
+  "original_input_chains": [
+    {
+      "event_id": 22,
+      "raw_down": 128,
+      "raw_ms": 679755.435,
+      "pointer": [
+        160,
+        134
+      ],
+      "pointer_frame": 4889,
+      "target_selection": 2,
+      "ACK": {
+        "ms": 680168.587,
+        "frame": 4890,
+        "phase": 2,
+        "closing": 0,
+        "selection": 2
+      },
+      "ms": 679787.249,
+      "SDKdown": 0,
+      "SDKheld": 128,
+      "queue_age_ms": 31.817,
+      "raw_to_ACK_ms": 413.152,
+      "raw_hold_ms": 719.537
+    },
+    {
+      "event_id": 24,
+      "raw_down": 64,
+      "raw_ms": 698340.736,
+      "pointer": [
+        160,
+        103
+      ],
+      "pointer_frame": 5302,
+      "target_selection": 1,
+      "ACK": {
+        "ms": 698527.479,
+        "frame": 5303,
+        "phase": 2,
+        "closing": 0,
+        "selection": 1
+      },
+      "ms": 698352.773,
+      "SDKdown": 0,
+      "SDKheld": 64,
+      "queue_age_ms": 12.041,
+      "raw_to_ACK_ms": 186.743,
+      "raw_hold_ms": 428.517
+    },
+    {
+      "event_id": 26,
+      "raw_down": 128,
+      "raw_ms": 705716.101,
+      "pointer": [
+        160,
+        134
+      ],
+      "pointer_frame": 5480,
+      "target_selection": 2,
+      "ACK": {
+        "ms": 705898.068,
+        "frame": 5481,
+        "phase": 2,
+        "closing": 0,
+        "selection": 2
+      },
+      "ms": 705744.922,
+      "SDKdown": 0,
+      "SDKheld": 128,
+      "queue_age_ms": 28.825,
+      "raw_to_ACK_ms": 181.967,
+      "raw_hold_ms": 356.178
+    },
+    {
+      "event_id": 30,
+      "raw_down": 1,
+      "raw_ms": 743991.882,
+      "pointer": [
+        284,
+        225
+      ],
+      "pointer_frame": 6361,
+      "target_selection": 0,
+      "ACK": {
+        "ms": 744797.57,
+        "frame": 6362,
+        "phase": 3,
+        "closing": 1,
+        "selection": 0
+      },
+      "ms": 744425.415,
+      "SDKdown": 0,
+      "SDKheld": 0,
+      "queue_age_ms": 433.538,
+      "raw_to_ACK_ms": 805.688,
+      "raw_hold_ms": 221.106
+    }
+  ],
+  "B_original_down_up_delivered": true,
+  "B_visible_return": false,
+  "original_confirmation_phase3_closing1_ACK": {
+    "ms": 744797.57,
+    "frame": 6362,
+    "phase": 3,
+    "closing": 1,
+    "selection": 0
+  },
+  "safe_exit": true,
+  "exit_reason": "MENU_ONLY: original confirm delivered; scene continuation bounded",
+  "shutdown_attempts": 1,
+  "remaining_native_workers_kernel_completed": 5,
+  "worker_handles_remaining": 0,
+  "HID_collector_joined_and_freed_before_shutdown": true,
+  "balanced_IO": [
+    176,
+    176
+  ],
+  "GL_error": 0,
+  "failed_submits": 0,
+  "HOME_X_tested_this_run": false,
+  "user_A_to_HOME_seconds_approx": 3,
+  "hardware_heap_release_independently_measured": false,
+  "frame_status": "FAIL",
+  "baseline_crc_unchanged": "ea733050",
+  "independently_verified_raw_readback_pairs": 55,
+  "complete_saved_GX_traces": 55,
+  "initial_Normal_byte_identical_to_hardware_016_frames": [
+    4200,
+    4320,
+    4440,
+    4560,
+    4680,
+    4800
+  ],
+  "Easy_stable_saved_frames": [
+    4920,
+    5040,
+    5160,
+    5280,
+    5520,
+    5640,
+    5760,
+    5880,
+    6000,
+    6120,
+    6240,
+    6360
+  ],
+  "Normal_after_UP_saved_frame_crc": {
+    "frame": 5400,
+    "crc565": "f49fe214"
+  },
+  "historical_016_input_loss_exact_cause_proven": false,
+  "correction_effective_on_received_hardware_run": true,
+  "slowest_original_draw_callback": {
+    "frame": 4082,
+    "ms": 300644.235,
+    "ops": [
+      {
+        "id": 0,
+        "calls": 1146,
+        "ms": 286296.504,
+        "max_ms": 3728.342,
+        "caller": 3294432,
+        "bytes": 0
+      },
+      {
+        "id": 1,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 2,
+        "calls": 34,
+        "ms": 14158.776,
+        "max_ms": 2624.201,
+        "caller": 3288780,
+        "bytes": 0
+      },
+      {
+        "id": 3,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 4,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 5,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 6,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 7,
+        "calls": 1146,
+        "ms": 63161.77,
+        "max_ms": 1165.724,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 8,
+        "calls": 1146,
+        "ms": 202.81,
+        "max_ms": 1.012,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 9,
+        "calls": 1145,
+        "ms": 222650.207,
+        "max_ms": 2620.267,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 10,
+        "calls": 0,
+        "ms": 0.0,
+        "max_ms": 0.0,
+        "caller": 0,
+        "bytes": 0
+      },
+      {
+        "id": 11,
+        "calls": 367,
+        "ms": 50720.571,
+        "max_ms": 199.517,
+        "caller": 0,
+        "bytes": 1069965312
+      }
+    ],
+    "page_saves": 201,
+    "page_loads": 166,
+    "resident_bytes": 5029888,
+    "resource_bytes": 0,
+    "resource_reads": 0,
+    "IO_completions": 0,
+    "gpu_queue_wait_ms": 93.373,
+    "vblank_wait_ms": 1361.508
+  },
+  "same_129_texture_allocations_as_hardware_016": true,
+  "timing": {
+    "preflight_engine_request_ms": 88160.843,
+    "original_engine_init_return_ms": 90808.314,
+    "first_menu_ready_ms": 647488.289,
+    "engine_request_to_init_return_ms": 2647.471,
+    "engine_request_to_menu_ready_ms": 559327.446,
+    "steady_menu_FPS_including_diagnostics": 23.207910407666933,
+    "steady_ms_per_callback": {
+      "callback_ms": 16.33469537037037,
+      "present_ms": 16.69117083333333,
+      "diagnostic_ms": 7.806013425925927,
+      "gpu_queue_wait_ms": 3.1061990740740737,
+      "vblank_wait_ms": 12.41734074074074
+    },
+    "previous_hardware_slowest_callback_ms": 297416.915,
+    "limits": "Tick timestamps include trace IO; ready is a state-admission timestamp, not a camera timer. Nested timing overlaps. A-to-HOME is user estimate; no final process timestamp. No loading optimization this stage."
+  },
+  "memory": {
+    "normal_peak_footprint": 19816448,
+    "linear_peak_used": 104635264,
+    "linear_transient_headroom": 222336,
+    "kernel_peak_commit": 126779392,
+    "runtime_allocation_failures": 0,
+    "donor_allocation_refusals": 0
+  },
+  "protected_files_verified": 375,
+  "gameplay_started": false,
+  "repeat_current_CIA_needed": false
+}

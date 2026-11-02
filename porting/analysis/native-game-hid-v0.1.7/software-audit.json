@@ -1,0 +1,1467 @@
+{
+  "audited": true,
+  "runs": {
+    "release:raw": {
+      "safety_passed": true,
+      "CXI_sha256": "d2377e36b31d6547b0a8aead26c9e85d90416627884d9bd423d6fe4434eef318",
+      "source_sha256": "6955d55a1172c917fcfba5799d2003b11abac7f988b6e960575c8d41f47ba540",
+      "headers_sha256": {
+        "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+        "native_menu_hid_controls.h": "0ca75f2e7b74d737db161ce2402745b5ef675fd22e04682196fa69cbc34c75e2",
+        "native_hid_queue.h": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+        "native_hid_collector.h": "a89e4cab3bf1aef2b10c98d2fb5e935164b1ee9ac63274c87c08f5e1c6bdb3c2",
+        "native_menu_profile.h": "36a3df7f4818e225fe2def7bdf4a6bc72d15512fcbb5f9285e63335fbca51a42",
+        "native_menu_page_crc.h": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0",
+        "native_menu_texture_memory.h": "56c6b4e663bc4cb2cf339d63a6cc9fa014294b38624deb004d14f944ea276aa8",
+        "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+        "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596",
+        "native_game_memory_observer.h": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346"
+      },
+      "GPU_runtime_and_shader_unchanged": true,
+      "donor_shutdown_functions_unchanged": true,
+      "raw_readonly_observer": true,
+      "preflight": {
+        "state": "START_exit",
+        "required_mask": 243,
+        "seen_mask": 3221225723,
+        "raw_buttons_passed": true,
+        "scans": 1732,
+        "invalid_samples": 0,
+        "overflow": 0,
+        "engine_loaded": false
+      },
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 1745,
+        "invalid_samples": 0,
+        "transitions": 18,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 4.104,
+        "max_ready_raw_sample_gap_ms": 0.0,
+        "max_game_main_sample_gap_ms": 0.0,
+        "last_raw_held": 8,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "host_seconds": 0.547,
+      "raw_transition_count_logged": 17,
+      "private_result_sha256": "13cf8ccbb7cc84dc78d2bece2493d477f5369a452546e1538353aadd07a10c8f",
+      "raw_Dpad_AB_START_and_CirclePad_verified": true,
+      "engine_loaded": false
+    },
+    "release:missing": {
+      "safety_passed": true,
+      "CXI_sha256": "d2377e36b31d6547b0a8aead26c9e85d90416627884d9bd423d6fe4434eef318",
+      "source_sha256": "6955d55a1172c917fcfba5799d2003b11abac7f988b6e960575c8d41f47ba540",
+      "headers_sha256": {
+        "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+        "native_menu_hid_controls.h": "0ca75f2e7b74d737db161ce2402745b5ef675fd22e04682196fa69cbc34c75e2",
+        "native_hid_queue.h": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+        "native_hid_collector.h": "a89e4cab3bf1aef2b10c98d2fb5e935164b1ee9ac63274c87c08f5e1c6bdb3c2",
+        "native_menu_profile.h": "36a3df7f4818e225fe2def7bdf4a6bc72d15512fcbb5f9285e63335fbca51a42",
+        "native_menu_page_crc.h": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0",
+        "native_menu_texture_memory.h": "56c6b4e663bc4cb2cf339d63a6cc9fa014294b38624deb004d14f944ea276aa8",
+        "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+        "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596",
+        "native_game_memory_observer.h": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346"
+      },
+      "GPU_runtime_and_shader_unchanged": true,
+      "donor_shutdown_functions_unchanged": true,
+      "raw_readonly_observer": true,
+      "preflight": {
+        "state": "START_exit",
+        "required_mask": 243,
+        "seen_mask": 1147,
+        "raw_buttons_passed": false,
+        "scans": 1649,
+        "invalid_samples": 0,
+        "overflow": 0,
+        "engine_loaded": false
+      },
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 1661,
+        "invalid_samples": 0,
+        "transitions": 14,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 4.095,
+        "max_ready_raw_sample_gap_ms": 0.0,
+        "max_game_main_sample_gap_ms": 0.0,
+        "last_raw_held": 8,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "host_seconds": 0.547,
+      "raw_transition_count_logged": 13,
+      "private_result_sha256": "617c06e4cb38d8f29ac979dafe226438aa233309efc46c50eac1adf991d5408e",
+      "missing_Dpad_blocks_engine_without_wait": true,
+      "engine_loaded": false
+    },
+    "release:pulse": {
+      "safety_passed": true,
+      "CXI_sha256": "d2377e36b31d6547b0a8aead26c9e85d90416627884d9bd423d6fe4434eef318",
+      "source_sha256": "6955d55a1172c917fcfba5799d2003b11abac7f988b6e960575c8d41f47ba540",
+      "headers_sha256": {
+        "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+        "native_menu_hid_controls.h": "0ca75f2e7b74d737db161ce2402745b5ef675fd22e04682196fa69cbc34c75e2",
+        "native_hid_queue.h": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+        "native_hid_collector.h": "a89e4cab3bf1aef2b10c98d2fb5e935164b1ee9ac63274c87c08f5e1c6bdb3c2",
+        "native_menu_profile.h": "36a3df7f4818e225fe2def7bdf4a6bc72d15512fcbb5f9285e63335fbca51a42",
+        "native_menu_page_crc.h": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0",
+        "native_menu_texture_memory.h": "56c6b4e663bc4cb2cf339d63a6cc9fa014294b38624deb004d14f944ea276aa8",
+        "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+        "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596",
+        "native_game_memory_observer.h": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346"
+      },
+      "GPU_runtime_and_shader_unchanged": true,
+      "donor_shutdown_functions_unchanged": true,
+      "raw_readonly_observer": true,
+      "preflight": {
+        "state": "passed_engine_requested",
+        "required_mask": 243,
+        "seen_mask": 1267,
+        "raw_buttons_passed": true,
+        "scans": 1398,
+        "invalid_samples": 0,
+        "overflow": 0,
+        "engine_loaded": false
+      },
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 60024,
+        "invalid_samples": 0,
+        "transitions": 27,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 903.645,
+        "max_ready_raw_sample_gap_ms": 135.719,
+        "max_game_main_sample_gap_ms": 199896.001,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "host_seconds": 47.891,
+      "raw_transition_count_logged": 27,
+      "private_result_sha256": "fd32bbced9dee4ab477a803473320dd1edec52173bfa3fb9f0e757d71d3aff06",
+      "engine_loaded": true,
+      "frame_status": "FAIL",
+      "callbacks": 4323,
+      "kernel_joins": 5,
+      "close_state": {
+        "close_pending": false,
+        "home_pending": false,
+        "source": "none",
+        "stopped_boundary": false,
+        "shutdown_attempts": 1,
+        "cleanup_complete": true,
+        "code_and_arenas_retained_until_process_teardown": true
+      },
+      "capture_count": 38,
+      "partial_initial_GX": [],
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392,
+      "slowest_callback": {
+        "frame": 2881,
+        "ms": 199874.203,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 195201.265,
+            "max_ms": 2225.892,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4640.851,
+            "max_ms": 671.76,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37664.753,
+            "max_ms": 763.733,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 117.419,
+            "max_ms": 0.605,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 157270.75,
+            "max_ms": 1486.907,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 32053.46,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1257.447
+      },
+      "steady_FPS_including_diagnostics": 45.104066357102425,
+      "original_navigation_and_confirm_ACK_verified": true,
+      "frame_mismatch_does_not_block_input": true,
+      "BACK_down_up_returned": true,
+      "original_first_menu_BACK_action": "Ignored by original engine, unchanged.",
+      "chains": [
+        {
+          "event_id": 18,
+          "raw_down": 128,
+          "pointer": [
+            160,
+            134
+          ],
+          "target_selection": 2,
+          "ACK": {
+            "ms": 330939.72,
+            "frame": 3362,
+            "selection": 2
+          },
+          "age_ms": 54.866,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 20,
+          "raw_down": 64,
+          "pointer": [
+            160,
+            103
+          ],
+          "target_selection": 1,
+          "ACK": {
+            "ms": 336247.376,
+            "frame": 3602,
+            "selection": 1
+          },
+          "age_ms": 54.494,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 22,
+          "raw_down": 128,
+          "pointer": [
+            160,
+            134
+          ],
+          "target_selection": 2,
+          "ACK": {
+            "ms": 341545.635,
+            "frame": 3842,
+            "selection": 2
+          },
+          "age_ms": 54.389,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 26,
+          "raw_down": 1,
+          "pointer": [
+            284,
+            225
+          ],
+          "target_selection": 0,
+          "ACK": {
+            "ms": 352768.092,
+            "frame": 4323,
+            "selection": 0
+          },
+          "age_ms": 55.24,
+          "SDKdown": 0,
+          "SDKheld": 0
+        }
+      ],
+      "short_pulses_recovered_while_SDK_main_snapshots_zero": true
+    },
+    "release:hold": {
+      "safety_passed": true,
+      "CXI_sha256": "d2377e36b31d6547b0a8aead26c9e85d90416627884d9bd423d6fe4434eef318",
+      "source_sha256": "6955d55a1172c917fcfba5799d2003b11abac7f988b6e960575c8d41f47ba540",
+      "headers_sha256": {
+        "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+        "native_menu_hid_controls.h": "0ca75f2e7b74d737db161ce2402745b5ef675fd22e04682196fa69cbc34c75e2",
+        "native_hid_queue.h": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+        "native_hid_collector.h": "a89e4cab3bf1aef2b10c98d2fb5e935164b1ee9ac63274c87c08f5e1c6bdb3c2",
+        "native_menu_profile.h": "36a3df7f4818e225fe2def7bdf4a6bc72d15512fcbb5f9285e63335fbca51a42",
+        "native_menu_page_crc.h": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0",
+        "native_menu_texture_memory.h": "56c6b4e663bc4cb2cf339d63a6cc9fa014294b38624deb004d14f944ea276aa8",
+        "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+        "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596",
+        "native_game_memory_observer.h": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346"
+      },
+      "GPU_runtime_and_shader_unchanged": true,
+      "donor_shutdown_functions_unchanged": true,
+      "raw_readonly_observer": true,
+      "preflight": {
+        "state": "passed_engine_requested",
+        "required_mask": 243,
+        "seen_mask": 1267,
+        "raw_buttons_passed": true,
+        "scans": 1398,
+        "invalid_samples": 0,
+        "overflow": 0,
+        "engine_loaded": false
+      },
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 60547,
+        "invalid_samples": 0,
+        "transitions": 31,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 903.645,
+        "max_ready_raw_sample_gap_ms": 135.718,
+        "max_game_main_sample_gap_ms": 202527.821,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "host_seconds": 50.234,
+      "raw_transition_count_logged": 27,
+      "private_result_sha256": "158a99a1078e48bde499ca5fb406f1459dc9219cda74e1a6e5585c94e42e7be9",
+      "engine_loaded": true,
+      "frame_status": "FAIL",
+      "callbacks": 4323,
+      "kernel_joins": 5,
+      "close_state": {
+        "close_pending": false,
+        "home_pending": false,
+        "source": "none",
+        "stopped_boundary": false,
+        "shutdown_attempts": 1,
+        "cleanup_complete": true,
+        "code_and_arenas_retained_until_process_teardown": true
+      },
+      "capture_count": 38,
+      "partial_initial_GX": [],
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392,
+      "slowest_callback": {
+        "frame": 2890,
+        "ms": 202506.023,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 197725.03,
+            "max_ms": 3036.222,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4748.907,
+            "max_ms": 671.761,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37664.758,
+            "max_ms": 763.733,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 117.442,
+            "max_ms": 0.563,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 159794.488,
+            "max_ms": 2422.691,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 32053.206,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1257.447
+      },
+      "steady_FPS_including_diagnostics": 44.847935430388816,
+      "original_navigation_and_confirm_ACK_verified": true,
+      "frame_mismatch_does_not_block_input": true,
+      "BACK_down_up_returned": true,
+      "original_first_menu_BACK_action": "Ignored by original engine, unchanged.",
+      "chains": [
+        {
+          "event_id": 18,
+          "raw_down": 128,
+          "pointer": [
+            160,
+            134
+          ],
+          "target_selection": 2,
+          "ACK": {
+            "ms": 333012.217,
+            "frame": 3362,
+            "selection": 2
+          },
+          "age_ms": 54.505,
+          "SDKdown": 0,
+          "SDKheld": 128
+        },
+        {
+          "event_id": 20,
+          "raw_down": 64,
+          "pointer": [
+            160,
+            103
+          ],
+          "target_selection": 1,
+          "ACK": {
+            "ms": 338302.928,
+            "frame": 3602,
+            "selection": 1
+          },
+          "age_ms": 54.388,
+          "SDKdown": 0,
+          "SDKheld": 64
+        },
+        {
+          "event_id": 22,
+          "raw_down": 128,
+          "pointer": [
+            160,
+            134
+          ],
+          "target_selection": 2,
+          "ACK": {
+            "ms": 343734.885,
+            "frame": 3842,
+            "selection": 2
+          },
+          "age_ms": 52.969,
+          "SDKdown": 0,
+          "SDKheld": 128
+        },
+        {
+          "event_id": 26,
+          "raw_down": 1,
+          "pointer": [
+            284,
+            225
+          ],
+          "target_selection": 0,
+          "ACK": {
+            "ms": 354924.384,
+            "frame": 4323,
+            "selection": 0
+          },
+          "age_ms": 54.778,
+          "SDKdown": 0,
+          "SDKheld": 1
+        }
+      ]
+    },
+    "release:circle": {
+      "safety_passed": true,
+      "CXI_sha256": "d2377e36b31d6547b0a8aead26c9e85d90416627884d9bd423d6fe4434eef318",
+      "source_sha256": "6955d55a1172c917fcfba5799d2003b11abac7f988b6e960575c8d41f47ba540",
+      "headers_sha256": {
+        "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+        "native_menu_hid_controls.h": "0ca75f2e7b74d737db161ce2402745b5ef675fd22e04682196fa69cbc34c75e2",
+        "native_hid_queue.h": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+        "native_hid_collector.h": "a89e4cab3bf1aef2b10c98d2fb5e935164b1ee9ac63274c87c08f5e1c6bdb3c2",
+        "native_menu_profile.h": "36a3df7f4818e225fe2def7bdf4a6bc72d15512fcbb5f9285e63335fbca51a42",
+        "native_menu_page_crc.h": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0",
+        "native_menu_texture_memory.h": "56c6b4e663bc4cb2cf339d63a6cc9fa014294b38624deb004d14f944ea276aa8",
+        "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+        "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596",
+        "native_game_memory_observer.h": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346"
+      },
+      "GPU_runtime_and_shader_unchanged": true,
+      "donor_shutdown_functions_unchanged": true,
+      "raw_readonly_observer": true,
+      "preflight": {
+        "state": "passed_engine_requested",
+        "required_mask": 243,
+        "seen_mask": 1267,
+        "raw_buttons_passed": true,
+        "scans": 1398,
+        "invalid_samples": 0,
+        "overflow": 0,
+        "engine_loaded": false
+      },
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 60087,
+        "invalid_samples": 0,
+        "transitions": 27,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 903.645,
+        "max_ready_raw_sample_gap_ms": 135.719,
+        "max_game_main_sample_gap_ms": 200572.525,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "host_seconds": 47.375,
+      "raw_transition_count_logged": 27,
+      "private_result_sha256": "d1e536249b0629ebfea506ad5a46ca1d9d25be221eab8aee8ca9f149cc3959d4",
+      "engine_loaded": true,
+      "frame_status": "FAIL",
+      "callbacks": 4323,
+      "kernel_joins": 5,
+      "close_state": {
+        "close_pending": false,
+        "home_pending": false,
+        "source": "none",
+        "stopped_boundary": false,
+        "shutdown_attempts": 1,
+        "cleanup_complete": true,
+        "code_and_arenas_retained_until_process_teardown": true
+      },
+      "capture_count": 38,
+      "partial_initial_GX": [],
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392,
+      "slowest_callback": {
+        "frame": 2882,
+        "ms": 200550.727,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 195669.047,
+            "max_ms": 2259.319,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4849.593,
+            "max_ms": 688.474,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37664.895,
+            "max_ms": 763.733,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 117.447,
+            "max_ms": 0.532,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 157738.489,
+            "max_ms": 1609.318,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 32053.333,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1257.435
+      },
+      "steady_FPS_including_diagnostics": 45.18147137979695,
+      "original_navigation_and_confirm_ACK_verified": true,
+      "frame_mismatch_does_not_block_input": true,
+      "BACK_down_up_returned": true,
+      "original_first_menu_BACK_action": "Ignored by original engine, unchanged.",
+      "chains": [
+        {
+          "event_id": 18,
+          "raw_down": 2147483648,
+          "pointer": [
+            160,
+            134
+          ],
+          "target_selection": 2,
+          "ACK": {
+            "ms": 331290.71,
+            "frame": 3362,
+            "selection": 2
+          },
+          "age_ms": 54.867,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 20,
+          "raw_down": 1073741824,
+          "pointer": [
+            160,
+            103
+          ],
+          "target_selection": 1,
+          "ACK": {
+            "ms": 336581.651,
+            "frame": 3602,
+            "selection": 1
+          },
+          "age_ms": 54.498,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 22,
+          "raw_down": 128,
+          "pointer": [
+            160,
+            134
+          ],
+          "target_selection": 2,
+          "ACK": {
+            "ms": 341879.87,
+            "frame": 3842,
+            "selection": 2
+          },
+          "age_ms": 54.902,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 26,
+          "raw_down": 1,
+          "pointer": [
+            284,
+            225
+          ],
+          "target_selection": 0,
+          "ACK": {
+            "ms": 352985.364,
+            "frame": 4323,
+            "selection": 0
+          },
+          "age_ms": 50.896,
+          "SDKdown": 0,
+          "SDKheld": 0
+        }
+      ],
+      "short_pulses_recovered_while_SDK_main_snapshots_zero": true
+    },
+    "release:early": {
+      "safety_passed": true,
+      "CXI_sha256": "d2377e36b31d6547b0a8aead26c9e85d90416627884d9bd423d6fe4434eef318",
+      "source_sha256": "6955d55a1172c917fcfba5799d2003b11abac7f988b6e960575c8d41f47ba540",
+      "headers_sha256": {
+        "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+        "native_menu_hid_controls.h": "0ca75f2e7b74d737db161ce2402745b5ef675fd22e04682196fa69cbc34c75e2",
+        "native_hid_queue.h": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+        "native_hid_collector.h": "a89e4cab3bf1aef2b10c98d2fb5e935164b1ee9ac63274c87c08f5e1c6bdb3c2",
+        "native_menu_profile.h": "36a3df7f4818e225fe2def7bdf4a6bc72d15512fcbb5f9285e63335fbca51a42",
+        "native_menu_page_crc.h": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0",
+        "native_menu_texture_memory.h": "56c6b4e663bc4cb2cf339d63a6cc9fa014294b38624deb004d14f944ea276aa8",
+        "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+        "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596",
+        "native_game_memory_observer.h": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346"
+      },
+      "GPU_runtime_and_shader_unchanged": true,
+      "donor_shutdown_functions_unchanged": true,
+      "raw_readonly_observer": true,
+      "preflight": {
+        "state": "passed_engine_requested",
+        "required_mask": 243,
+        "seen_mask": 1267,
+        "raw_buttons_passed": true,
+        "scans": 1398,
+        "invalid_samples": 0,
+        "overflow": 0,
+        "engine_loaded": false
+      },
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 12766,
+        "invalid_samples": 0,
+        "transitions": 17,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 903.645,
+        "max_ready_raw_sample_gap_ms": 0.0,
+        "max_game_main_sample_gap_ms": 25274.47,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "host_seconds": 15.875,
+      "raw_transition_count_logged": 15,
+      "private_result_sha256": "6e8f5cdcf1f55a359327249f5610d5ebaf732654888dbf1fd7bae40da217b16f",
+      "engine_loaded": true,
+      "frame_status": "FAIL",
+      "callbacks": 720,
+      "kernel_joins": 6,
+      "close_state": {
+        "close_pending": false,
+        "home_pending": false,
+        "source": "START",
+        "stopped_boundary": false,
+        "shutdown_attempts": 1,
+        "cleanup_complete": true,
+        "code_and_arenas_retained_until_process_teardown": true
+      },
+      "capture_count": 6,
+      "partial_initial_GX": [],
+      "normal_peak_footprint": 18829312,
+      "linear_peak_used": 92838784,
+      "kernel_peak_commit": 126779392,
+      "slowest_callback": {
+        "frame": 2,
+        "ms": 25258.527,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 2,
+            "ms": 23.266,
+            "max_ms": 23.038,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 4,
+            "ms": 151.995,
+            "max_ms": 67.581,
+            "caller": 3381172,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 2,
+            "ms": 22.82,
+            "max_ms": 22.815,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 2,
+            "ms": 0.205,
+            "max_ms": 0.106,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1,
+            "ms": 0.002,
+            "max_ms": 0.002,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          }
+        ],
+        "page_saves": 0,
+        "page_loads": 0,
+        "resident_bytes": 1310724,
+        "resource_bytes": 2507752,
+        "resource_reads": 5670,
+        "IO_completions": 7720,
+        "gpu_queue_wait_ms": 0.0,
+        "vblank_wait_ms": 0.0
+      },
+      "steady_FPS_including_diagnostics": null
+    },
+    "releasestall:stall": {
+      "safety_passed": true,
+      "CXI_sha256": "17c42123dfd7f79da08f4bb7f2a217b27143039730e89177e51659ad4d189a5f",
+      "source_sha256": "6955d55a1172c917fcfba5799d2003b11abac7f988b6e960575c8d41f47ba540",
+      "headers_sha256": {
+        "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+        "native_menu_hid_controls.h": "0ca75f2e7b74d737db161ce2402745b5ef675fd22e04682196fa69cbc34c75e2",
+        "native_hid_queue.h": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+        "native_hid_collector.h": "a89e4cab3bf1aef2b10c98d2fb5e935164b1ee9ac63274c87c08f5e1c6bdb3c2",
+        "native_menu_profile.h": "36a3df7f4818e225fe2def7bdf4a6bc72d15512fcbb5f9285e63335fbca51a42",
+        "native_menu_page_crc.h": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0",
+        "native_menu_texture_memory.h": "56c6b4e663bc4cb2cf339d63a6cc9fa014294b38624deb004d14f944ea276aa8",
+        "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+        "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596",
+        "native_game_memory_observer.h": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346"
+      },
+      "GPU_runtime_and_shader_unchanged": true,
+      "donor_shutdown_functions_unchanged": true,
+      "raw_readonly_observer": true,
+      "preflight": {
+        "state": "passed_engine_requested",
+        "required_mask": 243,
+        "seen_mask": 1267,
+        "raw_buttons_passed": true,
+        "scans": 1402,
+        "invalid_samples": 0,
+        "overflow": 0,
+        "engine_loaded": false
+      },
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 60620,
+        "invalid_samples": 0,
+        "transitions": 27,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 904.337,
+        "max_ready_raw_sample_gap_ms": 135.718,
+        "max_game_main_sample_gap_ms": 200605.785,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "host_seconds": 48.281,
+      "raw_transition_count_logged": 27,
+      "private_result_sha256": "dd68c6cffbadf0dbf9b9337d2dfe3355e0dbfd4bcf58fb62d1199ca9af654a42",
+      "engine_loaded": true,
+      "frame_status": "FAIL",
+      "callbacks": 4323,
+      "kernel_joins": 5,
+      "close_state": {
+        "close_pending": false,
+        "home_pending": false,
+        "source": "none",
+        "stopped_boundary": false,
+        "shutdown_attempts": 1,
+        "cleanup_complete": true,
+        "code_and_arenas_retained_until_process_teardown": true
+      },
+      "capture_count": 38,
+      "partial_initial_GX": [],
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392,
+      "slowest_callback": {
+        "frame": 2890,
+        "ms": 200583.987,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 195702.6,
+            "max_ms": 2440.182,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 4849.237,
+            "max_ms": 755.33,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 37665.867,
+            "max_ms": 763.733,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 117.509,
+            "max_ms": 0.533,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 157771.072,
+            "max_ms": 1793.169,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 32053.333,
+            "max_ms": 125.659,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 14.52,
+        "vblank_wait_ms": 1258.444
+      },
+      "steady_FPS_including_diagnostics": 42.05389435947044,
+      "original_navigation_and_confirm_ACK_verified": true,
+      "frame_mismatch_does_not_block_input": true,
+      "BACK_down_up_returned": true,
+      "original_first_menu_BACK_action": "Ignored by original engine, unchanged.",
+      "chains": [
+        {
+          "event_id": 18,
+          "raw_down": 128,
+          "pointer": [
+            160,
+            134
+          ],
+          "target_selection": 2,
+          "ACK": {
+            "ms": 333346.566,
+            "frame": 3362,
+            "selection": 2
+          },
+          "age_ms": 2054.936,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 20,
+          "raw_down": 64,
+          "pointer": [
+            160,
+            103
+          ],
+          "target_selection": 1,
+          "ACK": {
+            "ms": 338654.101,
+            "frame": 3602,
+            "selection": 1
+          },
+          "age_ms": 55.192,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 22,
+          "raw_down": 128,
+          "pointer": [
+            160,
+            134
+          ],
+          "target_selection": 2,
+          "ACK": {
+            "ms": 344019.246,
+            "frame": 3842,
+            "selection": 2
+          },
+          "age_ms": 58.378,
+          "SDKdown": 0,
+          "SDKheld": 0
+        },
+        {
+          "event_id": 26,
+          "raw_down": 1,
+          "pointer": [
+            284,
+            225
+          ],
+          "target_selection": 0,
+          "ACK": {
+            "ms": 355158.136,
+            "frame": 4323,
+            "selection": 0
+          },
+          "age_ms": 54.901,
+          "SDKdown": 0,
+          "SDKheld": 0
+        }
+      ],
+      "short_pulses_recovered_while_SDK_main_snapshots_zero": true,
+      "two_second_main_stall_pulse_recovered": true
+    },
+    "releasehome:home": {
+      "safety_passed": true,
+      "CXI_sha256": "9cd4a42664100793321af0626a05eb0a96a677513f22a16f5c81adc44898272a",
+      "source_sha256": "6955d55a1172c917fcfba5799d2003b11abac7f988b6e960575c8d41f47ba540",
+      "headers_sha256": {
+        "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+        "native_menu_hid_controls.h": "0ca75f2e7b74d737db161ce2402745b5ef675fd22e04682196fa69cbc34c75e2",
+        "native_hid_queue.h": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+        "native_hid_collector.h": "a89e4cab3bf1aef2b10c98d2fb5e935164b1ee9ac63274c87c08f5e1c6bdb3c2",
+        "native_menu_profile.h": "36a3df7f4818e225fe2def7bdf4a6bc72d15512fcbb5f9285e63335fbca51a42",
+        "native_menu_page_crc.h": "889da241482d6f4e15c57aa199ce74986011df2cdb31221297261af1ffa426e0",
+        "native_menu_texture_memory.h": "56c6b4e663bc4cb2cf339d63a6cc9fa014294b38624deb004d14f944ea276aa8",
+        "native_loader_budget.h": "4e519c4bba77067ca616bd5a425a19fb6e0248917352f10c2d21f0d780dd80b1",
+        "native_loader_io_monitor.h": "74436aca4c43c3e1e3cefd7bbc1bf78a07b32ffd72369b5d867d7ce42022b596",
+        "native_game_memory_observer.h": "2a4c4d9d8ac156e02f08446f6ef58b1f72cd563fc24641b08addc282d0530346"
+      },
+      "GPU_runtime_and_shader_unchanged": true,
+      "donor_shutdown_functions_unchanged": true,
+      "raw_readonly_observer": true,
+      "preflight": {
+        "state": "passed_engine_requested",
+        "required_mask": 243,
+        "seen_mask": 1267,
+        "raw_buttons_passed": true,
+        "scans": 1425,
+        "invalid_samples": 0,
+        "overflow": 0,
+        "engine_loaded": false
+      },
+      "capture": {
+        "collector_joined": true,
+        "thread_freed": true,
+        "scans": 58696,
+        "invalid_samples": 0,
+        "transitions": 15,
+        "overflow": 0,
+        "max_raw_sample_gap_ms": 225.111,
+        "max_ready_raw_sample_gap_ms": 33.842,
+        "max_game_main_sample_gap_ms": 146180.218,
+        "last_raw_held": 0,
+        "period_ms": 4,
+        "capacity": 64
+      },
+      "host_seconds": 42.297,
+      "raw_transition_count_logged": 13,
+      "private_result_sha256": "51cdfd81c9c8d30555698710cf712bd82eda66b0991861577112081546105119",
+      "engine_loaded": true,
+      "frame_status": "FAIL",
+      "callbacks": 3899,
+      "kernel_joins": 5,
+      "close_state": {
+        "close_pending": true,
+        "home_pending": true,
+        "source": "APT",
+        "stopped_boundary": false,
+        "shutdown_attempts": 1,
+        "cleanup_complete": true,
+        "code_and_arenas_retained_until_process_teardown": true
+      },
+      "capture_count": 32,
+      "partial_initial_GX": [],
+      "normal_peak_footprint": 19881984,
+      "linear_peak_used": 104635264,
+      "kernel_peak_commit": 126779392,
+      "slowest_callback": {
+        "frame": 2646,
+        "ms": 146159.985,
+        "ops": [
+          {
+            "id": 0,
+            "calls": 1146,
+            "ms": 143828.938,
+            "max_ms": 1548.988,
+            "caller": 3294432,
+            "bytes": 0
+          },
+          {
+            "id": 1,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 2,
+            "calls": 34,
+            "ms": 2323.079,
+            "max_ms": 479.301,
+            "caller": 3288780,
+            "bytes": 0
+          },
+          {
+            "id": 3,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 4,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 5,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 6,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 7,
+            "calls": 1146,
+            "ms": 10406.77,
+            "max_ms": 297.676,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 8,
+            "calls": 1146,
+            "ms": 62.187,
+            "max_ms": 0.16,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 9,
+            "calls": 1145,
+            "ms": 133323.0,
+            "max_ms": 1306.745,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 10,
+            "calls": 0,
+            "ms": 0.0,
+            "max_ms": 0.0,
+            "caller": 0,
+            "bytes": 0
+          },
+          {
+            "id": 11,
+            "calls": 367,
+            "ms": 7989.508,
+            "max_ms": 31.32,
+            "caller": 0,
+            "bytes": 1069965312
+          }
+        ],
+        "page_saves": 201,
+        "page_loads": 166,
+        "resident_bytes": 5029888,
+        "resource_bytes": 0,
+        "resource_reads": 0,
+        "IO_completions": 0,
+        "gpu_queue_wait_ms": 13.111,
+        "vblank_wait_ms": 1306.645
+      },
+      "steady_FPS_including_diagnostics": 51.91965828458809,
+      "deferred_HOME_verified": true
+    }
+  },
+  "protected_files_verified": 375,
+  "resource_files_verified": 1752,
+  "hardware_tested": false,
+  "hardware_016_input_loss_exact_cause_established": false,
+  "baseline_crc": "ea733050",
+  "in_game_frame_status": "FAIL",
+  "raw_only_does_not_claim_frame_validation": true
+}

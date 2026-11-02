@@ -12,6 +12,7 @@ import sys
 
 TEXT = {'.py', '.c', '.cpp', '.h', '.hpp', '.s', '.md', '.txt', '.log', '.json',
         '.jsonl', '.pica', '.rsf', '.diff', '.yaml', '.yml', '.toml', '.ps1'}
+TEXT_LICENSE_NAMES = {'license', 'copying', 'notice'}
 PRIVATE_PARTS = {'sdmc', 'apk-assets', 'assets', 'test-output', '__pycache__',
                  '.local', 'emulator-checkpoints', 'candidate-sd'}
 MAGIC = ((b'\x7fELF', 'ELF'), (b'MZ', 'Windows executable/DLL'),
@@ -43,7 +44,8 @@ def inspect_blob(path, data):
     if re.search(r'(^|/)(threads-[^/]+|destructors)\.json$', lower):
         reasons.append('private worker/object snapshot')
     suffix = p.suffix.lower()
-    if suffix not in TEXT and lower not in {'.gitignore', '.gitattributes', '.githooks/pre-commit'}:
+    if (suffix not in TEXT and p.name.lower() not in TEXT_LICENSE_NAMES
+            and lower not in {'.gitignore', '.gitattributes', '.githooks/pre-commit'}):
         reasons.append('non-text artifact requires separate publication review')
     for prefix, name in MAGIC:
         if data.startswith(prefix):

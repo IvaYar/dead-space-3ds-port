@@ -1,0 +1,349 @@
+{
+  "frame": 4430,
+  "GPU_budget": 8388608,
+  "GPU_entries": 32,
+  "draw_units": 97,
+  "textures": 25,
+  "source_UV_sha256": "4cef0bede380d85cfdecf1cd1f70d375d8c76f61b98e26f96e58bde82688a6e9",
+  "snapshot_sha256_by_texture_id": {
+    "74": "b60dfd80967eb4d49f0e94da4143a6279139d3dc1a71e62ac04eba294b7798ff",
+    "68": "8232befd1f3385e61eea530ed300e195a78c0b2a3d3bc99c46c330d5fc8e89d1",
+    "69": "234b4881db1c4d46c6fd0acb583b38a47b063da1b7df7bffb55a00c80905c5d6",
+    "47": "0549a95b35d41c20903213958513f9b7b7242c4c8c5d8f77cafb5c6b42be0762",
+    "40": "d3833e243477c0caf1934ddc96e658601d6aab8c6f79f7ecd320c9e1c0f1979b",
+    "49": "2929cdd94d79c60406e52520890c33743d72352890a619d58a67e62d36fb1a36",
+    "46": "2383318173bc366456088ac688ece6b3fe11b8af071a52752c7baf5881de781f",
+    "59": "16918075760d6afc50114cf19369b0aaed3a6a2093bb1edfa851f08ada746ea2",
+    "61": "1ce5e61ebae744fd7ad96f1a89c0d07ec0a7a5e86ac7fbc6d34e879a8a82cfe8",
+    "60": "0a42e9ae37eb9fee5c22f63c9780569877cad6d9a1f1addb797c984b52108e13",
+    "62": "94ae8c3ab8c8bed4b65d808836ec72e8d25676cf2990d59e1eea7dbaaa1d54b5",
+    "58": "03a7f83f0df5384168490ee18e5b6d649c688db09659e99eff1b6ed48d02c069",
+    "8": "594ba0761351e04ae3dfcd3bdbe0306a7c80d423affcbab17d437f84929d673f",
+    "48": "25e8243cb198b555ff7fab586b1b2b4b3e334759f8de6446928fa412d4e579dd",
+    "53": "6428c420d5597f536c6c4ba6add161cbd6611189ca784ac9c77231fe651a69ac",
+    "10": "64d403190e909b6f6330466fa8db3df37fe4c303b340460d50162858472a6d5f",
+    "43": "55aa03ab060aa3cf012d0ff1cb3c0234919595fac93692865f90a26316eb4e7e",
+    "50": "7cb9b8a6e220373feb9f4560fa45fb6270dd813f113c1eaa81fa91c7b3fed1dc",
+    "41": "77ffa7e9b8348f5a3f69771068d56737b2e87c9ae400e89f3be435ff141c0350",
+    "3": "5e211ff0d7de9cdd017c43faeca4702a1283b6c4cb0a24ecf17c0bd8ce8c3ec9",
+    "51": "9b007fdcdef7bad7226f177363d3f249f8cd999dd27b8af7022ecc85b4dfa4ce",
+    "42": "7e648a3988bc4d40cbbbe4211f6f9a759593c2d3cfc638c696eb67a96fd85526",
+    "44": "58045860dde9bd5940a10bccff4e1d0c2f5c96b94e5a765e30169e6ffd504cfe",
+    "45": "e9169ae803ccb629c591e84838654c3601581d3b02a6eea5bf09482854a3a494",
+    "7": "923db8ca078795a83bddb386b123e7b14d2a3077f3677dafda6dd8332a05ea86"
+  },
+  "models": [
+    {
+      "origin_quantum": 1,
+      "candidate_textures": 10,
+      "masks_tested": 1024,
+      "baseline": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 51003648,
+        "backing_block_reads": 200,
+        "decoded_bytes": 51003648,
+        "compressed_read_bytes": 18405917,
+        "regional_texture_ids": []
+      },
+      "minimum_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 46809344,
+        "backing_block_reads": 187,
+        "decoded_bytes": 47595776,
+        "compressed_read_bytes": 16973245,
+        "regional_texture_ids": [
+          7,
+          49,
+          53
+        ]
+      },
+      "minimum_GPU_bytes": {
+        "GPU_misses": 47,
+        "GPU_population_bytes": 29155584,
+        "backing_block_reads": 193,
+        "decoded_bytes": 49168640,
+        "compressed_read_bytes": 17276816,
+        "regional_texture_ids": [
+          7,
+          8,
+          40,
+          46,
+          49,
+          53
+        ]
+      },
+      "minimum_IO_without_more_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 47071488,
+        "backing_block_reads": 187,
+        "decoded_bytes": 47595776,
+        "compressed_read_bytes": 16973245,
+        "regional_texture_ids": [
+          49
+        ]
+      },
+      "minimum_IO": {
+        "GPU_misses": 38,
+        "GPU_population_bytes": 33743104,
+        "backing_block_reads": 180,
+        "decoded_bytes": 45760768,
+        "compressed_read_bytes": 16222632,
+        "regional_texture_ids": [
+          40,
+          49
+        ]
+      }
+    },
+    {
+      "origin_quantum": 8,
+      "candidate_textures": 10,
+      "masks_tested": 1024,
+      "baseline": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 51003648,
+        "backing_block_reads": 200,
+        "decoded_bytes": 51003648,
+        "compressed_read_bytes": 18405917,
+        "regional_texture_ids": []
+      },
+      "minimum_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 46809344,
+        "backing_block_reads": 187,
+        "decoded_bytes": 47595776,
+        "compressed_read_bytes": 16973245,
+        "regional_texture_ids": [
+          7,
+          49,
+          53
+        ]
+      },
+      "minimum_GPU_bytes": {
+        "GPU_misses": 47,
+        "GPU_population_bytes": 29163776,
+        "backing_block_reads": 186,
+        "decoded_bytes": 47333632,
+        "compressed_read_bytes": 16585642,
+        "regional_texture_ids": [
+          7,
+          8,
+          40,
+          46,
+          49,
+          53
+        ]
+      },
+      "minimum_IO_without_more_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 47071488,
+        "backing_block_reads": 187,
+        "decoded_bytes": 47595776,
+        "compressed_read_bytes": 16973245,
+        "regional_texture_ids": [
+          49
+        ]
+      },
+      "minimum_IO": {
+        "GPU_misses": 38,
+        "GPU_population_bytes": 33751296,
+        "backing_block_reads": 175,
+        "decoded_bytes": 44450048,
+        "compressed_read_bytes": 15763499,
+        "regional_texture_ids": [
+          40,
+          49
+        ]
+      }
+    },
+    {
+      "origin_quantum": 16,
+      "candidate_textures": 10,
+      "masks_tested": 1024,
+      "baseline": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 51003648,
+        "backing_block_reads": 200,
+        "decoded_bytes": 51003648,
+        "compressed_read_bytes": 18405917,
+        "regional_texture_ids": []
+      },
+      "minimum_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 46809344,
+        "backing_block_reads": 187,
+        "decoded_bytes": 47595776,
+        "compressed_read_bytes": 16973245,
+        "regional_texture_ids": [
+          7,
+          49,
+          53
+        ]
+      },
+      "minimum_GPU_bytes": {
+        "GPU_misses": 47,
+        "GPU_population_bytes": 29688064,
+        "backing_block_reads": 188,
+        "decoded_bytes": 47857920,
+        "compressed_read_bytes": 16797666,
+        "regional_texture_ids": [
+          7,
+          8,
+          40,
+          46,
+          49,
+          53
+        ]
+      },
+      "minimum_IO_without_more_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 47071488,
+        "backing_block_reads": 187,
+        "decoded_bytes": 47595776,
+        "compressed_read_bytes": 16973245,
+        "regional_texture_ids": [
+          49
+        ]
+      },
+      "minimum_IO": {
+        "GPU_misses": 38,
+        "GPU_population_bytes": 33751296,
+        "backing_block_reads": 174,
+        "decoded_bytes": 44187904,
+        "compressed_read_bytes": 15655508,
+        "regional_texture_ids": [
+          40,
+          49
+        ]
+      }
+    },
+    {
+      "origin_quantum": 32,
+      "candidate_textures": 10,
+      "masks_tested": 1024,
+      "baseline": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 51003648,
+        "backing_block_reads": 200,
+        "decoded_bytes": 51003648,
+        "compressed_read_bytes": 18405917,
+        "regional_texture_ids": []
+      },
+      "minimum_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 47071488,
+        "backing_block_reads": 188,
+        "decoded_bytes": 47857920,
+        "compressed_read_bytes": 17086201,
+        "regional_texture_ids": [
+          7,
+          49,
+          53
+        ]
+      },
+      "minimum_GPU_bytes": {
+        "GPU_misses": 45,
+        "GPU_population_bytes": 30474496,
+        "backing_block_reads": 193,
+        "decoded_bytes": 49168640,
+        "compressed_read_bytes": 17564506,
+        "regional_texture_ids": [
+          7,
+          40,
+          46,
+          49,
+          53
+        ]
+      },
+      "minimum_IO_without_more_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 47333632,
+        "backing_block_reads": 188,
+        "decoded_bytes": 47857920,
+        "compressed_read_bytes": 17086201,
+        "regional_texture_ids": [
+          49
+        ]
+      },
+      "minimum_IO": {
+        "GPU_misses": 38,
+        "GPU_population_bytes": 34078976,
+        "backing_block_reads": 175,
+        "decoded_bytes": 44450048,
+        "compressed_read_bytes": 15783146,
+        "regional_texture_ids": [
+          40,
+          49
+        ]
+      }
+    },
+    {
+      "origin_quantum": 64,
+      "candidate_textures": 10,
+      "masks_tested": 1024,
+      "baseline": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 51003648,
+        "backing_block_reads": 200,
+        "decoded_bytes": 51003648,
+        "compressed_read_bytes": 18405917,
+        "regional_texture_ids": []
+      },
+      "minimum_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 47071488,
+        "backing_block_reads": 188,
+        "decoded_bytes": 47857920,
+        "compressed_read_bytes": 17086201,
+        "regional_texture_ids": [
+          7,
+          49,
+          53
+        ]
+      },
+      "minimum_GPU_bytes": {
+        "GPU_misses": 46,
+        "GPU_population_bytes": 30474496,
+        "backing_block_reads": 186,
+        "decoded_bytes": 47333632,
+        "compressed_read_bytes": 16825991,
+        "regional_texture_ids": [
+          7,
+          8,
+          40,
+          46,
+          49,
+          53
+        ]
+      },
+      "minimum_IO_without_more_GPU_misses": {
+        "GPU_misses": 29,
+        "GPU_population_bytes": 47333632,
+        "backing_block_reads": 188,
+        "decoded_bytes": 47857920,
+        "compressed_read_bytes": 17086201,
+        "regional_texture_ids": [
+          49
+        ]
+      },
+      "minimum_IO": {
+        "GPU_misses": 38,
+        "GPU_population_bytes": 34144512,
+        "backing_block_reads": 171,
+        "decoded_bytes": 43401472,
+        "compressed_read_bytes": 15429589,
+        "regional_texture_ids": [
+          40,
+          49
+        ]
+      }
+    }
+  ],
+  "regional_path_implemented": false,
+  "cache_budgets_changed": false,
+  "limitations": [
+    "Identical callback repeated four cycles; moving UV regions can reduce reuse.",
+    "Per-draw clipped bounds are optimistic; no triangle subdivision is modelled.",
+    "Open/seek, new block CRC, region extraction, GPU drains and allocator fragmentation costs are omitted.",
+    "Region-level sampler pinning is assumed; existing object-level pinning would require review."
+  ]
+}

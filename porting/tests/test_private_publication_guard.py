@@ -44,6 +44,18 @@ class StagedPrivacy(unittest.TestCase):
         self.stage('.local/resource-store/data.txt', b'private\n')
         self.assertFalse(guard.check(self.repo)['passed'])
 
+    def test_text_license_allowed(self):
+        self.stage('vendor/library/LICENSE', b'BSD 2-Clause License\nCopyright example\n')
+        self.assertTrue(guard.check(self.repo)['passed'])
+
+    def test_license_name_does_not_bypass_content_checks(self):
+        for name, data in [('LICENSE', b'\x7fELFsynthetic'),
+                           ('COPYING', b'MZsynthetic'),
+                           ('NOTICE', b'PK\x03\x04synthetic')]:
+            with self.subTest(name=name):
+                reasons = guard.inspect_blob('vendor/library/'+name, data)
+                self.assertTrue(any('content' in reason for reason in reasons))
+
     def test_staged_bytes_checked_after_worktree_replacement(self):
         path = self.stage('innocent.txt', b'\x7fELFsynthetic fixture, no real game data')
         path.write_bytes(b'safe-looking worktree\n')

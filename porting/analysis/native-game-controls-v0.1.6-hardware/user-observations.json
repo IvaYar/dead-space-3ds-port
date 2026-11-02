@@ -1,0 +1,14 @@
+{
+  "source": "User report and attached console photo; D-pad choice explicitly clarified by user.",
+  "menu_wait_seconds": 554,
+  "menu_wait_from": "A pressed to start original code",
+  "physical_DOWN_control": "Lower D-pad button, not Circle Pad; explicitly confirmed by user.",
+  "DOWN_selection_changed": false,
+  "wait_after_DOWN_seconds_lower_bound": 240,
+  "START_exit_to_HOME_seconds_approx": [
+    1,
+    2
+  ],
+  "additional_hardware_run_requested": false,
+  "photo": "Original Select Difficulty / Normal; DS Menu Controls0.1.6 / FRAME FAIL / run-0001. Photo remains in conversation."
+}

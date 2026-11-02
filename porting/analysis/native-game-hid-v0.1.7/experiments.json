@@ -1,0 +1,33 @@
+{
+  "final_frozen_runs": [
+    "release:raw",
+    "release:missing",
+    "release:pulse",
+    "release:hold",
+    "release:circle",
+    "release:early",
+    "releasestall:stall",
+    "releasehome:home"
+  ],
+  "completed_process_exits": 8,
+  "hardware_runs_this_stage": 0,
+  "normal_candidate_revision": "release",
+  "fixture_revisions_not_for_CIA": {
+    "releasestall": "2s main-boundary sleep",
+    "releasehome": "Deferred HOME/X fixture"
+  },
+  "software_cases": {
+    "raw": "D-pad U/D/L/R,A,B,START and separate CirclePad raw flags; no original engine load.",
+    "missing": "Missing physical D-pad DOWN blocks X launch; START exits without game loading.",
+    "pulse": "2-host-frame pulses; original Normal/Easy navigation and A confirm while main SDK masks0.",
+    "hold": "Held directions produce one logical action, with explicit releases.",
+    "circle": "Real emulator analog HID: CirclePad down/up and physical D-pad down via same original pipeline.",
+    "early": "START during original startup, before menu.",
+    "stall": "Short DOWN retained2054.936ms across2s main-boundary pause, original Easy ACK.",
+    "home": "HOME request, quiesce then SDK HOME handover/X-close; no unsafe resource return."
+  },
+  "drafts": "Earlier CXI-only drafts and evidence preserved privately; final claims use release/releasestall/releasehome only.",
+  "old_hardware_loss_conclusion": "Not observed before host-to-Android dispatch; no raw trace in0.1.6, exact physical cause remains unknown.",
+  "original_first_menu_BACK": "Down/up delivered; first LayerDifficulty deliberately ignores BACK. No forced return.",
+  "gameplay": "Original confirm plus2 callbacks, then cooperative exit. No controllable Isaac scene claimed."
+}

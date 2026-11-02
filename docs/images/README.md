@@ -1,8 +1,16 @@
 # Images
 
+## Current Chapter I capture
+
+[azahar-chapter-one.png](azahar-chapter-one.png) is the full **400 × 480** capture explicitly selected by the project author: `porting/analysis/azahar-native-menu-v0.1.7-morton06-chapter/screen-5106.png`.
+
+It shows original engine output through Citro3D/PICA200 in **Azahar**, at callback 5106: the Chapter I corridor, a character in RIG, and the original MOVEMENT CONTROLS tutorial. It is not a hardware photograph. The tutorial being visible does not establish working movement or camera input. The full capture retains the lower diagnostic display and FRAME FAIL label.
+
+[azahar-chapter-one-top.png](azahar-chapter-one-top.png) is the upper **400 × 240** screen, used as the README preview and linked to the full capture. Both public copies use lossless PNG encoding with identical decoded source pixels and no metadata. There is no resizing, retouching, generated imagery, or replacement content. The source capture and other private evidence remain unchanged.
+
 ## Photographs in the project README
 
-Both photographs were supplied by the project author in this conversation and show a **real New Nintendo 3DS**. They were not generated or reconstructed from emulator output.
+Both earlier photographs were supplied by the project author and show a **real New Nintendo 3DS**. They remain available in the README's collapsible hardware gallery. They were not generated or reconstructed from emulator output.
 
 | File | What is shown | Limits |
 | :--- | :--- | :--- |

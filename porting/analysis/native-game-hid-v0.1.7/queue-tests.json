@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "actual SDK D-pad, generic, Circle Pad and START masks",
+    "launch-held key is not a new preflight press",
+    "20ms pulse survives low FPS and five-minute render gap without duplicate",
+    "two-second hold emits one press and one release",
+    "D-pad and Circle Pad merge without duplicate logical direction",
+    "64-entry FIFO preserves order and reports overflow, never overwrites unread edges",
+    "ready epoch barrier discards old presses and requires held key release/repress"
+  ],
+  "header_sha256": "b3bbcf41e0089404d942b84a037d8bf11a3d38c9441f329abbc2649d537a402b",
+  "fixture_scope": "pure FIFO ARM contract; real SDK/shared memory tested separately in Azahar",
+  "hardware_tested": false
+}

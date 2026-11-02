@@ -1,0 +1,32 @@
+{
+  "variants": [
+    "loadbase: unchanged pager with page backing instrumentation",
+    "loadclean: retain clean backing, invalidate on TexSubImage/FBO writes"
+  ],
+  "completed_Azahar_processes": [
+    "loadbase:measure",
+    "loadclean:measure",
+    "loadclean:repeat",
+    "loadhome:check"
+  ],
+  "loading_optimization_count": 1,
+  "inherited_CRC32_optimization_changed": false,
+  "original_runner_changed": false,
+  "new_ARM_pager_contracts": 13,
+  "new_CIA_count": 0,
+  "hardware_runs": 0,
+  "git_push": false,
+  "rejected_additional_scope": [
+    "Increase6MiB CPU residency to8MiB without normal heap redistribution",
+    "Defer CPU residency across GPU cache hits without lifetime/fallback proof",
+    "Rewrite Morton/staging or GPU backend",
+    "Reduce strict image verification or diagnostics to improve benchmark"
+  ],
+  "fixture_correction": {
+    "first_result": ".local/native-loading-pages-tests/result.json",
+    "failure": "Expected blue draw after glClearColor; actual white matched current draw color. Test fixture error.",
+    "correction": "Use glColor4f for draw color; no runtime change.",
+    "final_result": ".local/native-loading-pages-tests-verified/result.json"
+  },
+  "stop_reason": "Bounded clean snapshot reuse gives reproducible software gain; remaining reads require separate residency work. Proceed next to audio NULL/fog and original first scene."
+}

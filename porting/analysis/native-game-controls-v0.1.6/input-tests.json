@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "checks": [
+    "unready modal rejects input",
+    "hardware/different/zero image CRC admits ready menu with FAIL",
+    "D-pad original pointer ABI and scaled coordinates",
+    "selected Normal/Easy suppressed",
+    "held edge and original UP release",
+    "transition/closing/wrong modal rejected",
+    "invalid pointers/widget-map rejected",
+    "B original Android BACK down/up ABI",
+    "A bounded confirm and close reset",
+    "pending pulse prevents rapid opposite tap",
+    "held BACK released once on close",
+    "state observation never writes original UI objects"
+  ],
+  "headers_sha256": {
+    "native_menu_engine_state.h": "7f1cdff9a52b9d8d0c71399d883821c1da3014d0e3d1bae1a7ce7dc5e08afbf7",
+    "native_menu_controls.h": "80a6003af9a2794dceda71962d4fa2318bd761feda9e1768a7bbe73fd7a4e253"
+  },
+  "lookup_fixture_is_unit_contract_only": true,
+  "hardware_tested": false
+}

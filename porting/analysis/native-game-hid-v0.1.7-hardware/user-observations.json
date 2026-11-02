@@ -1,0 +1,21 @@
+{
+  "source": "User message and three attached hardware photos; logs in received run-0001.",
+  "raw_DOWN_photo": {
+    "held_raw_hex": "00000080",
+    "SDKheld_hex": "00000080",
+    "SDKdown_hex": "00000000"
+  },
+  "raw_release_photo": {
+    "held_raw_hex": "00000000",
+    "SDKheld_hex": "00000000",
+    "all_six_checks_Y": true
+  },
+  "original_menu_photo": "Easy highlighted; ORIGINAL MENU READY / FRAME FAIL; run-0001; version0.1.7.",
+  "initial_load_user_description": "Initial loading is fast; most wait is before the difficulty window.",
+  "menu_navigation_user_description": "Normal/Easy switches quickly; all menu checks completed.",
+  "B_visible_action": false,
+  "A_to_HOME_seconds_approx": 3,
+  "new_full_loading_stopwatch_seconds_reported": null,
+  "physical_HOME_X_tested_this_run": false,
+  "new_hardware_run_requested": false
+}
