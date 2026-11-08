@@ -1,5 +1,11 @@
 # Images
 
+## HW05 real hardware photograph
+
+[hw05-real-hardware.jpg](hw05-real-hardware.jpg) is the README's lead photograph, supplied by the project author: a real **New Nintendo 3DS** mid-way through the **HW05** run, with the original engine's title scene rendering on the upper screen and the build's diagnostic text (including the sticky FRAME FAIL label) on the lower screen. It is a console photograph, not an emulator capture; it documents the run in progress and is not presented as interactive gameplay.
+
+The supplied 1951 × 2560 original was resized to 1200 × 1575 and re-encoded as a quality-88 progressive JPEG for web display. EXIF/GPS and other source metadata were stripped from the published copy. No retouching, color correction, content editing, or generated imagery was used. The original file remains private and unchanged.
+
 ## Current Chapter I capture
 
 [azahar-chapter-one.png](azahar-chapter-one.png) is the full **400 × 480** capture explicitly selected by the project author: `porting/analysis/azahar-native-menu-v0.1.7-morton06-chapter/screen-5106.png`.
