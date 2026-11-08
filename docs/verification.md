@@ -1,6 +1,16 @@
 # Current Results and Known Limits
 
-Reviewed **November 2, 2026**, against the latest [HANDOFF.md](../HANDOFF.md), saved software reports, and user-supplied hardware results. The newest scene milestone is **Azahar-only**. No new console run or scene CIA was produced for it.
+Reviewed **November 8, 2026**, against the latest [HANDOFF.md](../HANDOFF.md), saved software reports, and user-supplied hardware results. The newest hardware milestone is **HW05** (sustained original-engine run on a real New Nintendo 3DS); the newest emulator milestone is **gameplay07** (movement through the original input chain in Azahar). See [DEVELOPMENT_STATUS.md](DEVELOPMENT_STATUS.md) for the milestone timeline.
+
+## Latest hardware milestone: HW05
+
+A real New Nintendo 3DS ran the original engine for approximately 75 minutes. Recorded results: original menu rendering and input, native GPU rendering of real game visuals, **5,312** completed engine callbacks, **39,738** GPU draw calls, **15,542** GPU submits with **zero** recorded failed submits, and no GPU timeout or memory allocation failure. The run ended at an intentional `SCENE_BUDGET` limit — a planned boundary, not a crash — and completed a fully cooperative shutdown: workers joined, GPU drained, balanced I/O, cleanup complete, return to the HOME Menu.
+
+This run does not establish interactive gameplay, character movement, or a playable frame rate on hardware. The observed scene rendering cost was approximately one frame per five seconds — an informal observation, not a benchmark. The sticky framebuffer CRC mismatch (`FRAME FAIL`, reference `ea733050`) remains unresolved.
+
+## Latest emulator milestone: gameplay07
+
+In Azahar, the original movement chain is verified end to end: Circle Pad → original JNI pointer events → the game's own HUD virtual joystick (pointer capture/release observed) → character controller → physics, with confirmed forward/backward displacement and stop-on-release in Chapter I. Camera, shooting, collisions, and audio are not covered by this milestone, and it has not been reproduced on hardware.
 
 ## Current status
 
@@ -9,18 +19,18 @@ Reviewed **November 2, 2026**, against the latest [HANDOFF.md](../HANDOFF.md), s
 | Original engine and intro | Hardware milestone | Original ARM32 code and both intro animations run on real New 3DS hardware. |
 | Difficulty selection | Hardware milestone | HID 0.1.7 verified physical D-pad navigation, Normal/Easy selection, original A confirmation, and its intended safe exit. |
 | Chapter I corridor | Emulator milestone | The original game reached callback 5106, with a character in RIG and the MOVEMENT CONTROLS tutorial visible in Azahar. |
-| Movement and camera | Unfinished | Gameplay input has not been connected or confirmed. Menu input alone does not establish it. |
+| Movement and camera | Emulator milestone (movement) | Forward/backward movement and stopping verified in Azahar through the original input chain (gameplay07). Camera, shooting, and any hardware gameplay input remain unconfirmed. |
 | Scene audio initialization | Experimental | Original audio Init and mixer run through the compatibility layer into a timed PCM sink. No audible NDSP backend yet. |
 | Scene graphics | Experimental | Required fog/COMBINE and projective-texture paths have been exercised. Unsupported states still fail closed; visual and reference differences remain. |
 | Texture residency | Experimental | Invisible-draw uploads were avoided; lossless Morton/LZ4 backing reduced later reload cost. Full GPU cache thrashing remains. |
-| Shutdown | Version-specific milestones | Successful scene runs cleaned up in Azahar; hardware HOME → X was verified in 0.1.4, and bounded confirmation exit in 0.1.7. |
+| Shutdown | Version-specific milestones | HW05 completed a fully cooperative shutdown and safe exit on hardware after its ~75-minute run. Earlier milestones: HOME → X in 0.1.4, bounded confirmation exit in 0.1.7. |
 | Playable release | Unfinished | No stable, player-controlled gameplay or general playable package. |
 
 ## Latest scene checkpoint
 
 The original game progressed through its opening prologue and into **Chapter I — Honorable Intentions**, showing a character in RIG in the corridor. The latest normal run reached **callback 5106** and the original **MOVEMENT CONTROLS** tutorial. The visible character is established by the image; a particular resource/model identity such as `isaac.m3g` was not independently proven.
 
-The [public capture](images/azahar-chapter-one.png) is from `azahar-native-menu-v0.1.7-morton06-chapter/screen-5106.png`. Its upper-screen preview is used in the README. It is output of the original engine through the port in Azahar, not a hardware photograph or a synthetic scene. Scene state, character position, and the original timestep were not manually changed to reach it.
+The [public capture](images/azahar-chapter-one.png) is from `azahar-native-menu-v0.1.7-morton06-chapter/screen-5106.png`. Its upper-screen preview is used in the README's capture gallery. It is output of the original engine through the port in Azahar, not a hardware photograph or a synthetic scene. Scene state, character position, and the original timestep were not manually changed to reach it.
 
 The `morton05:long2` run reached callback 4951; `morton06:chapter` reached 5106, with 784 callbacks after the original confirmation at 4322. Both returned at their explicit guest-time budgets and completed cleanup. The chapter run included roughly 180 callbacks in the first corridor. These are observed engine callbacks, not gameplay FPS or proof of input.
 
@@ -64,7 +74,7 @@ Eight successful audited runs covered 855 capture CRC checks with no reported GX
 
 These saved software checks do not prove the scene on hardware, arbitrary callback cancellation, audible output, complete rendering equivalence, or sustained gameplay. Original compatibility and texture checks remain separate from the new screenshot's visual milestone.
 
-## Latest hardware milestone: HID 0.1.7
+## Earlier hardware milestone: HID 0.1.7
 
 The user verified physical D-pad Normal → Easy → Normal → Easy and A confirmation through original pointer callbacks, followed by the limited package's intended safe exit. The input queue preserved a recorded A press even when the main SDK snapshot was already zero. Circle Pad was not separately tested, and this was not a gameplay scene test.
 
