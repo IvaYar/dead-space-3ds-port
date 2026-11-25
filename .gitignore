@@ -833,3 +833,21 @@
 !/porting/analysis/regional-texture-residency/report.ru.md
 !/porting/analysis/regional-texture-residency/result.json
 !/porting/analysis/regional-texture-residency/hybrid-4430.json
+
+# Phase9 source-only release
+!/README.ru.md
+!/playable_build.py
+!/playable/
+!/playable/**
+*.cia
+*.elf
+*.o
+*.bnr
+*.smdh
+*.apk
+*.so
+*.dmp
+*.log
+__pycache__/
+
+*.su
