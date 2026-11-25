@@ -1,6 +1,6 @@
 # Validation scope
 
-Phase9 v0.1.0 is based on the preceding Phase8 build the user reports working well on a physical New 3DS LL. **The new CIA has no physical test yet.** Stable 15 FPS and hardware input latency are unknown.
+Phase9 v0.1.0 is based on the preceding Phase8 build. The user has now tested Phase9 on a physical New Nintendo 3DS LL and estimates approximately **1.5–2 FPS**. This is user-reported physical testing, not an instrumented frame-timing or complete safety validation. Stable 15 FPS has not been achieved; hardware input latency remains unmeasured.
 
 The final packaged CIA, not only its ELF, was exercised through a private Azahar/libretro scenario. It reached genuine readiness without the manual HID/X preflight, delivered original Xperia camera events, passed directional camera and angular-stop checks, kept the body stationary during camera-only input, moved the original physics body during two simultaneous stick groups, returned the controller to neutral, and exited cooperatively through START. Separate developer-mode ELF regression retained the original opposite-direction body/stop oracle.
 

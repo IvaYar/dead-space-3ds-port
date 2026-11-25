@@ -9,7 +9,7 @@
 HOME Menu → автоматическая проверка SD → original engine/menu/cinematic → gameplay.
 Обязательной проверки кнопок, активации readiness и X-теста в обычном режиме нет.
 Настоящая readiness, проверки памяти/ввода, GPU sync, watchdog и cooperative shutdown сохранены.
-Пользователь подтвердил хорошую работу предыдущей Phase8 на New 3DS LL. Новая CIA Phase9 требует отдельного аппаратного теста.
+Пользователь протестировал Phase9 на физической New Nintendo 3DS LL: по его оценке, игра работает примерно в **1,5–2 FPS**. Это пользовательская оценка, а не инструментальное измерение времени кадров.
 
 Сохранены original engine/physics, HQ ETC1/ETC1A4, Circle Pad, C-Stick, совместное управление, CPU-оптимизации и три исправления fullscreen backdrop/fade. Save/load и прохождение всей игры не подтверждены.
 
@@ -53,12 +53,12 @@ TitleID `000400000FE11000`, ProductCode `CTR-H-P901`, runtime `/3ds/ds-p9-playab
 
 ## Ограничения и планы
 
-Phase8 дала −4,81% guest cinematic time в Azahar против свежей Phase7; host wall почти одинаковый. Аппаратное улучшение пользовательское, **15 FPS не измерены**. Phase9 не заявляет новый speedup. Полная image fidelity остаётся UNRESOLVED, historical FRAME FAIL сохранён. Защищён отрицательный read→memcpy, но причина старой ошибки и полное parser recovery неизвестны. Кампания, save/load, audio fidelity и touchscreen QTE не проверены полностью.
+Текущая Phase9 на физической New Nintendo 3DS LL работает примерно в **1,5–2 FPS по оценке пользователя**. Стабильные 15 FPS не достигнуты; инструментальные измерения frame pacing и физической задержки ввода ещё не выполнены. Phase8 дала −4,81% guest cinematic time в Azahar против свежей Phase7; host wall почти одинаковый. Это emulator result, а не аппаратный FPS speedup. Phase9 не заявляет нового ускорения оптимизациями. Полная image fidelity остаётся UNRESOLVED, historical FRAME FAIL сохранён. Защищён отрицательный read→memcpy, но причина старой ошибки и полное parser recovery неизвестны. Кампания, save/load, audio fidelity и touchscreen QTE не проверены полностью.
 
 Обычная сессия ограничена watchdog 4 часа после readiness и 1 млн callbacks; прежние startup deadlines сохранены. Переход readiness отпускает жесты и ждёт настоящего admission, не пишет game state. При STOPPED / cleanup incomplete это остановка, не загрузка: START/HOME запрашивает закрытие. Не извлекать SD на работающем приложении. При полном зависании использовать обычное выключение POWER.
 
 Далее: подтверждённые 15 FPS, renderer/input latency, нижний экран, QTE touchscreen, настройка камеры и полная совместимость.
 
-![Ранний Chapter I в Azahar](docs/images/azahar-chapter-one-top.png)
+![Chapter I в Azahar](docs/images/azahar-chapter-one-top.png)
 
-Это старый emulator screenshot, не фотография Phase9 на консоли. Credits и лицензии — в English README и playable/LICENSE-NOTICE.md. Оригинальная игра: IronMonkey Studios / Electronic Arts; проект не связан с EA/Nintendo и не претендует на права игры.
+Credits и лицензии — в English README и playable/LICENSE-NOTICE.md. Оригинальная игра: IronMonkey Studios / Electronic Arts; проект не связан с EA/Nintendo и не претендует на права игры.

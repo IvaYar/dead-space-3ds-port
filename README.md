@@ -8,7 +8,7 @@ An unofficial experimental homebrew port loading the original Android ARM engine
 
 Normal launch now starts the original engine automatically after the automatic SD safety check. No mandatory button preflight, readiness activation or X test. Original menus, resource loading and cinematic progression remain. Native readiness still gates movement and camera. Optional developer mode retains the old diagnostic sequence.
 
-The user reports that the preceding Phase8 build works well on a physical New 3DS LL, including HQ textures and both sticks. This report is not new-CIA hardware validation. Phase9 must be tested physically by the user.
+The user has tested Phase9 on a physical New Nintendo 3DS LL and reports approximately **1.5–2 FPS**. This is a user estimate, not an instrumented frame-timing measurement.
 
 Features: original engine/game logic and physics; PICA200 rendering; HQ ETC1/ETC1A4 cache; Circle Pad movement; original Xperia input path for C-Stick camera; input batching/freshness; CPU geometry optimizations; three fullscreen backdrop/fade corrections; bounded watchdogs and cooperative GPU/worker shutdown. Save/load and full-campaign completion are **not verified**.
 
@@ -53,7 +53,7 @@ Optional empty files, read at startup: `/3ds/ds-p9-playable/developer-mode.txt` 
 
 ## Performance and known issues
 
-Phase8 fresh Azahar cinematic interval improved about **4.81% guest time** over Phase7; host wall was effectively similar. That is not a physical FPS speedup. Hardware smoothness is user-reported; stable 15 FPS, frame pacing and physical latency remain unmeasured. Phase9 is packaging/startup work, with no new performance claim.
+Current Phase9 performance on a physical New Nintendo 3DS LL is approximately **1.5–2 FPS**, as estimated by the user. Stable 15 FPS has not been achieved; instrumented frame pacing and physical input latency remain unmeasured. Phase8 fresh Azahar cinematic interval improved about **4.81% guest time** over Phase7; host wall was effectively similar. That emulator result is not a physical FPS speedup. Phase9 is packaging/startup work, with no new optimization speedup claim.
 
 Historical FRAME CRC remains FAIL; scoped image regressions are separate from unresolved full image fidelity. A negative buffered-read length was guarded, but its original trigger and all parser error-recovery paths remain unknown. Keep crash journals. A readiness transition releases input and waits for original readiness again; it does not force game state. Full campaign, all menus, save/load, audio fidelity and touchscreen QTE coverage remain incomplete.
 
@@ -63,8 +63,6 @@ Roadmap: verified stable 15 FPS, more efficient renderer, lower input latency, b
 
 ## Screenshots and credits
 
-![Earlier Chapter I checkpoint in Azahar](docs/images/azahar-chapter-one-top.png)
-
-This is an **earlier emulator screenshot**, not a physical Phase9 photo. Existing labeled hardware photographs remain in docs/images; they are historical evidence, not validation of the new package.
+![Chapter I in Azahar](docs/images/azahar-chapter-one-top.png)
 
 Dead Space Mobile was developed by IronMonkey Studios and published by Electronic Arts; see [EA’s original announcement](https://news.ea.com/press-releases/press-releases-details/2011/EA-Delivers-the-First-Big-Blockbuster-Game-of-2011-With-Dead-Space-2/default.aspx). This unofficial project has no affiliation with EA or Nintendo and claims no ownership of the game. Thanks to devkitPro/devkitARM, libctru, Citro3D, LZ4, Azahar, Unicorn, and the interoperability research of deadspace-vita and EapRules/deadspace-native-arm. Their licenses and existing author notices remain applicable; see playable/LICENSE-NOTICE.md and the existing vendor licenses.
