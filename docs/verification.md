@@ -1,3 +1,5 @@
+> Current performance preview: [milestone handoff](../NEXT-OPTIMIZATION-HANDOFF.md). The material below records earlier checkpoints.
+
 # Current Results and Known Limits
 
 Reviewed **November 8, 2026**, against the latest [HANDOFF.md](../HANDOFF.md), saved software reports, and user-supplied hardware results. The newest hardware milestone is **HW05** (sustained original-engine run on a real New Nintendo 3DS); the newest emulator milestone is **gameplay07** (movement through the original input chain in Azahar). See [DEVELOPMENT_STATUS.md](DEVELOPMENT_STATUS.md) for the milestone timeline.

@@ -1,16 +1,14 @@
 # Dead Space Mobile for New Nintendo 3DS
 
-An experimental, work-in-progress port of the original Android game **Dead Space Mobile** (2011) to the New Nintendo 3DS. The port executes the game's original ARM32 engine natively on the console through a custom Android/Bionic/JNI compatibility layer and translates its OpenGL ES rendering to the 3DS PICA200 GPU via Citro3D.
+I am developing an experimental, work-in-progress port of the original Android game **Dead Space Mobile** (2011) to the New Nintendo 3DS. The port executes the game's original ARM32 engine natively on the console through a custom Android/Bionic/JNI compatibility layer and translates its OpenGL ES rendering to the 3DS PICA200 GPU via Citro3D.
 
 This is not a reimplementation and not an Android emulator: the original, unmodified game code runs on the 3DS CPU, with only the platform services around it recreated.
 
-<p align="center">
-  <img src="docs/images/hw05-real-hardware.jpg" width="480" alt="Real New Nintendo 3DS running the experimental HW05 build, showing the original Dead Space title scene on the upper screen and the build's diagnostic text on the lower screen">
-</p>
+[![Gameplay on my New Nintendo 3DS LL](docs/media/performance-preview.jpg)](docs/media/dead-space-new3ds-ll.mp4)
 
-*Dead Space Mobile running on real New Nintendo 3DS hardware — experimental HW05 build.*
+[Watch my hardware gameplay video](docs/media/dead-space-new3ds-ll.mp4) - HQ rendering, movement, camera and the lower-screen Render FPS HUD.
 
-> **Status: experimental port — work in progress.** There is no playable release, no public game build, and no release date. The project is not finished, stable, or complete; see [Current status](#current-status) and [Known issues](#known-issues-and-limitations).
+> **v0.2.0-performance-preview - experimental milestone.** I have tested this build on my physical New Nintendo 3DS LL. It is a working performance preview, not a stable final release. I am publishing port sources and documentation, not a game binary or the original game files.
 
 ## Contents
 
@@ -27,15 +25,23 @@ This is not a reimplementation and not an Android emulator: the original, unmodi
 
 ## Current status
 
-The most recent hardware test, **HW05**, ran the original game engine on a real New Nintendo 3DS for approximately 75 minutes: the original menu rendered and accepted input, native GPU rendering produced real game visuals, and the run ended at an intentional scene-time budget with a cooperative, fully cleaned-up shutdown. Interactive gameplay has **not** been demonstrated on hardware.
+I tested the current performance-preview build on my physical **New Nintendo 3DS LL**. HQ graphics, Circle Pad movement, the C-Stick camera and the lower-screen FPS HUD work in this test.
 
-In the **Azahar** emulator, the port goes further: the original game plays its prologue, enters **Chapter I — Honorable Intentions**, and physical character movement through the game's own virtual joystick has been verified. These emulator results still need to be reproduced on the console.
+During gameplay I observed roughly **6-10 Render FPS**, with brief readings approaching **20**. These are scene-dependent HUD observations from my test, not a controlled benchmark, an average for the full game, or stable 15 FPS. The video above shows the current build in action.
 
-Hardware performance is currently extremely low — approximately one rendered frame per five seconds in the observed scene. This is an informal observation, not a benchmark. A framebuffer CRC mismatch against the frozen reference remains unresolved.
+The HUD counts completed TOP render generations after a successful renderer/present boundary. It does not measure LCD scanout FPS or count changed pixels. CPU/L2 mode is requested through the SDK; actual clock readback is still unavailable.
+
+I have preserved the exact local CIA and matching sources. Public build instructions and the source/artifact identity are in [playable/BUILD.md](playable/BUILD.md) and [the milestone manifest](docs/performance-preview/milestone.json). The remaining correctness and memory limits are documented below.
 
 ## Confirmed milestones
 
-### On real New Nintendo 3DS hardware — HW05
+### Current physical milestone — performance preview
+
+- I tested HQ rendering, Circle Pad movement and C-Stick camera on New Nintendo 3DS LL.
+- The live Render FPS HUD works on the lower screen, counting completed render generations.
+- Routine matrix logging is removed from draw callbacks; the original clock, movement and HQ support are preserved.
+
+### Earlier hardware milestone — HW05
 
 - Original Dead Space Mobile ARM code executes on the console.
 - The original menu renders and accepts input.
@@ -55,12 +61,12 @@ Earlier hardware milestones remain version-specific: intro rendering (0.1.3), HO
 - Full input chain verified: **Circle Pad → original JNI pointer events → the game's own virtual joystick → character controller → physics**, with confirmed forward/backward movement and stopping.
 - Texture residency work: lossless Morton/LZ4 backing reduced repeated texture conversion cost within unchanged memory budgets.
 
-### Not yet confirmed on hardware
+### Still unverified
 
-- Interactive Chapter I gameplay.
-- Physical character movement.
-- Playable frame rate.
-- Camera control, shooting, full audio output, and complete game progression.
+- Stable 15 FPS, full-campaign performance and peak memory usage.
+- Physical input-to-photon latency and reliable stick-release timing across scenes.
+- Shooting, complete progression and audible NDSP output in the current milestone.
+- Full-image fidelity: the historical framebuffer CRC mismatch remains unresolved.
 
 ## How the port works
 
@@ -75,7 +81,7 @@ Input preserves the game's original contract: Circle Pad and touch data are deli
 | Layer | Implementation |
 | :--- | :--- |
 | Binary execution | Loads the original ARM32 game library, resolves relocations, and runs its code natively on the 3DS CPU. |
-| Android/Bionic/JNI layer | Recreates the libc, JNI, threading, memory, file, and sensor services used by the game (`porting/3ds/source`, modules ds6–ds33). |
+| Android/Bionic/JNI layer | Recreates the libc, JNI, threading, memory, file, and sensor services used by the game (`playable/src`, modules ds6–ds33; historical experiments remain under `porting/`). |
 | Graphics | OpenGL ES 1.x → Citro3D/PICA200 translation with a PICA shader backend (`ds34`); independent CPU renderer for debugging. |
 | Textures | Conversion pipeline with lossless Morton-ordered, LZ4-compressed backing; bounded GPU texture cache. |
 | Memory | 124 MiB application profile with fixed reservations: 20 MiB normal heap, 100 MiB linear heap, 85.5 MiB donor arena. |
@@ -88,26 +94,27 @@ A deeper description lives in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). The 
 
 The port operates under tight, measured constraints:
 
-- **Memory.** The 124 MiB application profile is split into fixed reservations (above). Recorded linear-heap peak usage leaves only about **222 KiB** of headroom, so sustained gameplay memory budgets are not yet established.
+- **Memory.** The 124 MiB application profile is split into fixed reservations (above). Recorded linear-heap peak usage leaves only about **345 KiB** in the selected emulator scenario of headroom, so sustained gameplay memory budgets are not yet established.
 - **GPU.** The PICA200 is a fixed-function GPU from 2010-era mobile hardware; OpenGL ES states must be mapped onto its combiner pipeline, and unsupported states fail closed by design.
 - **Texture cache.** The late-scene working set is about **34 MB** across 25 textures, against an **8 MiB** GPU texture cache — the reason for the Morton/LZ4 backing work.
-- **Performance.** Scene rendering is currently extremely slow on hardware (approximately one frame per five seconds in the observed scene; informal observation, not a benchmark).
+- **Performance.** I now observe approximately 6-10 Render FPS, with brief higher readings, in the tested scenes. This is variable performance, not a stable frame-rate guarantee.
 
-The target is the **New Nintendo 3DS family**. New 3DS XL and New 2DS XL validation is still pending; the original 3DS, 3DS XL, and 2DS are outside the current memory profile.
+The target is the **New Nintendo 3DS family**. New 3DS LL is tested; New 2DS XL validation is still pending; the original 3DS, 3DS XL, and 2DS are outside the current memory profile.
 
 ## Building and running
 
 The development environment (Windows/PowerShell, Python, devkitARM, libctru, Citro3D, Unicorn, Azahar) and the source layout are documented in [docs/development.md](docs/development.md). The toolchain setup is reproducible from this repository, but building a runnable game package additionally requires your own lawfully obtained copy of the original game files, which are not and cannot be distributed here.
 
-There are **no public releases**. Earlier diagnostic CIA packages were internal hardware tests, not game builds; please do not install anything expecting a playable port.
+For the current source snapshot, use [the portable build](playable/BUILD.md); older `porting/` builders are historical experiments. I do not distribute a public game CIA: the original game data and the local packaging icon/banner are excluded. The preview tag identifies a source checkpoint, not a stable binary release.
 
 ## Known issues and limitations
 
 - **Framebuffer CRC mismatch unresolved.** The sticky `FRAME FAIL` gate against the frozen reference frame (`ea733050`) remains in place and has not been weakened or declared fixed.
-- **Extremely low hardware performance** in the game scene (see above).
+- **Variable performance:** the observed 6-10 Render FPS and occasional higher readings are not stable 15 FPS.
 - **No audible sound output.** The original audio mixer runs into a timed PCM sink; an NDSP backend is pending.
-- **Gameplay not confirmed on hardware.** Movement, camera, shooting, and progression are verified only up to the limits listed under [Confirmed milestones](#confirmed-milestones).
-- **Console coverage.** Only New Nintendo 3DS has been exercised; XL variants are unvalidated, and original 3DS models are unsupported by the memory profile.
+- **Intermittent neutral timing failure:** two emulator runs retained movement for one callback beyond the strict expected boundary; repeats passed. I have not established the cause or ruled out a regression. Physical stick-release latency still needs a controlled test.
+- **Native GPU vertex transforms remain disabled.** Production still uses CPU transforms/clipping; the PICA modelview prototype is isolated.
+- **Console coverage.** The current build has been exercised on New Nintendo 3DS LL; other variants need separate validation, and original 3DS models are unsupported by the memory profile.
 
 ## Development progress
 
@@ -115,6 +122,8 @@ High-level timeline, newest first:
 
 | Milestone | Result |
 | :--- | :--- |
+| **v0.2.0 performance preview** | I tested HQ gameplay, both sticks and the live Render FPS HUD on physical New Nintendo 3DS LL; observations around6-10 Render FPS, brief higher values, no stable15 FPS claim. |
+| **v0.2.0 performance preview** | I tested HQ gameplay, both sticks and the live HUD on New Nintendo 3DS LL. Approximately6–10 Render FPS with brief higher values; no stable15 FPS claim. |
 | **HW05 hardware run** | 75-minute original-engine run on a real New 3DS: menu rendering and input, native GPU visuals, 5,312 callbacks, zero failed submits, clean cooperative exit at an intentional scene budget. |
 | **gameplay07 (Azahar)** | Original movement chain verified end to end: Circle Pad → JNI → virtual joystick → character controller → physics; forward/backward movement and stopping confirmed. |
 | **Chapter I (Azahar)** | Original prologue and Chapter I corridor rendered through the Citro3D/PICA200 backend; MOVEMENT CONTROLS tutorial visible at callback 5,106. |
@@ -124,7 +133,7 @@ High-level timeline, newest first:
 
 Detailed numbers and evidence scope: [docs/verification.md](docs/verification.md). Milestone-by-milestone history: [docs/DEVELOPMENT_STATUS.md](docs/DEVELOPMENT_STATUS.md). The full engineering chronology (in Russian): [HANDOFF.md](HANDOFF.md).
 
-Next steps, in no fixed order: reproduce Chapter I gameplay on hardware, address scene performance, resolve the framebuffer CRC mismatch, and add audible NDSP output.
+Next I plan to narrow the CPU geometry profile, collect exact draw replay for a safe PICA200 subset, investigate neutral timing and the CRC mismatch, and eventually add audible NDSP output. [Next optimization handoff](NEXT-OPTIMIZATION-HANDOFF.md) records the current architecture, measured results and rejected approaches. No new optimization is included in this milestone-saving update.
 
 ## Credits
 

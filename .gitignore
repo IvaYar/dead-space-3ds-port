@@ -833,3 +833,23 @@
 !/porting/analysis/regional-texture-residency/report.ru.md
 !/porting/analysis/regional-texture-residency/result.json
 !/porting/analysis/regional-texture-residency/hybrid-4430.json
+
+# Current source-only performance preview
+!/playable/
+!/playable/**
+!/playable_build.py
+!/scripts/
+!/scripts/build-performance.ps1
+!/NEXT-OPTIMIZATION-HANDOFF.md
+/build/
+/private/
+/tools/sdk/
+/release/
+*.cia
+*.elf
+*.o
+*.su
+*.apk
+*.so
+*.bnr
+*.smdh

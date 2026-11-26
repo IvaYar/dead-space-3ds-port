@@ -1,0 +1,2 @@
+#define DS28_FONT_SIZE 47036u
+#define DS28_FONT_CRC 0x71dcae12u

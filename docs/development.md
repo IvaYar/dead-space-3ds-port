@@ -1,3 +1,5 @@
+> Current performance preview: [milestone handoff](../NEXT-OPTIMIZATION-HANDOFF.md). The material below records earlier checkpoints.
+
 # Development Notes
 
 For a quick overview, read the [README](../README.md). The [current results](verification.md) distinguish hardware observations from emulator tests, the [development status](DEVELOPMENT_STATUS.md) records the milestone timeline, and [ARCHITECTURE.md](ARCHITECTURE.md) describes how the port works internally. [HANDOFF.md](../HANDOFF.md) contains the detailed engineering chronology in Russian; its newest entry takes precedence over older plans and readiness decisions.
