@@ -1,0 +1,2 @@
+#define DS_DONOR_SIZE 4499468u
+#define DS_DONOR_CRC32 0x9fd95635u

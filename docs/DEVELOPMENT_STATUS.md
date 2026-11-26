@@ -1,3 +1,5 @@
+> Current performance preview: [milestone handoff](../NEXT-OPTIMIZATION-HANDOFF.md). The material below records earlier checkpoints.
+
 # Development Status
 
 Current snapshot of the port, with the milestone history that led here. For measured numbers and validation scope see [verification.md](verification.md); for the full engineering chronology (in Russian) see [HANDOFF.md](../HANDOFF.md).

@@ -1,0 +1,17 @@
+{
+  "source_hashes_verified": 140,
+  "fresh_ELF_build_passed": true,
+  "ELF_LOAD_matches_tested_build": true,
+  "staged_files_scanned": 159,
+  "targeted_secret_and_private_path_findings": 0,
+  "proprietary_payloads_added": false,
+  "license_review": {
+    "port": "Source-available; no blanket relicensing; author notices retained",
+    "LZ4": "BSD-2-Clause license retained in source and existing vendor LICENSE",
+    "SDK": "Not distributed; obtain upstream separately",
+    "shader_header": "Port shader output, not donor code",
+    "footage": "IvaYar recording; game imagery remains rights-holder property, not blanket source licensed",
+    "CIA_banner_icon_font_donor_assets": "Excluded; packaging rights unresolved"
+  },
+  "limits": "Targeted pattern and provenance review, not an exhaustive legal or secret-detection guarantee."
+}
